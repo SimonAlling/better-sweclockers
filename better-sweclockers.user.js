@@ -73,7 +73,7 @@ var defaultColors = [
 
 var BSC = {
     version: version,
-    pseudoConsole: true, // true for a pseudo-console; useful on platforms that don't have a native console. Should be false in production.
+    pseudoConsole: false, // true for a pseudo-console; useful on platforms that don't have a native console. Should be false in production.
     oldestRecommendedSettings: "2.0",
 
     logoURL: "https://i.imgur.com/oZHfIXh.png",
@@ -2941,7 +2941,7 @@ function run() {
         } else {
             log("Checking which DOM operations to run...");
 
-            if (BSC.pseudoConsole && !window.console) {
+            if (BSC.pseudoConsole) {
                 insertPseudoConsole();
             }
 
