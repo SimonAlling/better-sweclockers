@@ -1603,7 +1603,7 @@ function checkForUpdate() {
                     // We have found the element containing the version number of the latest release.
                     newestVersion = vNumber;
                 }
-                if (bbSizeElem.innerHTML === "&nbsp;&nbsp;&nbsp;") {
+                if (bbSizeElem.innerHTML === "&nbsp;") {
                     // We have found the element in which to insert the update check result.
                     updateCheckElement = bbSizeElem;
                     break;

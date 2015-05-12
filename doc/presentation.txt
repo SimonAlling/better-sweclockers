@@ -6,7 +6,7 @@
 [url="https://github.com/SimonAlling/better-sweclockers/raw/master/better-sweclockers.user.js"][img]http://i.imgur.com/Qpc1jAX.png[/img][/url]
 [size="3"][b]v2.0[/b][/size]
 [size="1"]2015-05-12[/size]
-[size="3"]   [/size]
+[size="3"] [/size]
 
 [size="3"][color="#D00"]»[/color] [url="#post14497818"][b]Dokumentation[/b][/url][/size]
 [/center]
@@ -26,18 +26,19 @@ Se avsnitt 1 i [url="#post14497818"]dokumentationen[/url].
 
 [size="4"][b]Förslag mottages tacksamt[/b][/size]
 
-Better SweClockers är långt ifrån klart. Jag arbetar hela tiden på fler funktioner, men även på att förbättra existerande kod. Felhantering är exempelvis ett område som jag vet behöver förbättras. Ångra-knappen är också ganska kass. [b]Inget gör mig gladare än förslag på förbättringar[/b], och jag vet att det finns många här som är mycket bättre än jag på JavaScript. Så [font="Courier New, monospace"][color="#F92665"][b][i]throw new[/i][/b][/color] Suggestions([color="#D6BB3A"]"please"[/color]);[/font]
+Better SweClockers är aldrig klart. Jag arbetar hela tiden på fler funktioner, men även på att förbättra existerande kod. [b]Inget gör mig gladare än förslag på förbättringar[/b], och jag vet att det finns många här som är mycket bättre än jag på JavaScript. Så [font="Courier New, monospace"][color="#F92665"][b][i]throw new[/i][/b][/color] Suggestions([color="#D6BB3A"]"please"[/color]);[/font]
+
+Nu är BSC dessutom [b]fri mjukvara[/b] enligt GNU GPLv3, så vem som helst får modifiera och härja hur som helst. Förslagsvis samarbetar vi i [url="https://github.com/SimonAlling/better-sweclockers"][b]GitHub-repot[/b][/url].
 
 
 
 [size="4"][b]Planerade förbättringar[/b][/size]
 [SPOILER]
-[list]
-[*]Fixa viss eller fullständig funktionalitet även på HTTPS-delen av SweClockers, där BSC just nu inte fungerar alls (pga att inställningar inte kan sparas "mellan HTTP och HTTPS").
-[*]Forumfiltret ska gälla även under exempelvis [b]Aktiva trådar[/b] och [b]Obesvarade trådar[/b].
-[*]En lista i ACP med några fördefinierade textutseenden, till exempel [size="4"][color="#24F"]▶▶[/color] [b]Underrubrik[/b][/size], [color="#20A000"][b]Grön fet[/b][/color] och [color="#D00"][b]Röd fet[/b][/color].
-[*]Möjlighet att återställa inställningarna till default.
-[/list]
+[ul]
+[li]Fixa viss eller fullständig funktionalitet även på HTTPS-delen av SweClockers, där BSC just nu inte fungerar alls (pga att inställningar inte kan sparas "mellan HTTP och HTTPS").[/li]
+[li]Forumfiltret ska gälla även under exempelvis [b]Aktiva trådar[/b] och [b]Obesvarade trådar[/b].[/li]
+[li]En lista i ACP med några fördefinierade textutseenden, till exempel [size="4"][color="#24F"]▶▶[/color] [b]Underrubrik[/b][/size], [color="#20A000"][b]Grön fet[/b][/color] och [color="#D00"][b]Röd fet[/b][/color].[/li]
+[/ul]
 [/SPOILER]
 
 
@@ -60,34 +61,26 @@ Better SweClockers är långt ifrån klart. Jag arbetar hela tiden på fler fun
 [i]På/av-knapp för Blargmodes mörka tema[/i]
 
 
-[url="http://i.imgur.com/CcHtplt.png"][img]http://i.imgur.com/CcHtplt.png[/img][/url]
-[i]Förbättrade citatlänkar[/i]
+[url="http://i.imgur.com/VmXJMts.png"][img]http://i.imgur.com/VmXJMts.png[/img][/url]
+[i]Tydligare framhävning av olästa PM[/i]
 
 
 [url="http://i.imgur.com/cWUeYJC.png"][img]http://i.imgur.com/cWUeYJC.png[/img][/url]
 [i]Förbättrade bläddringsknappar[/i]
 
 
-[url="http://i.imgur.com/3LbE3c6.png"][img]http://i.imgur.com/3LbE3c6.png[/img][/url]
-[i]Svara-länkar på Citat-sidan[/i]
-
-
 [url="http://i.imgur.com/CVmu1ec.png"][img]http://i.imgur.com/CVmu1ec.png[/img][/url]
 [i]Sök med Google[/i]
-
-
-[url="http://i.imgur.com/JrenVw7.png"][img]http://i.imgur.com/JrenVw7.png[/img][/url]
-[i]Länk till trådstart[/i]
 [/SPOILER]
 
 
 
 [size="4"][b]Uppdateringslogg[/b][/size]
-[LIST]
-[*][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/#post14498008"]v1.0.5[/url]
-[*][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index3.html#post14502600"]v1.1.0[/url]
-[*][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index3.html#post14514088"]v1.2.0[/url]
-[*][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index3.html#post14515222"]v1.2.2[/url]
-[*][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index4.html#post14548542"]v1.3.0[/url]
-[*][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index5.html#post14603624"]v1.4.1[/url]
-[/LIST]
+[ul]
+[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/#post14498008"]v1.0.5[/url][/li]
+[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index3.html#post14502600"]v1.1.0[/url][/li]
+[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index3.html#post14514088"]v1.2.0[/url][/li]
+[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index3.html#post14515222"]v1.2.2[/url][/li]
+[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index4.html#post14548542"]v1.3.0[/url][/li]
+[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index5.html#post14603624"]v1.4.1[/url][/li]
+[/ul]

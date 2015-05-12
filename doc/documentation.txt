@@ -444,7 +444,11 @@ Denna funktion modifierar enbart CSS-koden; den utför inga DOM-operationer.
 
 [size="3"][color="gray"][s][b]2.3.2  Förbättrade citatlänkar i forumet[/b][/s][/color][/size]
 
+[color="#D00"][i]Denna funktion är borttagen från och med version 2.0, då den ingår i SweClockers 6.0.[/i][/color]
+
+[spoiler]
 [url="http://i.imgur.com/CcHtplt.png"][img]http://i.imgur.com/CcHtplt.png[/img][/url]
+[/spoiler]
 
 [color="gray"][s]Länken för att gå till ett citerat inlägg är ännu mindre och svårare att klicka på än de i 2.3.1 nämnda länkarna. Denna funktion gör länken större och lättare att klicka på. Den lägger dessutom till en [cmd]hover[/cmd]-effekt, vilket höjer användbarheten ytterligare.
 
@@ -588,7 +592,7 @@ Temat hämtas från Blargmodes server, precis som vanligt, så man får alltid d
 
 [img]http://i.imgur.com/KyTy8LV.gif[/img]
 
-Denna funktion låser höjden på alla reklambanners, så att de inte trycker ner sidan när de laddas. Detta möjliggörs genom det magiska direktivet [cmd]@run-at document-start[/cmd], som BSC 2.0 är baserat på. Höjden låses till respektive banners ursprungshöjd, så reklamen högst upp blir kapad om den är högre än sin container. Därmed kan det se lite fult ut. Men i gengäld slipper man misclicka på reklam 40 gånger om dagen.
+Denna funktion låser höjden på alla reklambanners, så att de inte trycker ner sidan när de laddas. Detta möjliggörs genom det magiska direktivet [cmd][noparse]@run-at document-start[/noparse][/cmd], som BSC 2.0 är baserat på. Höjden låses till respektive banners ursprungshöjd, så reklamen högst upp blir kapad om den är högre än sin container. Därmed kan det se lite fult ut. Men i gengäld slipper man misclicka på reklam 40 gånger om dagen.
 
 
 
