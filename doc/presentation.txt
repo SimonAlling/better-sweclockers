@@ -3,24 +3,24 @@
 
 [size="3"]Ett userscript av Simon Alling[/size]
 
-[url="https://greasyfork.org/scripts/980-better-sweclockers/code/Better%20SweClockers.user.js"][img]http://i.imgur.com/Qpc1jAX.png[/img][/url]
-[size="3"][b]v1.4.1[/b][/size]
-[size="1"]2014-05-15[/size] TODO nytt datum
+[url="https://github.com/SimonAlling/better-sweclockers/raw/master/better-sweclockers.user.js"][img]http://i.imgur.com/Qpc1jAX.png[/img][/url]
+[size="3"][b]v2.0[/b][/size]
+[size="1"]2015-05-12[/size]
 [size="3"]   [/size]
 
-[size="3"][color="#D00"]»[/color] [url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/#post14497818"][b]Dokumentation[/b][/url][/size]
+[size="3"][color="#D00"]»[/color] [url="#post14497818"][b]Dokumentation[/b][/url][/size]
 [/center]
 
 
 Efter otaliga nätters kodande är det nu äntligen dags att presentera mitt userscript [b]Better SweClockers[/b], som jag började bygga i mitten av 2012 ([url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1120828-userscript-filtrera-bort-ointressanta-tradar/"]"SweClockers Enhanced"[/url]). Den absoluta majoriteten av de närmare 1500 raderna är dock skrivna från och med hösten 2013.
 
-Syftet med Better SweClockers är att göra SweClockers lättare att använda. Scriptet bidrar med många små, behändiga förbättringar och några stora tillägg som [b]Advanced Control Panel[/b], [b]Lås höjden på reklam[/b] och [b]Forumfiltret[/b]. [url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/#post14497818"][b]Dokumentationen[/b][/url] innehåller information om alla funktioner som Better SweClockers tillhandahåller.
+Syftet med Better SweClockers är att göra SweClockers lättare att använda. Scriptet bidrar med många små, behändiga förbättringar och några stora tillägg som [b]Advanced Control Panel[/b], [b]Lås höjden på reklam[/b] och [b]Forumfiltret[/b]. [url="#post14497818"][b]Dokumentationen[/b][/url] innehåller information om alla funktioner som Better SweClockers tillhandahåller.
 
 
 
 [size="4"][b]Hur installerar jag Better SweClockers?[/b][/size]
 
-Se avsnitt 1 i [url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/#post14497818"]dokumentationen[/url].
+Se avsnitt 1 i [url="#post14497818"]dokumentationen[/url].
 
 
 
@@ -33,6 +33,7 @@ Better SweClockers är långt ifrån klart. Jag arbetar hela tiden på fler fun
 [size="4"][b]Planerade förbättringar[/b][/size]
 [SPOILER]
 [list]
+[*]Fixa viss eller fullständig funktionalitet även på HTTPS-delen av SweClockers, där BSC just nu inte fungerar alls (pga att inställningar inte kan sparas "mellan HTTP och HTTPS").
 [*]Forumfiltret ska gälla även under exempelvis [b]Aktiva trådar[/b] och [b]Obesvarade trådar[/b].
 [*]En lista i ACP med några fördefinierade textutseenden, till exempel [size="4"][color="#24F"]▶▶[/color] [b]Underrubrik[/b][/size], [color="#20A000"][b]Grön fet[/b][/color] och [color="#D00"][b]Röd fet[/b][/color].
 [*]Möjlighet att återställa inställningarna till default.

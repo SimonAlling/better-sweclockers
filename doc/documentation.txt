@@ -1,7 +1,6 @@
 [size="5"][b]Dokumentation för Better SweClockers[/b][/size]
 
-[b]Uppdaterad:[/b] 2015-02-15
-TODO uppdaterad nytt datum
+[b]Uppdaterad:[/b] 2015-05-12
 Denna dokumentation beskriver hur man installerar och använder Better SweClockers.
 
 [size="3"][color="#D00"]»[/color] [url="#post14497835"][b]Hoppa förbi dokumentationen[/b][/url][/size]
@@ -10,14 +9,14 @@ Denna dokumentation beskriver hur man installerar och använder Better SweClocke
 
 [size="5"][b]1  Installation[/b][/size]
 
-I en del fall går det att installera Better SweClockers direkt från [url="https://greasyfork.org/scripts/980-better-sweclockers/code/Better%20SweClockers.user.js"][b]Greasy Fork[/b][/url]. I annat fall har jag skrivit guider för Chrome, Firefox och iOS:
+I en del fall går det att installera Better SweClockers direkt från [url="https://github.com/SimonAlling/better-sweclockers/raw/master/better-sweclockers.user.js"][b]GitHub[/b][/url]. I annat fall har jag skrivit guider för Chrome, Firefox och iOS:
 
 [size="4"][color="#24F"]▶[/color] [b]1.1  Chrome[/b][/size]
 
 [ol]
     [li]Installera tillägget [url="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo"][b]Tampermonkey[/b][/url].[/li]
     [li]Klicka på Download-knappen ovan och bekräfta installationen om så krävs. Om det inte fungerar, gå vidare till nästa steg.[/li]
-    [li]Ladda ned filen [url="https://greasyfork.org/scripts/980-better-sweclockers/code/Better%20SweClockers.user.js"][i]Better SweClockers.user.js[/i][/url].[/li]
+    [li]Ladda ned filen [url="https://github.com/SimonAlling/better-sweclockers/raw/master/better-sweclockers.user.js"][i]better-sweclockers.user.js[/i][/url].[/li]
     [li]Gå in på [url="chrome-extension://dhdgffkkebhmkfjojejmpbldmpobfkfo/options.html?url=#open=new-user-script"][b]Options/Add a new script[/b][/url] i Tampermonkey.[/li]
     [li]Kopiera allt innehåll i filen du laddade ner och klistra in det i Tampermonkey. Tryck sedan Ctrl+S för att spara.[/li]
 [/ol]
@@ -29,7 +28,7 @@ I en del fall går det att installera Better SweClockers direkt från [url="htt
 [ol]
     [li]Installera tillägget [url="https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/"][b]GreaseMonkey[/b][/url].[/li]
     [li]Klicka på Download-knappen ovan och bekräfta installationen om så krävs. Om det inte fungerar, gå vidare till nästa steg.[/li]
-    [li]Ladda ned filen [url="https://greasyfork.org/scripts/980-better-sweclockers/code/Better%20SweClockers.user.js"][i]Better SweClockers.user.js[/i][/url].[/li]
+    [li]Ladda ned filen [url="https://github.com/SimonAlling/better-sweclockers/raw/master/better-sweclockers.user.js"][i]better-sweclockers.user.js[/i][/url].[/li]
     [li]Firefox-knappen → [i]Add-ons[/i] → [i]User Scripts[/i].[/li]
     [li]Dra filen du laddade ner från den mapp där den ligger och släpp den på Add-ons Manager-fönstret.[/li]
     [li]Välj [i]Install[/i] om den frågar.[/li]
@@ -44,7 +43,7 @@ Om du vill använda Better SweClockers på iOS måste din enhet vara jailbreaka
 [ol]
     [li]Köp och installera [url="http://cydia.saurik.com/package/org.thebigboss.userscriptsloader/"][b]Userscripts Loader[/b][/url] ($2.99 på Cydia). Eller skriv ett eget package med samma funktionalitet. :)[/li]
     [li][i]Settings[/i] → [i]Userscripts Loader[/i] → [i]Download By URL[/i].[/li]
-    [li]Skriv in [cmd][noparse]https://greasyfork.org/scripts/980-better-sweclockers/code/Better SweClockers.user.js[/noparse][/cmd] och tryck Enter.[/li]
+    [li]Skriv in [cmd][noparse]https://github.com/SimonAlling/better-sweclockers/raw/master/better-sweclockers.user.js[/noparse][/cmd] och tryck Enter.[/li]
 [/ol]
 
 Under [i]Enable for:[/i] kan du välja i vilka appar Userscripts Loader ska vara aktivt.
@@ -235,8 +234,8 @@ Ni som inte gillar dessa knappar kan självklart inaktivera dem (se 3.1.3). :)
 
 
 [size="3"][b]Smileys[/b][/size]
-TODO URL är antagligen fel på livesajten
-Knappen [b]Smileys[/b] är bara en länk till [url="/forum/trad/1347751"]SweClockers BB-kodreferens[/url]. Den öppnas i en ny flik.
+
+Knappen [b]Smileys[/b] är bara en länk till [url="/forum/trad/1367916"]SweClockers BB-kodreferens[/url]. Den öppnas i en ny flik.
 
 
 
@@ -481,8 +480,7 @@ Denna funktion modifierar enbart CSS-koden; den utför inga DOM-operationer.[/s]
 
 Denna funktion gör att man lätt kan identifiera olästa PM i inkorgen. Utan denna funktion är det väldigt subtilt vilka PM som är olästa.
 
-TODO bild
-[url=""][img][/img][/url]
+[url="http://i.imgur.com/VmXJMts.png"][img]http://i.imgur.com/VmXJMts.png[/img][/url]
 
 
 

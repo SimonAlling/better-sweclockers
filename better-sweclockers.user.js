@@ -81,7 +81,7 @@ var BSC = {
     settingsURL: "/better-sweclockers",
     settingsURLFavoriteLinks: "/better-sweclockers#Favoritlänkar",
     defaultStylesheetURL: "/css/combine.min.css",
-    BBCodeReferenceURL: "/forum/trad/1347751", // TODO will be something else on live site
+    BBCodeReferenceURL: "/forum/trad/1367916",
     darkThemeURL: "http://blargmode.se/files/swec_dark_theme/style.css",
     smileyURLs: {
         doge: "http://i.imgur.com/2IGEruO.png"
