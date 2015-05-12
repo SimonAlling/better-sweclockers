@@ -3,7 +3,7 @@
 // @namespace       http://alling.se
 //
 //                  *** Don't forget to update version below as well! ***
-// @version         2.0
+// @version         2.0.1
 //                  *** Don't forget to update version below as well! ***
 //
 // @match           http://*.sweclockers.com/*
@@ -24,7 +24,7 @@ var Better_SweClockers = (function() {
 "use strict";
 
 // Needed for update check. Remember to update!
-var version = "2.0";
+var version = "2.0.1";
 
 // "Constants"
 var ABOVE_STANDARD_CONTROL_PANEL = 0;
@@ -73,7 +73,7 @@ var defaultColors = [
 
 var BSC = {
     version: version,
-    pseudoConsole: true, // true for a pseudo-console; useful on platforms that don't have a native console. Should be false in production.
+    pseudoConsole: false, // true for a pseudo-console; useful on platforms that don't have a native console. Should be false in production.
     oldestRecommendedSettings: "2.0",
 
     logoURL: "https://i.imgur.com/oZHfIXh.png",
@@ -1596,8 +1596,10 @@ function checkForUpdate() {
     if (!!BSCThreadOP) {
         try {
             bbSizeElements = BSCThreadOP.querySelectorAll(".bbSize");
+            console.error(bbSizeElements);
             while (i < bbSizeElements.length) {
                 bbSizeElem = bbSizeElements[i];
+                console.error(bbSizeElem);
                 vNumber = bbSizeElem.textContent.replace("v", "");
                 if (isVersionNumber(vNumber)) {
                     // We have found the element containing the version number of the latest release.
@@ -2939,7 +2941,7 @@ function run() {
         } else {
             log("Checking which DOM operations to run...");
 
-            if (BSC.pseudoConsole && !window.console) {
+            if (BSC.pseudoConsole) {
                 insertPseudoConsole();
             }
 

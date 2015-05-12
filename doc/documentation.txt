@@ -83,7 +83,7 @@ Knappen [b]strike[/b] omger markerad text med [cmd]s[/cmd]-taggen, vilket gör d
 
 
 [size="3"][b]cmd[/b][/size]
-[i]Hette tidigare [b]Inline-kod[/b] – omdöpt i version 2.0.0.[/i]
+[i]Hette tidigare [b]Inline-kod[/b] – omdöpt i version 2.0.[/i]
 
 Knappen [b]cmd[/b] ger markerad text [cmd]kodutseende[/cmd]. Det passar bra till små bitar kod eller tangentbordsinmatning som inte ska stå i ett eget stycke (varvid istället [b]code[/b] ska användas).
 [code][noparse][cmd][/noparse][color="#24F"]markerad text[/color][noparse][/cmd][/noparse][/code]
