@@ -3,7 +3,7 @@
 // @namespace       http://alling.se
 //
 //                  *** Don't forget to update version below as well! ***
-// @version         2.0
+// @version         2.0.1
 //                  *** Don't forget to update version below as well! ***
 //
 // @match           http://*.sweclockers.com/*
@@ -24,7 +24,7 @@ var Better_SweClockers = (function() {
 "use strict";
 
 // Needed for update check. Remember to update!
-var version = "2.0";
+var version = "2.0.1";
 
 // "Constants"
 var ABOVE_STANDARD_CONTROL_PANEL = 0;
@@ -1596,8 +1596,10 @@ function checkForUpdate() {
     if (!!BSCThreadOP) {
         try {
             bbSizeElements = BSCThreadOP.querySelectorAll(".bbSize");
+            console.error(bbSizeElements);
             while (i < bbSizeElements.length) {
                 bbSizeElem = bbSizeElements[i];
+                console.error(bbSizeElem);
                 vNumber = bbSizeElem.textContent.replace("v", "");
                 if (isVersionNumber(vNumber)) {
                     // We have found the element containing the version number of the latest release.
