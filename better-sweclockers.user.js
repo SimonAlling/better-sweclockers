@@ -1576,19 +1576,8 @@ function checkForBetterSweClockersAnchor() {
 }
 
 function canCheckForUpdate() {
-    var BSCThreadOP = byID("p14497816");
-    if (!!BSCThreadOP) {
-        var bbSizeElements = BSCThreadOP.querySelectorAll(".bbSize");
-        var i = 0;
-        while (i < bbSizeElements.length) {
-            if (bbSizeElements[i].innerHTML === "&nbsp;&nbsp;&nbsp;") {
-                // We have found the element in which to insert the update check result.
-                return true;
-            }
-            i++;
-        }
-    }
-    return false;
+    var BSCThreadOP = byID("post14497816");
+    return !!BSCThreadOP;
 }
 
 function createUpdateCheckElement(currentVersion, isOld) {
@@ -1600,7 +1589,7 @@ function createUpdateCheckElement(currentVersion, isOld) {
 
 function checkForUpdate() {
     log("Checking for update...");
-    var BSCThreadOP = byID("p14497816");
+    var BSCThreadOP = byID("post14497816");
     var currentVersion = BSC.version;
     var bbSizeElements, bbSizeElem, newestVersion, updateCheckElement, vNumber;
     var i = 0;
@@ -1625,6 +1614,8 @@ function checkForUpdate() {
             if (!!updateCheckElement) {
                 var newUpdateCheckElement = createUpdateCheckElement(currentVersion, isOlderVersion(currentVersion, newestVersion));
                 updateCheckElement.replaceWith(newUpdateCheckElement);
+            } else {
+                addException(new ElementNotFoundException("Failed to check for update because the update check element could not be found."));
             }
         } catch (e) {
             addException(new GeneralException("Failed to check for update. " + e));
