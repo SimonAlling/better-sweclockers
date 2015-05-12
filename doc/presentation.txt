@@ -4,7 +4,7 @@
 [size="3"]Ett userscript av Simon Alling[/size]
 
 [url="https://github.com/SimonAlling/better-sweclockers/raw/master/better-sweclockers.user.js"][img]http://i.imgur.com/Qpc1jAX.png[/img][/url]
-[size="3"][b]v2.0[/b][/size]
+[size="3"][b]v2.0.1[/b][/size]
 [size="1"]2015-05-13[/size]
 [size="3"] [/size]
 
@@ -77,10 +77,11 @@ Nu är BSC dessutom [b]fri mjukvara[/b] enligt GNU GPLv3, så vem som helst får
 
 [size="4"][b]Uppdateringslogg[/b][/size]
 [ul]
-[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/#post14498008"]v1.0.5[/url][/li]
-[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index3.html#post14502600"]v1.1.0[/url][/li]
-[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index3.html#post14514088"]v1.2.0[/url][/li]
-[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index3.html#post14515222"]v1.2.2[/url][/li]
-[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index4.html#post14548542"]v1.3.0[/url][/li]
-[li][url="http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/index5.html#post14603624"]v1.4.1[/url][/li]
+[li][url="/forum/post/14498008"]v1.0.5[/url][/li]
+[li][url="/forum/post/14502600"]v1.1.0[/url][/li]
+[li][url="/forum/post/14514088"]v1.2.0[/url][/li]
+[li][url="/forum/post/14515222"]v1.2.2[/url][/li]
+[li][url="/forum/post/14548542"]v1.3.0[/url][/li]
+[li][url="/forum/post/14603624"]v1.4.1[/url][/li]
+[li][url="/forum/post/15405486"]v2.0[/url][/li]
 [/ul]
