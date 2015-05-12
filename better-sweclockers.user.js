@@ -962,7 +962,7 @@ function loadSettings() {
         if (confirm("Hittade sparade inställningar från " + (!!loadedSettings.version ? "version "+loadedSettings.version : "en gammal version") + " av Better SweClockers. Det kan eventuellt ge upphov till konflikter med Better SweClockers "+BSC.version+". Det rekommenderas därför att du rensar alla inställningar. Vill du göra det? (Det går att göra senare om du inte gör det nu.)")) {
             if (confirm("ALLA inställningar kommer försvinna. Är du säker?")) {
                 resetSettings();
-                loadFavoriteLinks(parseFavoriteLinks( BSC.settings.favoriteLinksRaw));
+                loadFavoriteLinks(parseFavoriteLinks(BSC.settings.favoriteLinksRaw));
             } else alert(msg);
         } else alert(msg);
     }
@@ -2428,6 +2428,7 @@ function parseOptionsForm() {
             }
         }
     }
+    parsedSettings.version = BSC.version;
     return parsedSettings;
 }
 
