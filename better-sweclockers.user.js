@@ -3,7 +3,7 @@
 // @namespace       http://alling.se
 //
 //                  *** Don't forget to update version below as well! ***
-// @version         2.0.2
+// @version         2.0.3
 //                  *** Don't forget to update version below as well! ***
 //
 // @match           http://*.sweclockers.com/*
@@ -24,7 +24,7 @@ var Better_SweClockers = (function() {
 "use strict";
 
 // Needed for update check. Remember to update!
-var version = "2.0.2";
+var version = "2.0.3";
 
 // "Constants"
 var ABOVE_STANDARD_CONTROL_PANEL = 0;
@@ -583,7 +583,7 @@ function createLink(text, href, title) {
     if (isString(text) && isString(href)) {
         var link = document.createElement("a");
         link.href = href;
-        link.innerText = text;
+        link.textContent = text;
         if (isNonEmptyString(title)) {
             link.title = title;
         }
@@ -879,7 +879,7 @@ function shouldAutofocusTA() {
     var TA = BSC.TA, h1 = qSel("h1");
     if (isInAdvancedEditMode()) {
         if (!!TA && !!h1) {
-            return h1.innerText === "Ny tråd" && TA.value !== "";
+            return h1.textContent.trim() === "Ny tråd" && TA.value !== "";
         } else {
             addException(new ElementNotFoundException("Failed to determine whether the main textarea should be autofocused because it or the page heading could not be found."));
         }
@@ -1162,13 +1162,13 @@ function createBelowTAButton(value, id, eventHandler) {
 function getMyName() {
     log("Looking for username...");
     if (isLoggedIn()) {
-        var usernameElement = qSel(".profile .name");
-        if (!!usernameElement && matches(usernameElement.innerText, /^Inloggad som .+/i)) {
-            var username = usernameElement.innerText.replace(/^Inloggad som /i, "");
+        var usernameElement = qSel(".profile .name a");
+        if (!!usernameElement && !!usernameElement.textContent && matches(usernameElement.textContent.trim(), /^Inloggad som .+/i)) {
+            var username = usernameElement.textContent.trim().replace(/^Inloggad som /i, "");
             log("Found username: "+username);
             return username;
         } else {
-            addException(new ElementNotFoundException("Could not extract username because its presumed parent (.profile .profileName) could not be found or did not contain expected content."));
+            addException(new ElementNotFoundException("Could not extract username because its presumed parent (.profile .name a) could not be found or did not contain expected content."));
             return null;
         }
     } else {
@@ -1600,7 +1600,7 @@ function checkForUpdate() {
             while (i < bbSizeElements.length) {
                 bbSizeElem = bbSizeElements[i];
                 console.error(bbSizeElem);
-                vNumber = bbSizeElem.textContent.replace("v", "");
+                vNumber = bbSizeElem.textContent.trim().replace("v", "");
                 if (isVersionNumber(vNumber)) {
                     // We have found the element containing the version number of the latest release.
                     newestVersion = vNumber;
@@ -1965,7 +1965,7 @@ function improvePaginationButtons() {
 function extractUsernameFromPost(post) {
     try {
         var authLink = post.querySelector(".name a");
-        return authLink.innerText;
+        return authLink.textContent.trim();
     } catch (e) {
         throw new ElementNotFoundException("Could not extract username from post.");    
     }
@@ -2058,7 +2058,7 @@ function addQuoteSignatureButtons() {
             if (author !== BSC.myName) {
                 if (!!signature) {
                     controls = forumPost.querySelector(".cell.controls");
-                    fakeForm = quoteSignatureForm(signature.innerText, postid, author, BSC.settings.quoteSignatureTip);
+                    fakeForm = quoteSignatureForm(signature.textContent.trim(), postid, author, BSC.settings.quoteSignatureTip);
                     controls.appendChild(fakeForm);
                 } else addWarning("Did not insert quote signature button under post "+postid+" because no signature was found.");
             }
@@ -2329,7 +2329,7 @@ function insertStyleElement() {
 }
 
 function updateStyleElement() {
-    BSC.styleElement.innerText = BSC.CSS;
+    BSC.styleElement.textContent = BSC.CSS;
 }
 
 function canInsertSettingsLinkLi() {
@@ -2345,7 +2345,7 @@ function insertSettingsLinkLi() {
         settingsLinkLi.title = "Better SweClockers";
         settingsLinkLi.className = "menuItem optionBetterSweClockers";
         settingsLink.href = BSC.settingsURL;
-        settingsLink.lastElementChild.innerText = "Better SweClockers";
+        settingsLink.lastElementChild.textContent = "Better SweClockers";
         menuItems.appendChild(settingsLinkLi);
     } catch(e) {
         addException(new ElementNotFoundException("Failed to insert link to settings form because the DOM structure of its parent element (.sideMenu .menuItems) did not look like expected: "+e.message));
@@ -2436,6 +2436,10 @@ function parseOptionsForm() {
 
 function settingsIDPrefix(optionName) {
     return "Better_SweClockers_Settings." + optionName;
+}
+
+function canInsertOptionsForm() {
+    return !!document.body;
 }
 
 function insertOptionsForm() {
@@ -2785,7 +2789,7 @@ function filterControls() {
                         if (!!currentItemLink) {
                             currentItemLink.title = categoryName + "/" + currentItemLink.title;
                             if (uninterestingForums[currentItemForumID] === true) {
-                                log(categoryName+" is marked by user as uninteresting. Hiding \""+currentItemLink.innerText+"\"...");
+                                log(categoryName+" is marked by user as uninteresting. Hiding \""+currentItemLink.textContent.trim()+"\"...");
                                 currentItem.classList.add("Better_SweClockers_Uninteresting");
                             }
                         }
@@ -2937,7 +2941,7 @@ function run() {
         }
         if (settingsFormRequested()) {
             log("Settings form requested.");
-            insertOptionsForm();
+            BSC.addDOMOperation(canInsertOptionsForm, insertOptionsForm);
         } else {
             log("Checking which DOM operations to run...");
 
@@ -2972,17 +2976,17 @@ function run() {
             if (isInThread()) {
                 BSC.addDOMOperation(canCheckForUpdate, checkForUpdate);
             }
+        }
 
-            // By using this timer, we can check every x ms which DOM operations can be performed, and execute those.
-            // This is mostly useful on very slow connections, in which case the user would otherwise have to wait for the DOM to load completely.
-            // On fast connections, onBeforeAds may fire before performDOMOperations() is called for the first time, which is not really desirable.
-            // Therefore, the user must explicitly choose to run BSC in Slow Connection Mode if they wish to do so.
-            if (optionIsTrue("DOMOperationsDuringPageLoad")) {
-                log("DOM operations during page load active. Starting DOM checker...");
-                BSC.DOMTimer = setInterval(performDOMOperations, BSC.DOMTimerInterval);
-            } else {
-                log("Done. Waiting for onBeforeAds or DOMContentLoaded event...");
-            }
+        // By using this timer, we can check every x ms which DOM operations can be performed, and execute those.
+        // This is mostly useful on very slow connections, in which case the user would otherwise have to wait for the DOM to load completely.
+        // On fast connections, onBeforeAds may fire before performDOMOperations() is called for the first time, which is not really desirable.
+        // Therefore, the user must explicitly choose to run BSC in Slow Connection Mode if they wish to do so.
+        if (optionIsTrue("DOMOperationsDuringPageLoad")) {
+            log("DOM operations during page load active. Starting DOM checker...");
+            BSC.DOMTimer = setInterval(performDOMOperations, BSC.DOMTimerInterval);
+        } else {
+            log("Done. Waiting for onBeforeAds or DOMContentLoaded event...");
         }
     } catch (e) {
         logError("Fatal " + e.name + ": " + e.message);
