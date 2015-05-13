@@ -4,7 +4,7 @@
 [size="3"]Ett userscript av Simon Alling[/size]
 
 [url="https://github.com/SimonAlling/better-sweclockers/raw/master/better-sweclockers.user.js"][img]http://i.imgur.com/Qpc1jAX.png[/img][/url]
-[size="3"][b]v2.0.1[/b][/size]
+[size="3"][b]v2.0.2[/b][/size]
 [size="1"]2015-05-13[/size]
 [size="3"] [/size]
 
