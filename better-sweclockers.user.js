@@ -3,7 +3,7 @@
 // @namespace       http://alling.se
 //
 //                  *** Don't forget to update version below as well! ***
-// @version         2.0.2
+// @version         2.0.3
 //                  *** Don't forget to update version below as well! ***
 //
 // @match           http://*.sweclockers.com/*
@@ -24,7 +24,7 @@ var Better_SweClockers = (function() {
 "use strict";
 
 // Needed for update check. Remember to update!
-var version = "2.0.2";
+var version = "2.0.3";
 
 // "Constants"
 var ABOVE_STANDARD_CONTROL_PANEL = 0;
