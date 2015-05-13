@@ -74,7 +74,7 @@ var defaultColors = [
 var BSC = {
     version: version,
     pseudoConsole: false, // true for a pseudo-console; useful on platforms that don't have a native console. Should be false in production.
-    oldestRecommendedSettings: "2.0",
+    oldestRecommendedSettings: "2.0", // Oldest version whose settings are known not to conflict with the current version.
 
     logoURL: "https://i.imgur.com/oZHfIXh.png",
     documentationURL: "/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/#post14497818",
@@ -151,7 +151,7 @@ var BSC = {
         "quoteSignatureTip":                    quoteSignatureTipDefault,
         "textareaHeight":                       360,
         "uninterestingForums":                  {},
-        "version":                              version
+        "version":                              version // the version that saved the settings
     },
 
     content: {
@@ -956,7 +956,7 @@ function loadSettings() {
         loadFavoriteLinks(parseFavoriteLinks(loadedSettings.favoriteLinksRaw));
     }
     // Check if saved settings are too old:
-    if (!isOnSettingsPage() && (!loadedSettings.version || isOlderVersion(loadedSettings.version, BSC.version))) {
+    if (!isOnSettingsPage() && (!loadedSettings.version || isOlderVersion(loadedSettings.version, BSC.oldestRecommendedSettings))) {
         var msg = "Om du upplever problem med Better SweClockers, prova att återställa inställningarna.";
         addWarning("Running version "+BSC.version+", for which it is not recommended to use settings saved with a version older than "+BSC.oldestRecommendedSettings+". Displaying warning...");
         if (confirm("Hittade sparade inställningar från " + (!!loadedSettings.version ? "version "+loadedSettings.version : "en gammal version") + " av Better SweClockers. Det kan eventuellt ge upphov till konflikter med Better SweClockers "+BSC.version+". Det rekommenderas därför att du rensar alla inställningar. Vill du göra det? (Det går att göra senare om du inte gör det nu.)")) {
