@@ -1576,8 +1576,11 @@ function checkForBetterSweClockersAnchor() {
 }
 
 function canCheckForUpdate() {
-    var BSCThreadOP = byID("post14497816");
-    return !!BSCThreadOP;
+    var BSCThreadOP = byID("post14497816"); // BSC thread OP element
+    return !!BSCThreadOP && !!BSCThreadOP.nextSibling;
+    // We do the .nextSibling check to ensure that the _entire_ OP element is loaded;
+    // otherwise, some browsers (including Chrome 42) will not find the elements
+    // inside it and will fail to run the update check. 
 }
 
 function createUpdateCheckElement(currentVersion, isOld) {
@@ -1595,11 +1598,9 @@ function checkForUpdate() {
     var i = 0;
     if (!!BSCThreadOP) {
         try {
-            bbSizeElements = BSCThreadOP.querySelectorAll(".bbSize");
-            console.error(bbSizeElements);
+            bbSizeElements = BSCThreadOP.getElementsByClassName("bbSize");
             while (i < bbSizeElements.length) {
                 bbSizeElem = bbSizeElements[i];
-                console.error(bbSizeElem);
                 vNumber = bbSizeElem.textContent.trim().replace("v", "");
                 if (isVersionNumber(vNumber)) {
                     // We have found the element containing the version number of the latest release.
