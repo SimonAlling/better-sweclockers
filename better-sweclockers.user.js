@@ -1651,7 +1651,7 @@ function canPreventAccidentalSignout() {
 }
 
 function preventAccidentalSignout() {
-    log("Adding cofnirmation dialog to signout link...");
+    log("Adding confirmation dialog to signout link...");
     var signoutForm = byID("signoutForm");
     if (!!signoutForm) {
         var signoutFormParent = signoutForm.parentNode;
