@@ -2210,7 +2210,7 @@ function addMainCSS() {
             font-family: "Courier New", monospace; font-weight: normal;\
         }\
         #Better_SweClockers_Button_Math { font-family: Georgia, serif; font-weight: normal; }\
-        .Better_SweClockers_IconButton { padding-left: 26px; }\
+        .Better_SweClockers_IconButton { padding-left: 26px !important; }\
         .Better_SweClockers_IconButton img { position: absolute; top: 2px; left: 4px; height: 16px; }\
         .Better_SweClockers_IconButton img.Better_SweClockers_IconButtonIcon20px { top: 0; left: 2px; height: 20px; }\
         #Better_SweClockers_ACP #Better_SweClockers_Button_ColorPalette { margin-right: 0; width: 96px; }\
