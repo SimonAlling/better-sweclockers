@@ -1949,7 +1949,6 @@ function improvePaginationButtons() {
         }\
         .inner .threadPages .inner {\
             height: 32px;\
-            overflow: visible;\
         }\
         .threadPages .inner a {\
             box-sizing: border-box;\
