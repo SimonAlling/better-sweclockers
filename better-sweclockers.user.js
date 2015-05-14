@@ -1943,13 +1943,13 @@ function autofocusPMSubject() {
 
 function improvePaginationButtons() {
     BSC.CSS += '\
-        .threadPages {\
+        .inner .threadPages {\
             height: 22px;\
             overflow: visible;\
         }\
-        .threadPages .inner {\
+        .inner .threadPages .inner {\
             height: 32px;\
-            overflow: hidden;\
+            overflow: visible;\
         }\
         .threadPages .inner a {\
             box-sizing: border-box;\
