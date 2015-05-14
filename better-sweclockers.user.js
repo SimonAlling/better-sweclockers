@@ -201,6 +201,12 @@ var BSC = {
     },
 
     usefulLinks: [
+        ["SweClockers",
+            ["Better\xA0SweClockers", "/forum/trad/1288777-better-sweclockers"],
+            ["Better\xA0SweClockers' dokumentation", "/forum/trad/1288777-better-sweclockers#post14497818"],
+            ["Marknadsreferenser", "/forum/trad/1079311-sweclockers-marknadsreferenser-las-forsta-inlagget-innan-du-postar"],
+            ["Dagens fynd", "/forum/trad/999559-dagens-fynd-bara-tips-ingen-diskussion-las-forsta-inlagget-forst"]
+        ],
         ["Mjukvara",
             ["Core Temp", "http://www.alcpu.com/CoreTemp"],
             ["CPU-Z", "http://www.cpuid.com/softwares/cpu-z/versions-history.html"],
@@ -240,15 +246,17 @@ var BSC = {
             ["Vishera", "/recension/15973-amd-fx-8350-vishera"]
         ],
         ["Recensioner: Grafikkort",
-            ["GeForce GTX 690", "/recension/15381-geforce-gtx-690-varldens-snabbaste-grafikkort/6#pagehead"],
-            ["GeForce GTX 780 Ti", "/recension/17844-nvidia-geforce-gtx-780-ti/16#pagehead"],
-            ["GeForce GTX 980 & 970", "/recension/19332-nvidia-geforce-gtx-980-och-gtx-970/19#pagehead"],
-            ["GeForce GTX Titan", "/recension/16541-nvidia-geforce-gtx-titan/8#pagehead"],
-            ["GeForce GTX Titan Z", "/recension/18944-nvidia-geforce-gtx-titan-z/17#pagehead"],
-            ["Radeon HD 7970 GHz", "/recension/15564-amd-radeon-hd-7970-gigahertz-edition/17#pagehead"],
-            ["Radeon HD 7990", "/recension/16879-amd-radeon-hd-7990-malta/14#pagehead"],
-            ["Radeon R9 290X", "/recension/17772-amd-radeon-r9-290x/18#pagehead"],
-            ["Radeon R9 295X2", "/recension/18544-amd-radeon-r9-295x2/18#pagehead"]
+            ["GeForce GTX 690", "/recension/15381-geforce-gtx-690-varldens-snabbaste-grafikkort/6"],
+            ["GeForce GTX 780 Ti", "/recension/17844-nvidia-geforce-gtx-780-ti/16"],
+            ["GeForce GTX 980 & 970", "/recension/19332-nvidia-geforce-gtx-980-och-gtx-970/19"],
+            ["GeForce GTX Titan", "/recension/16541-nvidia-geforce-gtx-titan/8"],
+            ["GeForce GTX Titan Z", "/recension/18944-nvidia-geforce-gtx-titan-z/17"],
+            ["GeForce GTX Titan X", "/recension/20193-nvidia-geforce-gtx-titan-x/18"],
+            ["GeForce GTX Titan X i SLI", "/recension/20216-nvidia-geforce-gtx-titan-x-i-sli/16"],
+            ["Radeon HD 7970 GHz", "/recension/15564-amd-radeon-hd-7970-gigahertz-edition/17"],
+            ["Radeon HD 7990", "/recension/16879-amd-radeon-hd-7990-malta/14"],
+            ["Radeon R9 290X", "/recension/17772-amd-radeon-r9-290x/18"],
+            ["Radeon R9 295X2", "/recension/18544-amd-radeon-r9-295x2/18"]
         ],
         ["Recensioner: Övrigt",
             ["Asus ROG Swift PG278Q", "/recension/19072-asus-rog-swift-pg278q"],
