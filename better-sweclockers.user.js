@@ -12,10 +12,11 @@
 // @run-at          document-start
 // ==/UserScript==
 
-//*************************************************//
-//        Created by Simon Alling 2013-2015        //
-// Released under a modified version of GNU GPL v3 //
-//*************************************************//
+//*****************************************//
+// Copyright 2013, 2014, 2015 Simon Alling //
+// Released under a modified version of    //
+// GNU GPLv3, as described in `COPYING`.   //
+//*****************************************//
 
 /*jshint multistr: true */
 
