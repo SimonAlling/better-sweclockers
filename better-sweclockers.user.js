@@ -854,7 +854,8 @@ function isInAdvancedEditModeMarket() {
 }
 
 function isInAdvancedEditModePM() {
-    return matches(document.location.pathname, /^\/pm\/.+\/svara/i);
+    return matches(document.location.pathname, /^\/pm\/.+\/svara/i) ||
+           matches(document.location.pathname, /^\/pm\/nytt-meddelande/i);
 }
 
 function isInAdvancedEditMode() {
@@ -1184,7 +1185,15 @@ function getTAForm() {
 function getTAFieldset() {
     var TAForm = getTAForm();
     if (!!TAForm) {
-        return TAForm.querySelector(".s5fieldset");
+        var x = getTA();
+        while (!!x) {
+            if (x.tagName.toLowerCase() === "fieldset" && x.classList.contains("s5fieldset")) {
+                // x is the wanted .s5fieldset, return it:
+                return x;
+            }
+            x = x.parentElement;
+        }
+        addException(new ElementNotFoundException("Could not find post reply form fieldset (.s5fieldset)."));
     } else addException(new ElementNotFoundException("Could not find post reply form fieldset (.s5fieldset) because its presumed ancestor (#createForm, #replyForm, or #editForm) could not be found."));
 }
 
@@ -1817,6 +1826,7 @@ function insertAdvancedControlPanel() {
     ACP.id = "Better_SweClockers_ACP";
     ACP.innerHTML = ACPHTML;
     var TAFieldset = getTAFieldset();
+    console.warn(TAFieldset);
     if (!!TAFieldset) {
         var qSelector = ACPInsertionPointSelector(BSC.settings.ACP_insertionPoint);
         var elementToInsertACPBefore = TAFieldset.querySelector(qSelector);
