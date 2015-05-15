@@ -3,7 +3,7 @@
 // @namespace       http://alling.se
 //
 //                  *** Don't forget to update version below as well! ***
-// @version         2.0.3
+// @version         2.0.5
 //                  *** Don't forget to update version below as well! ***
 //
 // @match           http://*.sweclockers.com/*
@@ -12,10 +12,11 @@
 // @run-at          document-start
 // ==/UserScript==
 
-//*************************************************//
-//        Created by Simon Alling 2013-2015        //
-// Released under a modified version of GNU GPL v3 //
-//*************************************************//
+//*****************************************//
+// Copyright 2013, 2014, 2015 Simon Alling //
+// Released under a modified version of    //
+// GNU GPLv3, as described in `COPYING`.   //
+//*****************************************//
 
 /*jshint multistr: true */
 
@@ -24,7 +25,7 @@ var Better_SweClockers = (function() {
 "use strict";
 
 // Needed for update check. Remember to update!
-var version = "2.0.3";
+var version = "2.0.5";
 
 // "Constants"
 var ABOVE_STANDARD_CONTROL_PANEL = 0;
@@ -200,6 +201,13 @@ var BSC = {
     },
 
     usefulLinks: [
+        ["SweClockers",
+            ["Better\xA0SweClockers", "/forum/trad/1288777-better-sweclockers"],
+            ["Better\xA0SweClockers' dokumentation", "/forum/trad/1288777-better-sweclockers#post14497818"],
+            ["Blargmodes mörka tema", "/forum/trad/1089561-ett-morkt-tema-till-sweclockers"],
+            ["Dagens fynd", "/forum/trad/999559-dagens-fynd-bara-tips-ingen-diskussion-las-forsta-inlagget-forst"],
+            ["Marknadsreferenser", "/forum/trad/1079311-sweclockers-marknadsreferenser-las-forsta-inlagget-innan-du-postar"]
+        ],
         ["Mjukvara",
             ["Core Temp", "http://www.alcpu.com/CoreTemp"],
             ["CPU-Z", "http://www.cpuid.com/softwares/cpu-z/versions-history.html"],
@@ -239,15 +247,17 @@ var BSC = {
             ["Vishera", "/recension/15973-amd-fx-8350-vishera"]
         ],
         ["Recensioner: Grafikkort",
-            ["GeForce GTX 690", "/recension/15381-geforce-gtx-690-varldens-snabbaste-grafikkort/6#pagehead"],
-            ["GeForce GTX 780 Ti", "/recension/17844-nvidia-geforce-gtx-780-ti/16#pagehead"],
-            ["GeForce GTX 980 & 970", "/recension/19332-nvidia-geforce-gtx-980-och-gtx-970/19#pagehead"],
-            ["GeForce GTX Titan", "/recension/16541-nvidia-geforce-gtx-titan/8#pagehead"],
-            ["GeForce GTX Titan Z", "/recension/18944-nvidia-geforce-gtx-titan-z/17#pagehead"],
-            ["Radeon HD 7970 GHz", "/recension/15564-amd-radeon-hd-7970-gigahertz-edition/17#pagehead"],
-            ["Radeon HD 7990", "/recension/16879-amd-radeon-hd-7990-malta/14#pagehead"],
-            ["Radeon R9 290X", "/recension/17772-amd-radeon-r9-290x/18#pagehead"],
-            ["Radeon R9 295X2", "/recension/18544-amd-radeon-r9-295x2/18#pagehead"]
+            ["GeForce GTX 690", "/recension/15381-geforce-gtx-690-varldens-snabbaste-grafikkort/6"],
+            ["GeForce GTX 780 Ti", "/recension/17844-nvidia-geforce-gtx-780-ti/16"],
+            ["GeForce GTX 980 & 970", "/recension/19332-nvidia-geforce-gtx-980-och-gtx-970/19"],
+            ["GeForce GTX Titan", "/recension/16541-nvidia-geforce-gtx-titan/8"],
+            ["GeForce GTX Titan Z", "/recension/18944-nvidia-geforce-gtx-titan-z/17"],
+            ["GeForce GTX Titan X", "/recension/20193-nvidia-geforce-gtx-titan-x/18"],
+            ["GeForce GTX Titan X i SLI", "/recension/20216-nvidia-geforce-gtx-titan-x-i-sli/16"],
+            ["Radeon HD 7970 GHz", "/recension/15564-amd-radeon-hd-7970-gigahertz-edition/17"],
+            ["Radeon HD 7990", "/recension/16879-amd-radeon-hd-7990-malta/14"],
+            ["Radeon R9 290X", "/recension/17772-amd-radeon-r9-290x/18"],
+            ["Radeon R9 295X2", "/recension/18544-amd-radeon-r9-295x2/18"]
         ],
         ["Recensioner: Övrigt",
             ["Asus ROG Swift PG278Q", "/recension/19072-asus-rog-swift-pg278q"],
@@ -854,7 +864,8 @@ function isInAdvancedEditModeMarket() {
 }
 
 function isInAdvancedEditModePM() {
-    return matches(document.location.pathname, /^\/pm\/.+\/svara/i);
+    return matches(document.location.pathname, /^\/pm\/.+\/svara/i) ||
+           matches(document.location.pathname, /^\/pm\/nytt-meddelande/i);
 }
 
 function isInAdvancedEditMode() {
@@ -1184,7 +1195,15 @@ function getTAForm() {
 function getTAFieldset() {
     var TAForm = getTAForm();
     if (!!TAForm) {
-        return TAForm.querySelector(".s5fieldset");
+        var x = getTA();
+        while (!!x) {
+            if (x.tagName.toLowerCase() === "fieldset" && x.classList.contains("s5fieldset")) {
+                // x is the wanted .s5fieldset, return it:
+                return x;
+            }
+            x = x.parentElement;
+        }
+        addException(new ElementNotFoundException("Could not find post reply form fieldset (.s5fieldset)."));
     } else addException(new ElementNotFoundException("Could not find post reply form fieldset (.s5fieldset) because its presumed ancestor (#createForm, #replyForm, or #editForm) could not be found."));
 }
 
@@ -1576,8 +1595,11 @@ function checkForBetterSweClockersAnchor() {
 }
 
 function canCheckForUpdate() {
-    var BSCThreadOP = byID("post14497816");
-    return !!BSCThreadOP;
+    var BSCThreadOP = byID("post14497816"); // BSC thread OP element
+    return !!BSCThreadOP && !!BSCThreadOP.nextSibling;
+    // We do the .nextSibling check to ensure that the _entire_ OP element is loaded;
+    // otherwise, some browsers (including Chrome 42) will not find the elements
+    // inside it and will fail to run the update check. 
 }
 
 function createUpdateCheckElement(currentVersion, isOld) {
@@ -1595,11 +1617,9 @@ function checkForUpdate() {
     var i = 0;
     if (!!BSCThreadOP) {
         try {
-            bbSizeElements = BSCThreadOP.querySelectorAll(".bbSize");
-            console.error(bbSizeElements);
+            bbSizeElements = BSCThreadOP.getElementsByClassName("bbSize");
             while (i < bbSizeElements.length) {
                 bbSizeElem = bbSizeElements[i];
-                console.error(bbSizeElem);
                 vNumber = bbSizeElem.textContent.trim().replace("v", "");
                 if (isVersionNumber(vNumber)) {
                     // We have found the element containing the version number of the latest release.
@@ -1650,7 +1670,7 @@ function canPreventAccidentalSignout() {
 }
 
 function preventAccidentalSignout() {
-    log("Adding cofnirmation dialog to signout link...");
+    log("Adding confirmation dialog to signout link...");
     var signoutForm = byID("signoutForm");
     if (!!signoutForm) {
         var signoutFormParent = signoutForm.parentNode;
@@ -1817,6 +1837,7 @@ function insertAdvancedControlPanel() {
     ACP.id = "Better_SweClockers_ACP";
     ACP.innerHTML = ACPHTML;
     var TAFieldset = getTAFieldset();
+    console.warn(TAFieldset);
     if (!!TAFieldset) {
         var qSelector = ACPInsertionPointSelector(BSC.settings.ACP_insertionPoint);
         var elementToInsertACPBefore = TAFieldset.querySelector(qSelector);
@@ -1943,13 +1964,12 @@ function autofocusPMSubject() {
 
 function improvePaginationButtons() {
     BSC.CSS += '\
-        .threadPages {\
+        .inner .threadPages {\
             height: 22px;\
             overflow: visible;\
         }\
-        .threadPages .inner {\
+        .inner .threadPages .inner {\
             height: 32px;\
-            overflow: hidden;\
         }\
         .threadPages .inner a {\
             box-sizing: border-box;\
@@ -2047,7 +2067,8 @@ function quoteSignatureForm(signatureText, postid, author, tip) {
 function addQuoteSignatureButtons() {
     log("Inserting quote signature buttons...");
     try {
-        BSC.addCSS(".Better_SweClockers_QuoteSignatureButton { height: 24px; }");
+        // We add an overkill margin-left to force the button to stay on the same line even when the container is too narrow, such as on tablets:
+        BSC.addCSS(".Better_SweClockers_QuoteSignatureButton { height: 24px; margin-left: -200px; }");
         var forumPosts = BSC.forumPosts;
         var forumPost, postid, author, signature, controls, fakeForm;
         for (var i = 0, len = forumPosts.length; i < len; i++) {
@@ -2117,6 +2138,13 @@ function addMainCSS() {
         #Better_SweClockers_Console p.error {\
             color: red;\
         }\
+        ' +
+
+        // General fixes
+        '.forumPost .postHeader.table { height: 25px; }' + // constant height for the post headers
+
+        // Dark theme button
+        '\
         #Better_SweClockers_DarkThemeButtonTab {\
             background-color: rgb(20, 20, 20);\
             border-color: black;\
@@ -2200,7 +2228,7 @@ function addMainCSS() {
             font-family: "Courier New", monospace; font-weight: normal;\
         }\
         #Better_SweClockers_Button_Math { font-family: Georgia, serif; font-weight: normal; }\
-        .Better_SweClockers_IconButton { padding-left: 26px; }\
+        .Better_SweClockers_IconButton { padding-left: 26px !important; }\
         .Better_SweClockers_IconButton img { position: absolute; top: 2px; left: 4px; height: 16px; }\
         .Better_SweClockers_IconButton img.Better_SweClockers_IconButtonIcon20px { top: 0; left: 2px; height: 20px; }\
         #Better_SweClockers_ACP #Better_SweClockers_Button_ColorPalette { margin-right: 0; width: 96px; }\
@@ -2462,6 +2490,7 @@ function insertOptionsForm() {
         }
         return keys;
     }
+    document.title = "Inställningar för Better SweClockers";
     document.head.appendChild((function() { var link = document.createElement("link"); link.rel="stylesheet"; link.href=BSC.defaultStylesheetURL; return link; })());
     if (!byID("Better_SweClockers")) {
         var settingsHTML = "";
