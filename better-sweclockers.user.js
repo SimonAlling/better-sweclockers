@@ -2066,7 +2066,8 @@ function quoteSignatureForm(signatureText, postid, author, tip) {
 function addQuoteSignatureButtons() {
     log("Inserting quote signature buttons...");
     try {
-        BSC.addCSS(".Better_SweClockers_QuoteSignatureButton { height: 24px; }");
+        // We add an overkill margin-left to force the button to stay on the same line even when the container is too narrow, such as on tablets:
+        BSC.addCSS(".Better_SweClockers_QuoteSignatureButton { height: 24px; margin-left: -200px; }");
         var forumPosts = BSC.forumPosts;
         var forumPost, postid, author, signature, controls, fakeForm;
         for (var i = 0, len = forumPosts.length; i < len; i++) {
