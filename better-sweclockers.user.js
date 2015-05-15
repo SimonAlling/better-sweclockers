@@ -2490,6 +2490,7 @@ function insertOptionsForm() {
         }
         return keys;
     }
+    document.title = "Inställningar för Better SweClockers";
     document.head.appendChild((function() { var link = document.createElement("link"); link.rel="stylesheet"; link.href=BSC.defaultStylesheetURL; return link; })());
     if (!byID("Better_SweClockers")) {
         var settingsHTML = "";
