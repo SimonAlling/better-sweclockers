@@ -204,8 +204,9 @@ var BSC = {
         ["SweClockers",
             ["Better\xA0SweClockers", "/forum/trad/1288777-better-sweclockers"],
             ["Better\xA0SweClockers' dokumentation", "/forum/trad/1288777-better-sweclockers#post14497818"],
-            ["Marknadsreferenser", "/forum/trad/1079311-sweclockers-marknadsreferenser-las-forsta-inlagget-innan-du-postar"],
-            ["Dagens fynd", "/forum/trad/999559-dagens-fynd-bara-tips-ingen-diskussion-las-forsta-inlagget-forst"]
+            ["Blargmodes mörka tema", "/forum/trad/1089561-ett-morkt-tema-till-sweclockers"],
+            ["Dagens fynd", "/forum/trad/999559-dagens-fynd-bara-tips-ingen-diskussion-las-forsta-inlagget-forst"],
+            ["Marknadsreferenser", "/forum/trad/1079311-sweclockers-marknadsreferenser-las-forsta-inlagget-innan-du-postar"]
         ],
         ["Mjukvara",
             ["Core Temp", "http://www.alcpu.com/CoreTemp"],
@@ -2137,6 +2138,13 @@ function addMainCSS() {
         #Better_SweClockers_Console p.error {\
             color: red;\
         }\
+        ' +
+
+        // General fixes
+        '.forumPost .postHeader.table { height: 25px; }' + // constant height for the post headers
+
+        // Dark theme button
+        '\
         #Better_SweClockers_DarkThemeButtonTab {\
             background-color: rgb(20, 20, 20);\
             border-color: black;\
