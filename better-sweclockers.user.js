@@ -1400,7 +1400,8 @@ function loadFavoriteLinks(favs) {
 }
 
 function canEnableSearchWithGoogle() {
-    return qSel("#search .searchField") instanceof HTMLDivElement;
+    return qSel("#search .searchField") instanceof HTMLDivElement &&
+           !qSel("#Better_SweClockers_SearchWithGoogle");
 }
 
 function getSearchPhrase() {
@@ -1837,7 +1838,6 @@ function insertAdvancedControlPanel() {
     ACP.id = "Better_SweClockers_ACP";
     ACP.innerHTML = ACPHTML;
     var TAFieldset = getTAFieldset();
-    console.warn(TAFieldset);
     if (!!TAFieldset) {
         var qSelector = ACPInsertionPointSelector(BSC.settings.ACP_insertionPoint);
         var elementToInsertACPBefore = TAFieldset.querySelector(qSelector);
