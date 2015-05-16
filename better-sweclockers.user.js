@@ -2496,6 +2496,7 @@ function insertOptionsForm() {
         }
         return keys;
     }
+    var referrer = document.referrer || "/";
     document.title = "Inställningar för Better SweClockers";
     document.head.appendChild((function() { var link = document.createElement("link"); link.rel="stylesheet"; link.href=BSC.defaultStylesheetURL; return link; })());
     if (!byID("Better_SweClockers")) {
@@ -2511,7 +2512,7 @@ function insertOptionsForm() {
                         <img src="' + BSC.logoURL + '" class="logo" alt="Better SweClockers" />\
                         <p>Dessa inställningar sparas endast lokalt.</p>\
                         <p><a href="' + BSC.documentationURL + '"><strong>Dokumentation/hjälp</strong></a></p>\
-                        <p><a href="/profil/installningar"><strong>Tillbaka till SweClockers</strong></a></p>' +
+                        <p><a href="' + referrer + '"><strong>Tillbaka till SweClockers</strong></a></p>' +
                         subFieldset("Advanced Control Panel (ACP)",
                             checkboxList(
                                 settingsCheckbox("advancedControlPanel", "<strong>Aktivera Advanced Control Panel</strong>")
@@ -2589,7 +2590,7 @@ function insertOptionsForm() {
                             <div id="Better_SweClockers_Settings_ImportExportInfo"><p>Importerade inställningar sparas först när du klickar på <strong>Spara inställningar</strong>.</p><p>Om du klickar på <strong>Exportera</strong> exporteras de <em>ifyllda</em> inställningarna; inte de sparade.</p></div>'
                         ) +
                         '<input type="submit" value="Spara inställningar" class="button" />' +
-                        '<a href="/profil/installningar" class="button">Avbryt</a>' +
+                        '<a href="' + referrer + '" class="button">Avbryt</a>' +
                         '<span id="Better_SweClockers_Settings_SuccessReport"></span>';
         BSCSettingsFieldset.innerHTML = settingsHTML;
         BSCSettingsForm.appendChild(BSCSettingsFieldset);
@@ -2606,7 +2607,7 @@ function insertOptionsForm() {
                 saveSettings();
                 loadFavoriteLinks(parseFavoriteLinks(BSC.settings.favoriteLinksRaw));
                 alert("Inställningarna sparades.");
-                window.location.href = "/profil/installningar";
+                window.location.href = referrer;
             } catch(e) {
                 alert("Ett fel inträffade när inställningarna skulle sparas.\n\n"+e.message);
             }
