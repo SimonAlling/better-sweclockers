@@ -487,8 +487,14 @@ function eventListener(id, eventName, func) {
     }
 }
 
+function randomInt(min, max) {
+    // Return an int between min (inclusive) and max (exlusive)
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
 function randomIntUpTo(max) {
-    return Math.ceil(Math.random() * max);
+    // Return an int between 0 (inclusive) and max (exclusive)
+    return randomInt(0, max);
 }
 
 // Time
