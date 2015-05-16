@@ -3,7 +3,7 @@
 // @namespace       http://alling.se
 //
 //                  *** Don't forget to update version below as well! ***
-// @version         2.0.5
+// @version         2.0.6
 //                  *** Don't forget to update version below as well! ***
 //
 // @match           http://*.sweclockers.com/*
@@ -25,7 +25,7 @@ var Better_SweClockers = (function() {
 "use strict";
 
 // Needed for update check. Remember to update!
-var version = "2.0.5";
+var version = "2.0.6";
 
 // "Constants"
 var ABOVE_STANDARD_CONTROL_PANEL = 0;
@@ -1400,7 +1400,8 @@ function loadFavoriteLinks(favs) {
 }
 
 function canEnableSearchWithGoogle() {
-    return qSel("#search .searchField") instanceof HTMLDivElement;
+    return qSel("#search .searchField") instanceof HTMLDivElement &&
+           !qSel("#Better_SweClockers_SearchWithGoogle");
 }
 
 function getSearchPhrase() {
@@ -1837,7 +1838,6 @@ function insertAdvancedControlPanel() {
     ACP.id = "Better_SweClockers_ACP";
     ACP.innerHTML = ACPHTML;
     var TAFieldset = getTAFieldset();
-    console.warn(TAFieldset);
     if (!!TAFieldset) {
         var qSelector = ACPInsertionPointSelector(BSC.settings.ACP_insertionPoint);
         var elementToInsertACPBefore = TAFieldset.querySelector(qSelector);
@@ -1945,7 +1945,7 @@ function removeMobileSiteDisclaimer() {
     var TA = BSC.TA;
     if (!!TA) {
         log("Looking for mobile site disclaimer...");
-        var regex = /\n+\[size\="1"\]Skickades från \[url\]m\.sweclockers\.com\[\/url\]\[\/size\]/g;
+        var regex = /\n+.*Skickades från .*m\.sweclockers\.com.*$/mg;
         if (matches(TA.value, regex)) {
             TA.value = TA.value.replace(regex, "");
             log("Removed mobile site disclaimer.");
