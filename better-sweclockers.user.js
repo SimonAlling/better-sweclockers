@@ -1945,7 +1945,7 @@ function removeMobileSiteDisclaimer() {
     var TA = BSC.TA;
     if (!!TA) {
         log("Looking for mobile site disclaimer...");
-        var regex = /\n+\[size\="1"\]Skickades från \[url\]m\.sweclockers\.com\[\/url\]\[\/size\]/g;
+        var regex = /\n+.*Skickades från .*m\.sweclockers\.com.*$/mg;
         if (matches(TA.value, regex)) {
             TA.value = TA.value.replace(regex, "");
             log("Removed mobile site disclaimer.");
