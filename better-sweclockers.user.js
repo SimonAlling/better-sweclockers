@@ -1128,7 +1128,7 @@ function betterSwecColorButtons() {
         colors = BSC.defaultSettings.colors;
     }
     for (var i = 0; i < colors.length; i++) {
-        html += '<div title="' + colors[i] + '" style="background-color: ' + colors[i] + ';" class="betterSwecColorButton"></div>';
+        html += '<div title="' + colors[i] + '" style="background-color: ' + colors[i] + ';" class="Better_SweClockers_ColorButton"></div>';
     }
     return html;
 }
@@ -2238,7 +2238,7 @@ function addMainCSS() {
         .Better_SweClockers_IconButton img { position: absolute; top: 2px; left: 4px; height: 16px; }\
         .Better_SweClockers_IconButton img.Better_SweClockers_IconButtonIcon20px { top: 0; left: 2px; height: 20px; }\
         #Better_SweClockers_ACP #Better_SweClockers_Button_ColorPalette { margin-right: 0; width: 96px; }\
-        #Better_SweClockers_ACP div.betterSwecColorButton {\
+        #Better_SweClockers_ACP div.Better_SweClockers_ColorButton {\
             background: none;\
             border: none;\
             -moz-box-sizing: border-box;\
@@ -2249,8 +2249,8 @@ function addMainCSS() {
             position: relative;\
             width: 23px;\
         }\
-        #Better_SweClockers_ACP div.betterSwecColorButton:hover,\
-        #Better_SweClockers_ACP div.betterSwecColorButton:active {\
+        #Better_SweClockers_ACP div.Better_SweClockers_ColorButton:hover,\
+        #Better_SweClockers_ACP div.Better_SweClockers_ColorButton:active {\
             /*outline: 2px rgba(0, 0, 0, 0.8) solid;*/\
             border-radius: 3px;\
             cursor: pointer;\
@@ -2308,6 +2308,11 @@ function addMainCSS() {
         #Better_SweClockers textarea { min-height: 128px; }\
         #Better_SweClockers_Settings_ImportExportStatus { height: 1em; margin: 12px 0 0 0; }\
         #Better_SweClockers_Settings_ImportExportInfo { margin: 12px 0; }\
+        #Better_SweClockers_Settings_SuccessReport { height: 20px; }\
+    ' +
+
+
+    '\
         .Better_SweClockers_Uninteresting { opacity: 0.3 !important; }\
         .pushListInternal #Better_SweClockers_FilterSettingsExpandLink {\
             font-size: 12px;\
@@ -2496,6 +2501,24 @@ function insertOptionsForm() {
         })
         return trueKeys;
     }
+    function hideSuccessReport() {
+        byID("Better_SweClockers_Settings_SuccessReport").style.visibility = "hidden";
+    }
+    function handleSaveRequest() {
+        BSC.settings = parseOptionsForm();
+        saveSettings();
+        loadFavoriteLinks(parseFavoriteLinks(BSC.settings.favoriteLinksRaw));
+        var successReport = byID("Better_SweClockers_Settings_SuccessReport");
+        if (successReport instanceof HTMLDivElement) {
+            successReport.style.visibility = "visible";
+            successReport.innerHTML = "Inställningarna sparades."
+            setTimeout(hideSuccessReport, 2000);
+        }
+    }
+    function saveSettingsError(ex) {
+        addException(ex);
+        alert("Ett fel inträffade när inställningarna skulle sparas.\n\n"+ex.message);
+    }
     var referrer = document.referrer || "/";
     document.title = "Inställningar för Better SweClockers";
     document.head.appendChild((function() { var link = document.createElement("link"); link.rel="stylesheet"; link.href=BSC.defaultStylesheetURL; return link; })());
@@ -2587,11 +2610,12 @@ function insertOptionsForm() {
                             <input type="button" class="button" value="Exportera" id="Better_SweClockers_Settings_Export" />\
                             <input type="button" class="button" value="Återställ" id="Better_SweClockers_Settings_Reset" />\
                             <div id="Better_SweClockers_Settings_ImportExportStatus"></div>\
-                            <div id="Better_SweClockers_Settings_ImportExportInfo"><p>Importerade inställningar sparas först när du klickar på <strong>Spara inställningar</strong>.</p><p>Om du klickar på <strong>Exportera</strong> exporteras de <em>ifyllda</em> inställningarna; inte de sparade.</p></div>'
+                            <div id="Better_SweClockers_Settings_ImportExportInfo"><p>Importerade inställningar sparas först när du klickar på <strong>OK</strong> eller <strong>Verkställ</strong>.</p><p>Om du klickar på <strong>Exportera</strong> exporteras de <em>ifyllda</em> inställningarna; inte de sparade.</p></div>'
                         ) +
-                        '<input type="submit" value="Spara inställningar" class="button" />' +
+                        '<input type="submit" value="OK" class="button" />' +
+                        '<input id="Better_SweClockers_Settings_Apply" type="button" value="Verkställ" class="button" />' +
                         '<a href="' + referrer + '" class="button">Avbryt</a>' +
-                        '<span id="Better_SweClockers_Settings_SuccessReport"></span>';
+                        '<div id="Better_SweClockers_Settings_SuccessReport"></div>';
         BSCSettingsFieldset.innerHTML = settingsHTML;
         BSCSettingsForm.appendChild(BSCSettingsFieldset);
         parentOfAllForms.empty();
@@ -2600,16 +2624,20 @@ function insertOptionsForm() {
         eventListener("Better_SweClockers_Settings_Import", "click", importSettings);
         eventListener("Better_SweClockers_Settings_Export", "click", exportSettings);
         eventListener("Better_SweClockers_Settings_Reset",  "click", askResetSettings);
+        eventListener("Better_SweClockers_Settings_Apply",  "click", function() {
+            try {
+                handleSaveRequest();
+            } catch(e) {
+                saveSettingsError(e);
+            }            
+        });
         eventListener("Better_SweClockers", "submit", function(event) {
             try {
                 event.preventDefault(event);
-                BSC.settings = parseOptionsForm();
-                saveSettings();
-                loadFavoriteLinks(parseFavoriteLinks(BSC.settings.favoriteLinksRaw));
-                alert("Inställningarna sparades.");
+                handleSaveRequest();
                 window.location.href = referrer;
             } catch(e) {
-                alert("Ett fel inträffade när inställningarna skulle sparas.\n\n"+e.message);
+                saveSettingsError(e);
             }
         });
     }
@@ -2666,9 +2694,9 @@ function importSettings() {
         var parsedSettings = tryToParseJSON(textarea.value);
         var statusField = byID("Better_SweClockers_Settings_ImportExportStatus");
         if (!!parsedSettings) {
-            if (confirm("Är du säker på att du vill importera dessa inställningar? Dina nuvarande inställningar kommer skrivas över om du klickar på Spara inställningar.")) {
+            if (confirm("Är du säker på att du vill importera dessa inställningar? Dina nuvarande inställningar kommer skrivas över om du klickar på <strong>OK</strong> eller <strong>Verkställ</strong>.")) {
                 updateSettingsForm(parsedSettings);
-                statusField.innerHTML = "Inställningarna importerades. Klicka på <strong><em>Spara inställningar</em><strong> för att spara.";
+                statusField.innerHTML = "Inställningarna importerades. Klicka på <strong>OK</strong> eller <strong>Verkställ</strong> för att spara.";
                 statusField.BSC_greenify();
             }
         } else {
