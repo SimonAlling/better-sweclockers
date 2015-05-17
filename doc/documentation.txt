@@ -60,11 +60,11 @@ En av huvudfunktionerna i Better SweClockers är den avancerade kontrollpanelen
 
 I exemplen nedan används ett [b]blått lodstreck[/b] [color="#24F"]|[/color] för att markera var markören hamnar eller [b]blå text[/b] för den text som är [color="#24F"]markerad[/color] nu. [color="#20A000"]Grön text[/color] är skriven av användaren. Strängen [cmd]markerad text[/cmd] ska tolkas som den text som var markerad innan funktionen aktiverades.
 
-[size="3"][b]size, color och font[/b][/size]
+[size="3"][b]size, color, font och quote[/b][/size]
 
-Knapparna size, color och font är genvägar till BB-koderna med samma namn, så att man slipper skriva dem själv. Klicka till exempel på knappen [b]size[/b], så omges markerad text med [cmd]size[/cmd]-taggen.
+Knapparna size, color, font och quote är genvägar till BB-koderna med samma namn, så att man slipper skriva dem själv. Klicka till exempel på knappen [b]size[/b], så omges markerad text med [cmd]size[/cmd]-taggen, inklusive [cmd]=""[/cmd].
 [code][noparse][size="[/noparse][color="#24F"]|[/color][noparse]"]markerad text[/size][/noparse][/code]
-[b]color[/b] och [b]font[/b] fungerar precis likadant.
+[b]color[/b], [b]font[/b] och [b]quote[/b] fungerar precis likadant.
 
 
 

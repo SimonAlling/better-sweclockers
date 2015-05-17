@@ -1149,7 +1149,7 @@ function setInitialTextareaHeight() {
 function setLargerTextarea(larger) {
     log("Setting textarea size to " + (larger ? BSC.settings.largerTextareaHeight : BSC.settings.textareaHeight) + "px...");
     var TA     = BSC.TA;
-    var button = byID("betterSwecButtonLargerTextarea");
+    var button = byID("Better_SweClockers_Button_LargerTextarea");
     if (!!TA && !!button) {
         if (larger) {
             TA.style.height = BSC.settings.largerTextareaHeight+"px";
@@ -1227,7 +1227,7 @@ function insertButtonsBelowTA() {
             if (!!lastDefaultButton) { 
                 var container = document.createElement("span");
                 container.id = "Better_SweClockers_ButtonsBelowTA";
-                var largerTextareaButton = createBelowTAButton(BSC.getState("largerTextareaActive") ? BSC.content.smallerTextarea : BSC.content.largerTextarea,   "betterSwecButtonLargerTextarea",     toggleLargerTextarea);
+                var largerTextareaButton = createBelowTAButton(BSC.getState("largerTextareaActive") ? BSC.content.smallerTextarea : BSC.content.largerTextarea,   "Better_SweClockers_Button_LargerTextarea",     toggleLargerTextarea);
                 container.appendChild(largerTextareaButton);
                 container.BSC_insertAfter(lastDefaultButton);
                 log("Inserted buttons below textarea.");
@@ -1763,8 +1763,9 @@ function insertAdvancedControlPanel() {
     var ACPHTML = "";
     // Text formatting, URL, IMG, Google search
     ACPHTML += '<input value="size" id="Better_SweClockers_Button_Size" class="button" type="button" />' +
-        '<input value="color" id="betterSwecButtonColor" class="button" type="button" />' +
+        '<input value="color" id="Better_SweClockers_Button_Color" class="button" type="button" />' +
         '<input value="font" id="Better_SweClockers_Button_Font" class="button" type="button" />' +
+        '<input value="quote" id="Better_SweClockers_Button_Quote" class="button" type="button" />' +
         '<input value="noparse" title="Förhindrar att BB-kod parsas" id="Better_SweClockers_Button_Noparse" class="button" type="button" />' +
         '<input value="strike" title="Överstruken text" id="Better_SweClockers_Button_Strike" class="button" type="button" />' +
         '<input value="cmd" title="Inlinekod" id="Better_SweClockers_Button_Cmd" class="button" type="button" />' +
@@ -1823,13 +1824,13 @@ function insertAdvancedControlPanel() {
     // Prisjakt, Imgur
     if (optionIsTrue("ACP_quickLinks")) {
         ACPHTML += '\
-            <a title="Öppna Prisjakt i en ny flik" id="betterSwecButtonPrisjakt" href="http://www.prisjakt.nu/kategori.php?k=328" class="button Better_SweClockers_IconButton" target="_blank"><img src="' + BASE64.PRISJAKT + '" />Prisjakt</a>\
-            <a title="Öppna Imgur i en ny flik" id="betterSwecButtonImgur" href="http://imgur.com" class="button Better_SweClockers_IconButton" target="_blank"><img src="' + BASE64.IMGUR + '" />Imgur</a>\
+            <a title="Öppna Prisjakt i en ny flik" id="Better_SweClockers_Button_Prisjakt" href="http://www.prisjakt.nu/kategori.php?k=328" class="button Better_SweClockers_IconButton" target="_blank"><img src="' + BASE64.PRISJAKT + '" />Prisjakt</a>\
+            <a title="Öppna Imgur i en ny flik" id="Better_SweClockers_Button_Imgur" href="http://imgur.com" class="button Better_SweClockers_IconButton" target="_blank"><img src="' + BASE64.IMGUR + '" />Imgur</a>\
         ';
     }
     // Inställningar
     ACPHTML += '\
-        <a title="Inställningar (öppnas i en ny flik)" target="_blank" id="betterSwecButtonSettings" class="button Better_SweClockers_IconButton" href="' + BSC.settingsURL + '"><img src="' + BASE64.SETTINGS + '" />Inst.</a>\
+        <a title="Inställningar (öppnas i en ny flik)" target="_blank" id="Better_SweClockers_Button_Settings" class="button Better_SweClockers_IconButton" href="' + BSC.settingsURL + '"><img src="' + BASE64.SETTINGS + '" />Inst.</a>\
     ';
     // Färgpaletten
     if (optionIsTrue("ACP_colorPalette")) {
@@ -1872,10 +1873,12 @@ function insertAdvancedControlPanel() {
         switch (realTargetID) {
             case "Better_SweClockers_Button_Size":
                 TA.BSC_wrapBB('[size=""]', '[/size]', 7); break;
-            case "betterSwecButtonColor":
+            case "Better_SweClockers_Button_Color":
                 TA.BSC_wrapBB('[color=""]', '[/color]', 8); break;
             case "Better_SweClockers_Button_Font":
                 TA.BSC_wrapBB('[font=""]', '[/font]', 7); break;
+            case "Better_SweClockers_Button_Quote":
+                TA.BSC_wrapBB('[quote=""]', '[/quote]', 8); break;
             case "Better_SweClockers_Button_URL":
                 TA.BSC_wrapBB('[url=""]', '[/url]', 6); break;
             case "Better_SweClockers_Button_IMG":
