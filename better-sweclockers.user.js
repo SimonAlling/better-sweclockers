@@ -206,7 +206,8 @@ var BSC = {
             ["Better\xA0SweClockers' dokumentation", "/forum/trad/1288777-better-sweclockers#post14497818"],
             ["Blargmodes mörka tema", "/forum/trad/1089561-ett-morkt-tema-till-sweclockers"],
             ["Dagens fynd", "/forum/trad/999559-dagens-fynd-bara-tips-ingen-diskussion-las-forsta-inlagget-forst"],
-            ["Marknadsreferenser", "/forum/trad/1079311-sweclockers-marknadsreferenser-las-forsta-inlagget-innan-du-postar"]
+            ["Marknadsreferenser", "/forum/trad/1079311-sweclockers-marknadsreferenser-las-forsta-inlagget-innan-du-postar"],
+            ["SweClockers BB-kod", "/forum/trad/1367916-faq-sweclockers-bb-kod"]
         ],
         ["Mjukvara",
             ["Core Temp", "http://www.alcpu.com/CoreTemp"],
