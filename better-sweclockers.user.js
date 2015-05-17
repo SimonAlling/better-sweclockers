@@ -424,7 +424,7 @@ function isNonEmptyString(s) {
 
 function isVersionNumber(s) {
     // Returns true if s is a string consisting of dot-separated integers
-    return isString(s) && !!s.match(/^(\d+\.)*\d+$/);
+    return isString(s) && /^(\d+\.)*\d+$/.test(s);
 }
 
 function byID(i) {
@@ -532,7 +532,7 @@ function timeIsBetween(t, start, end) {
 }
 
 function isHHMMTime(s) {
-    return isNonEmptyString(s) && !!s.match(/^\d{2}:\d{2}/);
+    return isNonEmptyString(s) && /^\d{2}:\d{2}/.test(s);
 }
 
 function parseHours(s) {
@@ -834,14 +834,12 @@ function logExceptions() {
         log("***********************************************");
         log("******** Better SweClockers Exceptions ********");
         log("***********************************************");
-        for (var i = 0, l = es.length; i < l; i++) {
-            logException(es[i]);
-        }
+        es.forEach(logException);
     }
 }
 
 function isLoggedIn() {
-    return !byID("btnSignin");
+    return byID("signoutForm");
 }
 
 function isInThread() {
@@ -886,7 +884,7 @@ function isOnSettingsPage() {
 }
 
 function isOnBSCSettingsPage() {
-    return matches(document.location.pathname, /^\/profil\/better\-sweclockers/i);
+    return matches(document.location.pathname, /^\/better\-sweclockers/i);
 }
 
 function isInNewPMMode() {
@@ -956,17 +954,15 @@ function loadSettings() {
         log("Loaded default settings.");
     } else {
         log("Loading saved settings...");
-        for (var option in defaultSettings) {
-            if (defaultSettings.hasOwnProperty(option)) {
-                if (savedSettings.hasOwnProperty(option)) {
+        Object.keys(defaultSettings).forEach(function(option) {
+            if (savedSettings.hasOwnProperty(option)) {
                     loadedSettings[option] = savedSettings[option];
                     log("Loaded setting \"" + option + "\" with value " + savedSettings[option] + ".");
                 } else {
                     loadedSettings[option] = defaultSettings[option];
                     addWarning("There was no saved value for setting \"" + option + "\". Loaded default value " + defaultSettings[option] + ".");
                 }
-            }
-        }
+        });
         log("Done loading settings.");
     }
     BSC.settings = loadedSettings;
@@ -1000,12 +996,10 @@ function saveState() {
 function loadState() {
     log("Loading saved state...");
     var savedState = JSON.parse(LSGet("savedState"));
-    for (var st in savedState) {
-        if (savedState.hasOwnProperty(st)) {
-            BSC.setState(st, savedState[st]);
-            log("Loaded state "+st+" with value "+savedState[st]+".");
-        }
-    }
+    Object.keys(savedState).forEach(function(st) {
+        BSC.setState(st, savedState[st]);
+        log("Loaded state "+st+" with value "+savedState[st]+".");
+    });
 }
 
 function bsSelectOptionsUsefulLinks(arr) {
@@ -1110,7 +1104,7 @@ function splitQuote() {
     TA.BSC_trimAtCursor();
     var beforeSelection = TA.BSC_getTextBeforeSelection();
     var afterSelection  = TA.BSC_getTextAfterSelection();
-    if (!!beforeSelection.match(/\[\/quote\]$/i) && !!afterSelection.match(/^\[quote(=(".+"|.+))?\]/i)) {
+    if (/\[\/quote\]$/i.test(beforeSelection) && /^\[quote(=(".+"|.+))?\]/i.test(afterSelection)) {
         // Cursor is between two already existing quotes, so just insert empty lines and place the cursor accordingly:
         TA.BSC_insert("\n\n\n\n", 1);
     } else {
@@ -1189,10 +1183,12 @@ function getMyName() {
             addException(new ElementNotFoundException("Could not extract username because its presumed parent (.profile .name a) could not be found or did not contain expected content."));
             return null;
         }
+    } else if (isOnBSCSettingsPage()) {
+        log("No need to extract username because currently on BSC settings page.");
     } else {
         addWarning("Could not extract username because not logged in.");
-        return null;
     }
+    return null;
 }
 
 function getTAForm() {
@@ -1597,7 +1593,7 @@ function handleDarkThemeTimer() {
 
 function checkForBetterSweClockersAnchor() {
     var anchor = getURLAnchor();
-    if (!!anchor && !!anchor.match(/^Better_SweClockers/)) {
+    if (!!anchor && /^Better_SweClockers/.test(anchor)) {
         scrollToElementWithID(anchor);
     }
 }
@@ -2492,13 +2488,13 @@ function insertOptionsForm() {
         } else throw new ContentCreationException("Could not create settings checkbox for option " + optionName + " because the generator function was called with invalid arguments (" + optionName + " and " + labelText + ").");
     }
     function keysWithTrueValue(obj) {
-        var keys = [];
-        for (var key in obj) {
-            if (obj.hasOwnProperty(key) && obj[key] === true) {
-                keys.push(key);
+        var trueKeys = [];
+        Object.keys(obj).forEach(function(key) {
+            if (obj[key] === true) {
+                trueKeys.push(key);
             }
-        }
-        return keys;
+        })
+        return trueKeys;
     }
     var referrer = document.referrer || "/";
     document.title = "Inställningar för Better SweClockers";
@@ -2788,7 +2784,7 @@ function setSelectAll(state) {
     }
 }
 
-function filterControls() {
+function enableFilterControls() {
     function inputBoxState(catID) {
         return BSC.settings.uninterestingForums[catID] ? " checked" : "";
     }
@@ -2858,8 +2854,8 @@ function filterControls() {
             BSC.filterSettingsList = filterSettingsList;
             filterSettingsList.addEventListener("click", function(event) { filterSettingsClicked(event.target); }, false);
             setSelectAll(allCategoriesAreChecked());
-        } else addException("Could not add filter controls because #wdgtSideRecentThreads ul could not be found.");
-    } else addException("Could not add filter controls because #wdgtSideRecentThreads "+(!!plBody ? ".plNyhetstips" : ".plBody")+" could not be found.");
+        } else addException(new ElementNotFoundException("Could not add filter controls because #wdgtSideRecentThreads ul could not be found."));
+    } else addException(new ElementNotFoundException("Could not add filter controls because #wdgtSideRecentThreads "+(!!plBody ? ".plNyhetstips" : ".plBody")+" could not be found."));
 }
 
 function fixAdHeight() {
@@ -2980,7 +2976,7 @@ function run() {
             }
         }
         if (settingsFormRequested()) {
-            log("Settings form requested.");
+            log("Settings form requested. Inserting it...");
             BSC.addDOMOperation(canInsertOptionsForm, insertOptionsForm);
         } else {
             log("Checking which DOM operations to run...");
@@ -3086,9 +3082,9 @@ function finish(eventName) {
             autofocusPMSubject();
         }
 
-        if (optionIsTrue("enableFilter")) {
+        if (optionIsTrue("enableFilter") && !isOnBSCSettingsPage()) {
             // User wants to enable filter for "Nytt i forumet"
-            filterControls();
+            enableFilterControls();
         }
 
         if (isInThread()) {
