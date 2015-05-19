@@ -92,6 +92,7 @@ var BSC = {
     shibeTextLineMaxLength: 100, // max line length of shibe text
     bannerHeightTop: 121, // default height of top ad banner
     bannerHeightSide: 360, // default height of side ad banners
+    favoriteLinksHeight: 32,
 
     myName: "", // user's username
     CSS: "", // will contain all BSC CSS
@@ -1297,6 +1298,7 @@ function favoriteLinksElement() {
     elementHTML += '<option data-url="' + BSC.settingsURLFavoriteLinks + '">Redigera favoritlänkar</option>';
     element.innerHTML = elementHTML;
     element.id = "Better_SweClockers_FavoriteLinks";
+    element.addEventListener("change", goToSelectedFavoriteLink);
     return element;
 }
 
@@ -1315,28 +1317,30 @@ function goToSelectedFavoriteLink() {
     }
 }
 
-function fixTabWidthForFavoriteLinks() {
-    BSC.addCSS(".subMenu li a { padding-left: 10px; padding-right: 10px; }");
+function makeRoomForFavoriteLinks() {
+    BSC.addCSS("\
+        .fixed > .inner { position: relative; }\
+        #wdgtSideRecentThreads { margin-top: "+BSC.favoriteLinksHeight+"px; }\
+    ");
 }
 
 function canInsertFavoriteLinks() {
-    return qSel(".sections .section.profile") instanceof HTMLDivElement;
+    return byID("wdgtSideRecentThreads") instanceof HTMLDivElement;
 }
 
 function insertFavoriteLinks() {
     log("Inserting Favorite Links dropdown box...");
     if (isLoggedIn() && !byID("Better_SweClockers_FavoriteLinks")) {
-        var sectionProfile = qSel(".sections .section.profile");
-        if (sectionProfile instanceof HTMLDivElement) {
+        var wdgtSideRecentThreads = byID("wdgtSideRecentThreads");
+        if (wdgtSideRecentThreads instanceof HTMLDivElement) {
             try {
                 var FLElement = favoriteLinksElement();
-                sectionProfile.appendChild(FLElement);
-                FLElement.addEventListener("change", goToSelectedFavoriteLink);
+                FLElement.BSC_insertBefore(wdgtSideRecentThreads);
                 log("Inserted Favorite Links dropdown box.");
             } catch (e) {
                 addException(new ContentCreationException("Could not insert Favorite Links dropdown box because something went wrong when creating it: " + e.message));
             }
-        } else addException(new ElementNotFoundException("Could not insert Favorite Links dropdown box because its intended parent (.sections .section.profile) could not be found."));
+        } else addException(new ElementNotFoundException("Could not insert Favorite Links dropdown box because its intended nextSibling (#wdgtSideRecentThreads) could not be found."));
     }
 }
 
@@ -2187,18 +2191,10 @@ function addMainCSS() {
             position: relative; /* for absolute positioning of Favorite Links */\
         }\
         #Better_SweClockers_FavoriteLinks {\
-            height: 24px;\
-            left: 48px;\
+            height: '+BSC.favoriteLinksHeight+'px;\
             position: absolute;\
-            top: 67px;\
-            width: 172px;\
-        }\
-        #Better_SweClockers_FavoriteLinks:link,\
-        #Better_SweClockers_FavoriteLinks:visited,\
-        #Better_SweClockers_FavoriteLinks:hover,\
-        #Better_SweClockers_FavoriteLinks:active,\
-        #Better_SweClockers_FavoriteLinks:focus {\
-            text-decoration: none;\
+            margin: 0;\
+            top: -'+(BSC.favoriteLinksHeight+5)+'px;\
         }\
         body a.betterSwecLink:link, body a.betterSwecLink:visited {\
             color: #D26000;\
@@ -2983,7 +2979,7 @@ function prepare() {
             improvePaginationButtons();
         }
         if (optionIsTrue("enableFavoriteLinks")) {
-            fixTabWidthForFavoriteLinks();
+            makeRoomForFavoriteLinks();
         }
         updateStyleElement();
     } catch(e) {
