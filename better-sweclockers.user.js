@@ -2034,7 +2034,14 @@ function addPMLinks() {
             }
         } else err(forumPost.id);
     }
-    BSC.CSS += ".forumPost .details .Better_SweClockers_IconButton { margin: 0 0 -20px 8px; }";
+    // We have to position the PM button absolutely so it does not cause
+    // minor page jumping on some devices (e.g. iOS 7). Therefore, we also
+    // have to position .details non-statically, so our absolute positioning
+    // works.
+    BSC.CSS += "\
+        .forumPost .details .Better_SweClockers_IconButton { position: absolute; margin-left: 8px; }\
+        .forumPost .details { position: relative; }\
+    ";
     log("Done inserting PM links.");
 }
 
@@ -2077,8 +2084,13 @@ function quoteSignatureForm(signatureText, postid, author, tip) {
 function addQuoteSignatureButtons() {
     log("Inserting quote signature buttons...");
     try {
-        // We add an overkill margin-left to force the button to stay on the same line even when the container is too narrow, such as on tablets:
-        BSC.addCSS(".Better_SweClockers_QuoteSignatureButton { height: 24px; margin-left: -200px; }");
+        // We add an overkill margin-left to force the button to stay on
+        // the same line even when the container is too narrow, such as
+        // on tablets. float: right; is needed so that the button is
+        // "glued" to the buttons on its right:
+        BSC.addCSS("\
+            .Better_SweClockers_QuoteSignatureButton { height: 24px !important; box-sizing: border-box !important; border-radius: 0; margin-left: -1000px !important; float: right !important; }\
+        ");
         var forumPosts = BSC.forumPosts;
         var forumPost, postid, author, signature, controls, fakeForm;
         for (var i = 0, len = forumPosts.length; i < len; i++) {
@@ -2091,7 +2103,7 @@ function addQuoteSignatureButtons() {
                     controls = forumPost.querySelector(".cell.controls");
                     fakeForm = quoteSignatureForm(signature.textContent.trim(), postid, author, BSC.settings.quoteSignatureTip);
                     controls.appendChild(fakeForm);
-                } else addWarning("Did not insert quote signature button under post "+postid+" because no signature was found.");
+                } else log("Did not insert quote signature button under post "+postid+" because no signature was found.");
             }
         }
         log("Inserted quote signature buttons.");
@@ -2358,6 +2370,7 @@ function insertDarkThemeStyleElement() {
 
 function insertStyleElement() {
     BSC.styleElement.innerHTML = BSC.CSS;
+    BSC.styleElement.id = "Better_SweClockers_Style";
     document.head.appendChild(BSC.styleElement);
 }
 
