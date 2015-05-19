@@ -1773,7 +1773,7 @@ function insertAdvancedControlPanel() {
         '<a title="Länk till Google-sökning med markerad text som sökfras" id="Better_SweClockers_Button_Google" class="button" href="#" /><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></a>';
     // Doge buttons
     if (optionIsTrue("ACP_dogeButtons")) {
-        ACPHTML += '<input value="shibe" title="wow" id="Better_SweClockers_Button_Shibe" class="button betterSwecShibeText" type="button" />' +
+        ACPHTML += '<input value="shibe" title="wow" id="Better_SweClockers_Button_Shibe" class="button Better_SweClockers_ShibeText" type="button" />' +
                    '<a title="pls click" id="Better_SweClockers_Button_Doge" class="button Better_SweClockers_IconButton" href="#"><img src="' + BASE64.DOGE + '" />Doge</a>';
     }
     // Smileys
@@ -1831,7 +1831,7 @@ function insertAdvancedControlPanel() {
     // Färgpaletten
     if (optionIsTrue("ACP_colorPalette")) {
         ACPHTML += '\
-            <br /><form id="betterSwecColorPalette"><fieldset title="Färgar texten i vald färg, precis som [color] (snabbgenvägar för vanliga färger)">\
+            <br /><form><fieldset title="Färgar texten i vald färg, precis som [color] (snabbgenvägar för vanliga färger)">\
                 <legend>Färgpaletten</legend>\
                 <input value="+ Färgpaletten" id="Better_SweClockers_Button_ColorPalette" class="button" type="button" /><div id="Better_SweClockers_ColorPaletteInner" style="display: ' + (BSC.getState("showColorPalette") ? "inline-block" : "none") + ';">' +
               betterSwecColorButtons() +
@@ -2200,11 +2200,11 @@ function addMainCSS() {
         #Better_SweClockers_FavoriteLinks:focus {\
             text-decoration: none;\
         }\
-        body a.betterSwecLink:link, body a.betterSwecLink:visited {\
+        body a.Better_SweClockers_Link:link, body a.Better_SweClockers_Link:visited {\
             color: #D26000;\
             text-decoration: none;\
         }\
-        body a.betterSwecLink:hover, body a.betterSwecLink:focus, body a.betterSwecLink:active {\
+        body a.Better_SweClockers_Link:hover, body a.Better_SweClockers_Link:focus, body a.Better_SweClockers_Link:active {\
             text-decoration: underline;\
         }\
         .forumForm.postEditForm .s5fieldset .tanukiTextbox { max-width: 100%; }\
@@ -2226,8 +2226,6 @@ function addMainCSS() {
         #Better_SweClockers_ACP form { margin: 0; padding: 0; }\
         #Better_SweClockers_ACP label { cursor: pointer; display: inline; font-size: 12px; margin: 0; padding: 0 0 0 2px; }\
         #Better_SweClockers_ACP input[type=checkbox] { cursor: pointer; }\
-        .betterSwecImageButton { opacity: 0.7; vertical-align: middle; }\
-        .betterSwecImageButton:hover { opacity: 1; vertical-align: middle; }\
         #Better_SweClockers_Button_Strike { text-decoration: line-through; }\
         #Better_SweClockers_Button_Cmd,\
         #Better_SweClockers_Button_Code {\
@@ -2286,7 +2284,7 @@ function addMainCSS() {
         #Better_SweClockers_Button_Google span:nth-child(3) { color: #eeb003; }\
         #Better_SweClockers_Button_Google span:nth-child(5) { color: #009957; }\
         #Better_SweClockers_UsefulLinksSelect { width: 128px; }\
-        .betterSwecShibeText { color: red; font-family: "Comic Sans MS", "Chalkboard SE", sans-serif; font-style: italic; }\
+        .Better_SweClockers_ShibeText { color: red; font-family: "Comic Sans MS", "Chalkboard SE", sans-serif; font-style: italic; }\
         #Better_SweClockers_ButtonsBelowTA { float: right; margin-right: 20px; }\
         ' +
         
@@ -2546,7 +2544,7 @@ function insertOptionsForm() {
                                 '<option'+(ACPInsertionPoint === ABOVE_TA ? " selected":"")+'>Under standardkontrollpanelen</option>' +
                                 '<option'+(ACPInsertionPoint === BELOW_TA ? " selected":"")+'>Under textrutan (standard)</option></select>' +
                             checkboxList(
-                                settingsCheckbox("ACP_dogeButtons", '<span class="betterSwecShibeText">very doge buttons             wow</span>') +
+                                settingsCheckbox("ACP_dogeButtons", '<span class="Better_SweClockers_ShibeText">very doge buttons             wow</span>') +
                                 settingsCheckbox("ACP_smileys", "Länk till SweClockers smileyreferens") +
                                 settingsCheckbox("ACP_specialChars", "Knappar för specialtecken") +
                                 settingsCheckbox("ACP_usefulLinks", "Verktyg för användbara länkar") +
@@ -2581,7 +2579,7 @@ function insertOptionsForm() {
                                 settingsCheckbox("DOMOperationsDuringPageLoad", "Utför DOM-operationer under sidladdning") +
                                 settingsCheckbox("enableFilter", "Forumfilter för <strong>Nytt i forumet</strong>") +
                                 settingsCheckbox("preventAccidentalSignout", "Förhindra oavsiktlig utloggning") +
-                                settingsCheckbox("dogeInQuoteFix", 'Visa Doge-smiley i citat (istället för en Imgur-länk) <span class="betterSwecShibeText">         win</span>') +
+                                settingsCheckbox("dogeInQuoteFix", 'Visa Doge-smiley i citat (istället för en Imgur-länk) <span class="Better_SweClockers_ShibeText">         win</span>') +
                                 settingsCheckbox("searchWithGoogle", "Knapp för att söka med Google istället för standardsökfunktionen") +
                                 settingsCheckbox("openImagesInNewTab", "Öppna bilder i ny flik (istället för att förstora dem)")
                             ) +
@@ -2750,7 +2748,7 @@ function askResetSettings() {
 //================================================================
 
 function toggleShowFilterSettings() {
-    var settingsList = byID("betterSwecFilterSettingsList");
+    var settingsList = byID("Better_SweClockers_FilterSettingsList");
     var betterSwecFilterSettingsExpandLink = byID("Better_SweClockers_FilterSettingsExpandLink");
     if (!!settingsList) { 
         if (settingsList.style.display === "block") {
@@ -2838,7 +2836,7 @@ function enableFilterControls() {
             var filterSettingsExpandLink = document.createElement("a");
             filterSettingsExpandLink.id = "Better_SweClockers_FilterSettingsExpandLink";
             filterSettingsExpandLink.href = "#";
-            filterSettingsExpandLink.classList.add("betterSwecLink");
+            filterSettingsExpandLink.classList.add("Better_SweClockers_Link");
             filterSettingsExpandLink.innerHTML = "+ Filterinställningar";
             var categoryName, currentItem, currentItemDataThread, currentItemDataThreadParsed, currentItemForumID, currentItemLink;
             for (var i = 0; i < listItems.length; i++) {
@@ -2862,7 +2860,7 @@ function enableFilterControls() {
             }
             log("Forum filter applied. Inserting filter controls...");
             var filterSettingsWrapperHTML = '\
-            <ul title="Kryssa för de kategorier du vill filtrera bort" id="betterSwecFilterSettingsList">\
+            <ul title="Kryssa för de kategorier du vill filtrera bort" id="Better_SweClockers_FilterSettingsList">\
                 <li><input type="checkbox" id="Better_SweClockers_FilterSettingsToggleAll" /><label for="Better_SweClockers_FilterSettingsToggleAll">Markera alla</label></li>';
             var cat, catID, catIDPrefixed, catName;
             for (var c = 0, len = categoriesArray.length; c < len; c++) {
@@ -2878,7 +2876,7 @@ function enableFilterControls() {
             plNyhetstips.appendChild(filterSettingsExpandLink);
             filterSettingsWrapper.BSC_insertAfter(plNyhetstips);
             eventListener("Better_SweClockers_FilterSettingsExpandLink", "click", function(event) { event.preventDefault(event); toggleShowFilterSettings(); });
-            var filterSettingsList = byID("betterSwecFilterSettingsList");
+            var filterSettingsList = byID("Better_SweClockers_FilterSettingsList");
             BSC.filterSettingsList = filterSettingsList;
             filterSettingsList.addEventListener("click", function(event) { filterSettingsClicked(event.target); }, false);
             setSelectAll(allCategoriesAreChecked());
