@@ -3,7 +3,7 @@
 // @namespace       http://alling.se
 //
 //                  *** Don't forget to update version below as well! ***
-// @version         2.1
+// @version         2.1.1
 //                  *** Don't forget to update version below as well! ***
 //
 // @match           http://*.sweclockers.com/*
@@ -25,7 +25,7 @@ var Better_SweClockers = (function() {
 "use strict";
 
 // Needed for update check. Remember to update!
-var version = "2.1";
+var version = "2.1.1";
 
 // "Constants"
 var ABOVE_STANDARD_CONTROL_PANEL = 0;
@@ -1903,7 +1903,7 @@ function insertAdvancedControlPanel() {
             case "Better_SweClockers_Button_Noparse":
                 TA.BSC_wrapBB("[noparse]", "[/noparse]"); break;
             case "Better_SweClockers_Button_Strike":
-                TA.BSC_wrapBB("[strike]", "[/strike]"); break;
+                TA.BSC_wrapBB("[s]", "[/s]"); break;
             case "Better_SweClockers_Button_Cmd":
                 TA.BSC_wrapBB('[cmd]', '[/cmd]'); break;
             case "Better_SweClockers_Button_Code":
