@@ -1,6 +1,6 @@
 [size="5"][b]Dokumentation för Better SweClockers[/b][/size]
 
-[b]Uppdaterad:[/b] 2015-05-13
+[b]Uppdaterad:[/b] 2015-09-13
 Denna dokumentation beskriver hur man installerar och använder Better SweClockers.
 
 [size="3"][color="#D00"]»[/color] [url="#post14497835"][b]Hoppa förbi dokumentationen[/b][/url][/size]

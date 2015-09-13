@@ -4,8 +4,8 @@
 [size="3"]Ett userscript av Simon Alling[/size]
 
 [url="https://github.com/SimonAlling/better-sweclockers/raw/master/better-sweclockers.user.js"][img]http://i.imgur.com/Qpc1jAX.png[/img][/url]
-[size="3"][b]v2.0.6[/b][/size]
-[size="1"]2015-05-16[/size]
+[size="3"][b]v2.1[/b][/size]
+[size="1"]2015-09-13[/size]
 [size="3"] [/size]
 
 [size="3"][color="#D00"]»[/color] [url="#post14497818"][b]Dokumentation[/b][/url][/size]
@@ -85,4 +85,5 @@ Nu är BSC dessutom [b]fri mjukvara[/b] enligt GNU GPLv3, så vem som helst får
 [li][url="/forum/post/14548542"]v1.3.0[/url][/li]
 [li][url="/forum/post/14603624"]v1.4.1[/url][/li]
 [li][url="/forum/post/15405486"]v2.0[/url][/li]
+[li][url="/forum/post/15411744"]v2.0.5[/url][/li]
 [/ul]
