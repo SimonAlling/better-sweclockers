@@ -502,6 +502,12 @@ Denna funktion lägger in en knapp i varje inlägg som är en genväg till att c
 
 
 
+[size="3"][b]2.3.8  Ta bort [cmd]#content[/cmd]-ankare i länkar till andra sidor i en artikel[/b][/size]
+
+Denna funktion tar bort [cmd]#content[/cmd]-ankaret i varje länk till andra sidor längst ner i en artikel, exempelvis [i]Slutsats och sammanfattning[/i]. Det innebär att webbläsaren, när man klickar på en sådan länk, inte automatiskt hoppar ner till början av brödtexten på den sidan. Framförallt innebär det att webbläsaren ej heller hoppar [i]upp[/i] till början av brödtexten efter att man redan börjat scrolla. Särskilt användbart på långsamma enheter och sega uppkopplingar.
+
+
+
 
 [size="4"][color="#24F"]▶[/color] [b]2.4  Forumfilter[/b][/size]
 
@@ -726,6 +732,12 @@ Se 2.3.6.
 [size="3"][b]Citera signatur-knappar i foruminlägg[/b][/size]
 
 Se 2.3.7.
+
+
+
+[size="3"][b]Ta bort [cmd]#content[/cmd]-ankare i länkar till andra sidor i en artikel[/b][/size]
+
+Se 2.3.8.
 
 
 
