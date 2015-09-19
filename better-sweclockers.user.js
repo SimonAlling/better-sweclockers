@@ -1774,6 +1774,7 @@ function insertAdvancedControlPanel() {
         '<input value="color" id="Better_SweClockers_Button_Color" class="button" type="button" />' +
         '<input value="font" id="Better_SweClockers_Button_Font" class="button" type="button" />' +
         '<input value="quote" id="Better_SweClockers_Button_Quote" class="button" type="button" />' +
+        '<input value="spoiler" title="För spoilers, mycket långa textstycken etc" id="Better_SweClockers_Button_Spoiler" class="button" type="button" />' +
         '<input value="noparse" title="Förhindrar att BB-kod parsas" id="Better_SweClockers_Button_Noparse" class="button" type="button" />' +
         '<input value="strike" title="Överstruken text" id="Better_SweClockers_Button_Strike" class="button" type="button" />' +
         '<input value="cmd" title="Inlinekod" id="Better_SweClockers_Button_Cmd" class="button" type="button" />' +
@@ -1782,6 +1783,7 @@ function insertAdvancedControlPanel() {
         '<a title="Förbättrad version av den inbyggda länkfunktionen" id="Better_SweClockers_Button_URL" class="button Better_SweClockers_IconButton" href="#"><img src="'+BASE64.URL+'" class="Better_SweClockers_IconButtonIcon20px" />URL</a>' +
         '<a title="Gör inbäddade bilder av alla markerade, icke-tomma rader. Fungerar även mitt i en rad." id="Better_SweClockers_Button_IMG" class="button Better_SweClockers_IconButton" href="#"><img src="'+BASE64.IMG+'" class="Better_SweClockers_IconButtonIcon20px" />IMG</a>' +
         '<a title="Gör inbäddade, explicit klickbara bilder av alla markerade, icke-tomma rader. Fungerar även mitt i en rad." id="Better_SweClockers_Button_URLIMG" class="button Better_SweClockers_IconButton" href="#"><img src="'+BASE64.IMG+'" class="Better_SweClockers_IconButtonIcon20px" />URL IMG</a>' +
+        '<a title="Bädda in en YouTube-video med markerad text som URL" id="Better_SweClockers_Button_YouTube" class="button" href="#" /><span>You</span><span>Tube</span></a>' +
         '<a title="Länk till Google-sökning med markerad text som sökfras" id="Better_SweClockers_Button_Google" class="button" href="#" /><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></a>';
     // Doge buttons
     if (optionIsTrue("ACP_dogeButtons")) {
@@ -1887,6 +1889,8 @@ function insertAdvancedControlPanel() {
                 TA.BSC_wrapBB('[font=""]', '[/font]', 7); break;
             case "Better_SweClockers_Button_Quote":
                 TA.BSC_wrapBB('[quote=""]', '[/quote]', 8); break;
+            case "Better_SweClockers_Button_Spoiler":
+                TA.BSC_wrapBB("[spoiler]", "[/spoiler]"); break;
             case "Better_SweClockers_Button_URL":
                 TA.BSC_wrapBB('[url=""]', '[/url]', 6); break;
             case "Better_SweClockers_Button_IMG":
@@ -1898,11 +1902,13 @@ function insertAdvancedControlPanel() {
             case "Better_SweClockers_Button_Strike":
                 TA.BSC_wrapBB("[s]", "[/s]"); break;
             case "Better_SweClockers_Button_Cmd":
-                TA.BSC_wrapBB('[cmd]', '[/cmd]'); break;
+                TA.BSC_wrapBB("[cmd]", "[/cmd]"); break;
             case "Better_SweClockers_Button_Code":
-                TA.BSC_wrapBB('[code]\n', '\n[/code]'); break;
+                TA.BSC_wrapBB("[code]\n", "\n[/code]"); break;
             case "Better_SweClockers_Button_Math":
                 TA.BSC_wrapBB('[font="serif"][size="3"]', '[/size][/font]'); break;
+            case "Better_SweClockers_Button_YouTube":
+                TA.BSC_wrapBB("[youtube]", "[/youtube]"); break;
             case "Better_SweClockers_Button_Google":
                 betterSwecGoogle(); break;
             case "Better_SweClockers_Button_Shibe":
@@ -2301,6 +2307,16 @@ function addMainCSS() {
             z-index: 9;\
         }\
         #Better_SweClockers_ColorPaletteInner { display: none; height: 23px; margin-left: 3px; }\
+        #Better_SweClockers_Button_YouTube {\
+            color: black;\
+            font-family: "Arial Narrow", Arial;\
+        }\
+        #Better_SweClockers_Button_YouTube span:nth-child(2) {\
+            color: white;\
+            background-color: #E00;\
+            border-radius: 4px;\
+            padding: 1px 2px 0 2px;\
+        }\
         #Better_SweClockers_Button_Google {\
             font-family: Georgia, serif;\
             background: rgb(249,248,244);\
