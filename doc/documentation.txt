@@ -68,6 +68,13 @@ Knapparna size, color, font och quote är genvägar till BB-koderna med samma na
 
 
 
+[size="3"][b]spoiler[/b][/size]
+
+Knappen [b]spoiler[/b] omger markerad text med [cmd]spoiler[/cmd]-taggen, vilket gör att användaren själv aktivt måste välja att visa texten. Så bör man göra med spoilers, mycket långa textstycken (till exempel långa citat eller output från något program som man klistrar in) och dylikt.
+[code][noparse][spoiler][/noparse][color="#24F"]markerad text[/color][noparse][/spoiler][/noparse][/code]
+
+
+
 [size="3"][b]noparse[/b][/size]
 
 Knappen [b]noparse[/b] omger markerad text med [cmd]noparse[/cmd]-taggen, vilket gör att [noparse]eventuella [b]BB-taggar[/b] ignoreras[/noparse].
@@ -172,6 +179,21 @@ http://www.sweclockers.com/image/red/2013/02/21/GeForce_GTX_Titan-1460-processed
 [url="http://www.sweclockers.com/images/logo.png"][img]http://www.sweclockers.com/images/logo.png[/img][/url]
 
 [url="http://www.sweclockers.com/image/red/2013/02/21/GeForce_GTX_Titan-1460-processed.jpg?t=articleFull&k=8ba63b24"][img]http://www.sweclockers.com/image/red/2013/02/21/GeForce_GTX_Titan-1460-processed.jpg?t=articleFull&k=8ba63b24[/img][/url]
+
+
+
+[size="3"][b]YouTube[/b][/size]
+
+Knappen [b]YouTube[/b] bäddar in en YouTube-video med markerad text som URL.
+
+[color="#C15200"][b]–– Exempel ––[/b][/color]
+
+[b]Före:[/b]
+[code][color="#24F"][noparse]https://www.youtube.com/watch?v=QyttjPCPkE0[/noparse][/color][/code]
+[b]Efter:[/b]
+[code][noparse][youtube][/noparse][color="#24F"][noparse]https://www.youtube.com/watch?v=QyttjPCPkE0[/noparse][/color][noparse][/youtube][/noparse][/code]
+[b]Resultat:[/b]
+[youtube]https://www.youtube.com/watch?v=QyttjPCPkE0[/youtube]
 
 
 
