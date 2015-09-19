@@ -167,18 +167,18 @@ Det går även att använda [b]URL IMG[/b] mitt i en rad.
 
 [b]Före:[/b]
 [code][color="#24F"][noparse]
-http://www.sweclockers.com/images/logo.png
+http://i.imgur.com/oZHfIXh.png
 
-http://www.sweclockers.com/image/red/2013/02/21/GeForce_GTX_Titan-1460-processed.jpg?t=articleFull&k=8ba63b24
+http://www.sweclockers.com/gfx/static/info/contact-us.jpg
 [/noparse][/color][/code]
 [b]Efter:[/b]
-[code][noparse][url="http://www.sweclockers.com/images/logo.png"][img]http://www.sweclockers.com/images/logo.png[/img][/url]
+[code][noparse][url="http://i.imgur.com/oZHfIXh.png"][img]http://i.imgur.com/oZHfIXh.png[/img][/url]
 
-[url="http://www.sweclockers.com/image/red/2013/02/21/GeForce_GTX_Titan-1460-processed.jpg?t=articleFull&k=8ba63b24"][img]http://www.sweclockers.com/image/red/2013/02/21/GeForce_GTX_Titan-1460-processed.jpg?t=articleFull&k=8ba63b24[/img][/url][/noparse][color="#24F"]|[/color][/code]
+[url="http://www.sweclockers.com/gfx/static/info/contact-us.jpg"][img]http://www.sweclockers.com/gfx/static/info/contact-us.jpg[/img][/url][/noparse][color="#24F"]|[/color][/code]
 [b]Resultat:[/b]
-[url="http://www.sweclockers.com/images/logo.png"][img]http://www.sweclockers.com/images/logo.png[/img][/url]
+[url="http://i.imgur.com/oZHfIXh.png"][img]http://i.imgur.com/oZHfIXh.png[/img][/url]
 
-[url="http://www.sweclockers.com/image/red/2013/02/21/GeForce_GTX_Titan-1460-processed.jpg?t=articleFull&k=8ba63b24"][img]http://www.sweclockers.com/image/red/2013/02/21/GeForce_GTX_Titan-1460-processed.jpg?t=articleFull&k=8ba63b24[/img][/url]
+[url="http://www.sweclockers.com/gfx/static/info/contact-us.jpg"][img]http://www.sweclockers.com/gfx/static/info/contact-us.jpg[/img][/url]
 
 
 
