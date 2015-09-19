@@ -143,6 +143,7 @@ var BSC = {
         "favoriteLinksRaw":                     favoriteLinksRawDefault,
         "fixAdHeight":                          true,
         "highlightUnreadPMs":                   true,
+        "highlightOwnPosts":                    true,
         "largerTextareaHeight":                 720,
         "openImagesInNewTab":                   false,
         "preventAccidentalSignout":             true,
@@ -2068,6 +2069,17 @@ function addPMLinks() {
     log("Done inserting PM links.");
 }
 
+function highlightOwnPosts() {
+    log("Styling own posts...");
+    // Relies on posts having .isReader if they are user's own.
+    BSC.CSS += "\
+        .forumPost.isReader {\
+            box-shadow: -10px 0 0 #C15200;\
+        }\
+    ";
+    log("Done styling own posts.");
+}
+
 function getReplyURL() {
     var quickReplyForm = qSel("#quickreply form");
     if (!!quickReplyForm) {
@@ -2600,6 +2612,7 @@ function insertOptionsForm() {
                                 settingsCheckbox("betterPaginationButtons", "Förbättrade bläddringsknappar i forumet") +
                                 settingsCheckbox("highlightUnreadPMs", "Framhäv olästa PM i inkorgen") +
                                 settingsCheckbox("addPMLinks", "PM-knappar i foruminlägg") +
+                                settingsCheckbox("highlightOwnPosts", "Framhäv egna inlägg") +
                                 settingsCheckbox("quoteSignatureButtons", 'Citera signatur-knappar i foruminlägg') +
                                 settingsCheckbox("removePageLinkAnchors", "Ta bort <pre>#content</pre>-ankare i länkar till andra sidor i en artikel")
                             ) +
@@ -3153,6 +3166,10 @@ function finish(eventName) {
         if (isInThread()) {
             if (optionIsTrue("addPMLinks")) {
                 addPMLinks();
+            }
+
+            if (optionIsTrue("highlightOwnPosts")) {
+                highlightOwnPosts();
             }
 
             if (optionIsTrue("quoteSignatureButtons")) {
