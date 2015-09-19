@@ -2310,7 +2310,6 @@ function addMainCSS() {
             background: -o-linear-gradient(top, rgba(249,248,244,1) 0%,rgba(229,228,224,1) 100%);\
             background: -ms-linear-gradient(top, rgba(249,248,244,1) 0%,rgba(229,228,224,1) 100%);\
             background: linear-gradient(to bottom, rgba(249,248,244,1) 0%,rgba(229,228,224,1) 100%);\
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=\'#f9f8f4\', endColorstr=\'#e5e4e0\',GradientType=0 );\
         }\
         #Better_SweClockers_Button_Google:hover {\
             background: rgb(252,251,247);\
@@ -2320,7 +2319,6 @@ function addMainCSS() {
             background: -o-linear-gradient(top, rgba(252,251,247,1) 0%,rgba(242,241,237,1) 100%);\
             background: -ms-linear-gradient(top, rgba(252,251,247,1) 0%,rgba(242,241,237,1) 100%);\
             background: linear-gradient(to bottom, rgba(252,251,247,1) 0%,rgba(242,241,237,1) 100%);\
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=\'#fcfbf7\', endColorstr=\'#f2f1ed\',GradientType=0 );\
         }\
         #Better_SweClockers_Button_Google span:nth-child(3n+1) { color: #176dee; }\
         #Better_SweClockers_Button_Google span:nth-child(4n+2) { color: #da4532; }\
