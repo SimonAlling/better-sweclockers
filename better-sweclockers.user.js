@@ -2074,7 +2074,7 @@ function highlightOwnPosts() {
     // Relies on posts having .isReader if they are user's own.
     BSC.CSS += "\
         .forumPost.isReader {\
-            box-shadow: -10px 0 0 #C15200;\
+            box-shadow: -8px 0 0 #C15200;\
         }\
     ";
     log("Done styling own posts.");
