@@ -142,6 +142,7 @@ var BSC = {
         "favoriteLinks":                        null,
         "favoriteLinksRaw":                     favoriteLinksRawDefault,
         "fixAdHeight":                          true,
+        "hideThumbnailCarousel":                false,
         "highlightUnreadPMs":                   true,
         "highlightOwnPosts":                    true,
         "largerTextareaHeight":                 720,
@@ -2637,6 +2638,7 @@ function insertOptionsForm() {
                             checkboxList(
                                 settingsCheckbox("fixAdHeight", "<strong>Lås höjden på reklam</strong>") +
                                 settingsCheckbox("DOMOperationsDuringPageLoad", "Utför DOM-operationer under sidladdning") +
+                                settingsCheckbox("hideThumbnailCarousel", "Göm thumbnailvyn högst upp") +
                                 settingsCheckbox("enableFilter", "Forumfilter för <strong>Nytt i forumet</strong>") +
                                 settingsCheckbox("preventAccidentalSignout", "Förhindra oavsiktlig utloggning") +
                                 settingsCheckbox("dogeInQuoteFix", 'Visa Doge-smiley i citat (istället för en Imgur-länk) <span class="Better_SweClockers_ShibeText">         win</span>') +
@@ -2974,6 +2976,10 @@ function showSideBannersAgain() {
                 .ad.adInsider     { display: block; }");
 }
 
+function hideThumbnailCarousel() {
+    BSC.addCSS("#carousel { display: none; }");
+}
+
 function insertPseudoConsole() {
     BSC.consoleContainer.id = "Better_SweClockers_Console";
     BSC.consoleContainer.appendChild(document.createElement("hr"));
@@ -3042,6 +3048,9 @@ function prepare() {
         }
         if (optionIsTrue("enableFavoriteLinks")) {
             makeRoomForFavoriteLinks();
+        }
+        if (optionIsTrue("hideThumbnailCarousel")) {
+            hideThumbnailCarousel();
         }
         updateStyleElement();
     } catch(e) {
