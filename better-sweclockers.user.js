@@ -142,6 +142,7 @@ var BSC = {
         "favoriteLinks":                        null,
         "favoriteLinksRaw":                     favoriteLinksRawDefault,
         "fixAdHeight":                          true,
+        "fixArticleImageHeight":                false,
         "hideThumbnailCarousel":                false,
         "highlightUnreadPMs":                   true,
         "highlightOwnPosts":                    true,
@@ -2637,6 +2638,7 @@ function insertOptionsForm() {
                         subFieldset("Diverse",
                             checkboxList(
                                 settingsCheckbox("fixAdHeight", "<strong>Lås höjden på reklam</strong>") +
+                                settingsCheckbox("fixArticleImageHeight", "Lås artikelbildens höjd") +
                                 settingsCheckbox("DOMOperationsDuringPageLoad", "Utför DOM-operationer under sidladdning") +
                                 settingsCheckbox("hideThumbnailCarousel", "Göm thumbnailvyn högst upp") +
                                 settingsCheckbox("enableFilter", "Forumfilter för <strong>Nytt i forumet</strong>") +
@@ -2970,6 +2972,16 @@ function fixAdHeight() {
     log("Fixed banner heights.");
 }
 
+function fixArticleImageHeight() {
+    log("Fixing article image height...");
+    BSC.CSS += "\
+        .whiteHeader.articleHeader > .articleBBCode {\
+            min-height: 440px;\
+        }\
+    ";
+    log("Fixed article image height.");
+}
+
 function showSideBannersAgain() {
     // Restore the CSS that was temporarily set by fixAdHeight():
     BSC.addCSS(".pushListInternal { margin-bottom: 8px; }\
@@ -3034,6 +3046,9 @@ function prepare() {
         loadState();
         if (optionIsTrue("fixAdHeight")) {
             fixAdHeight();
+        }
+        if (optionIsTrue("fixArticleImageHeight")) {
+            fixArticleImageHeight();
         }
         handleDarkTheme();
         insertDarkThemeStyleElement();
@@ -3230,6 +3245,7 @@ function afterAds() {
 if (!isOnHTTPS()) {
     prepare();
 } else {
+    // Except for fixAdHeight(), which is too important to skip:
     fixAdHeight();
     insertStyleElement();
 }
