@@ -90,8 +90,9 @@ var BSC = {
     greenTextColor: "#789922",
 
     shibeTextLineMaxLength: 100, // max line length of shibe text
-    bannerHeightTop: 121, // default height of top ad banner
+    bannerHeightTop:  121, // default height of top ad banner
     bannerHeightSide: 360, // default height of side ad banners
+    bannerHeightMid:  384, // default height of page ad modules
     favoriteLinksHeight: 32,
 
     myName: "", // user's username
@@ -2967,6 +2968,10 @@ function fixAdHeight() {
             max-height: "+BSC.bannerHeightSide+"px;\
             overflow: hidden;\
             display: none;\
+        }\
+        .adModule {\
+            height: "+BSC.bannerHeightMid+"px;\
+            overflow-y: hidden;\
         }\
     ";
     log("Fixed banner heights.");
