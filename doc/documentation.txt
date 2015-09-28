@@ -530,6 +530,11 @@ Denna funktion tar bort [cmd]#content[/cmd]-ankaret i varje länk till andra sid
 
 
 
+[size="3"][b]2.3.9  Framhäv egna inlägg[/b][/size]
+
+Denna funktion lägger till en tjock orange linje längs vänsterkanten av alla ens egna inlägg. Det gör det lättare att identifiera inlägg man själv har skrivit.
+
+
 
 [size="4"][color="#24F"]▶[/color] [b]2.4  Forumfilter[/b][/size]
 
@@ -622,6 +627,19 @@ Temat hämtas från Blargmodes server, precis som vanligt, så man får alltid d
 
 Denna funktion låser höjden på alla reklambanners, så att de inte trycker ner sidan när de laddas. Detta möjliggörs genom det magiska direktivet [cmd][noparse]@run-at document-start[/noparse][/cmd], som BSC 2.0 är baserat på. Höjden låses till respektive banners ursprungshöjd, så reklamen högst upp blir kapad om den är högre än sin container. Därmed kan det se lite fult ut. Men i gengäld slipper man misclicka på reklam 40 gånger om dagen.
 
+
+
+
+[size="4"][color="#24F"]▶[/color] [b]2.9  Lås artikelbildens höjd[/b][/size]
+
+Denna funktion reserverar utrymme åt bilden högst upp i varje artikel, så att man slipper att sidan hoppar när den laddas. Funktionen är inte aktiv per default, då den främst är användbar på långsamma enheter.
+
+
+
+
+[size="4"][color="#24F"]▶[/color] [b]2.10  Göm thumbnailvyn högst upp[/b][/size]
+
+Denna funktion döljer thumbnailvyn högst upp, som är irriterande på till exempel iOS, då den blockerar scrollning om man försöker scrolla med fingret just där den är. Denna funktion är inte aktiv per default.
 
 
 
@@ -778,9 +796,21 @@ Den bästa funktionen i hela Better SweClockers. Se 2.8.
 
 
 
+[size="3"][b]Lås artikelbildens höjd[/b][/size]
+
+Se 2.9.
+
+
+
 [size="3"][b]Utför DOM-operationer under sidladdning[/b][/size]
 
 Rekommenderas generellt. Om du kryssar ur denna körs alla DOM-operationer (exempelvis infogning av knappar) först [i]efter[/i] att hela sidan laddats.
+
+
+
+[size="3"][b]Göm thumbnailvyn högst upp[/b][/size]
+
+Se 2.10.
 
 
 
