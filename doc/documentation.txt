@@ -323,6 +323,7 @@ Fältet [b]Specialtecken[/b] innehåller ett antal knappar som kan användas fö
     [li][url="http://sv.wikipedia.org/wiki/Bindestreck"][b]Hårt bindestreck[/b][/url] (‑): Liknar ett bindestreck, men texten kan inte radbrytas vid det. Värdefullt i ord som [i]Sandy Bridge‑E[/i] och [i]G‑Sync[/i].[/li]
     [li][url="http://sv.wikipedia.org/wiki/Tankstreck"][b]Kort tankstreck[/b][/url] (–): Talstreck; intervall; minustecken. Kan skrivas med [cmd]Alt+0150[/cmd] på numpaden (på Windows).[/li]
     [li][url="http://sv.wikipedia.org/wiki/L%C3%A5ngt_tankstreck"][b]Långt tankstreck[/b][/url] (—): Kan skrivas med [cmd]Alt+0160[/cmd].[/li]
+    [li][url="http://sv.wikipedia.org/wiki/Uteslutningstecken"][b]Ellipsis[/b][/url] (…): Uteslutningstecken; markerar avbrutna ord eller meningar.[/li]
     [li][url="http://sv.wikipedia.org/wiki/Approximation"][b]Ungefär lika med[/b][/url] (≈): Approximation.[/li]
     [li][url="http://sv.wikipedia.org/wiki/Multiplikationstecken"][b]Multiplikationstecken[/b][/url] (×): Multiplikation. Kan skrivas med [cmd]Alt+0215[/cmd].[/li]
     [li][url="http://sv.wikipedia.org/wiki/Halvh%C3%B6g_punkt"][b]Halvhög punkt[/b][/url] (·): Multiplikation.[/li]

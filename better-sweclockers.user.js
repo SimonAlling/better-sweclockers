@@ -1807,6 +1807,7 @@ function insertAdvancedControlPanel() {
                    ACPButton("\u2011", "Hårt bindestreck (tillåter ej radbrytning)") +
                    ACPButton("–", "Kort tankstreck (talstreck; intervall)") +
                    ACPButton("—", "Långt tankstreck") +
+                   ACPButton("…", "Ellipsis") +
                    ACPButton("≈", "Ungefär lika med") +
                    ACPButton("− ", "Minustecken") +
                    ACPButton("×", "Multiplikationstecken") +
