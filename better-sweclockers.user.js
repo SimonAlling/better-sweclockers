@@ -156,6 +156,7 @@ var BSC = {
         "removeMobileSiteDisclaimer":           true,
         "removePageLinkAnchors":                false,
         "searchWithGoogle":                     true,
+        "searchWithDuckDuckGo":                 false,
         "quoteSignatureButtons":                false,
         "quoteSignatureTip":                    quoteSignatureTipDefault,
         "textareaHeight":                       360,
@@ -1109,6 +1110,16 @@ function betterSwecGoogle() {
     }
 }
 
+function betterSwecDuckDuckGo() {
+    var TA = BSC.TA;
+    var selected = TA.BSC_selectedText();
+    if (selected === "") {
+        TA.BSC_wrapBB("[url=\"https://duckduckgo.com/?q=\"]", "[/url]", 33);
+    } else {
+        TA.BSC_wrapBB("https://duckduckgo.com/?q=" + selected.trim().replace(/ +/g, "+") + "\"]", "[/url]");
+    }
+}
+
 function betterSwecInsertEdit() {
     BSC.TA.BSC_insert("[b]EDIT:[/b] ");
 }
@@ -1424,6 +1435,12 @@ function canEnableSearchWithGoogle() {
            !qSel("#Better_SweClockers_SearchWithGoogle");
 }
 
+function canEnableSearchWithDuckDuckGo() {
+    return qSel("#search .searchField") instanceof HTMLDivElement &&
+           !qSel("#Better_SweClockers_SearchWithDuckDuckGo");
+}
+
+
 function getSearchPhrase() {
     var searchField = qSel("#search .inner input");
     return !!searchField ? searchField.value : "";
@@ -1435,6 +1452,14 @@ function searchWithGoogle(phrase) {
         log("Googling \"" + searchPhrase + "\"...");
         document.location.href = "//google.com/search?q=" + searchPhrase;
     } else logWarning("searchWithGoogle() requires a non-empty string as its argument.");
+}
+
+function searchWithDuckDuckGo(phrase) {
+    if (isNonEmptyString(phrase)) {
+        var searchPhrase = ("site:sweclockers.com " + phrase.trim()).replace(/\s+/g, "+");
+        log("Quacking \"" + searchPhrase + "\"...");
+        document.location.href = "//duckduckgo.com/?q=" + searchPhrase;
+    } else logWarning("searchWithDuckDuckGo() requires a non-empty string as its argument.");
 }
 
 function enableSearchWithGoogle() {
@@ -1449,6 +1474,20 @@ function enableSearchWithGoogle() {
         searchField.appendChild(googleButton);
         log("Inserted Google search button.");
     } else addException(new ElementNotFoundException("Could not insert Google search button because its intended parent (#search .searchField) could not be found."));
+}
+
+function enableSearchWithDuckDuckGo() {
+    var searchField = qSel("#search .searchField");
+    log("Inserting DuckDuckGo search button...");
+    if (!!searchField) {
+        BSC.addCSS("#search .fieldWrap { width: 148px; display: inline-block; } ");
+        var duckDuckGoButton = createSwecButton("D");
+        duckDuckGoButton.id = "Better_SweClockers_SearchWithDuckDuckGo";
+        duckDuckGoButton.title = "Sök med DuckDuckGo";
+        duckDuckGoButton.addEventListener("click", function() { searchWithDuckDuckGo(getSearchPhrase()); });
+        searchField.appendChild(duckDuckGoButton);
+        log("Inserted DuckDuckGo search button.");
+    } else addException(new ElementNotFoundException("Could not insert DuckDuckGo search button because its intended parent (#search .searchField) could not be found."));
 }
 
 function showColorPalette(show) {
@@ -1788,6 +1827,7 @@ function insertAdvancedControlPanel() {
         '<a title="Gör inbäddade, explicit klickbara bilder av alla markerade, icke-tomma rader. Fungerar även mitt i en rad." id="Better_SweClockers_Button_URLIMG" class="button Better_SweClockers_IconButton" href="#"><img src="'+BASE64.IMG+'" class="Better_SweClockers_IconButtonIcon20px" />URL IMG</a>' +
         '<a title="Bädda in en YouTube-video med markerad text som URL" id="Better_SweClockers_Button_YouTube" class="button" href="#" /><span>You</span><span>Tube</span></a>' +
         '<a title="Länk till Google-sökning med markerad text som sökfras" id="Better_SweClockers_Button_Google" class="button" href="#" /><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></a>';
+        '<a title="Länk till DuckDuckGo-sökning med markerad text som sökfras" id="Better_SweClockers_Button_DuckDuckGo" class="button" href="#" /><span>D</span><span>u</span><span>c</span><span>k</span><span>D</span><span>u</span><span>c</span><span>k</span><span>G</span><span>o</span></a>';
     // Doge buttons
     if (optionIsTrue("ACP_dogeButtons")) {
         ACPHTML += '<input value="shibe" title="wow" id="Better_SweClockers_Button_Shibe" class="button Better_SweClockers_ShibeText" type="button" />' +
@@ -1915,6 +1955,8 @@ function insertAdvancedControlPanel() {
                 TA.BSC_wrapBB("[youtube]", "[/youtube]"); break;
             case "Better_SweClockers_Button_Google":
                 betterSwecGoogle(); break;
+            case "Better_SweClockers_Button_DuckDuckGo":
+                betterSwecDuckDuckGo(); break;
             case "Better_SweClockers_Button_Shibe":
                 betterSwecShibeText(); break;
             case "Better_SweClockers_Button_Doge":
@@ -2237,6 +2279,17 @@ function addMainCSS() {
             width: 24px;\
             vertical-align: top;\
         }\
+        #Better_SweClockers_SearchWithDuckDuckGo {\
+            box-sizing: border-box;\
+            -moz-box-sizing: border-box;\
+            color: #166beb;\
+            font-family: Georgia;\
+            font-size: 18px;\
+            height: 24px;\
+            padding: 0 4px;\
+            width: 24px;\
+            vertical-align: top;\
+        }\
         .header .sections {\
             overflow: visible !important;\
             height: 85px;\
@@ -2331,7 +2384,26 @@ function addMainCSS() {
             background: -ms-linear-gradient(top, rgba(249,248,244,1) 0%,rgba(229,228,224,1) 100%);\
             background: linear-gradient(to bottom, rgba(249,248,244,1) 0%,rgba(229,228,224,1) 100%);\
         }\
+        #Better_SweClockers_Button_DuckDuckGo {\
+            font-family: Georgia, serif;\
+            background: rgb(249,248,244);\
+            background: -moz-linear-gradient(top, rgba(249,248,244,1) 0%, rgba(229,228,224,1) 100%);\
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(249,248,244,1)), color-stop(100%,rgba(229,228,224,1)));\
+            background: -webkit-linear-gradient(top, rgba(249,248,244,1) 0%,rgba(229,228,224,1) 100%);\
+            background: -o-linear-gradient(top, rgba(249,248,244,1) 0%,rgba(229,228,224,1) 100%);\
+            background: -ms-linear-gradient(top, rgba(249,248,244,1) 0%,rgba(229,228,224,1) 100%);\
+            background: linear-gradient(to bottom, rgba(249,248,244,1) 0%,rgba(229,228,224,1) 100%);\
+        }\
         #Better_SweClockers_Button_Google:hover {\
+            background: rgb(252,251,247);\
+            background: -moz-linear-gradient(top, rgba(252,251,247,1) 0%, rgba(242,241,237,1) 100%);\
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,251,247,1)), color-stop(100%,rgba(242,241,237,1)));\
+            background: -webkit-linear-gradient(top, rgba(252,251,247,1) 0%,rgba(242,241,237,1) 100%);\
+            background: -o-linear-gradient(top, rgba(252,251,247,1) 0%,rgba(242,241,237,1) 100%);\
+            background: -ms-linear-gradient(top, rgba(252,251,247,1) 0%,rgba(242,241,237,1) 100%);\
+            background: linear-gradient(to bottom, rgba(252,251,247,1) 0%,rgba(242,241,237,1) 100%);\
+        }\
+        #Better_SweClockers_Button_DuckDuckGo:hover {\
             background: rgb(252,251,247);\
             background: -moz-linear-gradient(top, rgba(252,251,247,1) 0%, rgba(242,241,237,1) 100%);\
             background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,251,247,1)), color-stop(100%,rgba(242,241,237,1)));\
@@ -2344,6 +2416,10 @@ function addMainCSS() {
         #Better_SweClockers_Button_Google span:nth-child(4n+2) { color: #da4532; }\
         #Better_SweClockers_Button_Google span:nth-child(3) { color: #eeb003; }\
         #Better_SweClockers_Button_Google span:nth-child(5) { color: #009957; }\
+        #Better_SweClockers_Button_DuckDuckGo span:nth-child(3n+1) { color: #176dee; }\
+        #Better_SweClockers_Button_DuckDuckGo span:nth-child(4n+2) { color: #da4532; }\
+        #Better_SweClockers_Button_DuckDuckGo span:nth-child(3) { color: #eeb003; }\
+        #Better_SweClockers_Button_DuckDuckGo span:nth-child(5) { color: #009957; }\
         #Better_SweClockers_UsefulLinksSelect { width: 128px; }\
         .Better_SweClockers_ShibeText { color: red; font-family: "Comic Sans MS", "Chalkboard SE", sans-serif; font-style: italic; }\
         #Better_SweClockers_ButtonsBelowTA { float: right; margin-right: 20px; }\
@@ -2648,6 +2724,7 @@ function insertOptionsForm() {
                                 settingsCheckbox("preventAccidentalSignout", "Förhindra oavsiktlig utloggning") +
                                 settingsCheckbox("dogeInQuoteFix", 'Visa Doge-smiley i citat (istället för en Imgur-länk) <span class="Better_SweClockers_ShibeText">         win</span>') +
                                 settingsCheckbox("searchWithGoogle", "Knapp för att söka med Google istället för standardsökfunktionen") +
+                                settingsCheckbox("searchWithDuckDuckGo", "Knapp för att söka med DuckDuckGo istället för standardsökfunktionen") +
                                 settingsCheckbox("openImagesInNewTab", "Öppna bilder i ny flik (istället för att förstora dem)")
                             ) +
                             '<textarea hidden id="Better_SweClockers_Settings.uninterestingForumsRaw">' + JSON.stringify(keysWithTrueValue(BSC.settings.uninterestingForums)) + '</textarea>'
@@ -3125,6 +3202,10 @@ function run() {
                 BSC.addDOMOperation(canEnableSearchWithGoogle, enableSearchWithGoogle);
             }
 
+            if (optionIsTrue("searchWithDuckDuckGo")) {
+                BSC.addDOMOperation(canEnableSearchWithDuckDuckGo, enableSearchWithDuckDuckGo);
+            }
+
             if (isOnSettingsPage()) {
                 BSC.addDOMOperation(canInsertSettingsLinkLi, insertSettingsLinkLi);
             }
@@ -3280,3 +3361,4 @@ return {
 
 // Wrapper IIFE end:
 })();
+
