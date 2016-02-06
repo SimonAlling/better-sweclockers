@@ -8,6 +8,7 @@
 //
 // @match           http://*.sweclockers.com/*
 // @match           https://*.sweclockers.com/*
+// @exclude         *cdn.sweclockers.com/*
 // @description     Provides extra functionality to the SweClockers website and increases usability enormously by locking the height of the ads.
 // @run-at          document-start
 // ==/UserScript==
