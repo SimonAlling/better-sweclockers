@@ -148,6 +148,7 @@ var BSC = {
         "hideThumbnailCarousel":                false,
         "highlightUnreadPMs":                   true,
         "highlightOwnPosts":                    true,
+        "hideFacebookButtons":                  false,
         "largerTextareaHeight":                 720,
         "openImagesInNewTab":                   false,
         "preventAccidentalSignout":             true,
@@ -1569,9 +1570,7 @@ function openImagesInNewTab() {
         }
     }
     var bbImageDivs = document.querySelectorAll(".bbImage.isZoomable");
-    for (var i = 0; i < bbImageDivs.length; i++) {
-        makeOpenable(bbImageDivs[i]);
-    }
+    bbImageDivs.forEach(makeOpenable);
 }
 
 function handleDarkTheme() {
@@ -2633,17 +2632,18 @@ function insertOptionsForm() {
                                 settingsCheckbox("addPMLinks", "PM-knappar i foruminlägg") +
                                 settingsCheckbox("highlightOwnPosts", "Framhäv egna inlägg") +
                                 settingsCheckbox("quoteSignatureButtons", 'Citera signatur-knappar i foruminlägg') +
-                                settingsCheckbox("removePageLinkAnchors", "Ta bort #content-ankare i länkar till andra sidor i en artikel")
+                                settingsCheckbox("removePageLinkAnchors", "Ta bort <pre>#content</pre>-ankare i länkar till andra sidor i en artikel")
                             ) +
                             '<label for="Better_SweClockers_Settings.quoteSignatureTip">Text att infoga efter citat av signatur:</label>\
                             <textarea id="Better_SweClockers_Settings.quoteSignatureTip">'+BSC.settings.quoteSignatureTip+'</textarea>'
                         ) +
                         subFieldset("Diverse",
                             checkboxList(
-                                settingsCheckbox("fixAdHeight", "<strong>Lås höjden på reklam</strong>") +
+                                settingsCheckbox("fixAdHeight", "<strong>Lås höjden på reklam etc</strong>") +
                                 settingsCheckbox("fixArticleImageHeight", "Lås artikelbildens höjd") +
                                 settingsCheckbox("DOMOperationsDuringPageLoad", "Utför DOM-operationer under sidladdning") +
                                 settingsCheckbox("hideThumbnailCarousel", "Göm thumbnailvyn högst upp") +
+                                settingsCheckbox("hideFacebookButtons", "Dölj Facebookdelningsknappar") +
                                 settingsCheckbox("enableFilter", "Forumfilter för <strong>Nytt i forumet</strong>") +
                                 settingsCheckbox("preventAccidentalSignout", "Förhindra oavsiktlig utloggning") +
                                 settingsCheckbox("dogeInQuoteFix", 'Visa Doge-smiley i citat (istället för en Imgur-länk) <span class="Better_SweClockers_ShibeText">         win</span>') +
@@ -2952,7 +2952,7 @@ function enableFilterControls() {
 }
 
 function fixAdHeight() {
-    log("Fixing banner heights...");
+    log("Fixing banner heights etc...");
     // Some of these rules are only temporary to prevent "element jumping",
     // and must be restored once the ads have loaded. This will be done by showSideBannersAgain().
     BSC.CSS += "\
@@ -2997,6 +2997,14 @@ function showSideBannersAgain() {
 
 function hideThumbnailCarousel() {
     BSC.addCSS("#carousel { display: none; }");
+}
+
+function hideFacebookButtons() {
+    BSC.CSS += "\
+        .greyContentShare, .threadShare {\
+            display: none;\
+        }\
+    ";
 }
 
 function insertPseudoConsole() {
@@ -3073,6 +3081,9 @@ function prepare() {
         }
         if (optionIsTrue("hideThumbnailCarousel")) {
             hideThumbnailCarousel();
+        }
+        if (optionIsTrue("hideFacebookButtons")) {
+            hideFacebookButtons();
         }
         updateStyleElement();
     } catch(e) {
