@@ -148,6 +148,7 @@ var BSC = {
         "hideThumbnailCarousel":                false,
         "highlightUnreadPMs":                   true,
         "highlightOwnPosts":                    true,
+        "hideFacebookButtons":                  false,
         "largerTextareaHeight":                 720,
         "openImagesInNewTab":                   false,
         "preventAccidentalSignout":             true,
@@ -2644,6 +2645,7 @@ function insertOptionsForm() {
                                 settingsCheckbox("fixArticleImageHeight", "Lås artikelbildens höjd") +
                                 settingsCheckbox("DOMOperationsDuringPageLoad", "Utför DOM-operationer under sidladdning") +
                                 settingsCheckbox("hideThumbnailCarousel", "Göm thumbnailvyn högst upp") +
+                                settingsCheckbox("hideFacebookButtons", "Dölj Facebookdelningsknappar") +
                                 settingsCheckbox("enableFilter", "Forumfilter för <strong>Nytt i forumet</strong>") +
                                 settingsCheckbox("preventAccidentalSignout", "Förhindra oavsiktlig utloggning") +
                                 settingsCheckbox("dogeInQuoteFix", 'Visa Doge-smiley i citat (istället för en Imgur-länk) <span class="Better_SweClockers_ShibeText">         win</span>') +
@@ -2999,6 +3001,14 @@ function hideThumbnailCarousel() {
     BSC.addCSS("#carousel { display: none; }");
 }
 
+function hideFacebookButtons() {
+    BSC.CSS += "\
+        .greyContentShare, .threadShare {\
+            display: none;\
+        }\
+    ";
+}
+
 function insertPseudoConsole() {
     BSC.consoleContainer.id = "Better_SweClockers_Console";
     BSC.consoleContainer.appendChild(document.createElement("hr"));
@@ -3073,6 +3083,9 @@ function prepare() {
         }
         if (optionIsTrue("hideThumbnailCarousel")) {
             hideThumbnailCarousel();
+        }
+        if (optionIsTrue("hideFacebookButtons")) {
+            hideFacebookButtons();
         }
         updateStyleElement();
     } catch(e) {
