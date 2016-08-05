@@ -1570,9 +1570,7 @@ function openImagesInNewTab() {
         }
     }
     var bbImageDivs = document.querySelectorAll(".bbImage.isZoomable");
-    for (var i = 0; i < bbImageDivs.length; i++) {
-        makeOpenable(bbImageDivs[i]);
-    }
+    bbImageDivs.forEach(makeOpenable);
 }
 
 function handleDarkTheme() {
@@ -2634,14 +2632,14 @@ function insertOptionsForm() {
                                 settingsCheckbox("addPMLinks", "PM-knappar i foruminlägg") +
                                 settingsCheckbox("highlightOwnPosts", "Framhäv egna inlägg") +
                                 settingsCheckbox("quoteSignatureButtons", 'Citera signatur-knappar i foruminlägg') +
-                                settingsCheckbox("removePageLinkAnchors", "Ta bort #content-ankare i länkar till andra sidor i en artikel")
+                                settingsCheckbox("removePageLinkAnchors", "Ta bort <pre>#content</pre>-ankare i länkar till andra sidor i en artikel")
                             ) +
                             '<label for="Better_SweClockers_Settings.quoteSignatureTip">Text att infoga efter citat av signatur:</label>\
                             <textarea id="Better_SweClockers_Settings.quoteSignatureTip">'+BSC.settings.quoteSignatureTip+'</textarea>'
                         ) +
                         subFieldset("Diverse",
                             checkboxList(
-                                settingsCheckbox("fixAdHeight", "<strong>Lås höjden på reklam</strong>") +
+                                settingsCheckbox("fixAdHeight", "<strong>Lås höjden på reklam etc</strong>") +
                                 settingsCheckbox("fixArticleImageHeight", "Lås artikelbildens höjd") +
                                 settingsCheckbox("DOMOperationsDuringPageLoad", "Utför DOM-operationer under sidladdning") +
                                 settingsCheckbox("hideThumbnailCarousel", "Göm thumbnailvyn högst upp") +
@@ -2954,7 +2952,7 @@ function enableFilterControls() {
 }
 
 function fixAdHeight() {
-    log("Fixing banner heights...");
+    log("Fixing banner heights etc...");
     // Some of these rules are only temporary to prevent "element jumping",
     // and must be restored once the ads have loaded. This will be done by showSideBannersAgain().
     BSC.CSS += "\
