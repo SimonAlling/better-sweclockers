@@ -2713,6 +2713,12 @@ function insertOptionsForm() {
                             '<label for="Better_SweClockers_Settings.quoteSignatureTip">Text att infoga efter citat av signatur:</label>\
                             <textarea id="Better_SweClockers_Settings.quoteSignatureTip">'+BSC.settings.quoteSignatureTip+'</textarea>'
                         ) +
+                        subFieldset("Sökfält",
+                            checkboxList(
+                                settingsCheckbox("searchWithGoogle", "Knapp för att söka med Google istället för standardsökfunktionen") +
+                                settingsCheckbox("searchWithDuckDuckGo", "Knapp för att söka med DuckDuckGo istället för standardsökfunktionen")
+                            )
+                        ) +
                         subFieldset("Diverse",
                             checkboxList(
                                 settingsCheckbox("fixAdHeight", "<strong>Lås höjden på reklam etc</strong>") +
@@ -2723,8 +2729,6 @@ function insertOptionsForm() {
                                 settingsCheckbox("enableFilter", "Forumfilter för <strong>Nytt i forumet</strong>") +
                                 settingsCheckbox("preventAccidentalSignout", "Förhindra oavsiktlig utloggning") +
                                 settingsCheckbox("dogeInQuoteFix", 'Visa Doge-smiley i citat (istället för en Imgur-länk) <span class="Better_SweClockers_ShibeText">         win</span>') +
-                                settingsCheckbox("searchWithGoogle", "Knapp för att söka med Google istället för standardsökfunktionen") +
-                                settingsCheckbox("searchWithDuckDuckGo", "Knapp för att söka med DuckDuckGo istället för standardsökfunktionen") +
                                 settingsCheckbox("openImagesInNewTab", "Öppna bilder i ny flik (istället för att förstora dem)")
                             ) +
                             '<textarea hidden id="Better_SweClockers_Settings.uninterestingForumsRaw">' + JSON.stringify(keysWithTrueValue(BSC.settings.uninterestingForums)) + '</textarea>'
