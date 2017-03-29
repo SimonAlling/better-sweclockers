@@ -3,7 +3,7 @@
 // @namespace       http://alling.se
 //
 //                  *** Don't forget to update version below as well! ***
-// @version         2.2
+// @version         2.2.1
 //                  *** Don't forget to update version below as well! ***
 //
 // @match           http://*.sweclockers.com/*
@@ -26,7 +26,7 @@ var Better_SweClockers = (function() {
 "use strict";
 
 // Needed for update check. Remember to update!
-var version = "2.2";
+var version = "2.2.1";
 
 // "Constants"
 var ABOVE_STANDARD_CONTROL_PANEL = 0;
@@ -1527,14 +1527,22 @@ function insertDarkThemeByBlargmodeButton() {
     }
 }
 
-function setDarkTheme(on) {
-    BSC.settings.darkThemeActive = on;
-    var styleInnerHTML = BSC.settings.darkThemeCache ? BSC.darkThemeCached : "@import url('"+BSC.darkThemeURL+"');";
-    BSC.darkThemeStyleElement.id = "Better_SweClockers_DarkThemeByBlargmode";
-    BSC.darkThemeStyleElement.innerHTML = on ? styleInnerHTML : "";
+function setDarkTheme(newStateIsEnabled) {
+    log("Requested that Blargmode's dark theme be " + (newStateIsEnabled ? "en" : "dis") + "abled.");
+    BSC.settings.darkThemeActive = newStateIsEnabled;
+    var css = BSC.settings.darkThemeCache ? BSC.darkThemeCached : "@import url('"+BSC.darkThemeURL+"');";
+    if (newStateIsEnabled && BSC.darkThemeStyleElement.textContent === "") {
+        BSC.darkThemeStyleElement.textContent = css;
+        log("Did set Dark Theme to enabled.");
+    } else if (!newStateIsEnabled && BSC.darkThemeStyleElement.textContent !== "") {
+        BSC.darkThemeStyleElement.textContent = "";
+        log("Did set Dark Theme to enabled.");
+    } else {
+        log("Did not change Dark Theme because it was already " + (newStateIsEnabled ? "en" : "dis") + "abled.");
+    }
     var darkThemeButton = byID("Better_SweClockers_DarkThemeButton");
     if (!!darkThemeButton) {
-        darkThemeButton.innerHTML = on ? BSC.content.deactivateDarkTheme : BSC.content.activateDarkTheme;
+        darkThemeButton.innerHTML = newStateIsEnabled ? BSC.content.deactivateDarkTheme : BSC.content.activateDarkTheme;
     }
 }
 
@@ -1577,7 +1585,7 @@ function handleDarkTheme() {
     var settings      = BSC.settings;
     var timeOnString  = settings.darkThemeByBlargmodeTimeOn;
     var timeOffString = settings.darkThemeByBlargmodeTimeOff;
-    setDarkTheme(optionIsTrue("darkThemeActive"));
+    var darkThemeActive = optionIsTrue("darkThemeActive");
     if (isHHMMTime(timeOnString) && isHHMMTime(timeOffString)) {
         var currentTime      = new Date();
         var activationTime   = new Date();
@@ -1597,8 +1605,10 @@ function handleDarkTheme() {
             autosetDarkTheme(false);
             log("Auto-deactivated Dark Theme at "+currentTime+".");
         } else {
-            setDarkTheme(optionIsTrue("darkThemeActive"));
+            setDarkTheme(darkThemeActive);
         }
+    } else {
+        setDarkTheme(darkThemeActive);
     }
 }
 
@@ -2418,6 +2428,7 @@ function addMainCSS() {
 }
 
 function insertDarkThemeStyleElement() {
+    BSC.darkThemeStyleElement.id = "Better_SweClockers_DarkThemeByBlargmode";
     document.head.appendChild(BSC.darkThemeStyleElement);
 }
 
