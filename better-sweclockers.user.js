@@ -3270,14 +3270,7 @@ function afterAds() {
     }
 }
 
-// We will not run BSC at all on HTTPS:
-if (!isOnHTTPS()) {
-    prepare();
-} else {
-    // Except for fixAdHeight(), which is too important to skip:
-    fixAdHeight();
-    insertStyleElement();
-}
+prepare();
 
 // Public API (not accessible if BSC is sandboxed by the userscripts engine):
 return {
