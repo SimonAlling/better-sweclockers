@@ -5,7 +5,7 @@
 
 [url="https://github.com/SimonAlling/better-sweclockers/raw/master/better-sweclockers.user.js"][img]http://i.imgur.com/Qpc1jAX.png[/img][/url]
 [size="3"][b]v2.2.2[/b][/size]
-[size="1"]2017-09-26[/size]
+[size="1"]2017-10-03[/size]
 [size="3"] [/size]
 
 [size="3"][color="#D00"]»[/color] [url="#post14497818"][b]Dokumentation[/b][/url][/size]
@@ -89,4 +89,5 @@ Nu är BSC dessutom [b]fri mjukvara[/b] enligt GNU GPLv3, så vem som helst får
 [li][url="/forum/post/15671289"]v2.1[/url][/li]
 [li][url="/forum/post/15696640"]v2.2[/url][/li]
 [li][url="/forum/post/16749797"]v2.2.1[/url][/li]
+[li][url="/forum/post/17040553"]v2.2.2[/url][/li]
 [/ul]
