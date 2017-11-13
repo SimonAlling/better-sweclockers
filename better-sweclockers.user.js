@@ -102,7 +102,7 @@ var BSC = {
     darkThemeStyleElement: document.createElement("style"), // for toggling Blargmode's dark theme
     TA: null, // main textarea in advanced edit mode
     TAIsFocused: false, // will be set on focus() and blur()
-    darkThemeRefreshInterval: 5000, // milliseconds
+    darkThemeRefreshInterval: 60000, // milliseconds
     DOMTimer: null,
     DOMOperations: [],
     DOMTimerInterval: 30, // milliseconds
