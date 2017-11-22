@@ -1514,7 +1514,7 @@ function insertDarkThemeByBlargmodeButton() {
             darkThemeButtonLi.classList.add("menuItem");
             darkThemeButtonLi.id = "Better_SweClockers_DarkThemeButtonTab";
             darkThemeButtonLi.innerHTML = '<a href="#" target="_self" id="Better_SweClockers_DarkThemeButton" title="Ett mörkt tema för SweClockers av Blargmode">'+(optionIsTrue("darkThemeActive") ? BSC.content.deactivateDarkTheme : BSC.content.activateDarkTheme)+'</a>';
-            menu.style.width = "900px"; // Otherwise the Dark Theme button won't fit on some pages.
+            menu.style.minWidth = "900px"; // Otherwise the Dark Theme button won't fit on some pages.
             menu.appendChild(darkThemeButtonLi);
             byID("Better_SweClockers_DarkThemeButton").addEventListener("click", function(event) {
                 event.preventDefault();
