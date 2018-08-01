@@ -1,0 +1,16 @@
+##{getGlobal("CONFIG.ID.darkThemeToggle")} {
+    background-color: rgb(20, 20, 20);
+    border-color: black;
+    margin-left: 8px;
+    opacity: 0.6;
+}
+
+##{getGlobal("CONFIG.ID.darkThemeToggle")}.#{getGlobal("CONFIG.CLASS.darkThemeActive")} {
+    // !important to override dark theme:
+    background-color: #dfdfdf !important;
+    background-image: none !important;
+}
+
+##{getGlobal("CONFIG.ID.darkThemeToggle")}:hover, ##{getGlobal("CONFIG.ID.darkThemeToggle")}:focus {
+    opacity: 1;
+}

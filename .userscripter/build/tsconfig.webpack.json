@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "*",
+                ".userscripter/*",
+                "src/*"
+            ]
+        },
+        "target": "es6",
+        "strict": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "preserveConstEnums": true,
+        "lib": [
+            "es2018"
+        ]
+    }
+}

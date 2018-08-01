@@ -1,0 +1,108 @@
+##{getGlobal("CONFIG.ID.editingTools")} {
+    $FADE_OPACITY: 0.1;
+    $FADE: linear-gradient(to bottom, rgba(255,255,255,$FADE_OPACITY) 0%,rgba(0,0,0,$FADE_OPACITY) 100%);
+    $FADE_BRIGHT: linear-gradient(to bottom, rgba(255,255,255,2*$FADE_OPACITY) 0%,rgba(100,100,100,2*$FADE_OPACITY) 100%);
+    $FADE_INVERTED: linear-gradient(to top, rgba(255,255,255,$FADE_OPACITY) 0%,rgba(0,0,0,$FADE_OPACITY) 100%);
+
+    margin: 1px; // same as textarea, so they line up
+
+    > * {
+        vertical-align: top;
+        margin: 0 4px 6px 0;
+    }
+
+    big {
+        font-size: 1.25em;
+    }
+
+    small {
+        font-size: 0.75em;
+    }
+
+    .#{getGlobal("SITE.CLASS.button")} {
+        height: 23px;
+        box-sizing: border-box;
+        * {
+            line-height: 0;
+        }
+    }
+
+    .#{getGlobal("CONFIG.CLASS.iconButton")} {
+        padding: 4px 6px;
+        $size: 16px;
+        img, svg, div {
+            display: inline-block;
+            height: $size;
+            position: relative;
+            top: -1px;
+            vertical-align: top;
+            width: $size;
+        }
+    }
+
+    /* Special characters toolbar */
+    fieldset:first-child {
+        display: block;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+    }
+
+    fieldset {
+        border: 1px solid #cdc9c1;
+        border-radius: 3px;
+        padding: 3px;
+        > * {
+            margin: 0 1px 0 0;
+        }
+        > :last-child {
+            margin-right: 0;
+        }
+    }
+
+    $RAINBOW_OPACITY: 0.7;
+    $RAINBOW: linear-gradient(to right, rgba(255,0,0,$RAINBOW_OPACITY) 0%,rgba(255,153,50,$RAINBOW_OPACITY) 16%,rgba(247,227,49,$RAINBOW_OPACITY) 33%,rgba(62,211,42,$RAINBOW_OPACITY) 49%,rgba(46,117,232,$RAINBOW_OPACITY) 66%,rgba(90,45,226,$RAINBOW_OPACITY) 83%,rgba(152,25,198,$RAINBOW_OPACITY) 100%);
+    .#{getGlobal("CONFIG.CLASS.button_color")} {
+        background: $FADE, $RAINBOW !important; // to override Blargmode
+    }
+    .#{getGlobal("CONFIG.CLASS.button_color")}:hover, .#{getGlobal("CONFIG.CLASS.button_color")}:focus {
+        background: $FADE_BRIGHT, $RAINBOW !important;
+    }
+    .#{getGlobal("CONFIG.CLASS.button_color")}:active {
+        background: $FADE_INVERTED, $RAINBOW !important;
+    }
+
+    // quote button icon:
+    .#{getGlobal("CONFIG.CLASS.button_quote")} div {
+        font-family: "Georgia", serif;
+        font-size: 30px;
+        line-height: 24px;
+    }
+
+    $COLOR_SPOILER: #222;
+    .#{getGlobal("CONFIG.CLASS.button_spoiler")} {
+        background: $FADE, $COLOR_SPOILER !important; // to override Blargmode
+        color: #eee;
+        border-color: black;
+    }
+    .#{getGlobal("CONFIG.CLASS.button_spoiler")}:hover, .#{getGlobal("CONFIG.CLASS.button_spoiler")}:focus {
+        background: $FADE_BRIGHT, $COLOR_SPOILER !important;
+    }
+    .#{getGlobal("CONFIG.CLASS.button_spoiler")}:active {
+        box-shadow: inset 1px 1px 1px rgba(0,0,0,0.25);
+        background: $FADE_INVERTED, $COLOR_SPOILER !important;
+    }
+
+    .#{getGlobal("CONFIG.CLASS.button_code")} {
+        font-family: "Courier New", monospace;
+        font-weight: normal;
+        font-size: 11px;
+    }
+
+    .#{getGlobal("CONFIG.CLASS.button_math")} {
+        font-family: "Times New Roman", serif;
+        span {
+            opacity: 0.5;
+        }
+    }
+}

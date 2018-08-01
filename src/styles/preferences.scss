@@ -1,0 +1,52 @@
+form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
+    width: 640px;
+    margin: 32px auto;
+
+    img {
+        max-width: 100%;
+    }
+
+    .#{getGlobal("SITE.CLASS.fieldset")} {
+        padding: 8px 16px;
+
+        > legend {
+            padding: 0 4px;
+        }
+    }
+
+    .#{getGlobal("CONFIG.CLASS.radioButtonPreference")} {
+        label {
+            margin-left: 16px;
+        }
+
+        > span:first-child::after {
+            content: ":";
+        }
+    }
+
+    .#{getGlobal("CONFIG.CLASS.inlinePreference")} {
+        margin-right: 0.33em;
+        display: inline-block;
+    }
+
+    input {
+        vertical-align: middle;
+    }
+
+    label {
+        padding: 4px 0;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        margin: 0 5px 0 0;
+    }
+
+    input[type="text"], input[type="number"], input[type="time"] {
+        margin-left: 0.33em;
+    }
+
+    footer {
+        text-align: center;
+        opacity: 0.8;
+    }
+}
