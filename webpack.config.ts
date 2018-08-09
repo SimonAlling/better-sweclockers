@@ -75,6 +75,14 @@ export default (env: object, argv: {
         module: {
             rules: [
                 {
+                    test: /\.svg$/,
+                    loaders: [
+                        {
+                            loader: "raw-loader",
+                        },
+                    ],
+                },
+                {
                     test: /\.scss$/,
                     loaders: [
                         {

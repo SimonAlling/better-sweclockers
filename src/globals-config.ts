@@ -68,20 +68,7 @@ export const CONTENT = {
 };
 
 export const ICONS = {
-    SPLIT_QUOTE: `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-            <rect x="1" y="-3" width="30" height="10" stroke="#444" fill="#d7d5d1" stroke-width="2"/>
-            <rect x="1" y="19" width="30" height="22" stroke="#444" fill="#d7d5d1" stroke-width="2"/>
-            <text x="0" y="13" style="fill: #444; font-family: sans-serif; font-size: 4px">Du har fel.</text>
-            <text x="4" y="36" style="fill: #444; font-family: Georgia, serif; font-size: 20px">”</text>
-        </svg>
-    `,
-    SEARCH_LINK: `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-            <circle stroke="#888" stroke-width="5" r="20" cx="41" cy="23" fill="none"/>
-            <line x1="4" y1="60" x2="28" y2="36" stroke="#888" stroke-width="10" />
-        </svg>
-    `,
+    // Requiring an SVG file here throws when building.
     QUOTE: `<div>”</div>`,
     DOGE: `https://i.imgur.com/2IGEruO.png`,
 };

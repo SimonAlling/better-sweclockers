@@ -64,7 +64,7 @@ const BUTTON = {
     search: generalButton({
         tooltip: T.editing_tools.tooltip_search_link,
         action: ACTION_SEARCH_LINK,
-        icon: { type: "RAW", image: CONFIG.ICONS.SEARCH_LINK },
+        icon: { type: "RAW", image: require("src/icons/search-link.svg") },
     }),
     shibe: generalButton({
         label: T.editing_tools.label_shibe,
@@ -80,7 +80,7 @@ const BUTTON = {
     splitQuote: generalButton({
         tooltip: T.editing_tools.tooltip_split_quote,
         action: ACTION_SPLIT_QUOTE,
-        icon: { type: "RAW", image: CONFIG.ICONS.SPLIT_QUOTE },
+        icon: { type: "RAW", image: require("src/icons/split-quote.svg") },
     }),
 };
 
