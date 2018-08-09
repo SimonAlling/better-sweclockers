@@ -21,7 +21,7 @@ Every item must be an object with the following structure:
 }
 */
 
-const STYLESHEET_MODULES: StylesheetModule[] = [
+const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
     {
         condition: ALWAYS,
         css: require("styles/stylesheet"),

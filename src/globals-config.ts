@@ -26,8 +26,8 @@ export const ID_STYLE_ELEMENT: string = i("main-style-element");
 
 export const ID = {
     editingTools: i("editing-tools"),
-    darkThemeStylesheet: "dark-theme-stylesheet",
-    darkThemeToggle: "dark-theme-toggle",
+    darkThemeStylesheet: i("dark-theme-stylesheet"),
+    darkThemeToggle: i("dark-theme-toggle"),
 };
 
 export const CLASS = {

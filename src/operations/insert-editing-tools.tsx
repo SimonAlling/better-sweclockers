@@ -17,7 +17,7 @@ export default (e: { textarea: HTMLElement }) => {
     const reference = position === Position.ABOVE ? textarea : textarea.nextSibling;
     const toolbar = document.createElement("div");
     const textareaParent = textarea.parentElement as HTMLElement;
-    (textareaParent).insertBefore(toolbar, reference);
+    textareaParent.insertBefore(toolbar, reference);
     render(editingTools(textarea as HTMLTextAreaElement), textareaParent, toolbar);
 }
 

@@ -7,14 +7,14 @@ export interface StylesheetModule {
     css: string;
 }
 
-function compose(modules: StylesheetModule[]): string {
+function compose(modules: ReadonlyArray<StylesheetModule>): string {
     return modules.map(m => m.css).join(MODULE_SEPARATOR);
 }
 
-export function insert(modules: StylesheetModule[], id?: string): void {
+export function insert(modules: ReadonlyArray<StylesheetModule>, id?: string): void {
     insertCSS(compose(modules.filter(m => m.condition)), id);
 }
 
-export function append(modules: StylesheetModule[], id: string): void {
+export function append(modules: ReadonlyArray<StylesheetModule>, id: string): void {
     appendCSS(compose(modules.filter(m => m.condition)), id);
 }
