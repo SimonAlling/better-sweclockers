@@ -1,0 +1,31 @@
+.whiteHeader {
+    margin: 8px 0;
+}
+
+.forumForm {
+    .tcHint {
+        display: none !important; // to override inline style
+    }
+
+    .tcLabel {
+        padding-top: 0;
+    }
+
+    form > fieldset {
+        margin-top: 0;
+    }
+
+    fieldset .tanukiButton {
+        margin: 0;
+    }
+
+    .tanukiTextarea {
+        margin-bottom: 0;
+    }
+
+    fieldset:last-of-type {
+        border: none;
+        padding: 0;
+        margin-bottom: 0;
+    }
+}

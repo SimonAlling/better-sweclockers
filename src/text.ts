@@ -15,6 +15,7 @@ export const preferences = {
     general: {
         label: `Allmänt`,
         lock_heights: `Lås höjden på reklam etc`,
+        compact_layout: `Kompakt layout`,
         search_engine: {
             label: `Sökmotor`,
             google: `Google`,

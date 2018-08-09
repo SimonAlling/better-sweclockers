@@ -43,6 +43,10 @@ const STYLESHEET_MODULES: StylesheetModule[] = [
         css: require("styles/lock-heights"),
     },
     {
+        condition: Preferences.get(P.general._.compact_layout),
+        css: require("styles/compact-layout"),
+    },
+    {
         condition: Preferences.get(P.editing_tools._.enable),
         css: require("styles/editing-tools"),
     },

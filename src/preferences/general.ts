@@ -16,6 +16,11 @@ export default {
         default: true,
         label: T.preferences.general.lock_heights,
     }),
+    compact_layout: new BooleanPreference({
+        key: "compact_layout",
+        default: true,
+        label: T.preferences.general.compact_layout,
+    }),
     search_engine: new MultichoicePreference({
         key: "search_engine",
         default: SearchEngine.GOOGLE,
