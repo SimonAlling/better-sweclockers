@@ -44,9 +44,12 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         }
     }
 
-    .#{getGlobal("CONFIG.CLASS.inlinePreference")} {
-        margin-right: 0.33em;
+    $inline: #{getGlobal("CONFIG.CLASS.inlinePreference")};
+    .#{$inline} {
         display: inline-block;
+    }
+    .#{$inline} + .#{$inline} label::before {
+        content: "\a0";
     }
 
     input {
