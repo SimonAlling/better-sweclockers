@@ -21,6 +21,11 @@ export default {
         default: true,
         label: T.preferences.general.compact_layout,
     }),
+    highlight_own_posts: new BooleanPreference({
+        key: "highlight_own_posts",
+        default: true,
+        label: T.preferences.general.highlight_own_posts,
+    }),
     hide_image_controls: new BooleanPreference({
         key: "hide_image_controls",
         default: true,

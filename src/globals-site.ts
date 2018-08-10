@@ -21,6 +21,8 @@ export const CLASS = {
     menu: "menu",
     menuItem: "menuItem",
     settingsNavigation: "menuItems",
+    forumPost: "forumPost",
+    isReader: "isReader",
     bbImage: "bbImage",
     imgControls: "imgControls",
 };

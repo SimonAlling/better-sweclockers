@@ -47,6 +47,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/compact-layout"),
     },
     {
+        condition: Preferences.get(P.general._.highlight_own_posts),
+        css: require("styles/highlight-own-posts"),
+    },
+    {
         condition: Preferences.get(P.general._.hide_image_controls),
         css: require("styles/hide-image-controls"),
     },
