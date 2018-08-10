@@ -35,7 +35,8 @@ export const preferences = {
         code: `Kodrelaterade verktyg`,
         math: `Matematikrelaterade verktyg`,
         embed: `Verktyg för länkar, bilder och sökresultat`,
-        doge: `very doge buttons             wow`,
+        doge: `very doge buttons`,
+        doge_description: `            wow`,
     },
 
     dark_theme: {

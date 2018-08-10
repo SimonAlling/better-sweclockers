@@ -8,9 +8,9 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         max-width: 100%;
     }
 
-    #{$preference}, aside {
+    #{$preference}, aside, ##{getGlobal("CONFIG.ID.editingTools")} {
         transition-property: opacity;
-        transition-duration: 200ms;
+        transition-duration: 250ms;
     }
 
     #{$preference} {
@@ -75,8 +75,15 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
 
     #{$preference}:hover > aside, #{$preference}:focus > aside {
         opacity: 1;
-        transition-delay: 350ms;
         transition-duration: 500ms;
+    }
+
+    ##{getGlobal("CONFIG.ID.editingTools")} {
+        height: getGlobal("CONFIG.EDITING_TOOLS_HEIGHT");
+    }
+
+    .#{getGlobal("CONFIG.CLASS.disabled")} {
+        opacity: 0.5;
     }
 
     footer {

@@ -5,7 +5,7 @@ import {
     MultichoicePreference,
 } from "ts-preferences";
 import { h, render } from "preact";
-import { Button, BUTTONS } from "../operations/editing-tools";
+import { Button, BUTTONS, insertButton } from "../operations/editing-tools";
 
 function buttonsDescription(buttons: ReadonlyArray<Button>): string {
     const textarea = document.createElement("textarea");
@@ -54,6 +54,7 @@ export default {
         key: "editing_tools_special_characters",
         default: true,
         label: T.preferences.editing_tools.special_characters,
+        description: buttonsDescription(T.special_characters.slice(0, 5).map(insertButton)) + "…",
         extras: { class: CONFIG.CLASS.editingTools },
         dependencies,
     }),
@@ -85,7 +86,7 @@ export default {
         key: "editing_tools_doge",
         default: false,
         label: T.preferences.editing_tools.doge,
-        description: buttonsDescription(BUTTONS.doge),
+        description: T.preferences.editing_tools.doge_description,
         extras: { class: [ CONFIG.CLASS.shibe, CONFIG.CLASS.editingTools ].join(" ") },
         dependencies,
     }),

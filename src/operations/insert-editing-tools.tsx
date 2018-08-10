@@ -18,6 +18,10 @@ export default (e: { textarea: HTMLElement }) => {
     render(editingTools(textarea as HTMLTextAreaElement), textareaParent, toolbar);
 }
 
+export function fake(): JSX.Element {
+    return editingTools(document.createElement("textarea"));
+}
+
 function editingTools(textarea: HTMLTextAreaElement): JSX.Element {
     // A "connected" button has been connected to the textarea.
     const connected = (b: Button) => b(textarea);

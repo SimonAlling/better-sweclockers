@@ -16,6 +16,7 @@ export default {
     editing_tools: {
         label: T.preferences.editing_tools.label,
         _: editingToolsPreferences,
+        extras: { id: CONFIG.ID.editingToolsPreferences },
     },
     dark_theme: {
         label: T.preferences.dark_theme.label,

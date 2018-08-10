@@ -23,15 +23,18 @@ const i = prefixer(PREFIX_ID);
 const c = prefixer(PREFIX_CLASS);
 
 export const ID_STYLE_ELEMENT: string = i("main-style-element");
+export const EDITING_TOOLS_HEIGHT = "100px"; // to prevent jumping in preferences interface
 
 export const ID = {
     document: i("document"),
     editingTools: i("editing-tools"),
+    editingToolsPreferences: i("editing-tools-preferences"),
     darkThemeStylesheet: i("dark-theme-stylesheet"),
     darkThemeToggle: i("dark-theme-toggle"),
 };
 
 export const CLASS = {
+    disabled: c("disabled"),
     darkThemeActive: c("dark-theme-active"),
     editingTools: i("editing-tools"),
     iconButton: c("icon-button"),
