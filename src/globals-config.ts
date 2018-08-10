@@ -25,6 +25,7 @@ const c = prefixer(PREFIX_CLASS);
 export const ID_STYLE_ELEMENT: string = i("main-style-element");
 
 export const ID = {
+    document: i("document"),
     editingTools: i("editing-tools"),
     darkThemeStylesheet: i("dark-theme-stylesheet"),
     darkThemeToggle: i("dark-theme-toggle"),
@@ -32,6 +33,7 @@ export const ID = {
 
 export const CLASS = {
     darkThemeActive: c("dark-theme-active"),
+    editingTools: i("editing-tools"),
     iconButton: c("icon-button"),
     shibe: c("shibe"),
     button_color: c("button-color"),
@@ -41,6 +43,7 @@ export const CLASS = {
     button_math: c("button-math"),
     button_youtube: c("button-youtube"),
     splitQuote: c("split-quote"),
+    preference: c("preference"),
     preferenceDescription: c("preference-description"),
     inlinePreference: c("inlinePreference"),
     radioButtonPreference: c("radioButtonPreference"),

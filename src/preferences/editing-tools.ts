@@ -4,6 +4,18 @@ import {
     BooleanPreference,
     MultichoicePreference,
 } from "ts-preferences";
+import { h, render } from "preact";
+import { Button, BUTTONS } from "../operations/editing-tools";
+
+function buttonsDescription(buttons: ReadonlyArray<Button>): string {
+    const textarea = document.createElement("textarea");
+    const connectedButtons = buttons.map(b => b(textarea));
+    const div = document.createElement("div");
+    connectedButtons.forEach(b => {
+        render(b, div);
+    });
+    return div.innerHTML;
+}
 
 const enable = new BooleanPreference({
     key: "editing_tools",
@@ -42,31 +54,39 @@ export default {
         key: "editing_tools_special_characters",
         default: true,
         label: T.preferences.editing_tools.special_characters,
+        extras: { class: CONFIG.CLASS.editingTools },
         dependencies,
     }),
     code: new BooleanPreference({
         key: "editing_tools_code",
         default: true,
         label: T.preferences.editing_tools.code,
+        description: buttonsDescription(BUTTONS.code),
+        extras: { class: CONFIG.CLASS.editingTools },
         dependencies,
     }),
     math: new BooleanPreference({
         key: "editing_tools_math",
         default: true,
         label: T.preferences.editing_tools.math,
+        description: buttonsDescription(BUTTONS.math),
+        extras: { class: CONFIG.CLASS.editingTools },
         dependencies,
     }),
     embed: new BooleanPreference({
         key: "editing_tools_embed",
         default: true,
         label: T.preferences.editing_tools.embed,
+        description: buttonsDescription(BUTTONS.embed("")),
+        extras: { class: CONFIG.CLASS.editingTools },
         dependencies,
     }),
     doge: new BooleanPreference({
         key: "editing_tools_doge",
         default: false,
         label: T.preferences.editing_tools.doge,
-        extras: { class: CONFIG.CLASS.shibe },
+        description: buttonsDescription(BUTTONS.doge),
+        extras: { class: [ CONFIG.CLASS.shibe, CONFIG.CLASS.editingTools ].join(" ") },
         dependencies,
     }),
 }

@@ -1,15 +1,22 @@
+##{getGlobal("CONFIG.ID.document")} { // for specificity
+
+// The actual toolbar:
 ##{getGlobal("CONFIG.ID.editingTools")} {
+    margin: 1px; // same as textarea, so they line up
+    > * {
+        vertical-align: top;
+        margin-top: 0;
+        margin-bottom: 6px;
+        margin-left: 0;
+    }
+}
+
+// Editing tools in general:
+.#{getGlobal("CONFIG.CLASS.editingTools")} {
     $FADE_OPACITY: 0.1;
     $FADE: linear-gradient(to bottom, rgba(255,255,255,$FADE_OPACITY) 0%,rgba(0,0,0,$FADE_OPACITY) 100%);
     $FADE_BRIGHT: linear-gradient(to bottom, rgba(255,255,255,2*$FADE_OPACITY) 0%,rgba(100,100,100,2*$FADE_OPACITY) 100%);
     $FADE_INVERTED: linear-gradient(to top, rgba(255,255,255,$FADE_OPACITY) 0%,rgba(0,0,0,$FADE_OPACITY) 100%);
-
-    margin: 1px; // same as textarea, so they line up
-
-    > * {
-        vertical-align: top;
-        margin: 0 4px 6px 0;
-    }
 
     big {
         font-size: 1.25em;
@@ -22,6 +29,7 @@
     .#{getGlobal("SITE.CLASS.button")} {
         height: 23px;
         box-sizing: border-box;
+        margin: 0 4px 0 0;
         * {
             line-height: 0;
         }
@@ -53,10 +61,10 @@
         border-radius: 3px;
         padding: 3px;
         > * {
-            margin: 0 1px 0 0;
+            margin: 0 1px 0 0 !important;
         }
         > :last-child {
-            margin-right: 0;
+            margin-right: 0 !important;
         }
     }
 
@@ -105,4 +113,6 @@
             opacity: 0.5;
         }
     }
+}
+
 }

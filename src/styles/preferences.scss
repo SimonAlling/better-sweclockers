@@ -1,9 +1,24 @@
+$preference: #{"." + getGlobal("CONFIG.CLASS.preference")};
+
 form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     width: 640px;
     margin: 32px auto;
 
     img {
         max-width: 100%;
+    }
+
+    #{$preference}, aside {
+        transition-property: opacity;
+        transition-duration: 200ms;
+    }
+
+    #{$preference} {
+        opacity: 0.75;
+    }
+
+    #{$preference}:hover, #{$preference}:focus {
+        opacity: 1;
     }
 
     .#{getGlobal("SITE.CLASS.fieldset")} {
@@ -15,6 +30,11 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     }
 
     .#{getGlobal("CONFIG.CLASS.radioButtonPreference")} {
+        display: inline-block;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+
         label {
             margin-left: 16px;
         }
@@ -43,6 +63,20 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
 
     input[type="text"], input[type="number"], input[type="time"] {
         margin-left: 0.33em;
+    }
+
+    // Description
+    aside {
+        display: inline-block;
+        margin-left: 12px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    #{$preference}:hover > aside, #{$preference}:focus > aside {
+        opacity: 1;
+        transition-delay: 350ms;
+        transition-duration: 500ms;
     }
 
     footer {

@@ -111,9 +111,16 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
             p.extras.implicit // should not be part of the preferences menu
             ? null
             : (
-                <div id={prefixedId(p.key)} {...{ class: p.extras.class || null }}>
+                <div id={prefixedId(p.key)} class={[CONFIG.CLASS.preference].concat(p.extras.class || "").join(" ")}>
                     {InputElement(generators, p)}
-                    <aside class={CONFIG.CLASS.preferenceDescription}>{p.description}</aside>
+                    {
+                        p.description.length > 0
+                        ? <aside
+                            dangerouslySetInnerHTML={{__html: p.description}}
+                            class={CONFIG.CLASS.preferenceDescription}
+                        />
+                        : null
+                    }
                 </div>
             )
         ) : (

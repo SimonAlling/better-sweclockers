@@ -32,6 +32,11 @@ Not returning anything is equivalent to returning undefined, which is equivalent
 
 const OPERATIONS: ReadonlyArray<Operation> = [
     new IndependentOperation({
+        description: "set body id",
+        condition: ALWAYS,
+        action: () => { document.documentElement.id = CONFIG.ID.document },
+    }),
+    new IndependentOperation({
         description: "manage dark theme",
         condition: ALWAYS,
         action: DarkTheme.manage,
