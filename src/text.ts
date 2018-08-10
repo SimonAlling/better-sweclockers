@@ -16,6 +16,7 @@ export const preferences = {
         label: `Allmänt`,
         lock_heights: `Lås höjden på reklam etc`,
         compact_layout: `Kompakt layout`,
+        hide_image_controls: `Dölj zoom- och länkikoner i bilder`,
         search_engine: {
             label: `Sökmotor`,
             google: `Google`,

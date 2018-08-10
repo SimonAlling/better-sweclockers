@@ -21,6 +21,8 @@ export const CLASS = {
     menu: "menu",
     menuItem: "menuItem",
     settingsNavigation: "menuItems",
+    bbImage: "bbImage",
+    imgControls: "imgControls",
 };
 
 export const PATH = {

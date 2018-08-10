@@ -47,6 +47,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/compact-layout"),
     },
     {
+        condition: Preferences.get(P.general._.hide_image_controls),
+        css: require("styles/hide-image-controls"),
+    },
+    {
         condition: Preferences.get(P.editing_tools._.enable),
         css: require("styles/editing-tools"),
     },

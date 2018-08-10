@@ -1,0 +1,11 @@
+$bbImage: #{getGlobal("SITE.CLASS.bbImage")};
+$imgControls: #{getGlobal("SITE.CLASS.imgControls")};
+
+.#{$bbImage} .#{$imgControls} {
+    opacity: 0;
+    transition: opacity 250ms;
+}
+
+.#{$bbImage}:hover .#{$imgControls}, .#{$bbImage}:focus .#{$imgControls} {
+    opacity: 1;
+}

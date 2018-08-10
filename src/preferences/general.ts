@@ -21,6 +21,11 @@ export default {
         default: true,
         label: T.preferences.general.compact_layout,
     }),
+    hide_image_controls: new BooleanPreference({
+        key: "hide_image_controls",
+        default: true,
+        label: T.preferences.general.hide_image_controls,
+    }),
     search_engine: new MultichoicePreference({
         key: "search_engine",
         default: SearchEngine.GOOGLE,
