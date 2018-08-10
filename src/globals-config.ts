@@ -30,6 +30,7 @@ export const ID = {
     editingTools: i("editing-tools"),
     editingToolsPreferences: i("editing-tools-preferences"),
     darkThemeStylesheet: i("dark-theme-stylesheet"),
+    darkThemeAdditions: i("dark-theme-additions"),
     darkThemeToggle: i("dark-theme-toggle"),
 };
 
