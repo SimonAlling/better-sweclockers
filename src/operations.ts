@@ -8,6 +8,7 @@ import { isOnBSCPreferencesPage, isOnSweclockersSettingsPage, isInEditMode } fro
 import INSERT_PREFERENCES_MENU from "./operations/insert-preferences-menu";
 import INSERT_PREFERENCES_LINK from "./operations/insert-preferences-link";
 import INSERT_EDITING_TOOLS from "./operations/insert-editing-tools";
+import PREVENT_ACCIDENTAL_SIGNOUT from "./operations/prevent-accidental-signout";
 import * as DarkTheme from "./operations/dark-theme";
 
 const ALWAYS: boolean = true;
@@ -57,6 +58,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: Preferences.get(P.dark_theme._.show_toggle) && !isOnBSCPreferencesPage(),
         selectors: { lastTab: SELECTOR.lastNavigationTab },
         action: DarkTheme.insertToggle,
+    }),
+    new DependentOperation({
+        description: "prevent accidental signout",
+        condition: Preferences.get(P.general._.prevent_accidental_signout),
+        selectors: { siteHeader: SELECTOR.siteHeader },
+        action: PREVENT_ACCIDENTAL_SIGNOUT,
     }),
     new DependentOperation({
         description: "insert preferences link",

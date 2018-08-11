@@ -11,6 +11,7 @@ const settingsNavigationItem = `${settingsNavigation} > li.${C.menuItem}`;
 export default {
     textarea: "textarea#" + CSS.escape(SITE.ID.textarea),
     lastNavigationTab: `.${C.menu} > li.${C.menuItem}:last-child`,
+    siteHeader: `#` + SITE.ID.siteHeader,
     settingsNavigation,
     settingsNavigationItem,
     settingsNavigationLabel: `${settingsNavigationItem} > a.${C.link} > span.${C.icon} + span.${C.label}`,

@@ -9,6 +9,9 @@ export const BANNER_HEIGHT_TOP = `${121}px`; // default height of top ad banner
 export const BANNER_HEIGHT_MID = `${360}px`; // default height of page ad modules
 
 export const ID = {
+    siteHeader: "siteHeader",
+    signoutButton: "signoutForm",
+    signinButton: "btnSignin",
     textarea: "__laika_cnt.textarea.0",
 };
 
@@ -25,6 +28,7 @@ export const CLASS = {
     isReader: "isReader",
     bbImage: "bbImage",
     imgControls: "imgControls",
+    errorDialog: "errorDialog",
 };
 
 export const PATH = {
@@ -32,6 +36,7 @@ export const PATH = {
     EDIT_MODE_MARKET: /^\/marknad\/(.+\/redigera|ny\-annons)$/,
     EDIT_MODE_PM: /^\/pm\/(.+\/svara|nytt\-meddelande)/,
     SETTINGS: "/profil/installningar",
+    SIGNOUT: "/konto/rpc",
 };
 
 export const TAG = {
