@@ -21,10 +21,15 @@ export function isInEditMode_PM(): boolean {
     return SITE.PATH.EDIT_MODE_PM.test(document.location.pathname);
 }
 
+export function isInEditMode_report(): boolean {
+    return SITE.PATH.EDIT_MODE_REPORT.test(document.location.pathname);
+}
+
 export function isInEditMode(): boolean {
     return [
         isInEditMode_forum,
         isInEditMode_market,
         isInEditMode_PM,
+        isInEditMode_report,
     ].some(f => f());
 }
