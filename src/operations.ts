@@ -9,6 +9,7 @@ import INSERT_PREFERENCES_MENU from "./operations/insert-preferences-menu";
 import INSERT_PREFERENCES_LINK from "./operations/insert-preferences-link";
 import INSERT_EDITING_TOOLS from "./operations/insert-editing-tools";
 import PREVENT_ACCIDENTAL_SIGNOUT from "./operations/prevent-accidental-signout";
+import PREVENT_ACCIDENTAL_UNLOAD from "./operations/prevent-accidental-unload";
 import * as DarkTheme from "./operations/dark-theme";
 
 const ALWAYS: boolean = true;
@@ -46,6 +47,15 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         description: "insert preferences menu",
         condition: isOnBSCPreferencesPage(),
         action: INSERT_PREFERENCES_MENU,
+    }),
+    new DependentOperation({
+        description: "prevent accidental unload",
+        condition: Preferences.get(P.general._.prevent_accidental_unload) && isInEditMode(),
+        selectors: {
+            textarea: SELECTOR.textarea,
+            actionButtons: SELECTOR.actionButtons,
+        },
+        action: PREVENT_ACCIDENTAL_UNLOAD,
     }),
     new DependentOperation({
         description: "insert editing tools",

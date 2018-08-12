@@ -15,4 +15,5 @@ export default {
     settingsNavigation,
     settingsNavigationItem,
     settingsNavigationLabel: `${settingsNavigationItem} > a.${C.link} > span.${C.icon} + span.${C.label}`,
+    actionButtons: `button[name=action]`,
 };

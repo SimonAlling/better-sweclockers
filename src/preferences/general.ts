@@ -21,6 +21,11 @@ export default {
         default: true,
         label: T.preferences.general.prevent_accidental_signout,
     }),
+    prevent_accidental_unload: new BooleanPreference({
+        key: "prevent_accidental_unload",
+        default: true,
+        label: T.preferences.general.prevent_accidental_unload,
+    }),
     compact_layout: new BooleanPreference({
         key: "compact_layout",
         default: true,

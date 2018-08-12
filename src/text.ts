@@ -19,6 +19,7 @@ export const preferences = {
         label: `Allmänt`,
         lock_heights: `Lås höjden på reklam etc`,
         prevent_accidental_signout: `Fråga vid utloggning`,
+        prevent_accidental_unload: `Fråga vid navigering från redigeringsläge`,
         compact_layout: `Kompakt layout`,
         highlight_own_posts: `Framhäv egna inlägg`,
         hide_image_controls: `Dölj zoom- och länkikoner i bilder`,
