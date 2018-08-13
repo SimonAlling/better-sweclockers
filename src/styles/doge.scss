@@ -1,6 +1,10 @@
+##{getGlobal("CONFIG.ID.document")} {
+
 .#{getGlobal("CONFIG.CLASS.shibe")}, .#{getGlobal("CONFIG.CLASS.shibe")} * {
     color: #{getGlobal("CONFIG.CONTENT.shibeColor")} !important; // to override Blargmode
     font-family: #{getGlobal("CONFIG.CONTENT.shibeFont")};
     font-style: italic;
     white-space: pre;
+}
+
 }
