@@ -1,8 +1,13 @@
 $preference: #{"." + getGlobal("CONFIG.CLASS.preference")};
 
+body > * {
+    display: none; // to hide everything except the form in iOS Safari
+}
+
 form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     width: 640px;
     margin: 32px auto;
+    display: block; // to not hide the form
 
     img {
         max-width: 100%;

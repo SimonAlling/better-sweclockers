@@ -13,6 +13,5 @@ export default () => {
         link.href = SITE.STYLESHEET_URL;
         return link;
     })());
-    flush(document.body);
     document.body.appendChild(Preferences.htmlMenu(menuGenerator));
 }
