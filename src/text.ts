@@ -23,6 +23,7 @@ export const preferences = {
         compact_layout: `Kompakt layout`,
         highlight_own_posts: `Framhäv egna inlägg`,
         hide_image_controls: `Dölj zoom- och länkikoner i bilder`,
+        hide_carousel: `Dölj bildspelsvyn högst upp`,
         search_engine: {
             label: `Sökmotor`,
             google: `Google`,

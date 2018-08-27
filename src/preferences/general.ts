@@ -41,6 +41,11 @@ export default {
         default: true,
         label: T.preferences.general.hide_image_controls,
     }),
+    hide_carousel: new BooleanPreference({
+        key: "hide_carousel",
+        default: false,
+        label: T.preferences.general.hide_carousel,
+    }),
     search_engine: new MultichoicePreference({
         key: "search_engine",
         default: SearchEngine.GOOGLE,

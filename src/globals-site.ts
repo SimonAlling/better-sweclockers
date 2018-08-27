@@ -13,6 +13,7 @@ export const ID = {
     signoutButton: "signoutForm",
     signinButton: "btnSignin",
     textarea: "__laika_cnt.textarea.0",
+    carousel: "carousel",
 };
 
 export const CLASS = {

@@ -55,6 +55,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/hide-image-controls"),
     },
     {
+        condition: Preferences.get(P.general._.hide_carousel),
+        css: require("styles/hide-carousel"),
+    },
+    {
         condition: Preferences.get(P.editing_tools._.enable),
         css: require("styles/editing-tools"),
     },
