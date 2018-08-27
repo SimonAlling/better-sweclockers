@@ -8,4 +8,5 @@ export default {
     sitename: "SweClockers",
     namespace: "simonalling.se",
     runAt: "document-start",
+    hostedAt: "https://simonalling.se/userscripts/",
 };
