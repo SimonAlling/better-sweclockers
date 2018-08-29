@@ -4,12 +4,18 @@ import * as CONFIG from "globals-config";
 import SELECTOR from "./selectors";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";
-import { isOnBSCPreferencesPage, isOnSweclockersSettingsPage, isInEditMode } from "./environment";
+import {
+    isInEditMode,
+    isOnBSCPreferencesPage,
+    isOnSweclockersSettingsPage,
+    isReadingEditorialContent,
+} from "./environment";
 import INSERT_PREFERENCES_MENU from "./operations/insert-preferences-menu";
 import INSERT_PREFERENCES_LINK from "./operations/insert-preferences-link";
 import INSERT_EDITING_TOOLS from "./operations/insert-editing-tools";
 import PREVENT_ACCIDENTAL_SIGNOUT from "./operations/prevent-accidental-signout";
 import PREVENT_ACCIDENTAL_UNLOAD from "./operations/prevent-accidental-unload";
+import ADAPT_CORRECTIONS_LINK from "./operations/adapt-corrections-link";
 import * as DarkTheme from "./operations/dark-theme";
 
 const ALWAYS: boolean = true;
@@ -84,6 +90,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
             label: SELECTOR.settingsNavigationLabel,
         },
         action: INSERT_PREFERENCES_LINK,
+    }),
+    new DependentOperation({
+        description: "adapt corrections link to work with improved corrections",
+        condition: Preferences.get(P.general._.improved_corrections) && isReadingEditorialContent(),
+        selectors: { correctionsLink: "#" + SITE.ID.correctionsLink },
+        action: ADAPT_CORRECTIONS_LINK,
     }),
 ];
 

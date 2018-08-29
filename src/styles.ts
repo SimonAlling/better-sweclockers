@@ -47,6 +47,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/compact-layout"),
     },
     {
+        condition: Preferences.get(P.general._.improved_corrections),
+        css: require("styles/improved-corrections"),
+    },
+    {
         condition: Preferences.get(P.general._.highlight_own_posts),
         css: require("styles/highlight-own-posts"),
     },

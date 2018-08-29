@@ -1,0 +1,81 @@
+##{getGlobal("CONFIG.ID.document")} {
+
+$ID_CORRECTIONS_LINK: getGlobal("SITE.ID.correctionsLink");
+$WRAPPER_WIDTH_WIDE: getGlobal("SITE.WRAPPER_WIDTH_WIDE");
+$WRAPPER_WIDTH_NARROW: getGlobal("SITE.WRAPPER_WIDTH_NARROW");
+$MAX_WIDTH_FOR_NARROW_LAYOUT: getGlobal("SITE.MAX_WIDTH_FOR_NARROW_LAYOUT");
+$DIALOG_OFFSET_LEFT: 550px; // article width plus some spacing
+
+// Dialog
+.#{getGlobal("SITE.CLASS.proofDialog")} {
+    .wndModalOverlay {
+        display: none;
+    }
+
+    .wndWindowArea {
+        border: none;
+        left: calc((100% - #{$WRAPPER_WIDTH_WIDE}) / 2 + #{$DIALOG_OFFSET_LEFT}) !important;
+        opacity: 0.5;
+        position: fixed;
+        top: 50% !important;
+        transform: translate(0, -50%);
+        transition: opacity 200ms ease-in-out;
+    }
+
+    @media screen and (max-width: $WRAPPER_WIDTH_WIDE) {
+        .wndWindowArea {
+            left: $DIALOG_OFFSET_LEFT !important;
+        }
+    }
+
+    @media screen and (max-width: $MAX_WIDTH_FOR_NARROW_LAYOUT) {
+        .wndWindowArea {
+            left: calc((100% - #{$WRAPPER_WIDTH_NARROW}) / 2 + #{$DIALOG_OFFSET_LEFT}) !important;
+        }
+    }
+
+    .wndWindowArea:hover, .wndWindowArea:focus-within {
+        opacity: 1;
+    }
+
+    // Wide dark border:
+    .wndWindowArea > .inner {
+        box-shadow: 0 0 20px black;
+        padding: 0;
+    }
+
+    // Narrow black border:
+    .wndFrameDecorator {
+        border-width: 1px;
+    }
+
+    .infoText {
+        display: none;
+    }
+
+    .tanukiTextarea textarea {
+        height: 240px;
+    }
+}
+
+// "Skicka en rättelse" link
+##{$ID_CORRECTIONS_LINK} {
+    $radius: 8px;
+    background-color: #da6b0f;
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+    bottom: 0;
+    left: -1px; // to make clicking it easier (possible to click left of it otherwise)
+    opacity: 0.3;
+    padding: 8px;
+    position: fixed;
+    transform: rotate(-90deg);
+    transform-origin: top left;
+    z-index: 100;
+}
+
+##{$ID_CORRECTIONS_LINK}:hover, ##{$ID_CORRECTIONS_LINK}:focus {
+    opacity: 1;
+}
+
+}

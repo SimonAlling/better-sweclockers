@@ -33,3 +33,14 @@ export function isInEditMode(): boolean {
         isInEditMode_report,
     ].some(f => f());
 }
+
+export function isReadingEditorialContent(): boolean {
+    return [
+        SITE.PATH.ARTICLE,
+        SITE.PATH.GUIDE,
+        SITE.PATH.NEWS,
+        SITE.PATH.COMPETITION,
+        SITE.PATH.TEST,
+        SITE.PATH.TESTPILOT,
+    ].some(r => r.test(document.location.pathname));
+}

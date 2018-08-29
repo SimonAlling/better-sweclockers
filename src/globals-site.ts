@@ -7,6 +7,9 @@ export const STYLESHEET_URL = "/css/combine.min.css";
 
 export const BANNER_HEIGHT_TOP = `${121}px`; // default height of top ad banner
 export const BANNER_HEIGHT_MID = `${360}px`; // default height of page ad modules
+export const WRAPPER_WIDTH_WIDE = `${1250}px`;
+export const WRAPPER_WIDTH_NARROW = `${1002}px`;
+export const MAX_WIDTH_FOR_NARROW_LAYOUT = `${1100}px`;
 
 export const ID = {
     siteHeader: "siteHeader",
@@ -14,6 +17,7 @@ export const ID = {
     signinButton: "btnSignin",
     textarea: "__laika_cnt.textarea.0",
     carousel: "carousel",
+    correctionsLink: "proofArticle",
 };
 
 export const CLASS = {
@@ -30,6 +34,7 @@ export const CLASS = {
     bbImage: "bbImage",
     imgControls: "imgControls",
     errorDialog: "errorDialog",
+    proofDialog: "proofDialog",
 };
 
 export const PATH = {
@@ -39,6 +44,12 @@ export const PATH = {
     EDIT_MODE_REPORT: /^\/(forum|marknad|pm)\/.+\/anmal$/,
     SETTINGS: "/profil/installningar",
     SIGNOUT: "/konto/rpc",
+    ARTICLE: /^\/artikel\//,
+    GUIDE: /^\/guide\//,
+    NEWS: /^\/nyhet\//,
+    COMPETITION: /^\/tavling\//,
+    TEST: /^\/test\//,
+    TESTPILOT: /^\/testpilot\//,
 };
 
 export const TAG = {

@@ -21,6 +21,7 @@ export const preferences = {
         prevent_accidental_signout: `Fråga vid utloggning`,
         prevent_accidental_unload: `Fråga vid navigering från redigeringsläge`,
         compact_layout: `Kompakt layout`,
+        improved_corrections: `Bättre rättelsesystem`,
         highlight_own_posts: `Framhäv egna inlägg`,
         hide_image_controls: `Dölj zoom- och länkikoner i bilder`,
         hide_carousel: `Dölj bildspelsvyn högst upp`,

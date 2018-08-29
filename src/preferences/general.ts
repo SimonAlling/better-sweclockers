@@ -31,6 +31,11 @@ export default {
         default: true,
         label: T.preferences.general.compact_layout,
     }),
+    improved_corrections: new BooleanPreference({
+        key: "improved_corrections",
+        default: true,
+        label: T.preferences.general.improved_corrections,
+    }),
     highlight_own_posts: new BooleanPreference({
         key: "highlight_own_posts",
         default: true,
