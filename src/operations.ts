@@ -16,6 +16,7 @@ import INSERT_EDITING_TOOLS from "./operations/insert-editing-tools";
 import PREVENT_ACCIDENTAL_SIGNOUT from "./operations/prevent-accidental-signout";
 import PREVENT_ACCIDENTAL_UNLOAD from "./operations/prevent-accidental-unload";
 import ADAPT_CORRECTIONS_LINK from "./operations/adapt-corrections-link";
+import MANAGE_CARET_POSITION from "./operations/manage-caret-position";
 import * as DarkTheme from "./operations/dark-theme";
 
 const ALWAYS: boolean = true;
@@ -62,6 +63,15 @@ const OPERATIONS: ReadonlyArray<Operation> = [
             actionButtons: SELECTOR.actionButtons,
         },
         action: PREVENT_ACCIDENTAL_UNLOAD,
+    }),
+    new DependentOperation({
+        description: "manage caret position in textarea",
+        condition: isInEditMode(),
+        selectors: {
+            textarea: SELECTOR.textarea,
+            previewButton: SELECTOR.previewButton,
+        },
+        action: MANAGE_CARET_POSITION,
     }),
     new DependentOperation({
         description: "insert editing tools",

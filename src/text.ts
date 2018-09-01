@@ -20,6 +20,8 @@ export const preferences = {
         lock_heights: `Lås höjden på reklam etc`,
         prevent_accidental_signout: `Fråga vid utloggning`,
         prevent_accidental_unload: `Fråga vid navigering från redigeringsläge`,
+        place_caret_at_end: `Placera markören i slutet av textrutan`,
+        remember_caret_position: `Kom ihåg markörens position vid förhandsgranskning`,
         compact_layout: `Kompakt layout`,
         improved_corrections: `Bättre rättelsesystem`,
         highlight_own_posts: `Framhäv egna inlägg`,

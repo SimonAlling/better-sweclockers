@@ -57,6 +57,10 @@ export const PATH = {
     PREFERENCES: (sweclockersSettingsPath: string): string => sweclockersSettingsPath + "/" + USERSCRIPT_ID,
 };
 
+export const KEY = {
+    caret_position: i("caret_position_in_textarea"),
+};
+
 export const URL_LOGO = "https://cdn.sweclockers.com/artikel/bild/63329?l=eyJyZXNvdXJjZSI6IlwvYXJ0aWtlbFwvYmlsZFwvNjMzMjkiLCJmaWx0ZXJzIjpbInQ9b3JpZ2luYWwiXSwicGFyYW1zIjpbXSwia2V5IjoiYzk3ODM1MmY4NDVkM2YwOWY3M2UwYWRmODZlMjk1MmIifQ%3D%3D";
 
 export const DARK_THEME = {

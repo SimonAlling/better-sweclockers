@@ -51,6 +51,16 @@ export default {
         default: false,
         label: T.preferences.general.hide_carousel,
     }),
+    place_caret_at_end: new BooleanPreference({
+        key: "place_caret_at_end",
+        default: true,
+        label: T.preferences.general.place_caret_at_end,
+    }),
+    remember_caret_position: new BooleanPreference({
+        key: "remember_caret_position",
+        default: true,
+        label: T.preferences.general.remember_caret_position,
+    }),
     search_engine: new MultichoicePreference({
         key: "search_engine",
         default: SearchEngine.GOOGLE,

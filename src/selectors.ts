@@ -8,6 +8,8 @@ const C = SITE.CLASS;
 const settingsNavigation = `ul.${C.settingsNavigation}`;
 const settingsNavigationItem = `${settingsNavigation} > li.${C.menuItem}`;
 
+const actionButtons = `button[name=action]`;
+
 export default {
     textarea: "textarea#" + CSS.escape(SITE.ID.textarea),
     lastNavigationTab: `.${C.menu} > li.${C.menuItem}:last-child`,
@@ -15,5 +17,6 @@ export default {
     settingsNavigation,
     settingsNavigationItem,
     settingsNavigationLabel: `${settingsNavigationItem} > a.${C.link} > span.${C.icon} + span.${C.label}`,
-    actionButtons: `button[name=action]`,
+    actionButtons,
+    previewButton: actionButtons + `[value=doPreview]`,
 };
