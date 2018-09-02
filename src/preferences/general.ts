@@ -16,6 +16,11 @@ export default {
         default: true,
         label: T.preferences.general.lock_heights,
     }),
+    disable_scroll_restoration: new BooleanPreference({
+        key: "disable_scroll_restoration",
+        default: false,
+        label: T.preferences.general.disable_scroll_restoration,
+    }),
     prevent_accidental_signout: new BooleanPreference({
         key: "prevent_accidental_signout",
         default: true,

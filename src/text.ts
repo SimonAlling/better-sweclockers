@@ -18,6 +18,7 @@ export const preferences = {
     general: {
         label: `Allmänt`,
         lock_heights: `Lås höjden på reklam etc`,
+        disable_scroll_restoration: `Förhindra webbläsaren från att komma ihåg scrollning`,
         prevent_accidental_signout: `Fråga vid utloggning`,
         prevent_accidental_unload: `Fråga vid navigering från redigeringsläge`,
         place_caret_at_end: `Placera markören i slutet av textrutan`,

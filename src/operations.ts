@@ -55,6 +55,15 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: isOnBSCPreferencesPage(),
         action: INSERT_PREFERENCES_MENU,
     }),
+    new IndependentOperation({
+        description: "disable scroll restoration",
+        condition: Preferences.get(P.general._.disable_scroll_restoration),
+        action: () => {
+            if ("scrollRestoration" in history) {
+                history.scrollRestoration = "manual";
+            }
+        },
+    }),
     new DependentOperation({
         description: "prevent accidental unload",
         condition: Preferences.get(P.general._.prevent_accidental_unload) && isInEditMode(),
