@@ -91,7 +91,8 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     }
 
     .#{getGlobal("CONFIG.CLASS.disabled")} {
-        opacity: 0.5;
+        opacity: 0.25;
+        pointer-events: none;
     }
 
     footer {
