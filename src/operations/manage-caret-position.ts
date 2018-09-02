@@ -15,9 +15,9 @@ export default (e: {
     // wiped on any other page unload.
     const textarea = e.textarea as HTMLTextAreaElement;
     const savedPosition = Storage.get_session(CONFIG.KEY.caret_position, NaN).value;
-    if (Preferences.get(P.general._.remember_caret_position) && isPositiveInt(savedPosition)) {
+    if (Preferences.get(P.edit_mode._.remember_caret_position) && isPositiveInt(savedPosition)) {
         placeCaretIn(textarea, savedPosition);
-    } else if (Preferences.get(P.general._.place_caret_at_end)) {
+    } else if (Preferences.get(P.edit_mode._.place_caret_at_end)) {
         placeCaretIn(textarea, textarea.value.length);
     }
     const wipeSavedPosition = () => Storage.remove_session(CONFIG.KEY.caret_position);

@@ -18,21 +18,20 @@ export const preferences = {
     general: {
         label: `Allmänt`,
         lock_heights: `Lås höjden på reklam etc`,
-        disable_scroll_restoration: `Förhindra webbläsaren från att komma ihåg scrollning`,
-        prevent_accidental_signout: `Fråga vid utloggning`,
-        prevent_accidental_unload: `Fråga vid navigering från redigeringsläge`,
-        place_caret_at_end: `Placera markören i slutet av textrutan`,
-        remember_caret_position: `Kom ihåg markörens position vid förhandsgranskning`,
         compact_layout: `Kompakt layout`,
         improved_corrections: `Bättre rättelsesystem`,
         highlight_own_posts: `Framhäv egna inlägg`,
-        hide_image_controls: `Dölj zoom- och länkikoner i bilder`,
-        hide_carousel: `Dölj bildspelsvyn högst upp`,
         search_engine: {
             label: `Sökmotor`,
             google: `Google`,
             duckduckgo: `DuckDuckGo`,
         },
+    },
+
+    edit_mode: {
+        label: `Redigeringsläge`,
+        place_caret_at_end: `Placera markören i slutet av textrutan`,
+        remember_caret_position: `Kom ihåg markörens position vid förhandsgranskning`,
     },
 
     editing_tools: {
@@ -57,6 +56,15 @@ export const preferences = {
         auto: `Automatisk aktivering`,
         between: `mellan`,
         and: `och`,
+    },
+
+    advanced: {
+        label: `Avancerat`,
+        prevent_accidental_signout: `Fråga vid utloggning`,
+        prevent_accidental_unload: `Fråga vid navigering från redigeringsläge`,
+        disable_scroll_restoration: `Förhindra webbläsaren från att komma ihåg scrollning`,
+        hide_image_controls: `Dölj zoom- och länkikoner i bilder`,
+        hide_carousel: `Dölj bildspelsvyn högst upp`,
     },
 };
 

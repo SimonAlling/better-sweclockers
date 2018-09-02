@@ -55,11 +55,11 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/highlight-own-posts"),
     },
     {
-        condition: Preferences.get(P.general._.hide_image_controls),
+        condition: Preferences.get(P.advanced._.hide_image_controls),
         css: require("styles/hide-image-controls"),
     },
     {
-        condition: Preferences.get(P.general._.hide_carousel),
+        condition: Preferences.get(P.advanced._.hide_carousel),
         css: require("styles/hide-carousel"),
     },
     {

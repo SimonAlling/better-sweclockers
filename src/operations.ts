@@ -57,7 +57,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new IndependentOperation({
         description: "disable scroll restoration",
-        condition: Preferences.get(P.general._.disable_scroll_restoration),
+        condition: Preferences.get(P.advanced._.disable_scroll_restoration),
         action: () => {
             if ("scrollRestoration" in history) {
                 history.scrollRestoration = "manual";
@@ -66,7 +66,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "prevent accidental unload",
-        condition: Preferences.get(P.general._.prevent_accidental_unload) && isInEditMode(),
+        condition: Preferences.get(P.advanced._.prevent_accidental_unload) && isInEditMode(),
         selectors: {
             textarea: SELECTOR.textarea,
             actionButtons: SELECTOR.actionButtons,
@@ -96,7 +96,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "prevent accidental signout",
-        condition: Preferences.get(P.general._.prevent_accidental_signout),
+        condition: Preferences.get(P.advanced._.prevent_accidental_signout),
         selectors: { siteHeader: SELECTOR.siteHeader },
         action: PREVENT_ACCIDENTAL_SIGNOUT,
     }),
