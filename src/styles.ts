@@ -63,7 +63,7 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/hide-carousel"),
     },
     {
-        condition: Preferences.get(P.editing_tools._.enable),
+        condition: ALWAYS,
         css: require("styles/editing-tools"),
     },
 ];

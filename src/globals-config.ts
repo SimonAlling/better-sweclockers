@@ -37,7 +37,7 @@ export const ID = {
 export const CLASS = {
     disabled: c("disabled"),
     darkThemeActive: c("dark-theme-active"),
-    editingTools: i("editing-tools"),
+    editingTools: c("editing-tools"),
     iconButton: c("icon-button"),
     shibe: c("shibe"),
     button_color: c("button-color"),
