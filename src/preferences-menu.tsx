@@ -89,12 +89,7 @@ function changeHandler(handler: EventHandlerNonNull): EventHandlerNonNull {
         handler(e);
         const editingTools = document.getElementById(CONFIG.ID.editingTools);
         if (is(HTMLElement)(editingTools)) {
-            render(EditingTools.fake(), editingTools.parentElement as HTMLElement, editingTools);
-            if (Preferences.get(P.editing_tools._.enable)) {
-                editingTools.classList.remove(CONFIG.CLASS.disabled);
-            } else {
-                editingTools.classList.add(CONFIG.CLASS.disabled);
-            }
+            render(EditingTools.fake(Preferences.get(P.editing_tools._.enable)), editingTools.parentElement as HTMLElement, editingTools);
         }
     };
 }
@@ -146,7 +141,7 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
                 {Entries(generators, p._)}
                 {
                     p.extras && p.extras.id === CONFIG.ID.editingToolsPreferences
-                    ? EditingTools.fake()
+                    ? EditingTools.fake(Preferences.get(P.editing_tools._.enable))
                     : null
                 }
             </fieldset>

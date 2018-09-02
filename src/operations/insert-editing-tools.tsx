@@ -18,8 +18,14 @@ export default (e: { textarea: HTMLElement }) => {
     render(editingTools(textarea as HTMLTextAreaElement), textareaParent, toolbar);
 }
 
-export function fake(): JSX.Element {
-    return editingTools(document.createElement("textarea"));
+export function fake(enabled: boolean): JSX.Element {
+    const fakeEditingTools = editingTools(document.createElement("textarea"));
+    fakeEditingTools.attributes.class = (
+        [ fakeEditingTools.attributes.class ]
+        .concat(enabled ? [] : [ CONFIG.CLASS.disabled ])
+        .join(" ")
+    );
+    return fakeEditingTools;
 }
 
 function editingTools(textarea: HTMLTextAreaElement): JSX.Element {
