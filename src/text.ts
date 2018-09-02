@@ -19,7 +19,7 @@ export const preferences = {
         label: `Allmänt`,
         lock_heights: `Lås höjden på reklam etc`,
         compact_layout: `Kompakt layout`,
-        improved_corrections: `Bättre rättelsesystem`,
+        improved_corrections: `Bättre rättelsegränssnitt`,
         highlight_own_posts: `Framhäv egna inlägg`,
         search_engine: {
             label: `Sökmotor`,
