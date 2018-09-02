@@ -21,6 +21,11 @@ export default {
         default: true,
         label: T.preferences.general.compact_layout,
     }),
+    improved_pagination_buttons: new BooleanPreference({
+        key: "improved_pagination_buttons",
+        default: true,
+        label: T.preferences.general.improved_pagination_buttons,
+    }),
     improved_corrections: new BooleanPreference({
         key: "improved_corrections",
         default: true,

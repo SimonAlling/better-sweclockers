@@ -47,6 +47,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/compact-layout"),
     },
     {
+        condition: Preferences.get(P.general._.improved_pagination_buttons),
+        css: require("styles/improved-pagination-buttons"),
+    },
+    {
         condition: Preferences.get(P.general._.improved_corrections),
         css: require("styles/improved-corrections"),
     },

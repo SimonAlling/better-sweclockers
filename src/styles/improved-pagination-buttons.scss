@@ -1,0 +1,13 @@
+.pages {
+    margin-bottom: unset;
+
+    $size: 32px;
+    a {
+        box-sizing: border-box;
+        display: table-cell;
+        height: $size;
+        text-align: center;
+        vertical-align: middle;
+        width: $size;
+    }
+}
