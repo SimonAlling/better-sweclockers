@@ -11,13 +11,9 @@ export default (e: { textarea: HTMLElement }) => {
     const textarea = e.textarea as HTMLTextAreaElement;
     const changeListener = () => {
         addListener();
-        textarea.removeEventListener("change", changeListener);
+        textarea.removeEventListener("input", changeListener);
     }
-    if (textarea.value === "") {
-        textarea.addEventListener("change", changeListener);
-    } else {
-        addListener();
-    }
+    textarea.addEventListener("input", changeListener);
     const buttons = document.querySelectorAll(SELECTOR.actionButtons);
     Array.from(buttons).forEach(button => {
         button.addEventListener("click", removeListener);
@@ -25,6 +21,7 @@ export default (e: { textarea: HTMLElement }) => {
 }
 
 function preventUnload(event: Event) {
+    event.preventDefault();
     return event.returnValue = true;
 }
 
