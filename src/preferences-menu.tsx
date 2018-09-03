@@ -2,7 +2,7 @@ import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import * as T from "text";
 import { is, isString } from "ts-type-guards";
-import { h, render } from 'preact';
+import { h, render, Component } from 'preact';
 import { log, logInfo, logWarning, logError } from "userscripter/logging";
 import P from "preferences";
 import { Preferences } from "userscripter/preference-handling";
@@ -183,7 +183,7 @@ function Generator_Boolean(p: BooleanPreference): JSX.Element {
             <input type="checkbox" checked={Preferences.get(p)} onChange={changeHandler(e => {
                 Preferences.set(p, (e.target as HTMLInputElement).checked);
             })} />
-            {p.label}
+            <HtmlLabel html={p.label} />
         </label>
     );
 }
@@ -191,7 +191,7 @@ function Generator_Boolean(p: BooleanPreference): JSX.Element {
 function Generator_String(p: StringPreference): JSX.Element {
     return (
         <label>
-            {p.label}
+            <HtmlLabel html={p.label} />
             {p.multiline
                 ?
                 <textarea
@@ -212,7 +212,7 @@ function Generator_String(p: StringPreference): JSX.Element {
 function Generator_Integer(p: IntegerPreference): JSX.Element {
     return (
         <label>
-            {p.label}
+            <HtmlLabel html={p.label} />
             <input
                 type="number"
                 value={Preferences.get(p).toString()}
@@ -225,7 +225,7 @@ function Generator_Integer(p: IntegerPreference): JSX.Element {
 function Generator_Double(p: DoublePreference): JSX.Element {
     return (
         <label>
-            {p.label}
+            <HtmlLabel html={p.label} />
             <input
                 type="number"
                 value={Preferences.get(p).toString()}
@@ -239,7 +239,7 @@ function Generator_Double(p: DoublePreference): JSX.Element {
 function Generator_Time(p: TimePreference): JSX.Element {
     return (
         <label>
-            {p.label}
+            <HtmlLabel html={p.label} />
             <input
                 type="time"
                 value={p.stringify(Preferences.get(p))}
@@ -252,7 +252,7 @@ function Generator_Time(p: TimePreference): JSX.Element {
 function Generator_IntegerRange(p: IntegerRangePreference): JSX.Element {
     return (
         <label>
-            {p.label}
+            <HtmlLabel html={p.label} />
             <input
                 type="number"
                 value={Preferences.get(p).toString()}
@@ -267,7 +267,7 @@ function Generator_IntegerRange(p: IntegerRangePreference): JSX.Element {
 function Generator_DoubleRange(p: DoubleRangePreference): JSX.Element {
     return (
         <label>
-            {p.label}
+            <HtmlLabel html={p.label} />
             <input
                 type="number"
                 value={Preferences.get(p).toString()}
@@ -294,7 +294,7 @@ function Generator_Multichoice<T extends AllowedTypes>(p: MultichoicePreference<
     return options.length <= MAX_RADIO_BUTTONS
         ? (
             <fieldset class={CONFIG.CLASS.radioButtonPreference}>
-                <span>{p.label}</span>
+                <HtmlLabel html={p.label} />
                 {options.map(option =>
                     RadioButton({
                         p: p,
@@ -329,7 +329,13 @@ function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: 
                     }
                 })}
             />
-            {label}
+            <HtmlLabel html={p.label} />
         </label>
     );
+}
+
+class HtmlLabel extends Component<{ html: string }> {
+    render() {
+        return <span dangerouslySetInnerHTML={{ __html: this.props.html }} />;
+    }
 }
