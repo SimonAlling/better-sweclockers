@@ -9,6 +9,7 @@ import darkThemePreferences from "./preferences/dark-theme";
 import editModePreferences from "./preferences/edit-mode";
 import editingToolsPreferences from "./preferences/editing-tools";
 import advancedPreferences from "./preferences/advanced";
+import keyboardPreferences from "./preferences/keyboard";
 
 export default {
     general: {
@@ -32,4 +33,5 @@ export default {
         label: T.preferences.advanced.label,
         _: advancedPreferences,
     },
+    keyboard: keyboardPreferences,
 };

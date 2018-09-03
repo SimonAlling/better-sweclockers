@@ -19,6 +19,8 @@ import PREVENT_ACCIDENTAL_UNLOAD from "./operations/prevent-accidental-unload";
 import ADAPT_CORRECTIONS_LINK from "./operations/adapt-corrections-link";
 import MANAGE_CARET_POSITION from "./operations/manage-caret-position";
 import REMOVE_MOBILE_SITE_DISCLAIMER from "./operations/remove-mobile-site-disclaimer";
+import KEYBOARD_SHORTCUT_PREVIEW from "./operations/keyboard-shortcuts/preview";
+import MOUSETRAP_PREPARATIONS from "./operations/mousetrap-preparations";
 import * as DarkTheme from "./operations/dark-theme";
 
 const ALWAYS: boolean = true;
@@ -129,6 +131,24 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: Preferences.get(P.general._.improved_corrections) && isReadingEditorialContent(),
         selectors: { correctionsLink: "#" + SITE.ID.correctionsLink },
         action: ADAPT_CORRECTIONS_LINK,
+    }),
+
+    // Keyboard shortcuts
+    new IndependentOperation({
+        description: "perform Mousetrap preparations",
+        condition: ALWAYS,
+        action: MOUSETRAP_PREPARATIONS,
+        waitForDOMContentLoaded: true,
+    }),
+    new DependentOperation({
+        description: "add keyboard shortcut for previewing",
+        condition: isInEditMode(),
+        selectors: {
+            textarea: SELECTOR.textarea,
+            previewButton: SELECTOR.previewButton,
+        },
+        action: KEYBOARD_SHORTCUT_PREVIEW,
+        waitForDOMContentLoaded: true,
     }),
 ];
 

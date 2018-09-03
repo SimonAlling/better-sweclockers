@@ -35,6 +35,7 @@ export const ID = {
 };
 
 export const CLASS = {
+    mousetrap: "mousetrap",
     disabled: c("disabled"),
     darkThemeActive: c("dark-theme-active"),
     editingTools: c("editing-tools"),
@@ -84,3 +85,5 @@ export const ICONS = {
     QUOTE: `<div>”</div>`,
     DOGE: `https://i.imgur.com/2IGEruO.png`,
 };
+
+export const FOCUSABLE_ELEMENTS = [ "textarea", "input", "select" ];

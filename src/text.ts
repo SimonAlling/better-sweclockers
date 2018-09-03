@@ -1,5 +1,25 @@
 import * as SITE from "globals-site";
+import { assertUnreachable } from "src/utilities";
+import * as Platform from "src/platform";
 import { InsertButtonDescription } from "./types";
+import { Action } from "src/actions";
+
+function mod(shortcut: string): string {
+    const modKey = Platform.CURRENT_PLATFORM === Platform.OS.Mac ? "⌘" : "Ctrl";
+    return [ modKey, "+", shortcut ].join(" ")
+}
+
+export const keyboard_shortcuts = {
+    mod_s: mod("S"),
+};
+
+export function action(a: Action): string {
+    switch (a) {
+        case Action.PREVIEW: return `Förhandsgranska`;
+        case Action.SUBMIT: return `Skicka`;
+    }
+    return assertUnreachable(a);
+}
 
 export const general = {
     dark_theme_toggle_tooltip_on: "Blargmodes mörka tema",
@@ -69,6 +89,8 @@ export const preferences = {
         hide_carousel: `Dölj bildspelsvyn högst upp`,
         hide_social_media: `Dölj knappar för sociala medier`,
     },
+
+    keyboard: `Kortkommandon`,
 };
 
 export const editing_tools = {
