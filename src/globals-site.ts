@@ -30,6 +30,7 @@ export const CLASS = {
     menuItem: "menuItem",
     settingsNavigation: "menuItems",
     forumPost: "forumPost",
+    forumPostProfileDetails: "details",
     isReader: "isReader",
     bbImage: "bbImage",
     imgControls: "imgControls",
@@ -50,6 +51,7 @@ export const PATH = {
     COMPETITION: /^\/tavling\//,
     TEST: /^\/test\//,
     TESTPILOT: /^\/testpilot\//,
+    newPrivateMessage: (userID: number) => "/pm/nytt-meddelande?rcpts=" + userID,
 };
 
 export const TAG = {

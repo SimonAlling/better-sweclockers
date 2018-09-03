@@ -1,0 +1,20 @@
+.#{getGlobal("CONFIG.CLASS.iconButton")} {
+    box-sizing: border-box;
+    height: 23px;
+    padding: 4px 6px;
+    $size: 16px;
+    img, svg, div {
+        display: inline-block;
+        height: $size;
+        position: relative;
+        top: -1px;
+        vertical-align: top;
+        width: $size;
+        margin-right: 2px;
+    }
+}
+
+.#{getGlobal("CONFIG.CLASS.pmButton")} {
+    margin-left: 8px;
+    margin-bottom: 0;
+}

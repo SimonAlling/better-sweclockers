@@ -35,19 +35,6 @@
         }
     }
 
-    .#{getGlobal("CONFIG.CLASS.iconButton")} {
-        padding: 4px 6px;
-        $size: 16px;
-        img, svg, div {
-            display: inline-block;
-            height: $size;
-            position: relative;
-            top: -1px;
-            vertical-align: top;
-            width: $size;
-        }
-    }
-
     /* Special characters toolbar */
     fieldset:first-child {
         display: block;

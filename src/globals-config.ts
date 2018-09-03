@@ -39,6 +39,7 @@ export const CLASS = {
     darkThemeActive: c("dark-theme-active"),
     editingTools: c("editing-tools"),
     iconButton: c("icon-button"),
+    pmButton: c("pm-button"),
     shibe: c("shibe"),
     button_color: c("button-color"),
     button_quote: c("button-quote"),
