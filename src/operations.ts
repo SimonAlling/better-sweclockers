@@ -118,11 +118,11 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         },
         action: INSERT_PREFERENCES_LINK,
     }),
-    new DependentOperation({
+    new IndependentOperation({
         description: "insert PM links",
         condition: ALWAYS,
-        selectors: { footer: SELECTOR.footer },
         action: INSERT_PM_LINKS,
+        waitForDOMContentLoaded: true,
     }),
     new DependentOperation({
         description: "adapt corrections link to work with improved corrections",

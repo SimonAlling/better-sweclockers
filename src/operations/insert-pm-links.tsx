@@ -6,7 +6,7 @@ import { FAILURE } from "lib/operation-manager";
 
 const ICON = require("src/icons/pm.svg");
 
-export default (e: { footer: HTMLElement }) => {
+export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);
     only(HTMLElement)(Array.from(forumPosts)).forEach(post => {
         try {

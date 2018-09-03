@@ -19,5 +19,4 @@ export default {
     settingsNavigationLabel: `${settingsNavigationItem} > a.${C.link} > span.${C.icon} + span.${C.label}`,
     actionButtons,
     previewButton: actionButtons + `[value=doPreview]`,
-    footer: ".footer",
 };
