@@ -1,7 +1,9 @@
 import USERSCRIPT_CONFIG from "../config/userscript";
+import { r, escapeRegex } from "./utilities";
 
 export const NAME: string = USERSCRIPT_CONFIG.sitename;
 export const HOSTNAME: string = USERSCRIPT_CONFIG.hostname;
+export const HOSTNAME_MOBILE: string = `m.` + HOSTNAME;
 
 export const STYLESHEET_URL = "/css/combine.min.css";
 
@@ -82,3 +84,16 @@ export const ICONS = {
     position_toolbar_url: "0 -125px",
     position_toolbar_img: "-50px -125px",
 };
+
+export const MOBILE_SITE_DISCLAIMER = {
+    sentFrom: `Skickades från`,
+    mobileSiteDomain: HOSTNAME_MOBILE,
+};
+
+export const REGEX_MOBILE_SITE_DISCLAIMER = new RegExp([
+    r`\n+.*`, // line breaks and presentation start tag(s)
+    MOBILE_SITE_DISCLAIMER.sentFrom,
+    r`.*`, // space and [url=...]
+    escapeRegex(MOBILE_SITE_DISCLAIMER.mobileSiteDomain),
+    r`.*$`, // [/url] and presentation end tag(s)
+].join(""), "mg");

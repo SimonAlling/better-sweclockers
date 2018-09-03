@@ -33,6 +33,7 @@ export const preferences = {
         label: `Redigeringsläge`,
         place_caret_at_end: `Placera markören i slutet av textrutan`,
         remember_caret_position: `Kom ihåg markörens position vid förhandsgranskning`,
+        remove_mobile_site_disclaimer: `Ta bort <small><em>${SITE.MOBILE_SITE_DISCLAIMER.sentFrom} ${SITE.MOBILE_SITE_DISCLAIMER.mobileSiteDomain}</em></small>`,
     },
 
     editing_tools: {

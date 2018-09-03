@@ -14,4 +14,9 @@ export default {
         default: true,
         label: T.preferences.edit_mode.remember_caret_position,
     }),
+    remove_mobile_site_disclaimer: new BooleanPreference({
+        key: "remove_mobile_site_disclaimer",
+        default: true,
+        label: T.preferences.edit_mode.remove_mobile_site_disclaimer,
+    }),
 }

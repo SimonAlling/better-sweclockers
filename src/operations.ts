@@ -18,6 +18,7 @@ import PREVENT_ACCIDENTAL_SIGNOUT from "./operations/prevent-accidental-signout"
 import PREVENT_ACCIDENTAL_UNLOAD from "./operations/prevent-accidental-unload";
 import ADAPT_CORRECTIONS_LINK from "./operations/adapt-corrections-link";
 import MANAGE_CARET_POSITION from "./operations/manage-caret-position";
+import REMOVE_MOBILE_SITE_DISCLAIMER from "./operations/remove-mobile-site-disclaimer";
 import * as DarkTheme from "./operations/dark-theme";
 
 const ALWAYS: boolean = true;
@@ -82,6 +83,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
             previewButton: SELECTOR.previewButton,
         },
         action: MANAGE_CARET_POSITION,
+    }),
+    new DependentOperation({
+        description: "remove mobile site disclaimer",
+        condition: isInEditMode(),
+        selectors: { textarea: SELECTOR.textarea },
+        action: REMOVE_MOBILE_SITE_DISCLAIMER,
     }),
     new DependentOperation({
         description: "insert editing tools",
