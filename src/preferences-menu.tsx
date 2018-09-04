@@ -329,7 +329,7 @@ function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: 
                     }
                 })}
             />
-            <HtmlLabel html={p.label} />
+            <HtmlLabel html={label} />
         </label>
     );
 }
