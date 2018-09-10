@@ -38,6 +38,7 @@ export const CLASS = {
     imgControls: "imgControls",
     errorDialog: "errorDialog",
     proofDialog: "proofDialog",
+    threadShare: "threadShare",
 };
 
 export const PATH = {

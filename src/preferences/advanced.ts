@@ -24,6 +24,11 @@ export default {
         default: false,
         label: T.preferences.advanced.hide_carousel,
     }),
+    hide_social_media: new BooleanPreference({
+        key: "hide_social_media",
+        default: true,
+        label: T.preferences.advanced.hide_social_media,
+    }),
     disable_scroll_restoration: new BooleanPreference({
         key: "disable_scroll_restoration",
         default: false,

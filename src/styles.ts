@@ -67,6 +67,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/hide-carousel"),
     },
     {
+        condition: Preferences.get(P.advanced._.hide_social_media),
+        css: require("styles/hide-social-media"),
+    },
+    {
         condition: ALWAYS,
         css: require("styles/editing-tools"),
     },

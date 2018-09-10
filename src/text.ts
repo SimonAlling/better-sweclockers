@@ -67,6 +67,7 @@ export const preferences = {
         disable_scroll_restoration: `Förhindra webbläsaren från att komma ihåg scrollning`,
         hide_image_controls: `Dölj zoom- och länkikoner i bilder`,
         hide_carousel: `Dölj bildspelsvyn högst upp`,
+        hide_social_media: `Dölj knappar för sociala medier`,
     },
 };
 
