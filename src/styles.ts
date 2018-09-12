@@ -71,6 +71,26 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/hide-social-media"),
     },
     {
+        condition: Preferences.get(P.advanced._.hide_widget_latest_news),
+        css: require("styles/hide-widget-latest-news"),
+    },
+    {
+        condition: Preferences.get(P.advanced._.hide_widget_new_in_forum),
+        css: require("styles/hide-widget-new-in-forum"),
+    },
+    {
+        condition: Preferences.get(P.advanced._.hide_widget_popular_at_prisjakt),
+        css: require("styles/hide-widget-popular-at-prisjakt"),
+    },
+    {
+        condition: Preferences.get(P.advanced._.hide_widget_new_tech_jobs),
+        css: require("styles/hide-widget-new-tech-jobs"),
+    },
+    {
+        condition: Preferences.get(P.advanced._.hide_widget_external_news),
+        css: require("styles/hide-widget-external-news"),
+    },
+    {
         condition: ALWAYS,
         css: require("styles/editing-tools"),
     },

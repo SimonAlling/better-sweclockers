@@ -20,6 +20,11 @@ export const ID = {
     textarea: "__laika_cnt.textarea.0",
     carousel: "carousel",
     correctionsLink: "proofArticle",
+    latestNewsWidget: "wdgtMainRecentNews",
+    newInForumWidget: "wdgtMainRecentThreads",
+    popularAtPrisjaktWidget: "wdgtSidePopularProducts",
+    newTechJobsWidget: "wdgtSideMonsterJobs",
+    externalNewsWidget: "wdgtSideExternalFeeds",
 };
 
 export const CLASS = {

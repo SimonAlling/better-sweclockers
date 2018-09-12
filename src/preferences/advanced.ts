@@ -29,6 +29,31 @@ export default {
         default: true,
         label: T.preferences.advanced.hide_social_media,
     }),
+    hide_widget_latest_news: new BooleanPreference({
+        key: "hide_widget_latest_news",
+        default: false,
+        label: T.preferences.advanced.hide_widget_latest_news,
+    }),
+    hide_widget_new_in_forum: new BooleanPreference({
+        key: "hide_widget_new_in_forum",
+        default: false,
+        label: T.preferences.advanced.hide_widget_new_in_forum,
+    }),
+    hide_widget_popular_at_prisjakt: new BooleanPreference({
+        key: "hide_widget_popular_at_prisjakt",
+        default: false,
+        label: T.preferences.advanced.hide_widget_popular_at_prisjakt,
+    }),
+    hide_widget_new_tech_jobs: new BooleanPreference({
+        key: "hide_widget_new_tech_jobs",
+        default: false,
+        label: T.preferences.advanced.hide_widget_new_tech_jobs,
+    }),
+    hide_widget_external_news: new BooleanPreference({
+        key: "hide_widget_external_news",
+        default: false,
+        label: T.preferences.advanced.hide_widget_external_news,
+    }),
     disable_scroll_restoration: new BooleanPreference({
         key: "disable_scroll_restoration",
         default: false,

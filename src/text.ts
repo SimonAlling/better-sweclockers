@@ -13,6 +13,10 @@ export const keyboard_shortcuts = {
     mod_s: mod("S"),
 };
 
+function hideWidget(widgetName: string): string {
+    return `Dölj widgeten <em>${widgetName}</em>`;
+}
+
 export function action(a: Action): string {
     switch (a) {
         case Action.PREVIEW: return `Förhandsgranska`;
@@ -88,6 +92,11 @@ export const preferences = {
         hide_image_controls: `Dölj zoom- och länkikoner i bilder`,
         hide_carousel: `Dölj bildspelsvyn högst upp`,
         hide_social_media: `Dölj knappar för sociala medier`,
+        hide_widget_latest_news: hideWidget(`Senaste nyheterna`),
+        hide_widget_new_in_forum: hideWidget(`Nytt i forumet`),
+        hide_widget_popular_at_prisjakt: hideWidget(`Populärast på Prisjakt`),
+        hide_widget_new_tech_jobs: hideWidget(`Nya teknikjobb`),
+        hide_widget_external_news: hideWidget(`Externa nyheter`),
     },
 
     keyboard: `Kortkommandon`,
