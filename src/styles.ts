@@ -1,5 +1,5 @@
 import { StylesheetModule } from "lib/stylesheet-manager";
-import { Preferences } from "userscripter/preference-handling";
+import { Preferences, isFalse } from "userscripter/preference-handling";
 import P from "preferences";
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
@@ -59,40 +59,42 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/highlight-own-posts"),
     },
     {
-        condition: Preferences.get(P.advanced._.hide_image_controls),
-        css: require("styles/hide-image-controls"),
+        condition: ALWAYS,
+        css: require("styles/editing-tools"),
     },
     {
-        condition: Preferences.get(P.advanced._.hide_carousel),
+        condition: Preferences.get(P.advanced._.improved_image_controls),
+        css: require("styles/improved-image-controls"),
+    },
+
+    // Customize content:
+    {
+        condition: isFalse(Preferences.get(P.customize_content._.carousel)),
         css: require("styles/hide-carousel"),
     },
     {
-        condition: Preferences.get(P.advanced._.hide_social_media),
+        condition: isFalse(Preferences.get(P.customize_content._.social_media)),
         css: require("styles/hide-social-media"),
     },
     {
-        condition: Preferences.get(P.advanced._.hide_widget_latest_news),
+        condition: isFalse(Preferences.get(P.customize_content._.latest_news)),
         css: require("styles/hide-widget-latest-news"),
     },
     {
-        condition: Preferences.get(P.advanced._.hide_widget_new_in_forum),
+        condition: isFalse(Preferences.get(P.customize_content._.new_in_forum)),
         css: require("styles/hide-widget-new-in-forum"),
     },
     {
-        condition: Preferences.get(P.advanced._.hide_widget_popular_at_prisjakt),
+        condition: isFalse(Preferences.get(P.customize_content._.popular_at_prisjakt)),
         css: require("styles/hide-widget-popular-at-prisjakt"),
     },
     {
-        condition: Preferences.get(P.advanced._.hide_widget_new_tech_jobs),
+        condition: isFalse(Preferences.get(P.customize_content._.new_tech_jobs)),
         css: require("styles/hide-widget-new-tech-jobs"),
     },
     {
-        condition: Preferences.get(P.advanced._.hide_widget_external_news),
+        condition: isFalse(Preferences.get(P.customize_content._.external_news)),
         css: require("styles/hide-widget-external-news"),
-    },
-    {
-        condition: ALWAYS,
-        css: require("styles/editing-tools"),
     },
 ];
 

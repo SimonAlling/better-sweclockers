@@ -10,6 +10,7 @@ import editModePreferences from "./preferences/edit-mode";
 import editingToolsPreferences from "./preferences/editing-tools";
 import advancedPreferences from "./preferences/advanced";
 import keyboardPreferences from "./preferences/keyboard";
+import customizeContentPreferences from "./preferences/customize-content";
 
 export default {
     general: {
@@ -28,6 +29,10 @@ export default {
     dark_theme: {
         label: T.preferences.dark_theme.label,
         _: darkThemePreferences,
+    },
+    customize_content: {
+        label: T.preferences.customize_content.label,
+        _: customizeContentPreferences,
     },
     advanced: {
         label: T.preferences.advanced.label,

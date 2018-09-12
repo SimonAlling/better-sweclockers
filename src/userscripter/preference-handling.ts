@@ -6,6 +6,10 @@ import PREFERENCES from "preferences";
 
 export const Preferences = TSPreferences.init(PREFERENCES, CONFIG.USERSCRIPT_ID, responseHandler);
 
+export function isFalse(x: boolean): boolean {
+    return x === false;
+}
+
 function responseHandler<T extends AllowedTypes>(summary: RequestSummary<T>, preferences: PreferencesInterface): Response<T> {
     const response = summary.response;
     switch (response.status) {
