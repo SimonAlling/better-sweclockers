@@ -1,0 +1,11 @@
+##{getGlobal("CONFIG.ID.document")} {
+
+.stickyFooter > .top > .inner {
+    padding-bottom: 0;
+}
+
+.stickyFooter > .bottom {
+    display: none;
+}
+
+}

@@ -21,7 +21,10 @@ export const ID = {
     carousel: "carousel",
     correctionsLink: "proofArticle",
     latestNewsWidget: "wdgtMainRecentNews",
-    newInForumWidget: "wdgtMainRecentThreads",
+    newInForumWidget_main: "wdgtMainRecentThreads",
+    newInForumWidget_side: "wdgtSideRecentThreads",
+    newInMarketWidget: "wdgtSideRecentClassifieds",
+    newInTestLabWidget: "wdgtSideRecentReviews",
     popularAtPrisjaktWidget: "wdgtSidePopularProducts",
     newTechJobsWidget: "wdgtSideMonsterJobs",
     externalNewsWidget: "wdgtSideExternalFeeds",
@@ -44,6 +47,7 @@ export const CLASS = {
     errorDialog: "errorDialog",
     proofDialog: "proofDialog",
     threadShare: "threadShare",
+    sideBox: "sideBox",
 };
 
 export const PATH = {
