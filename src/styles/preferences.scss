@@ -20,6 +20,10 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
 
     #{$preference} {
         opacity: 0.75;
+
+        > label::after {
+            content: ":";
+        }
     }
 
     #{$preference}:hover, #{$preference}:focus {
@@ -34,24 +38,38 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         }
     }
 
+    .#{getGlobal("CONFIG.CLASS.booleanPreference")} {
+        label::after {
+            content: unset;
+        }
+    }
+
     .#{getGlobal("CONFIG.CLASS.radioButtonPreference")} {
         display: inline-block;
         width: -webkit-fit-content;
         width: -moz-fit-content;
         width: fit-content;
 
-        label {
-            margin-left: 16px;
+        label::after {
+            content: unset;
         }
 
-        > span:first-child::after {
+        > label:first-child::after {
             content: ":";
+        }
+
+        input[type="radio"] {
+            margin-left: 16px;
         }
     }
 
     $inline: #{getGlobal("CONFIG.CLASS.inlinePreference")};
     .#{$inline} {
         display: inline-block;
+
+        > label::after {
+            content: unset;
+        }
     }
     .#{$inline} + .#{$inline} label::before {
         content: "\a0";
@@ -70,7 +88,7 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     }
 
     input[type="text"], input[type="number"], input[type="time"] {
-        margin-left: 0.33em;
+        margin: 0.33em 0 0.33em 0.33em;
     }
 
     // Description

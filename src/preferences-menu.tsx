@@ -4,6 +4,7 @@ import SELECTOR from "selectors";
 import * as T from "text";
 import { is, isString, only, isNull } from "ts-type-guards";
 import { h, render, Component } from 'preact';
+import { compose } from "lib/utilities";
 import { isHTMLElement } from "lib/html";
 import { log, logInfo, logWarning, logError } from "userscripter/logging";
 import P from "preferences";
@@ -26,15 +27,22 @@ import {
 import { TimePreference } from "./preferences/TimePreference";
 import * as EditingTools from "./operations/insert-editing-tools";
 
+const PID: <T extends AllowedTypes>(p: Preference<T>) => string = compose(
+    CONFIG.prefixer(CONFIG.ID.preferenceIdPrefix),
+    p => p.key,
+);
+
+type GeneratorOutput = JSX.Element | ReadonlyArray<JSX.Element>
+
 interface Generators {
-    Boolean: (p: BooleanPreference) => JSX.Element
-    String: (p: StringPreference) => JSX.Element
-    Integer: (p: IntegerPreference) => JSX.Element
-    Double: (p: DoublePreference) => JSX.Element
-    Time: (p: TimePreference) => JSX.Element
-    IntegerRange: (p: IntegerRangePreference) => JSX.Element
-    DoubleRange: (p: DoubleRangePreference) => JSX.Element
-    Multichoice: <T extends AllowedTypes>(p: MultichoicePreference<T>) => JSX.Element
+    Boolean: (p: BooleanPreference) => GeneratorOutput
+    String: (p: StringPreference) => GeneratorOutput
+    Integer: (p: IntegerPreference) => GeneratorOutput
+    Double: (p: DoublePreference) => GeneratorOutput
+    Time: (p: TimePreference) => GeneratorOutput
+    IntegerRange: (p: IntegerRangePreference) => GeneratorOutput
+    DoubleRange: (p: DoubleRangePreference) => GeneratorOutput
+    Multichoice: <T extends AllowedTypes>(p: MultichoicePreference<T>) => GeneratorOutput
 }
 
 const PREFIX_ID = CONFIG.PREFIX_ID + "option-";
@@ -112,10 +120,6 @@ function fromStringEventHandler<
     };
 }
 
-function prefixedId(id: string): string {
-    return PREFIX_ID + id;
-}
-
 function Entries(generators: Generators, ps: PreferencesObject): ReadonlyArray<JSX.Element | null> {
     return Object.keys(ps).map(k => Entry(generators, ps[k]));
 }
@@ -126,7 +130,7 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
             p.extras.implicit // should not be part of the preferences menu
             ? null
             : (
-                <div id={prefixedId(p.key)} class={[CONFIG.CLASS.preference].concat(p.extras.class || "").join(" ")}>
+                <div class={[CONFIG.CLASS.preference].concat(preferenceClasses(p)).concat(p.extras.class || "").join(" ")}>
                     {InputElement(generators, p)}
                     {
                         p.description.length > 0
@@ -151,7 +155,14 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
         );
 }
 
-function InputElement<T extends AllowedTypes>(generators: Generators, p: Preference<T>): JSX.Element {
+function preferenceClasses<T extends AllowedTypes>(p: Preference<T>): string | ReadonlyArray<string> {
+    if (is(BooleanPreference)(p)) {
+        return CONFIG.CLASS.booleanPreference;
+    }
+    return [];
+}
+
+function InputElement<T extends AllowedTypes>(generators: Generators, p: Preference<T>): GeneratorOutput {
     // Order can be super-important here due to the semantics of instanceof with respect to subclasses.
     if (is(BooleanPreference)(p)) {
         return generators.Boolean(p);
@@ -183,107 +194,100 @@ function InputElement<T extends AllowedTypes>(generators: Generators, p: Prefere
     throw `Unsupported preference: ${p.getType()} (with key '${p.key}')`;
 }
 
-function Generator_Boolean(p: BooleanPreference): JSX.Element {
-    return (
-        <label>
-            <input type="checkbox" checked={Preferences.get(p)} onChange={changeHandler(e => {
-                Preferences.set(p, (e.target as HTMLInputElement).checked);
-            })} />
-            <HtmlLabel html={p.label} />
-        </label>
-    );
+function Generator_Boolean(p: BooleanPreference): GeneratorOutput {
+    return [
+        <input type="checkbox" id={PID(p)} checked={Preferences.get(p)} onChange={changeHandler(e => {
+            Preferences.set(p, (e.target as HTMLInputElement).checked);
+        })} />,
+        <PreferenceLabel preference={p} />,
+    ];
 }
 
-function Generator_String(p: StringPreference): JSX.Element {
-    return (
-        <label>
-            <HtmlLabel html={p.label} />
-            {p.multiline
-                ?
-                <textarea
-                    value={Preferences.get(p)}
-                    onChange={changeHandler(fromStringEventHandler<HTMLTextAreaElement, string, StringPreference>(p))}
-                ></textarea>
-                :
-                <input
-                    type="text"
-                    value={Preferences.get(p)}
-                    onChange={changeHandler(fromStringEventHandler<HTMLInputElement, string, StringPreference>(p))}
-                />
-            }
-        </label>
-    );
-}
-
-function Generator_Integer(p: IntegerPreference): JSX.Element {
-    return (
-        <label>
-            <HtmlLabel html={p.label} />
+function Generator_String(p: StringPreference): GeneratorOutput {
+    return [
+        <PreferenceLabel preference={p} />,
+        (p.multiline
+            ?
+            <textarea
+                id={PID(p)}
+                value={Preferences.get(p)}
+                onChange={changeHandler(fromStringEventHandler<HTMLTextAreaElement, string, StringPreference>(p))}
+            ></textarea>
+            :
             <input
-                type="number"
-                value={Preferences.get(p).toString()}
-                onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, IntegerPreference>(p))}
+                type="text"
+                id={PID(p)}
+                value={Preferences.get(p)}
+                onChange={changeHandler(fromStringEventHandler<HTMLInputElement, string, StringPreference>(p))}
             />
-        </label>
-    );
+        ),
+    ];
 }
 
-function Generator_Double(p: DoublePreference): JSX.Element {
-    return (
-        <label>
-            <HtmlLabel html={p.label} />
-            <input
-                type="number"
-                value={Preferences.get(p).toString()}
-                step={RANGE_MAX_STEP}
-                onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, DoublePreference>(p))}
-            />
-        </label>
-    );
+function Generator_Integer(p: IntegerPreference): GeneratorOutput {
+    return [
+        <PreferenceLabel preference={p} />,
+        <input
+            type="number"
+            id={PID(p)}
+            value={Preferences.get(p).toString()}
+            onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, IntegerPreference>(p))}
+        />,
+    ];
 }
 
-function Generator_Time(p: TimePreference): JSX.Element {
-    return (
-        <label>
-            <HtmlLabel html={p.label} />
-            <input
-                type="time"
-                value={p.stringify(Preferences.get(p))}
-                onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, TimePreference>(p))}
-            />
-        </label>
-    );
+function Generator_Double(p: DoublePreference): GeneratorOutput {
+    return [
+        <PreferenceLabel preference={p} />,
+        <input
+            type="number"
+            id={PID(p)}
+            value={Preferences.get(p).toString()}
+            step={RANGE_MAX_STEP}
+            onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, DoublePreference>(p))}
+        />,
+    ];
 }
 
-function Generator_IntegerRange(p: IntegerRangePreference): JSX.Element {
-    return (
-        <label>
-            <HtmlLabel html={p.label} />
-            <input
-                type="number"
-                value={Preferences.get(p).toString()}
-                min={p.min}
-                max={p.max}
-                onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, IntegerRangePreference>(p))}
-            />
-        </label>
-    );
+function Generator_Time(p: TimePreference): GeneratorOutput {
+    return [
+        <PreferenceLabel preference={p} />,
+        <input
+            type="time"
+            id={PID(p)}
+            value={p.stringify(Preferences.get(p))}
+            onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, TimePreference>(p))}
+        />,
+    ];
 }
 
-function Generator_DoubleRange(p: DoubleRangePreference): JSX.Element {
-    return (
-        <label>
-            <HtmlLabel html={p.label} />
-            <input
-                type="number"
-                value={Preferences.get(p).toString()}
-                min={p.min}
-                max={p.max}
-                step={stepSize(p.min, p.max).toString()}
-                onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, DoubleRangePreference>(p))}
-            />
-        </label>
-    );
+function Generator_IntegerRange(p: IntegerRangePreference): GeneratorOutput {
+    return [
+        <PreferenceLabel preference={p} />,
+        <input
+            type="number"
+            id={PID(p)}
+            value={Preferences.get(p).toString()}
+            min={p.min}
+            max={p.max}
+            onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, IntegerRangePreference>(p))}
+        />,
+    ];
+}
+
+function Generator_DoubleRange(p: DoubleRangePreference): GeneratorOutput {
+    return [
+        <PreferenceLabel preference={p} />,
+        <input
+            type="number"
+            id={PID(p)}
+            value={Preferences.get(p).toString()}
+            min={p.min}
+            max={p.max}
+            step={stepSize(p.min, p.max).toString()}
+            onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, DoubleRangePreference>(p))}
+        />,
+    ];
 }
 
 function stepSize(min: number, max: number): number {
@@ -322,22 +326,22 @@ function Generator_Multichoice<T extends AllowedTypes>(p: MultichoicePreference<
         );
 }
 
-function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: MultichoicePreference<T>, label: string, value: T, checked: boolean }): JSX.Element {
-    return (
-        <label>
-            <input
-                type="radio"
-                name={prefixedId(p.key)}
-                checked={checked}
-                onChange={changeHandler(e => {
-                    if ((e.target as HTMLInputElement).checked) {
-                        Preferences.set(p, value);
-                    }
-                })}
-            />
-            <HtmlLabel html={label} />
-        </label>
-    );
+function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: MultichoicePreference<T>, label: string, value: T, checked: boolean }): ReadonlyArray<JSX.Element> {
+    const radioButtonId = PID(p) + "-" + label;
+    return [
+        <input
+            type="radio"
+            id={radioButtonId}
+            name={PID(p)}
+            checked={checked}
+            onChange={changeHandler(e => {
+                if ((e.target as HTMLInputElement).checked) {
+                    Preferences.set(p, value);
+                }
+            })}
+        />,
+        <HtmlLabel for={radioButtonId} html={label} />,
+    ];
 }
 
 function extractForumLinkData(forumLink: HTMLAnchorElement): { id: number, label: string } | HTMLAnchorElement {
@@ -371,15 +375,14 @@ function Generator_Interests(p: ListPreference<number>): JSX.Element {
                     return;
                 }
                 const id = linkData.id;
+                const checkboxId = PID(p) + "-" + id;
                 render((
                     <li class={isSubforumLink(forumLink) ? CONFIG.CLASS.subforum : undefined}>
-                        <label>
-                            <input type="checkbox" checked={!uninteresting.includes(id)} onChange={e => {
-                                uninteresting = uninteresting.filter(x => x !== id).concat((e.target as HTMLInputElement).checked ? [] : id);
-                                Preferences.set(p, uninteresting);
-                            }} />
-                            <HtmlLabel html={linkData.label} />
-                        </label>
+                        <input type="checkbox" id={checkboxId} checked={!uninteresting.includes(id)} onChange={e => {
+                            uninteresting = uninteresting.filter(x => x !== id).concat((e.target as HTMLInputElement).checked ? [] : id);
+                            Preferences.set(p, uninteresting);
+                        }} />
+                        <HtmlLabel html={linkData.label} for={checkboxId} />
                     </li>
                 ), checkboxList);
             });
@@ -388,8 +391,14 @@ function Generator_Interests(p: ListPreference<number>): JSX.Element {
     return <ul id={CONFIG.ID.interestsPreferences}></ul>;
 }
 
-class HtmlLabel extends Component<{ html: string }> {
+class PreferenceLabel<T extends AllowedTypes> extends Component<{ preference: Preference<T> }> {
     render() {
-        return <span dangerouslySetInnerHTML={{ __html: this.props.html }} />;
+        return <HtmlLabel for={PID(this.props.preference)} html={this.props.preference.label} />;
+    }
+}
+
+class HtmlLabel extends Component<{ html: string, for?: string }> {
+    render() {
+        return <label for={this.props.for} dangerouslySetInnerHTML={{ __html: this.props.html }} />;
     }
 }

@@ -1,7 +1,7 @@
 import USERSCRIPT_CONFIG from "../config/userscript";
 import * as ms from "milliseconds";
 
-function prefixer(prefix: string): (x: string) => string {
+export function prefixer(prefix: string): (x: string) => string {
     return x => prefix + x;
 }
 
@@ -27,6 +27,7 @@ export const EDITING_TOOLS_HEIGHT = "100px"; // to prevent jumping in preference
 
 export const ID = {
     document: i("document"),
+    preferenceIdPrefix: i("preference-"),
     editingTools: i("editing-tools"),
     editingToolsPreferences: i("editing-tools-preferences"),
     darkThemeStylesheet: i("dark-theme-stylesheet"),
@@ -54,6 +55,7 @@ export const CLASS = {
     preferenceDescription: c("preference-description"),
     inlinePreference: c("inlinePreference"),
     radioButtonPreference: c("radioButtonPreference"),
+    booleanPreference: c("booleanPreference"),
     subforum: c("subforum"),
 };
 
