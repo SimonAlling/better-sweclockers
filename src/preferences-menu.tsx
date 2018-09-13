@@ -132,6 +132,7 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
             : (
                 <div class={[CONFIG.CLASS.preference].concat(preferenceClasses(p)).concat(p.extras.class || "").join(" ")}>
                     {InputElement(generators, p)}
+                    {isString(p.extras.suffix) ? <HtmlLabel for={PID(p)} html={p.extras.suffix} /> : null}
                     {
                         p.description.length > 0
                         ? <aside
