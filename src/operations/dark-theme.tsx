@@ -2,6 +2,7 @@ import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import * as T from "../text";
 import { h, render } from "preact";
+import { isNull } from "ts-type-guards";
 import { isHTMLElement } from "lib/html";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";
@@ -38,12 +39,14 @@ export function manage(): void {
 
 function apply(newState: boolean): void {
     if (newState) {
-        render(<link rel="stylesheet" href={CONFIG.DARK_THEME.url} id={CONFIG.ID.darkThemeStylesheet} />, document.head);
-        render((
-            <style id={CONFIG.ID.darkThemeAdditions}>
-                {DARK_THEME_ADDITIONS}
-            </style>
-        ), document.head);
+        if (isNull(document.getElementById(CONFIG.ID.darkThemeStylesheet))) {
+            render(<link rel="stylesheet" href={CONFIG.DARK_THEME.url} id={CONFIG.ID.darkThemeStylesheet} />, document.head);
+            render((
+                <style id={CONFIG.ID.darkThemeAdditions}>
+                    {DARK_THEME_ADDITIONS}
+                </style>
+            ), document.head);
+        }
     } else {
         [
             CONFIG.ID.darkThemeStylesheet,
@@ -79,6 +82,8 @@ function sheldon(): void {
         Preferences.set(P.dark_theme._.last_autoset_state, whatSheldonWants);
         set(whatSheldonWants);
     }
+    // If the dark theme was toggled (auto or not) in another tab, Sheldon must toggle it here as well:
+    apply(Preferences.get(P.dark_theme._.active));
 }
 
 function timeIsWithin(interval: { readonly start: number, readonly end: number }) {
