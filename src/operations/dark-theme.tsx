@@ -3,6 +3,7 @@ import * as CONFIG from "globals-config";
 import * as T from "../text";
 import { h, render } from "preact";
 import { isNull } from "ts-type-guards";
+import * as ms from "milliseconds";
 import { isHTMLElement } from "lib/html";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";
@@ -33,7 +34,7 @@ export function manage(): void {
     }
     if (Preferences.get(P.dark_theme._.auto)) {
         sheldon();
-        setInterval(sheldon, CONFIG.DARK_THEME.refreshInterval);
+        setInterval(sheldon, ms.seconds(Preferences.get(P.dark_theme._.interval)));
     }
 }
 

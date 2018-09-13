@@ -22,6 +22,7 @@ export function action(a: Action): string {
 }
 
 export const general = {
+    seconds: `sekunder`,
     dark_theme_toggle_tooltip_on: "Blargmodes mörka tema",
     dark_theme_toggle_tooltip_off: "Standardutseendet",
     signout_confirmation: `Är du säker på att du vill logga ut?`,
@@ -78,6 +79,7 @@ export const preferences = {
         auto: `Automatisk aktivering`,
         between: `mellan`,
         and: `och`,
+        interval: `Uppdateringsintervall`,
     },
 
     customize_content: {

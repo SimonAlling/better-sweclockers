@@ -3,6 +3,7 @@ import * as T from "../text";
 import * as ms from "milliseconds";
 import {
     BooleanPreference,
+    IntegerRangePreference,
 } from "ts-preferences";
 import { TimePreference } from "./TimePreference";
 
@@ -41,7 +42,7 @@ export default {
     auto,
     time_on: new TimePreference({
         key: "dark_theme_time_on",
-        default: CONFIG.DARK_THEME.enableAt,
+        default: ms.hours(21),
         label: T.preferences.dark_theme.between,
         min: 0,
         max: ms.days(1),
@@ -50,11 +51,19 @@ export default {
     }),
     time_off: new TimePreference({
         key: "dark_theme_time_off",
-        default: CONFIG.DARK_THEME.disableAt,
+        default: ms.hours(7),
         label: T.preferences.dark_theme.and,
         min: 0,
         max: ms.days(1),
         dependencies: dependencies_auto,
         extras: { class: CONFIG.CLASS.inlinePreference },
+    }),
+    interval: new IntegerRangePreference({
+        key: "dark_theme_interval",
+        default: 10,
+        label: T.preferences.dark_theme.interval,
+        min: 1,
+        max: 60,
+        extras: { suffix: T.general.seconds },
     }),
 }

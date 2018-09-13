@@ -1,5 +1,4 @@
 import USERSCRIPT_CONFIG from "../config/userscript";
-import * as ms from "milliseconds";
 
 export function prefixer(prefix: string): (x: string) => string {
     return x => prefix + x;
@@ -71,9 +70,6 @@ export const URL_LOGO = "https://cdn.sweclockers.com/artikel/bild/63329?l=eyJyZX
 
 export const DARK_THEME = {
     url: "https://blargmode.se/files/swec_dark_theme/style.css",
-    refreshInterval: ms.seconds(30),
-    enableAt: ms.hours(21),
-    disableAt: ms.hours(7),
 };
 
 export const CONTENT = {
