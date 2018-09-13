@@ -6,6 +6,7 @@ import * as CONFIG from "globals-config";
 import SELECTOR from "selectors";
 import { isOnBSCPreferencesPage } from "./environment";
 import { hideById, hideByClass, hideBySelector } from "./styles/hide";
+import filterNewInForum from "./styles/interests-new-in-forum";
 
 const ALWAYS: boolean = true;
 
@@ -67,6 +68,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
     {
         condition: Preferences.get(P.advanced._.improved_image_controls),
         css: require("styles/improved-image-controls"),
+    },
+    {
+        condition: ALWAYS,
+        css: filterNewInForum(Preferences.get(P.interests._.uninteresting_subforums)),
     },
 
     // Customize content:

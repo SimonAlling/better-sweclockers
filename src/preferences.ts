@@ -11,6 +11,7 @@ import editingToolsPreferences from "./preferences/editing-tools";
 import advancedPreferences from "./preferences/advanced";
 import keyboardPreferences from "./preferences/keyboard";
 import customizeContentPreferences from "./preferences/customize-content";
+import interestsPreferences from "./preferences/interests";
 
 export default {
     general: {
@@ -39,4 +40,8 @@ export default {
         _: advancedPreferences,
     },
     keyboard: keyboardPreferences,
+    interests: {
+        label: T.preferences.interests.label,
+        _: interestsPreferences,
+    },
 };

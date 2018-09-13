@@ -1,8 +1,10 @@
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
+import SELECTOR from "selectors";
 import * as T from "text";
-import { is, isString } from "ts-type-guards";
+import { is, isString, only, isNull } from "ts-type-guards";
 import { h, render, Component } from 'preact';
+import { isHTMLElement } from "lib/html";
 import { log, logInfo, logWarning, logError } from "userscripter/logging";
 import P from "preferences";
 import { Preferences } from "userscripter/preference-handling";
@@ -15,6 +17,7 @@ import {
     BooleanPreference,
     IntegerPreference,
     DoublePreference,
+    ListPreference,
     StringPreference,
     IntegerRangePreference,
     DoubleRangePreference,
@@ -174,6 +177,9 @@ function InputElement<T extends AllowedTypes>(generators: Generators, p: Prefere
     if (is(MultichoicePreference)(p)) {
         return generators.Multichoice(p);
     }
+    if (is(ListPreference)(p) && p === P.interests._.uninteresting_subforums) {
+        return Generator_Interests(p);
+    }
     throw `Unsupported preference: ${p.getType()} (with key '${p.key}')`;
 }
 
@@ -332,6 +338,54 @@ function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: 
             <HtmlLabel html={label} />
         </label>
     );
+}
+
+function extractForumLinkData(forumLink: HTMLAnchorElement): { id: number, label: string } | HTMLAnchorElement {
+    const match = forumLink.href.match(SITE.PATH.FORUM_CATEGORY);
+    const label = forumLink.textContent;
+    if (isNull(match) || isNull(label)) { return forumLink; }
+    const id = parseInt(match[1]);
+    return { id, label };
+}
+
+function isSubforumLink(forumLink: HTMLAnchorElement): boolean {
+    return forumLink.classList.contains(SITE.CLASS.subforumLink);
+}
+
+function Generator_Interests(p: ListPreference<number>): JSX.Element {
+    let uninteresting = Preferences.get(p);
+    fetch(SITE.PATH.FORUM)
+    .then(response => response.text())
+    .then(responseContent => {
+        const responseDocument = new DOMParser().parseFromString(responseContent, "text/html");
+        const links = responseDocument.querySelectorAll(SELECTOR.forumLink);
+        const checkboxList = document.getElementById(CONFIG.ID.interestsPreferences);
+        if (isHTMLElement(checkboxList)) {
+            only(HTMLAnchorElement)(Array.from(links))
+            .filter(link => SITE.PATH.FORUM_CATEGORY.test(link.href))
+            .forEach(forumLink => {
+                const linkData = extractForumLinkData(forumLink);
+                if (is(HTMLAnchorElement)(linkData)) {
+                    logError(`Could not extract forum link data for the preferences UI from this link:`);
+                    console.error(linkData);
+                    return;
+                }
+                const id = linkData.id;
+                render((
+                    <li class={isSubforumLink(forumLink) ? CONFIG.CLASS.subforum : undefined}>
+                        <label>
+                            <input type="checkbox" checked={!uninteresting.includes(id)} onChange={e => {
+                                uninteresting = uninteresting.filter(x => x !== id).concat((e.target as HTMLInputElement).checked ? [] : id);
+                                Preferences.set(p, uninteresting);
+                            }} />
+                            <HtmlLabel html={linkData.label} />
+                        </label>
+                    </li>
+                ), checkboxList);
+            });
+        }
+    });
+    return <ul id={CONFIG.ID.interestsPreferences}></ul>;
 }
 
 class HtmlLabel extends Component<{ html: string }> {

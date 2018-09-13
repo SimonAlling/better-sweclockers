@@ -32,6 +32,7 @@ export const ID = {
     darkThemeStylesheet: i("dark-theme-stylesheet"),
     darkThemeAdditions: i("dark-theme-additions"),
     darkThemeToggle: i("dark-theme-toggle"),
+    interestsPreferences: i("interests-preferences"),
 };
 
 export const CLASS = {
@@ -53,6 +54,7 @@ export const CLASS = {
     preferenceDescription: c("preference-description"),
     inlinePreference: c("inlinePreference"),
     radioButtonPreference: c("radioButtonPreference"),
+    subforum: c("subforum"),
 };
 
 export const PATH = {

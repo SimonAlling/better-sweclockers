@@ -106,6 +106,10 @@ export const preferences = {
     },
 
     keyboard: `Kortkommandon`,
+
+    interests: {
+        label: `Intressen`,
+    },
 };
 
 export const editing_tools = {

@@ -21,4 +21,5 @@ export default {
     previewButton: actionButtons + `[value=doPreview]`,
     sideColumnGuides: `.videoPush.${C.sideBox}`,
     sideColumnPopularGalleries: `.popularGalleries.${C.sideBox}`,
+    forumLink: `.subForums a[href^="/forum/"]`,
 };

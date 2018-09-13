@@ -48,6 +48,7 @@ export const CLASS = {
     proofDialog: "proofDialog",
     threadShare: "threadShare",
     sideBox: "sideBox",
+    subforumLink: "link",
 };
 
 export const PATH = {
@@ -63,6 +64,8 @@ export const PATH = {
     COMPETITION: /^\/tavling\//,
     TEST: /^\/test\//,
     TESTPILOT: /^\/testpilot\//,
+    FORUM_CATEGORY: /\/forum\/(\d+)/,
+    FORUM: "/forum",
     newPrivateMessage: (userID: number) => "/pm/nytt-meddelande?rcpts=" + userID,
 };
 
