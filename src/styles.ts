@@ -81,7 +81,7 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
     },
     {
         condition: isFalse(Preferences.get(P.customize_content._.social_media)),
-        css: hideByClass(SITE.CLASS.threadShare),
+        css: hideByClass(SITE.CLASS.socialMediaButtons),
     },
     {
         condition: isFalse(Preferences.get(P.customize_content._.guides)),

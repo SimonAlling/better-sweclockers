@@ -46,7 +46,7 @@ export const CLASS = {
     imgControls: "imgControls",
     errorDialog: "errorDialog",
     proofDialog: "proofDialog",
-    threadShare: "threadShare",
+    socialMediaButtons: [ `threadShare`, `greyContentShare` ],
     sideBox: "sideBox",
     subforumLink: "link",
 };
