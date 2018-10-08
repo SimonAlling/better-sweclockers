@@ -41,6 +41,9 @@ export const CLASS = {
     settingsNavigation: "menuItems",
     forumPost: "forumPost",
     forumPostProfileDetails: "details",
+    forumPostSignature: "signature",
+    forumPostControls: "controls",
+    forumPostBtnGroup: "btnGroup",
     isReader: "isReader",
     bbImage: "bbImage",
     imgControls: "imgControls",
@@ -66,6 +69,8 @@ export const PATH = {
     TESTPILOT: /^\/testpilot\//,
     FORUM_CATEGORY: /\/forum\/(\d+)/,
     FORUM: "/forum",
+    FORUM_THREAD: /^\/forum\/trad\//,
+    FORUM_POST: /^\/forum\/post\//,
     newPrivateMessage: (userID: number) => "/pm/nytt-meddelande?rcpts=" + userID,
 };
 

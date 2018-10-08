@@ -28,6 +28,8 @@ export const general = {
     signout_confirmation: `Är du säker på att du vill logga ut?`,
     // Copied from SweClockers:
     signout_error: `Ett fel har uppstått och utloggningen misslyckades. Var god ladda om sidan och försök igen. Rensa cookies i din webbläsare för att logga ut manuellt.`,
+    quote_signature_label: `Citera sign.`,
+    quote_signature_tooltip: `Citera endast signatur`,
 };
 
 export const preferences = {
@@ -53,6 +55,9 @@ export const preferences = {
         improved_pagination_buttons: `Bättre bläddringsknappar`,
         highlight_own_posts: `Framhäv egna inlägg`,
         insert_pm_links: `PM-knappar`,
+        quote_signature_buttons: `Citera signatur-knappar`,
+        quote_signature_message: `Meddelande vid citering av signatur`,
+        quote_signature_message_default: `Inkludera alltid fulla specifikationer i trådar som den här, så blir det så enkelt som möjligt att hjälpa till och trådens värde består även när du byter signatur.`,
     },
 
     edit_mode: {

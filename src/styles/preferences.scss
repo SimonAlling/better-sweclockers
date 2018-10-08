@@ -67,6 +67,13 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         }
     }
 
+    textarea {
+        box-sizing: border-box;
+        display: block;
+        height: 6em;
+        width: 100%;
+    }
+
     $inline: #{getGlobal("CONFIG.CLASS.inlinePreference")};
     .#{$inline} {
         display: inline-block;

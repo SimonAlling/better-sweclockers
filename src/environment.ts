@@ -44,3 +44,10 @@ export function isReadingEditorialContent(): boolean {
         SITE.PATH.TESTPILOT,
     ].some(r => r.test(document.location.pathname));
 }
+
+export function isReadingForumThread(): boolean {;
+    return !isInEditMode() && [
+        SITE.PATH.FORUM_THREAD,
+        SITE.PATH.FORUM_POST,
+    ].some(r => r.test(document.location.pathname));
+}

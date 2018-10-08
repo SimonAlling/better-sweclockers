@@ -2,7 +2,19 @@ import * as CONFIG from "globals-config";
 import * as T from "src/text";
 import {
     BooleanPreference,
+    StringPreference,
 } from "ts-preferences";
+
+const quote_signature_buttons = new BooleanPreference({
+    key: "quote_signature_buttons",
+    default: true,
+    label: T.preferences.forum_threads.quote_signature_buttons,
+});
+
+const dependencies_quote_signature = [ {
+    preference: quote_signature_buttons,
+    condition: (v: boolean) => v,
+} ];
 
 export default {
     improved_pagination_buttons: new BooleanPreference({
@@ -19,5 +31,13 @@ export default {
         key: "insert_pm_links",
         default: true,
         label: T.preferences.forum_threads.insert_pm_links,
+    }),
+    quote_signature_buttons,
+    quote_signature_message: new StringPreference({
+        key: "quote_signature_message",
+        default: T.preferences.forum_threads.quote_signature_message_default,
+        label: T.preferences.forum_threads.quote_signature_message,
+        multiline: true,
+        dependencies: dependencies_quote_signature,
     }),
 }

@@ -9,11 +9,13 @@ import {
     isOnBSCPreferencesPage,
     isOnSweclockersSettingsPage,
     isReadingEditorialContent,
+    isReadingForumThread,
 } from "./environment";
 import INSERT_PREFERENCES_MENU from "./operations/insert-preferences-menu";
 import INSERT_PREFERENCES_LINK from "./operations/insert-preferences-link";
 import INSERT_EDITING_TOOLS from "./operations/insert-editing-tools";
 import INSERT_PM_LINKS from "./operations/insert-pm-links";
+import INSERT_QUOTE_SIGNATURE_BUTTONS from "./operations/insert-quote-signature-buttons";
 import PREVENT_ACCIDENTAL_SIGNOUT from "./operations/prevent-accidental-signout";
 import PREVENT_ACCIDENTAL_UNLOAD from "./operations/prevent-accidental-unload";
 import ADAPT_CORRECTIONS_LINK from "./operations/adapt-corrections-link";
@@ -125,6 +127,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: Preferences.get(P.forum_threads._.insert_pm_links),
         action: INSERT_PM_LINKS,
         waitForDOMContentLoaded: true,
+    }),
+    new DependentOperation({
+        description: "insert quote signature buttons",
+        condition: Preferences.get(P.forum_threads._.quote_signature_buttons) && isReadingForumThread(),
+        action: INSERT_QUOTE_SIGNATURE_BUTTONS,
+        selectors: { quickReplyForm: SELECTOR.quickReplyForm },
     }),
     new DependentOperation({
         description: "adapt corrections link to work with improved corrections",

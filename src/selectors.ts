@@ -22,4 +22,6 @@ export default {
     sideColumnGuides: `.videoPush.${C.sideBox}`,
     sideColumnPopularGalleries: `.popularGalleries.${C.sideBox}`,
     forumLink: `.subForums a[href^="/forum/"]`,
+    forumPostAuthorLink: `.name a`,
+    quickReplyForm: `#quickreply form`,
 };

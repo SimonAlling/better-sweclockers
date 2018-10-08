@@ -18,3 +18,7 @@
     margin-left: 8px;
     margin-bottom: 0;
 }
+
+.#{getGlobal("SITE.CLASS.forumPost")} .#{getGlobal("SITE.CLASS.forumPostControls")} .#{getGlobal("CONFIG.CLASS.quoteSignatureButton")} {
+    margin-left: -50px; // to prevent horizontal overflow e.g. on a tablet
+}
