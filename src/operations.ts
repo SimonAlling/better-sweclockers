@@ -122,7 +122,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new IndependentOperation({
         description: "insert PM links",
-        condition: ALWAYS,
+        condition: Preferences.get(P.general._.insert_pm_links),
         action: INSERT_PM_LINKS,
         waitForDOMContentLoaded: true,
     }),

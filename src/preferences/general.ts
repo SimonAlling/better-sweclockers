@@ -36,6 +36,11 @@ export default {
         default: true,
         label: T.preferences.general.highlight_own_posts,
     }),
+    insert_pm_links: new BooleanPreference({
+        key: "insert_pm_links",
+        default: true,
+        label: T.preferences.general.insert_pm_links,
+    }),
     search_engine: new MultichoicePreference({
         key: "search_engine",
         default: SearchEngine.GOOGLE,

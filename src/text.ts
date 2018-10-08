@@ -43,6 +43,7 @@ export const preferences = {
         improved_pagination_buttons: `Bättre bläddringsknappar i trådar`,
         improved_corrections: `Bättre rättelsegränssnitt`,
         highlight_own_posts: `Framhäv egna inlägg`,
+        insert_pm_links: `PM-knappar vid inlägg`,
         search_engine: {
             label: `Sökmotor`,
             google: `Google`,
