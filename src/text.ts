@@ -40,15 +40,19 @@ export const preferences = {
         label: `Allmänt`,
         lock_heights: `Lås höjden på reklam etc`,
         compact_layout: `Kompakt layout`,
-        improved_pagination_buttons: `Bättre bläddringsknappar i trådar`,
         improved_corrections: `Bättre rättelsegränssnitt`,
-        highlight_own_posts: `Framhäv egna inlägg`,
-        insert_pm_links: `PM-knappar vid inlägg`,
         search_engine: {
             label: `Sökmotor`,
             google: `Google`,
             duckduckgo: `DuckDuckGo`,
         },
+    },
+
+    forum_threads: {
+        label: `Forumtrådar`,
+        improved_pagination_buttons: `Bättre bläddringsknappar`,
+        highlight_own_posts: `Framhäv egna inlägg`,
+        insert_pm_links: `PM-knappar`,
     },
 
     edit_mode: {

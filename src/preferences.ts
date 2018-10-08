@@ -6,6 +6,7 @@ import {
 } from "ts-preferences";
 import generalPreferences from "./preferences/general";
 import darkThemePreferences from "./preferences/dark-theme";
+import forumThreadsPreferences from "./preferences/forum-threads";
 import editModePreferences from "./preferences/edit-mode";
 import editingToolsPreferences from "./preferences/editing-tools";
 import advancedPreferences from "./preferences/advanced";
@@ -17,6 +18,10 @@ export default {
     general: {
         label: T.preferences.general.label,
         _: generalPreferences,
+    },
+    forum_threads: {
+        label: T.preferences.forum_threads.label,
+        _: forumThreadsPreferences,
     },
     edit_mode: {
         label: T.preferences.edit_mode.label,
