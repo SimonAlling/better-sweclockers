@@ -30,6 +30,8 @@ export const general = {
     signout_error: `Ett fel har uppstått och utloggningen misslyckades. Var god ladda om sidan och försök igen. Rensa cookies i din webbläsare för att logga ut manuellt.`,
     quote_signature_label: `Citera sign.`,
     quote_signature_tooltip: `Citera endast signatur`,
+    textarea_size_small: `Liten textruta`,
+    textarea_size_large: `Stor textruta`,
 };
 
 export const preferences = {
@@ -62,6 +64,11 @@ export const preferences = {
 
     edit_mode: {
         label: `Redigeringsläge`,
+        textarea_size_save: `Kom ihåg textrutans storlek`,
+        textarea_size_toggle: `Knappar för att växla storlek på textrutan`,
+        textarea_size_small: `mellan`,
+        textarea_size_large: `och`,
+        textarea_size_unit: `px`,
         place_caret_at_end: `Placera markören i slutet av textrutan`,
         remember_caret_position: `Kom ihåg markörens position vid förhandsgranskning`,
         remove_mobile_site_disclaimer: `Ta bort <small><em>${SITE.MOBILE_SITE_DISCLAIMER.sentFrom} ${SITE.MOBILE_SITE_DISCLAIMER.mobileSiteDomain}</em></small>`,

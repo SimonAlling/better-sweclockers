@@ -52,6 +52,8 @@ export const CLASS = {
     socialMediaButtons: [ `threadShare`, `greyContentShare` ],
     sideBox: "sideBox",
     subforumLink: "link",
+    toolbarGroup: "tbGroup",
+    toolbarButtonIcon: "btnIcon",
 };
 
 export const PATH = {

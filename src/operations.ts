@@ -14,6 +14,7 @@ import {
 import INSERT_PREFERENCES_MENU from "./operations/insert-preferences-menu";
 import INSERT_PREFERENCES_LINK from "./operations/insert-preferences-link";
 import INSERT_EDITING_TOOLS from "./operations/insert-editing-tools";
+import INSERT_TEXTAREA_SIZE_TOGGLE from "./operations/insert-textarea-size-toggle";
 import INSERT_PM_LINKS from "./operations/insert-pm-links";
 import INSERT_QUOTE_SIGNATURE_BUTTONS from "./operations/insert-quote-signature-buttons";
 import PREVENT_ACCIDENTAL_SIGNOUT from "./operations/prevent-accidental-signout";
@@ -99,6 +100,15 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: isInEditMode() && Preferences.get(P.editing_tools._.enable),
         selectors: { textarea: SELECTOR.textarea },
         action: INSERT_EDITING_TOOLS,
+    }),
+    new DependentOperation({
+        description: "insert textarea size toggle",
+        condition: isInEditMode() && Preferences.get(P.edit_mode._.textarea_size_toggle),
+        selectors: {
+            textarea: SELECTOR.textarea,
+            toolbarInner: SELECTOR.textareaToolbarInner,
+        },
+        action: INSERT_TEXTAREA_SIZE_TOGGLE,
     }),
     new DependentOperation({
         description: "insert dark theme toggle",

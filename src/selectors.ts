@@ -12,6 +12,7 @@ const actionButtons = `button[name=action]`;
 
 export default {
     textarea: "textarea#" + CSS.escape(SITE.ID.textarea),
+    textareaToolbarInner: `form .toolbar .tbInner`,
     lastNavigationTab: `.${C.menu} > li.${C.menuItem}:last-child`,
     siteHeader: `#` + SITE.ID.siteHeader,
     settingsNavigation,

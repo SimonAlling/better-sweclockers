@@ -1,0 +1,11 @@
+##{getGlobal("CONFIG.ID.document")} {
+
+.#{getGlobal("SITE.CLASS.toolbarGroup")}.#{getGlobal("CONFIG.CLASS.textareaSize")} {
+    float: right;
+
+    .#{getGlobal("SITE.CLASS.toolbarButtonIcon")} {
+        background: none;
+    }
+}
+
+}

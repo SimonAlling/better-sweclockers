@@ -57,6 +57,7 @@ export const CLASS = {
     radioButtonPreference: c("radioButtonPreference"),
     booleanPreference: c("booleanPreference"),
     subforum: c("subforum"),
+    textareaSize: c("textarea-size"),
 };
 
 export const PATH = {

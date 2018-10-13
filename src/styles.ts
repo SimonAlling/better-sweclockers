@@ -4,7 +4,7 @@ import P from "preferences";
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import SELECTOR from "selectors";
-import { isOnBSCPreferencesPage } from "./environment";
+import { isOnBSCPreferencesPage, isInEditMode } from "./environment";
 import { hideById, hideByClass, hideBySelector } from "./styles/hide";
 import filterNewInForum from "./styles/interests-new-in-forum";
 
@@ -64,6 +64,14 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
     {
         condition: ALWAYS,
         css: require("styles/editing-tools"),
+    },
+    {
+        condition: ALWAYS,
+        css: require("styles/textarea-size-toggle"),
+    },
+    {
+        condition: Preferences.get(P.edit_mode._.textarea_size_toggle) && isInEditMode(),
+        css: `#${CONFIG.ID.document} ${SELECTOR.textarea} { height: ${Preferences.get(P.edit_mode._.textarea_size)}px; }`,
     },
     {
         condition: Preferences.get(P.advanced._.improved_image_controls),
