@@ -60,14 +60,14 @@ $DIALOG_OFFSET_LEFT: 550px; // article width plus some spacing
 
 // "Skicka en rättelse" link
 ##{$ID_CORRECTIONS_LINK} {
-    $radius: 8px;
+    $radius: 6px;
     background-color: #da6b0f;
     border-bottom-left-radius: $radius;
     border-bottom-right-radius: $radius;
     bottom: 0;
     left: -1px; // to make clicking it easier (possible to click left of it otherwise)
     opacity: 0.3;
-    padding: 8px;
+    padding: 4px 8px;
     position: fixed;
     transform: rotate(-90deg);
     transform-origin: top left;
