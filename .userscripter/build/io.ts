@@ -26,8 +26,8 @@ export const FILE_MAIN            = DIR_SOURCE + "main.ts";
 export const EXTENSION_USERSCRIPT = ".user.js";
 export const EXTENSION_METADATA   = ".meta.js";
 
-export const USERSCRIPT_CONTENT_BUILDING = "Building...\n";
-export const USERSCRIPT_CONTENT_BUILD_FAILED = "*** Build failed! ***\n";
+export const USERSCRIPT_CONTENT_BUILDING = "console.warn(\"*** Userscripter build in progress ... ***\");\n";
+export const USERSCRIPT_CONTENT_BUILD_FAILED = "console.error(\"*** Userscripter build failed! ***\");\n";
 
 function slashed(path: string): string {
     return path.replace(/\/?$/, "/");

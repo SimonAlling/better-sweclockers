@@ -20,6 +20,15 @@ const FILE_OUTPUT_METADATA = IO.outputFile_metadata(USERSCRIPT_CONFIG.id);
 const DEFAULT_LOG_LEVEL = LogLevel.ALL;
 const DEFAULT_MODE = Mode.DEVELOPMENT;
 
+const BASIC_USERSCRIPT_BLOCK = `
+\// ==UserScript==
+\// @name  Better SweClockers
+\// ==/UserScript==
+`.trim();
+
+const USERSCRIPT_CONTENT_BUILDING = [ BASIC_USERSCRIPT_BLOCK, IO.USERSCRIPT_CONTENT_BUILDING ].join("\n");
+const USERSCRIPT_CONTENT_BUILD_FAILED = [ BASIC_USERSCRIPT_BLOCK, IO.USERSCRIPT_CONTENT_BUILD_FAILED ].join("\n");
+
 const WEBPACK_STATS_TO_STRING_OPTIONS = {
     depth: false,
     hash: false,
@@ -35,8 +44,8 @@ function failWithError(reason: string): void {
 
 function fail(): void {
     logErrorLine(Messages.failed);
-    FileSystem.writeFile(FILE_OUTPUT_USERSCRIPT, IO.USERSCRIPT_CONTENT_BUILD_FAILED);
-    FileSystem.writeFile(FILE_OUTPUT_METADATA, IO.USERSCRIPT_CONTENT_BUILD_FAILED);
+    FileSystem.writeFile(FILE_OUTPUT_USERSCRIPT, USERSCRIPT_CONTENT_BUILD_FAILED);
+    FileSystem.writeFile(FILE_OUTPUT_METADATA, USERSCRIPT_CONTENT_BUILD_FAILED);
     process.exit(1);
 }
 
@@ -55,8 +64,8 @@ try {
     }
 
     // Wipe output files:
-    FileSystem.writeFile(FILE_OUTPUT_USERSCRIPT, IO.USERSCRIPT_CONTENT_BUILDING);
-    FileSystem.writeFile(FILE_OUTPUT_METADATA, IO.USERSCRIPT_CONTENT_BUILDING);
+    FileSystem.writeFile(FILE_OUTPUT_USERSCRIPT, USERSCRIPT_CONTENT_BUILDING);
+    FileSystem.writeFile(FILE_OUTPUT_METADATA, USERSCRIPT_CONTENT_BUILDING);
 
     // Validate config and metadata:
     log(Messages.checkingConfig);
