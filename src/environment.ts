@@ -6,7 +6,7 @@ export function isOnBSCPreferencesPage(): boolean {
 }
 
 export function isOnSweclockersSettingsPage(): boolean {
-    return SITE.PATH.SETTINGS === document.location.pathname;
+    return document.location.pathname.startsWith(SITE.PATH.SETTINGS) && !isOnBSCPreferencesPage();
 }
 
 export function isInEditMode_forum(): boolean {
