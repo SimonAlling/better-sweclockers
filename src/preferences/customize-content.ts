@@ -4,6 +4,11 @@ import {
 } from "ts-preferences";
 
 export default {
+    news_ticker: new BooleanPreference({
+        key: "customize_content_news_ticker",
+        default: true,
+        label: T.preferences.customize_content.news_ticker,
+    }),
     carousel: new BooleanPreference({
         key: "customize_content_carousel",
         default: true,
