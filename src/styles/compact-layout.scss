@@ -1,8 +1,26 @@
+#siteHeader {
+    #subMenu {
+        margin-top: 0;
+    }
+}
+
 .whiteHeader {
-    margin: 8px 0;
+    margin: 0 0 4px 0;
+
+    .breadcrumbs {
+        margin-bottom: 2px;
+    }
 }
 
 .forumForm {
+    .head {
+        display: none;
+    }
+
+    .body > .inner {
+        padding: 8px 13px;
+    }
+
     .tcHint {
         display: none !important; // to override inline style
     }
@@ -33,5 +51,43 @@
 .articleCommentsWidget {
     .commentArticle {
         display: none;
+    }
+}
+
+.forumPost {
+    .profile {
+        padding-bottom: 4px;
+
+        .title {
+            margin-bottom: 2px;
+        }
+
+        .avatar {
+            margin-bottom: 4px;
+        }
+
+        .meta {
+            margin-bottom: 0;
+        }
+    }
+
+    .main {
+        padding-bottom: 0;
+    }
+
+    .signature {
+        margin-top: 0;
+
+        .top {
+            margin-bottom: 4px;
+        }
+
+        .bbcode {
+            margin-bottom: 0;
+        }
+    }
+
+    .controls, .details {
+        padding-top: 0;
     }
 }
