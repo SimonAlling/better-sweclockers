@@ -90,4 +90,11 @@ export default {
         extras: { class: [ CONFIG.CLASS.shibe, CONFIG.CLASS.editingTools ].join(" ") },
         dependencies,
     }),
+    color_palette: new BooleanPreference({
+        key: "editing_tools_color_palette",
+        default: true,
+        label: T.preferences.editing_tools.color_palette,
+        extras: { class: CONFIG.CLASS.editingTools },
+        dependencies,
+    }),
 }

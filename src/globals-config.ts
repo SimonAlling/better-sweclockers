@@ -22,7 +22,7 @@ const i = prefixer(PREFIX_ID);
 const c = prefixer(PREFIX_CLASS);
 
 export const ID_STYLE_ELEMENT: string = i("main-style-element");
-export const EDITING_TOOLS_HEIGHT = "100px"; // to prevent jumping in preferences interface
+export const EDITING_TOOLS_HEIGHT = "120px"; // to prevent jumping in preferences interface
 
 export const ID = {
     document: i("document"),
@@ -51,6 +51,7 @@ export const CLASS = {
     button_math: c("button-math"),
     button_youtube: c("button-youtube"),
     splitQuote: c("split-quote"),
+    colorPalette: c("color-palette"),
     preference: c("preference"),
     preferenceDescription: c("preference-description"),
     inlinePreference: c("inlinePreference"),

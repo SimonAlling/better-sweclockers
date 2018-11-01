@@ -35,22 +35,47 @@
         }
     }
 
-    /* Special characters toolbar */
-    fieldset:first-child {
+    fieldset {
         display: block;
         width: -webkit-fit-content;
         width: -moz-fit-content;
         width: fit-content;
-    }
 
-    fieldset {
         > * {
             margin: 0 1px 0 0 !important;
         }
         > :last-child {
-            margin-right: 0 !important;
+            margin-right: 0;
         }
     }
+
+    .#{getGlobal("CONFIG.CLASS.colorPalette")} {
+        $size: 20px;
+        $hoverExtra: 2px;
+
+        opacity: 0.5;
+        transition: opacity 100ms linear;
+
+        > * {
+            border: none;
+            margin: 0 !important;
+            width: $size;
+            height: $size;
+        }
+
+        > *:hover, > *:focus {
+            width: $size + 2*$hoverExtra;
+            height: $size + 2*$hoverExtra;
+            margin: -$hoverExtra !important;
+            border-radius: $hoverExtra + 1px;
+            z-index: 9;
+        }
+    }
+
+    .#{getGlobal("CONFIG.CLASS.colorPalette")}:hover, .#{getGlobal("CONFIG.CLASS.colorPalette")}:active {
+        opacity: 1;
+    }
+
 
     $RAINBOW_OPACITY: 0.7;
     $RAINBOW: linear-gradient(to right, rgba(255,0,0,$RAINBOW_OPACITY) 0%,rgba(255,153,50,$RAINBOW_OPACITY) 16%,rgba(247,227,49,$RAINBOW_OPACITY) 33%,rgba(62,211,42,$RAINBOW_OPACITY) 49%,rgba(46,117,232,$RAINBOW_OPACITY) 66%,rgba(90,45,226,$RAINBOW_OPACITY) 83%,rgba(152,25,198,$RAINBOW_OPACITY) 100%);

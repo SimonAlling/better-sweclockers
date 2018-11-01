@@ -88,6 +88,7 @@ export const preferences = {
         embed: `Verktyg för länkar, bilder och sökresultat`,
         doge: `very doge buttons`,
         doge_description: `            wow`,
+        color_palette: `Färgpaletten`,
     },
 
     dark_theme: {

@@ -5,7 +5,7 @@ import { h } from "preact";
 import { lines, unlines } from "lib/utilities";
 import * as BB from "../bb";
 import { r, fromMaybeUndefined } from "../utilities";
-import { Action, CursorBehavior, wrap, wrap_tag, selectedTextIn, insertIn, insert, placeCursorIn } from "./logic/textarea";
+import { Action, CursorBehavior, wrap, wrap_tag, wrap_verbatim, selectedTextIn, insertIn, insert, placeCursorIn } from "./logic/textarea";
 import { InsertButtonDescription } from "../types";
 
 export const BUTTON = {
@@ -66,6 +66,30 @@ export const BUTTONS = {
     ],
 };
 
+export const COLORS: ReadonlyArray<string> = [
+    "#D00",     // dark red
+    "#C15200",  // SweClockers orange
+    "#EE8500",  // orange
+    "#EC0",     // yellow
+    "#20A000",  // green
+    "#789922",  // >greentext
+    "#106400",  // dark green
+    "#0BC",     // turquoise
+    "#24F",     // light blue
+    "#1525D0",  // dark blue
+    "#9000B5",  // purple
+    "black",
+    "gray",
+    "white",
+    "red",
+    "yellow",
+    "lime",
+    "green",
+    "aqua",
+    "blue",
+    "magenta"
+];
+
 type ButtonDescription = Readonly<{
     label?: string
     tooltip?: string
@@ -76,6 +100,7 @@ type ButtonDescription = Readonly<{
     icon?: Readonly<{ type: "RAW" | "URL", image: string }>
     cursor?: CursorBehavior
     action: Action
+    style?: string
 }>
 
 type TagButtonDescription = Pick<ButtonDescription, "tag" | "label" | "tooltip" | "class" | "icon" | "parameterized" | "block">
@@ -104,7 +129,20 @@ export function insertButton(button: InsertButtonDescription): Button {
     });
 }
 
-function generalButton(button: Pick<ButtonDescription, "label" | "tooltip" | "class" | "icon" | "action">): Button {
+export function colorButton(color: string): Button {
+    return generalButton({
+        label: "",
+        tooltip: color,
+        style: `background: ${color} !important;`, // !important to override Blargmode
+        action: wrap_verbatim({
+            before: BB.startTag(SITE.TAG.color, color),
+            after: BB.endTag(SITE.TAG.color),
+            cursor: "KEEP_SELECTION",
+        }),
+    });
+}
+
+function generalButton(button: Pick<ButtonDescription, "label" | "tooltip" | "class" | "icon" | "action" | "style">): Button {
     return textarea => {
         const icon = button.icon;
         const label = (icon === undefined ? "" : icon.type === "URL" ? `<img src="${icon.image}" />` : icon.image) + fromMaybeUndefined("", button.label);
@@ -118,6 +156,7 @@ function generalButton(button: Pick<ButtonDescription, "label" | "tooltip" | "cl
                 dangerouslySetInnerHTML={{__html: label}}
                 title={button.tooltip}
                 class={className}
+                style={button.style}
                 onClick={() => button.action(textarea) }
                 href="javascript:void(0)"
             />

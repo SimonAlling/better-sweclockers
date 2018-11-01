@@ -30,7 +30,7 @@ export function wrap(textarea: HTMLTextAreaElement, w: WrapAction): void {
     );
 };
 
-function wrap_verbatim(w: WrapAction): Action {
+export function wrap_verbatim(w: WrapAction): Action {
     return textarea => wrap(textarea, w);
 }
 
