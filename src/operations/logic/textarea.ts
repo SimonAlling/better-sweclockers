@@ -1,27 +1,23 @@
 import * as BB from "../../bb";
 import { isNumber } from "ts-type-guards";
 
-interface WrapAction {
-    readonly cursor: CursorBehavior
-    readonly before: string
-    readonly after: string
-}
+type WrapAction = Readonly<{
+    cursor: CursorBehavior
+    before: string
+    after: string
+}>
 
-interface TagWrapAction {
-    readonly tag: string
-    readonly parameterized: boolean
-    readonly block: boolean
-}
+type TagWrapAction = Readonly<{
+    tag: string
+    parameterized: boolean
+    block: boolean
+}>
 
 export type Action = (textarea: HTMLTextAreaElement) => void
 
 export type CursorBehavior = number | "KEEP_SELECTION"
 
-export function wrap(textarea: HTMLTextAreaElement, w: {
-    readonly before: string
-    readonly after: string
-    readonly cursor: CursorBehavior
-}): void {
+export function wrap(textarea: HTMLTextAreaElement, w: WrapAction): void {
     const replacement = w.before + selectedTextIn(textarea) + w.after;
     insertIn(
         textarea,

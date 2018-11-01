@@ -66,17 +66,17 @@ export const BUTTONS = {
     ],
 };
 
-interface ButtonDescription {
-    readonly label?: string
-    readonly tooltip?: string
-    readonly class?: string
-    readonly tag: string
-    readonly parameterized?: boolean
-    readonly block?: boolean
-    readonly icon?: { type: "RAW" | "URL", image: string }
-    readonly cursor?: CursorBehavior
-    readonly action: Action
-}
+type ButtonDescription = Readonly<{
+    label?: string
+    tooltip?: string
+    class?: string
+    tag: string
+    parameterized?: boolean
+    block?: boolean
+    icon?: Readonly<{ type: "RAW" | "URL", image: string }>
+    cursor?: CursorBehavior
+    action: Action
+}>
 
 type TagButtonDescription = Pick<ButtonDescription, "tag" | "label" | "tooltip" | "class" | "icon" | "parameterized" | "block">
 

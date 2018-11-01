@@ -87,7 +87,7 @@ function sheldon(): void {
     apply(Preferences.get(P.dark_theme._.active));
 }
 
-function timeIsWithin(interval: { readonly start: number, readonly end: number }) {
+function timeIsWithin(interval: Readonly<{ start: number, end: number }>) {
     return (time: Date): boolean => {
         const t = timeOfDay(time);
         const start = interval.start;
