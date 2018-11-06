@@ -47,8 +47,9 @@ function editingTools(textarea: HTMLTextAreaElement): JSX.Element {
             {connectedTagButton({ tag: SITE.TAG.mark, label: T.editing_tools.label_mark, tooltip: T.editing_tools.tooltip_mark })}
             {connectedTagButton({ tag: SITE.TAG.quote, label: "", parameterized: true, tooltip: T.editing_tools.tooltip_quote, block: true, icon: { type: "RAW", image: CONFIG.ICONS.QUOTE }, class: CONFIG.CLASS.button_quote })}
             {connected(BUTTON.splitQuote)}
-            {connectedInsertButton({ insert: CONFIG.CONTENT.edit, tooltip: T.editing_tools.tooltip_edit, label: T.editing_tools.label_edit })}
+            {connected(BUTTON.expander)}
             {connectedTagButton({ tag: SITE.TAG.spoiler, tooltip: T.editing_tools.tooltip_spoiler, block: true, class: CONFIG.CLASS.button_spoiler })}
+            {connectedInsertButton({ insert: CONFIG.CONTENT.edit, tooltip: T.editing_tools.tooltip_edit, label: T.editing_tools.label_edit })}
             {Preferences.get(P.editing_tools._.code) ? BUTTONS.code.map(connected) : []}
             {Preferences.get(P.editing_tools._.math) ? BUTTONS.math.map(connected) : []}
             {Preferences.get(P.editing_tools._.embed) ? BUTTONS.embed(Preferences.get(P.general._.search_engine)).map(connected) : []}

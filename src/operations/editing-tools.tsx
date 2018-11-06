@@ -41,6 +41,12 @@ export const BUTTON = {
         action: ACTION_SPLIT_QUOTE,
         icon: { type: "RAW", image: require("src/icons/split-quote.svg") },
     }),
+    expander: tagButton({
+        tag: SITE.TAG.expander,
+        tooltip: T.editing_tools.tooltip_expander,
+        block: true,
+        icon: { type: "RAW", image: require("src/icons/expander.svg") },
+    }),
 };
 
 export const BUTTONS = {

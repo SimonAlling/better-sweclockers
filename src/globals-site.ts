@@ -82,6 +82,7 @@ export const TAG = {
     cmd: "cmd",
     code: "code",
     color: "color",
+    expander: "expander",
     font: "font",
     i: "i",
     img: "img",
