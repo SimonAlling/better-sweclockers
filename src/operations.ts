@@ -118,7 +118,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "prevent accidental signout",
-        condition: Preferences.get(P.advanced._.prevent_accidental_signout),
+        condition: Preferences.get(P.advanced._.prevent_accidental_signout) && !isOnBSCPreferencesPage(),
         selectors: { siteHeader: SELECTOR.siteHeader },
         action: PREVENT_ACCIDENTAL_SIGNOUT,
     }),
