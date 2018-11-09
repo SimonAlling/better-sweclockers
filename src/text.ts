@@ -3,6 +3,7 @@ import { assertUnreachable } from "src/utilities";
 import * as Platform from "src/platform";
 import { InsertButtonDescription } from "./types";
 import { Action } from "src/actions";
+import { SearchEngine } from "src/search-engines";
 
 function mod(shortcut: string): string {
     const modKey = Platform.CURRENT_PLATFORM === Platform.OS.Mac ? "⌘" : "Ctrl";
@@ -32,6 +33,7 @@ export const general = {
     quote_signature_tooltip: `Citera endast signatur`,
     textarea_size_small: `Liten textruta`,
     textarea_size_large: `Stor textruta`,
+    web_search_button_tooltip: (engine: SearchEngine) => `Sök med ${engine}`,
 };
 
 export const preferences = {
@@ -45,10 +47,9 @@ export const preferences = {
         lock_heights: `Lås höjden på reklam etc`,
         compact_layout: `Kompakt layout`,
         improved_corrections: `Bättre rättelsegränssnitt`,
+        insert_web_search_button: `Webbsökknapp`,
         search_engine: {
             label: `Sökmotor`,
-            google: `Google`,
-            duckduckgo: `DuckDuckGo`,
         },
     },
 

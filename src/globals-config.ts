@@ -90,3 +90,9 @@ export const ICONS = {
 };
 
 export const FOCUSABLE_ELEMENTS = [ "textarea", "input", "select" ];
+
+export const enum SearchEngine {
+    // Be careful! These strings are used in the UI.
+    GOOGLE = "Google",
+    DUCKDUCKGO = "DuckDuckGo",
+}

@@ -13,6 +13,7 @@ import {
 } from "./environment";
 import INSERT_PREFERENCES_MENU from "./operations/insert-preferences-menu";
 import INSERT_PREFERENCES_LINK from "./operations/insert-preferences-link";
+import INSERT_WEB_SEARCH_BUTTON from "./operations/insert-web-search-button";
 import INSERT_EDITING_TOOLS from "./operations/insert-editing-tools";
 import INSERT_TEXTAREA_SIZE_TOGGLE from "./operations/insert-textarea-size-toggle";
 import INSERT_PM_LINKS from "./operations/insert-pm-links";
@@ -79,6 +80,15 @@ const OPERATIONS: ReadonlyArray<Operation> = [
             actionButtons: SELECTOR.actionButtons,
         },
         action: PREVENT_ACCIDENTAL_UNLOAD,
+    }),
+    new DependentOperation({
+        description: "insert web search button",
+        condition: Preferences.get(P.general._.insert_web_search_button) && !isOnBSCPreferencesPage(),
+        selectors: {
+            searchFieldInput: SELECTOR.searchFieldInput,
+            searchFieldWrapper: SELECTOR.searchFieldWrapper,
+        },
+        action: INSERT_WEB_SEARCH_BUTTON,
     }),
     new DependentOperation({
         description: "manage caret position in textarea",

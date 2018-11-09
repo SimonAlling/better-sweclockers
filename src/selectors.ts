@@ -8,6 +8,8 @@ const C = SITE.CLASS;
 const settingsNavigation = `ul.${C.settingsNavigation}`;
 const settingsNavigationItem = `${settingsNavigation} > li.${C.menuItem}`;
 
+const searchFieldWrapper = `#search .searchField`;
+
 const actionButtons = `button[name=action]`;
 
 export default {
@@ -15,6 +17,8 @@ export default {
     textareaToolbarInner: `form .toolbar .tbInner`,
     lastNavigationTab: `.${C.menu} > li.${C.menuItem}:last-child`,
     siteHeader: `#` + SITE.ID.siteHeader,
+    searchFieldWrapper,
+    searchFieldInput: `${searchFieldWrapper} input`,
     settingsNavigation,
     settingsNavigationItem,
     settingsNavigationLabel: `${settingsNavigationItem} > a.${C.link} > span.${C.icon} + span.${C.label}`,

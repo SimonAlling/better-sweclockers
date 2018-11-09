@@ -58,6 +58,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/improved-corrections"),
     },
     {
+        condition: Preferences.get(P.general._.insert_web_search_button),
+        css: require("styles/web-search-button"),
+    },
+    {
         condition: Preferences.get(P.forum_threads._.highlight_own_posts),
         css: require("styles/highlight-own-posts"),
     },

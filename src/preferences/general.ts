@@ -1,14 +1,9 @@
 import * as T from "../text";
+import { SearchEngine } from "src/search-engines";
 import {
     BooleanPreference,
     MultichoicePreference,
 } from "ts-preferences";
-
-export const enum SearchEngine {
-    // Be careful! This mapping to URLs IS meaningful.
-    GOOGLE = "https://google.com/search?q=",
-    DUCKDUCKGO = "https://duckduckgo.com/?q=",
-}
 
 export default {
     lock_heights: new BooleanPreference({
@@ -26,6 +21,11 @@ export default {
         default: true,
         label: T.preferences.general.improved_corrections,
     }),
+    insert_web_search_button: new BooleanPreference({
+        key: "insert_web_search_button",
+        default: true,
+        label: T.preferences.general.insert_web_search_button,
+    }),
     search_engine: new MultichoicePreference({
         key: "search_engine",
         default: SearchEngine.GOOGLE,
@@ -33,11 +33,11 @@ export default {
         options: [
             {
                 value: SearchEngine.GOOGLE,
-                label: T.preferences.general.search_engine.google,
+                label: SearchEngine.GOOGLE,
             },
             {
                 value: SearchEngine.DUCKDUCKGO,
-                label: T.preferences.general.search_engine.duckduckgo,
+                label: SearchEngine.DUCKDUCKGO,
             },
         ],
     }),

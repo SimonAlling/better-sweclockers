@@ -96,6 +96,8 @@ export const COLORS: ReadonlyArray<string> = [
     "magenta"
 ];
 
+export type Icon = Readonly<{ type: "RAW" | "URL", image: string }>
+
 type ButtonDescription = Readonly<{
     label?: string
     tooltip?: string
@@ -103,7 +105,7 @@ type ButtonDescription = Readonly<{
     tag: string
     parameterized?: boolean
     block?: boolean
-    icon?: Readonly<{ type: "RAW" | "URL", image: string }>
+    icon?: Icon
     cursor?: CursorBehavior
     action: Action
     style?: string
@@ -148,7 +150,7 @@ export function colorButton(color: string): Button {
     });
 }
 
-function generalButton(button: Pick<ButtonDescription, "label" | "tooltip" | "class" | "icon" | "action" | "style">): Button {
+export function generalButton(button: Pick<ButtonDescription, "label" | "tooltip" | "class" | "icon" | "action" | "style">): Button {
     return textarea => {
         const icon = button.icon;
         const label = (icon === undefined ? "" : icon.type === "URL" ? `<img src="${icon.image}" />` : icon.image) + fromMaybeUndefined("", button.label);
