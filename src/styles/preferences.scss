@@ -13,14 +13,12 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         max-width: 100%;
     }
 
-    #{$preference}, aside, ##{getGlobal("CONFIG.ID.editingTools")} {
+    aside, ##{getGlobal("CONFIG.ID.editingTools")} {
         transition-property: opacity;
         transition-duration: 250ms;
     }
 
     #{$preference} {
-        opacity: 0.75;
-
         > label::after {
             content: ":\a0";
         }
@@ -28,10 +26,6 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         input + label::after, select + label::after, textarea + label::after {
             content: unset;
         }
-    }
-
-    #{$preference}:hover, #{$preference}:focus {
-        opacity: 1;
     }
 
     .#{getGlobal("SITE.CLASS.fieldset")} {
