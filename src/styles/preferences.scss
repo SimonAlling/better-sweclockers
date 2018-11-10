@@ -22,7 +22,7 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         opacity: 0.75;
 
         > label::after {
-            content: ":";
+            content: ":\a0";
         }
 
         input + label::after, select + label::after, textarea + label::after {
@@ -83,7 +83,7 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         }
 
         input[type="text"], input[type="number"], input[type="time"] {
-            margin: 0.33em 0;
+            margin: 0;
         }
     }
     .#{$inline} + .#{$inline} label::after,
@@ -96,15 +96,24 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     }
 
     label {
-        padding: 4px 0;
+        padding: 6px 0;
+        margin: 0;
+    }
+
+    input[type="checkbox"] + label, input[type="radio"] + label {
+        padding-left: 5px;
     }
 
     input[type="checkbox"], input[type="radio"] {
-        margin: 0 5px 0 0;
+        margin: 0;
     }
 
     input[type="text"], input[type="number"], input[type="time"] {
-        margin: 0.33em;
+        margin: 0.33em 0;
+    }
+
+    input[type="text"] + label::before, input[type="number"] + label::before, input[type="time"] + label::before {
+        content: "\a0";
     }
 
     // Description
