@@ -60,7 +60,7 @@ export const preferences = {
         insert_pm_links: `PM-knappar`,
         quote_signature_buttons: `Citera signatur-knappar`,
         quote_signature_message: `Meddelande vid citering av signatur`,
-        quote_signature_message_default: `Inkludera alltid fulla specifikationer i trådar som den här, så blir det så enkelt som möjligt att hjälpa till och trådens värde består även när du byter signatur.`,
+        quote_signature_message_default: `Nu består trådens värde även när du byter signatur.`,
     },
 
     edit_mode: {
