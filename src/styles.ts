@@ -120,6 +120,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: hideById(SITE.ID.newInTestLabWidget),
     },
     {
+        condition: isFalse(Preferences.get(P.customize_content._.in_the_store)),
+        css: hideById(SITE.ID.inTheStoreWidget),
+    },
+    {
         condition: isFalse(Preferences.get(P.customize_content._.popular_at_prisjakt)),
         css: hideById(SITE.ID.popularAtPrisjaktWidget),
     },

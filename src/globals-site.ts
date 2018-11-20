@@ -26,6 +26,7 @@ export const ID = {
     newInForumWidget_side: "wdgtSideRecentThreads",
     newInMarketWidget: "wdgtSideRecentClassifieds",
     newInTestLabWidget: "wdgtSideRecentReviews",
+    inTheStoreWidget: "wdgtSideGeeksShop",
     popularAtPrisjaktWidget: "wdgtSidePopularProducts",
     newTechJobsWidget: "wdgtSideMonsterJobs",
     externalNewsWidget: "wdgtSideExternalFeeds",

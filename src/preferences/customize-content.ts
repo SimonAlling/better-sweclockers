@@ -44,6 +44,11 @@ export default {
         default: true,
         label: T.preferences.customize_content.new_in_test_lab,
     }),
+    in_the_store: new BooleanPreference({
+        key: "customize_content_in_the_store",
+        default: true,
+        label: T.preferences.customize_content.in_the_store,
+    }),
     popular_at_prisjakt: new BooleanPreference({
         key: "customize_content_popular_at_prisjakt",
         default: true,

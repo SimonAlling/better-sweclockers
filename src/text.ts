@@ -111,6 +111,7 @@ export const preferences = {
         new_in_forum_side: `Nytt i forumet (till höger)`,
         new_in_market: `Senaste privatannonserna`,
         new_in_test_lab: `Nytt i testlabbet`,
+        in_the_store: `Just nu i butiken`,
         popular_at_prisjakt: `Populärast på Prisjakt`,
         new_tech_jobs: `Nya teknikjobb`,
         external_news: `Externa nyheter`,
