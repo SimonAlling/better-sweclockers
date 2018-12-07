@@ -7,6 +7,7 @@ import * as BB from "../bb";
 import { r, fromMaybeUndefined } from "../utilities";
 import { Action, CursorBehavior, wrap, wrap_tag, wrap_verbatim, selectedTextIn, insertIn, insert, placeCursorIn } from "./logic/textarea";
 import { InsertButtonDescription } from "../types";
+import { SearchEngine, searchURL } from "search-engines";
 
 export const BUTTON = {
     url: tagButton({
@@ -20,7 +21,7 @@ export const BUTTON = {
         action: ACTION_IMG,
         icon: { type: "RAW", image: SITE.ICONS.toolbarIcon(SITE.ICONS.position_toolbar_img) },
     }),
-    search: (engine: string) => generalButton({
+    search: (engine: SearchEngine) => generalButton({
         tooltip: T.editing_tools.tooltip_search_link,
         action: ACTION_SEARCH_LINK(engine),
         icon: { type: "RAW", image: require("src/icons/search-link.svg") },
@@ -61,7 +62,7 @@ export const BUTTONS = {
         tagButton({ tag: SITE.TAG.sub, label: T.editing_tools.label_sub, tooltip: T.editing_tools.tooltip_sub, class: CONFIG.CLASS.button_math }),
         tagButton({ tag: SITE.TAG.sup, label: T.editing_tools.label_sup, tooltip: T.editing_tools.tooltip_sup, class: CONFIG.CLASS.button_math }),
     ],
-    embed: (searchEngine: string) => [
+    embed: (searchEngine: SearchEngine) => [
         BUTTON.url,
         BUTTON.img,
         BUTTON.search(searchEngine),
@@ -204,15 +205,15 @@ function ACTION_IMG(textarea: HTMLTextAreaElement): void {
     }
 }
 
-function ACTION_SEARCH_LINK(engine: string) {
+function ACTION_SEARCH_LINK(engine: SearchEngine) {
     return (textarea: HTMLTextAreaElement): void => {
         const tagName = SITE.TAG.url;
-        const tagPlusUrl = `[${tagName}="${engine}`;
         const selected = selectedTextIn(textarea);
+        const startTag = BB.startTag(tagName, searchURL(engine, selected));
         wrap(textarea, {
-            before: tagPlusUrl + selected.trim().replace(/ +/g, "+") + `"]`,
+            before: startTag,
             after: BB.endTag(tagName),
-            cursor: selected === "" ? tagPlusUrl.length : "KEEP_SELECTION",
+            cursor: selected === "" ? startTag.length - 2 /* for "] */ : "KEEP_SELECTION",
         });
     }
 }

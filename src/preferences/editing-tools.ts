@@ -6,6 +6,7 @@ import {
 } from "ts-preferences";
 import { h, render } from "preact";
 import { Button, BUTTONS, insertButton } from "../operations/editing-tools";
+import { SearchEngine } from "search-engines";
 
 function buttonsDescription(buttons: ReadonlyArray<Button>): string {
     const textarea = document.createElement("textarea");
@@ -78,7 +79,7 @@ export default {
         key: "editing_tools_embed",
         default: true,
         label: T.preferences.editing_tools.embed,
-        description: buttonsDescription(BUTTONS.embed("")),
+        description: buttonsDescription(BUTTONS.embed(SearchEngine.GOOGLE)),
         extras: { class: CONFIG.CLASS.editingTools },
         dependencies,
     }),
