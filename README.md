@@ -1,6 +1,20 @@
-# Better SweClockers
-![BETTER SWECLOCKERS](http://i.imgur.com/oZHfIXh.png)
-_Ett userscript av Simon Alling – för en högre skrivstandard och mindre vardagsmigrän på Sveriges största webbtidning om datorer och hårdvara._
+![BETTER SWECLOCKERS](https://cdn.sweclockers.com/artikel/bild/63329?l=eyJyZXNvdXJjZSI6IlwvYXJ0aWtlbFwvYmlsZFwvNjMzMjkiLCJmaWx0ZXJzIjpbInQ9b3JpZ2luYWwiXSwicGFyYW1zIjpbXSwia2V5IjoiYzk3ODM1MmY4NDVkM2YwOWY3M2UwYWRmODZlMjk1MmIifQ%3D%3D)
+A userscript for Swedish tech site [SweClockers](https://sweclockers.com).
 
-* **[Forumtråd](http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/)**
-* **[Dokumentation](http://www.sweclockers.com/forum/10-programmering-och-digitalt-skapande/1288777-better-sweclockers/#post14497818)**
+
+## Contribute
+
+### Prerequisites
+
+* **[Node.js](https://nodejs.org) with npm is required.**
+* **If you are using Windows**, you need to install and use [Git Bash](https://git-scm.com/downloads), [Linux Subsystem](https://msdn.microsoft.com/en-us/commandline/wsl/install-win10) or similar to be able to build.
+
+
+### Clone and Build
+
+    git clone git@github.com:SimonAlling/better-sweclockers
+    cd better-sweclockers
+    npm install
+    ./build
+
+The compiled userscript is saved as `better-sweclockers.user.js`.
