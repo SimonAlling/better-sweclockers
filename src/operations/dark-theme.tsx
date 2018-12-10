@@ -7,14 +7,16 @@ import * as ms from "milliseconds";
 import { isHTMLElement } from "lib/html";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";
+import { darkThemeUrl } from "src/dark-theme";
 
 const DARK_THEME_ADDITIONS = require("../styles/dark-theme-additions");
 
 export function insertToggle(e: { lastTab: HTMLElement }): void {
     const state = Preferences.get(P.dark_theme._.active);
+    const source = Preferences.get(P.dark_theme._.source);
     const button = (
         <li
-            title={state ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on}
+            title={state ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on(source)}
             class={[SITE.CLASS.menuItem].concat(state ? CONFIG.CLASS.darkThemeActive : []).join(" ")}
             id={CONFIG.ID.darkThemeToggle}
         >
@@ -39,9 +41,10 @@ export function manage(): void {
 }
 
 function apply(newState: boolean): void {
+    const source = Preferences.get(P.dark_theme._.source);
     if (newState) {
         if (isNull(document.getElementById(CONFIG.ID.darkThemeStylesheet))) {
-            render(<link rel="stylesheet" href={CONFIG.DARK_THEME.url} id={CONFIG.ID.darkThemeStylesheet} />, document.head);
+            render(<link rel="stylesheet" href={darkThemeUrl(source)} id={CONFIG.ID.darkThemeStylesheet} />, document.head);
             render((
                 <style id={CONFIG.ID.darkThemeAdditions}>
                     {DARK_THEME_ADDITIONS}
@@ -63,7 +66,7 @@ function apply(newState: boolean): void {
     if (isHTMLElement(toggle)) {
         const active = CONFIG.CLASS.darkThemeActive;
         newState ? toggle.classList.add(active) : toggle.classList.remove(active);
-        toggle.title = newState ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on;
+        toggle.title = newState ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on(source);
     }
 }
 

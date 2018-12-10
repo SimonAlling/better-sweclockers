@@ -6,7 +6,7 @@
 }
 
 ##{getGlobal("CONFIG.ID.darkThemeToggle")}.#{getGlobal("CONFIG.CLASS.darkThemeActive")} {
-    // !important to override dark theme:
+    // !important to override Blargmode's dark theme:
     background-color: #dfdfdf !important;
     background-image: none !important;
 }

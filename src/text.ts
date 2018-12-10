@@ -4,6 +4,7 @@ import * as Platform from "src/platform";
 import { InsertButtonDescription } from "./types";
 import { Action } from "src/actions";
 import { SearchEngine } from "src/search-engines";
+import * as DarkTheme from "src/dark-theme";
 
 function mod(shortcut: string): string {
     const modKey = Platform.CURRENT_PLATFORM === Platform.OS.Mac ? "⌘" : "Ctrl";
@@ -22,9 +23,17 @@ export function action(a: Action): string {
     return assertUnreachable(a);
 }
 
+function genitive(name: string): string {
+    return ["s", "x", "z"].some(letter => name.endsWith(letter)) ? name : name + "s";
+}
+
+function darkThemeBy(author: DarkTheme.Source): string {
+    return `${genitive(author)} mörka tema`;
+}
+
 export const general = {
     seconds: `sekunder`,
-    dark_theme_toggle_tooltip_on: "Blargmodes mörka tema",
+    dark_theme_toggle_tooltip_on: darkThemeBy,
     dark_theme_toggle_tooltip_off: "Standardutseendet",
     signout_confirmation: `Är du säker på att du vill logga ut?`,
     // Copied from SweClockers:
@@ -93,7 +102,11 @@ export const preferences = {
     },
 
     dark_theme: {
-        label: `Blargmodes mörka tema`,
+        label: `Mörkt tema`,
+        source: {
+            label: `Tema`,
+            option: darkThemeBy,
+        },
         show_toggle: `Visa knapp för manuell växling`,
         auto: `Automatisk aktivering`,
         between: `mellan`,

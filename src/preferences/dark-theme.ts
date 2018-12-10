@@ -3,9 +3,11 @@ import * as T from "../text";
 import * as ms from "milliseconds";
 import {
     BooleanPreference,
+    MultichoicePreference,
     IntegerRangePreference,
 } from "ts-preferences";
 import { TimePreference } from "./TimePreference";
+import { Source } from "src/dark-theme";
 
 const auto = new BooleanPreference({
     key: "dark_theme_auto",
@@ -33,6 +35,21 @@ export default {
         default: false,
         label: T.preferences.NO_LABEL,
         extras: { implicit: true },
+    }),
+    source: new MultichoicePreference<Source>({
+        key: "dark_theme_source",
+        default: Source.BLARGMODE,
+        options: [
+            {
+                value: Source.BLARGMODE,
+                label: T.preferences.dark_theme.source.option(Source.BLARGMODE),
+            },
+            {
+                value: Source.SOITORA,
+                label: T.preferences.dark_theme.source.option(Source.SOITORA),
+            },
+        ],
+        label: T.preferences.dark_theme.source.label,
     }),
     show_toggle: new BooleanPreference({
         key: "dark_theme_show_toggle",
