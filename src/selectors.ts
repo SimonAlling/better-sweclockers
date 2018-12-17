@@ -17,6 +17,7 @@ export default {
     textareaToolbarInner: `form .toolbar .tbInner`,
     lastNavigationTab: `.${C.menu} > li.${C.menuItem}:last-child`,
     siteHeader: `#` + SITE.ID.siteHeader,
+    moreArticles: `.mainContent ~ .mainContent`,
     searchFieldWrapper,
     searchFieldInput: `${searchFieldWrapper} input`,
     settingsNavigation,

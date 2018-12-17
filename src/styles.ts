@@ -136,6 +136,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: hideById(SITE.ID.externalNewsWidget),
     },
     {
+        condition: isFalse(Preferences.get(P.customize_content._.more_articles)),
+        css: hideBySelector(SELECTOR.moreArticles),
+    },
+    {
         condition: isFalse(Preferences.get(P.customize_content._.latest_news)),
         css: hideById(SITE.ID.latestNewsWidget),
     },

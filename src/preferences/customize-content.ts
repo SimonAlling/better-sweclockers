@@ -64,6 +64,11 @@ export default {
         default: true,
         label: T.preferences.customize_content.external_news,
     }),
+    more_articles: new BooleanPreference({
+        key: "customize_content_more_articles",
+        default: true,
+        label: T.preferences.customize_content.more_articles,
+    }),
     latest_news: new BooleanPreference({
         key: "customize_content_latest_news",
         default: true,
