@@ -173,6 +173,20 @@ export function generalButton(button: Pick<ButtonDescription, "label" | "tooltip
     };
 }
 
+export function toolbarButton(button: Pick<ButtonDescription, "tooltip" | "class" | "action" | "style">): Button {
+    return textarea => (
+        <div
+            title={button.tooltip}
+            class={[ SITE.CLASS.toolbarButton, button.class || "" ].join(" ").trim()}
+            style={button.style}
+        >
+            <div class={SITE.CLASS.inner} onClick={() => button.action(textarea)}>
+                <div class={SITE.CLASS.toolbarButtonIcon}></div>
+            </div>
+        </div>
+    );
+}
+
 function shibeText(original: string): string {
     const MAX = 100;
     const NBSP = " ";

@@ -12,9 +12,12 @@ const searchFieldWrapper = `#search .searchField`;
 
 const actionButtons = `button[name=action]`;
 
+const textareaToolbarInner = `form .toolbar .tbInner`;
+
 export default {
     textarea: "textarea#" + CSS.escape(SITE.ID.textarea),
-    textareaToolbarInner: `form .toolbar .tbInner`,
+    textareaToolbarInner,
+    textareaToolbarStrikeButton: textareaToolbarInner + ` .strike`,
     lastNavigationTab: `.${C.menu} > li.${C.menuItem}:last-child`,
     siteHeader: `#` + SITE.ID.siteHeader,
     moreArticles: `.mainContent ~ .mainContent`,

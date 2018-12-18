@@ -47,6 +47,11 @@ export default {
         dependencies: dependencies_textarea_size_toggle,
         extras: { class: CONFIG.CLASS.inlinePreference, suffix: T.preferences.edit_mode.textarea_size_unit },
     }),
+    insert_heading_toolbar_button: new BooleanPreference({
+        key: "insert_heading_toolbar_button",
+        default: true,
+        label: T.preferences.edit_mode.insert_heading_toolbar_button,
+    }),
     place_caret_at_end: new BooleanPreference({
         key: "place_caret_at_end",
         default: true,

@@ -39,6 +39,7 @@ export const CLASS = {
     icon: "icon",
     label: "label",
     menu: "menu",
+    inner: "inner",
     menuItem: "menuItem",
     settingsNavigation: "menuItems",
     forumPost: "forumPost",
@@ -55,7 +56,9 @@ export const CLASS = {
     sideBox: "sideBox",
     subforumLink: "link",
     toolbarGroup: "tbGroup",
+    toolbarButton: "tbButton iconButton noselect",
     toolbarButtonIcon: "btnIcon",
+    toolbarHeadingButton: "header",
 };
 
 export const PATH = {
@@ -85,6 +88,7 @@ export const TAG = {
     color: "color",
     expander: "expander",
     font: "font",
+    h: "h",
     i: "i",
     img: "img",
     mark: "mark",

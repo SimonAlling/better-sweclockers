@@ -43,6 +43,7 @@ export const general = {
     textarea_size_small: `Liten textruta`,
     textarea_size_large: `Stor textruta`,
     web_search_button_tooltip: (engine: SearchEngine) => `Sök med ${engine}`,
+    tooltip_h: `Rubrik`,
 };
 
 export const preferences = {
@@ -79,6 +80,7 @@ export const preferences = {
         textarea_size_small: `mellan`,
         textarea_size_large: `och`,
         textarea_size_unit: `px`,
+        insert_heading_toolbar_button: `Knapp för att formatera som rubrik`,
         place_caret_at_end: `Placera markören i slutet av textrutan`,
         remember_caret_position: `Kom ihåg markörens position vid förhandsgranskning`,
         remove_mobile_site_disclaimer: `Ta bort <small><em>${SITE.MOBILE_SITE_DISCLAIMER.sentFrom} ${SITE.MOBILE_SITE_DISCLAIMER.mobileSiteDomain}</em></small>`,
