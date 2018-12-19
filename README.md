@@ -17,4 +17,4 @@ A userscript for Swedish tech site [SweClockers](https://sweclockers.com). More 
     npm install
     ./build
 
-The compiled userscript is saved as `better-sweclockers.user.js`.
+The compiled userscript is saved as `dist/better-sweclockers.user.js`.
