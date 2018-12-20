@@ -102,6 +102,7 @@ export default (env: object, argv: {
                         {
                             loader: "sass-loader",
                             options: {
+                                outputStyle: "compressed",
                                 functions: {
                                     getGlobal: (keyString: any) => {
                                         function fail(input: any) {
