@@ -60,9 +60,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: ALWAYS,
         action: DarkTheme.manage,
     }),
-    new IndependentOperation({
+    // A regular IndependentOperation does not work when the user is logged out, because document.body is null.
+    // An IndependentOperation with waitForDOMContentLoaded does not work when the user is logged in, because DOMContentLoaded never fires.
+    new DependentOperation({
         description: "insert preferences menu",
         condition: isOnBSCPreferencesPage(),
+        selectors: { body: "body" },
         action: INSERT_PREFERENCES_MENU,
     }),
     new IndependentOperation({
