@@ -51,7 +51,7 @@ Not returning anything is equivalent to returning undefined, which is equivalent
 
 const OPERATIONS: ReadonlyArray<Operation> = [
     new IndependentOperation({
-        description: "set body id",
+        description: "set document id",
         condition: ALWAYS,
         action: () => { document.documentElement.id = CONFIG.ID.document },
     }),
