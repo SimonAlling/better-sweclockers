@@ -21,6 +21,11 @@ export default {
         default: true,
         label: T.preferences.general.improved_corrections,
     }),
+    insert_preferences_shortcut: new BooleanPreference({
+        key: "insert_preferences_shortcut",
+        default: true,
+        label: T.preferences.general.insert_preferences_shortcut,
+    }),
     insert_web_search_button: new BooleanPreference({
         key: "insert_web_search_button",
         default: true,

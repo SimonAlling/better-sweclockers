@@ -1,7 +1,7 @@
 ##{getGlobal("CONFIG.ID.darkThemeToggle")} {
     background-color: rgb(20, 20, 20);
     border-color: black;
-    margin-left: 8px;
+    margin-left: #{getGlobal("SITE.EXTRA_TAB_MARGIN")};
     opacity: 0.6;
 }
 

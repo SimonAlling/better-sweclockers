@@ -13,6 +13,7 @@ import {
 } from "./environment";
 import INSERT_PREFERENCES_MENU from "./operations/insert-preferences-menu";
 import INSERT_PREFERENCES_LINK from "./operations/insert-preferences-link";
+import INSERT_PREFERENCES_SHORTCUT from "./operations/insert-preferences-shortcut";
 import INSERT_WEB_SEARCH_BUTTON from "./operations/insert-web-search-button";
 import INSERT_EDITING_TOOLS from "./operations/insert-editing-tools";
 import INSERT_HEADING_TOOLBAR_BUTTON from "./operations/insert-heading-toolbar-button";
@@ -133,7 +134,14 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     new DependentOperation({
         description: "insert dark theme toggle",
         condition: Preferences.get(P.dark_theme._.show_toggle) && !isOnBSCPreferencesPage(),
-        selectors: { lastTab: SELECTOR.lastNavigationTab },
+        selectors: {
+            lastTab: (
+                // If preferences shortcut is inserted, dark theme toggle must be inserted to its right.
+                Preferences.get(P.general._.insert_preferences_shortcut)
+                ? `#${CONFIG.ID.preferencesShortcut}`
+                : SELECTOR.lastNavigationTab
+            ),
+        },
         action: DarkTheme.insertToggle,
     }),
     new DependentOperation({
@@ -151,6 +159,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
             label: SELECTOR.settingsNavigationLabel,
         },
         action: INSERT_PREFERENCES_LINK,
+    }),
+    new DependentOperation({
+        description: "insert preferences shortcut",
+        condition: Preferences.get(P.general._.insert_preferences_shortcut) && !isOnBSCPreferencesPage(),
+        selectors: { lastTab: SELECTOR.lastNavigationTab },
+        action: INSERT_PREFERENCES_SHORTCUT,
     }),
     new IndependentOperation({
         description: "insert PM links",

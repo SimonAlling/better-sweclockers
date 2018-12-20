@@ -12,6 +12,7 @@ export const BANNER_HEIGHT_MID = `${360}px`; // default height of page ad module
 export const WRAPPER_WIDTH_WIDE = `${1250}px`;
 export const WRAPPER_WIDTH_NARROW = `${1002}px`;
 export const MAX_WIDTH_FOR_NARROW_LAYOUT = `${1100}px`;
+export const EXTRA_TAB_MARGIN = `${8}px`;
 
 export const ID = {
     siteHeader: "siteHeader",
@@ -105,6 +106,7 @@ export const TAG = {
     youtube: "youtube",
 };
 
+export const URL_ICONS_GENERAL = "/gfx/spritemap2x.png";
 const URL_ICONS_TOOLBAR = "/gfx/toolbar2x.png";
 export const ICONS = {
     toolbarIcon: (position: string): string => `<div style="background-image: url('${URL_ICONS_TOOLBAR}'); background-size: 500px auto; background-position: ${position};"></div>`,

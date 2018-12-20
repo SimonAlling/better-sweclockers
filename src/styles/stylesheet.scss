@@ -21,3 +21,10 @@
 .#{getGlobal("SITE.CLASS.forumPost")} .#{getGlobal("SITE.CLASS.forumPostControls")} .#{getGlobal("CONFIG.CLASS.quoteSignatureButton")} {
     margin-left: -50px; // to prevent horizontal overflow e.g. on a tablet
 }
+
+##{getGlobal("CONFIG.ID.preferencesShortcut")} {
+    background-image: url("#{getGlobal("SITE.URL_ICONS_GENERAL")}") !important; // to override Blargmode
+    background-position: -164.5px -95px;
+    background-size: 600px auto; // scale down 2x; image is 1200px wide
+    margin-left: #{getGlobal("SITE.EXTRA_TAB_MARGIN")};
+}

@@ -1,4 +1,5 @@
 import * as SITE from "globals-site";
+import * as CONFIG from "globals-config";
 import { assertUnreachable } from "src/utilities";
 import * as Platform from "src/platform";
 import { InsertButtonDescription } from "./types";
@@ -57,6 +58,7 @@ export const preferences = {
         lock_heights: `Lås höjden på reklam etc`,
         compact_layout: `Kompakt layout`,
         improved_corrections: `Bättre rättelsegränssnitt`,
+        insert_preferences_shortcut: `Genväg till inställningar för ${CONFIG.USERSCRIPT_NAME}`,
         insert_web_search_button: `Webbsökknapp`,
         search_engine: {
             label: `Sökmotor`,
