@@ -5,10 +5,21 @@ import * as Options from "../.userscripter/build/options";
 import U from "./userscript";
 
 export default function metadata(args: CommandLineOptions): Metadata {
-    const URL = IO.url({ withDistDir: false })(U.hostedAt, U.id);
+    const hostedAt = (x => x ? x : U.hostedAt)(args[Options.HOSTED_AT]);
+    const URL = IO.url({ withDistDir: false })(hostedAt, U.id);
+    const d = new Date();
+    const nightlyVersionSuffix = [
+        "", // leading "."
+        d.getFullYear(),
+        d.getMonth()+1, // 0-indexed
+        d.getDate(),
+        d.getHours(),
+        d.getMinutes()
+    ].join(".");
+    const nightly = args[Options.NIGHTLY];
     return {
-        name: U.name,
-        version: U.version,
+        name: U.name + (nightly ? " Nightly" : ""),
+        version: U.version + (nightly ? nightlyVersionSuffix : ""),
         match: [
             `*://${U.hostname}/*`,
             `*://www.${U.hostname}/*`,
