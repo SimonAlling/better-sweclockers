@@ -85,6 +85,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         condition: ALWAYS,
         css: filterNewInForum(Preferences.get(P.interests._.uninteresting_subforums)),
     },
+    {
+        condition: Preferences.get(P.general._.replace_followed_button),
+        css: require("styles/replace-followed-button-icon"),
+    },
 
     // Customize content:
     {

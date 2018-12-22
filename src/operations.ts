@@ -23,6 +23,7 @@ import INSERT_QUOTE_SIGNATURE_BUTTONS from "./operations/insert-quote-signature-
 import PREVENT_ACCIDENTAL_SIGNOUT from "./operations/prevent-accidental-signout";
 import PREVENT_ACCIDENTAL_UNLOAD from "./operations/prevent-accidental-unload";
 import ADAPT_CORRECTIONS_LINK from "./operations/adapt-corrections-link";
+import REPLACE_FOLLOWED_BUTTON from "./operations/replace-followed-button";
 import MANAGE_CARET_POSITION from "./operations/manage-caret-position";
 import REMOVE_MOBILE_SITE_DISCLAIMER from "./operations/remove-mobile-site-disclaimer";
 import KEYBOARD_SHORTCUT_PREVIEW from "./operations/keyboard-shortcuts/preview";
@@ -186,6 +187,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: Preferences.get(P.general._.improved_corrections) && isReadingEditorialContent(),
         selectors: { correctionsLink: "#" + SITE.ID.correctionsLink },
         action: ADAPT_CORRECTIONS_LINK,
+    }),
+    new DependentOperation({
+        description: "replace followed threads button with a link to my posts",
+        condition: Preferences.get(P.general._.replace_followed_button) && !isOnBSCPreferencesPage() /*&& isLoggedIn()*/, // isLoggedIn not yet implemented. operation will fail and log error when not logged in
+        selectors: { followedButtonLink: SELECTOR.followedButtonLink },
+        action: REPLACE_FOLLOWED_BUTTON,
     }),
 
     // Keyboard shortcuts

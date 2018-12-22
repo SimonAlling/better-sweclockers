@@ -31,6 +31,11 @@ export default {
         default: true,
         label: T.preferences.general.insert_web_search_button,
     }),
+    replace_followed_button: new BooleanPreference({
+        key: "replace_followed_button",
+        default: false,
+        label: T.preferences.general.replace_followed_button,
+    }),
     search_engine: new MultichoicePreference({
         key: "search_engine",
         default: SearchEngine.GOOGLE,

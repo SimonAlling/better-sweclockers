@@ -45,6 +45,7 @@ export const general = {
     textarea_size_large: `Stor textruta`,
     web_search_button_tooltip: (engine: SearchEngine) => `Sök med ${engine}`,
     tooltip_h: `Rubrik`,
+    my_posts: `Mina inlägg`,
 };
 
 export const preferences = {
@@ -60,6 +61,7 @@ export const preferences = {
         improved_corrections: `Bättre rättelsegränssnitt`,
         insert_preferences_shortcut: `Genväg till inställningar för ${CONFIG.USERSCRIPT_NAME}`,
         insert_web_search_button: `Webbsökknapp`,
+        replace_followed_button: `Ersätt knappen "Följda trådar" med "Mina inlägg"`,
         search_engine: {
             label: `Sökmotor`,
         },
