@@ -89,7 +89,7 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
     // Customize content:
     {
         condition: isFalse(Preferences.get(P.customize_content._.news_ticker)),
-        css: hideById(SITE.ID.newsTicker),
+        css: require("styles/hide-news-ticker"),
     },
     {
         condition: isFalse(Preferences.get(P.customize_content._.carousel)),
