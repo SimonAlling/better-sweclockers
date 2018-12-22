@@ -1,0 +1,16 @@
+.ad,
+#adblockBanner,
+#siteHeader .banner,
+#content>.outsiderColumn>.fixed,
+.adForumSticker {
+    display: none;
+}
+
+.tv-frame {
+    .tvf-top,
+    .tvf-right,
+    .tvf-bottom,
+    .tvf-left {
+        display: none;
+    }
+}

@@ -151,6 +151,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         condition: isFalse(Preferences.get(P.customize_content._.footer)),
         css: require("styles/hide-footer"),
     },
+    {
+        condition: isFalse(Preferences.get(P.customize_content._.ads)),
+        css: require("styles/hide-ads"),
+    },
 ];
 
 export default STYLESHEET_MODULES;

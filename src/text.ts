@@ -136,6 +136,7 @@ export const preferences = {
         latest_news: `Senaste nyheterna (längst ner)`,
         new_in_forum_main: `Nytt i forumet (längst ner)`,
         footer: `Sidfot`,
+        ads: `Reklam (laddas alltid in, men kan döljas)`,
     },
 
     advanced: {

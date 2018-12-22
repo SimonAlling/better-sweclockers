@@ -84,4 +84,9 @@ export default {
         default: true,
         label: T.preferences.customize_content.footer,
     }),
+    ads: new BooleanPreference({
+        key: "customize_content_ads",
+        default: true,
+        label: T.preferences.customize_content.ads,
+    }),
 }
