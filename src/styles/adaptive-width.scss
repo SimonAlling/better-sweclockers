@@ -1,0 +1,109 @@
+/*
+    Move rightmost ad to make news pages and forum pages the same
+    width and let it go outside the visible area in narrow viewports.
+*/
+#content>.outsiderColumn {
+    >.fluid>.inner {
+        padding-right: 0;
+    }
+    >.fixed {
+        position: relative;
+        left: 250px;
+    }
+}
+
+/* Allow containers to shrink further */
+.container, .minWidth {
+    width: auto !important;
+    min-width: 940px;
+}
+
+/* Adjust search bar to fit in the thinner layout */
+#search {
+    min-width: 156px;
+    max-width: 180px;
+    width: 15vw;
+}
+
+/* Make footer fit */
+.footer .top .block {
+    width: 25%;
+    box-sizing: border-box;
+}
+
+/* Scale up images to fill width in article feed and articles */
+.newsList .itemBanner img,
+.articleHeader .bbImage img,
+.articleHeader .tv-frame,
+.articleContent .bbImage img,
+.gphi-banner img,
+.whiteHeader>.banner>img,
+.articleList .image img {
+    width: 100%;
+}
+
+/* Gallery images are special */
+.galleryImage {
+    margin-right: 10px;
+
+    >.image>img {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Frame for article video doesn't want to scale */
+.articleHeader .tv-frame {
+    .tvf-top,
+    .tvf-right,
+    .tvf-bottom,
+    .tvf-left {
+        display: none;
+    }
+}
+
+/* Sacrifice "Svara" on own posts to make room */
+.forumPost.isReader .button.reply {
+    display: none;
+}
+
+/* Clearfix box in articles that images tend to pop out of */
+.bbRelatedBox:after {
+    content: " ";
+    clear: both;
+    display: block;
+}
+
+/* Make empty space disappear if .pushColumn>.fixed has no content */
+.pushColumn {
+    display: flex;
+
+    >.fluid {
+        margin-right: 0;
+
+        >.inner {
+            padding-right: 0;
+
+            /* This part is just magic */
+            >* {
+                display: table;
+                table-layout: fixed;
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    }
+
+    >.fixed {
+        width: auto;
+
+        >.inner {
+            margin-left: 0;
+
+            >* {
+                margin-left: 8px;
+                width: 154px;
+            }
+        }
+    }
+}
