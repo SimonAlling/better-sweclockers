@@ -71,7 +71,7 @@ try {
     log(Messages.checkingConfig);
     Config.validate(USERSCRIPT_CONFIG);
     log(Messages.checkingMetadata);
-    const processedMetadata = Metadata.process(RAW_METADATA);
+    const processedMetadata = Metadata.process(RAW_METADATA(args));
     const metadata = processedMetadata.stringified;
     const metadataWarnings = processedMetadata.warnings;
 
