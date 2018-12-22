@@ -34,6 +34,11 @@ export default {
         default: true,
         label: T.preferences.customize_content.new_in_forum_side,
     }),
+    editors_tip: new BooleanPreference({
+        key: "customize_content_editors_tip",
+        default: true,
+        label: T.preferences.customize_content.editors_tip,
+    }),
     new_in_market: new BooleanPreference({
         key: "customize_content_new_in_market",
         default: true,

@@ -126,6 +126,7 @@ export const preferences = {
         guides: `Guider`,
         popular_galleries: `Bubblare i Galleriet`,
         new_in_forum_side: `Nytt i forumet (till höger)`,
+        editors_tip: `Tipsa redaktionen`,
         new_in_market: `Senaste privatannonserna`,
         new_in_test_lab: `Nytt i testlabbet`,
         in_the_store: `Just nu i butiken`,

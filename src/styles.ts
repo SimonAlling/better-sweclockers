@@ -112,6 +112,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: hideById(SITE.ID.newInForumWidget_side),
     },
     {
+        condition: isFalse(Preferences.get(P.customize_content._.editors_tip)),
+        css: hideByClass(SITE.CLASS.editorsTip),
+    },
+    {
         condition: isFalse(Preferences.get(P.customize_content._.new_in_market)),
         css: hideById(SITE.ID.newInMarketWidget),
     },
