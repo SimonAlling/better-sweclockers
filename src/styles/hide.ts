@@ -13,7 +13,7 @@ export function hideBySelector(selector: string): string {
     return (
 r`
 ${selector} {
-    display: none;
+    display: none !important;
 }
 `
     );
