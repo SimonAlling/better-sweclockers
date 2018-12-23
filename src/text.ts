@@ -60,8 +60,8 @@ export const preferences = {
         compact_layout: `Kompakt layout`,
         improved_corrections: `Bättre rättelsegränssnitt`,
         insert_preferences_shortcut: `Genväg till inställningar för ${CONFIG.USERSCRIPT_NAME}`,
+        replace_followed_threads_link: `Ersätt länken <em>Följda trådar</em> med <em>Mina inlägg</em>`,
         insert_web_search_button: `Webbsökknapp`,
-        replace_followed_threads_link: `Ersätt knappen <em>Följda trådar</em> med <em>Mina inlägg</em>`,
         search_engine: {
             label: `Sökmotor`,
         },
