@@ -52,7 +52,7 @@ export const CLASS = {
     imgControls: "imgControls",
     errorDialog: "errorDialog",
     proofDialog: "proofDialog",
-    socialMediaButtons: [ `threadShare`, `greyContentShare` ],
+    socialMediaButtons: [ `threadShare`, `greyContentShare`, `sideShare` ],
     sideBox: "sideBox",
     subforumLink: "link",
     toolbarGroup: "tbGroup",
