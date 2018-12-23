@@ -61,7 +61,7 @@ export const preferences = {
         improved_corrections: `Bättre rättelsegränssnitt`,
         insert_preferences_shortcut: `Genväg till inställningar för ${CONFIG.USERSCRIPT_NAME}`,
         insert_web_search_button: `Webbsökknapp`,
-        replace_followed_button: `Ersätt knappen "Följda trådar" med "Mina inlägg"`,
+        replace_followed_threads_link: `Ersätt knappen <em>Följda trådar</em> med <em>Mina inlägg</em>`,
         search_engine: {
             label: `Sökmotor`,
         },
