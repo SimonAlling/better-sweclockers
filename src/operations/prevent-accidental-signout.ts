@@ -2,12 +2,8 @@ import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import * as T from "text";
 
-export default (e: { siteHeader: HTMLElement }) => {
-    const signinButton = e.siteHeader.querySelector("#" + SITE.ID.signinButton);
-    const signoutButton = e.siteHeader.querySelector("#" + SITE.ID.signoutButton);
-    if (signoutButton === null) {
-        return signinButton !== null;
-    }
+export default (e: { signoutButton: HTMLElement }) => {
+    const signoutButton = e.signoutButton;
     const parent = signoutButton.parentElement as HTMLElement;
     const safeSignoutForm = signoutButton.cloneNode(true);
     signoutButton.remove();

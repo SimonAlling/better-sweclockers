@@ -5,6 +5,7 @@ import SELECTOR from "./selectors";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";
 import {
+    isLoggedIn,
     isInEditMode,
     isOnBSCPreferencesPage,
     isOnSweclockersSettingsPage,
@@ -150,8 +151,8 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "prevent accidental signout",
-        condition: Preferences.get(P.advanced._.prevent_accidental_signout) && !isOnBSCPreferencesPage(),
-        selectors: { siteHeader: SELECTOR.siteHeader },
+        condition: Preferences.get(P.advanced._.prevent_accidental_signout) && isLoggedIn(),
+        selectors: { signoutButton: "#" + SITE.ID.signoutButton },
         action: PREVENT_ACCIDENTAL_SIGNOUT,
     }),
     new DependentOperation({
