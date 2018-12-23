@@ -1,6 +1,10 @@
 import * as CONFIG from "./globals-config";
 import * as SITE from "./globals-site";
 
+export function isLoggedIn(): boolean {
+    return (document.head.textContent as string).includes(`'visitorType': 'member'`);
+}
+
 export function isOnBSCPreferencesPage(): boolean {
     return CONFIG.PATH.PREFERENCES(SITE.PATH.SETTINGS) === document.location.pathname;
 }

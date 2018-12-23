@@ -17,7 +17,6 @@ export const EXTRA_TAB_MARGIN = `${8}px`;
 export const ID = {
     siteHeader: "siteHeader",
     signoutButton: "signoutForm",
-    signinButton: "btnSignin",
     textarea: "__laika_cnt.textarea.0",
     newsTicker: "newsticker",
     carousel: "carousel",
