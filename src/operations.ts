@@ -191,7 +191,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "replace followed threads link with a link to my posts",
-        condition: Preferences.get(P.general._.replace_followed_threads_link) && !isOnBSCPreferencesPage() /*&& isLoggedIn()*/, // isLoggedIn not yet implemented. operation will fail and log error when not logged in
+        condition: Preferences.get(P.general._.replace_followed_threads_link) && isLoggedIn(),
         selectors: { followedThreadsLink: SELECTOR.followedThreadsLink },
         action: REPLACE_FOLLOWED_THREADS_LINK,
     }),
