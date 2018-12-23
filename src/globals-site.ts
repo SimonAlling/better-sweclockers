@@ -43,6 +43,7 @@ export const CLASS = {
     menuItem: "menuItem",
     settingsNavigation: "menuItems",
     forumPost: "forumPost",
+    forumPostMessage: "message",
     forumPostProfileDetails: "details",
     forumPostSignature: "signature",
     forumPostControls: "controls",
@@ -127,3 +128,8 @@ export const REGEX_MOBILE_SITE_DISCLAIMER = new RegExp([
     escapeRegex(MOBILE_SITE_DISCLAIMER.mobileSiteDomain),
     r`.*$`, // [/url] and presentation end tag(s)
 ].join(""), "mg");
+
+export const REGEX_MOBILE_LINK = new RegExp([
+    r`^(https?:\/\/)`,
+    escapeRegex(HOSTNAME_MOBILE),
+].join(""), "i");

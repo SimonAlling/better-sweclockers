@@ -20,6 +20,7 @@ import INSERT_EDITING_TOOLS from "./operations/insert-editing-tools";
 import INSERT_HEADING_TOOLBAR_BUTTON from "./operations/insert-heading-toolbar-button";
 import INSERT_TEXTAREA_SIZE_TOGGLE from "./operations/insert-textarea-size-toggle";
 import INSERT_PM_LINKS from "./operations/insert-pm-links";
+import FIX_MOBILE_LINKS from "./operations/fix-mobile-links";
 import INSERT_QUOTE_SIGNATURE_BUTTONS from "./operations/insert-quote-signature-buttons";
 import PREVENT_ACCIDENTAL_SIGNOUT from "./operations/prevent-accidental-signout";
 import PREVENT_ACCIDENTAL_UNLOAD from "./operations/prevent-accidental-unload";
@@ -175,6 +176,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         description: "insert PM links",
         condition: Preferences.get(P.forum_threads._.insert_pm_links),
         action: INSERT_PM_LINKS,
+        waitForDOMContentLoaded: true,
+    }),
+    new IndependentOperation({
+        description: "fix mobile links",
+        condition: Preferences.get(P.forum_threads._.fix_mobile_links) && isReadingForumThread(),
+        action: FIX_MOBILE_LINKS,
         waitForDOMContentLoaded: true,
     }),
     new DependentOperation({

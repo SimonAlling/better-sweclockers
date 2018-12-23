@@ -74,6 +74,7 @@ export const preferences = {
         improved_pagination_buttons: `Bättre bläddringsknappar`,
         highlight_own_posts: `Framhäv egna inlägg`,
         insert_pm_links: `PM-knappar`,
+        fix_mobile_links: `Omvandla <kbd>${SITE.HOSTNAME_MOBILE}</kbd>-länkar till vanliga`,
         quote_signature_buttons: `Citera signatur-knappar`,
         quote_signature_message: `Meddelande vid citering av signatur`,
         quote_signature_message_default: `Nu består trådens värde även när du byter signatur.`,
