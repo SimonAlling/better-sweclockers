@@ -32,6 +32,8 @@ function darkThemeBy(author: DarkTheme.Source): string {
     return `${genitive(author)} mörka tema`;
 }
 
+const my_posts = `Mina inlägg`;
+
 export const general = {
     seconds: `sekunder`,
     dark_theme_toggle_tooltip_on: darkThemeBy,
@@ -45,6 +47,7 @@ export const general = {
     textarea_size_large: `Stor textruta`,
     web_search_button_tooltip: (engine: SearchEngine) => `Sök med ${engine}`,
     tooltip_h: `Rubrik`,
+    my_posts,
 };
 
 export const preferences = {
@@ -59,6 +62,7 @@ export const preferences = {
         compact_layout: `Kompakt layout`,
         improved_corrections: `Bättre rättelsegränssnitt`,
         insert_preferences_shortcut: `Genväg till inställningar för ${CONFIG.USERSCRIPT_NAME}`,
+        replace_followed_threads_link: `Ersätt länken <em>Följda trådar</em> med <em>${my_posts}</em>`,
         insert_web_search_button: `Webbsökknapp`,
         search_engine: {
             label: `Sökmotor`,

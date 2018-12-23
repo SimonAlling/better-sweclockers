@@ -26,6 +26,11 @@ export default {
         default: true,
         label: T.preferences.general.insert_preferences_shortcut,
     }),
+    replace_followed_threads_link: new BooleanPreference({
+        key: "replace_followed_threads_link",
+        default: false,
+        label: T.preferences.general.replace_followed_threads_link,
+    }),
     insert_web_search_button: new BooleanPreference({
         key: "insert_web_search_button",
         default: true,

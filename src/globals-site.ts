@@ -59,6 +59,7 @@ export const CLASS = {
     toolbarButton: "tbButton iconButton noselect",
     toolbarButtonIcon: "btnIcon",
     toolbarHeadingButton: "header",
+    hasUnread: "hasUnread",
 };
 
 export const PATH = {
@@ -67,6 +68,7 @@ export const PATH = {
     EDIT_MODE_PM: /^\/pm\/(.+\/svara|nytt\-meddelande)/,
     EDIT_MODE_REPORT: /^\/(forum|marknad|pm)\/.+\/anmal$/,
     SETTINGS: "/profil/installningar",
+    MY_POSTS: "/profil/inlagg",
     SIGNOUT: "/konto/rpc",
     ARTICLE: /^\/artikel\//,
     GUIDE: /^\/guide\//,
