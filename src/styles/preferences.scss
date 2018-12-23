@@ -95,8 +95,8 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
 
         kbd {
             font-family: monospace;
-            background-color: #FAFAFB;
-            border: 1px solid #EAEAEB;
+            background-color: rgba(160, 160, 160, 0.05);
+            border: 1px solid rgba(160, 160, 160, 0.15);
             border-radius: 3px;
             padding: 1px 2px;
         }
