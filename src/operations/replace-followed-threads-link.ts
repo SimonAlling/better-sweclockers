@@ -5,5 +5,5 @@ export default (e: { followedThreadsLink: HTMLElement }) => {
     const link = e.followedThreadsLink as HTMLAnchorElement;
     link.textContent = T.general.my_posts;
     link.href = SITE.PATH.MY_POSTS;
-    link.classList.remove(SITE.CLASS.hasUnread);
+    (link.parentElement as HTMLElement).classList.remove(SITE.CLASS.hasUnread);
 }
