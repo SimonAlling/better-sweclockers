@@ -214,7 +214,6 @@ function Generator_String(p: StringPreference): GeneratorOutput {
                 id={PID(p)}
                 value={Preferences.get(p)}
                 onChange={changeHandler(fromStringEventHandler<HTMLTextAreaElement, string, StringPreference>(p))}
-                class={p.extras.class || ""}
             ></textarea>
             :
             <input
@@ -222,7 +221,6 @@ function Generator_String(p: StringPreference): GeneratorOutput {
                 id={PID(p)}
                 value={Preferences.get(p)}
                 onChange={changeHandler(fromStringEventHandler<HTMLInputElement, string, StringPreference>(p))}
-                class={p.extras.class || ""}
             />
         ),
     ]);

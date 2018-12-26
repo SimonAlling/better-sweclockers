@@ -140,6 +140,7 @@ export const preferences = {
         improved_image_controls: `Bättre zoom- och länkikoner i bilder`,
         disable_scroll_restoration: `Förhindra webbläsaren från att komma ihåg scrollning`,
         custom_css_enable: `Infoga egen CSS:`,
+        custom_css_warning: `Klistra aldrig in kod som du inte litar på!`,
     },
 
     keyboard: `Kortkommandon`,
