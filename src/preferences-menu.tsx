@@ -205,14 +205,16 @@ function Generator_Boolean(p: BooleanPreference): GeneratorOutput {
 }
 
 function Generator_String(p: StringPreference): GeneratorOutput {
-    return [
-        <PreferenceLabel preference={p} />,
+    return (
+        p.label === T.preferences.NO_LABEL ? [] : [ <PreferenceLabel preference={p} /> ]
+    ).concat([
         (p.multiline
             ?
             <textarea
                 id={PID(p)}
                 value={Preferences.get(p)}
                 onChange={changeHandler(fromStringEventHandler<HTMLTextAreaElement, string, StringPreference>(p))}
+                class={p.extras.class || ""}
             ></textarea>
             :
             <input
@@ -220,9 +222,10 @@ function Generator_String(p: StringPreference): GeneratorOutput {
                 id={PID(p)}
                 value={Preferences.get(p)}
                 onChange={changeHandler(fromStringEventHandler<HTMLInputElement, string, StringPreference>(p))}
+                class={p.extras.class || ""}
             />
         ),
-    ];
+    ]);
 }
 
 function Generator_Integer(p: IntegerPreference): GeneratorOutput {

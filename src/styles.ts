@@ -89,6 +89,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         condition: Preferences.get(P.general._.replace_followed_threads_link),
         css: require("styles/replace-followed-threads-link"),
     },
+    {
+        condition: Preferences.get(P.advanced._.custom_css_enable),
+        css: Preferences.get(P.advanced._.custom_css_code),
+    },
 
     // Customize content:
     {

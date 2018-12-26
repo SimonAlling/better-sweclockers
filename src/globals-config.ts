@@ -60,6 +60,7 @@ export const CLASS = {
     booleanPreference: c("booleanPreference"),
     subforum: c("subforum"),
     textareaSize: c("textarea-size"),
+    codeInput: c("code-input"),
 };
 
 export const PATH = {
