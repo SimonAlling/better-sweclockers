@@ -1,20 +1,10 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import { assertUnreachable } from "src/utilities";
-import * as Platform from "src/platform";
+import * as SITE from "./globals-site";
+import * as CONFIG from "./globals-config";
+import { assertUnreachable } from "./utilities";
 import { InsertButtonDescription } from "./types";
-import { Action } from "src/actions";
-import { SearchEngine } from "src/search-engines";
-import * as DarkTheme from "src/dark-theme";
-
-function mod(shortcut: string): string {
-    const modKey = Platform.CURRENT_PLATFORM === Platform.OS.Mac ? "⌘" : "Ctrl";
-    return [ modKey, "+", shortcut ].join(" ")
-}
-
-export const keyboard_shortcuts = {
-    mod_s: mod("S"),
-};
+import { Action } from "./actions";
+import { SearchEngine } from "./search-engines";
+import * as DarkTheme from "./dark-theme";
 
 export function action(a: Action): string {
     switch (a) {

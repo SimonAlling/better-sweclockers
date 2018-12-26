@@ -26,3 +26,12 @@ export const CURRENT_PLATFORM: OS | undefined = (() => {
     if (platform.includes(ID.LINUX)) return OS.Linux;
     if (userAgent.includes(ID.UNIX)) return OS.UNIX;
 })();
+
+export function mod(shortcut: string): string {
+    const modKey = CURRENT_PLATFORM === OS.Mac ? "⌘" : "Ctrl";
+    return [ modKey, "+", shortcut ].join(" ")
+}
+
+export const keyboard_shortcuts = {
+    mod_s: mod("S"),
+};
