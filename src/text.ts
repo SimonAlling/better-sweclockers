@@ -1,20 +1,10 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import { assertUnreachable } from "src/utilities";
-import * as Platform from "src/platform";
+import * as SITE from "./globals-site";
+import * as CONFIG from "./globals-config";
+import { assertUnreachable } from "./utilities";
 import { InsertButtonDescription } from "./types";
-import { Action } from "src/actions";
-import { SearchEngine } from "src/search-engines";
-import * as DarkTheme from "src/dark-theme";
-
-function mod(shortcut: string): string {
-    const modKey = Platform.CURRENT_PLATFORM === Platform.OS.Mac ? "⌘" : "Ctrl";
-    return [ modKey, "+", shortcut ].join(" ")
-}
-
-export const keyboard_shortcuts = {
-    mod_s: mod("S"),
-};
+import { Action } from "./actions";
+import { SearchEngine } from "./search-engines";
+import * as DarkTheme from "./dark-theme";
 
 export function action(a: Action): string {
     switch (a) {
@@ -32,6 +22,8 @@ function darkThemeBy(author: DarkTheme.Source): string {
     return `${genitive(author)} mörka tema`;
 }
 
+const my_posts = `Mina inlägg`;
+
 export const general = {
     seconds: `sekunder`,
     dark_theme_toggle_tooltip_on: darkThemeBy,
@@ -45,6 +37,7 @@ export const general = {
     textarea_size_large: `Stor textruta`,
     web_search_button_tooltip: (engine: SearchEngine) => `Sök med ${engine}`,
     tooltip_h: `Rubrik`,
+    my_posts,
 };
 
 export const preferences = {
@@ -59,6 +52,7 @@ export const preferences = {
         compact_layout: `Kompakt layout`,
         improved_corrections: `Bättre rättelsegränssnitt`,
         insert_preferences_shortcut: `Genväg till inställningar för ${CONFIG.USERSCRIPT_NAME}`,
+        replace_followed_threads_link: `Ersätt länken <em>Följda trådar</em> med <em>${my_posts}</em>`,
         insert_web_search_button: `Webbsökknapp`,
         search_engine: {
             label: `Sökmotor`,
@@ -70,6 +64,7 @@ export const preferences = {
         improved_pagination_buttons: `Bättre bläddringsknappar`,
         highlight_own_posts: `Framhäv egna inlägg`,
         insert_pm_links: `PM-knappar`,
+        fix_mobile_links: `Omvandla <kbd>${SITE.HOSTNAME_MOBILE}</kbd>-länkar till vanliga`,
         quote_signature_buttons: `Citera signatur-knappar`,
         quote_signature_message: `Meddelande vid citering av signatur`,
         quote_signature_message_default: `Nu består trådens värde även när du byter signatur.`,
@@ -144,6 +139,8 @@ export const preferences = {
         prevent_accidental_unload: `Fråga vid navigering från redigeringsläge`,
         improved_image_controls: `Bättre zoom- och länkikoner i bilder`,
         disable_scroll_restoration: `Förhindra webbläsaren från att komma ihåg scrollning`,
+        custom_css_enable: `Infoga egen CSS:`,
+        custom_css_warning: `Klistra aldrig in kod som du inte litar på!`,
     },
 
     keyboard: `Kortkommandon`,

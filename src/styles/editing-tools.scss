@@ -60,7 +60,7 @@
             height: $size;
         }
 
-        > *:hover, > *:focus {
+        > *:hover {
             width: $size + 2*$hoverExtra;
             height: $size + 2*$hoverExtra;
             margin: -$hoverExtra !important;

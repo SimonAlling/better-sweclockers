@@ -92,6 +92,14 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     label {
         padding: 6px 0;
         margin: 0;
+
+        kbd {
+            font-family: monospace;
+            background-color: rgba(160, 160, 160, 0.05);
+            border: 1px solid rgba(160, 160, 160, 0.15);
+            border-radius: 3px;
+            padding: 1px 2px;
+        }
     }
 
     input[type="checkbox"] + label, input[type="radio"] + label {
@@ -125,6 +133,21 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
 
     ##{getGlobal("CONFIG.ID.editingTools")} {
         height: getGlobal("CONFIG.EDITING_TOOLS_HEIGHT");
+    }
+
+    .#{getGlobal("CONFIG.CLASS.codeInput")}::after {
+        color: #D00;
+        content: '#{getGlobal("T.preferences.advanced.custom_css_warning")}';
+        display: block;
+        font-weight: bold;
+        margin-top: 0.4em;
+        opacity: 0;
+        transition: opacity 200ms 100ms;
+    }
+
+    .#{getGlobal("CONFIG.CLASS.codeInput")}:hover::after,
+    .#{getGlobal("CONFIG.CLASS.codeInput")}:focus-within::after {
+        opacity: 1;
     }
 
     ##{getGlobal("CONFIG.ID.interestsPreferences")} {

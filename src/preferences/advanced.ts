@@ -1,7 +1,15 @@
+import * as CONFIG from "globals-config";
 import * as T from "../text";
 import {
     BooleanPreference,
+    StringPreference,
 } from "ts-preferences";
+
+const custom_css_enable = new BooleanPreference({
+    key: "custom_css_enable",
+    default: false,
+    label: T.preferences.advanced.custom_css_enable,
+});
 
 export default {
     prevent_accidental_signout: new BooleanPreference({
@@ -23,5 +31,19 @@ export default {
         key: "disable_scroll_restoration",
         default: false,
         label: T.preferences.advanced.disable_scroll_restoration,
+    }),
+    custom_css_enable,
+    custom_css_code: new StringPreference({
+        key: "custom_css_code",
+        default: "",
+        label: T.preferences.NO_LABEL,
+        multiline: true,
+        extras: { class: CONFIG.CLASS.codeInput },
+        dependencies: [
+            {
+                preference: custom_css_enable,
+                condition: (v: boolean) => v,
+            },
+        ],
     }),
 }

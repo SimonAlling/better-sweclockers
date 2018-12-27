@@ -18,6 +18,10 @@
     margin-bottom: 0;
 }
 
+textarea.#{getGlobal("CONFIG.CLASS.codeInput")}, .#{getGlobal("CONFIG.CLASS.codeInput")} textarea {
+    font-family: monospace;
+}
+
 .#{getGlobal("SITE.CLASS.forumPost")} .#{getGlobal("SITE.CLASS.forumPostControls")} .#{getGlobal("CONFIG.CLASS.quoteSignatureButton")} {
     margin-left: -50px; // to prevent horizontal overflow e.g. on a tablet
 }

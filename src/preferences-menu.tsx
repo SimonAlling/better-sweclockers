@@ -205,8 +205,9 @@ function Generator_Boolean(p: BooleanPreference): GeneratorOutput {
 }
 
 function Generator_String(p: StringPreference): GeneratorOutput {
-    return [
-        <PreferenceLabel preference={p} />,
+    return (
+        p.label === T.preferences.NO_LABEL ? [] : [ <PreferenceLabel preference={p} /> ]
+    ).concat([
         (p.multiline
             ?
             <textarea
@@ -222,7 +223,7 @@ function Generator_String(p: StringPreference): GeneratorOutput {
                 onChange={changeHandler(fromStringEventHandler<HTMLInputElement, string, StringPreference>(p))}
             />
         ),
-    ];
+    ]);
 }
 
 function Generator_Integer(p: IntegerPreference): GeneratorOutput {

@@ -3,6 +3,7 @@ import { LogLevel, functionsToRemove } from "./.userscripter/build/log-levels";
 import { Mode } from "./.userscripter/build/mode";
 import * as CONFIG from "./src/globals-config";
 import * as SITE from "./src/globals-site";
+import * as T from "./src/text";
 import * as webpack from "webpack";
 import * as path from "path";
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
@@ -52,6 +53,7 @@ const toSassDimension_recursively = (x: any): any => {
 const SASS_VARS = toSassDimension_recursively({
     CONFIG,
     SITE,
+    T,
 });
 
 export default (env: object, argv: {

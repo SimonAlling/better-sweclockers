@@ -43,6 +43,7 @@ export const CLASS = {
     menuItem: "menuItem",
     settingsNavigation: "menuItems",
     forumPost: "forumPost",
+    forumPostMessage: "message",
     forumPostProfileDetails: "details",
     forumPostSignature: "signature",
     forumPostControls: "controls",
@@ -59,14 +60,16 @@ export const CLASS = {
     toolbarButton: "tbButton iconButton noselect",
     toolbarButtonIcon: "btnIcon",
     toolbarHeadingButton: "header",
+    hasUnread: "hasUnread",
 };
 
 export const PATH = {
     EDIT_MODE_FORUM: /^\/forum\/.*\/(svara(\?citera)?|redigera|ny\-trad)/,
     EDIT_MODE_MARKET: /^\/marknad\/(.+\/redigera|ny\-annons)$/,
-    EDIT_MODE_PM: /^\/pm\/(.+\/svara|nytt\-meddelande)/,
+    EDIT_MODE_PM: /^\/pm\/(.+\/(svara|redigera)|nytt\-meddelande)/,
     EDIT_MODE_REPORT: /^\/(forum|marknad|pm)\/.+\/anmal$/,
     SETTINGS: "/profil/installningar",
+    MY_POSTS: "/profil/inlagg",
     SIGNOUT: "/konto/rpc",
     ARTICLE: /^\/artikel\//,
     GUIDE: /^\/guide\//,
@@ -125,3 +128,8 @@ export const REGEX_MOBILE_SITE_DISCLAIMER = new RegExp([
     escapeRegex(MOBILE_SITE_DISCLAIMER.mobileSiteDomain),
     r`.*$`, // [/url] and presentation end tag(s)
 ].join(""), "mg");
+
+export const REGEX_MOBILE_LINK = new RegExp([
+    r`^(https?:\/\/)`,
+    escapeRegex(HOSTNAME_MOBILE),
+].join(""), "i");

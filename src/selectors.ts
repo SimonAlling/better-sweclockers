@@ -33,4 +33,5 @@ export default {
     forumLink: `.subForums a[href^="/forum/"]`,
     forumPostAuthorLink: `.name a`,
     quickReplyForm: `#quickreply form`,
+    followedThreadsLink: `#${SITE.ID.siteHeader} .profile .option.watched a.label`,
 };

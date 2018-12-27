@@ -32,6 +32,11 @@ export default {
         default: true,
         label: T.preferences.forum_threads.insert_pm_links,
     }),
+    fix_mobile_links: new BooleanPreference({
+        key: "fix_mobile_links",
+        default: true,
+        label: T.preferences.forum_threads.fix_mobile_links,
+    }),
     quote_signature_buttons,
     quote_signature_message: new StringPreference({
         key: "quote_signature_message",
