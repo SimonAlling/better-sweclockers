@@ -11,8 +11,16 @@ export default () => {
         // avoid modifying the auto-generated notice in posts sent from the
         // mobile site. In other cases, such links are probably actually
         // intended to point to the mobile site anyway.
+        //
+        // We also only modify links that actually point to the mobile site.
+        // Without this restriction, we would add an empty href attribute to
+        // (for example) every .bbImage .clickArea.
         Array.from(message.getElementsByTagName("a"))
-        .filter(a => a.textContent !== SITE.HOSTNAME_MOBILE)
+        .filter(a =>
+            SITE.REGEX_MOBILE_LINK.test(a.href)
+            &&
+            a.textContent !== SITE.HOSTNAME_MOBILE
+        )
         .forEach(a => {
             a.href = a.href.replace(SITE.REGEX_MOBILE_LINK, "$1" + SITE.HOSTNAME);
         });
