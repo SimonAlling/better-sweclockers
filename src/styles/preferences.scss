@@ -1,4 +1,5 @@
 $preference: #{"." + getGlobal("CONFIG.CLASS.preference")};
+$checkboxLabelSpacing: 0.5em;
 
 body > * {
     display: none; // to hide everything except the form in iOS Safari
@@ -81,8 +82,12 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         }
     }
     .#{$inline} + .#{$inline} label::after,
-    .#{$inline} + .#{$inline} label::before {
+    .#{$inline} + .#{$inline} label:first-child::before {
         content: "\a0";
+    }
+
+    .#{$inline} + .#{$inline} input[type="checkbox"] {
+        margin-left: 1.5*$checkboxLabelSpacing;
     }
 
     input {
@@ -103,7 +108,7 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     }
 
     input[type="checkbox"] + label, input[type="radio"] + label {
-        padding-left: 5px;
+        padding-left: $checkboxLabelSpacing;
     }
 
     input[type="checkbox"], input[type="radio"] {

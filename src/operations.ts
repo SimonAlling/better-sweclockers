@@ -120,6 +120,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         action: INSERT_EDITING_TOOLS,
     }),
     new DependentOperation({
+        description: "insert editing tools in quick reply form",
+        condition: isReadingForumThread() && Preferences.get(P.editing_tools._.enable) && Preferences.get(P.editing_tools._.in_quick_reply_form),
+        selectors: { textarea: SELECTOR.textarea },
+        action: INSERT_EDITING_TOOLS,
+    }),
+    new DependentOperation({
         description: "insert heading toolbar button",
         condition: isInEditMode() && Preferences.get(P.edit_mode._.insert_heading_toolbar_button),
         selectors: {

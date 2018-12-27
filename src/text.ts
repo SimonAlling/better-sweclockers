@@ -86,6 +86,7 @@ export const preferences = {
     editing_tools: {
         label: `Utökade formateringsverktyg`,
         enable: `Aktivera utökade formateringsverktyg`,
+        in_quick_reply_form: `i formuläret <em>Snabbsvar</em>`,
         position: {
             label: `Placering`,
             above: `Ovanför textfältet`,
