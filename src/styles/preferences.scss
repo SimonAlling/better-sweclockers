@@ -131,7 +131,7 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         pointer-events: none;
     }
 
-    #{$preference}:hover > aside, #{$preference}:focus > aside {
+    #{$preference}:hover > aside {
         opacity: 1;
         transition-duration: 500ms;
     }
