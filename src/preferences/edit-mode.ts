@@ -25,8 +25,7 @@ export default {
     textarea_size: new IntegerRangePreference({
         key: "textarea_size",
         default: DEFAULT_TEXTAREA_SIZE,
-        min: 0, max: Infinity,
-        infinite: true,
+        min: 0, max: Number.MAX_VALUE,
         label: T.preferences.NO_LABEL,
         extras: { implicit: true },
     }),
