@@ -37,12 +37,6 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         }
     }
 
-    .#{getGlobal("CONFIG.CLASS.booleanPreference")} {
-        label::after {
-            content: unset;
-        }
-    }
-
     .#{getGlobal("CONFIG.CLASS.radioButtonPreference")} {
         display: inline-block;
         width: -webkit-fit-content;

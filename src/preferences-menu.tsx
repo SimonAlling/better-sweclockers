@@ -46,7 +46,6 @@ interface Generators {
     Multichoice: <T extends AllowedTypes>(p: MultichoicePreference<T>) => GeneratorOutput
 }
 
-const PREFIX_ID = CONFIG.PREFIX_ID + "option-";
 const RANGE_MAX_STEP = 0.1;
 const RANGE_MIN_NUMBER_OF_STEPS = 100;
 
@@ -121,7 +120,7 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
             p.extras.implicit // should not be part of the preferences menu
             ? null
             : (
-                <div class={[CONFIG.CLASS.preference].concat(preferenceClasses(p)).concat(p.extras.class || "").join(" ")}>
+                <div class={classNames(CONFIG.CLASS.preference, p.extras.class)}>
                     {InputElement(generators, p)}
                     {isString(p.extras.suffix) ? <HtmlLabel for={PID(p)} html={p.extras.suffix} /> : null}
                     {
@@ -149,13 +148,6 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
                 }
             </fieldset>
         );
-}
-
-function preferenceClasses<T extends AllowedTypes>(p: Preference<T>): string | ReadonlyArray<string> {
-    if (is(BooleanPreference)(p)) {
-        return CONFIG.CLASS.booleanPreference;
-    }
-    return [];
 }
 
 function InputElement<T extends AllowedTypes>(generators: Generators, p: Preference<T>): GeneratorOutput {
