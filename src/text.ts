@@ -26,6 +26,7 @@ const my_posts = `Mina inlägg`;
 
 export const general = {
     seconds: `sekunder`,
+    loading: `Laddar …`,
     dark_theme_toggle_tooltip_on: darkThemeBy,
     dark_theme_toggle_tooltip_off: "Standardutseendet",
     signout_confirmation: `Är du säker på att du vill logga ut?`,
@@ -45,6 +46,7 @@ export const preferences = {
     title: `Inställningar för Better SweClockers`,
     back_to_sweclockers: `Tillbaka till ${SITE.NAME}`,
     save_notice: `Inställningarna sparas automatiskt, men endast lokalt på den här enheten.`,
+    failed_to_fetch_categories: `Kunde inte hämta forumkategorier.`,
 
     general: {
         label: `Allmänt`,

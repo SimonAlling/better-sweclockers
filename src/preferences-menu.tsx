@@ -3,12 +3,12 @@ import * as CONFIG from "globals-config";
 import SELECTOR from "selectors";
 import * as T from "text";
 import { is, isString, only, isNull } from "ts-type-guards";
-import { h, render, Component } from 'preact';
+import { h, Component } from 'preact';
+import classNames from "classnames";
 import { compose } from "lib/utilities";
-import { isHTMLElement } from "lib/html";
 import { log, logInfo, logWarning, logError } from "userscripter/logging";
 import P from "preferences";
-import { Preferences } from "userscripter/preference-handling";
+import { Preferences, isFalse } from "userscripter/preference-handling";
 import {
     AllowedTypes,
     FromString,
@@ -25,7 +25,8 @@ import {
     MultichoicePreference,
 } from "ts-preferences";
 import { TimePreference } from "./preferences/TimePreference";
-import * as EditingTools from "./operations/insert-editing-tools";
+import { EditingTools, getEditingToolsConfig } from "operations/insert-editing-tools";
+import { subscribe, unsubscribe } from "userscripter/preference-handling";
 
 const PID: <T extends AllowedTypes>(p: Preference<T>) => string = compose(
     CONFIG.prefixer(CONFIG.ID.preferenceIdPrefix),
@@ -60,51 +61,6 @@ export const GENERATORS: Generators = {
     Multichoice: Generator_Multichoice,
 };
 
-export const menuGenerator = menuGeneratorWith(GENERATORS);
-
-export function menuGeneratorWith(generators: Generators): (ps: PreferencesObject) => HTMLElement {
-    return (ps: PreferencesObject) => {
-        const header = (
-            <header>
-                <a href={document.referrer || "/"} title={T.preferences.back_to_sweclockers}>
-                    <img src={CONFIG.URL_LOGO} alt={CONFIG.USERSCRIPT_NAME} />
-                </a>
-            </header>
-        );
-        const footer = (
-            <footer>
-                <p>{T.preferences.save_notice}</p>
-                <p>
-                    <a href={document.referrer || "/"} title={T.preferences.back_to_sweclockers}>
-                        {T.preferences.back_to_sweclockers}
-                    </a>
-                </p>
-            </footer>
-        );
-        const form = document.createElement("form");
-        form.id = CONFIG.USERSCRIPT_ID;
-        render(header, form);
-        Entries(generators, ps).forEach(entry => {
-            render(entry, form);
-        });
-        form.addEventListener("submit", e => {
-            e.preventDefault();
-        })
-        render(footer, form);
-        return form;
-    };
-}
-
-function changeHandler(handler: EventHandlerNonNull): EventHandlerNonNull {
-    return (e: Event) => {
-        handler(e);
-        const editingTools = document.getElementById(CONFIG.ID.editingTools);
-        if (is(HTMLElement)(editingTools)) {
-            render(EditingTools.fake(Preferences.get(P.editing_tools._.enable)), editingTools.parentElement as HTMLElement, editingTools);
-        }
-    };
-}
-
 function fromStringEventHandler<
     E extends HTMLElement & { value: string },
     T extends AllowedTypes,
@@ -118,6 +74,41 @@ function fromStringEventHandler<
             Preferences.set(p, parsed.value);
         }
     };
+}
+
+export class PreferencesForm extends Component {
+    render() {
+        return (
+            <form id={CONFIG.USERSCRIPT_ID}>
+                <header>
+                    <a href={document.referrer || "/"} title={T.preferences.back_to_sweclockers}>
+                        <img src={CONFIG.URL_LOGO} alt={CONFIG.USERSCRIPT_NAME} />
+                    </a>
+                </header>
+                {Entries(GENERATORS, P)}
+                <footer>
+                    <p>{T.preferences.save_notice}</p>
+                    <p>
+                        <a href={document.referrer || "/"} title={T.preferences.back_to_sweclockers}>
+                            {T.preferences.back_to_sweclockers}
+                        </a>
+                    </p>
+                </footer>
+            </form>
+        );
+    }
+
+    listener = () => {
+        this.forceUpdate();
+    }
+
+    componentDidMount() {
+        subscribe(this.listener);
+    }
+
+    componentWillUnmount() {
+        unsubscribe(this.listener);
+    }
 }
 
 function Entries(generators: Generators, ps: PreferencesObject): ReadonlyArray<JSX.Element | null> {
@@ -149,7 +140,11 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
                 {Entries(generators, p._)}
                 {
                     p.extras && p.extras.id === CONFIG.ID.editingToolsPreferences
-                    ? EditingTools.fake(Preferences.get(P.editing_tools._.enable))
+                    ? <EditingTools
+                        textarea={document.createElement("textarea")}
+                        config={getEditingToolsConfig()}
+                        disabled={isFalse(Preferences.get(P.editing_tools._.enable))}
+                    />
                     : null
                 }
             </fieldset>
@@ -190,16 +185,16 @@ function InputElement<T extends AllowedTypes>(generators: Generators, p: Prefere
         return generators.Multichoice(p);
     }
     if (is(ListPreference)(p) && p === P.interests._.uninteresting_subforums) {
-        return Generator_Interests(p);
+        return <Interests p={p} />;
     }
     throw `Unsupported preference: ${p.getType()} (with key '${p.key}')`;
 }
 
 function Generator_Boolean(p: BooleanPreference): GeneratorOutput {
     return [
-        <input type="checkbox" id={PID(p)} checked={Preferences.get(p)} onChange={changeHandler(e => {
+        <input type="checkbox" id={PID(p)} checked={Preferences.get(p)} onChange={e => {
             Preferences.set(p, (e.target as HTMLInputElement).checked);
-        })} />,
+        }} />,
         <PreferenceLabel preference={p} />,
     ];
 }
@@ -213,14 +208,14 @@ function Generator_String(p: StringPreference): GeneratorOutput {
             <textarea
                 id={PID(p)}
                 value={Preferences.get(p)}
-                onChange={changeHandler(fromStringEventHandler<HTMLTextAreaElement, string, StringPreference>(p))}
+                onChange={fromStringEventHandler<HTMLTextAreaElement, string, StringPreference>(p)}
             ></textarea>
             :
             <input
                 type="text"
                 id={PID(p)}
                 value={Preferences.get(p)}
-                onChange={changeHandler(fromStringEventHandler<HTMLInputElement, string, StringPreference>(p))}
+                onChange={fromStringEventHandler<HTMLInputElement, string, StringPreference>(p)}
             />
         ),
     ]);
@@ -233,7 +228,7 @@ function Generator_Integer(p: IntegerPreference): GeneratorOutput {
             type="number"
             id={PID(p)}
             value={Preferences.get(p).toString()}
-            onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, IntegerPreference>(p))}
+            onChange={fromStringEventHandler<HTMLInputElement, number, IntegerPreference>(p)}
         />,
     ];
 }
@@ -246,7 +241,7 @@ function Generator_Double(p: DoublePreference): GeneratorOutput {
             id={PID(p)}
             value={Preferences.get(p).toString()}
             step={RANGE_MAX_STEP}
-            onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, DoublePreference>(p))}
+            onChange={fromStringEventHandler<HTMLInputElement, number, DoublePreference>(p)}
         />,
     ];
 }
@@ -258,7 +253,7 @@ function Generator_Time(p: TimePreference): GeneratorOutput {
             type="time"
             id={PID(p)}
             value={p.stringify(Preferences.get(p))}
-            onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, TimePreference>(p))}
+            onChange={fromStringEventHandler<HTMLInputElement, number, TimePreference>(p)}
         />,
     ];
 }
@@ -272,7 +267,7 @@ function Generator_IntegerRange(p: IntegerRangePreference): GeneratorOutput {
             value={Preferences.get(p).toString()}
             min={p.min}
             max={p.max}
-            onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, IntegerRangePreference>(p))}
+            onChange={fromStringEventHandler<HTMLInputElement, number, IntegerRangePreference>(p)}
         />,
     ];
 }
@@ -287,7 +282,7 @@ function Generator_DoubleRange(p: DoubleRangePreference): GeneratorOutput {
             min={p.min}
             max={p.max}
             step={stepSize(p.min, p.max).toString()}
-            onChange={changeHandler(fromStringEventHandler<HTMLInputElement, number, DoubleRangePreference>(p))}
+            onChange={fromStringEventHandler<HTMLInputElement, number, DoubleRangePreference>(p)}
         />,
     ];
 }
@@ -317,12 +312,12 @@ function Generator_Multichoice<T extends AllowedTypes>(p: MultichoicePreference<
                 )}
             </fieldset>
         ) : (
-            <select onChange={changeHandler(e => {
+            <select onChange={e => {
                 const index = (e.target as HTMLSelectElement).selectedIndex;
                 if (index >= 0 && index < options.length) {
                     Preferences.set(p, options[index].value);
                 }
-            })}>
+            }}>
                 {options.map(option => <option selected={option.value === savedValue}>{option.label}</option>)}
             </select>
         );
@@ -336,61 +331,109 @@ function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: 
             id={radioButtonId}
             name={PID(p)}
             checked={checked}
-            onChange={changeHandler(e => {
+            onChange={e => {
                 if ((e.target as HTMLInputElement).checked) {
                     Preferences.set(p, value);
                 }
-            })}
+            }}
         />,
         <HtmlLabel for={radioButtonId} html={label} />,
     ];
 }
 
-function extractForumLinkData(forumLink: HTMLAnchorElement): { id: number, label: string } | HTMLAnchorElement {
+function extractForumLinkData(forumLink: HTMLAnchorElement): ForumCategory | null {
     const match = forumLink.href.match(SITE.PATH.FORUM_CATEGORY);
     const label = forumLink.textContent;
-    if (isNull(match) || isNull(label)) { return forumLink; }
+    if (isNull(match) || isNull(label)) { return null; }
     const id = parseInt(match[1]);
-    return { id, label };
+    return {
+        id,
+        name: label,
+        isSubforum: forumLink.classList.contains(SITE.CLASS.subforumLink),
+    };
 }
 
-function isSubforumLink(forumLink: HTMLAnchorElement): boolean {
-    return forumLink.classList.contains(SITE.CLASS.subforumLink);
+interface ForumCategory {
+    id: number
+    name: string
+    isSubforum?: boolean
 }
 
-function Generator_Interests(p: ListPreference<number>): JSX.Element {
-    let uninteresting = Preferences.get(p);
-    fetch(SITE.PATH.FORUM)
-    .then(response => response.text())
-    .then(responseContent => {
-        const responseDocument = new DOMParser().parseFromString(responseContent, "text/html");
-        const links = responseDocument.querySelectorAll(SELECTOR.forumLink);
-        const checkboxList = document.getElementById(CONFIG.ID.interestsPreferences);
-        if (isHTMLElement(checkboxList)) {
-            only(HTMLAnchorElement)(Array.from(links))
-            .filter(link => SITE.PATH.FORUM_CATEGORY.test(link.href))
-            .forEach(forumLink => {
-                const linkData = extractForumLinkData(forumLink);
-                if (is(HTMLAnchorElement)(linkData)) {
-                    logError(`Could not extract forum link data for the preferences UI from this link:`);
-                    console.error(linkData);
-                    return;
-                }
-                const id = linkData.id;
-                const checkboxId = PID(p) + "-" + id;
-                render((
-                    <li class={isSubforumLink(forumLink) ? CONFIG.CLASS.subforum : undefined}>
-                        <input type="checkbox" id={checkboxId} checked={!uninteresting.includes(id)} onChange={e => {
-                            uninteresting = uninteresting.filter(x => x !== id).concat((e.target as HTMLInputElement).checked ? [] : id);
-                            Preferences.set(p, uninteresting);
-                        }} />
-                        <HtmlLabel html={linkData.label} for={checkboxId} />
-                    </li>
-                ), checkboxList);
-            });
+function isDefined<T>(x: T | undefined): x is T {
+    return x !== undefined;
+}
+
+type InterestsState = {
+    fetch: {
+        status: "success", categories: ReadonlyArray<ForumCategory>
+    } | {
+        status: "loading"
+    } | {
+        status: "failure"
+    }
+}
+
+class Interests extends Component<{ p: ListPreference<number> }, InterestsState> {
+    state: InterestsState = { fetch: { status: "loading" } }
+
+    componentDidMount() {
+        fetch(SITE.PATH.FORUM)
+        .then(response => response.text())
+        .then(responseContent => {
+            const responseDocument = new DOMParser().parseFromString(responseContent, "text/html");
+            const links = responseDocument.querySelectorAll(SELECTOR.forumLink);
+            this.setState({ fetch: {
+                status: "success",
+                categories: (
+                    only(HTMLAnchorElement)(Array.from(links))
+                    .filter(link => SITE.PATH.FORUM_CATEGORY.test(link.href))
+                    .map(forumLink => {
+                        const linkData = extractForumLinkData(forumLink);
+                        if (isNull(linkData)) {
+                            logError(`Could not extract forum link data from this link:`);
+                            console.error(forumLink);
+                            return undefined;
+                        }
+                        return linkData;
+                    })
+                    .filter(isDefined)
+                ),
+            }});
+        }).catch(reason => {
+            logError(reason);
+            this.setState({ fetch: { status: "failure" }})
+        });
+    }
+
+    render() {
+        const p = this.props.p;
+        const uninteresting = Preferences.get(p);
+        const response = this.state.fetch;
+        switch (response.status) {
+            case "loading":
+                return T.general.loading;
+            case "success":
+                return (
+                    <ul id={CONFIG.ID.interestsPreferences}>
+                        {response.categories.map(category => {
+                            const id = category.id;
+                            const checkboxId = PID(p) + "-" + id;
+                            return (
+                                <li class={classNames({ [CONFIG.CLASS.subforum]: category.isSubforum })} key={id}>
+                                    <input type="checkbox" id={checkboxId} checked={!uninteresting.includes(id)} onChange={e => {
+                                        const newUninteresting = uninteresting.filter(x => x !== id).concat((e.target as HTMLInputElement).checked ? [] : id);
+                                        Preferences.set(p, newUninteresting);
+                                    }} />
+                                    <HtmlLabel html={category.name} for={checkboxId} />
+                                </li>
+                            );
+                        })}
+                    </ul>
+                );
+            case "failure":
+                return T.preferences.failed_to_fetch_categories;
         }
-    });
-    return <ul id={CONFIG.ID.interestsPreferences}></ul>;
+    }
 }
 
 class PreferenceLabel<T extends AllowedTypes> extends Component<{ preference: Preference<T> }> {
