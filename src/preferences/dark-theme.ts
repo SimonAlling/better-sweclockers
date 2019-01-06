@@ -83,4 +83,9 @@ export default {
         max: 60,
         extras: { suffix: T.general.seconds },
     }),
+    use_backup: new BooleanPreference({
+        key: "dark_theme_use_backup",
+        default: true,
+        label: T.preferences.dark_theme.use_backup,
+    }),
 }

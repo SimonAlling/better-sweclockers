@@ -12,5 +12,8 @@ export function darkThemeUrl(source: Source): string {
         case Source.SOITORA: return "https://gitcdn.xyz/repo/Soitora/XHS-Styles/master/sweclockers-pure.css";
     }
     return assertUnreachable(source);
+}
 
+export function darkThemeUrlBackup(source: Source): string {
+    return `https://simonalling.se/userscripts/better-sweclockers/dark-theme-${source.toLowerCase()}.css`;
 }
