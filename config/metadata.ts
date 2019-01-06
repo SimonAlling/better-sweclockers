@@ -20,6 +20,9 @@ export default function metadata(args: CommandLineOptions): Metadata {
     return {
         name: U.name + (nightly ? " Nightly" : ""),
         version: U.version + (nightly ? nightlyVersionSuffix : ""),
+        description: U.description,
+        author: U.author,
+        namespace: U.namespace,
         match: [
             `*://${U.hostname}/*`,
             `*://www.${U.hostname}/*`,

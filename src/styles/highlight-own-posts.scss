@@ -1,3 +1,7 @@
 .#{getGlobal("SITE.CLASS.forumPost")}.#{getGlobal("SITE.CLASS.isReader")} {
-    box-shadow: -6px 0 0 #C15200;
+    // The colors and gradient below must match SweClockers' default styling.
+    $width: 8px;
+    border-left: $width solid #bf5900;
+    border-image: linear-gradient(to bottom, #b25000 0, #d96b0f 1px, #bf5900 15px, #b14f00 25px) 1;
+    margin-left: -#{$width - 1px}; // 1px is default border width
 }

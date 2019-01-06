@@ -7,7 +7,7 @@ import * as ms from "milliseconds";
 import { isHTMLElement } from "lib/html";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";
-import { darkThemeUrl } from "src/dark-theme";
+import { darkThemeUrl, darkThemeUrlBackup } from "src/dark-theme";
 
 const DARK_THEME_ADDITIONS = require("../styles/dark-theme-additions");
 
@@ -42,9 +42,10 @@ export function manage(): void {
 
 function apply(newState: boolean): void {
     const source = Preferences.get(P.dark_theme._.source);
+    const url = Preferences.get(P.dark_theme._.use_backup) ? darkThemeUrlBackup : darkThemeUrl;
     if (newState) {
         if (isNull(document.getElementById(CONFIG.ID.darkThemeStylesheet))) {
-            render(<link rel="stylesheet" href={darkThemeUrl(source)} id={CONFIG.ID.darkThemeStylesheet} />, document.head);
+            render(<link rel="stylesheet" href={url(source)} id={CONFIG.ID.darkThemeStylesheet} />, document.head);
             render((
                 <style id={CONFIG.ID.darkThemeAdditions}>
                     {DARK_THEME_ADDITIONS}

@@ -3,7 +3,7 @@ import * as CONFIG from "globals-config";
 import SELECTOR from "src/selectors";
 import { FAILURE } from "lib/operation-manager";
 
-export default (e: { textarea: HTMLElement }) => {
+export function postOrMessage(e: { textarea: HTMLElement }) {
     // We need to prevent unload if and only if the textarea contained text at
     // page load or if the user has edited its content at some point. Note that
     // the beforeunload listener cannot just check if the textarea is empty,
@@ -17,6 +17,22 @@ export default (e: { textarea: HTMLElement }) => {
     const buttons = document.querySelectorAll(SELECTOR.actionButtons);
     Array.from(buttons).forEach(button => {
         button.addEventListener("click", removeListener);
+    });
+}
+
+export function corrections() {
+    // This function cannot take the corrections textarea as part of its `e`
+    // parameter, because said textarea does not exist until user requests it.
+    // We will prevent unload if the textarea exists and has some content; that
+    // should be good enough.
+    window.addEventListener("beforeunload", event => {
+        const textarea = document.querySelector(`.${SITE.CLASS.proofDialog} textarea`) as HTMLTextAreaElement | null;
+        // If the correction has been submitted, the textarea is not visible
+        // anymore because one of its ancestors has display: none, in which case
+        // textarea.offsetParent === null.
+        if (textarea !== null && textarea.value !== "" && textarea.offsetParent !== null) {
+            preventUnload(event);
+        }
     });
 }
 

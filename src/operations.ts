@@ -23,7 +23,7 @@ import INSERT_PM_LINKS from "./operations/insert-pm-links";
 import FIX_MOBILE_LINKS from "./operations/fix-mobile-links";
 import INSERT_QUOTE_SIGNATURE_BUTTONS from "./operations/insert-quote-signature-buttons";
 import PREVENT_ACCIDENTAL_SIGNOUT from "./operations/prevent-accidental-signout";
-import PREVENT_ACCIDENTAL_UNLOAD from "./operations/prevent-accidental-unload";
+import * as PREVENT_ACCIDENTAL_UNLOAD from "./operations/prevent-accidental-unload";
 import ADAPT_CORRECTIONS_LINK from "./operations/adapt-corrections-link";
 import REPLACE_FOLLOWED_THREADS_LINK from "./operations/replace-followed-threads-link";
 import MANAGE_CARET_POSITION from "./operations/manage-caret-position";
@@ -81,13 +81,18 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         },
     }),
     new DependentOperation({
-        description: "prevent accidental unload",
+        description: "prevent accidental unload (post or message)",
         condition: Preferences.get(P.advanced._.prevent_accidental_unload) && isInEditMode(),
         selectors: {
             textarea: SELECTOR.textarea,
             actionButtons: SELECTOR.actionButtons,
         },
-        action: PREVENT_ACCIDENTAL_UNLOAD,
+        action: PREVENT_ACCIDENTAL_UNLOAD.postOrMessage,
+    }),
+    new IndependentOperation({
+        description: "prevent accidental unload (corrections)",
+        condition: Preferences.get(P.advanced._.prevent_accidental_unload) && isReadingEditorialContent(),
+        action: PREVENT_ACCIDENTAL_UNLOAD.corrections,
     }),
     new DependentOperation({
         description: "insert web search button",
@@ -116,6 +121,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     new DependentOperation({
         description: "insert editing tools",
         condition: isInEditMode() && Preferences.get(P.editing_tools._.enable),
+        selectors: { textarea: SELECTOR.textarea },
+        action: INSERT_EDITING_TOOLS,
+    }),
+    new DependentOperation({
+        description: "insert editing tools in quick reply form",
+        condition: isReadingForumThread() && Preferences.get(P.editing_tools._.enable) && Preferences.get(P.editing_tools._.in_quick_reply_form),
         selectors: { textarea: SELECTOR.textarea },
         action: INSERT_EDITING_TOOLS,
     }),

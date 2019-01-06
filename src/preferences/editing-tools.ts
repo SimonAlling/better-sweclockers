@@ -22,6 +22,7 @@ const enable = new BooleanPreference({
     key: "editing_tools",
     default: true,
     label: T.preferences.editing_tools.enable,
+    extras: { class: CONFIG.CLASS.inlinePreference },
 });
 
 const dependencies = [ {
@@ -35,6 +36,12 @@ export const enum Position {
 
 export default {
     enable,
+    in_quick_reply_form: new BooleanPreference({
+        key: "editing_tools_in_quick_reply_form",
+        default: false,
+        label: T.preferences.editing_tools.in_quick_reply_form,
+        extras: { class: CONFIG.CLASS.inlinePreference },
+    }),
     position: new MultichoicePreference({
         key: "editing_tools_position",
         default: Position.BELOW,

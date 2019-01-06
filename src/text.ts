@@ -86,6 +86,7 @@ export const preferences = {
     editing_tools: {
         label: `Utökade formateringsverktyg`,
         enable: `Aktivera utökade formateringsverktyg`,
+        in_quick_reply_form: `i formuläret <em>Snabbsvar</em>`,
         position: {
             label: `Placering`,
             above: `Ovanför textfältet`,
@@ -111,6 +112,7 @@ export const preferences = {
         between: `mellan`,
         and: `och`,
         interval: `Uppdateringsintervall`,
+        use_backup: `Ladda in från backupserver istället`,
     },
 
     customize_content: {
