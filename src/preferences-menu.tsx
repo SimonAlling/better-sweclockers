@@ -179,7 +179,9 @@ function InputElement<T extends AllowedTypes>(generators: Generators, p: Prefere
     if (is(ListPreference)(p) && p === P.interests._.uninteresting_subforums) {
         return <Interests p={p} />;
     }
-    throw `Unsupported preference: ${p.getType()} (with key '${p.key}')`;
+    const msg = `Unsupported preference: ${p}`;
+    logError(msg);
+    return <mark>{msg}</mark>;
 }
 
 function Generator_Boolean(p: BooleanPreference): GeneratorOutput {

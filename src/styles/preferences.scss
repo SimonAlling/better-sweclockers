@@ -27,6 +27,16 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         input + label::after, select + label::after, textarea + label::after {
             content: unset;
         }
+
+        // Unsupported preference notice
+        mark {
+            border: 3px solid #D00;
+            color: #D00;
+            display: inline-block;
+            font: bold 1em monospace;
+            margin: 2px;
+            padding: 1em;
+        }
     }
 
     .#{getGlobal("SITE.CLASS.fieldset")} {
