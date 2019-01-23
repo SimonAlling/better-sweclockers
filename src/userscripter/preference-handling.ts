@@ -1,6 +1,6 @@
 import { log, logError, logWarning } from "userscripter/logging";
 import * as TSPreferences from "ts-preferences";
-import { Status, Response, RequestSummary, PreferencesInterface, AllowedTypes } from "ts-preferences";
+import { Status, Response, RequestSummary, PreferencesInterface, AllowedTypes, Preference } from "ts-preferences";
 import * as CONFIG from "globals-config";
 import PREFERENCES from "preferences";
 
@@ -10,8 +10,23 @@ export function isFalse(x: boolean): boolean {
     return x === false;
 }
 
+type Listener<T extends AllowedTypes> = (p: Preference<T>) => void
+
+const changeListeners: Set<Listener<any>> = new Set();
+
+export function subscribe(listener: Listener<any>): void {
+    changeListeners.add(listener);
+}
+
+export function unsubscribe(listener: Listener<any>): void {
+    changeListeners.delete(listener);
+}
+
 function responseHandler<T extends AllowedTypes>(summary: RequestSummary<T>, preferences: PreferencesInterface): Response<T> {
     const response = summary.response;
+    if (summary.action === "set") {
+        changeListeners.forEach(f => f(summary.preference))
+    }
     switch (response.status) {
         case Status.OK:
             return response;

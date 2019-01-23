@@ -4,6 +4,8 @@ import {
 } from "ts-preferences";
 
 export class TimePreference extends IntegerRangePreference {
+    public getClassName() { return "TimePreference"; }
+
     public stringify(value: number): string {
         const time = this.toValid(value);
         return [

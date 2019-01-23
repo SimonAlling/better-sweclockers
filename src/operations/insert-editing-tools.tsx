@@ -2,6 +2,7 @@ import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import * as T from "../text";
 import { h, render } from "preact";
+import classNames from "classnames";
 import { compose } from "lib/utilities";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";
@@ -15,28 +16,43 @@ export default (e: { textarea: HTMLElement }) => {
     const toolbar = document.createElement("div");
     const textareaParent = textarea.parentElement as HTMLElement;
     textareaParent.insertBefore(toolbar, reference);
-    render(editingTools(textarea as HTMLTextAreaElement), textareaParent, toolbar);
+    render(<EditingTools textarea={textarea as HTMLTextAreaElement} config={getEditingToolsConfig()} />, textareaParent, toolbar);
 }
 
-export function fake(enabled: boolean): JSX.Element {
-    const fakeEditingTools = editingTools(document.createElement("textarea"));
-    fakeEditingTools.attributes.class = (
-        [ fakeEditingTools.attributes.class ]
-        .concat(enabled ? [] : [ CONFIG.CLASS.disabled ])
-        .join(" ")
-    );
-    return fakeEditingTools;
+export function getEditingToolsConfig() {
+    return {
+        special_characters: Preferences.get(P.editing_tools._.special_characters),
+        code: Preferences.get(P.editing_tools._.code),
+        math: Preferences.get(P.editing_tools._.math),
+        embed: Preferences.get(P.editing_tools._.embed),
+        doge: Preferences.get(P.editing_tools._.doge),
+        color_palette: Preferences.get(P.editing_tools._.color_palette),
+    };
 }
 
-function editingTools(textarea: HTMLTextAreaElement): JSX.Element {
+export function EditingTools(props: {
+    textarea: HTMLTextAreaElement,
+    disabled?: boolean,
+    config: {
+        special_characters: boolean,
+        code: boolean,
+        math: boolean,
+        embed: boolean,
+        doge: boolean,
+        color_palette: boolean,
+    },
+}): JSX.Element {
     // A "connected" button has been connected to the textarea.
-    const connected = (b: Button) => b(textarea);
+    const connected = (b: Button) => b(props.textarea);
     const connectedTagButton = compose(connected, tagButton);
     const connectedInsertButton = compose(connected, insertButton);
     const connectedColorButton = compose(connected, colorButton);
     return (
-        <div id={CONFIG.ID.editingTools} class={CONFIG.CLASS.editingTools}>
-            {Preferences.get(P.editing_tools._.special_characters) ? (
+        <div id={CONFIG.ID.editingTools} class={classNames(
+            CONFIG.CLASS.editingTools,
+            { [CONFIG.CLASS.disabled]: props.disabled },
+        )}>
+            {props.config.special_characters ? (
                 <fieldset>
                     {T.special_characters.map(connectedInsertButton)}
                 </fieldset>
@@ -50,11 +66,11 @@ function editingTools(textarea: HTMLTextAreaElement): JSX.Element {
             {connected(BUTTON.expander)}
             {connectedTagButton({ tag: SITE.TAG.spoiler, tooltip: T.editing_tools.tooltip_spoiler, block: true, class: CONFIG.CLASS.button_spoiler })}
             {connectedInsertButton({ insert: CONFIG.CONTENT.edit, tooltip: T.editing_tools.tooltip_edit, label: T.editing_tools.label_edit })}
-            {Preferences.get(P.editing_tools._.code) ? BUTTONS.code.map(connected) : []}
-            {Preferences.get(P.editing_tools._.math) ? BUTTONS.math.map(connected) : []}
-            {Preferences.get(P.editing_tools._.embed) ? BUTTONS.embed(Preferences.get(P.general._.search_engine)).map(connected) : []}
-            {Preferences.get(P.editing_tools._.doge) ? BUTTONS.doge.map(connected) : []}
-            {Preferences.get(P.editing_tools._.color_palette) ? (
+            {props.config.code ? BUTTONS.code.map(connected) : []}
+            {props.config.math ? BUTTONS.math.map(connected) : []}
+            {props.config.embed ? BUTTONS.embed(Preferences.get(P.general._.search_engine)).map(connected) : []}
+            {props.config.doge ? BUTTONS.doge.map(connected) : []}
+            {props.config.color_palette ? (
                 <fieldset class={CONFIG.CLASS.colorPalette}>
                     {COLORS.map(connectedColorButton)}
                 </fieldset>

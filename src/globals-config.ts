@@ -57,7 +57,6 @@ export const CLASS = {
     preferenceDescription: c("preference-description"),
     inlinePreference: c("inlinePreference"),
     radioButtonPreference: c("radioButtonPreference"),
-    booleanPreference: c("booleanPreference"),
     subforum: c("subforum"),
     textareaSize: c("textarea-size"),
     codeInput: c("code-input"),
