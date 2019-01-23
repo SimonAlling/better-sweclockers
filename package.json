@@ -24,7 +24,7 @@
     "node-sass-utils": "^1.1.2",
     "preact": "^8.3.0",
     "raw-loader": "^0.5.1",
-    "replace": "^0.3.0",
+    "replace": "^1.0.1",
     "sass-loader": "^7.1.0",
     "strip-comments": "^0.4.4",
     "to-string-loader": "^1.1.5",
