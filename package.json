@@ -1,6 +1,7 @@
 {
   "private": true,
   "devDependencies": {
+    "@alling/better-sweclockers-lib": "^1.1.4",
     "@types/classnames": "^2.2.6",
     "@types/colors": "^1.2.1",
     "@types/command-line-args": "^5.0.0",
@@ -18,6 +19,7 @@
     "css-loader": "^1.0.0",
     "css.escape": "^1.5.1",
     "extract-comments": "^0.10.1",
+    "fmap-null-undefined": "^1.0.0",
     "milliseconds": "^1.0.3",
     "mousetrap": "^1.6.2",
     "node-sass": "^4.9.3",

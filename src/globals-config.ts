@@ -34,6 +34,9 @@ export const ID = {
     darkThemeToggle: i("dark-theme-toggle"),
     preferencesShortcut: i("preferences-shortcut"),
     interestsPreferences: i("interests-preferences"),
+    style: {
+        proofreading: i("proofreading"),
+    },
 };
 
 export const CLASS = {

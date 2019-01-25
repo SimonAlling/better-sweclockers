@@ -15,6 +15,7 @@
         "preserveConstEnums": true,
         "lib": [
             "es2018",
+            "dom.iterable",
             "dom"
         ],
         "jsx": "react",

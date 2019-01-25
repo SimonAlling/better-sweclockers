@@ -31,6 +31,7 @@ import REMOVE_MOBILE_SITE_DISCLAIMER from "./operations/remove-mobile-site-discl
 import KEYBOARD_SHORTCUT_PREVIEW from "./operations/keyboard-shortcuts/preview";
 import MOUSETRAP_PREPARATIONS from "./operations/mousetrap-preparations";
 import * as DarkTheme from "./operations/dark-theme";
+import * as Proofreading from "./operations/proofreading";
 
 const ALWAYS: boolean = true;
 
@@ -206,6 +207,27 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: Preferences.get(P.general._.improved_corrections) && isReadingEditorialContent(),
         selectors: { correctionsLink: "#" + SITE.ID.correctionsLink },
         action: ADAPT_CORRECTIONS_LINK,
+    }),
+    new IndependentOperation({
+        description: "enable proofreading",
+        condition: Preferences.get(P.advanced._.proofread_articles) === Proofreading.Options.ALWAYS,
+        action: () => {
+            // The border must become red before we make it transparent, so we get the nice "flash" effect.
+            window.setTimeout(Proofreading.enable, 10);
+        },
+        waitForDOMContentLoaded: true,
+    }),
+    new DependentOperation({
+        description: "add proofreading listeners",
+        condition: Preferences.get(P.advanced._.proofread_articles) === Proofreading.Options.CORRECTIONS && isReadingEditorialContent(),
+        selectors: { correctionsLink: "#" + SITE.ID.correctionsLink },
+        action: Proofreading.addListeners,
+    }),
+    new IndependentOperation({
+        description: "perform proofreading processing",
+        condition: isReadingEditorialContent(),
+        action: Proofreading.performProcessing,
+        waitForDOMContentLoaded: true,
     }),
     new DependentOperation({
         description: "replace followed threads link with a link to my posts",

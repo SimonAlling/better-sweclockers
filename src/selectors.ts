@@ -30,8 +30,10 @@ export default {
     previewButton: actionButtons + `[value=doPreview]`,
     sideColumnGuides: `.videoPush.${C.sideBox}`,
     sideColumnPopularGalleries: `.popularGalleries.${C.sideBox}`,
+    bbParagraph: `.bbParagraph`,
     forumLink: `.subForums a[href^="/forum/"]`,
     forumPostAuthorLink: `.name a`,
     quickReplyForm: `#quickreply form`,
     followedThreadsLink: `#${SITE.ID.siteHeader} .profile .option.watched a.label`,
+    proofDialogCloseButton: "." + SITE.CLASS.proofDialog + " .cntClose",
 };

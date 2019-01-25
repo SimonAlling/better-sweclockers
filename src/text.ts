@@ -143,6 +143,12 @@ export const preferences = {
         prevent_accidental_unload: `Fråga vid navigering från redigeringsläge`,
         improved_image_controls: `Bättre zoom- och länkikoner i bilder`,
         disable_scroll_restoration: `Förhindra webbläsaren från att komma ihåg scrollning`,
+        proofread_articles: {
+            label: `Markera möjliga fel i artiklar`,
+            always: `Alltid`,
+            corrections: `I rättelsegränssnittet`,
+            never: `Aldrig`,
+        },
         custom_css_enable: `Infoga egen CSS:`,
         custom_css_warning: `Klistra aldrig in kod som du inte litar på!`,
     },

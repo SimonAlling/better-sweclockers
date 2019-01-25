@@ -1,6 +1,7 @@
 import * as StylesheetManager from "lib/stylesheet-manager";
 import * as CONFIG from "globals-config";
 import STYLESHEET_MODULES from "styles";
+import "./polyfills"; // It is side-effecty.
 import { log, logWarning } from "userscripter/logging";
 import { hasAlreadyRun } from "userscripter/misc";
 import { startOperations, stopOperations } from "userscripter/operation-handling";

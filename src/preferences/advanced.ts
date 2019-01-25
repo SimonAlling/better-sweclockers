@@ -3,7 +3,9 @@ import * as T from "../text";
 import {
     BooleanPreference,
     StringPreference,
+    MultichoicePreference,
 } from "ts-preferences";
+import * as Proofreading from "../operations/proofreading";
 
 const custom_css_enable = new BooleanPreference({
     key: "custom_css_enable",
@@ -31,6 +33,25 @@ export default {
         key: "disable_scroll_restoration",
         default: false,
         label: T.preferences.advanced.disable_scroll_restoration,
+    }),
+    proofread_articles: new MultichoicePreference({
+        key: "proofread_articles",
+        default: Proofreading.Options.NEVER,
+        label: T.preferences.advanced.proofread_articles.label,
+        options: [
+            {
+                value: Proofreading.Options.ALWAYS,
+                label: T.preferences.advanced.proofread_articles.always,
+            },
+            {
+                value: Proofreading.Options.CORRECTIONS,
+                label: T.preferences.advanced.proofread_articles.corrections,
+            },
+            {
+                value: Proofreading.Options.NEVER,
+                label: T.preferences.advanced.proofread_articles.never,
+            },
+        ],
     }),
     custom_css_enable,
     custom_css_code: new StringPreference({
