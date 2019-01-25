@@ -2,6 +2,7 @@ import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import SELECTOR from "src/selectors";
 import { FAILURE } from "lib/operation-manager";
+import { withMaybe } from "../utilities";
 
 export function postOrMessage(e: { textarea: HTMLElement }) {
     // We need to prevent unload if and only if the textarea contained text at
@@ -14,8 +15,7 @@ export function postOrMessage(e: { textarea: HTMLElement }) {
         textarea.removeEventListener("input", changeListener);
     }
     textarea.addEventListener("input", changeListener);
-    const buttons = document.querySelectorAll(SELECTOR.actionButtons);
-    Array.from(buttons).forEach(button => {
+    document.querySelectorAll(SELECTOR.actionButtons).forEach(button => {
         button.addEventListener("click", removeListener);
     });
 }

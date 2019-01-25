@@ -8,6 +8,7 @@ import { isHTMLElement } from "lib/html";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";
 import { darkThemeUrl, darkThemeUrlBackup } from "src/dark-theme";
+import { withMaybe } from "../utilities";
 
 const DARK_THEME_ADDITIONS = require("../styles/dark-theme-additions");
 
@@ -57,18 +58,14 @@ function apply(newState: boolean): void {
             CONFIG.ID.darkThemeStylesheet,
             CONFIG.ID.darkThemeAdditions,
         ].forEach(id => {
-            const element = document.getElementById(id);
-            if (isHTMLElement(element)) {
-                element.remove();
-            }
+            withMaybe(document.getElementById(id), element => element.remove());
         });
     }
-    const toggle = document.getElementById(CONFIG.ID.darkThemeToggle);
-    if (isHTMLElement(toggle)) {
+    withMaybe(document.getElementById(CONFIG.ID.darkThemeToggle), toggle => {
         const active = CONFIG.CLASS.darkThemeActive;
         newState ? toggle.classList.add(active) : toggle.classList.remove(active);
         toggle.title = newState ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on(source);
-    }
+    });
 }
 
 function set(newState: boolean): void {
