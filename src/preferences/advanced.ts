@@ -53,6 +53,11 @@ export default {
             },
         ],
     }),
+    proofread_forum_posts: new BooleanPreference({
+        key: "proofread_forum_posts",
+        default: false,
+        label: T.preferences.advanced.proofread_forum_posts,
+    }),
     custom_css_enable,
     custom_css_code: new StringPreference({
         key: "custom_css_code",

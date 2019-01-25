@@ -1,3 +1,4 @@
+import { STYLE_PROOFREADING } from "@alling/better-sweclockers-lib";
 import { StylesheetModule } from "lib/stylesheet-manager";
 import { Preferences, isFalse } from "userscripter/preference-handling";
 import P from "preferences";
@@ -88,6 +89,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
     {
         condition: Preferences.get(P.general._.replace_followed_threads_link),
         css: require("styles/replace-followed-threads-link"),
+    },
+    {
+        condition: Preferences.get(P.advanced._.proofread_forum_posts),
+        css: STYLE_PROOFREADING,
     },
     {
         condition: Preferences.get(P.advanced._.custom_css_enable),

@@ -149,6 +149,7 @@ export const preferences = {
             corrections: `I rättelsegränssnittet`,
             never: `Aldrig`,
         },
+        proofread_forum_posts: `Markera möjliga fel i foruminlägg (i redigeringsläge)`,
         custom_css_enable: `Infoga egen CSS:`,
         custom_css_warning: `Klistra aldrig in kod som du inte litar på!`,
     },
