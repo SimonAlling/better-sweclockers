@@ -83,7 +83,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "prevent accidental unload (post or message)",
-        condition: Preferences.get(P.advanced._.prevent_accidental_unload) && isInEditMode(),
+        condition: isInEditMode() && Preferences.get(P.advanced._.prevent_accidental_unload),
         selectors: {
             textarea: SELECTOR.textarea,
             actionButtons: SELECTOR.actionButtons,
@@ -92,12 +92,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new IndependentOperation({
         description: "prevent accidental unload (corrections)",
-        condition: Preferences.get(P.advanced._.prevent_accidental_unload) && isReadingEditorialContent(),
+        condition: isReadingEditorialContent() && Preferences.get(P.advanced._.prevent_accidental_unload),
         action: PREVENT_ACCIDENTAL_UNLOAD.corrections,
     }),
     new DependentOperation({
         description: "insert web search button",
-        condition: Preferences.get(P.general._.insert_web_search_button) && !isOnBSCPreferencesPage(),
+        condition: !isOnBSCPreferencesPage() && Preferences.get(P.general._.insert_web_search_button),
         selectors: {
             searchFieldInput: SELECTOR.searchFieldInput,
             searchFieldWrapper: SELECTOR.searchFieldWrapper,
@@ -151,7 +151,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "insert dark theme toggle",
-        condition: Preferences.get(P.dark_theme._.show_toggle) && !isOnBSCPreferencesPage(),
+        condition: !isOnBSCPreferencesPage() && Preferences.get(P.dark_theme._.show_toggle),
         selectors: {
             lastTab: (
                 // If preferences shortcut is inserted, dark theme toggle must be inserted to its right.
@@ -164,7 +164,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "prevent accidental signout",
-        condition: Preferences.get(P.advanced._.prevent_accidental_signout) && isLoggedIn(),
+        condition: isLoggedIn() && Preferences.get(P.advanced._.prevent_accidental_signout),
         selectors: { signoutButton: "#" + SITE.ID.signoutButton },
         action: PREVENT_ACCIDENTAL_SIGNOUT,
     }),
@@ -180,7 +180,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "insert preferences shortcut",
-        condition: Preferences.get(P.general._.insert_preferences_shortcut) && !isOnBSCPreferencesPage(),
+        condition: !isOnBSCPreferencesPage() && Preferences.get(P.general._.insert_preferences_shortcut),
         selectors: { lastTab: SELECTOR.lastNavigationTab },
         action: INSERT_PREFERENCES_SHORTCUT,
     }),
@@ -192,19 +192,19 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new IndependentOperation({
         description: "fix mobile links",
-        condition: Preferences.get(P.forum_threads._.fix_mobile_links) && isReadingForumThread(),
+        condition: isReadingForumThread() && Preferences.get(P.forum_threads._.fix_mobile_links),
         action: FIX_MOBILE_LINKS,
         waitForDOMContentLoaded: true,
     }),
     new DependentOperation({
         description: "insert quote signature buttons",
-        condition: Preferences.get(P.forum_threads._.quote_signature_buttons) && isReadingForumThread(),
+        condition: isReadingForumThread() && Preferences.get(P.forum_threads._.quote_signature_buttons),
         action: INSERT_QUOTE_SIGNATURE_BUTTONS,
         selectors: { quickReplyForm: SELECTOR.quickReplyForm },
     }),
     new DependentOperation({
         description: "adapt corrections link to work with improved corrections",
-        condition: Preferences.get(P.general._.improved_corrections) && isReadingEditorialContent(),
+        condition: isReadingEditorialContent() && Preferences.get(P.general._.improved_corrections),
         selectors: { correctionsLink: "#" + SITE.ID.correctionsLink },
         action: ADAPT_CORRECTIONS_LINK,
     }),
@@ -219,7 +219,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "add proofreading listeners",
-        condition: Preferences.get(P.advanced._.proofread_articles) === Proofreading.Options.CORRECTIONS && isReadingEditorialContent(),
+        condition: isReadingEditorialContent() && Preferences.get(P.advanced._.proofread_articles) === Proofreading.Options.CORRECTIONS,
         selectors: { correctionsLink: "#" + SITE.ID.correctionsLink },
         action: Proofreading.addListeners,
     }),
@@ -231,7 +231,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "replace followed threads link with a link to my posts",
-        condition: Preferences.get(P.general._.replace_followed_threads_link) && isLoggedIn(),
+        condition: isLoggedIn() && Preferences.get(P.general._.replace_followed_threads_link),
         selectors: { followedThreadsLink: SELECTOR.followedThreadsLink },
         action: REPLACE_FOLLOWED_THREADS_LINK,
     }),
