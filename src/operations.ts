@@ -28,7 +28,7 @@ import ADAPT_CORRECTIONS_LINK from "./operations/adapt-corrections-link";
 import REPLACE_FOLLOWED_THREADS_LINK from "./operations/replace-followed-threads-link";
 import MANAGE_CARET_POSITION from "./operations/manage-caret-position";
 import REMOVE_MOBILE_SITE_DISCLAIMER from "./operations/remove-mobile-site-disclaimer";
-import KEYBOARD_SHORTCUT_PREVIEW from "./operations/keyboard-shortcuts/preview";
+import KEYBOARD_SHORTCUTS_EDIT_MODE from "./operations/keyboard-shortcuts/edit-mode";
 import MOUSETRAP_PREPARATIONS from "./operations/mousetrap-preparations";
 import * as DarkTheme from "./operations/dark-theme";
 import * as Proofreading from "./operations/proofreading";
@@ -244,13 +244,14 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         waitForDOMContentLoaded: true,
     }),
     new DependentOperation({
-        description: "add keyboard shortcut for previewing",
-        condition: isInEditMode(),
+        description: "add edit mode keyboard shortcuts",
+        condition: isInEditMode() && Preferences.get(P.edit_mode._.keyboard_shortcuts),
         selectors: {
             textarea: SELECTOR.textarea,
             previewButton: SELECTOR.previewButton,
+            saveButton: SELECTOR.saveButton,
         },
-        action: KEYBOARD_SHORTCUT_PREVIEW,
+        action: KEYBOARD_SHORTCUTS_EDIT_MODE,
         waitForDOMContentLoaded: true,
     }),
 ];

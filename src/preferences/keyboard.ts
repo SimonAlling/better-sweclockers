@@ -13,7 +13,8 @@ export default new ListPreference<ShortcutEntry>({
     key: "keyboard",
     label: T.preferences.NO_LABEL,
     default: [
-        { shortcut: "mod+s", action: Action.PREVIEW },
+        { shortcut: "mod+s", action: Action.SUBMIT },
+        { shortcut: "mod+p", action: Action.PREVIEW },
     ],
     extras: { implicit: true },
 });

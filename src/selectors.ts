@@ -28,6 +28,7 @@ export default {
     settingsNavigationLabel: `${settingsNavigationItem} > a.${C.link} > span.${C.icon} + span.${C.label}`,
     actionButtons,
     previewButton: actionButtons + `[value=doPreview]`,
+    saveButton: actionButtons + `[value=doSubmit]`,
     sideColumnGuides: `.videoPush.${C.sideBox}`,
     sideColumnPopularGalleries: `.popularGalleries.${C.sideBox}`,
     bbParagraph: `.bbParagraph`,
