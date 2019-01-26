@@ -38,7 +38,7 @@ export default {
     enable,
     in_quick_reply_form: new BooleanPreference({
         key: "editing_tools_in_quick_reply_form",
-        default: false,
+        default: true,
         label: T.preferences.editing_tools.in_quick_reply_form,
         extras: { class: CONFIG.CLASS.inlinePreference },
     }),
