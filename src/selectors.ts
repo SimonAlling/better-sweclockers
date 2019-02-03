@@ -18,6 +18,7 @@ export default {
     textarea: "textarea#" + CSS.escape(SITE.ID.textarea),
     textareaToolbarInner,
     textareaToolbarStrikeButton: textareaToolbarInner + ` .strike`,
+    proofDialogTextarea: `.${SITE.CLASS.proofDialog} textarea`,
     lastNavigationTab: `.${C.menu} > li.${C.menuItem}:last-child`,
     siteHeader: `#` + SITE.ID.siteHeader,
     moreArticles: `.mainContent ~ .mainContent`,
