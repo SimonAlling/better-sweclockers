@@ -91,7 +91,7 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/replace-followed-threads-link"),
     },
     {
-        condition: Preferences.get(P.advanced._.proofread_forum_posts),
+        condition: isInEditMode() && Preferences.get(P.advanced._.proofread_forum_posts),
         css: STYLE_PROOFREADING,
     },
     {
