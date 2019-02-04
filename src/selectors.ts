@@ -11,6 +11,7 @@ const settingsNavigationItem = `${settingsNavigation} > li.${C.menuItem}`;
 const searchFieldWrapper = `#search .searchField`;
 
 const actionButtons = `button[name=action]`;
+const actionButtonsQuickReply = `#quickreply .controls button`;
 
 const textareaToolbarInner = `form .toolbar .tbInner`;
 
@@ -30,6 +31,8 @@ export default {
     actionButtons,
     previewButton: actionButtons + `[value=doPreview]`,
     saveButton: actionButtons + `[value=doSubmit]`,
+    saveButtonQuickReply: actionButtonsQuickReply + `:nth-of-type(1)`,
+    previewButtonQuickReply: actionButtonsQuickReply + `:nth-of-type(2)`,
     sideColumnGuides: `.videoPush.${C.sideBox}`,
     sideColumnPopularGalleries: `.popularGalleries.${C.sideBox}`,
     bbParagraph: `.bbParagraph`,

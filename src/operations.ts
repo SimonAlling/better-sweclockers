@@ -254,6 +254,16 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         action: KEYBOARD_SHORTCUTS_EDIT_MODE,
         waitForDOMContentLoaded: true,
     }),
+    new DependentOperation({
+        description: "add quick reply keyboard shortcuts",
+        condition: isReadingForumThread() && Preferences.get(P.edit_mode._.keyboard_shortcuts_in_quick_reply),
+        selectors: {
+            textarea: SELECTOR.textarea,
+            previewButton: SELECTOR.previewButtonQuickReply,
+            saveButton: SELECTOR.saveButtonQuickReply,
+        },
+        action: KEYBOARD_SHORTCUTS_EDIT_MODE,
+    }),
 ];
 
 export default OPERATIONS;

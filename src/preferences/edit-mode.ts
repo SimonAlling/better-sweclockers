@@ -46,15 +46,22 @@ export default {
         dependencies: dependencies_textarea_size_toggle,
         extras: { class: CONFIG.CLASS.inlinePreference, suffix: T.preferences.edit_mode.textarea_size_unit },
     }),
-    keyboard_shortcuts: new BooleanPreference({
-        key: "keyboard_shortcuts",
-        default: false,
-        label: T.preferences.edit_mode.keyboard_shortcuts,
-    }),
     insert_heading_toolbar_button: new BooleanPreference({
         key: "insert_heading_toolbar_button",
         default: true,
         label: T.preferences.edit_mode.insert_heading_toolbar_button,
+    }),
+    keyboard_shortcuts: new BooleanPreference({
+        key: "keyboard_shortcuts",
+        default: false,
+        label: T.preferences.edit_mode.keyboard_shortcuts,
+        extras: { class: CONFIG.CLASS.inlinePreference },
+    }),
+    keyboard_shortcuts_in_quick_reply: new BooleanPreference({
+        key: "keyboard_shortcuts_in_quick_reply",
+        default: false,
+        label: T.preferences.editing_tools.in_quick_reply_form,
+        extras: { class: CONFIG.CLASS.inlinePreference },
     }),
     place_caret_at_end: new BooleanPreference({
         key: "place_caret_at_end",
