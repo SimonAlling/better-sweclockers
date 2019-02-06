@@ -79,6 +79,7 @@ export const preferences = {
         textarea_size_small: `mellan`,
         textarea_size_large: `och`,
         textarea_size_unit: `px`,
+        monospace_font: `Monospace-font i textrutan`,
         keyboard_shortcuts: `Kortkommandon för att skicka (<kbd>Ctrl</kbd> + <kbd>S</kbd>) och förhandsgranska (<kbd>Ctrl</kbd> + <kbd>P</kbd>)`,
         insert_heading_toolbar_button: `Knapp för att formatera som rubrik`,
         place_caret_at_end: `Placera markören i slutet av textrutan`,

@@ -75,6 +75,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/textarea-size-toggle"),
     },
     {
+        condition: isInEditMode() && Preferences.get(P.edit_mode._.monospace_font),
+        css: `#${CONFIG.ID.document} ${SELECTOR.textarea} { font-family: monospace; }`,
+    },
+    {
         condition: isInEditMode() && Preferences.get(P.edit_mode._.textarea_size_toggle),
         css: `#${CONFIG.ID.document} ${SELECTOR.textarea} { height: ${Preferences.get(P.edit_mode._.textarea_size)}px; }`,
     },

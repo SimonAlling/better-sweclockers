@@ -46,6 +46,11 @@ export default {
         dependencies: dependencies_textarea_size_toggle,
         extras: { class: CONFIG.CLASS.inlinePreference, suffix: T.preferences.edit_mode.textarea_size_unit },
     }),
+    monospace_font: new BooleanPreference({
+        key: "monospace_font",
+        default: false,
+        label: T.preferences.edit_mode.monospace_font,
+    }),
     insert_heading_toolbar_button: new BooleanPreference({
         key: "insert_heading_toolbar_button",
         default: true,
