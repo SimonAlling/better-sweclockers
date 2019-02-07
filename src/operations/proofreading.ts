@@ -7,6 +7,14 @@ import { removeById } from "../userscripter/misc";
 import { withMaybe } from "../utilities";
 
 const CONTEXT_CHARS = 10; // before and after mistake
+// If a previous and/or next sibling is not found, look outside these elements:
+const ELEMENTS_TO_GO_OUTSIDE = [
+    "em",
+    "span",
+    "strong",
+    "sub",
+    "sup",
+].map(x => x.toUpperCase()); // because .tagName is upper case
 
 export function performProcessing() {
     const selector = [ SELECTOR.bbParagraph, "h1", "h2", "h3" ].join(", ");
@@ -89,30 +97,39 @@ function context(mistake: Node): string {
     ].join("");
 }
 
-function contextBefore(mistake: Node, maxChars: number): string {
-    const sibling = mistake.previousSibling;
-    if (sibling === null) {
-        return "";
+function contextBeforeOrAfter(
+    getSibling: (mistake: Node) => Node | null,
+    combine: (text: string, nextContext: string) => string,
+    baseCase: (text: string, maxChars: number) => string,
+): (mistake: Node, maxChars: number) => string {
+    return (mistake, maxChars) => {
+        const recurse = contextBeforeOrAfter(getSibling, combine, baseCase);
+        const sibling = getSibling(mistake);
+        if (sibling === null) {
+            const parent = mistake.parentElement as HTMLElement;
+            return (
+                ELEMENTS_TO_GO_OUTSIDE.includes(parent.tagName)
+                ? recurse(parent, maxChars)
+                : ""
+            );
+        }
+        const text = sibling.textContent || "";
+        return (
+            text.length < maxChars
+            ? combine(text, recurse(sibling, maxChars - text.length))
+            : baseCase(text, maxChars)
+        );
     }
-    const text = sibling.textContent || "";
-    const textLength = text.length;
-    return (
-        textLength < maxChars
-        ? contextBefore(sibling, maxChars - textLength) + text
-        : text.substring(textLength - maxChars)
-    );
 }
 
-function contextAfter(mistake: Node, maxChars: number): string {
-    const sibling = mistake.nextSibling;
-    if (sibling === null) {
-        return "";
-    }
-    const text = sibling.textContent || "";
-    const textLength = text.length;
-    return (
-        textLength < maxChars
-        ? text + contextAfter(sibling, maxChars - textLength)
-        : text.substring(0, maxChars)
-    );
-}
+const contextBefore = contextBeforeOrAfter(
+    n => n.previousSibling,
+    (text, nextContext) => nextContext + text,
+    (text, maxChars) => text.substring(text.length - maxChars),
+);
+
+const contextAfter = contextBeforeOrAfter(
+    n => n.nextSibling,
+    (text, nextContext) => text + nextContext,
+    (text, maxChars) => text.substring(0, maxChars),
+);
