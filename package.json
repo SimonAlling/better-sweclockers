@@ -1,7 +1,7 @@
 {
   "private": true,
   "devDependencies": {
-    "@alling/better-sweclockers-lib": "^1.1.5",
+    "@alling/better-sweclockers-lib": "^1.1.6",
     "@types/classnames": "^2.2.6",
     "@types/colors": "^1.2.1",
     "@types/command-line-args": "^5.0.0",
@@ -22,7 +22,7 @@
     "fmap-null-undefined": "^1.0.0",
     "milliseconds": "^1.0.3",
     "mousetrap": "^1.6.2",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.11.0",
     "node-sass-utils": "^1.1.2",
     "preact": "^8.3.0",
     "raw-loader": "^0.5.1",

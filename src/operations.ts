@@ -225,7 +225,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new IndependentOperation({
         description: "perform proofreading processing",
-        condition: isReadingEditorialContent() || isInEditMode(),
+        condition: isReadingEditorialContent() || (isInEditMode() && Preferences.get(P.advanced._.proofread_forum_posts)),
         action: Proofreading.performProcessing,
         waitForDOMContentLoaded: true,
     }),
