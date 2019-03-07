@@ -15,10 +15,11 @@ export default (e: {
     // wiped on any other page unload.
     const textarea = e.textarea as HTMLTextAreaElement;
     const savedPosition = Storage.get_session(CONFIG.KEY.caret_position, NaN).value;
+    // The check below is done here instead of as a condition for the entire
+    // operation, because we need the wiping to be done even if the user has
+    // disabled remember_caret_position.
     if (Preferences.get(P.edit_mode._.remember_caret_position) && isPositiveInt(savedPosition)) {
         placeCaretIn(textarea, savedPosition);
-    } else if (Preferences.get(P.edit_mode._.place_caret_at_end)) {
-        placeCaretIn(textarea, textarea.value.length);
     }
     const wipeSavedPosition = () => Storage.remove_session(CONFIG.KEY.caret_position);
     window.addEventListener("unload", wipeSavedPosition);

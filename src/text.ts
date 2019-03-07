@@ -84,7 +84,6 @@ export const preferences = {
         monospace_font: `<span style="font-family: monospace">Monospace</span>-font i textrutan`,
         keyboard_shortcuts: `Kortkommandon för att skicka (<kbd>Ctrl</kbd> + <kbd>S</kbd>) och förhandsgranska (<kbd>Ctrl</kbd> + <kbd>P</kbd>)`,
         insert_heading_toolbar_button: `Knapp för att formatera som rubrik`,
-        place_caret_at_end: `Placera markören i slutet av textrutan`,
         remember_caret_position: `Kom ihåg markörens position vid förhandsgranskning`,
         remove_mobile_site_disclaimer: `Ta bort <small><em>${SITE.MOBILE_SITE_DISCLAIMER.sentFrom} ${SITE.MOBILE_SITE_DISCLAIMER.mobileSiteDomain}</em></small>`,
     },
