@@ -19,6 +19,7 @@ import INSERT_WEB_SEARCH_BUTTON from "./operations/insert-web-search-button";
 import INSERT_EDITING_TOOLS from "./operations/insert-editing-tools";
 import INSERT_HEADING_TOOLBAR_BUTTON from "./operations/insert-heading-toolbar-button";
 import INSERT_TEXTAREA_SIZE_TOGGLE from "./operations/insert-textarea-size-toggle";
+import INSERT_LINK_TO_TOP from "./operations/insert-link-to-top";
 import INSERT_PM_LINKS from "./operations/insert-pm-links";
 import FIX_MOBILE_LINKS from "./operations/fix-mobile-links";
 import INSERT_QUOTE_SIGNATURE_BUTTONS from "./operations/insert-quote-signature-buttons";
@@ -183,6 +184,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: !isOnBSCPreferencesPage() && Preferences.get(P.general._.insert_preferences_shortcut),
         selectors: { lastTab: SELECTOR.lastNavigationTab },
         action: INSERT_PREFERENCES_SHORTCUT,
+    }),
+    new DependentOperation({
+        description: "insert link to top",
+        condition: isReadingForumThread() && Preferences.get(P.forum_threads._.insert_link_to_top),
+        action: INSERT_LINK_TO_TOP,
+        selectors: { goToLastPageButton: SELECTOR.secondGoToLastPageButton },
     }),
     new IndependentOperation({
         description: "insert PM links",

@@ -27,6 +27,11 @@ export default {
         default: true,
         label: T.preferences.forum_threads.highlight_own_posts,
     }),
+    insert_link_to_top: new BooleanPreference({
+        key: "insert_link_to_top",
+        default: true,
+        label: T.preferences.forum_threads.insert_link_to_top,
+    }),
     insert_pm_links: new BooleanPreference({
         key: "insert_pm_links",
         default: true,

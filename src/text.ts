@@ -34,6 +34,7 @@ export const general = {
     signout_error: `Ett fel har uppstått och utloggningen misslyckades. Var god ladda om sidan och försök igen. Rensa cookies i din webbläsare för att logga ut manuellt.`,
     quote_signature_label: `Citera sign.`,
     quote_signature_tooltip: `Citera endast signatur`,
+    link_to_top_tooltip: `Till toppen`,
     textarea_size_small: `Liten textruta`,
     textarea_size_large: `Stor textruta`,
     web_search_button_tooltip: (engine: SearchEngine) => `Sök med ${engine}`,
@@ -64,6 +65,7 @@ export const preferences = {
     forum_threads: {
         label: `Forumtrådar`,
         improved_pagination_buttons: `Bättre bläddringsknappar`,
+        insert_link_to_top: `Infoga länk till toppen längst ner`,
         highlight_own_posts: `Framhäv egna inlägg`,
         insert_pm_links: `PM-knappar`,
         fix_mobile_links: `Omvandla <kbd>${SITE.HOSTNAME_MOBILE}</kbd>-länkar till vanliga`,
