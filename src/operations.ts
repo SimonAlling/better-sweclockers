@@ -189,7 +189,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         description: "insert link to top",
         condition: isReadingForumThread() && Preferences.get(P.forum_threads._.insert_link_to_top),
         action: INSERT_LINK_TO_TOP,
-        selectors: { goToLastPageButton: SELECTOR.secondGoToLastPageButton },
+        selectors: { parent: SELECTOR.listBulkActions },
     }),
     new IndependentOperation({
         description: "insert PM links",

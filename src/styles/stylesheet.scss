@@ -26,6 +26,17 @@ textarea.#{getGlobal("CONFIG.CLASS.codeInput")}, .#{getGlobal("CONFIG.CLASS.code
     margin-left: -50px; // to prevent horizontal overflow e.g. on a tablet
 }
 
+.#{getGlobal("CONFIG.CLASS.linkToTop")} {
+    $padding: 4px;
+    display: inline-block;
+    margin-top: 2px;
+    padding: $padding;
+    transform: translate(-$padding);
+    &:before {
+        content: "⏫";
+    }
+}
+
 ##{getGlobal("CONFIG.ID.preferencesShortcut")} {
     background-image: url("#{getGlobal("SITE.URL_ICONS_GENERAL")}") !important; // to override Blargmode
     background-position: -164.5px -95px;

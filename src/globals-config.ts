@@ -47,6 +47,7 @@ export const CLASS = {
     iconButton: c("icon-button"),
     pmButton: c("pm-button"),
     quoteSignatureButton: c("quote-signature-button"),
+    linkToTop: c("link-to-top"),
     shibe: c("shibe"),
     button_color: c("button-color"),
     button_quote: c("button-quote"),
