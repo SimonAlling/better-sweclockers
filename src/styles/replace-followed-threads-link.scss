@@ -1,3 +1,11 @@
-##{getGlobal("SITE.ID.siteHeader")} .profile .watched .icon {
-    background-position: -250px -100px;
+##{getGlobal("SITE.ID.siteHeader")} .profile .watched {
+    .icon {
+        background-position: -250px -100px;
+    }
+
+    // Prevent orange link from flashing briefly before being replaced:
+    &, & a.label {
+        color: unset;
+        font-weight: unset;
+    }
 }
