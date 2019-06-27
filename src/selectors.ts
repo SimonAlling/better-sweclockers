@@ -38,6 +38,7 @@ export default {
     bbParagraph: `.bbParagraph`,
     forumLink: `.subForums a[href^="/forum/"]`,
     forumPostAuthorLink: `.name a`,
+    listBulkActions: `#postActions .listBulkActions`,
     quickReplyForm: `#quickreply form`,
     followedThreadsLink: `#${SITE.ID.siteHeader} .profile .option.watched a.label`,
     proofDialogCloseButton: "." + SITE.CLASS.proofDialog + " .cntClose",

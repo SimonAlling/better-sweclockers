@@ -4,20 +4,28 @@ import SELECTOR from "src/selectors";
 import { FAILURE } from "lib/operation-manager";
 import { withMaybe } from "../utilities";
 
+// mousedown because it must be guaranteed to fire before beforeunload:
+export const BUTTON_CLICK_EVENT = "mousedown";
+
+// I prefer this to fiddling with event listeners:
+let shouldPreventUnload = false;
+
 export function postOrMessage(e: { textarea: HTMLElement }) {
-    // We need to prevent unload if and only if the textarea contained text at
-    // page load or if the user has edited its content at some point. Note that
-    // the beforeunload listener cannot just check if the textarea is empty,
-    // because the user can still undo/redo.
+    // We need to prevent unload if the user has modified the content of the
+    // textarea or if they came here by clicking the preview button.
+    window.addEventListener("beforeunload", handleBeforeUnload);
     const textarea = e.textarea as HTMLTextAreaElement;
     const changeListener = () => {
-        addListener();
+        enableListener();
         textarea.removeEventListener("input", changeListener);
     }
     textarea.addEventListener("input", changeListener);
     document.querySelectorAll(SELECTOR.actionButtons).forEach(button => {
-        button.addEventListener("click", removeListener);
+        button.addEventListener(BUTTON_CLICK_EVENT, disableListener);
     });
+    // If a post preview exists, then the user came here by previewing, so there
+    // is information to be lost even before they have touched the textarea:
+    withMaybe(document.getElementById(SITE.ID.postPreview), enableListener);
 }
 
 export function corrections() {
@@ -36,15 +44,19 @@ export function corrections() {
     });
 }
 
+function handleBeforeUnload(event: Event) {
+    if (shouldPreventUnload) preventUnload(event);
+}
+
 function preventUnload(event: Event) {
     event.preventDefault();
     return event.returnValue = true;
 }
 
-function addListener() {
-    window.addEventListener("beforeunload", preventUnload);
+function enableListener() {
+    shouldPreventUnload = true;
 }
 
-function removeListener() {
-    window.removeEventListener("beforeunload", preventUnload);
+function disableListener() {
+    shouldPreventUnload = false;
 }

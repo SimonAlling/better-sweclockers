@@ -13,7 +13,7 @@ export default {
     }),
     compact_layout: new BooleanPreference({
         key: "compact_layout",
-        default: true,
+        default: false,
         label: T.preferences.general.compact_layout,
     }),
     improved_corrections: new BooleanPreference({

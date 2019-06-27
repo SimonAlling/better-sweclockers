@@ -21,6 +21,7 @@ export const ID = {
     newsTicker: "newsticker",
     carousel: "carousel",
     correctionsLink: "proofArticle",
+    postPreview: "preview",
     latestNewsWidget: "wdgtMainRecentNews",
     newInForumWidget_main: "wdgtMainRecentThreads",
     newInForumWidget_side: "wdgtSideRecentThreads",
