@@ -4,6 +4,7 @@ import * as Mousetrap from "mousetrap";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";
 import { Action } from "src/actions";
+import { BUTTON_CLICK_EVENT } from "src/operations/prevent-accidental-unload";
 
 export default (e: {
     textarea: HTMLElement,
@@ -14,13 +15,21 @@ export default (e: {
         if (entry.action === Action.PREVIEW) {
             Mousetrap.bind(entry.shortcut, event => {
                 event.preventDefault();
-                e.previewButton.click();
+                clickOn(e.previewButton);
             });
         } else if (entry.action === Action.SUBMIT) {
             Mousetrap.bind(entry.shortcut, event => {
                 event.preventDefault();
-                e.saveButton.click();
+                clickOn(e.saveButton);
             });
         }
     });
+}
+
+function clickOn(element: HTMLElement): void {
+    // Prevent accidental unload listens for these events:
+    element.dispatchEvent(new Event(BUTTON_CLICK_EVENT));
+    // click() is necessary for the button to be triggered; dispatching
+    // mousedown and then mouseup is not.
+    element.click();
 }
