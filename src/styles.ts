@@ -7,6 +7,8 @@ import * as CONFIG from "globals-config";
 import SELECTOR from "selectors";
 import { isOnBSCPreferencesPage, isInEditMode } from "./environment";
 import { hideById, hideByClass, hideBySelector } from "./styles/hide";
+import { timeIsWithin } from "./time"
+import * as ms from "milliseconds";
 import filterNewInForum from "./styles/interests-new-in-forum";
 
 const ALWAYS: boolean = true;
@@ -24,6 +26,12 @@ Every item must be an object with the following structure:
     css       : the CSS code to insert
 }
 */
+
+function isTimeForMaintenance() {
+    const start = ms.hours(4) + ms.minutes(30);
+    const end   = ms.hours(5) + ms.minutes(10);
+    return timeIsWithin({ start, end })(new Date());
+}
 
 const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
     {
@@ -97,6 +105,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
     {
         condition: isInEditMode() && Preferences.get(P.advanced._.proofread_forum_posts),
         css: STYLE_PROOFREADING,
+    },
+    {
+        condition: !isOnBSCPreferencesPage() && isTimeForMaintenance() && Preferences.get(P.advanced._.down_for_maintenance),
+        css: require("styles/down-for-maintenance"),
     },
     {
         condition: Preferences.get(P.advanced._.custom_css_enable),

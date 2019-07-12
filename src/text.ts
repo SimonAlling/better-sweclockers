@@ -23,6 +23,7 @@ function darkThemeBy(author: DarkTheme.Source): string {
 }
 
 const my_posts = `Mina inlägg`;
+const down_for_maintenance = `Nere för underhåll`;
 
 export const general = {
     seconds: `sekunder`,
@@ -39,6 +40,7 @@ export const general = {
     textarea_size_large: `Stor textruta`,
     web_search_button_tooltip: (engine: SearchEngine) => `Sök med ${engine}`,
     tooltip_h: `Rubrik`,
+    down_for_maintenance,
     my_posts,
 };
 
@@ -146,6 +148,7 @@ export const preferences = {
         prevent_accidental_unload: `Fråga vid navigering från redigeringsläge`,
         improved_image_controls: `Bättre zoom- och länkikoner i bilder`,
         disable_scroll_restoration: `Förhindra webbläsaren från att komma ihåg scrollning`,
+        down_for_maintenance: `${down_for_maintenance} varje natt mellan 4:30 och 5:10`,
         proofread_articles: {
             label: `Markera möjliga fel i artiklar`,
             always: `Alltid`,

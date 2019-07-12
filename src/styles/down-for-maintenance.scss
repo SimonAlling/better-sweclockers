@@ -1,0 +1,12 @@
+body {
+    padding: 8px;
+
+    * {
+        display: none !important;
+    }
+
+    &::after {
+        content: '#{getGlobal("T.general.down_for_maintenance")}';
+        font: 16px "Courier New", monospace;
+    }
+}

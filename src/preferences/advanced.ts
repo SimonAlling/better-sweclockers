@@ -34,6 +34,11 @@ export default {
         default: false,
         label: T.preferences.advanced.disable_scroll_restoration,
     }),
+    down_for_maintenance: new BooleanPreference({
+        key: "down_for_maintenance",
+        default: false,
+        label: T.preferences.advanced.down_for_maintenance,
+    }),
     proofread_articles: new MultichoicePreference({
         key: "proofread_articles",
         default: Proofreading.Options.NEVER,
