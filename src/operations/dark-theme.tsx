@@ -8,6 +8,7 @@ import { isHTMLElement } from "lib/html";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";
 import { darkThemeUrl, darkThemeUrlBackup } from "src/dark-theme";
+import { timeIsWithin } from "../time";
 import { withMaybe } from "../utilities";
 
 const DARK_THEME_ADDITIONS = require("../styles/dark-theme-additions");
@@ -86,26 +87,4 @@ function sheldon(): void {
     }
     // If the dark theme was toggled (auto or not) in another tab, Sheldon must toggle it here as well:
     apply(Preferences.get(P.dark_theme._.active));
-}
-
-function timeIsWithin(interval: Readonly<{ start: number, end: number }>) {
-    return (time: Date): boolean => {
-        const t = timeOfDay(time);
-        const start = interval.start;
-        const end = interval.end;
-        return (
-            end < start
-            ? t >= start || t < end
-            : t >= start && t < end
-        );
-    };
-}
-
-function timeOfDay(date: Date): number {
-    let startOfToday = new Date();
-    startOfToday.setHours(0);
-    startOfToday.setMinutes(0);
-    startOfToday.setSeconds(0);
-    startOfToday.setMilliseconds(0);
-    return date.getTime() - startOfToday.getTime();
 }
