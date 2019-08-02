@@ -239,7 +239,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     new DependentOperation({
         description: "replace followed threads link with a link to my posts",
         condition: isLoggedIn() && Preferences.get(P.general._.replace_followed_threads_link),
-        selectors: { followedThreadsLink: SELECTOR.followedThreadsLink },
+        selectors: { followedThreadsLinkText: SELECTOR.followedThreadsLinkText },
         action: REPLACE_FOLLOWED_THREADS_LINK,
     }),
 

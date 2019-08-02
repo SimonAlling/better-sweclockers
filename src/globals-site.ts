@@ -61,7 +61,6 @@ export const CLASS = {
     toolbarButton: "tbButton iconButton noselect",
     toolbarButtonIcon: "btnIcon",
     toolbarHeadingButton: "header",
-    hasUnread: "hasUnread",
 };
 
 export const PATH = {
