@@ -5,7 +5,7 @@
 
     // Prevent orange link from flashing briefly before being replaced:
     &, & a.label {
-        color: unset;
+        color: unset !important; // to override Blargmode
         font-weight: unset;
     }
 }

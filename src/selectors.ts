@@ -40,6 +40,6 @@ export default {
     forumPostAuthorLink: `.name a`,
     listBulkActions: `#postActions .listBulkActions`,
     quickReplyForm: `#quickreply form`,
-    followedThreadsLink: `#${SITE.ID.siteHeader} .profile .option.watched a.label`,
+    followedThreadsLinkText: `#${SITE.ID.siteHeader} .profile .option.watched a.label>span:not(.icon)`,
     proofDialogCloseButton: "." + SITE.CLASS.proofDialog + " .cntClose",
 };
