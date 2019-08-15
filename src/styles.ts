@@ -133,6 +133,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: hideByClass(SITE.CLASS.socialMediaButtons),
     },
     {
+        condition: isFalse(Preferences.get(P.customize_content._.anniversary)),
+        css: hideBySelector(SELECTOR.sideColumnAnniversary),
+    },
+    {
         condition: isFalse(Preferences.get(P.customize_content._.guides)),
         css: hideBySelector(SELECTOR.sideColumnGuides),
     },

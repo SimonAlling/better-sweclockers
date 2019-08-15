@@ -33,6 +33,7 @@ export default {
     saveButton: actionButtons + `[value=doSubmit]`,
     saveButtonQuickReply: actionButtonsQuickReply + `:nth-of-type(1)`,
     previewButtonQuickReply: actionButtonsQuickReply + `:nth-of-type(2)`,
+    sideColumnAnniversary: `.swec20Box.${C.sideBox}`,
     sideColumnGuides: `.videoPush.${C.sideBox}`,
     sideColumnPopularGalleries: `.popularGalleries.${C.sideBox}`,
     bbParagraph: `.bbParagraph`,
