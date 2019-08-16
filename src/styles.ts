@@ -71,6 +71,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/improved-corrections"),
     },
     {
+        condition: Preferences.get(P.general._.improved_corrections) && Preferences.get(P.general._.adaptive_width),
+        css: require("styles/adaptive-width-corrections"),
+    },
+    {
         condition: Preferences.get(P.general._.insert_web_search_button),
         css: require("styles/web-search-button"),
     },

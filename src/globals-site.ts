@@ -9,10 +9,18 @@ export const STYLESHEET_URL = "/css/combine.min.css";
 
 export const BANNER_HEIGHT_TOP = `${121}px`; // default height of top ad banner
 export const BANNER_HEIGHT_MID = `${360}px`; // default height of page ad modules
-export const WRAPPER_WIDTH_WIDE = `${1250}px`;
-export const WRAPPER_WIDTH_NARROW = `${1002}px`;
+export const WRAPPER_WIDTH_WIDE_PX = 1250;
+export const WRAPPER_WIDTH_NARROW_PX = 1002;
 export const MAX_WIDTH_FOR_NARROW_LAYOUT = `${1100}px`;
 export const EXTRA_TAB_MARGIN = `${8}px`;
+export const GUTTER_SIZE_PX = 8;
+export const OUTSIDER_COLUMN_FIXED_WIDTH_PX = 250;
+export const INSIDER_COLUMN_FIXED_WIDTH_PX = 314;
+export const PUSH_COLUMN_FIXED_WIDTH_PX = 162;
+export const ARTICLE_WIDTH_PX = 517; // Average of 516px in wide viewport and 518px in narrow...
+export const CORRECTIONS_DIALOG_WIDTH_PX = 384;
+export const FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX = INSIDER_COLUMN_FIXED_WIDTH_PX + PUSH_COLUMN_FIXED_WIDTH_PX;
+export const FIXED_COLUMNS_TOTAL_WIDTH_WIDE_PX = FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX + OUTSIDER_COLUMN_FIXED_WIDTH_PX;
 
 export const ID = {
     siteHeader: "siteHeader",
