@@ -16,6 +16,11 @@ export default {
         default: false,
         label: T.preferences.general.compact_layout,
     }),
+    adaptive_width: new BooleanPreference({
+        key: "adaptive_width",
+        default: false,
+        label: T.preferences.general.adaptive_width,
+    }),
     improved_corrections: new BooleanPreference({
         key: "improved_corrections",
         default: true,

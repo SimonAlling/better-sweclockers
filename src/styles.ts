@@ -59,6 +59,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/compact-layout"),
     },
     {
+        condition: Preferences.get(P.general._.adaptive_width),
+        css: require("styles/adaptive-width"),
+    },
+    {
         condition: Preferences.get(P.forum_threads._.improved_pagination_buttons),
         css: require("styles/improved-pagination-buttons"),
     },
