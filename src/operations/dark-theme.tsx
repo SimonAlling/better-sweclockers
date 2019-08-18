@@ -10,25 +10,21 @@ import P from "preferences";
 import { darkThemeUrl, darkThemeUrlBackup } from "src/dark-theme";
 import { timeIsWithin } from "../time";
 import { withMaybe } from "../utilities";
+import { tab } from "./logic/topMenuTab";
 
 const DARK_THEME_ADDITIONS = require("../styles/dark-theme-additions");
 
 export function insertToggle(e: { lastTab: HTMLElement }): void {
     const state = Preferences.get(P.dark_theme._.active);
     const source = Preferences.get(P.dark_theme._.source);
-    const button = (
-        <li
-            title={state ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on(source)}
-            class={[SITE.CLASS.menuItem].concat(state ? CONFIG.CLASS.darkThemeActive : []).join(" ")}
-            id={CONFIG.ID.darkThemeToggle}
-        >
-            <a href="javascript:void(0)" onClick={() => {
-                set(!Preferences.get(P.dark_theme._.active));
-            }}>
-                <span>&nbsp;</span>
-            </a>
-        </li>
-    );
+    const button = tab({
+        title: state ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on(source),
+        id: CONFIG.ID.darkThemeToggle,
+        classes: state ? [CONFIG.CLASS.darkThemeActive] : [],
+        link: {
+            onClick: () => set(!Preferences.get(P.dark_theme._.active)),
+        },
+    });
     render(button, e.lastTab.parentElement as HTMLElement);
 }
 

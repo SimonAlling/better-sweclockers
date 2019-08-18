@@ -1,19 +1,17 @@
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import * as T from "../text";
-import { h, render } from "preact";
+import { render } from "preact";
+import { tab } from "./logic/topMenuTab";
 
 export default (e: { lastTab: HTMLElement }) => {
-    const button = (
-        <li
-            title={T.preferences.title}
-            class={SITE.CLASS.menuItem}
-            id={CONFIG.ID.preferencesShortcut}
-        >
-            <a href={CONFIG.PATH.PREFERENCES(SITE.PATH.SETTINGS)} target="_blank">
-                <span style="display:inline-block;"></span>
-            </a>
-        </li>
-    );
+    const button = tab({
+        title: T.preferences.title,
+        id: CONFIG.ID.preferencesShortcut,
+        link: {
+            href: CONFIG.PATH.PREFERENCES(SITE.PATH.SETTINGS),
+            openInNewTab: true,
+        },
+    });
     render(button, e.lastTab.parentElement as HTMLElement);
 }
