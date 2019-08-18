@@ -8,6 +8,7 @@ import {
     isLoggedIn,
     isInEditMode,
     isInEditMode_market,
+    isInEditMode_forum,
     isOnBSCPreferencesPage,
     isOnSweclockersSettingsPage,
     isReadingEditorialContent,
@@ -118,7 +119,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "remove mobile site disclaimer",
-        condition: isInEditMode(),
+        condition: isInEditMode_forum(),
         selectors: { textarea: SELECTOR.textarea },
         action: REMOVE_MOBILE_SITE_DISCLAIMER,
     }),
