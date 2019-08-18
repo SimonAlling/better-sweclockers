@@ -11,7 +11,7 @@ export default (e: { lastTab: HTMLElement }) => {
             id={CONFIG.ID.preferencesShortcut}
         >
             <a href={CONFIG.PATH.PREFERENCES(SITE.PATH.SETTINGS)} target="_blank">
-                <span>&nbsp;</span>
+                <span style="display:inline-block;"></span>
             </a>
         </li>
     );
