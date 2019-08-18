@@ -7,6 +7,7 @@ import P from "preferences";
 import {
     isLoggedIn,
     isInEditMode,
+    isInEditMode_market,
     isOnBSCPreferencesPage,
     isOnSweclockersSettingsPage,
     isReadingEditorialContent,
@@ -110,7 +111,8 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: isInEditMode(),
         selectors: {
             textarea: SELECTOR.textarea,
-            previewButton: SELECTOR.previewButton,
+            // The market doesn't have a dedicated preview button; its save button fills that purpose in this context.
+            previewButton: isInEditMode_market() ? SELECTOR.saveButton : SELECTOR.previewButton,
         },
         action: MANAGE_CARET_POSITION,
     }),
@@ -255,7 +257,8 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: isInEditMode() && Preferences.get(P.edit_mode._.keyboard_shortcuts),
         selectors: {
             textarea: SELECTOR.textarea,
-            previewButton: SELECTOR.previewButton,
+            // The market doesn't have a dedicated preview button; its save button will have to do.
+            previewButton: isInEditMode_market() ? SELECTOR.saveButton : SELECTOR.previewButton,
             saveButton: SELECTOR.saveButton,
         },
         action: KEYBOARD_SHORTCUTS_EDIT_MODE,
