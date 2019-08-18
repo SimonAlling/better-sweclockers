@@ -17,14 +17,14 @@ export function tab(x: Readonly<{
         <li
             title={x.title}
             id={x.id}
-            class={[SITE.CLASS.menuItem].concat(fromMaybeUndefined([], x.classes)).join(" ")}
+            class={[SITE.CLASS.menuItem, CONFIG.CLASS.iconTab].concat(fromMaybeUndefined([], x.classes)).join(" ")}
         >
             <a
                 href={fromMaybeUndefined("javascript:void(0)", x.link.href)}
                 target={x.link.openInNewTab ? "_blank" : undefined}
                 onClick={x.link.onClick}
             >
-                <span style="display:inline-block;"></span>
+                <span></span>
             </a>
         </li>
     );

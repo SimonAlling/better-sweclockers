@@ -13,6 +13,11 @@
     }
 }
 
+.#{getGlobal("CONFIG.CLASS.iconTab")} a span {
+    display: inline-block;
+    width: 2px;
+}
+
 .#{getGlobal("CONFIG.CLASS.pmButton")} {
     margin-left: 8px;
     margin-bottom: 0;
@@ -39,7 +44,7 @@ textarea.#{getGlobal("CONFIG.CLASS.codeInput")}, .#{getGlobal("CONFIG.CLASS.code
 
 ##{getGlobal("CONFIG.ID.preferencesShortcut")} {
     background-image: url("#{getGlobal("SITE.URL_ICONS_GENERAL")}") !important; // to override Blargmode
-    background-position: -166px -95px;
+    background-position: -165px -95px;
     background-size: 600px auto; // scale down 2x; image is 1200px wide
     margin-left: #{getGlobal("SITE.EXTRA_TAB_MARGIN")};
 }

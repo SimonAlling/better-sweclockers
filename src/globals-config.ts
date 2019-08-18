@@ -45,6 +45,7 @@ export const CLASS = {
     darkThemeActive: c("dark-theme-active"),
     editingTools: c("editing-tools"),
     iconButton: c("icon-button"),
+    iconTab: c("icon-tab"),
     pmButton: c("pm-button"),
     quoteSignatureButton: c("quote-signature-button"),
     linkToTop: c("link-to-top"),
