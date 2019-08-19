@@ -9,7 +9,7 @@ export const enum Source {
 export function darkThemeUrl(source: Source): string {
     switch (source) {
         case Source.BLARGMODE: return "https://blargmode.se/files/swec_dark_theme/style.css";
-        case Source.SOITORA: return "https://gitcdn.xyz/repo/Soitora/XHS-Styles/master/sweclockers-pure.css";
+        case Source.SOITORA: return "https://soitora.github.io/xhs-styles/sweclockers.css";
     }
     return assertUnreachable(source);
 }
