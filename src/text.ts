@@ -120,7 +120,7 @@ export const preferences = {
         between: `mellan`,
         and: `och`,
         interval: `Uppdateringsintervall`,
-        use_backup: `Ladda in från backupserver istället`,
+        use_backup: `Använd Allings server`,
     },
 
     customize_content: {
