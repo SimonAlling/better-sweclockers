@@ -49,7 +49,7 @@ export function isReadingEditorialContent(): boolean {
     ].some(r => r.test(document.location.pathname));
 }
 
-export function isReadingForumThread(): boolean {;
+export function isReadingForumThread(): boolean {
     return !isInEditMode() && [
         SITE.PATH.FORUM_THREAD,
         SITE.PATH.FORUM_POST,
