@@ -12,7 +12,7 @@ import {
     isOnBSCPreferencesPage,
     isOnSweclockersSettingsPage,
     isReadingEditorialContent,
-    isReadingForumThread,
+    isReadingThread,
 } from "./environment";
 import INSERT_PREFERENCES_MENU from "./operations/insert-preferences-menu";
 import INSERT_PREFERENCES_LINK from "./operations/insert-preferences-link";
@@ -131,7 +131,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "insert editing tools in quick reply form",
-        condition: isReadingForumThread() && Preferences.get(P.editing_tools._.enable) && Preferences.get(P.editing_tools._.in_quick_reply_form),
+        condition: isReadingThread() && Preferences.get(P.editing_tools._.enable) && Preferences.get(P.editing_tools._.in_quick_reply_form),
         selectors: { textarea: SELECTOR.textarea },
         action: INSERT_EDITING_TOOLS,
     }),
@@ -190,7 +190,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "insert link to top",
-        condition: isReadingForumThread() && Preferences.get(P.forum_threads._.insert_link_to_top),
+        condition: isReadingThread() && Preferences.get(P.forum_threads._.insert_link_to_top),
         action: INSERT_LINK_TO_TOP,
         selectors: { parent: SELECTOR.listBulkActions },
     }),
@@ -202,13 +202,13 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new IndependentOperation({
         description: "fix mobile links",
-        condition: isReadingForumThread() && Preferences.get(P.forum_threads._.fix_mobile_links),
+        condition: isReadingThread() && Preferences.get(P.forum_threads._.fix_mobile_links),
         action: FIX_MOBILE_LINKS,
         waitForDOMContentLoaded: true,
     }),
     new DependentOperation({
         description: "insert quote signature buttons",
-        condition: isReadingForumThread() && Preferences.get(P.forum_threads._.quote_signature_buttons),
+        condition: isReadingThread() && Preferences.get(P.forum_threads._.quote_signature_buttons),
         action: INSERT_QUOTE_SIGNATURE_BUTTONS,
         selectors: { quickReplyForm: SELECTOR.quickReplyForm },
     }),
@@ -267,7 +267,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "add quick reply keyboard shortcuts",
-        condition: isReadingForumThread() && Preferences.get(P.edit_mode._.keyboard_shortcuts_in_quick_reply),
+        condition: isReadingThread() && Preferences.get(P.edit_mode._.keyboard_shortcuts_in_quick_reply),
         selectors: {
             textarea: SELECTOR.textarea,
             previewButton: SELECTOR.previewButtonQuickReply,

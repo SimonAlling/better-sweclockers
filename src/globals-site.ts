@@ -79,8 +79,8 @@ export const PATH = {
     TESTPILOT: /^\/testpilot\//,
     FORUM_CATEGORY: /\/forum\/(\d+)/,
     FORUM: "/forum",
-    FORUM_THREAD: /^\/forum\/trad\//,
-    FORUM_POST: /^\/forum\/post\//,
+    THREAD: /^\/(?:forum|meddelanden)\/trad\//,
+    POST: /^\/(?:forum|meddelanden)\/post\//,
     newPrivateMessage: (userID: number) => "/pm/nytt-meddelande?rcpts=" + userID,
 };
 
