@@ -121,6 +121,7 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
 
     input[type="text"], input[type="number"], input[type="time"] {
         margin: 0.33em 0;
+        width: 5em;
     }
 
     input[type="text"] + label::before, input[type="number"] + label::before, input[type="time"] + label::before {
