@@ -120,15 +120,12 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
             p.extras.implicit // should not be part of the preferences menu
             ? null
             : (
-                <div class={classNames(CONFIG.CLASS.preference, p.extras.class)}>
+                <div class={classNames(CONFIG.CLASS.preference, p.extras.class)} title={p.description}>
                     {InputElement(generators, p)}
                     {isString(p.extras.suffix) ? <HtmlLabel for={PID(p)} html={p.extras.suffix} /> : null}
                     {
-                        p.description.length > 0
-                        ? <aside
-                            dangerouslySetInnerHTML={{__html: p.description}}
-                            class={CONFIG.CLASS.preferenceDescription}
-                        />
+                        p.extras.more !== undefined
+                        ? <aside dangerouslySetInnerHTML={{__html: p.extras.more}} />
                         : null
                     }
                 </div>

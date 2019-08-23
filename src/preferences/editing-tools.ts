@@ -22,6 +22,7 @@ const enable = new BooleanPreference({
     key: "editing_tools",
     default: true,
     label: T.preferences.editing_tools.enable,
+    description: T.preferences.editing_tools.enable_description,
     extras: { class: CONFIG.CLASS.inlinePreference },
 });
 
@@ -40,12 +41,14 @@ export default {
         key: "editing_tools_in_quick_reply_form",
         default: true,
         label: T.preferences.editing_tools.in_quick_reply_form,
+        description: T.preferences.editing_tools.in_quick_reply_form_description,
         extras: { class: CONFIG.CLASS.inlinePreference },
     }),
     position: new MultichoicePreference({
         key: "editing_tools_position",
         default: Position.BELOW,
         label: T.preferences.editing_tools.position.label,
+        description: T.preferences.editing_tools.position.description,
         options: [
             {
                 value: Position.ABOVE,
@@ -62,46 +65,57 @@ export default {
         key: "editing_tools_special_characters",
         default: true,
         label: T.preferences.editing_tools.special_characters,
-        description: buttonsDescription(T.special_characters.slice(0, 5).map(insertButton)) + "…",
-        extras: { class: CONFIG.CLASS.editingTools },
+        extras: {
+            more: buttonsDescription(T.special_characters.slice(0, 5).map(insertButton)) + "…",
+            class: CONFIG.CLASS.editingTools,
+        },
         dependencies,
     }),
     code: new BooleanPreference({
         key: "editing_tools_code",
         default: true,
         label: T.preferences.editing_tools.code,
-        description: buttonsDescription(BUTTONS.code),
-        extras: { class: CONFIG.CLASS.editingTools },
+        extras: {
+            more: buttonsDescription(BUTTONS.code),
+            class: CONFIG.CLASS.editingTools,
+        },
         dependencies,
     }),
     math: new BooleanPreference({
         key: "editing_tools_math",
         default: true,
         label: T.preferences.editing_tools.math,
-        description: buttonsDescription(BUTTONS.math),
-        extras: { class: CONFIG.CLASS.editingTools },
+        extras: {
+            more: buttonsDescription(BUTTONS.math),
+            class: CONFIG.CLASS.editingTools,
+        },
         dependencies,
     }),
     embed: new BooleanPreference({
         key: "editing_tools_embed",
         default: true,
         label: T.preferences.editing_tools.embed,
-        description: buttonsDescription(BUTTONS.embed(SearchEngine.GOOGLE)),
-        extras: { class: CONFIG.CLASS.editingTools },
+        extras: {
+            more: buttonsDescription(BUTTONS.embed(SearchEngine.GOOGLE)),
+            class: CONFIG.CLASS.editingTools,
+        },
         dependencies,
     }),
     doge: new BooleanPreference({
         key: "editing_tools_doge",
         default: false,
         label: T.preferences.editing_tools.doge,
-        description: T.preferences.editing_tools.doge_description,
-        extras: { class: [ CONFIG.CLASS.shibe, CONFIG.CLASS.editingTools ].join(" ") },
+        extras: {
+            more: T.preferences.editing_tools.doge_description,
+            class: [ CONFIG.CLASS.shibe, CONFIG.CLASS.editingTools ].join(" "),
+        },
         dependencies,
     }),
     color_palette: new BooleanPreference({
         key: "editing_tools_color_palette",
         default: true,
         label: T.preferences.editing_tools.color_palette,
+        description: T.preferences.editing_tools.color_palette_description,
         extras: { class: CONFIG.CLASS.editingTools },
         dependencies,
     }),
