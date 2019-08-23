@@ -47,7 +47,7 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/doge"),
     },
     {
-        condition: isOnBSCPreferencesPage(),
+        condition: isOnBSCPreferencesPage,
         css: require("styles/preferences"),
     },
     {
@@ -87,11 +87,11 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/textarea-size-toggle"),
     },
     {
-        condition: isInEditMode() && Preferences.get(P.edit_mode._.monospace_font),
+        condition: isInEditMode && Preferences.get(P.edit_mode._.monospace_font),
         css: `#${CONFIG.ID.document} ${SELECTOR.textarea} { font-family: monospace; }`,
     },
     {
-        condition: isInEditMode() && Preferences.get(P.edit_mode._.textarea_size_toggle),
+        condition: isInEditMode && Preferences.get(P.edit_mode._.textarea_size_toggle),
         css: `#${CONFIG.ID.document} ${SELECTOR.textarea} { height: ${Preferences.get(P.edit_mode._.textarea_size)}px; }`,
     },
     {
@@ -107,11 +107,11 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: require("styles/replace-followed-threads-link"),
     },
     {
-        condition: isInEditMode() && Preferences.get(P.advanced._.proofread_forum_posts),
+        condition: isInEditMode && Preferences.get(P.advanced._.proofread_forum_posts),
         css: STYLE_PROOFREADING,
     },
     {
-        condition: !isOnBSCPreferencesPage() && isTimeForMaintenance() && Preferences.get(P.advanced._.down_for_maintenance),
+        condition: !isOnBSCPreferencesPage && isTimeForMaintenance() && Preferences.get(P.advanced._.down_for_maintenance),
         css: require("styles/down-for-maintenance"),
     },
     {
