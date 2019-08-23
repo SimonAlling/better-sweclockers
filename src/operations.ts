@@ -8,6 +8,7 @@ import {
     isLoggedIn,
     isInEditMode,
     isInEditMode_market,
+    isInEditMode_marketContact,
     isInEditMode_forum,
     isOnBSCPreferencesPage,
     isOnSweclockersSettingsPage,
@@ -255,7 +256,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "add edit mode keyboard shortcuts",
-        condition: isInEditMode && Preferences.get(P.edit_mode._.keyboard_shortcuts),
+        condition: isInEditMode && !isInEditMode_marketContact && Preferences.get(P.edit_mode._.keyboard_shortcuts),
         selectors: {
             textarea: SELECTOR.textarea,
             // The market doesn't have a dedicated preview button; its save button will have to do.

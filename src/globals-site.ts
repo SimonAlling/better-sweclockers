@@ -65,7 +65,8 @@ export const CLASS = {
 
 export const PATH = {
     EDIT_MODE_FORUM: /^\/forum\/(.*\/(svara(\?citera)?|redigera)|ny-trad)/,
-    EDIT_MODE_MARKET: /^\/marknad\/(.+\/redigera|ny\-annons)$/,
+    EDIT_MODE_MARKET: /^\/marknad\/(.+\/(redigera|kontakt)|ny\-annons)$/,
+    EDIT_MODE_MARKET_CONTACT: /^\/marknad\/.+\/kontakt$/,
     EDIT_MODE_PM: /^\/meddelanden\/(.+\/(svara|redigera)|nytt\-meddelande)/,
     EDIT_MODE_REPORT: /^\/(forum|marknad|pm)\/.+\/anmal$/,
     SETTINGS: "/profil/installningar",
