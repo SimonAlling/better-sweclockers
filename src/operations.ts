@@ -32,7 +32,7 @@ import ADAPT_CORRECTIONS_LINK from "./operations/adapt-corrections-link";
 import REPLACE_FOLLOWED_THREADS_LINK from "./operations/replace-followed-threads-link";
 import MANAGE_CARET_POSITION from "./operations/manage-caret-position";
 import REMOVE_MOBILE_SITE_DISCLAIMER from "./operations/remove-mobile-site-disclaimer";
-import KEYBOARD_SHORTCUTS_EDIT_MODE from "./operations/keyboard-shortcuts/edit-mode";
+import * as KEYBOARD_SHORTCUTS_EDIT_MODE from "./operations/keyboard-shortcuts/edit-mode";
 import MOUSETRAP_PREPARATIONS from "./operations/mousetrap-preparations";
 import * as DarkTheme from "./operations/dark-theme";
 import * as Proofreading from "./operations/proofreading";
@@ -255,26 +255,42 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         waitForDOMContentLoaded: true,
     }),
     new DependentOperation({
-        description: "add edit mode keyboard shortcuts",
-        condition: isInEditMode && !isInEditMode_marketContact && Preferences.get(P.edit_mode._.keyboard_shortcuts),
+        description: "add edit mode keyboard shortcut (submit)",
+        condition: isInEditMode && Preferences.get(P.edit_mode._.keyboard_shortcuts),
         selectors: {
             textarea: SELECTOR.textarea,
-            // The market doesn't have a dedicated preview button; its save button will have to do.
-            previewButton: isInEditMode_market ? SELECTOR.saveButton : SELECTOR.previewButton,
             saveButton: SELECTOR.saveButton,
         },
-        action: KEYBOARD_SHORTCUTS_EDIT_MODE,
+        action: KEYBOARD_SHORTCUTS_EDIT_MODE.submit,
         waitForDOMContentLoaded: true,
     }),
     new DependentOperation({
-        description: "add quick reply keyboard shortcuts",
+        description: "add edit mode keyboard shortcut (preview)",
+        condition: isInEditMode && !isInEditMode_marketContact && Preferences.get(P.edit_mode._.keyboard_shortcuts),
+        selectors: {
+            textarea: SELECTOR.textarea,
+            previewButton: SELECTOR.previewButton,
+        },
+        action: KEYBOARD_SHORTCUTS_EDIT_MODE.preview,
+        waitForDOMContentLoaded: true,
+    }),
+    new DependentOperation({
+        description: "add quick reply keyboard shortcut (submit)",
+        condition: isReadingThread && Preferences.get(P.edit_mode._.keyboard_shortcuts_in_quick_reply),
+        selectors: {
+            textarea: SELECTOR.textarea,
+            saveButton: SELECTOR.saveButtonQuickReply,
+        },
+        action: KEYBOARD_SHORTCUTS_EDIT_MODE.submit,
+    }),
+    new DependentOperation({
+        description: "add quick reply keyboard shortcut (preview)",
         condition: isReadingThread && Preferences.get(P.edit_mode._.keyboard_shortcuts_in_quick_reply),
         selectors: {
             textarea: SELECTOR.textarea,
             previewButton: SELECTOR.previewButtonQuickReply,
-            saveButton: SELECTOR.saveButtonQuickReply,
         },
-        action: KEYBOARD_SHORTCUTS_EDIT_MODE,
+        action: KEYBOARD_SHORTCUTS_EDIT_MODE.preview,
     }),
 ];
 
