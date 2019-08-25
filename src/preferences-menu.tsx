@@ -368,7 +368,14 @@ class Interests extends Component<{ p: ListPreference<number> }, InterestsState>
     state: InterestsState = { fetch: { status: "loading" } }
 
     componentDidMount() {
-        fetch(SITE.PATH.FORUM)
+        /*
+        A relative path such as "/forum" works in Violentmonkey and Tampermonkey
+        in both Chrome and Firefox, but not in Greasemonkey (Firefox).
+        "https://" + SITE.HOSTNAME + path doesn't work in Chrome due to CORS.
+        window.location.origin + path works in all five mentioned scenarios, as
+        well as in Safari on iOS 12.3.
+        */
+        fetch(window.location.origin + SITE.PATH.FORUM)
         .then(response => response.text())
         .then(responseContent => {
             const responseDocument = new DOMParser().parseFromString(responseContent, "text/html");
