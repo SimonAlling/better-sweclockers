@@ -155,16 +155,16 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         action: INSERT_TEXTAREA_SIZE_TOGGLE,
     }),
     new DependentOperation({
+        // Should be inserted before dark theme toggle because they should be in that order.
+        description: "insert preferences shortcut",
+        condition: !isOnBSCPreferencesPage && Preferences.get(P.general._.insert_preferences_shortcut),
+        selectors: { topMenu: SELECTOR.topMenu },
+        action: INSERT_PREFERENCES_SHORTCUT,
+    }),
+    new DependentOperation({
         description: "insert dark theme toggle",
         condition: !isOnBSCPreferencesPage && Preferences.get(P.dark_theme._.show_toggle),
-        selectors: {
-            lastTab: (
-                // If preferences shortcut is inserted, dark theme toggle must be inserted to its right.
-                Preferences.get(P.general._.insert_preferences_shortcut)
-                ? `#${CONFIG.ID.preferencesShortcut}`
-                : SELECTOR.lastNavigationTab
-            ),
-        },
+        selectors: { topMenu: SELECTOR.topMenu },
         action: DarkTheme.insertToggle,
     }),
     new DependentOperation({
@@ -182,12 +182,6 @@ const OPERATIONS: ReadonlyArray<Operation> = [
             label: SELECTOR.settingsNavigationLabel,
         },
         action: INSERT_PREFERENCES_LINK,
-    }),
-    new DependentOperation({
-        description: "insert preferences shortcut",
-        condition: !isOnBSCPreferencesPage && Preferences.get(P.general._.insert_preferences_shortcut),
-        selectors: { lastTab: SELECTOR.lastNavigationTab },
-        action: INSERT_PREFERENCES_SHORTCUT,
     }),
     new DependentOperation({
         description: "insert link to top",

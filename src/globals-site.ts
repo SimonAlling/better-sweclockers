@@ -39,7 +39,6 @@ export const CLASS = {
     link: "link",
     icon: "icon",
     label: "label",
-    menu: "menu",
     inner: "inner",
     menuItem: "menuItem",
     settingsNavigation: "menuItems",

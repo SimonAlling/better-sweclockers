@@ -20,7 +20,7 @@ export default {
     textareaToolbarInner,
     textareaToolbarStrikeButton: textareaToolbarInner + ` .strike`,
     proofDialogTextarea: `.${SITE.CLASS.proofDialog} textarea`,
-    lastNavigationTab: `.${C.menu} > li.${C.menuItem}:last-child`,
+    topMenu: `#mainMenu ul`,
     siteHeader: `#` + SITE.ID.siteHeader,
     moreArticles: `.mainContent ~ .mainContent`,
     searchFieldWrapper,

@@ -14,7 +14,7 @@ import { tab } from "./logic/topMenuTab";
 
 const DARK_THEME_ADDITIONS = require("../styles/dark-theme-additions");
 
-export function insertToggle(e: { lastTab: HTMLElement }): void {
+export function insertToggle(e: { topMenu: HTMLElement }): void {
     const state = Preferences.get(P.dark_theme._.active);
     const source = Preferences.get(P.dark_theme._.source);
     const button = tab({
@@ -25,7 +25,7 @@ export function insertToggle(e: { lastTab: HTMLElement }): void {
             onClick: () => set(!Preferences.get(P.dark_theme._.active)),
         },
     });
-    render(button, e.lastTab.parentElement as HTMLElement);
+    render(button, e.topMenu);
 }
 
 export function manage(): void {

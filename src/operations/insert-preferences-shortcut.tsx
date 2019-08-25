@@ -4,7 +4,7 @@ import * as T from "../text";
 import { render } from "preact";
 import { tab } from "./logic/topMenuTab";
 
-export default (e: { lastTab: HTMLElement }) => {
+export default (e: { topMenu: HTMLElement }) => {
     const button = tab({
         title: T.preferences.title,
         id: CONFIG.ID.preferencesShortcut,
@@ -13,5 +13,5 @@ export default (e: { lastTab: HTMLElement }) => {
             openInNewTab: true,
         },
     });
-    render(button, e.lastTab.parentElement as HTMLElement);
+    render(button, e.topMenu);
 }
