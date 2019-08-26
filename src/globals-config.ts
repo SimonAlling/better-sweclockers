@@ -24,6 +24,9 @@ const c = prefixer(PREFIX_CLASS);
 export const ID_STYLE_ELEMENT: string = i("main-style-element");
 export const EDITING_TOOLS_HEIGHT = "120px"; // to prevent jumping in preferences interface
 
+// distance between article and left side of improved corrections dialog
+export const CORRECTIONS_DIALOG_OFFSET_PX = 20;
+
 export const ID = {
     document: i("document"),
     preferenceIdPrefix: i("preference-"),

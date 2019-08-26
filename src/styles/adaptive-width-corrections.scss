@@ -1,0 +1,27 @@
+##{getGlobal("CONFIG.ID.document")} {
+
+$WRAPPER_WIDTH_WIDE_PX: getGlobal("SITE.WRAPPER_WIDTH_WIDE_PX");
+$CORRECTIONS_DIALOG_OFFSET_PX: getGlobal("CONFIG.CORRECTIONS_DIALOG_OFFSET_PX");
+$FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX: getGlobal("SITE.FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX");
+
+div.#{getGlobal("SITE.CLASS.proofDialog")} { /* explicit div to override default BSC */
+    .wndWindowArea {
+        left: calc(50% + #{
+            $CORRECTIONS_DIALOG_OFFSET_PX
+            + $WRAPPER_WIDTH_WIDE_PX/2
+            - $FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX
+        }px) !important;
+        right: unset;
+    }
+
+    @media screen and (max-width: #{$WRAPPER_WIDTH_WIDE_PX}px) {
+        .wndWindowArea {
+            left: calc(100% + #{
+                $CORRECTIONS_DIALOG_OFFSET_PX
+                - $FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX
+            }px) !important;
+        }
+    }
+}
+
+}
