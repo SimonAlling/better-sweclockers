@@ -43,6 +43,7 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
 
     .#{getGlobal("SITE.CLASS.fieldset")} {
         padding: 8px 16px;
+        margin: 16px 0 24px 0; // more than default
 
         > legend {
             padding: 0 4px;
