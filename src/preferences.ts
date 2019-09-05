@@ -36,13 +36,13 @@ export default {
         label: T.preferences.dark_theme.label,
         _: darkThemePreferences,
     },
-    customize_content: {
-        label: T.preferences.customize_content.label,
-        _: customizeContentPreferences,
-    },
     advanced: {
         label: T.preferences.advanced.label,
         _: advancedPreferences,
+    },
+    customize_content: {
+        label: T.preferences.customize_content.label,
+        _: customizeContentPreferences,
     },
     keyboard: keyboardPreferences,
     interests: {
