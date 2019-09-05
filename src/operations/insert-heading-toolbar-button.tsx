@@ -12,11 +12,9 @@ export default (e: {
     render(headingToolbarButton(e.textarea as HTMLTextAreaElement), e.strikeButton.parentElement as HTMLElement);
 }
 
-function headingToolbarButton(textarea: HTMLTextAreaElement): JSX.Element {
-    return toolbarButton({
-        action: wrap_tag({ tag: SITE.TAG.h, parameterized: false, block: false }),
-        class: SITE.CLASS.toolbarHeadingButton,
-        tooltip: T.general.tooltip_h,
-        style: "background: none;", // to override gray background for .header
-    })(textarea);
-}
+const headingToolbarButton = toolbarButton({
+    action: wrap_tag({ tag: SITE.TAG.h, parameterized: false, block: false }),
+    class: SITE.CLASS.toolbarHeadingButton,
+    tooltip: T.general.tooltip_h,
+    style: "background: none;", // to override gray background for .header
+});
