@@ -1,4 +1,4 @@
-import { log, logError, logWarning } from "userscripter/logging";
+import { logError, logWarning } from "userscripter/logging";
 import * as TSPreferences from "ts-preferences";
 import { Status, Response, RequestSummary, PreferencesInterface, AllowedTypes, Preference } from "ts-preferences";
 import * as CONFIG from "globals-config";

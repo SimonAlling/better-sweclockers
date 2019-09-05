@@ -6,7 +6,7 @@ import { is, isString, only, isNull } from "ts-type-guards";
 import { h, Component } from 'preact';
 import classNames from "classnames";
 import { compose } from "lib/utilities";
-import { log, logInfo, logWarning, logError } from "userscripter/logging";
+import { logWarning, logError } from "userscripter/logging";
 import P from "preferences";
 import { Preferences, isFalse } from "userscripter/preference-handling";
 import {

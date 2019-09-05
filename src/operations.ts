@@ -1,4 +1,4 @@
-import { Operation, DependentOperation, IndependentOperation, SUCCESS, FAILURE } from "lib/operation-manager";
+import { Operation, DependentOperation, IndependentOperation } from "lib/operation-manager";
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import SELECTOR from "./selectors";

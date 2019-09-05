@@ -4,7 +4,6 @@ import * as T from "../text";
 import { h, render } from "preact";
 import { isNull } from "ts-type-guards";
 import * as ms from "milliseconds";
-import { isHTMLElement } from "lib/html";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";
 import { darkThemeUrl, darkThemeUrlBackup } from "src/dark-theme";

@@ -1,9 +1,6 @@
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import * as T from "./text";
-import {
-    BooleanPreference,
-} from "ts-preferences";
 import generalPreferences from "./preferences/general";
 import darkThemePreferences from "./preferences/dark-theme";
 import forumThreadsPreferences from "./preferences/forum-threads";

@@ -1,7 +1,7 @@
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import * as T from "text";
-import { h, render } from "preact";
+import { render } from "preact";
 import { generalButton, Icon } from "./editing-tools";
 import { SearchEngine, searchURL, siteFilter } from "src/search-engines";
 import { Preferences } from "userscripter/preference-handling";

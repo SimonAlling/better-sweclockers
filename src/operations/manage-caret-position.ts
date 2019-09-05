@@ -1,8 +1,6 @@
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import * as Storage from "ts-storage";
-import SELECTOR from "src/selectors";
-import { FAILURE } from "lib/operation-manager";
 import { isPositiveInt } from "lib/utilities";
 import { Preferences } from "userscripter/preference-handling";
 import P from "preferences";

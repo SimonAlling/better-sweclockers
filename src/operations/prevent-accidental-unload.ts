@@ -1,7 +1,6 @@
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import SELECTOR from "src/selectors";
-import { FAILURE } from "lib/operation-manager";
 import { withMaybe } from "../utilities";
 
 // mousedown because it must be guaranteed to fire before beforeunload:

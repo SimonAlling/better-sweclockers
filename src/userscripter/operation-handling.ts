@@ -2,7 +2,7 @@ import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import OPERATIONS from "operations";
 import { OperationManager, DependentOperation } from "lib/operation-manager";
-import { compose, quote, formattedList } from "lib/utilities";
+import { compose, formattedList } from "lib/utilities";
 import { log, logError } from "userscripter/logging";
 
 

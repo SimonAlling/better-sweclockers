@@ -1,6 +1,5 @@
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
-import { h, render } from "preact";
 import { isHTMLElement } from "lib/html";
 import { withMaybe } from "../utilities";
 

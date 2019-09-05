@@ -4,7 +4,7 @@ import {
     BooleanPreference,
     MultichoicePreference,
 } from "ts-preferences";
-import { h, render } from "preact";
+import { render } from "preact";
 import { Button, BUTTONS, insertButton } from "../operations/editing-tools";
 import { SearchEngine } from "search-engines";
 
