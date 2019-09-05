@@ -5,7 +5,7 @@ import P from "preferences";
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import SELECTOR from "selectors";
-import { isOnBSCPreferencesPage, isInEditMode } from "./environment";
+import { isOnBSCPreferencesPage, isInEditMode, isReadingThread } from "./environment";
 import { hideById, hideByClass, hideBySelector } from "./styles/hide";
 import { timeIsWithin } from "./time"
 import * as ms from "milliseconds";
@@ -92,6 +92,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
     },
     {
         condition: isInEditMode && Preferences.get(P.edit_mode._.monospace_font),
+        css: `#${CONFIG.ID.document} ${SELECTOR.textarea} { font-family: monospace; }`,
+    },
+    {
+        condition: isReadingThread && Preferences.get(P.edit_mode._.monospace_font_in_quick_reply_form),
         css: `#${CONFIG.ID.document} ${SELECTOR.textarea} { font-family: monospace; }`,
     },
     {

@@ -54,6 +54,14 @@ export default {
         default: false,
         label: T.preferences.edit_mode.monospace_font,
         description: T.preferences.edit_mode.monospace_font_description,
+        extras: { class: [ CONFIG.CLASS.inlinePreference, CONFIG.CLASS.primaryInlinePreference ] },
+    }),
+    monospace_font_in_quick_reply_form: new BooleanPreference({
+        key: "monospace_font_in_quick_reply_form",
+        default: false,
+        label: T.preferences.in_quick_reply_form,
+        description: T.preferences.in_quick_reply_form_description,
+        extras: { class: CONFIG.CLASS.inlinePreference },
     }),
     insert_heading_toolbar_button: new BooleanPreference({
         key: "insert_heading_toolbar_button",
@@ -71,8 +79,8 @@ export default {
     keyboard_shortcuts_in_quick_reply: new BooleanPreference({
         key: "keyboard_shortcuts_in_quick_reply",
         default: false,
-        label: T.preferences.editing_tools.in_quick_reply_form,
-        description: T.preferences.editing_tools.in_quick_reply_form_description,
+        label: T.preferences.in_quick_reply_form,
+        description: T.preferences.in_quick_reply_form_description,
         extras: { class: CONFIG.CLASS.inlinePreference },
     }),
     remember_caret_position: new BooleanPreference({

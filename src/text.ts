@@ -54,6 +54,8 @@ export const preferences = {
     back_to_sweclockers: `Tillbaka till ${SITE.NAME}`,
     save_notice: `Inställningarna sparas automatiskt, men endast lokalt på den här enheten.`,
     failed_to_fetch_categories: `Kunde inte hämta forumkategorier.`,
+    in_quick_reply_form: `i formuläret <em>Snabbsvar</em>`,
+    in_quick_reply_form_description: `Längst ner i trådar`,
 
     general: {
         label: `Allmänt`,
@@ -121,8 +123,6 @@ export const preferences = {
         label: editing_tools_name,
         enable: `Aktivera utökade formateringsverktyg`,
         enable_description: `En hel samling extra formateringsverktyg för att underlätta inläggsskrivandet`,
-        in_quick_reply_form: `i formuläret <em>Snabbsvar</em>`,
-        in_quick_reply_form_description: `Längst ner i trådar`,
         position: {
             label: `Placering`,
             description: OBVIOUS,
