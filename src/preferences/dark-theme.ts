@@ -14,7 +14,7 @@ const auto = new BooleanPreference({
     default: true,
     label: T.preferences.dark_theme.auto,
     description: T.preferences.dark_theme.auto_description,
-    extras: { class: CONFIG.CLASS.inlinePreference },
+    extras: { class: [ CONFIG.CLASS.inlinePreference, CONFIG.CLASS.primaryInlinePreference ] },
 });
 
 const dependencies_auto = [

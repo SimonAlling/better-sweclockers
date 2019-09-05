@@ -10,7 +10,7 @@ const textarea_size_toggle = new BooleanPreference({
     default: true,
     label: T.preferences.edit_mode.textarea_size_toggle,
     description: T.preferences.edit_mode.textarea_size_toggle_description,
-    extras: { class: CONFIG.CLASS.inlinePreference },
+    extras: { class: [ CONFIG.CLASS.inlinePreference, CONFIG.CLASS.primaryInlinePreference ] },
 });
 
 const dependencies_textarea_size_toggle = [
@@ -66,7 +66,7 @@ export default {
         default: false,
         label: T.preferences.edit_mode.keyboard_shortcuts,
         description: T.preferences.edit_mode.keyboard_shortcuts_description,
-        extras: { class: CONFIG.CLASS.inlinePreference },
+        extras: { class: [ CONFIG.CLASS.inlinePreference, CONFIG.CLASS.primaryInlinePreference ] },
     }),
     keyboard_shortcuts_in_quick_reply: new BooleanPreference({
         key: "keyboard_shortcuts_in_quick_reply",

@@ -23,7 +23,7 @@ const enable = new BooleanPreference({
     default: true,
     label: T.preferences.editing_tools.enable,
     description: T.preferences.editing_tools.enable_description,
-    extras: { class: CONFIG.CLASS.inlinePreference },
+    extras: { class: [ CONFIG.CLASS.inlinePreference, CONFIG.CLASS.primaryInlinePreference ] },
 });
 
 const dependencies = [ {

@@ -20,6 +20,8 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     }
 
     #{$preference} {
+        clear: left;
+
         > label::after {
             content: ":\a0";
         }
@@ -73,9 +75,15 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         width: 100%;
     }
 
-    $inline: #{getGlobal("CONFIG.CLASS.inlinePreference")};
-    .#{$inline} {
-        display: inline-block;
+    $inline: #{"." + getGlobal("CONFIG.CLASS.inlinePreference")};
+    $primaryInline: #{"." + getGlobal("CONFIG.CLASS.primaryInlinePreference")};
+    #{$inline} {
+        float: left;
+
+        // A primary inline preference should be preceded by a "line break":
+        &#{":not(" + $primaryInline + ")"} {
+            clear: unset;
+        }
 
         > label::after {
             content: unset;
@@ -85,12 +93,14 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
             margin: 0;
         }
     }
-    .#{$inline} + .#{$inline} label::after,
-    .#{$inline} + .#{$inline} label:first-child::before {
+
+    $realInline: $inline + ":not(" + $primaryInline + ")";
+    #{$realInline} label::after,
+    #{$realInline} label:first-child::before {
         content: "\a0";
     }
 
-    .#{$inline} + .#{$inline} input[type="checkbox"] {
+    #{$realInline} input[type="checkbox"] {
         margin-left: 1.5*$checkboxLabelSpacing;
     }
 
