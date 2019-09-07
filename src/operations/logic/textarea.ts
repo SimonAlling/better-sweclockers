@@ -1,3 +1,4 @@
+import * as CONFIG from "globals-config";
 import * as BB from "../../bb";
 import { isNumber } from "ts-type-guards";
 
@@ -16,6 +17,10 @@ type TagWrapAction = Readonly<{
 export type Action = (textarea: HTMLTextAreaElement) => void
 
 export type CursorBehavior = number | "KEEP_SELECTION"
+
+export function indent(s: string): string {
+    return CONFIG.CONTENT.indentation + s;
+}
 
 export function wrap(textarea: HTMLTextAreaElement, w: WrapAction): void {
     const replacement = w.before + selectedTextIn(textarea) + w.after;

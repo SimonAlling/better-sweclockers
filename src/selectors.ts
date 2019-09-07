@@ -19,6 +19,7 @@ export default {
     textarea: "textarea#" + CSS.escape(SITE.ID.textarea),
     textareaToolbarInner,
     textareaToolbarStrikeButton: textareaToolbarInner + ` .strike`,
+    textareaToolbarUnorderedListButton: textareaToolbarInner + ` .ul`,
     proofDialogTextarea: `.${SITE.CLASS.proofDialog} textarea`,
     topMenu: `#mainMenu ul`,
     siteHeader: `#` + SITE.ID.siteHeader,

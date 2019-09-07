@@ -69,6 +69,12 @@ export default {
         label: T.preferences.edit_mode.insert_heading_toolbar_button,
         description: T.preferences.edit_mode.insert_heading_toolbar_button_description,
     }),
+    insert_table_toolbar_button: new BooleanPreference({
+        key: "insert_table_toolbar_button",
+        default: true,
+        label: T.preferences.edit_mode.insert_table_toolbar_button,
+        description: T.preferences.edit_mode.insert_table_toolbar_button_description,
+    }),
     keyboard_shortcuts: new BooleanPreference({
         key: "keyboard_shortcuts",
         default: false,

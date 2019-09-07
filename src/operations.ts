@@ -21,6 +21,7 @@ import INSERT_PREFERENCES_SHORTCUT from "./operations/insert-preferences-shortcu
 import INSERT_WEB_SEARCH_BUTTON from "./operations/insert-web-search-button";
 import INSERT_EDITING_TOOLS from "./operations/insert-editing-tools";
 import INSERT_HEADING_TOOLBAR_BUTTON from "./operations/insert-heading-toolbar-button";
+import INSERT_TABLE_TOOLBAR_BUTTON from "./operations/insert-table-toolbar-button";
 import INSERT_TEXTAREA_SIZE_TOGGLE from "./operations/insert-textarea-size-toggle";
 import INSERT_LINK_TO_TOP from "./operations/insert-link-to-top";
 import INSERT_PM_LINKS from "./operations/insert-pm-links";
@@ -144,6 +145,15 @@ const OPERATIONS: ReadonlyArray<Operation> = [
             strikeButton: SELECTOR.textareaToolbarStrikeButton,
         },
         action: INSERT_HEADING_TOOLBAR_BUTTON,
+    }),
+    new DependentOperation({
+        description: "insert table toolbar button",
+        condition: isInEditMode && Preferences.get(P.edit_mode._.insert_table_toolbar_button),
+        selectors: {
+            textarea: SELECTOR.textarea,
+            unorderedListButton: SELECTOR.textareaToolbarUnorderedListButton,
+        },
+        action: INSERT_TABLE_TOOLBAR_BUTTON,
     }),
     new DependentOperation({
         description: "insert textarea size toggle",

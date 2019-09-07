@@ -44,6 +44,7 @@ export const general = {
     textarea_size_large: `Stor textruta`,
     web_search_button_tooltip: (engine: SearchEngine) => `Sök med ${engine}`,
     tooltip_h: `Rubrik`,
+    tooltip_table: `Tabell`,
     down_for_maintenance,
     my_posts,
 };
@@ -113,6 +114,8 @@ export const preferences = {
         keyboard_shortcuts_description: `Skicka och förhandsgranska med tangentbordet`,
         insert_heading_toolbar_button: `Knapp för att formatera som rubrik`,
         insert_heading_toolbar_button_description: `Knappen infogar BB-taggen ${BB.startTag(SITE.TAG.h)}`,
+        insert_table_toolbar_button: `Knapp för att infoga tabell`,
+        insert_table_toolbar_button_description: `Knappen infogar en komplett tabell`,
         remember_caret_position: `Kom ihåg markörens position vid förhandsgranskning`,
         remember_caret_position_description: `Fortsätt skriva precis där du var när du förhandsgranskat ett inlägg`,
         remove_mobile_site_disclaimer: `Ta bort <small><em>${SITE.MOBILE_SITE_DISCLAIMER.sentFrom} ${SITE.MOBILE_SITE_DISCLAIMER.mobileSiteDomain}</em></small>`,

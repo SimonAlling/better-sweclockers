@@ -5,3 +5,7 @@ export function startTag(tagName: string, parameter?: string): string {
 export function endTag(tagName: string): string {
     return `[/${tagName}]`;
 }
+
+export function empty(tagName: string): string {
+    return startTag(tagName) + endTag(tagName);
+}

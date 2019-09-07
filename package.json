@@ -20,6 +20,7 @@
     "css.escape": "^1.5.1",
     "extract-comments": "^0.10.1",
     "fmap-null-undefined": "^1.0.0",
+    "lines-unlines": "^1.0.0",
     "milliseconds": "^1.0.3",
     "mousetrap": "^1.6.2",
     "node-sass": "^4.11.0",

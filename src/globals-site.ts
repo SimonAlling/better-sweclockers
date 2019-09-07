@@ -68,6 +68,7 @@ export const CLASS = {
     toolbarButton: "tbButton iconButton noselect",
     toolbarButtonIcon: "btnIcon",
     toolbarHeadingButton: "header",
+    toolbarTableButton: "tbl",
 };
 
 export const PATH = {
