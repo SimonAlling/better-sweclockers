@@ -5,7 +5,7 @@ import { h } from "preact";
 import { lines, unlines } from "lib/utilities";
 import * as BB from "bbcode-tags";
 import { r, fromMaybeUndefined } from "../utilities";
-import { Action, CursorBehavior, wrap, wrap_tag, wrap_verbatim, selectedTextIn, insertIn, insert, placeCursorIn } from "./logic/textarea";
+import { Action, CursorBehavior, wrapIn, wrap_tag, wrap_verbatim, selectedTextIn, insertIn, insert, placeCursorIn } from "./logic/textarea";
 import { InsertButtonDescription } from "../types";
 import { SearchEngine, searchURL } from "search-engines";
 
@@ -30,7 +30,7 @@ export const BUTTON = {
         label: T.editing_tools.label_shibe,
         tooltip: T.editing_tools.tooltip_shibe,
         class: CONFIG.CLASS.shibe,
-        action: textarea => insertIn(textarea, shibeText(selectedTextIn(textarea))),
+        action: textarea => insertIn(textarea, { string: shibeText(selectedTextIn(textarea)), replace: true }),
     }),
     doge: generalButton({
         tooltip: T.editing_tools.tooltip_doge,
@@ -224,7 +224,7 @@ function ACTION_SEARCH_LINK(engine: SearchEngine) {
         const tagName = SITE.TAG.url;
         const selected = selectedTextIn(textarea);
         const startTag = BB.start(tagName, searchURL(engine, selected));
-        wrap(textarea, {
+        wrapIn(textarea, {
             before: startTag,
             after: BB.end(tagName),
             cursor: selected === "" ? startTag.length - 2 /* for "] */ : "KEEP_SELECTION",

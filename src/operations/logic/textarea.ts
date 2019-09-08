@@ -2,6 +2,17 @@ import * as CONFIG from "globals-config";
 import * as BB from "bbcode-tags";
 import { isNumber } from "ts-type-guards";
 
+type InsertionResult = Readonly<{
+    textareaContent: string
+    startOfInserted: number
+    endOfInserted: number
+}>
+
+type Insertion = Readonly<{
+    string: string
+    replace: boolean
+}>
+
 type WrapAction = Readonly<{
     cursor: CursorBehavior
     before: string
@@ -22,21 +33,19 @@ export function indent(s: string): string {
     return CONFIG.CONTENT.indentation + s;
 }
 
-export function wrap(textarea: HTMLTextAreaElement, w: WrapAction): void {
+export function wrapIn(textarea: HTMLTextAreaElement, w: WrapAction): void {
     const replacement = w.before + selectedTextIn(textarea) + w.after;
-    insertIn(
-        textarea,
-        replacement,
-        (
-            w.cursor === "KEEP_SELECTION"
-            ? { start: w.before.length, end: replacement.length - w.after.length }
-            : w.cursor
-        ),
-    );
-};
+    const insertionResult = insertPure(textarea, { string: replacement, replace: true });
+    textarea.value = insertionResult.textareaContent;
+    if (isNumber(w.cursor)) {
+        placeCursorIn(textarea, insertionResult.startOfInserted + w.cursor);
+    } else {
+        selectRangeIn(textarea, insertionResult.startOfInserted + w.before.length, insertionResult.endOfInserted - w.after.length);
+    }
+}
 
 export function wrap_verbatim(w: WrapAction): Action {
-    return textarea => wrap(textarea, w);
+    return textarea => wrapIn(textarea, w);
 }
 
 export function wrap_tag(w: TagWrapAction): Action {
@@ -57,23 +66,26 @@ export function selectedTextIn(textarea: HTMLTextAreaElement): string {
 }
 
 export function insert(str: string) {
-    return (textarea: HTMLTextAreaElement) => insertIn(textarea, str);
+    return (textarea: HTMLTextAreaElement) => insertIn(textarea, { string: str, replace: true });
 }
 
-export function insertIn(textarea: HTMLTextAreaElement, str: string, cursor?: number | { start: number, end: number }): void {
-    const start = textarea.selectionStart, end = textarea.selectionEnd;
-    const content = textarea.value;
-    textarea.value = content.substring(0, start) + str + content.substring(end);
-    if (cursor === undefined) {
-        // Place cursor after inserted text.
-        placeCursorIn(textarea, start + str.length);
-    } else if (isNumber(cursor)) {
-        // Place cursor specified number of characters into inserted text.
-        placeCursorIn(textarea, start + cursor);
-    } else {
-        // Select specified range.
-        selectRangeIn(textarea, start + cursor.start, start + cursor.end);
-    }
+// Insert a string right after any selected text (which is kept).
+export function insertIn(textarea: HTMLTextAreaElement, insertion: Insertion): void {
+    const insertionResult = insertPure(textarea, insertion);
+    textarea.value = insertionResult.textareaContent;
+    selectRangeIn(textarea, insertionResult.endOfInserted, insertionResult.endOfInserted);
+}
+
+function insertPure(textarea: HTMLTextAreaElement, insertion: Insertion): InsertionResult {
+    const text = textarea.value;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const startOfInsertedText = insertion.replace ? start : end;
+    return {
+        textareaContent: text.substring(0, startOfInsertedText) + insertion.string + text.substring(end),
+        startOfInserted: startOfInsertedText,
+        endOfInserted: startOfInsertedText + insertion.string.length,
+    };
 }
 
 export function placeCursorIn(textarea: HTMLTextAreaElement, position: number): void {
