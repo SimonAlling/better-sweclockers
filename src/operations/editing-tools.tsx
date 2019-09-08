@@ -3,7 +3,7 @@ import * as CONFIG from "../globals-config";
 import * as T from "../text";
 import { h } from "preact";
 import { lines, unlines } from "lib/utilities";
-import * as BB from "../bb";
+import * as BB from "bbcode-tags";
 import { r, fromMaybeUndefined } from "../utilities";
 import { Action, CursorBehavior, wrap, wrap_tag, wrap_verbatim, selectedTextIn, insertIn, insert, placeCursorIn } from "./logic/textarea";
 import { InsertButtonDescription } from "../types";
@@ -144,8 +144,8 @@ export function colorButton(color: string): Button {
         tooltip: color,
         style: `background: ${color} !important;`, // !important to override Blargmode
         action: wrap_verbatim({
-            before: BB.startTag(SITE.TAG.color, color),
-            after: BB.endTag(SITE.TAG.color),
+            before: BB.start(SITE.TAG.color, color),
+            after: BB.end(SITE.TAG.color),
             cursor: "KEEP_SELECTION",
         }),
     });
@@ -193,14 +193,14 @@ function shibeText(original: string): string {
     const lines = original.split("\n");
     return lines.map(
         line => [
-            BB.startTag(SITE.TAG.font, CONFIG.CONTENT.shibeFont),
-            BB.startTag(SITE.TAG.color, CONFIG.CONTENT.shibeColor),
-            BB.startTag(SITE.TAG.i),
+            BB.start(SITE.TAG.font, CONFIG.CONTENT.shibeFont),
+            BB.start(SITE.TAG.color, CONFIG.CONTENT.shibeColor),
+            BB.start(SITE.TAG.i),
             NBSP.repeat(randomIntBetween(0, Math.max(0, MAX - line.length))),
             line,
-            BB.endTag(SITE.TAG.i),
-            BB.endTag(SITE.TAG.color),
-            BB.endTag(SITE.TAG.font),
+            BB.end(SITE.TAG.i),
+            BB.end(SITE.TAG.color),
+            BB.end(SITE.TAG.font),
         ].join("")
     ).join("\n");
 }
@@ -214,7 +214,7 @@ function ACTION_IMG(textarea: HTMLTextAreaElement): void {
     if (!selection.includes("\n")) {
         wrap_tag({ tag: SITE.TAG.img, parameterized: false, block: false })(textarea);
     } else {
-        const imgify = (line: string) => line.trim() === "" ? "" : BB.startTag(SITE.TAG.img) + line.trim() + BB.endTag(SITE.TAG.img);
+        const imgify = (line: string) => line.trim() === "" ? "" : BB.start(SITE.TAG.img) + line.trim() + BB.end(SITE.TAG.img);
         insert(unlines(lines(selection).map(imgify)))(textarea);
     }
 }
@@ -223,10 +223,10 @@ function ACTION_SEARCH_LINK(engine: SearchEngine) {
     return (textarea: HTMLTextAreaElement): void => {
         const tagName = SITE.TAG.url;
         const selected = selectedTextIn(textarea);
-        const startTag = BB.startTag(tagName, searchURL(engine, selected));
+        const startTag = BB.start(tagName, searchURL(engine, selected));
         wrap(textarea, {
             before: startTag,
-            after: BB.endTag(tagName),
+            after: BB.end(tagName),
             cursor: selected === "" ? startTag.length - 2 /* for "] */ : "KEEP_SELECTION",
         });
     }
@@ -242,8 +242,8 @@ function ACTION_SPLIT_QUOTE(textarea: HTMLTextAreaElement): void {
         placeCursorIn(textarea, beforeSelection.length + 1); // + 1 to get past the first inserted line break
     } else {
         // Cursor is not between two existing quotes, so add quote tags as well:
-        const startTag = BB.startTag(SITE.TAG.quote);
-        const endTag = BB.endTag(SITE.TAG.quote);
+        const startTag = BB.start(SITE.TAG.quote);
+        const endTag = BB.end(SITE.TAG.quote);
         textarea.value = beforeSelection + `\n` + endTag + emptyLines + startTag + `\n` + afterSelection;
         placeCursorIn(textarea, beforeSelection.length + 1 + endTag.length + 1); // + 1 + 1 to get past two line breaks
     }

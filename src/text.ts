@@ -5,7 +5,7 @@ import { InsertButtonDescription } from "./types";
 import { Action } from "./actions";
 import { SearchEngine } from "./search-engines";
 import * as DarkTheme from "./dark-theme";
-import * as BB from "./bb";
+import * as BB from "bbcode-tags";
 
 export function action(a: Action): string {
     switch (a) {
@@ -113,7 +113,7 @@ export const preferences = {
         keyboard_shortcuts: `Kortkommandon för att skicka (<kbd>Ctrl</kbd> + <kbd>S</kbd>) och förhandsgranska (<kbd>Ctrl</kbd> + <kbd>P</kbd>)`,
         keyboard_shortcuts_description: `Skicka och förhandsgranska med tangentbordet`,
         insert_heading_toolbar_button: `Knapp för att formatera som rubrik`,
-        insert_heading_toolbar_button_description: `Knappen infogar BB-taggen ${BB.startTag(SITE.TAG.h)}`,
+        insert_heading_toolbar_button_description: `Knappen infogar BB-taggen ${BB.start(SITE.TAG.h)}`,
         insert_table_toolbar_button: `Knapp för att infoga tabell`,
         insert_table_toolbar_button_description: `Knappen infogar en komplett tabell`,
         remember_caret_position: `Kom ihåg markörens position vid förhandsgranskning`,

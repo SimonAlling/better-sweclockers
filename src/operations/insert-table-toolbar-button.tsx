@@ -3,9 +3,9 @@ import * as CONFIG from "globals-config";
 import * as T from "../text";
 import { render } from "preact";
 import { unlines } from "lines-unlines";
+import { start, end, empty } from "bbcode-tags";
 import { toolbarButton } from "./editing-tools";
 import { insert, indent } from "./logic/textarea";
-import { startTag, endTag, empty } from "../bb";
 
 const enum Headings { NONE, FIRST, ALL }
 
@@ -34,20 +34,20 @@ function table(config: TableConfig): string {
     const headingRow = tableRowLines(config.columns, Headings.ALL);
     const regularRow = tableRowLines(config.columns, config.headings ? Headings.FIRST : Headings.NONE);
     const theadLines = concat([
-        startTag("thead"),
+        start("thead"),
         headingRow.map(indent),
-        endTag("thead"),
+        end("thead"),
     ]);
     const tbodyLines = concat([
-        startTag("tbody"),
+        start("tbody"),
         concat(replicate(config.rows - 1, regularRow.map(indent))),
-        endTag("tbody"),
+        end("tbody"),
     ]);
     const tableLines = concat([
-        startTag("table"),
+        start("table"),
         theadLines.map(indent),
         tbodyLines.map(indent),
-        endTag("table"),
+        end("table"),
     ]);
     return unlines(tableLines);
 }
@@ -56,10 +56,10 @@ function tableRowLines(columns: number, headings: Headings): ReadonlyArray<strin
     const cell_first = headings === Headings.NONE ? "td" : "th";
     const cell_rest = headings === Headings.ALL ? "th" : "td";
     return concat([
-        startTag("tr"),
+        start("tr"),
         indent(empty(cell_first)),
         replicate(columns - 1, indent(empty(cell_rest))),
-        endTag("tr"),
+        end("tr"),
     ]);
 }
 

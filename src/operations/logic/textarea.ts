@@ -1,5 +1,5 @@
 import * as CONFIG from "globals-config";
-import * as BB from "../../bb";
+import * as BB from "bbcode-tags";
 import { isNumber } from "ts-type-guards";
 
 type WrapAction = Readonly<{
@@ -42,8 +42,8 @@ export function wrap_verbatim(w: WrapAction): Action {
 export function wrap_tag(w: TagWrapAction): Action {
     const spacing = w.block ? "\n" : "";
     return wrap_verbatim({
-        before: BB.startTag(w.tag, w.parameterized ? "" : undefined) + spacing,
-        after: spacing + BB.endTag(w.tag),
+        before: BB.start(w.tag, w.parameterized ? "" : undefined) + spacing,
+        after: spacing + BB.end(w.tag),
         cursor: (
             w.parameterized
             ? 1 + w.tag.length + 2 // 1 for '[', 2 for '="'
