@@ -66,7 +66,7 @@ export function selectedTextIn(textarea: HTMLTextAreaElement): string {
 }
 
 export function insert(str: string) {
-    return (textarea: HTMLTextAreaElement) => insertIn(textarea, { string: str, replace: true });
+    return (textarea: HTMLTextAreaElement) => insertIn(textarea, { string: str, replace: false });
 }
 
 // Insert a string right after any selected text (which is kept).

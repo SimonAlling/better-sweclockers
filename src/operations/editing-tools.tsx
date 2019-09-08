@@ -215,7 +215,7 @@ function ACTION_IMG(textarea: HTMLTextAreaElement): void {
         wrap_tag({ tag: SITE.TAG.img, parameterized: false, block: false })(textarea);
     } else {
         const imgify = (line: string) => line.trim() === "" ? "" : BB.start(SITE.TAG.img) + line.trim() + BB.end(SITE.TAG.img);
-        insert(unlines(lines(selection).map(imgify)))(textarea);
+        insertIn(textarea, { string: unlines(lines(selection).map(imgify)), replace: true });
     }
 }
 
