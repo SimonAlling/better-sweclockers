@@ -2,7 +2,7 @@ import * as SITE from "../globals-site";
 import * as CONFIG from "../globals-config";
 import * as T from "../text";
 import { h } from "preact";
-import { lines, unlines } from "lib/utilities";
+import { lines, unlines } from "lines-unlines";
 import * as BB from "bbcode-tags";
 import { r, fromMaybeUndefined } from "../utilities";
 import { Action, CursorBehavior, wrapIn, wrap_tag, wrap_verbatim, selectedTextIn, insertIn, insert, placeCursorIn } from "./logic/textarea";
@@ -190,8 +190,7 @@ export function toolbarButton(button: Pick<ButtonDescription, "tooltip" | "class
 function shibeText(original: string): string {
     const MAX = 100;
     const NBSP = " ";
-    const lines = original.split("\n");
-    return lines.map(
+    return unlines(lines(original).map(
         line => [
             BB.start(SITE.TAG.font, CONFIG.CONTENT.shibeFont),
             BB.start(SITE.TAG.color, CONFIG.CONTENT.shibeColor),
@@ -202,7 +201,7 @@ function shibeText(original: string): string {
             BB.end(SITE.TAG.color),
             BB.end(SITE.TAG.font),
         ].join("")
-    ).join("\n");
+    ));
 }
 
 function randomIntBetween(min: number, max: number): number {
