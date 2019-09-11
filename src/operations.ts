@@ -2,7 +2,7 @@ import { Operation, DependentOperation, IndependentOperation } from "lib/operati
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import SELECTOR from "./selectors";
-import { Preferences } from "userscripter/preference-handling";
+import { Preferences, isFalse } from "userscripter/preference-handling";
 import P from "preferences";
 import {
     isLoggedIn,
@@ -14,6 +14,7 @@ import {
     isOnSweclockersSettingsPage,
     isReadingEditorialContent,
     isReadingThread,
+    mayHaveJustSubmittedForumPost,
 } from "./environment";
 import INSERT_PREFERENCES_MENU from "./operations/insert-preferences-menu";
 import INSERT_PREFERENCES_LINK from "./operations/insert-preferences-link";
@@ -33,6 +34,7 @@ import ADAPT_CORRECTIONS_LINK from "./operations/adapt-corrections-link";
 import REPLACE_FOLLOWED_THREADS_LINK from "./operations/replace-followed-threads-link";
 import MANAGE_CARET_POSITION from "./operations/manage-caret-position";
 import REMOVE_MOBILE_SITE_DISCLAIMER from "./operations/remove-mobile-site-disclaimer";
+import * as AUTOSAVE_DRAFT from "./operations/autosave-draft";
 import * as KEYBOARD_SHORTCUTS_EDIT_MODE from "./operations/keyboard-shortcuts/edit-mode";
 import MOUSETRAP_PREPARATIONS from "./operations/mousetrap-preparations";
 import * as DarkTheme from "./operations/dark-theme";
@@ -249,6 +251,27 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: isLoggedIn && Preferences.get(P.general._.replace_followed_threads_link),
         selectors: { followedThreadsLinkText: SELECTOR.followedThreadsLinkText },
         action: REPLACE_FOLLOWED_THREADS_LINK,
+    }),
+    new DependentOperation({
+        description: "enable autosave draft watchdog",
+        condition: isInEditMode_forum && Preferences.get(P.edit_mode._.autosave_draft),
+        selectors: {
+            saveButton: SELECTOR.saveButton,
+            textarea: SELECTOR.textarea,
+            toolbarInner: SELECTOR.textareaToolbarInner,
+        },
+        action: AUTOSAVE_DRAFT.manageAutosaveWatchdog,
+    }),
+    new DependentOperation({
+        description: "delete any obsolete autosaved draft",
+        condition: mayHaveJustSubmittedForumPost && Preferences.get(P.edit_mode._.autosave_draft),
+        selectors: { post: SELECTOR.linkedForumPost },
+        action: AUTOSAVE_DRAFT.clearAutosavedDraftIfObsolete,
+    }),
+    new IndependentOperation({
+        description: "delete any leftover autosaved draft",
+        condition: isFalse(Preferences.get(P.edit_mode._.autosave_draft)),
+        action: AUTOSAVE_DRAFT.clearAutosavedDraft,
     }),
 
     // Keyboard shortcuts

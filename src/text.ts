@@ -35,6 +35,10 @@ export const general = {
     dark_theme_toggle_tooltip_on: darkThemeBy,
     dark_theme_toggle_tooltip_off: "Standardutseendet",
     signout_confirmation: `Är du säker på att du vill logga ut?`,
+    restore_draft_label: `Återställ`,
+    restore_draft_tooltip: `Återställ autosparat utkast`,
+    restore_draft_question: `Vill du återställa följande utkast?`,
+    restore_draft_confirm: `Din nuvarande text kommer ersättas. Är du säker?`,
     // Copied from SweClockers:
     signout_error: `Ett fel har uppstått och utloggningen misslyckades. Var god ladda om sidan och försök igen. Rensa cookies i din webbläsare för att logga ut manuellt.`,
     quote_signature_label: `Citera sign.`,
@@ -101,6 +105,8 @@ export const preferences = {
 
     edit_mode: {
         label: `Redigeringsläge`,
+        autosave_draft: `Spara utkast automatiskt`,
+        autosave_draft_description: `Skydda dina inlägg mot blåskärmar, strömavbrott och andra missöden`,
         textarea_size_save: `Kom ihåg textrutans storlek`,
         textarea_size_save_description: `Behåll samma storlek på textrutan mellan sidladdningar`,
         textarea_size_toggle: `Knappar för att växla storlek på textrutan`,

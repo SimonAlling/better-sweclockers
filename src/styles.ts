@@ -103,6 +103,10 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
         css: `#${CONFIG.ID.document} ${SELECTOR.textarea} { height: ${Preferences.get(P.edit_mode._.textarea_size)}px; }`,
     },
     {
+        condition: isInEditMode && Preferences.get(P.edit_mode._.autosave_draft),
+        css: require("styles/autosave-draft"),
+    },
+    {
         condition: Preferences.get(P.advanced._.improved_image_controls),
         css: require("styles/improved-image-controls"),
     },

@@ -57,6 +57,7 @@ export const CLASS = {
     forumPostControls: "controls",
     forumPostBtnGroup: "btnGroup",
     isReader: "isReader",
+    isAuthor: "isAuthor",
     bbImage: "bbImage",
     imgControls: "imgControls",
     errorDialog: "errorDialog",
@@ -90,7 +91,9 @@ export const PATH = {
     FORUM: "/forum",
     THREAD: /^\/(?:forum|meddelanden)\/trad\//,
     POST: /^\/(?:forum|meddelanden)\/post\//,
+    SUCCESSFULLY_SUBMITTED_FORUM_POST: /^\/forum\/post\/\d+$/,
     newPrivateMessage: (userID: number) => "/pm/nytt-meddelande?rcpts=" + userID,
+    editPost: (postID: number) => `/forum/post/${postID}/redigera`,
 };
 
 export const TAG = {

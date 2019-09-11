@@ -40,6 +40,7 @@ export default {
     bbParagraph: `.bbParagraph`,
     forumLink: `.subForums a[href^="/forum/"]`,
     forumPostAuthorLink: `.name a`,
+    linkedForumPost: `.` + SITE.CLASS.forumPost + `.isLinked`,
     listBulkActions: `#postActions .listBulkActions`,
     quickReplyForm: `#quickreply form`,
     followedThreadsLinkText: `#${SITE.ID.siteHeader} .profile .option.watched a.label>span:not(.icon)`,
