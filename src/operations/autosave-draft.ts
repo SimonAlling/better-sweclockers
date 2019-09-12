@@ -115,6 +115,9 @@ function draftIsObsolete(post: HTMLElement): boolean | string {
     // Check if user came from any page at all:
     if (document.referrer === "") return false;
 
+    // For subsequent checks, first check if authored by user:
+    if (!post.classList.contains(SITE.CLASS.isAuthor)) return false;
+
     const referrerPath = new URL(document.referrer).pathname;
     const nowInMilliseconds = Date.now();
 
@@ -122,9 +125,6 @@ function draftIsObsolete(post: HTMLElement): boolean | string {
     const lastTimeUserTriedToSubmit = Storage.get_session(CONFIG.KEY.last_time_user_tried_to_submit, 0).value;
     const attemptedSubmitJustNow = nowInMilliseconds < lastTimeUserTriedToSubmit + MAX_MILLISECONDS_TO_COUNT_AS_JUST_NOW;
     if (attemptedSubmitJustNow) return true;
-
-    // For subsequent checks, first check if authored by user:
-    if (!post.classList.contains(SITE.CLASS.isAuthor)) { console.warn("did not contain isAuthor"); return false; }
 
     // Check if recently created:
     const creationTimeInSeconds = getCreationTimeInSeconds(post);
