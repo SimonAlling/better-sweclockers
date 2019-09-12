@@ -11,8 +11,6 @@ import { timeIsWithin } from "../time";
 import { withMaybe } from "../utilities";
 import { tab } from "./logic/topMenuTab";
 
-const DARK_THEME_ADDITIONS = require("../styles/dark-theme-additions");
-
 export function insertToggle(e: { topMenu: HTMLElement }): void {
     const state = Preferences.get(P.dark_theme._.active);
     const source = Preferences.get(P.dark_theme._.source);
@@ -43,19 +41,9 @@ function apply(newState: boolean): void {
     if (newState) {
         if (isNull(document.getElementById(CONFIG.ID.darkThemeStylesheet))) {
             render(<link rel="stylesheet" href={url(source)} id={CONFIG.ID.darkThemeStylesheet} />, document.head);
-            render((
-                <style id={CONFIG.ID.darkThemeAdditions}>
-                    {DARK_THEME_ADDITIONS}
-                </style>
-            ), document.head);
         }
     } else {
-        [
-            CONFIG.ID.darkThemeStylesheet,
-            CONFIG.ID.darkThemeAdditions,
-        ].forEach(id => {
-            withMaybe(document.getElementById(id), element => element.remove());
-        });
+        withMaybe(document.getElementById(CONFIG.ID.darkThemeStylesheet), element => element.remove());
     }
     withMaybe(document.getElementById(CONFIG.ID.darkThemeToggle), toggle => {
         const active = CONFIG.CLASS.darkThemeActive;
