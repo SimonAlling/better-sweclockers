@@ -1,9 +1,5 @@
 import USERSCRIPT_CONFIG from "../config/userscript";
 
-export function prefixer(prefix: string): (x: string) => string {
-    return x => prefix + x;
-}
-
 export const USERSCRIPT_ID: string = USERSCRIPT_CONFIG.id;
 export const USERSCRIPT_NAME: string = USERSCRIPT_CONFIG.name;
 export const USERSCRIPT_VERSION_STRING: string = USERSCRIPT_CONFIG.version;
@@ -17,9 +13,8 @@ export const INTERVAL_OPERATIONS: number = 25; // ms
 // How long to wait after DOMContentLoaded before considering remaining operations failed:
 export const TIMEOUT_OPERATIONS: number = 100; // ms
 
-// Functions that prepend id and class prefixes:
-const i = prefixer(PREFIX_ID);
-const c = prefixer(PREFIX_CLASS);
+const i = (x: string) => PREFIX_ID + x;
+const c = (x: string) => PREFIX_CLASS + x;
 
 export const ID_STYLE_ELEMENT: string = i("main-style-element");
 export const EDITING_TOOLS_HEIGHT = "120px"; // to prevent jumping in preferences interface

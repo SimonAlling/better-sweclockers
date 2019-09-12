@@ -5,7 +5,6 @@ import * as T from "text";
 import { is, isString, only, isNull } from "ts-type-guards";
 import { h, Component } from 'preact';
 import classNames from "classnames";
-import { compose } from "lib/utilities";
 import { logWarning, logError } from "userscripter/logging";
 import P from "preferences";
 import { Preferences, isFalse } from "userscripter/preference-handling";
@@ -28,10 +27,7 @@ import { TimePreference } from "./preferences/TimePreference";
 import { EditingTools, getEditingToolsConfig } from "operations/insert-editing-tools";
 import { subscribe, unsubscribe } from "userscripter/preference-handling";
 
-const PID: <T extends AllowedTypes>(p: Preference<T>) => string = compose(
-    CONFIG.prefixer(CONFIG.ID.preferenceIdPrefix),
-    p => p.key,
-);
+const PID = <T extends AllowedTypes>(p: Preference<T>) => CONFIG.ID.preferenceIdPrefix + p.key;
 
 type GeneratorOutput = JSX.Element | ReadonlyArray<JSX.Element>
 
