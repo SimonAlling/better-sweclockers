@@ -8,6 +8,7 @@ import * as Storage from "ts-storage";
 import { FAILURE } from "lib/operation-manager";
 import { log, logError } from "../userscripter/logging";
 import { generalButton } from "./editing-tools";
+import { isCleanSlate_reply } from "./edit-mode";
 
 /*
 If the user visits a linked post and tried to submit a post "just now", we will
@@ -29,6 +30,8 @@ user is unlikely to submit another post meanwhile.
 const MAX_MILLISECONDS_TO_COUNT_AS_RECENTLY = ms.seconds(30);
 
 const AUTOSAVE_INTERVAL_SECONDS = 3;
+
+const MIN_LENGTH_TO_SAVE = 10;
 
 const MAX_LENGTH_TO_SHOW = 200; // when asking if draft should be restored
 
@@ -73,11 +76,20 @@ function enableWatchdog(textarea: HTMLTextAreaElement) {
 }
 
 function saveDraft(textarea: HTMLTextAreaElement): void {
-    // Trim because SweClockers does:
-    const response = Storage.set(CONFIG.KEY.autosaved_draft, textarea.value.trim());
-    if (response.status === Storage.Status.STORAGE_ERROR) {
-        logError(`Could not save draft.`);
+    const text = textarea.value;
+    if (mayBeWorthSaving(text)) {
+        // Trim because SweClockers does:
+        const response = Storage.set(CONFIG.KEY.autosaved_draft, text.trim());
+        if (response.status === Storage.Status.STORAGE_ERROR) {
+            logError(`Could not save draft.`);
+        }
+    } else {
+        clearAutosavedDraft();
     }
+}
+
+function mayBeWorthSaving(text: string): boolean {
+    return text.length >= MIN_LENGTH_TO_SAVE && !isCleanSlate_reply(text);
 }
 
 function maybeOfferToRestoreAutosavedPost(textarea: HTMLTextAreaElement, toolbarInner: HTMLElement) {

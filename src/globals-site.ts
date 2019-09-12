@@ -144,3 +144,13 @@ export const REGEX_MOBILE_LINK = new RegExp([
     r`^(https?:\/\/)`,
     escapeRegex(HOSTNAME_MOBILE),
 ].join(""), "i");
+
+export function isValidUsername(s: string): boolean {
+    // https://www.sweclockers.com/konto/registrera
+    // "Namnet kan innehålla 3–32 tecken: bokstäver, siffror, mellanslag samt binde- och understreck."
+    // My experiments show that e.g. Å and ß are valid characters, and that the name cannot start or end with " ", "-" or "_".
+    // Weird Unicode intervals are \u00C0-\u00FF with × and ÷ excluded.
+    // Regex matches "Alling ", "Alling-" and "Alling_", so the reverse of the string must also be checked.
+    const REGEX_ALMOST_USERNAME = /^(?![ \-_])[\w\d \-\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF]{3,32}$/;
+    return REGEX_ALMOST_USERNAME.test(s) && REGEX_ALMOST_USERNAME.test(s.split("").reverse().join(""));
+}
