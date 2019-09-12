@@ -106,9 +106,8 @@ function maybeOfferToRestoreAutosavedPost(textarea: HTMLTextAreaElement, toolbar
 
 function removeRestoreButton() {
     // A bit ugly, but it does the trick.
-    for (const button of document.getElementsByClassName(CONFIG.CLASS.button_restoreDraft)) {
-        button.remove();
-    }
+    const buttons = Array.from(document.getElementsByClassName(CONFIG.CLASS.button_restoreDraft));
+    for (const button of buttons) button.remove();
 }
 
 function draftIsObsolete(post: HTMLElement): boolean | string {
