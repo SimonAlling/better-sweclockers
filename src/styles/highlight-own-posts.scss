@@ -1,4 +1,4 @@
-.#{getGlobal("SITE.CLASS.forumPost")}.#{getGlobal("SITE.CLASS.isReader")} {
+.#{getGlobal("SITE.CLASS.forumPost")}.#{getGlobal("SITE.CLASS.isAuthor")} {
     // The colors and gradient below must match SweClockers' default styling.
     $width: 8px;
     border-left: $width solid #bf5900;
