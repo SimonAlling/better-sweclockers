@@ -5,7 +5,7 @@ export const SUCCESS: boolean = true;
 export const FAILURE: boolean = false;
 
 export interface OperationDefinition {
-    condition: boolean;
+    condition: () => boolean;
     description: string;
     waitForDOMContentLoaded?: boolean;
 }
@@ -20,7 +20,7 @@ export interface DependentOperationDefinition<K extends string> extends Operatio
 }
 
 export abstract class Operation {
-    public readonly condition: boolean;
+    public readonly condition: () => boolean;
     public readonly description: string;
     public readonly waitForDOMContentLoaded: boolean;
     constructor(definition: OperationDefinition) {
@@ -53,7 +53,7 @@ export class DependentOperation<K extends string> extends Operation {
 // errorCallback : Function to call with Operation as argument for each operation that has not succeeded before stop() is called.
 // successCallback : Function to call if all operations have succeeded when stop() is called.
 export function OperationManager(
-    allOperations: Operation[],
+    allOperations: ReadonlyArray<Operation>,
     interval: number,
     errorCallback: <K extends string>(operation: DependentOperation<K>) => void,
     successCallback: () => void,
@@ -95,7 +95,7 @@ export function OperationManager(
         return isBoolean(result) ? result : SUCCESS;
     }
 
-    function run(operations: Operation[]): void {
+    function run(operations: ReadonlyArray<Operation>): void {
         if (keepTrying) {
             // Run all operations and keep those that failed:
             const operationsToRunAfterDOMContentLoaded = operations.filter(o => o.waitForDOMContentLoaded);
@@ -120,7 +120,7 @@ export function OperationManager(
     }
 
     function start(): void {
-        run(allOperations);
+        run(allOperations.filter(o => o.condition()));
     }
 
     function stop(): void {

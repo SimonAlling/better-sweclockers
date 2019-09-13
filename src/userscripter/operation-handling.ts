@@ -20,7 +20,7 @@ If you file a bug report, please include this message.`;
 }
 
 const operationManager = OperationManager(
-    OPERATIONS.filter(op => op.condition), // operations whose conditions are met
+    OPERATIONS,
     CONFIG.INTERVAL_OPERATIONS,            // time between each try
     compose(logError, dependentOperationError), // what to do with dependent operations that fail
     () => log("Operations done!"),         // what to do when all operations have been performed

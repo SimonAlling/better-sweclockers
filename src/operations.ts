@@ -63,25 +63,25 @@ Not returning anything is equivalent to returning undefined, which is equivalent
 const OPERATIONS: ReadonlyArray<Operation> = [
     new IndependentOperation({
         description: "set document id",
-        condition: ALWAYS,
+        condition: () => ALWAYS,
         action: () => { document.documentElement.id = CONFIG.ID.document },
     }),
     new IndependentOperation({
         description: "manage dark theme",
-        condition: ALWAYS,
+        condition: () => ALWAYS,
         action: DarkTheme.manage,
     }),
     // A regular IndependentOperation does not work when the user is logged out, because document.body is null.
     // An IndependentOperation with waitForDOMContentLoaded does not work when the user is logged in, because DOMContentLoaded never fires.
     new DependentOperation({
         description: "insert preferences menu",
-        condition: isOnBSCPreferencesPage,
+        condition: () => isOnBSCPreferencesPage,
         selectors: { body: "body" },
         action: INSERT_PREFERENCES_MENU,
     }),
     new IndependentOperation({
         description: "disable scroll restoration",
-        condition: Preferences.get(P.advanced._.disable_scroll_restoration),
+        condition: () => Preferences.get(P.advanced._.disable_scroll_restoration),
         action: () => {
             if ("scrollRestoration" in history) {
                 history.scrollRestoration = "manual";
@@ -90,7 +90,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "prevent accidental unload (post or message)",
-        condition: isInEditMode && Preferences.get(P.advanced._.prevent_accidental_unload),
+        condition: () => isInEditMode && Preferences.get(P.advanced._.prevent_accidental_unload),
         selectors: {
             textarea: SELECTOR.textarea,
             actionButtons: SELECTOR.actionButtons,
@@ -99,12 +99,12 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new IndependentOperation({
         description: "prevent accidental unload (corrections)",
-        condition: isReadingEditorialContent && Preferences.get(P.advanced._.prevent_accidental_unload),
+        condition: () => isReadingEditorialContent && Preferences.get(P.advanced._.prevent_accidental_unload),
         action: PREVENT_ACCIDENTAL_UNLOAD.corrections,
     }),
     new DependentOperation({
         description: "insert web search button",
-        condition: !isOnBSCPreferencesPage && Preferences.get(P.general._.insert_web_search_button),
+        condition: () => !isOnBSCPreferencesPage && Preferences.get(P.general._.insert_web_search_button),
         selectors: {
             searchFieldInput: SELECTOR.searchFieldInput,
             searchFieldWrapper: SELECTOR.searchFieldWrapper,
@@ -113,7 +113,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "manage caret position in textarea",
-        condition: isInEditMode,
+        condition: () => isInEditMode,
         selectors: {
             textarea: SELECTOR.textarea,
             // The market doesn't have a dedicated preview button; its save button fills that purpose in this context.
@@ -123,25 +123,25 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "remove mobile site disclaimer",
-        condition: isInEditMode_forum,
+        condition: () => isInEditMode_forum,
         selectors: { textarea: SELECTOR.textarea },
         action: REMOVE_MOBILE_SITE_DISCLAIMER,
     }),
     new DependentOperation({
         description: "insert editing tools",
-        condition: isInEditMode && Preferences.get(P.editing_tools._.enable),
+        condition: () => isInEditMode && Preferences.get(P.editing_tools._.enable),
         selectors: { textarea: SELECTOR.textarea },
         action: INSERT_EDITING_TOOLS,
     }),
     new DependentOperation({
         description: "insert editing tools in quick reply form",
-        condition: isReadingThread && Preferences.get(P.editing_tools._.enable) && Preferences.get(P.editing_tools._.in_quick_reply_form),
+        condition: () => isReadingThread && Preferences.get(P.editing_tools._.enable) && Preferences.get(P.editing_tools._.in_quick_reply_form),
         selectors: { textarea: SELECTOR.textarea },
         action: INSERT_EDITING_TOOLS,
     }),
     new DependentOperation({
         description: "insert heading toolbar button",
-        condition: isInEditMode && Preferences.get(P.edit_mode._.insert_heading_toolbar_button),
+        condition: () => isInEditMode && Preferences.get(P.edit_mode._.insert_heading_toolbar_button),
         selectors: {
             textarea: SELECTOR.textarea,
             strikeButton: SELECTOR.textareaToolbarStrikeButton,
@@ -150,7 +150,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "insert table toolbar button",
-        condition: isInEditMode && Preferences.get(P.edit_mode._.insert_table_toolbar_button),
+        condition: () => isInEditMode && Preferences.get(P.edit_mode._.insert_table_toolbar_button),
         selectors: {
             textarea: SELECTOR.textarea,
             unorderedListButton: SELECTOR.textareaToolbarUnorderedListButton,
@@ -159,7 +159,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "insert textarea size toggle",
-        condition: isInEditMode && Preferences.get(P.edit_mode._.textarea_size_toggle),
+        condition: () => isInEditMode && Preferences.get(P.edit_mode._.textarea_size_toggle),
         selectors: {
             textarea: SELECTOR.textarea,
             toolbarInner: SELECTOR.textareaToolbarInner,
@@ -169,25 +169,25 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     new DependentOperation({
         // Should be inserted before dark theme toggle because they should be in that order.
         description: "insert preferences shortcut",
-        condition: !isOnBSCPreferencesPage && Preferences.get(P.general._.insert_preferences_shortcut),
+        condition: () => !isOnBSCPreferencesPage && Preferences.get(P.general._.insert_preferences_shortcut),
         selectors: { topMenu: SELECTOR.topMenu },
         action: INSERT_PREFERENCES_SHORTCUT,
     }),
     new DependentOperation({
         description: "insert dark theme toggle",
-        condition: !isOnBSCPreferencesPage && Preferences.get(P.dark_theme._.show_toggle),
+        condition: () => !isOnBSCPreferencesPage && Preferences.get(P.dark_theme._.show_toggle),
         selectors: { topMenu: SELECTOR.topMenu },
         action: DarkTheme.insertToggle,
     }),
     new DependentOperation({
         description: "prevent accidental signout",
-        condition: isLoggedIn && Preferences.get(P.advanced._.prevent_accidental_signout),
+        condition: () => isLoggedIn() && Preferences.get(P.advanced._.prevent_accidental_signout),
         selectors: { signoutButton: "#" + SITE.ID.signoutButton },
         action: PREVENT_ACCIDENTAL_SIGNOUT,
     }),
     new DependentOperation({
         description: "insert preferences link",
-        condition: isOnSweclockersSettingsPage,
+        condition: () => isOnSweclockersSettingsPage,
         selectors: {
             settingsNavigation: SELECTOR.settingsNavigation,
             li: SELECTOR.settingsNavigationItem,
@@ -197,37 +197,37 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "insert link to top",
-        condition: isReadingThread && Preferences.get(P.forum_threads._.insert_link_to_top),
+        condition: () => isReadingThread && Preferences.get(P.forum_threads._.insert_link_to_top),
         action: INSERT_LINK_TO_TOP,
         selectors: { parent: SELECTOR.listBulkActions },
     }),
     new IndependentOperation({
         description: "insert PM links",
-        condition: Preferences.get(P.forum_threads._.insert_pm_links),
+        condition: () => Preferences.get(P.forum_threads._.insert_pm_links),
         action: INSERT_PM_LINKS,
         waitForDOMContentLoaded: true,
     }),
     new IndependentOperation({
         description: "fix mobile links",
-        condition: isReadingThread && Preferences.get(P.forum_threads._.fix_mobile_links),
+        condition: () => isReadingThread && Preferences.get(P.forum_threads._.fix_mobile_links),
         action: FIX_MOBILE_LINKS,
         waitForDOMContentLoaded: true,
     }),
     new DependentOperation({
         description: "insert quote signature buttons",
-        condition: isReadingThread && Preferences.get(P.forum_threads._.quote_signature_buttons),
+        condition: () => isReadingThread && Preferences.get(P.forum_threads._.quote_signature_buttons),
         action: INSERT_QUOTE_SIGNATURE_BUTTONS,
         selectors: { quickReplyForm: SELECTOR.quickReplyForm },
     }),
     new DependentOperation({
         description: "adapt corrections link to work with improved corrections",
-        condition: isReadingEditorialContent && Preferences.get(P.general._.improved_corrections),
+        condition: () => isReadingEditorialContent && Preferences.get(P.general._.improved_corrections),
         selectors: { correctionsLink: "#" + SITE.ID.correctionsLink },
         action: ADAPT_CORRECTIONS_LINK,
     }),
     new IndependentOperation({
         description: "enable proofreading",
-        condition: Preferences.get(P.advanced._.proofread_articles) === Proofreading.Options.ALWAYS,
+        condition: () => Preferences.get(P.advanced._.proofread_articles) === Proofreading.Options.ALWAYS,
         action: () => {
             // The border must become red before we make it transparent, so we get the nice "flash" effect.
             window.setTimeout(Proofreading.enable, 10);
@@ -236,25 +236,25 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "add proofreading listeners",
-        condition: isReadingEditorialContent && Preferences.get(P.advanced._.proofread_articles) === Proofreading.Options.CORRECTIONS,
+        condition: () => isReadingEditorialContent && Preferences.get(P.advanced._.proofread_articles) === Proofreading.Options.CORRECTIONS,
         selectors: { correctionsLink: "#" + SITE.ID.correctionsLink },
         action: Proofreading.addListeners,
     }),
     new IndependentOperation({
         description: "perform proofreading processing",
-        condition: isReadingEditorialContent || (isInEditMode && Preferences.get(P.advanced._.proofread_forum_posts)),
+        condition: () => isReadingEditorialContent || (isInEditMode && Preferences.get(P.advanced._.proofread_forum_posts)),
         action: Proofreading.performProcessing,
         waitForDOMContentLoaded: true,
     }),
     new DependentOperation({
         description: "replace followed threads link with a link to my posts",
-        condition: isLoggedIn && Preferences.get(P.general._.replace_followed_threads_link),
+        condition: () => isLoggedIn() && Preferences.get(P.general._.replace_followed_threads_link),
         selectors: { followedThreadsLinkText: SELECTOR.followedThreadsLinkText },
         action: REPLACE_FOLLOWED_THREADS_LINK,
     }),
     new DependentOperation({
         description: "enable autosave draft watchdog",
-        condition: isInEditMode_forum && Preferences.get(P.edit_mode._.autosave_draft),
+        condition: () => isInEditMode_forum && Preferences.get(P.edit_mode._.autosave_draft),
         selectors: {
             saveButton: SELECTOR.saveButton,
             textarea: SELECTOR.textarea,
@@ -264,26 +264,26 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "delete any obsolete autosaved draft",
-        condition: mayHaveJustSubmittedForumPost && Preferences.get(P.edit_mode._.autosave_draft),
+        condition: () => mayHaveJustSubmittedForumPost && Preferences.get(P.edit_mode._.autosave_draft),
         selectors: { post: SELECTOR.linkedForumPost },
         action: AUTOSAVE_DRAFT.clearAutosavedDraftIfObsolete,
     }),
     new IndependentOperation({
         description: "delete any leftover autosaved draft",
-        condition: isFalse(Preferences.get(P.edit_mode._.autosave_draft)),
+        condition: () => isFalse(Preferences.get(P.edit_mode._.autosave_draft)),
         action: AUTOSAVE_DRAFT.clearAutosavedDraft,
     }),
 
     // Keyboard shortcuts
     new IndependentOperation({
         description: "perform Mousetrap preparations",
-        condition: ALWAYS,
+        condition: () => ALWAYS,
         action: MOUSETRAP_PREPARATIONS,
         waitForDOMContentLoaded: true,
     }),
     new DependentOperation({
         description: "add edit mode keyboard shortcut (submit)",
-        condition: isInEditMode && Preferences.get(P.edit_mode._.keyboard_shortcuts),
+        condition: () => isInEditMode && Preferences.get(P.edit_mode._.keyboard_shortcuts),
         selectors: {
             textarea: SELECTOR.textarea,
             saveButton: SELECTOR.saveButton,
@@ -293,7 +293,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "add edit mode keyboard shortcut (preview)",
-        condition: isInEditMode && !isInEditMode_marketContact && Preferences.get(P.edit_mode._.keyboard_shortcuts),
+        condition: () => isInEditMode && !isInEditMode_marketContact && Preferences.get(P.edit_mode._.keyboard_shortcuts),
         selectors: {
             textarea: SELECTOR.textarea,
             previewButton: SELECTOR.previewButton,
@@ -303,7 +303,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "add quick reply keyboard shortcut (submit)",
-        condition: isReadingThread && Preferences.get(P.edit_mode._.keyboard_shortcuts_in_quick_reply),
+        condition: () => isReadingThread && Preferences.get(P.edit_mode._.keyboard_shortcuts_in_quick_reply),
         selectors: {
             textarea: SELECTOR.textarea,
             saveButton: SELECTOR.saveButtonQuickReply,
@@ -312,7 +312,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "add quick reply keyboard shortcut (preview)",
-        condition: isReadingThread && Preferences.get(P.edit_mode._.keyboard_shortcuts_in_quick_reply),
+        condition: () => isReadingThread && Preferences.get(P.edit_mode._.keyboard_shortcuts_in_quick_reply),
         selectors: {
             textarea: SELECTOR.textarea,
             previewButton: SELECTOR.previewButtonQuickReply,
