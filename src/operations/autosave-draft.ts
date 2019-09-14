@@ -127,7 +127,7 @@ function draftIsObsolete(post: HTMLElement): boolean | string {
     if (document.referrer === "") return false;
 
     // For subsequent checks, first check if authored by user:
-    if (!post.classList.contains(SITE.CLASS.isAuthor)) return false;
+    if (!post.classList.contains(SITE.CLASS.forumPostByCurrentUser)) return false;
 
     const referrerPath = new URL(document.referrer).pathname;
     const nowInMilliseconds = Date.now();

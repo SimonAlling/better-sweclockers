@@ -17,7 +17,7 @@ export default (e: { quickReplyForm: HTMLElement }) => {
     only(HTMLElement)(Array.from(forumPosts)).forEach(post => {
         const signature = post.querySelector("." + SITE.CLASS.forumPostSignature);
         const controls = post.querySelector("." + SITE.CLASS.forumPostControls);
-        if (post.classList.contains(SITE.CLASS.isAuthor)) {
+        if (post.classList.contains(SITE.CLASS.forumPostByCurrentUser)) {
             return; // (user's own post)
         }
         const authorLink = post.querySelector(SELECTOR.forumPostAuthorLink);

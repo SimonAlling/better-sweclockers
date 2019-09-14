@@ -56,7 +56,7 @@ export const CLASS = {
     forumPostSignature: "signature",
     forumPostControls: "controls",
     forumPostBtnGroup: "btnGroup",
-    isAuthor: "isAuthor", // Note that isReader is added to posts using JS/XHR, while isAuthor is included in the HTML.
+    forumPostByCurrentUser: "isReader", // Don't use isAuthor; it means submitted by OP!
     bbImage: "bbImage",
     imgControls: "imgControls",
     errorDialog: "errorDialog",
