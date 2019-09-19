@@ -19,7 +19,18 @@ export default (e: { textarea: HTMLElement }) => {
     render(<EditingTools textarea={textarea as HTMLTextAreaElement} config={getEditingToolsConfig()} />, textareaParent, toolbar);
 }
 
-export function getEditingToolsConfig() {
+interface EditingToolsConfig {
+    special_characters: boolean
+    code: boolean
+    math: boolean
+    whitespace: boolean
+    embed: boolean
+    doge: boolean
+    color_palette: boolean
+}
+
+// Needs to be a function because it's used "live" in the preferences menu:
+export function getEditingToolsConfig(): EditingToolsConfig {
     return {
         special_characters: Preferences.get(P.editing_tools._.special_characters),
         code: Preferences.get(P.editing_tools._.code),
@@ -34,15 +45,7 @@ export function getEditingToolsConfig() {
 export function EditingTools(props: {
     textarea: HTMLTextAreaElement,
     disabled?: boolean,
-    config: {
-        special_characters: boolean,
-        code: boolean,
-        math: boolean,
-        whitespace: boolean,
-        embed: boolean,
-        doge: boolean,
-        color_palette: boolean,
-    },
+    config: EditingToolsConfig,
 }): JSX.Element {
     // A "connected" button has been connected to the textarea.
     const connected = (b: Button) => b(props.textarea);
