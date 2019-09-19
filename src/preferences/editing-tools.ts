@@ -91,6 +91,16 @@ export default {
         },
         dependencies,
     }),
+    whitespace: new BooleanPreference({
+        key: "editing_tools_whitespace",
+        default: true,
+        label: T.preferences.editing_tools.whitespace,
+        extras: {
+            more: buttonsDescription(BUTTONS.whitespace),
+            class: CONFIG.CLASS.editingTools,
+        },
+        dependencies,
+    }),
     embed: new BooleanPreference({
         key: "editing_tools_embed",
         default: true,

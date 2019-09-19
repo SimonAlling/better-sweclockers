@@ -24,6 +24,7 @@ export function getEditingToolsConfig() {
         special_characters: Preferences.get(P.editing_tools._.special_characters),
         code: Preferences.get(P.editing_tools._.code),
         math: Preferences.get(P.editing_tools._.math),
+        whitespace: Preferences.get(P.editing_tools._.whitespace),
         embed: Preferences.get(P.editing_tools._.embed),
         doge: Preferences.get(P.editing_tools._.doge),
         color_palette: Preferences.get(P.editing_tools._.color_palette),
@@ -37,6 +38,7 @@ export function EditingTools(props: {
         special_characters: boolean,
         code: boolean,
         math: boolean,
+        whitespace: boolean,
         embed: boolean,
         doge: boolean,
         color_palette: boolean,
@@ -68,6 +70,7 @@ export function EditingTools(props: {
             {connectedInsertButton({ insert: CONFIG.CONTENT.edit, tooltip: T.editing_tools.tooltip_edit, label: T.editing_tools.label_edit })}
             {props.config.code ? BUTTONS.code.map(connected) : []}
             {props.config.math ? BUTTONS.math.map(connected) : []}
+            {props.config.whitespace ? BUTTONS.whitespace.map(connected) : []}
             {props.config.embed ? BUTTONS.embed(Preferences.get(P.general._.search_engine)).map(connected) : []}
             {props.config.doge ? BUTTONS.doge.map(connected) : []}
             {props.config.color_palette ? (

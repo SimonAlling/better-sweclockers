@@ -10,6 +10,11 @@ import { InsertButtonDescription } from "../types";
 import { SearchEngine, searchURL } from "search-engines";
 
 export const BUTTON = {
+    nbsps: generalButton({
+        label: T.editing_tools.label_nbsps,
+        tooltip: T.editing_tools.tooltip_nbsps,
+        action: ACTION_REPLACE_SPACES_WITH_NBSPS,
+    }),
     url: tagButton({
         tag: SITE.TAG.url,
         parameterized: true,
@@ -61,6 +66,9 @@ export const BUTTONS = {
         tagButton({ tag: SITE.TAG.math, label: T.editing_tools.label_math, tooltip: T.editing_tools.tooltip_math, class: CONFIG.CLASS.button_math }),
         tagButton({ tag: SITE.TAG.sub, label: T.editing_tools.label_sub, tooltip: T.editing_tools.tooltip_sub, class: CONFIG.CLASS.button_math }),
         tagButton({ tag: SITE.TAG.sup, label: T.editing_tools.label_sup, tooltip: T.editing_tools.tooltip_sup, class: CONFIG.CLASS.button_math }),
+    ],
+    whitespace: [
+        BUTTON.nbsps,
     ],
     embed: (searchEngine: SearchEngine) => [
         BUTTON.url,
@@ -245,4 +253,11 @@ function ACTION_SPLIT_QUOTE(textarea: HTMLTextAreaElement): void {
         textarea.value = beforeSelection + `\n` + endTag + emptyLines + startTag + `\n` + afterSelection;
         placeCursorIn(textarea, beforeSelection.length + 1 + endTag.length + 1); // + 1 + 1 to get past two line breaks
     }
+}
+
+function ACTION_REPLACE_SPACES_WITH_NBSPS(textarea: HTMLTextAreaElement) {
+    insertIn(textarea, {
+        string: selectedTextIn(textarea).replace(/ /g, CONFIG.NBSP),
+        replace: true,
+    });
 }
