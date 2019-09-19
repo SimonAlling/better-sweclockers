@@ -17,14 +17,11 @@ export default (e: { quickReplyForm: HTMLElement }) => {
     only(HTMLElement)(Array.from(forumPosts)).forEach(post => {
         const signature = post.querySelector("." + SITE.CLASS.forumPostSignature);
         const controls = post.querySelector("." + SITE.CLASS.forumPostControls);
-        if (post.classList.contains(SITE.CLASS.forumPostByCurrentUser)) {
-            return; // (user's own post)
-        }
         const authorLink = post.querySelector(SELECTOR.forumPostAuthorLink);
         let postID: string | null = null;
         try {
             postID = JSON.parse(post.dataset.post || "").postid;
-        } catch (err) {
+        } catch (_) {
             logWarning(`Could not extract post ID for quote signature button. 'data-post' attribute had this value: ` + post.dataset.post);
         }
         if (isHTMLElement(controls) && isHTMLElement(authorLink)) {
@@ -54,6 +51,7 @@ function form(props: {
         `[/quote]`,
         props.userMessage,
     ].join("\n");
+    const noSignature = isNull(props.signature);
     return (
         <form method="POST" action={props.replyURL} class={[ SITE.CLASS.forumPostBtnGroup, CONFIG.CLASS.quoteSignatureButton ].join(" ")}>
             {isNull(props.signature) ? [] : [
@@ -64,8 +62,8 @@ function form(props: {
             <button
                 type="submit"
                 class={SITE.CLASS.button}
-                title={T.general.quote_signature_tooltip}
-                disabled={isNull(props.signature)}
+                title={noSignature ? T.general.quote_signature_tooltip_no_signature : T.general.quote_signature_tooltip}
+                disabled={noSignature}
             >
                 <span class={SITE.CLASS.icon}></span>
                 <span class={SITE.CLASS.label}>{T.general.quote_signature_label}</span>
