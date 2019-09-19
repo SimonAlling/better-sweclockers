@@ -22,6 +22,8 @@ export const EDITING_TOOLS_HEIGHT = "120px"; // to prevent jumping in preference
 // distance between article and left side of improved corrections dialog
 export const CORRECTIONS_DIALOG_OFFSET_PX = 20;
 
+export const NBSP = "\u00A0";
+
 export const ID = {
     document: i("document"),
     preferenceIdPrefix: i("preference-"),

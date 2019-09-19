@@ -189,13 +189,12 @@ export function toolbarButton(button: Pick<ButtonDescription, "tooltip" | "class
 
 function shibeText(original: string): string {
     const MAX = 100;
-    const NBSP = " ";
     return unlines(lines(original).map(
         line => [
             BB.start(SITE.TAG.font, CONFIG.CONTENT.shibeFont),
             BB.start(SITE.TAG.color, CONFIG.CONTENT.shibeColor),
             BB.start(SITE.TAG.i),
-            NBSP.repeat(randomIntBetween(0, Math.max(0, MAX - line.length))),
+            CONFIG.NBSP.repeat(randomIntBetween(0, Math.max(0, MAX - line.length))),
             line,
             BB.end(SITE.TAG.i),
             BB.end(SITE.TAG.color),

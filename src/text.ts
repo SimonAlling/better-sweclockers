@@ -265,7 +265,7 @@ export const special_characters: ReadonlyArray<InsertButtonDescription> = [
     { insert: "·", tooltip: "Halvhög punkt (multiplikationstecken)" },
     { insert: "°", tooltip: "Gradtecken" },
     { insert: "\u202F°C", tooltip: "Grader celsius (inkl. hårt blanksteg)" },
-    { insert: "\xA0", label: "NBSP", tooltip: "Hårt blanksteg (tillåter ej radbrytning)" },
+    { insert: CONFIG.NBSP, label: "NBSP", tooltip: "Hårt blanksteg (tillåter ej radbrytning)" },
     { insert: "\u202F", label: "NNBSP", tooltip: "Smalt hårt blanksteg (tillåter ej radbrytning, används som enhets- och tusentalsseparator)" },
     { insert: "²", tooltip: "Upphöjd tvåa" },
     { insert: "′", tooltip: "Primtecken (fot; minuter)" },
