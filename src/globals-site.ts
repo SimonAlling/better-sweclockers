@@ -97,6 +97,7 @@ export const PATH = {
 
 export const TAG = {
     b: "b",
+    bq: "bq",
     cmd: "cmd",
     code: "code",
     color: "color",
