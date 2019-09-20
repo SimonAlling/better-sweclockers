@@ -86,7 +86,7 @@ export default {
         label: T.preferences.dark_theme.interval,
         description: T.preferences.dark_theme.interval_description,
         min: 1,
-        max: 60,
+        max: 600,
         extras: { suffix: T.general.seconds },
     }),
     use_backup: new BooleanPreference({
