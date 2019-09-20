@@ -82,7 +82,7 @@ export function insertCSS(css: string, id?: string): void {
         }
         styleElement.id = id;
     }
-    document.head.appendChild(styleElement);
+    document.documentElement.appendChild(styleElement);
 }
 
 /**

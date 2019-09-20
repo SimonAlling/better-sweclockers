@@ -6,7 +6,7 @@ import { render, h } from "preact";
 
 export default () => {
     document.title = T.preferences.title;
-    document.head.appendChild((() => {
+    document.documentElement.appendChild((() => {
         const link = document.createElement("link");
         link.rel = "stylesheet";
         link.href = SITE.STYLESHEET_URL;

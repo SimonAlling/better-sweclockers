@@ -1,8 +1,8 @@
 import * as CONFIG from "./globals-config";
 import * as SITE from "./globals-site";
 
-// document.head may be null at this time (e.g. in a background tab in Firefox); hence lazy evaluation:
-export const isLoggedIn = () => (document.head.textContent as string).includes(`'visitorType': 'member'`);
+// NOTE: Be careful with document.head here, as it may be null at the time of
+// userscript execution (e.g. in a background tab in Firefox)!
 
 export const isOnBSCPreferencesPage = CONFIG.PATH.PREFERENCES(SITE.PATH.SETTINGS) === document.location.pathname;
 

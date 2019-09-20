@@ -5,7 +5,6 @@ import SELECTOR from "./selectors";
 import { Preferences, isFalse } from "userscripter/preference-handling";
 import P from "preferences";
 import {
-    isLoggedIn,
     isInEditMode,
     isInEditMode_market,
     isInEditMode_marketContact,
@@ -181,8 +180,8 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "prevent accidental signout",
-        condition: () => isLoggedIn() && Preferences.get(P.advanced._.prevent_accidental_signout),
-        selectors: { signoutButton: "#" + SITE.ID.signoutButton },
+        condition: () => Preferences.get(P.advanced._.prevent_accidental_signout),
+        selectors: { signoutButtonOrSigninSection: SELECTOR.signinSectionOr("#" + SITE.ID.signoutButton ) },
         action: PREVENT_ACCIDENTAL_SIGNOUT,
     }),
     new DependentOperation({
@@ -248,8 +247,8 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     }),
     new DependentOperation({
         description: "replace followed threads link with a link to my posts",
-        condition: () => isLoggedIn() && Preferences.get(P.general._.replace_followed_threads_link),
-        selectors: { followedThreadsLinkText: SELECTOR.followedThreadsLinkText },
+        condition: () => Preferences.get(P.general._.replace_followed_threads_link),
+        selectors: { followedThreadsLinkTextOrSigninSection: SELECTOR.signinSectionOr(SELECTOR.followedThreadsLinkText) },
         action: REPLACE_FOLLOWED_THREADS_LINK,
     }),
     new DependentOperation({

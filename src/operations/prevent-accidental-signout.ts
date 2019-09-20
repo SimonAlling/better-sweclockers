@@ -1,9 +1,12 @@
 import * as SITE from "globals-site";
 import * as CONFIG from "globals-config";
 import * as T from "text";
+import { SUCCESS } from "lib/operation-manager";
 
-export default (e: { signoutButton: HTMLElement }) => {
-    const signoutButton = e.signoutButton;
+export default (e: { signoutButtonOrSigninSection: HTMLElement }) => {
+    const notLoggedIn = e.signoutButtonOrSigninSection.classList.contains(SITE.CLASS.signinSection);
+    if (notLoggedIn) return SUCCESS;
+    const signoutButton = e.signoutButtonOrSigninSection;
     const parent = signoutButton.parentElement as HTMLElement;
     const safeSignoutForm = signoutButton.cloneNode(true);
     signoutButton.remove();

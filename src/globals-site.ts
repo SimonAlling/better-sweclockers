@@ -63,6 +63,7 @@ export const CLASS = {
     proofDialog: "proofDialog",
     socialMediaButtons: [ `threadShare`, `greyContentShare`, `sideShare` ],
     sideBox: "sideBox",
+    signinSection: "signin",
     subforumLink: "link",
     toolbarGroup: "tbGroup",
     toolbarButton: "tbButton iconButton noselect",

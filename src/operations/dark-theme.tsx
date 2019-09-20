@@ -40,7 +40,8 @@ function apply(newState: boolean): void {
     const url = Preferences.get(P.dark_theme._.use_backup) ? darkThemeUrlBackup : darkThemeUrl;
     if (newState) {
         if (isNull(document.getElementById(CONFIG.ID.darkThemeStylesheet))) {
-            render(<link rel="stylesheet" href={url(source)} id={CONFIG.ID.darkThemeStylesheet} />, document.head);
+            // Not document.head because it can be null, e.g. in a background tab in Firefox:
+            render(<link rel="stylesheet" href={url(source)} id={CONFIG.ID.darkThemeStylesheet} />, document.documentElement);
         }
     } else {
         withMaybe(document.getElementById(CONFIG.ID.darkThemeStylesheet), element => element.remove());
