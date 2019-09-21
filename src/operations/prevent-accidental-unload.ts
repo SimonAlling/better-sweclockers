@@ -9,7 +9,10 @@ export const BUTTON_CLICK_EVENT = "mousedown";
 // I prefer this to fiddling with event listeners:
 let shouldPreventUnload = false;
 
-export function postOrMessage(e: { textarea: HTMLElement }) {
+export function postOrMessage(e: {
+    textarea: HTMLElement,
+    _actionButtons: HTMLElement, // because we want to extract them using document.querySelectorAll
+}) {
     // We need to prevent unload if the user has modified the content of the
     // textarea or if they came here by clicking the preview button.
     window.addEventListener("beforeunload", handleBeforeUnload);

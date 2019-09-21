@@ -83,9 +83,9 @@ export function OperationManager(
                 if (selectorMatches.map(m => m.element).some(equals(null))) {
                     return FAILURE;
                 }
-                const e: { [k in K]: HTMLElement } = selectorMatches.reduce(
+                const e = selectorMatches.reduce(
                     (acc, match) => Object.defineProperty(acc, match.key, { value: match.element }),
-                    {},
+                    {} as { [k in K]: HTMLElement },
                 );
                 return operation.action(e);
             } else {

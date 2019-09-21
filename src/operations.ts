@@ -92,7 +92,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
         condition: () => isInEditMode && Preferences.get(P.advanced._.prevent_accidental_unload),
         selectors: {
             textarea: SELECTOR.textarea,
-            actionButtons: SELECTOR.actionButtons,
+            _actionButtons: SELECTOR.actionButtons,
         },
         action: PREVENT_ACCIDENTAL_UNLOAD.postOrMessage,
     }),
