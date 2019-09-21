@@ -187,11 +187,7 @@ const OPERATIONS: ReadonlyArray<Operation> = [
     new DependentOperation({
         description: "insert preferences link",
         condition: () => isOnSweclockersSettingsPage,
-        selectors: {
-            settingsNavigation: SELECTOR.settingsNavigation,
-            li: SELECTOR.settingsNavigationItem,
-            label: SELECTOR.settingsNavigationLabel,
-        },
+        selectors: { settingsNavigation: SELECTOR.settingsNavigation },
         action: INSERT_PREFERENCES_LINK,
     }),
     new DependentOperation({

@@ -6,7 +6,6 @@ require("css.escape");
 const C = SITE.CLASS;
 
 const settingsNavigation = `ul.${C.settingsNavigation}`;
-const settingsNavigationItem = `${settingsNavigation} > li.${C.menuItem}`;
 
 const searchFieldWrapper = `#search .searchField`;
 
@@ -27,8 +26,6 @@ export default {
     searchFieldWrapper,
     searchFieldInput: `${searchFieldWrapper} input`,
     settingsNavigation,
-    settingsNavigationItem,
-    settingsNavigationLabel: `${settingsNavigationItem} > a.${C.link} > span.${C.icon} + span.${C.label}`,
     actionButtons,
     previewButton: actionButtons + `[value=doPreview]`,
     saveButton: actionButtons + `[value=doSubmit]`,
