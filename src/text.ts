@@ -29,7 +29,7 @@ const editing_tools_name = `Utökade formateringsverktyg`;
 
 const OBVIOUS = `Som det låter`;
 
-export const general = {
+export const general = <const> {
     seconds: `sekunder`,
     loading: `Laddar …`,
     dark_theme_toggle_tooltip_on: darkThemeBy,
@@ -54,7 +54,7 @@ export const general = {
     my_posts,
 };
 
-export const preferences = {
+export const preferences = <const> {
     NO_LABEL: ``,
     title: `Inställningar för Better SweClockers`,
     back_to_sweclockers: `Tillbaka till ${SITE.NAME}`,
@@ -223,7 +223,7 @@ export const preferences = {
     },
 };
 
-export const editing_tools = {
+export const editing_tools = <const> {
     label_size: `<big>A</big><small>A</small>`,
     tooltip_size: `Textstorlek`,
     tooltip_color: `Textfärg`,

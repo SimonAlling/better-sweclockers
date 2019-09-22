@@ -24,7 +24,7 @@ const dependencies_auto = [
     },
 ];
 
-export default {
+export default <const> {
     active: new BooleanPreference({
         key: "dark_theme_active",
         default: false,

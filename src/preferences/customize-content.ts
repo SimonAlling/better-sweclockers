@@ -3,7 +3,7 @@ import {
     BooleanPreference,
 } from "ts-preferences";
 
-export default {
+export default <const> {
     news_ticker: new BooleanPreference({
         key: "customize_content_news_ticker",
         default: true,

@@ -11,7 +11,7 @@ import keyboardPreferences from "./preferences/keyboard";
 import customizeContentPreferences from "./preferences/customize-content";
 import interestsPreferences from "./preferences/interests";
 
-export default {
+export default <const> {
     general: {
         label: T.preferences.general.label,
         _: generalPreferences,

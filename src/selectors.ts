@@ -14,7 +14,7 @@ const actionButtonsQuickReply = `#quickreply .controls button`;
 
 const textareaToolbarInner = `form .toolbar .tbInner`;
 
-export default {
+export default <const> {
     textarea: "textarea#" + CSS.escape(SITE.ID.textarea),
     textareaToolbarInner,
     textareaToolbarStrikeButton: textareaToolbarInner + ` .strike`,

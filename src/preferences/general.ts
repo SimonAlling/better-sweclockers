@@ -5,7 +5,7 @@ import {
     MultichoicePreference,
 } from "ts-preferences";
 
-export default {
+export default <const> {
     lock_heights: new BooleanPreference({
         key: "lock_heights",
         default: true,

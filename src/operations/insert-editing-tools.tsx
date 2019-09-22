@@ -39,7 +39,7 @@ export function getEditingToolsConfig(): EditingToolsConfig {
         embed: Preferences.get(P.editing_tools._.embed),
         doge: Preferences.get(P.editing_tools._.doge),
         color_palette: Preferences.get(P.editing_tools._.color_palette),
-    };
+    } as const;
 }
 
 export function EditingTools(props: {

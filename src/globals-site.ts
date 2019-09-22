@@ -22,7 +22,7 @@ export const CORRECTIONS_DIALOG_WIDTH_PX = 384;
 export const FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX = INSIDER_COLUMN_FIXED_WIDTH_PX + PUSH_COLUMN_FIXED_WIDTH_PX;
 export const FIXED_COLUMNS_TOTAL_WIDTH_WIDE_PX = FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX + OUTSIDER_COLUMN_FIXED_WIDTH_PX;
 
-export const ID = {
+export const ID = <const> {
     siteHeader: "siteHeader",
     signoutButton: "signoutForm",
     textarea: "__laika_cnt.textarea.0",
@@ -41,7 +41,7 @@ export const ID = {
     externalNewsWidget: "wdgtSideExternalFeeds",
 };
 
-export const CLASS = {
+export const CLASS = <const> {
     fieldset: "s5fieldset",
     button: "button",
     link: "link",
@@ -72,7 +72,7 @@ export const CLASS = {
     toolbarTableButton: "tbl",
 };
 
-export const PATH = {
+export const PATH = <const> {
     EDIT_MODE_FORUM: /^\/forum\/(.*\/(svara(\?citera)?|redigera)|ny-trad)/,
     EDIT_MODE_MARKET: /^\/marknad\/(.+\/(redigera|kontakt)|ny\-annons)$/,
     EDIT_MODE_MARKET_CONTACT: /^\/marknad\/.+\/kontakt$/,
@@ -96,7 +96,7 @@ export const PATH = {
     editPost: (postID: number) => `/forum/post/${postID}/redigera`,
 };
 
-export const TAG = {
+export const TAG = <const> {
     b: "b",
     bq: "bq",
     cmd: "cmd",
@@ -123,13 +123,13 @@ export const TAG = {
 
 export const URL_ICONS_GENERAL = "/gfx/spritemap2x.png";
 const URL_ICONS_TOOLBAR = "/gfx/toolbar2x.png";
-export const ICONS = {
+export const ICONS = <const> {
     toolbarIcon: (position: string): string => `<div style="background-image: url('${URL_ICONS_TOOLBAR}'); background-size: 500px auto; background-position: ${position};"></div>`,
     position_toolbar_url: "0 -125px",
     position_toolbar_img: "-50px -125px",
 };
 
-export const MOBILE_SITE_DISCLAIMER = {
+export const MOBILE_SITE_DISCLAIMER = <const> {
     sentFrom: `Skickades från`,
     mobileSiteDomain: HOSTNAME_MOBILE,
 };

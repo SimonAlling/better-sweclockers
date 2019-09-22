@@ -1,4 +1,4 @@
-export default {
+export default <const> {
     id: "better-sweclockers",
     name: "Better SweClockers",
     version: "3.10.0",

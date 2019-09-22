@@ -35,7 +35,7 @@ export const enum Position {
     ABOVE = "above", BELOW = "below",
 }
 
-export default {
+export default <const> {
     enable,
     in_quick_reply_form: new BooleanPreference({
         key: "editing_tools_in_quick_reply_form",

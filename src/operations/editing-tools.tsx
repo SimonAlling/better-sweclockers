@@ -53,7 +53,7 @@ export const BUTTON = {
         block: true,
         icon: { type: "RAW", image: require("src/icons/expander.svg") },
     }),
-};
+} as const;
 
 export const BUTTONS = {
     code: [
@@ -79,7 +79,7 @@ export const BUTTONS = {
         BUTTON.shibe,
         BUTTON.doge,
     ],
-};
+} as const;
 
 export const COLORS: ReadonlyArray<string> = [
     "#D00",     // dark red

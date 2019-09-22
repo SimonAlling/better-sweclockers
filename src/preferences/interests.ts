@@ -3,7 +3,7 @@ import {
     ListPreference,
 } from "ts-preferences";
 
-export default {
+export default <const> {
     uninteresting_subforums: new ListPreference<number>({
         key: "interests_uninteresting_subforums",
         label: T.preferences.NO_LABEL,
