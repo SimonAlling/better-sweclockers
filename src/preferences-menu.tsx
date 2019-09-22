@@ -31,21 +31,10 @@ const PID = <T extends AllowedTypes>(p: Preference<T>) => CONFIG.ID.preferenceId
 
 type GeneratorOutput = JSX.Element | ReadonlyArray<JSX.Element>
 
-interface Generators {
-    Boolean: (p: BooleanPreference) => GeneratorOutput
-    String: (p: StringPreference) => GeneratorOutput
-    Integer: (p: IntegerPreference) => GeneratorOutput
-    Double: (p: DoublePreference) => GeneratorOutput
-    Time: (p: TimePreference) => GeneratorOutput
-    IntegerRange: (p: IntegerRangePreference) => GeneratorOutput
-    DoubleRange: (p: DoubleRangePreference) => GeneratorOutput
-    Multichoice: <T extends AllowedTypes>(p: MultichoicePreference<T>) => GeneratorOutput
-}
-
 const RANGE_MAX_STEP = 0.1;
 const RANGE_MIN_NUMBER_OF_STEPS = 100;
 
-export const GENERATORS: Generators = {
+export const GENERATORS = {
     Boolean: Generator_Boolean,
     String: Generator_String,
     Integer: Generator_Integer,
@@ -54,7 +43,9 @@ export const GENERATORS: Generators = {
     IntegerRange: Generator_IntegerRange,
     DoubleRange: Generator_DoubleRange,
     Multichoice: Generator_Multichoice,
-};
+} as const;
+
+type Generators = typeof GENERATORS;
 
 function fromStringEventHandler<
     E extends HTMLElement & { value: string },

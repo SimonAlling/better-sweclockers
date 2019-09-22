@@ -9,13 +9,7 @@ import { insert, indent } from "./logic/textarea";
 
 const enum Headings { NONE, FIRST, ALL }
 
-interface TableConfig {
-    readonly rows: number
-    readonly columns: number
-    readonly headings: boolean
-}
-
-const TABLE_CONFIG: TableConfig = { rows: 4, columns: 3, headings: true };
+const TABLE_CONFIG = { rows: 4, columns: 3, headings: true };
 
 const tableToolbarButton = toolbarButton({
     action: textarea => insert(table(TABLE_CONFIG))(textarea), // eta-abstracted to defer table generation until button clicked
@@ -30,7 +24,7 @@ export default (e: {
     render(tableToolbarButton(e.textarea as HTMLTextAreaElement), e.unorderedListButton.parentElement as HTMLElement);
 }
 
-function table(config: TableConfig): string {
+function table(config: Readonly<typeof TABLE_CONFIG>): string {
     const headingRow = tableRowLines(config.columns, Headings.ALL);
     const regularRow = tableRowLines(config.columns, config.headings ? Headings.FIRST : Headings.NONE);
     const theadLines = concat([
