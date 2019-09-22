@@ -41,24 +41,6 @@ import * as Proofreading from "./operations/proofreading";
 
 const ALWAYS: boolean = true;
 
-/*
-******** README ********
-
-Operations to run as soon as possible during page load are declared in this file.
-
-Every item must be an object with the following structure:
-{
-    description : a brief description of the operation in the infinitive sense, whose main purpose is to identify operations failing as a consequence of the host site changing its content
-    condition   : whether the operation should run at all (e.g. some saved preference value)
-    selectors   : CSS selectors matching elements required to run the operation
-    action      : what to do (e.g. insert a custom element); a function that will be called with the required elements as arguments, in the order they appear in `selectors`
-}
-
-`action` may return a boolean (SUCCESS or FAILURE) indicating whether or not it succeeded.
-
-Not returning anything is equivalent to returning undefined, which is equivalent to returning SUCCESS.
-*/
-
 const OPERATIONS: ReadonlyArray<Operation> = [
     new IndependentOperation({
         description: "set document id",

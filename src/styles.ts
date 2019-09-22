@@ -13,20 +13,6 @@ import filterNewInForum from "./styles/interests-new-in-forum";
 
 const ALWAYS: boolean = true;
 
-/*
-******** README ********
-
-CSS modules to be inserted conditionally are declared in this file.
-
-In practice, "conditionally" could mean e.g. that a certain preference is set. ALWAYS can also be used as a condition.
-
-Every item must be an object with the following structure:
-{
-    condition : a boolean indicating whether this module should be inserted
-    css       : the CSS code to insert
-}
-*/
-
 function isTimeForMaintenance() {
     const start = ms.hours(4) + ms.minutes(30);
     const end   = ms.hours(5) + ms.minutes(10);
