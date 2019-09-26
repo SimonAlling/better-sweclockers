@@ -1,0 +1,25 @@
+.#{getGlobal("SITE.CLASS.threadStatus")} {
+    position: relative; // to enable absolute positioning of tooltips
+
+    &::after {
+        background-color: black;
+        border-radius: 4px;
+        color: white;
+        display: inline-block; // necessary to negate link :hover underline
+        left: calc(100% + 10px);
+        min-width: fit-content;
+        opacity: 0;
+        padding: 3px 6px;
+        position: absolute;
+        top: 75%;
+        transition: opacity 100ms;
+        transition-delay: 0ms; // when hover ends
+        white-space: pre;
+    }
+
+    &:hover::after {
+        opacity: 0.9;
+        transition-delay: 300ms; // when hover starts
+    }
+
+}

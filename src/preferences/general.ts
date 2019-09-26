@@ -42,6 +42,12 @@ export default <const> {
         label: T.preferences.general.replace_followed_threads_link,
         description: T.preferences.general.replace_followed_threads_link_description,
     }),
+    thread_status_tooltips: new BooleanPreference({
+        key: "thread_status_tooltips",
+        default: true,
+        label: T.preferences.general.thread_status_tooltips,
+        description: T.preferences.general.thread_status_tooltips_description,
+    }),
     insert_web_search_button: new BooleanPreference({
         key: "insert_web_search_button",
         default: true,

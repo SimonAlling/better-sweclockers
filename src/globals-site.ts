@@ -57,6 +57,8 @@ export const CLASS = <const> {
     forumPostControls: "controls",
     forumPostBtnGroup: "btnGroup",
     forumPostByCurrentUser: "isReader", // Don't use isAuthor; it means submitted by OP!
+    threadStatus: "threadStatus",
+    threadStatusIcon: (bitmask: number) => `icon-${bitmask}`,
     bbImage: "bbImage",
     imgControls: "imgControls",
     errorDialog: "errorDialog",

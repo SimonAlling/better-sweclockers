@@ -10,6 +10,7 @@ import { hideById, hideByClass, hideBySelector } from "./styles/hide";
 import { timeIsWithin } from "./time"
 import * as ms from "milliseconds";
 import filterNewInForum from "./styles/interests-new-in-forum";
+import threadStatusTooltips from "./styles/thread-status-tooltips-logic";
 
 const ALWAYS: boolean = true;
 
@@ -115,6 +116,14 @@ const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
     {
         condition: Preferences.get(P.advanced._.custom_css_enable),
         css: Preferences.get(P.advanced._.custom_css_code),
+    },
+    {
+        condition: Preferences.get(P.general._.thread_status_tooltips),
+        css: require("styles/thread-status-tooltips"),
+    },
+    {
+        condition: Preferences.get(P.general._.thread_status_tooltips),
+        css: threadStatusTooltips(),
     },
 
     // Customize content:
