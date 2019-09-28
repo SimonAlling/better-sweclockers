@@ -1,7 +1,7 @@
 export default <const> {
     id: "better-sweclockers",
     name: "Better SweClockers",
-    version: "3.10.0",
+    version: "3.11.0",
     description: "Extra functionality and improved usability for the SweClockers website.",
     author: "Simon Alling",
     hostname: "sweclockers.com",
