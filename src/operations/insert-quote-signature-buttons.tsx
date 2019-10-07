@@ -15,6 +15,10 @@ export default (e: { quickReplyForm: HTMLElement }) => {
     const csrf = session.getCsrfToken();
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);
     only(HTMLElement)(Array.from(forumPosts)).forEach(post => {
+        if (post.classList.contains(SITE.CLASS.forumPostByCurrentUser)) {
+            // We don't want buttons on the reader's own posts, because they can overflow when the edit button is visible.
+            return;
+        }
         const signature = post.querySelector("." + SITE.CLASS.forumPostSignature);
         const controls = post.querySelector("." + SITE.CLASS.forumPostControls);
         const authorLink = post.querySelector(SELECTOR.forumPostAuthorLink);
