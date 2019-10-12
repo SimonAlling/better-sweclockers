@@ -104,7 +104,7 @@ const OPERATIONS: readonly Operation[] = [
     }),
     new DependentOperation({
         description: "remove mobile site disclaimer",
-        condition: () => isInEditMode_forum,
+        condition: () => isInEditMode_forum && Preferences.get(P.edit_mode._.remove_mobile_site_disclaimer),
         selectors: { textarea: SELECTOR.textarea },
         action: removeMobileSiteDisclaimer,
     }),
