@@ -94,7 +94,7 @@ const OPERATIONS: readonly Operation[] = [
     }),
     new DependentOperation({
         description: "manage caret position in textarea",
-        condition: () => isInEditMode,
+        condition: () => isInEditMode, // Should be run unconditionally (see the implementation for more info).
         selectors: {
             textarea: SELECTOR.textarea,
             // The market doesn't have a dedicated preview button; its save button fills that purpose in this context.
