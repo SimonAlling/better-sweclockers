@@ -7,7 +7,7 @@ import { isNumber, isString } from "ts-type-guards";
 import * as Storage from "ts-storage";
 import { FAILURE } from "lib/operation-manager";
 import { log, logError } from "../userscripter/logging";
-import { generalButton } from "./editing-tools";
+import { generalButton } from "./logic/editing-tools";
 import { isCleanSlate_reply } from "./edit-mode";
 
 /*

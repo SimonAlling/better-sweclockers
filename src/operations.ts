@@ -15,23 +15,23 @@ import {
     isReadingThread,
     mayHaveJustSubmittedForumPost,
 } from "./environment";
-import insertPreferencesMenu from "./operations/insert-preferences-menu";
-import insertPreferencesLink from "./operations/insert-preferences-link";
-import insertPreferencesShortcut from "./operations/insert-preferences-shortcut";
-import insertWebSearchButton from "./operations/insert-web-search-button";
-import insertEditingTools from "./operations/insert-editing-tools";
-import insertHeadingToolbarButton from "./operations/insert-heading-toolbar-button";
-import insertTableToolbarButton from "./operations/insert-table-toolbar-button";
-import insertTextareaSizeToggle from "./operations/insert-textarea-size-toggle";
-import insertLinkToTop from "./operations/insert-link-to-top";
-import insertPMLinks from "./operations/insert-pm-links";
+import insertPreferencesMenu from "./operations/preferences-menu";
+import insertPreferencesLink from "./operations/preferences-link";
+import insertPreferencesShortcut from "./operations/preferences-shortcut";
+import insertWebSearchButton from "./operations/web-search-button";
+import insertEditingTools from "./operations/editing-tools";
+import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
+import insertTableToolbarButton from "./operations/table-toolbar-button";
+import insertTextareaSizeToggle from "./operations/textarea-size-toggle";
+import insertLinkToTop from "./operations/link-to-top";
+import insertPMLinks from "./operations/pm-links";
 import fixMobileLinks from "./operations/fix-mobile-links";
-import insertQuoteSignatureButtons from "./operations/insert-quote-signature-buttons";
+import insertQuoteSignatureButtons from "./operations/quote-signature-buttons";
 import preventAccidentalSignout from "./operations/prevent-accidental-signout";
 import * as preventAccidentalUnload from "./operations/prevent-accidental-unload";
-import adaptCorrectionsLink from "./operations/adapt-corrections-link";
+import adaptCorrectionsLink from "./operations/improved-corrections";
 import replaceFollowedThreadsLink from "./operations/replace-followed-threads-link";
-import manageCaretPosition from "./operations/manage-caret-position";
+import manageCaretPosition from "./operations/caret-position";
 import removeMobileSiteDisclaimer from "./operations/remove-mobile-site-disclaimer";
 import * as autosaveDraft from "./operations/autosave-draft";
 import * as keyboardShortcutsEditMode from "./operations/keyboard-shortcuts/edit-mode";

@@ -24,7 +24,7 @@ import {
     MultichoicePreference,
 } from "ts-preferences";
 import { TimePreference } from "./preferences/TimePreference";
-import { EditingTools, getEditingToolsConfig } from "operations/insert-editing-tools";
+import { EditingTools, getEditingToolsConfig } from "operations/editing-tools";
 import { subscribe, unsubscribe } from "userscripter/preference-handling";
 
 const PID = <T extends AllowedTypes>(p: Preference<T>) => CONFIG.ID.preferenceIdPrefix + p.key;

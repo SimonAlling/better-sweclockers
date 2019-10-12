@@ -4,7 +4,7 @@ import * as T from "../text";
 import { render } from "preact";
 import { unlines } from "lines-unlines";
 import { start, end, empty } from "bbcode-tags";
-import { toolbarButton } from "./editing-tools";
+import { toolbarButton } from "./logic/editing-tools";
 import { insert, indent } from "./logic/textarea";
 
 const enum Headings { NONE, FIRST, ALL }

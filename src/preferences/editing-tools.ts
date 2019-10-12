@@ -5,7 +5,7 @@ import {
     MultichoicePreference,
 } from "ts-preferences";
 import { render } from "preact";
-import { Button, BUTTONS, insertButton } from "../operations/editing-tools";
+import { Button, BUTTONS, insertButton } from "../operations/logic/editing-tools";
 import { SearchEngine } from "search-engines";
 
 function buttonsDescription(buttons: readonly Button[]): string {
