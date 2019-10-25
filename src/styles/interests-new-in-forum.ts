@@ -7,7 +7,7 @@ import { r } from "src/utilities";
 // 1. ..."forumid":42,
 // 2. ..."forumid":42}
 
-export default function(uninterestingIDs: ReadonlyArray<number>): string {
+export default function(uninterestingIDs: readonly number[]): string {
     return uninterestingIDs.map(cssForId).join("");
 }
 

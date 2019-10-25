@@ -8,7 +8,7 @@ import { render } from "preact";
 import { Button, BUTTONS, insertButton } from "../operations/editing-tools";
 import { SearchEngine } from "search-engines";
 
-function buttonsDescription(buttons: ReadonlyArray<Button>): string {
+function buttonsDescription(buttons: readonly Button[]): string {
     const textarea = document.createElement("textarea");
     const connectedButtons = buttons.map(b => b(textarea));
     const div = document.createElement("div");

@@ -46,7 +46,7 @@ function table(config: Readonly<typeof TABLE_CONFIG>): string {
     return unlines(tableLines);
 }
 
-function tableRowLines(columns: number, headings: Headings): ReadonlyArray<string> {
+function tableRowLines(columns: number, headings: Headings): readonly string[] {
     const cell_first = headings === Headings.NONE ? "td" : "th";
     const cell_rest = headings === Headings.ALL ? "th" : "td";
     return concat([
@@ -58,10 +58,10 @@ function tableRowLines(columns: number, headings: Headings): ReadonlyArray<strin
 }
 
 // From Haskell. Example: replicate(3, 42) = [42, 42, 42]
-function replicate<T>(n: number, x: T): ReadonlyArray<T> {
+function replicate<T>(n: number, x: T): readonly T[] {
     return Array(n).fill(x);
 }
 
-function concat(xs: ReadonlyArray<string | ReadonlyArray<string>>): ReadonlyArray<string> {
-    return ([] as Array<string>).concat(...xs);
+function concat(xs: readonly (string | readonly string[])[]): readonly string[] {
+    return ([] as string[]).concat(...xs);
 }

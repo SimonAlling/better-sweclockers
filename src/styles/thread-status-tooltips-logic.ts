@@ -29,7 +29,7 @@ However, this makes the code simpler, and it also means that we have ourselves c
 At the time of writing this, there were 28 combinations in use and we generated 64 rules.
 */
 export default function(): string {
-    const powersUsedBySweClockers: ReadonlyArray<PowerOfTwo> = STATUSES.map(([ p, _ ]) => p);
+    const powersUsedBySweClockers: readonly PowerOfTwo[] = STATUSES.map(([ p, _ ]) => p);
     const iconBitmasks = powersUsedBySweClockers.reduce(extend, [ 0 ]);
     return unlines(iconBitmasks.map(styleRule));
 }
@@ -42,7 +42,7 @@ function tooltip(bitmask: number): string {
     return statuses(bitmask).join(T.thread_status.separator);
 }
 
-function statuses(bitmask: number): ReadonlyArray<string> {
+function statuses(bitmask: number): readonly string[] {
     const matchingStatuses = (
         STATUSES
         .filter(([ statusBitmask, _ ]) => statusBitmask & bitmask)
@@ -53,6 +53,6 @@ function statuses(bitmask: number): ReadonlyArray<string> {
 
 // extend([ 0, 1 ]     , 8) === [ 0, 1, 8, 9 ]
 // extend([ 0, 10, 20 ], 4) === [ 0, 10, 20, 4, 14, 24 ]
-function extend(xs: ReadonlyArray<number>, n: PowerOfTwo): ReadonlyArray<number> {
+function extend(xs: readonly number[], n: PowerOfTwo): readonly number[] {
     return xs.concat(xs.map(x => x + n));
 }

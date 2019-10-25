@@ -81,7 +81,7 @@ export const BUTTONS = {
     ],
 } as const;
 
-export const COLORS: ReadonlyArray<string> = [
+export const COLORS: readonly string[] = [
     "#D00",     // dark red
     "#C15200",  // SweClockers orange
     "#EE8500",  // orange

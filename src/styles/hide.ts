@@ -5,7 +5,7 @@ export function hideById(i: string): string {
     return hideBySelector("#" + i);
 }
 
-export function hideByClass(c: string | ReadonlyArray<string>): string {
+export function hideByClass(c: string | readonly string[]): string {
     return hideBySelector(isString(c) ? "."+c : c.map(x => "."+x).join(", "));
 }
 

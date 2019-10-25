@@ -261,7 +261,7 @@ export const editing_tools = <const> {
     tooltip_edit: `Infoga en redigeringsnotis`,
 };
 
-export const special_characters: ReadonlyArray<InsertButtonDescription> = [
+export const special_characters: readonly InsertButtonDescription[] = [
     { insert: "\u2011", tooltip: "Hårt bindestreck (tillåter ej radbrytning)" },
     { insert: "–", tooltip: "Kort tankstreck (talstreck; intervall)" },
     { insert: "—", tooltip: "Långt tankstreck" },

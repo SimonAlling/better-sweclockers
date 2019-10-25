@@ -41,7 +41,7 @@ import * as Proofreading from "./operations/proofreading";
 
 const ALWAYS: boolean = true;
 
-const OPERATIONS: ReadonlyArray<Operation> = [
+const OPERATIONS: readonly Operation[] = [
     new IndependentOperation({
         description: "set document id",
         condition: () => ALWAYS,

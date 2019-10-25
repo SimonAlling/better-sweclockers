@@ -20,7 +20,7 @@ function isTimeForMaintenance() {
     return timeIsWithin({ start, end })(new Date());
 }
 
-const STYLESHEET_MODULES: ReadonlyArray<StylesheetModule> = [
+const STYLESHEET_MODULES: readonly StylesheetModule[] = [
     {
         condition: ALWAYS,
         css: require("styles/stylesheet"),

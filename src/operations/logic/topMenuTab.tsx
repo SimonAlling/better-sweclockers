@@ -6,7 +6,7 @@ import { fromMaybeUndefined } from "src/utilities";
 export function tab(x: Readonly<{
     title: string,
     id: string,
-    classes?: ReadonlyArray<string>,
+    classes?: readonly string[],
     link: Readonly<{
         href?: string,
         openInNewTab?: boolean,

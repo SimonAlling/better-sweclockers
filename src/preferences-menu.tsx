@@ -29,7 +29,7 @@ import { subscribe, unsubscribe } from "userscripter/preference-handling";
 
 const PID = <T extends AllowedTypes>(p: Preference<T>) => CONFIG.ID.preferenceIdPrefix + p.key;
 
-type GeneratorOutput = JSX.Element | ReadonlyArray<JSX.Element>
+type GeneratorOutput = JSX.Element | readonly JSX.Element[]
 
 const RANGE_MAX_STEP = 0.1;
 const RANGE_MIN_NUMBER_OF_STEPS = 100;
@@ -97,7 +97,7 @@ export class PreferencesForm extends Component {
     }
 }
 
-function Entries(generators: Generators, ps: PreferencesObject): ReadonlyArray<JSX.Element | null> {
+function Entries(generators: Generators, ps: PreferencesObject): readonly (JSX.Element | null)[] {
     return Object.keys(ps).map(k => Entry(generators, ps[k]));
 }
 
@@ -301,7 +301,7 @@ function Generator_Multichoice<T extends AllowedTypes>(p: MultichoicePreference<
         );
 }
 
-function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: MultichoicePreference<T>, label: string, value: T, checked: boolean }): ReadonlyArray<JSX.Element> {
+function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: MultichoicePreference<T>, label: string, value: T, checked: boolean }): readonly JSX.Element[] {
     const radioButtonId = PID(p) + "-" + label;
     return [
         <input
@@ -343,7 +343,7 @@ function isDefined<T>(x: T | undefined): x is T {
 
 type InterestsState = {
     fetch: {
-        status: "success", categories: ReadonlyArray<ForumCategory>
+        status: "success", categories: readonly ForumCategory[]
     } | {
         status: "loading"
     } | {
