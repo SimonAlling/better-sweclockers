@@ -24,7 +24,7 @@
     "lines-unlines": "^1.0.0",
     "milliseconds": "^1.0.3",
     "mousetrap": "^1.6.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.0",
     "node-sass-utils": "^1.1.2",
     "preact": "^8.3.0",
     "raw-loader": "^0.5.1",
