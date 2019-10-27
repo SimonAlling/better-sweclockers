@@ -31,6 +31,8 @@ export default <const> {
     saveButton: actionButtons + `[value=doSubmit]`,
     saveButtonQuickReply: actionButtonsQuickReply + `:nth-of-type(1)`,
     previewButtonQuickReply: actionButtonsQuickReply + `:nth-of-type(2)`,
+    cityInput: `input[name="city"]`,
+    regionSelect: `select[name="location"]`,
     sideColumnAnniversary: `.swec20Box.${C.sideBox}`,
     sideColumnGuides: `.videoPush.${C.sideBox}`,
     sideColumnPopularGalleries: `.popularGalleries.${C.sideBox}`,

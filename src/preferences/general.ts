@@ -2,7 +2,9 @@ import * as T from "../text";
 import { SearchEngine } from "src/search-engines";
 import {
     BooleanPreference,
+    IntegerPreference,
     MultichoicePreference,
+    StringPreference,
 } from "ts-preferences";
 
 export default <const> {
@@ -47,6 +49,25 @@ export default <const> {
         default: true,
         label: T.preferences.general.thread_status_tooltips,
         description: T.preferences.general.thread_status_tooltips_description,
+    }),
+    remember_location_in_market: new BooleanPreference({
+        key: "remember_location_in_market",
+        default: true,
+        label: T.preferences.general.remember_location_in_market,
+        description: T.preferences.general.remember_location_in_market_description,
+    }),
+    location_region: new IntegerPreference({
+        key: "location_region",
+        default: 0, // "Välj region:"
+        label: T.preferences.NO_LABEL,
+        extras: { implicit: true },
+    }),
+    location_city: new StringPreference({
+        key: "location_city",
+        default: "",
+        label: T.preferences.NO_LABEL,
+        multiline: false,
+        extras: { implicit: true },
     }),
     insert_web_search_button: new BooleanPreference({
         key: "insert_web_search_button",

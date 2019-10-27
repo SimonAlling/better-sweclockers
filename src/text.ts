@@ -79,6 +79,8 @@ export const preferences = <const> {
         replace_followed_threads_link_description: OBVIOUS,
         thread_status_tooltips: `Tooltips på trådstatusikoner`,
         thread_status_tooltips_description: `Hovra med musen för att se vad de olika ikonerna betyder i forumets översiktsvyer`,
+        remember_location_in_market: `Kom ihåg min plats i marknaden`,
+        remember_location_in_market_description: `Slipp fylla i län och stad varje gång du skapar en annons`,
         insert_web_search_button: `Webbsökknapp`,
         insert_web_search_button_description: `När ${SITE.NAME} inbyggda sökfunktion inte hittar det du söker`,
         search_engine: {

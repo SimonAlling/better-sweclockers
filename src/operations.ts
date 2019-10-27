@@ -31,6 +31,7 @@ import preventAccidentalSignout from "./operations/prevent-accidental-signout";
 import * as preventAccidentalUnload from "./operations/prevent-accidental-unload";
 import adaptCorrectionsLink from "./operations/improved-corrections";
 import replaceFollowedThreadsLink from "./operations/replace-followed-threads-link";
+import rememberLocationInMarket from "./operations/remember-location-in-market";
 import manageCaretPosition from "./operations/caret-position";
 import removeMobileSiteDisclaimer from "./operations/remove-mobile-site-disclaimer";
 import * as autosaveDraft from "./operations/autosave-draft";
@@ -225,9 +226,19 @@ const OPERATIONS: readonly Operation[] = [
     }),
     new DependentOperation({
         description: "replace followed threads link with a link to my posts",
-        condition: () => Preferences.get(P.general._.replace_followed_threads_link),
+        condition: () => isInEditMode_market && Preferences.get(P.general._.replace_followed_threads_link),
         selectors: { followedThreadsLinkTextOrSigninSection: SELECTOR.signinSectionOr(SELECTOR.followedThreadsLinkText) },
         action: replaceFollowedThreadsLink,
+    }),
+    new DependentOperation({
+        description: "remember location in market",
+        condition: () => Preferences.get(P.general._.remember_location_in_market),
+        selectors: {
+          city: SELECTOR.cityInput,
+          region: SELECTOR.regionSelect,
+          saveButton: SELECTOR.saveButton,
+        },
+        action: rememberLocationInMarket,
     }),
     new DependentOperation({
         description: "enable autosave draft watchdog",
