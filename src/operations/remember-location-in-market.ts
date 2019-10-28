@@ -1,9 +1,8 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
 import { isString } from "ts-type-guards";
+
 import P from "src/preferences";
-import { Preferences } from "src/userscripter/preference-handling";
 import { logError } from "src/userscripter/logging";
+import { Preferences } from "src/userscripter/preference-handling";
 
 export default (e: {
   city: HTMLElement,

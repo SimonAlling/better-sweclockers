@@ -1,11 +1,12 @@
-import * as CONFIG from "globals-config";
-import * as T from "../text";
 import {
     BooleanPreference,
-    StringPreference,
     MultichoicePreference,
+    StringPreference,
 } from "ts-preferences";
-import * as Proofreading from "../operations/proofreading";
+
+import * as CONFIG from "src/globals-config";
+import * as Proofreading from "src/operations/proofreading";
+import * as T from "src/text";
 
 const custom_css_enable = new BooleanPreference({
     key: "custom_css_enable",

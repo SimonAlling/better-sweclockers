@@ -1,10 +1,9 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
 import * as Mousetrap from "mousetrap";
-import { Preferences } from "userscripter/preference-handling";
-import P from "preferences";
+
 import { Action } from "src/actions";
 import { clickOn } from "src/operations/logic/click";
+import P from "src/preferences";
+import { Preferences } from "src/userscripter/preference-handling";
 
 const keyboardShortcuts = Preferences.get(P.keyboard);
 

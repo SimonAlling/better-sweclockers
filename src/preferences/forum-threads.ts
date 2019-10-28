@@ -1,9 +1,9 @@
-import * as CONFIG from "globals-config";
-import * as T from "src/text";
 import {
     BooleanPreference,
     StringPreference,
 } from "ts-preferences";
+
+import * as T from "src/text";
 
 const quote_signature_buttons = new BooleanPreference({
     key: "quote_signature_buttons",

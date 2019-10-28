@@ -1,16 +1,18 @@
 import { STYLE_PROOFREADING } from "@alling/better-sweclockers-lib";
-import { StylesheetModule } from "lib/stylesheet-manager";
-import { Preferences, isFalse } from "userscripter/preference-handling";
-import P from "preferences";
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import SELECTOR from "selectors";
-import { isOnBSCPreferencesPage, isInEditMode, isReadingThread } from "./environment";
-import { hideById, hideByClass, hideBySelector } from "./styles/hide";
-import { timeIsWithin } from "./time"
 import * as ms from "milliseconds";
-import filterNewInForum from "./styles/interests-new-in-forum";
-import threadStatusTooltips from "./styles/thread-status-tooltips-logic";
+
+import { StylesheetModule } from ".userscripter/lib/stylesheet-manager";
+
+import { isInEditMode, isOnBSCPreferencesPage, isReadingThread } from "src/environment";
+import * as CONFIG from "src/globals-config";
+import * as SITE from "src/globals-site";
+import P from "src/preferences";
+import SELECTOR from "src/selectors";
+import { hideByClass, hideById, hideBySelector } from "src/styles/hide";
+import filterNewInForum from "src/styles/interests-new-in-forum";
+import threadStatusTooltips from "src/styles/thread-status-tooltips-logic";
+import { timeIsWithin } from "src/time"
+import { Preferences, isFalse } from "src/userscripter/preference-handling";
 
 const ALWAYS: boolean = true;
 
@@ -23,59 +25,59 @@ function isTimeForMaintenance() {
 const STYLESHEET_MODULES: readonly StylesheetModule[] = [
     {
         condition: ALWAYS,
-        css: require("styles/stylesheet"),
+        css: require("./styles/stylesheet"),
     },
     {
         condition: ALWAYS,
-        css: require("styles/dark-theme-toggle"),
+        css: require("./styles/dark-theme-toggle"),
     },
     {
         condition: ALWAYS,
-        css: require("styles/doge"),
+        css: require("./styles/doge"),
     },
     {
         condition: isOnBSCPreferencesPage,
-        css: require("styles/preferences"),
+        css: require("./styles/preferences"),
     },
     {
         condition: Preferences.get(P.general._.lock_heights),
-        css: require("styles/lock-heights"),
+        css: require("./styles/lock-heights"),
     },
     {
         condition: Preferences.get(P.general._.compact_layout),
-        css: require("styles/compact-layout"),
+        css: require("./styles/compact-layout"),
     },
     {
         condition: Preferences.get(P.general._.adaptive_width),
-        css: require("styles/adaptive-width"),
+        css: require("./styles/adaptive-width"),
     },
     {
         condition: Preferences.get(P.forum_threads._.improved_pagination_buttons),
-        css: require("styles/improved-pagination-buttons"),
+        css: require("./styles/improved-pagination-buttons"),
     },
     {
         condition: Preferences.get(P.general._.improved_corrections),
-        css: require("styles/improved-corrections"),
+        css: require("./styles/improved-corrections"),
     },
     {
         condition: Preferences.get(P.general._.improved_corrections) && Preferences.get(P.general._.adaptive_width),
-        css: require("styles/adaptive-width-corrections"),
+        css: require("./styles/adaptive-width-corrections"),
     },
     {
         condition: Preferences.get(P.general._.insert_web_search_button),
-        css: require("styles/web-search-button"),
+        css: require("./styles/web-search-button"),
     },
     {
         condition: Preferences.get(P.forum_threads._.highlight_own_posts),
-        css: require("styles/highlight-own-posts"),
+        css: require("./styles/highlight-own-posts"),
     },
     {
         condition: ALWAYS,
-        css: require("styles/editing-tools"),
+        css: require("./styles/editing-tools"),
     },
     {
         condition: ALWAYS,
-        css: require("styles/textarea-size-toggle"),
+        css: require("./styles/textarea-size-toggle"),
     },
     {
         condition: isInEditMode && Preferences.get(P.edit_mode._.monospace_font),
@@ -91,11 +93,11 @@ const STYLESHEET_MODULES: readonly StylesheetModule[] = [
     },
     {
         condition: isInEditMode && Preferences.get(P.edit_mode._.autosave_draft),
-        css: require("styles/autosave-draft"),
+        css: require("./styles/autosave-draft"),
     },
     {
         condition: Preferences.get(P.advanced._.improved_image_controls),
-        css: require("styles/improved-image-controls"),
+        css: require("./styles/improved-image-controls"),
     },
     {
         condition: ALWAYS,
@@ -103,7 +105,7 @@ const STYLESHEET_MODULES: readonly StylesheetModule[] = [
     },
     {
         condition: Preferences.get(P.general._.replace_followed_threads_link),
-        css: require("styles/replace-followed-threads-link"),
+        css: require("./styles/replace-followed-threads-link"),
     },
     {
         condition: isInEditMode && Preferences.get(P.advanced._.proofread_forum_posts),
@@ -111,7 +113,7 @@ const STYLESHEET_MODULES: readonly StylesheetModule[] = [
     },
     {
         condition: !isOnBSCPreferencesPage && isTimeForMaintenance() && Preferences.get(P.advanced._.down_for_maintenance),
-        css: require("styles/down-for-maintenance"),
+        css: require("./styles/down-for-maintenance"),
     },
     {
         condition: Preferences.get(P.advanced._.custom_css_enable),
@@ -119,7 +121,7 @@ const STYLESHEET_MODULES: readonly StylesheetModule[] = [
     },
     {
         condition: Preferences.get(P.general._.thread_status_tooltips),
-        css: require("styles/thread-status-tooltips"),
+        css: require("./styles/thread-status-tooltips"),
     },
     {
         condition: Preferences.get(P.general._.thread_status_tooltips),
@@ -193,7 +195,7 @@ const STYLESHEET_MODULES: readonly StylesheetModule[] = [
     },
     {
         condition: isFalse(Preferences.get(P.customize_content._.footer)),
-        css: require("styles/hide-footer"),
+        css: require("./styles/hide-footer"),
     },
 ];
 

@@ -1,10 +1,18 @@
-import { logError, logWarning } from "userscripter/logging";
-import * as TSPreferences from "ts-preferences";
-import { Status, Response, RequestSummary, PreferencesInterface, AllowedTypes, Preference } from "ts-preferences";
-import * as CONFIG from "globals-config";
-import PREFERENCES from "preferences";
+import {
+    AllowedTypes,
+    Preference,
+    PreferencesInterface,
+    RequestSummary,
+    Response,
+    Status,
+    init,
+} from "ts-preferences";
 
-export const Preferences = TSPreferences.init(PREFERENCES, CONFIG.USERSCRIPT_ID, responseHandler);
+import * as CONFIG from "src/globals-config";
+import P from "src/preferences";
+import { logError, logWarning } from "src/userscripter/logging";
+
+export const Preferences = init(P, CONFIG.USERSCRIPT_ID, responseHandler);
 
 export function isFalse(x: boolean): boolean {
     return x === false;

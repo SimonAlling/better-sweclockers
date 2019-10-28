@@ -1,5 +1,4 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
+import * as CONFIG from "src/globals-config";
 
 export default () => {
     CONFIG.FOCUSABLE_ELEMENTS.forEach(tagName => {

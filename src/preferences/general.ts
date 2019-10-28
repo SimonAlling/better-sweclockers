@@ -1,11 +1,12 @@
-import * as T from "../text";
-import { SearchEngine } from "src/search-engines";
 import {
     BooleanPreference,
     IntegerPreference,
     MultichoicePreference,
     StringPreference,
 } from "ts-preferences";
+
+import { SearchEngine } from "src/search-engines";
+import * as T from "src/text";
 
 export default <const> {
     lock_heights: new BooleanPreference({

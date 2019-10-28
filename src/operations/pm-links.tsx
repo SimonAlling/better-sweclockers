@@ -1,10 +1,11 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
 import { h, render } from "preact";
-import { only, isNumber } from "ts-type-guards";
-import { FAILURE } from "lib/operation-manager";
+import { isNumber, only } from "ts-type-guards";
 
-const ICON = require("src/icons/pm.svg");
+import { FAILURE } from ".userscripter/lib/operation-manager";
+
+import * as CONFIG from "src/globals-config";
+import * as SITE from "src/globals-site";
+import ICON from "src/icons/pm.svg";
 
 export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);

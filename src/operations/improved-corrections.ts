@@ -1,7 +1,7 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import { isHTMLElement } from "lib/html";
-import { withMaybe } from "../utilities";
+import { isHTMLElement } from ".userscripter/lib/html";
+
+import * as SITE from "src/globals-site";
+import { withMaybe } from "src/utilities";
 
 export default (e: { correctionsLink: HTMLElement }) => {
     e.correctionsLink.addEventListener("click", event => {

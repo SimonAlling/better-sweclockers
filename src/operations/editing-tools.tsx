@@ -1,13 +1,16 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import * as T from "../text";
-import { h, render } from "preact";
 import classNames from "classnames";
-import { compose } from "lib/utilities";
-import { Preferences } from "userscripter/preference-handling";
-import P from "preferences";
-import { Position } from "../preferences/editing-tools";
-import { Button, BUTTON, BUTTONS, COLORS, tagButton, insertButton, colorButton } from "./logic/editing-tools";
+import { h, render } from "preact";
+
+import { compose } from ".userscripter/lib/utilities";
+
+import * as CONFIG from "src/globals-config";
+import * as SITE from "src/globals-site";
+import P from "src/preferences";
+import { Position } from "src/preferences/editing-tools";
+import * as T from "src/text";
+import { Preferences } from "src/userscripter/preference-handling";
+
+import { BUTTON, BUTTONS, Button, COLORS, colorButton, insertButton, tagButton } from "./logic/editing-tools";
 
 export default (e: { textarea: HTMLElement }) => {
     const textarea = e.textarea;

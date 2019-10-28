@@ -1,11 +1,12 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import * as T from "text";
 import { render } from "preact";
-import { generalButton, Icon } from "./logic/editing-tools";
+
+import * as SITE from "src/globals-site";
+import P from "src/preferences";
 import { SearchEngine, searchURL, siteFilter } from "src/search-engines";
-import { Preferences } from "userscripter/preference-handling";
-import P from "preferences";
+import * as T from "src/text";
+import { Preferences } from "src/userscripter/preference-handling";
+
+import { Icon, generalButton } from "./logic/editing-tools";
 
 export default (e: {
     searchFieldInput: HTMLElement,

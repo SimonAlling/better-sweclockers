@@ -1,44 +1,50 @@
-import { Operation, DependentOperation, IndependentOperation } from "lib/operation-manager";
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import SELECTOR from "./selectors";
-import { Preferences, isFalse } from "userscripter/preference-handling";
-import P from "preferences";
+import {
+    DependentOperation,
+    IndependentOperation,
+    Operation,
+} from ".userscripter/lib/operation-manager";
+
 import {
     isInEditMode,
+    isInEditMode_forum,
     isInEditMode_market,
     isInEditMode_marketContact,
-    isInEditMode_forum,
     isOnBSCPreferencesPage,
     isOnSweclockersSettingsPage,
     isReadingEditorialContent,
     isReadingThread,
     mayHaveJustSubmittedForumPost,
-} from "./environment";
-import insertPreferencesMenu from "./operations/preferences-menu";
-import insertPreferencesLink from "./operations/preferences-link";
-import insertPreferencesShortcut from "./operations/preferences-shortcut";
-import insertWebSearchButton from "./operations/web-search-button";
+} from "src/environment";
+import * as CONFIG from "src/globals-config";
+import * as SITE from "src/globals-site";
+import P from "src/preferences";
+import SELECTOR from "src/selectors";
+import { Preferences, isFalse } from "src/userscripter/preference-handling";
+
+import * as autosaveDraft from "./operations/autosave-draft";
+import manageCaretPosition from "./operations/caret-position";
+import * as DarkTheme from "./operations/dark-theme";
 import insertEditingTools from "./operations/editing-tools";
-import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
-import insertTableToolbarButton from "./operations/table-toolbar-button";
-import insertTextareaSizeToggle from "./operations/textarea-size-toggle";
-import insertLinkToTop from "./operations/link-to-top";
-import insertPMLinks from "./operations/pm-links";
 import fixMobileLinks from "./operations/fix-mobile-links";
-import insertQuoteSignatureButtons from "./operations/quote-signature-buttons";
+import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
+import adaptCorrectionsLink from "./operations/improved-corrections";
+import * as keyboardShortcutsEditMode from "./operations/keyboard-shortcuts/edit-mode";
+import insertLinkToTop from "./operations/link-to-top";
+import performMousetrapPreparations from "./operations/mousetrap-preparations";
+import insertPMLinks from "./operations/pm-links";
+import insertPreferencesLink from "./operations/preferences-link";
+import insertPreferencesMenu from "./operations/preferences-menu";
+import insertPreferencesShortcut from "./operations/preferences-shortcut";
 import preventAccidentalSignout from "./operations/prevent-accidental-signout";
 import * as preventAccidentalUnload from "./operations/prevent-accidental-unload";
-import adaptCorrectionsLink from "./operations/improved-corrections";
-import replaceFollowedThreadsLink from "./operations/replace-followed-threads-link";
-import rememberLocationInMarket from "./operations/remember-location-in-market";
-import manageCaretPosition from "./operations/caret-position";
-import removeMobileSiteDisclaimer from "./operations/remove-mobile-site-disclaimer";
-import * as autosaveDraft from "./operations/autosave-draft";
-import * as keyboardShortcutsEditMode from "./operations/keyboard-shortcuts/edit-mode";
-import performMousetrapPreparations from "./operations/mousetrap-preparations";
-import * as DarkTheme from "./operations/dark-theme";
 import * as Proofreading from "./operations/proofreading";
+import insertQuoteSignatureButtons from "./operations/quote-signature-buttons";
+import rememberLocationInMarket from "./operations/remember-location-in-market";
+import removeMobileSiteDisclaimer from "./operations/remove-mobile-site-disclaimer";
+import replaceFollowedThreadsLink from "./operations/replace-followed-threads-link";
+import insertTableToolbarButton from "./operations/table-toolbar-button";
+import insertTextareaSizeToggle from "./operations/textarea-size-toggle";
+import insertWebSearchButton from "./operations/web-search-button";
 
 const ALWAYS: boolean = true;
 

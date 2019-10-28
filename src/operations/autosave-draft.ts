@@ -1,14 +1,17 @@
-import * as SITE from "../globals-site";
-import * as CONFIG from "../globals-config";
-import * as T from "../text";
-import { render } from "preact";
 import * as ms from "milliseconds";
-import { isNumber, isString } from "ts-type-guards";
+import { render } from "preact";
 import * as Storage from "ts-storage";
-import { FAILURE } from "lib/operation-manager";
-import { log, logError } from "../userscripter/logging";
-import { generalButton } from "./logic/editing-tools";
+import { isNumber, isString } from "ts-type-guards";
+
+import { FAILURE } from ".userscripter/lib/operation-manager";
+
+import * as CONFIG from "src/globals-config";
+import * as SITE from "src/globals-site";
+import * as T from "src/text";
+import { log, logError } from "src/userscripter/logging";
+
 import { isCleanSlate_reply } from "./edit-mode";
+import { generalButton } from "./logic/editing-tools";
 
 /*
 If the user visits a linked post and tried to submit a post "just now", we will

@@ -1,7 +1,6 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
+import "css.escape"; // It is side-effecty.
 
-require("css.escape");
+import * as SITE from "src/globals-site";
 
 const C = SITE.CLASS;
 

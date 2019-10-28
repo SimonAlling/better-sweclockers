@@ -1,5 +1,4 @@
-import * as SITE from "../globals-site";
-import * as CONFIG from "../globals-config";
+import * as SITE from "src/globals-site";
 
 // Examples include `@Alling: `, `@Alling:` and `@"---": `.
 const REGEX_POSSIBLY_CLEAN_SLATE_REPLY = /^@("?)([^"]+)\1: ?$/;

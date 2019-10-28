@@ -1,5 +1,6 @@
-import { r } from "src/utilities";
 import { isString } from "ts-type-guards";
+
+import { r } from "src/utilities";
 
 export function hideById(i: string): string {
     return hideBySelector("#" + i);

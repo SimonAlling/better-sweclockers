@@ -1,5 +1,4 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
+import * as SITE from "src/globals-site";
 
 export default (e: { textarea: HTMLElement }) => {
     const textarea = e.textarea as HTMLTextAreaElement;

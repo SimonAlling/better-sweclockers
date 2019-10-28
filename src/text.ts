@@ -1,11 +1,14 @@
-import * as SITE from "./globals-site";
-import * as CONFIG from "./globals-config";
-import { assertUnreachable } from "./utilities";
-import { InsertButtonDescription } from "./types";
-import { Action } from "./actions";
-import { SearchEngine } from "./search-engines";
-import * as DarkTheme from "./dark-theme";
+// This file cannot contain Webpack-resolved imports (e.g. "src/foo").
+
 import * as BB from "bbcode-tags";
+
+import { Action } from "./actions";
+import * as DarkTheme from "./dark-theme";
+import * as CONFIG from "./globals-config";
+import * as SITE from "./globals-site";
+import { SearchEngine } from "./search-engines";
+import { InsertButtonDescription } from "./types";
+import { assertUnreachable } from "./utilities";
 
 export function action(a: Action): string {
     switch (a) {

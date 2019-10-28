@@ -1,6 +1,6 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import { FAILURE, SUCCESS } from "lib/operation-manager";
+import { FAILURE, SUCCESS } from ".userscripter/lib/operation-manager";
+
+import * as SITE from "src/globals-site";
 
 export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);

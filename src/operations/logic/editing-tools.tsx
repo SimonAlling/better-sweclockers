@@ -1,13 +1,15 @@
-import * as SITE from "src/globals-site";
-import * as CONFIG from "src/globals-config";
-import * as T from "src/text";
-import { h } from "preact";
-import { lines, unlines } from "lines-unlines";
 import * as BB from "bbcode-tags";
-import { r, fromMaybeUndefined } from "src/utilities";
-import { Action, CursorBehavior, wrapIn, wrap_tag, wrap_verbatim, selectedTextIn, insertIn, insert, placeCursorIn } from "./textarea";
+import { lines, unlines } from "lines-unlines";
+import { h } from "preact";
+
+import * as CONFIG from "src/globals-config";
+import * as SITE from "src/globals-site";
+import { SearchEngine, searchURL } from "src/search-engines";
+import * as T from "src/text";
 import { InsertButtonDescription } from "src/types";
-import { SearchEngine, searchURL } from "search-engines";
+import { fromMaybeUndefined, r } from "src/utilities";
+
+import { Action, CursorBehavior, insert, insertIn, placeCursorIn, selectedTextIn, wrapIn, wrap_tag, wrap_verbatim } from "./textarea";
 
 export const BUTTON = {
     nbsps: generalButton({

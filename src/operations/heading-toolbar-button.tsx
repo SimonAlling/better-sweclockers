@@ -1,7 +1,8 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import * as T from "../text";
 import { render } from "preact";
+
+import * as SITE from "src/globals-site";
+import * as T from "src/text";
+
 import { toolbarButton } from "./logic/editing-tools";
 import { wrap_tag } from "./logic/textarea";
 

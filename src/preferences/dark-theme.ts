@@ -1,13 +1,15 @@
-import * as CONFIG from "globals-config";
-import * as T from "../text";
 import * as ms from "milliseconds";
 import {
     BooleanPreference,
-    MultichoicePreference,
     IntegerRangePreference,
+    MultichoicePreference,
 } from "ts-preferences";
-import { TimePreference } from "./TimePreference";
+
 import { Source } from "src/dark-theme";
+import * as CONFIG from "src/globals-config";
+import * as T from "src/text";
+
+import { TimePreference } from "./TimePreference";
 
 const auto = new BooleanPreference({
     key: "dark_theme_auto",

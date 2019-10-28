@@ -1,7 +1,8 @@
-import * as T from "../text";
 import {
     BooleanPreference,
 } from "ts-preferences";
+
+import * as T from "src/text";
 
 export default <const> {
     news_ticker: new BooleanPreference({

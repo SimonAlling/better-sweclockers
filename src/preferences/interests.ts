@@ -1,7 +1,6 @@
-import * as T from "../text";
-import {
-    ListPreference,
-} from "ts-preferences";
+import { ListPreference } from "ts-preferences";
+
+import * as T from "src/text";
 
 export default <const> {
     uninteresting_subforums: new ListPreference<number>({

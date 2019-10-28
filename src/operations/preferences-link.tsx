@@ -1,6 +1,7 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
 import { h, render } from "preact";
+
+import * as CONFIG from "src/globals-config";
+import * as SITE from "src/globals-site";
 
 export default (e: { settingsNavigation: HTMLElement }) => {
     const li = (

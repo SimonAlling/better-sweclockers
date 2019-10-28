@@ -1,14 +1,15 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import * as T from "../text";
+import * as ms from "milliseconds";
 import { h, render } from "preact";
 import { isNull } from "ts-type-guards";
-import * as ms from "milliseconds";
-import { Preferences } from "userscripter/preference-handling";
-import P from "preferences";
+
 import { darkThemeUrl, darkThemeUrlBackup } from "src/dark-theme";
-import { timeIsWithin } from "../time";
-import { withMaybe } from "../utilities";
+import * as CONFIG from "src/globals-config";
+import P from "src/preferences";
+import * as T from "src/text";
+import { timeIsWithin } from "src/time";
+import { Preferences } from "src/userscripter/preference-handling";
+import { withMaybe } from "src/utilities";
+
 import { tab } from "./logic/topMenuTab";
 
 export function insertToggle(e: { topMenu: HTMLElement }): void {

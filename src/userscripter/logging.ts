@@ -1,5 +1,6 @@
-import Logger from "lib/logger";
-import * as CONFIG from "globals-config";
+import Logger from ".userscripter/lib/logger";
+
+import * as CONFIG from "src/globals-config";
 
 const prefixedLogger = Logger(`[${CONFIG.USERSCRIPT_NAME}]`);
 export const log = prefixedLogger.log;

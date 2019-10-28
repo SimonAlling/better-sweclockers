@@ -1,10 +1,11 @@
-import * as StylesheetManager from "lib/stylesheet-manager";
-import * as CONFIG from "globals-config";
-import STYLESHEET_MODULES from "styles";
-import "./polyfills"; // It is side-effecty.
-import { log, logWarning } from "userscripter/logging";
-import { hasAlreadyRun } from "userscripter/misc";
-import { startOperations, stopOperations } from "userscripter/operation-handling";
+import * as StylesheetManager from ".userscripter/lib/stylesheet-manager";
+
+import * as CONFIG from "src/globals-config";
+import "src/polyfills"; // It is side-effecty.
+import STYLESHEET_MODULES from "src/styles";
+import { log, logWarning } from "src/userscripter/logging";
+import { hasAlreadyRun } from "src/userscripter/misc";
+import { startOperations, stopOperations } from "src/userscripter/operation-handling";
 
 
 // Actions that can and should be performed before the DOM is loaded, such as inserting CSS:

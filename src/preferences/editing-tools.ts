@@ -1,12 +1,13 @@
-import * as CONFIG from "globals-config";
-import * as T from "../text";
+import { render } from "preact";
 import {
     BooleanPreference,
     MultichoicePreference,
 } from "ts-preferences";
-import { render } from "preact";
-import { Button, BUTTONS, insertButton } from "../operations/logic/editing-tools";
-import { SearchEngine } from "search-engines";
+
+import * as CONFIG from "src/globals-config";
+import { BUTTONS, Button, insertButton } from "src/operations/logic/editing-tools";
+import { SearchEngine } from "src/search-engines";
+import * as T from "src/text";
 
 function buttonsDescription(buttons: readonly Button[]): string {
     const textarea = document.createElement("textarea");

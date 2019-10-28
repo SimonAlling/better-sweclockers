@@ -1,31 +1,31 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import SELECTOR from "selectors";
-import * as T from "text";
-import { is, isString, only, isNull } from "ts-type-guards";
-import { h, Component } from 'preact';
 import classNames from "classnames";
-import { logWarning, logError } from "userscripter/logging";
-import P from "preferences";
-import { Preferences, isFalse } from "userscripter/preference-handling";
+import { Component, h } from "preact";
 import {
     AllowedTypes,
-    FromString,
-    PreferencesObject,
-    PreferenceGroup,
-    Preference,
     BooleanPreference,
-    IntegerPreference,
     DoublePreference,
-    ListPreference,
-    StringPreference,
-    IntegerRangePreference,
     DoubleRangePreference,
+    FromString,
+    IntegerPreference,
+    IntegerRangePreference,
+    ListPreference,
     MultichoicePreference,
+    Preference,
+    PreferenceGroup,
+    PreferencesObject,
+    StringPreference,
 } from "ts-preferences";
-import { TimePreference } from "./preferences/TimePreference";
-import { EditingTools, getEditingToolsConfig } from "operations/editing-tools";
-import { subscribe, unsubscribe } from "userscripter/preference-handling";
+import { is, isNull, isString, only } from "ts-type-guards";
+
+import * as CONFIG from "src/globals-config";
+import * as SITE from "src/globals-site";
+import { EditingTools, getEditingToolsConfig } from "src/operations/editing-tools";
+import P from "src/preferences";
+import { TimePreference } from "src/preferences/TimePreference";
+import SELECTOR from "src/selectors";
+import * as T from "src/text";
+import { logError, logWarning } from "src/userscripter/logging";
+import { Preferences, isFalse, subscribe, unsubscribe } from "src/userscripter/preference-handling";
 
 const PID = <T extends AllowedTypes>(p: Preference<T>) => CONFIG.ID.preferenceIdPrefix + p.key;
 

@@ -1,11 +1,12 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import * as T from "../text";
-import { render } from "preact";
+import { empty, end, start } from "bbcode-tags";
 import { unlines } from "lines-unlines";
-import { start, end, empty } from "bbcode-tags";
+import { render } from "preact";
+
+import * as SITE from "src/globals-site";
+import * as T from "src/text";
+
 import { toolbarButton } from "./logic/editing-tools";
-import { insert, indent } from "./logic/textarea";
+import { indent, insert } from "./logic/textarea";
 
 const enum Headings { NONE, FIRST, ALL }
 

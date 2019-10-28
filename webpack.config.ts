@@ -167,10 +167,10 @@ export default (env: object, argv: {
             ],
         },
         resolve: {
-            modules: ["node_modules", path.resolve(__dirname, IO.DIR_SOURCE), path.resolve(__dirname, IO.DIR_LIBRARY)],
+            modules: ["node_modules"],
             alias: {
                 src: path.resolve(__dirname, IO.DIR_SOURCE),
-                lib: path.resolve(__dirname, IO.DIR_LIBRARY),
+                ".userscripter/lib": path.resolve(__dirname, IO.DIR_LIBRARY),
             },
             extensions: EXTENSIONS.map(e => "."+e).concat(["*"]),
         },

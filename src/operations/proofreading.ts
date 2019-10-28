@@ -1,10 +1,12 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import SELECTOR from "../selectors";
-import { processNode, CLASS as BSCLibClass, STYLE_PROOFREADING } from "@alling/better-sweclockers-lib";
-import { insertCSS, byID } from "lib/html";
-import { removeById } from "../userscripter/misc";
-import { withMaybe } from "../utilities";
+import { CLASS as BSCLibClass, STYLE_PROOFREADING, processNode } from "@alling/better-sweclockers-lib";
+
+import { byID, insertCSS } from ".userscripter/lib/html";
+
+import * as CONFIG from "src/globals-config";
+import * as SITE from "src/globals-site";
+import SELECTOR from "src/selectors";
+import { removeById } from "src/userscripter/misc";
+import { withMaybe } from "src/utilities";
 
 const CONTEXT_CHARS = 10; // before and after mistake
 // If a previous and/or next sibling is not found, look outside these elements:

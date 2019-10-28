@@ -1,7 +1,9 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import * as T from "../text";
 import { render } from "preact";
+
+import * as CONFIG from "src/globals-config";
+import * as SITE from "src/globals-site";
+import * as T from "src/text";
+
 import { tab } from "./logic/topMenuTab";
 
 export default (e: { topMenu: HTMLElement }) => {

@@ -1,5 +1,8 @@
+// This file cannot contain Webpack-resolved imports (e.g. "src/foo").
+
 import USERSCRIPT_CONFIG from "../config/userscript";
-import { r, escapeRegex } from "./utilities";
+
+import { escapeRegex, r } from "./utilities";
 
 export const NAME: string = USERSCRIPT_CONFIG.sitename;
 export const HOSTNAME: string = USERSCRIPT_CONFIG.hostname;

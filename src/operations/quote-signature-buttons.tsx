@@ -1,13 +1,15 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import SELECTOR from "selectors";
-import * as T from "text";
 import { h, render } from "preact";
-import { only, isNull } from "ts-type-guards";
-import { isHTMLElement } from "lib/html";
-import { logWarning } from "userscripter/logging";
-import { Preferences } from "userscripter/preference-handling";
-import P from "preferences";
+import { isNull, only } from "ts-type-guards";
+
+import { isHTMLElement } from ".userscripter/lib/html";
+
+import * as CONFIG from "src/globals-config";
+import * as SITE from "src/globals-site";
+import P from "src/preferences";
+import SELECTOR from "src/selectors";
+import * as T from "src/text";
+import { logWarning } from "src/userscripter/logging";
+import { Preferences } from "src/userscripter/preference-handling";
 
 const userMessage = Preferences.get(P.forum_threads._.quote_signature_message);
 

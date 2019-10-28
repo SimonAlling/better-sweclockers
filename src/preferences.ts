@@ -1,15 +1,15 @@
-import * as SITE from "globals-site";
-import * as CONFIG from "globals-config";
-import * as T from "./text";
-import generalPreferences from "./preferences/general";
+import * as CONFIG from "src/globals-config";
+import * as T from "src/text";
+
+import advancedPreferences from "./preferences/advanced";
+import customizeContentPreferences from "./preferences/customize-content";
 import darkThemePreferences from "./preferences/dark-theme";
-import forumThreadsPreferences from "./preferences/forum-threads";
 import editModePreferences from "./preferences/edit-mode";
 import editingToolsPreferences from "./preferences/editing-tools";
-import advancedPreferences from "./preferences/advanced";
-import keyboardPreferences from "./preferences/keyboard";
-import customizeContentPreferences from "./preferences/customize-content";
+import forumThreadsPreferences from "./preferences/forum-threads";
+import generalPreferences from "./preferences/general";
 import interestsPreferences from "./preferences/interests";
+import keyboardPreferences from "./preferences/keyboard";
 
 export default <const> {
     general: {
