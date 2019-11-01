@@ -12,7 +12,7 @@ export function timeIsWithin(interval: Readonly<{ start: number, end: number }>)
 }
 
 function timeOfDay(date: Date): number {
-    let startOfToday = new Date();
+    const startOfToday = new Date();
     startOfToday.setHours(0);
     startOfToday.setMinutes(0);
     startOfToday.setSeconds(0);
