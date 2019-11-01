@@ -7,8 +7,8 @@ import P from "src/preferences";
 import { Preferences } from "src/userscripter/preference-handling";
 
 export default (e: {
-    textarea: HTMLElement
-    previewButton: HTMLElement
+    textarea: HTMLElement,
+    previewButton: HTMLElement,
 }) => {
     // Caret position is only saved when the user requests a preview; it is
     // wiped on any other page unload.

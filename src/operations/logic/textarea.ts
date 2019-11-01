@@ -4,26 +4,26 @@ import { isNumber } from "ts-type-guards";
 import * as CONFIG from "src/globals-config";
 
 type InsertionResult = Readonly<{
-    textareaContent: string
-    startOfInserted: number
-    endOfInserted: number
+    textareaContent: string,
+    startOfInserted: number,
+    endOfInserted: number,
 }>
 
 type Insertion = Readonly<{
-    string: string
-    replace: boolean
+    string: string,
+    replace: boolean,
 }>
 
 type WrapAction = Readonly<{
-    cursor: CursorBehavior
-    before: string
-    after: string
+    cursor: CursorBehavior,
+    before: string,
+    after: string,
 }>
 
 type TagWrapAction = Readonly<{
-    tag: string
-    parameterized: boolean
-    block: boolean
+    tag: string,
+    parameterized: boolean,
+    block: boolean,
 }>
 
 export type Action = (textarea: HTMLTextAreaElement) => void

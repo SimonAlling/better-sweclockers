@@ -4,8 +4,8 @@ import { Action } from "src/actions";
 import * as T from "src/text";
 
 export type ShortcutEntry = Readonly<{
-    shortcut: string
-    action: Action
+    shortcut: string,
+    action: Action,
 }>
 
 export default new ListPreference<ShortcutEntry>({

@@ -104,22 +104,22 @@ export const COLORS: ReadonlyArray<string> = [
     "green",
     "aqua",
     "blue",
-    "magenta"
+    "magenta",
 ];
 
 export type Icon = Readonly<{ type: "RAW" | "URL", image: string }>
 
 type ButtonDescription = Readonly<{
-    label?: string
-    tooltip?: string
-    class?: string
-    tag: string
-    parameterized?: boolean
-    block?: boolean
-    icon?: Icon
-    cursor?: CursorBehavior
-    action: Action
-    style?: string
+    label?: string,
+    tooltip?: string,
+    class?: string,
+    tag: string,
+    parameterized?: boolean,
+    block?: boolean,
+    icon?: Icon,
+    cursor?: CursorBehavior,
+    action: Action,
+    style?: string,
 }>
 
 type TagButtonDescription = Pick<ButtonDescription, "tag" | "label" | "tooltip" | "class" | "icon" | "parameterized" | "block">

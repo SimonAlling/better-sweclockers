@@ -343,12 +343,12 @@ function isDefined<T>(x: T | undefined): x is T {
 
 type InterestsState = {
     fetch: {
-        status: "success", categories: readonly ForumCategory[]
+        status: "success", categories: readonly ForumCategory[],
     } | {
-        status: "loading"
+        status: "loading",
     } | {
-        status: "failure"
-    }
+        status: "failure",
+    },
 }
 
 class Interests extends Component<{ p: ListPreference<number> }, InterestsState> {
