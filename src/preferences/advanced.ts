@@ -15,7 +15,7 @@ const custom_css_enable = new BooleanPreference({
     description: T.preferences.advanced.custom_css_enable_description,
 });
 
-export default <const> {
+export default {
     prevent_accidental_signout: new BooleanPreference({
         key: "prevent_accidental_signout",
         default: true,
@@ -87,4 +87,4 @@ export default <const> {
             },
         ],
     }),
-}
+} as const;

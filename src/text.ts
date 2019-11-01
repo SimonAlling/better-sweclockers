@@ -32,7 +32,7 @@ const editing_tools_name = `Utökade formateringsverktyg`;
 
 const OBVIOUS = `Som det låter`;
 
-export const general = <const> {
+export const general = {
     seconds: `sekunder`,
     loading: `Laddar …`,
     dark_theme_toggle_tooltip_on: darkThemeBy,
@@ -55,9 +55,9 @@ export const general = <const> {
     tooltip_table: `Tabell`,
     down_for_maintenance,
     my_posts,
-};
+} as const;
 
-export const preferences = <const> {
+export const preferences = {
     NO_LABEL: ``,
     title: `Inställningar för Better SweClockers`,
     back_to_sweclockers: `Tillbaka till ${SITE.NAME}`,
@@ -228,9 +228,9 @@ export const preferences = <const> {
     interests: {
         label: `Intressen`,
     },
-};
+} as const;
 
-export const editing_tools = <const> {
+export const editing_tools = {
     label_size: `<big>A</big><small>A</small>`,
     tooltip_size: `Textstorlek`,
     tooltip_color: `Textfärg`,
@@ -264,7 +264,7 @@ export const editing_tools = <const> {
     tooltip_split_quote: `Splitta ett citat mitt i`,
     label_edit: `Edit`,
     tooltip_edit: `Infoga en redigeringsnotis`,
-};
+} as const;
 
 export const special_characters: readonly InsertButtonDescription[] = [
     { insert: "\u2011", tooltip: "Hårt bindestreck (tillåter ej radbrytning)" },
@@ -286,7 +286,7 @@ export const special_characters: readonly InsertButtonDescription[] = [
     { insert: "→", tooltip: "Högerpil" },
 ];
 
-export const thread_status = <const> {
+export const thread_status = {
     // https://www.sweclockers.com/forum/trad/1367915-faq-tradikoner-och-deras-betydelser
     // NOTE! Apostrophes must be (double-)escaped because these strings are used as CSS `content` values. For example:
     // editors_choice: `Editor\\'s choice`,
@@ -298,4 +298,4 @@ export const thread_status = <const> {
     locked: `Låst`, // Hänglås
     sticky: `Klistrad`, // Knappnål
     separator: "  •  ",
-};
+} as const;

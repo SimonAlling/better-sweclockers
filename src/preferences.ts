@@ -11,7 +11,7 @@ import generalPreferences from "./preferences/general";
 import interestsPreferences from "./preferences/interests";
 import keyboardPreferences from "./preferences/keyboard";
 
-export default <const> {
+export default {
     general: {
         label: T.preferences.general.label,
         _: generalPreferences,
@@ -46,4 +46,4 @@ export default <const> {
         label: T.preferences.interests.label,
         _: interestsPreferences,
     },
-};
+} as const;

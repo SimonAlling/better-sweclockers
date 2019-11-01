@@ -24,9 +24,9 @@ const dependencies_auto = [
         preference: auto,
         condition: (v: boolean) => v,
     },
-];
+] as const;
 
-export default <const> {
+export default {
     active: new BooleanPreference({
         key: "dark_theme_active",
         default: false,
@@ -97,4 +97,4 @@ export default <const> {
         label: T.preferences.dark_theme.use_backup,
         description: T.preferences.dark_theme.use_backup_description,
     }),
-}
+} as const;

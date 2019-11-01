@@ -1,4 +1,4 @@
-export default <const> {
+export default {
     id: "better-sweclockers",
     name: "Better SweClockers",
     version: "3.11.0",
@@ -9,4 +9,4 @@ export default <const> {
     namespace: "simonalling.se",
     runAt: "document-start",
     hostedAt: "https://simonalling.github.io/userscripts/",
-};
+} as const;

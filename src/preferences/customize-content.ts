@@ -4,7 +4,7 @@ import {
 
 import * as T from "src/text";
 
-export default <const> {
+export default {
     news_ticker: new BooleanPreference({
         key: "customize_content_news_ticker",
         default: true,
@@ -90,4 +90,4 @@ export default <const> {
         default: true,
         label: T.preferences.customize_content.footer,
     }),
-}
+} as const;

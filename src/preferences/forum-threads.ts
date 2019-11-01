@@ -17,7 +17,7 @@ const dependencies_quote_signature = [ {
     condition: (v: boolean) => v,
 } ];
 
-export default <const> {
+export default {
     improved_pagination_buttons: new BooleanPreference({
         key: "improved_pagination_buttons",
         default: true,
@@ -57,4 +57,4 @@ export default <const> {
         multiline: true,
         dependencies: dependencies_quote_signature,
     }),
-}
+} as const;

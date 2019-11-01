@@ -13,7 +13,7 @@ const actionButtonsQuickReply = `#quickreply .controls button`;
 
 const textareaToolbarInner = `form .toolbar .tbInner`;
 
-export default <const> {
+export default {
     textarea: "textarea#" + CSS.escape(SITE.ID.textarea),
     textareaToolbarInner,
     textareaToolbarStrikeButton: textareaToolbarInner + ` .strike`,
@@ -44,4 +44,4 @@ export default <const> {
     signinSectionOr: (selector: string) => "." + SITE.CLASS.signinSection + ", " + selector, // Order doesn't matter.
     followedThreadsLinkText: `#${SITE.ID.siteHeader} .profile .option.watched a.label>span:not(.icon)`,
     proofDialogCloseButton: "." + SITE.CLASS.proofDialog + " .cntClose",
-};
+} as const;

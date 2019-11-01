@@ -23,7 +23,7 @@ const dependencies_textarea_size_toggle = [
 
 const DEFAULT_TEXTAREA_SIZE = 360;
 
-export default <const> {
+export default {
     autosave_draft: new BooleanPreference({
         key: "autosave_draft",
         default: true,
@@ -108,4 +108,4 @@ export default <const> {
         label: T.preferences.edit_mode.remove_mobile_site_disclaimer,
         description: T.preferences.edit_mode.remove_mobile_site_disclaimer_description,
     }),
-}
+} as const;

@@ -36,7 +36,7 @@ export const enum Position {
     ABOVE = "above", BELOW = "below",
 }
 
-export default <const> {
+export default {
     enable,
     in_quick_reply_form: new BooleanPreference({
         key: "editing_tools_in_quick_reply_form",
@@ -130,4 +130,4 @@ export default <const> {
         extras: { class: CONFIG.CLASS.editingTools },
         dependencies,
     }),
-}
+} as const;

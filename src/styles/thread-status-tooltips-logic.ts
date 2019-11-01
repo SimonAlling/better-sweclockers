@@ -8,7 +8,7 @@ SweClockers uses a system where icon class names (such as "icon-41") are essenti
 For each item in this array, the number is the bitmask for that specific status.
 For example, "icon-41" means locked, unread and following (because 41 = 1 + 8 + 32).
 */
-const STATUSES = <const> [
+const STATUSES = [
     // The order here decides the order in the tooltips.
     [  1, T.thread_status.locked ],
     [  2, T.thread_status.sticky ],
@@ -17,7 +17,7 @@ const STATUSES = <const> [
     [ 64, T.thread_status.hot ],
     [ 16, T.thread_status.participated ],
     [ 32, T.thread_status.following ],
-];
+] as const;
 
 const DEFAULT_STATUS = T.thread_status.default; // when none of the other statuses match
 

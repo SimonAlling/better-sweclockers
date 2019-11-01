@@ -8,7 +8,7 @@ import {
 import { SearchEngine } from "src/search-engines";
 import * as T from "src/text";
 
-export default <const> {
+export default {
     lock_heights: new BooleanPreference({
         key: "lock_heights",
         default: true,
@@ -92,4 +92,4 @@ export default <const> {
             },
         ],
     }),
-}
+} as const;

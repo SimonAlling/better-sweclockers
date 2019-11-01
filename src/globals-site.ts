@@ -25,7 +25,7 @@ export const CORRECTIONS_DIALOG_WIDTH_PX = 384;
 export const FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX = INSIDER_COLUMN_FIXED_WIDTH_PX + PUSH_COLUMN_FIXED_WIDTH_PX;
 export const FIXED_COLUMNS_TOTAL_WIDTH_WIDE_PX = FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX + OUTSIDER_COLUMN_FIXED_WIDTH_PX;
 
-export const ID = <const> {
+export const ID = {
     siteHeader: "siteHeader",
     signoutButton: "signoutForm",
     textarea: "__laika_cnt.textarea.0",
@@ -42,9 +42,9 @@ export const ID = <const> {
     popularAtPrisjaktWidget: "wdgtSidePopularProducts",
     newTechJobsWidget: "wdgtSideMonsterJobs",
     externalNewsWidget: "wdgtSideExternalFeeds",
-};
+} as const;
 
-export const CLASS = <const> {
+export const CLASS = {
     fieldset: "s5fieldset",
     button: "button",
     link: "link",
@@ -75,9 +75,9 @@ export const CLASS = <const> {
     toolbarButtonIcon: "btnIcon",
     toolbarHeadingButton: "header",
     toolbarTableButton: "tbl",
-};
+} as const;
 
-export const PATH = <const> {
+export const PATH = {
     EDIT_MODE_FORUM: /^\/forum\/(.*\/(svara(\?citera)?|redigera)|ny-trad)/,
     EDIT_MODE_MARKET: /^\/marknad\/(.+\/(redigera|kontakt)|ny\-annons)$/,
     EDIT_MODE_MARKET_CONTACT: /^\/marknad\/.+\/kontakt$/,
@@ -99,9 +99,9 @@ export const PATH = <const> {
     SUCCESSFULLY_SUBMITTED_FORUM_POST: /^\/forum\/post\/\d+$/,
     newPrivateMessage: (userID: number) => "/pm/nytt-meddelande?rcpts=" + userID,
     editPost: (postID: number) => `/forum/post/${postID}/redigera`,
-};
+} as const;
 
-export const TAG = <const> {
+export const TAG = {
     b: "b",
     bq: "bq",
     cmd: "cmd",
@@ -124,20 +124,20 @@ export const TAG = <const> {
     u: "u",
     url: "url",
     youtube: "youtube",
-};
+} as const;
 
 export const URL_ICONS_GENERAL = "/gfx/spritemap2x.png";
 const URL_ICONS_TOOLBAR = "/gfx/toolbar2x.png";
-export const ICONS = <const> {
+export const ICONS = {
     toolbarIcon: (position: string): string => `<div style="background-image: url('${URL_ICONS_TOOLBAR}'); background-size: 500px auto; background-position: ${position};"></div>`,
     position_toolbar_url: "0 -125px",
     position_toolbar_img: "-50px -125px",
-};
+} as const;
 
-export const MOBILE_SITE_DISCLAIMER = <const> {
+export const MOBILE_SITE_DISCLAIMER = {
     sentFrom: `Skickades från`,
     mobileSiteDomain: HOSTNAME_MOBILE,
-};
+} as const;
 
 export const REGEX_MOBILE_SITE_DISCLAIMER = new RegExp([
     r`\n+.*`, // line breaks and presentation start tag(s)
