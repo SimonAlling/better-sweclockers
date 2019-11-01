@@ -63,7 +63,7 @@ function fromStringEventHandler<
 }
 
 export class PreferencesForm extends Component {
-    render() {
+    public render() {
         return (
             <form id={CONFIG.USERSCRIPT_ID}>
                 <header>
@@ -84,15 +84,15 @@ export class PreferencesForm extends Component {
         );
     }
 
-    listener = () => {
+    public listener() {
         this.forceUpdate();
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         subscribe(this.listener);
     }
 
-    componentWillUnmount() {
+    public componentWillUnmount() {
         unsubscribe(this.listener);
     }
 }
@@ -352,9 +352,9 @@ type InterestsState = {
 }
 
 class Interests extends Component<{ p: ListPreference<number> }, InterestsState> {
-    state: InterestsState = { fetch: { status: "loading" } }
+    public state: InterestsState = { fetch: { status: "loading" } }
 
-    componentDidMount() {
+    public componentDidMount() {
         /*
         A relative path such as "/forum" works in Violentmonkey and Tampermonkey
         in both Chrome and Firefox, but not in Greasemonkey (Firefox).
@@ -390,7 +390,7 @@ class Interests extends Component<{ p: ListPreference<number> }, InterestsState>
         });
     }
 
-    render() {
+    public render() {
         const p = this.props.p;
         const uninteresting = Preferences.get(p);
         const response = this.state.fetch;
@@ -422,13 +422,13 @@ class Interests extends Component<{ p: ListPreference<number> }, InterestsState>
 }
 
 class PreferenceLabel<T extends AllowedTypes> extends Component<{ preference: Preference<T> }> {
-    render() {
+    public render() {
         return <HtmlLabel for={PID(this.props.preference)} html={this.props.preference.label} />;
     }
 }
 
 class HtmlLabel extends Component<{ html: string, for?: string }> {
-    render() {
+    public render() {
         return <label for={this.props.for} dangerouslySetInnerHTML={{ __html: this.props.html }} />;
     }
 }

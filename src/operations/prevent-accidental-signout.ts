@@ -35,11 +35,11 @@ function errorHandler() {
 declare namespace Common {
     namespace Windows {
         class MessageDialog {
-            addClass(x: string): void
-            setMessage(x: string): void
-            setModal(x: boolean): void
-            openWindow(): void
-            centerOnScreen(): void
+            public addClass(x: string): void
+            public setMessage(x: string): void
+            public setModal(x: boolean): void
+            public openWindow(): void
+            public centerOnScreen(): void
         }
     }
 }
@@ -48,12 +48,12 @@ declare namespace Taiga {
     namespace Xhr {
         namespace JsonRpc {
             class Request {
-                setUrl(x: string): void
-                setMethod(x: string): void
-                setParams(x: { csrf: string }): void
-                onError(f: () => void): void
-                onSuccess(f: () => void): void
-                send(): void
+                public setUrl(x: string): void
+                public setMethod(x: string): void
+                public setParams(x: { csrf: string }): void
+                public onError(f: () => void): void
+                public onSuccess(f: () => void): void
+                public send(): void
             }
         }
     }
