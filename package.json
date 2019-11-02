@@ -1,5 +1,10 @@
 {
   "private": true,
+  "scripts": {
+    "build": "./build",
+    "check-dirty": "repository-check-dirty",
+    "verify": "npm run check-dirty && npm run build"
+  },
   "devDependencies": {
     "@alling/better-sweclockers-lib": "^1.1.6",
     "@types/classnames": "^2.2.6",
@@ -29,6 +34,7 @@
     "preact": "^8.3.0",
     "raw-loader": "^0.5.1",
     "replace": "^1.0.1",
+    "repository-check-dirty": "^1.0.2",
     "sass-loader": "^7.1.0",
     "strip-comments": "^0.4.4",
     "to-string-loader": "^1.1.5",
