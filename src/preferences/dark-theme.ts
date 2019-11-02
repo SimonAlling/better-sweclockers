@@ -24,7 +24,7 @@ const dependencies_auto = [
         preference: auto,
         condition: (v: boolean) => v,
     },
-] as const;
+];
 
 export default {
     active: new BooleanPreference({
