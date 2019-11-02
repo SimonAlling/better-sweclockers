@@ -100,7 +100,7 @@ export function wholeStringRegex(regex: RegExp): RegExp {
 }
 
 export function filter<T>(f: (x: T) => boolean): (xs: T[]) => T[] {
-    return (xs: T[]): T[] => xs.filter((x, index, array) => f(x));
+    return (xs: T[]): T[] => xs.filter(f);
 }
 
 export function withoutNulls<T>(xs: (T | null)[]): T[] {
