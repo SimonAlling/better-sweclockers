@@ -139,14 +139,6 @@ export const MOBILE_SITE_DISCLAIMER = {
     mobileSiteDomain: HOSTNAME_MOBILE,
 } as const;
 
-export const REGEX_MOBILE_SITE_DISCLAIMER = new RegExp([
-    r`\n+.*`, // line breaks and presentation start tag(s)
-    MOBILE_SITE_DISCLAIMER.sentFrom,
-    r`.*`, // space and [url=...]
-    escapeRegex(MOBILE_SITE_DISCLAIMER.mobileSiteDomain),
-    r`.*$`, // [/url] and presentation end tag(s)
-].join(""), "mg");
-
 export const REGEX_MOBILE_LINK = new RegExp([
     r`^(https?:\/\/)`,
     escapeRegex(HOSTNAME_MOBILE),
