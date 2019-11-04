@@ -232,13 +232,13 @@ const OPERATIONS: readonly Operation[] = [
     }),
     new DependentOperation({
         description: "replace followed threads link with a link to my posts",
-        condition: () => isInEditMode_market && Preferences.get(P.general._.replace_followed_threads_link),
+        condition: () => Preferences.get(P.general._.replace_followed_threads_link),
         selectors: { followedThreadsLinkTextOrSigninSection: SELECTOR.signinSectionOr(SELECTOR.followedThreadsLinkText) },
         action: replaceFollowedThreadsLink,
     }),
     new DependentOperation({
         description: "remember location in market",
-        condition: () => Preferences.get(P.general._.remember_location_in_market),
+        condition: () => isInEditMode_market && Preferences.get(P.general._.remember_location_in_market),
         selectors: {
           city: SELECTOR.cityInput,
           region: SELECTOR.regionSelect,
