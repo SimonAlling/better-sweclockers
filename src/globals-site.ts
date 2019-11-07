@@ -53,6 +53,7 @@ export const CLASS = {
     inner: "inner",
     menuItem: "menuItem",
     settingsNavigation: "menuItems",
+    forumPosts: "forumPosts",
     forumPost: "forumPost",
     forumPostMessage: "message",
     forumPostProfileDetails: "details",

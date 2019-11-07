@@ -20,6 +20,7 @@
     "@types/mousetrap": "^1.6.0",
     "@types/node": "^12.7.5",
     "@types/webpack": "^4.4.9",
+    "array-uniq": "^2.1.0",
     "awesome-typescript-loader": "^5.2.1",
     "bbcode-tags": "^1.1.1",
     "classnames": "^2.2.6",

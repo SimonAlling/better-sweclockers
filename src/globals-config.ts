@@ -49,6 +49,7 @@ export const CLASS = {
     iconTab: c("icon-tab"),
     pmButton: c("pm-button"),
     quoteSignatureButton: c("quote-signature-button"),
+    mentionEveryoneButton: c("mention-everyone-button"),
     linkToTop: c("link-to-top"),
     shibe: c("shibe"),
     button_restoreDraft: c("button-restore-draft"),

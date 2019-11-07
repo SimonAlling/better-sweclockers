@@ -127,6 +127,10 @@ const STYLESHEET_MODULES: readonly StylesheetModule[] = [
         condition: Preferences.get(P.general._.thread_status_tooltips),
         css: threadStatusTooltips(),
     },
+    {
+        condition: Preferences.get(P.forum_threads._.mention_everyone_button),
+        css: require("./styles/mention-everyone"),
+    },
 
     // Customize content:
     {

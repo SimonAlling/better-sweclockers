@@ -48,6 +48,12 @@ export default {
         label: T.preferences.forum_threads.fix_mobile_links,
         description: T.preferences.forum_threads.fix_mobile_links_description,
     }),
+    mention_everyone_button: new BooleanPreference({
+        key: "mention_everyone_button",
+        default: false,
+        label: T.preferences.forum_threads.mention_everyone_button,
+        description: T.preferences.forum_threads.mention_everyone_button_description,
+    }),
     quote_signature_buttons,
     quote_signature_message: new StringPreference({
         key: "quote_signature_message",

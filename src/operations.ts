@@ -30,6 +30,7 @@ import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
 import adaptCorrectionsLink from "./operations/improved-corrections";
 import * as keyboardShortcutsEditMode from "./operations/keyboard-shortcuts/edit-mode";
 import insertLinkToTop from "./operations/link-to-top";
+import insertMentionEveryoneButton from "./operations/mention-everyone";
 import performMousetrapPreparations from "./operations/mousetrap-preparations";
 import insertPMLinks from "./operations/pm-links";
 import insertPreferencesLink from "./operations/preferences-link";
@@ -245,6 +246,16 @@ const OPERATIONS: readonly Operation[] = [
           saveButton: SELECTOR.saveButton,
         },
         action: rememberLocationInMarket,
+    }),
+    new DependentOperation({
+        description: "insert mention everyone button",
+        condition: () => isReadingThread && Preferences.get(P.forum_threads._.mention_everyone_button),
+        selectors: {
+            forumPostContainer: SELECTOR.forumPostContainer,
+            replyButton: SELECTOR.replyButtonAfterForumPosts,
+            quickReplyForm: SELECTOR.quickReplyForm,
+        },
+        action: insertMentionEveryoneButton,
     }),
     new DependentOperation({
         description: "enable autosave draft watchdog",

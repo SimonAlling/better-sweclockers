@@ -10,6 +10,7 @@ const searchFieldWrapper = `#search .searchField`;
 
 const actionButtons = `button[name=action]`;
 const actionButtonsQuickReply = `#quickreply .controls button`;
+const forumPostContainer = "." + SITE.CLASS.forumPosts;
 
 const textareaToolbarInner = `form .toolbar .tbInner`;
 
@@ -30,6 +31,8 @@ export default {
     saveButton: actionButtons + `[value=doSubmit]`,
     saveButtonQuickReply: actionButtonsQuickReply + `:nth-of-type(1)`,
     previewButtonQuickReply: actionButtonsQuickReply + `:nth-of-type(2)`,
+    forumPostContainer,
+    replyButtonAfterForumPosts: `${forumPostContainer} ~ * .replyToThread`,
     cityInput: `input[name="city"]`,
     regionSelect: `select[name="location"]`,
     sideColumnAnniversary: `.swec20Box.${C.sideBox}`,
@@ -37,6 +40,7 @@ export default {
     sideColumnPopularGalleries: `.popularGalleries.${C.sideBox}`,
     bbParagraph: `.bbParagraph`,
     forumLink: `.subForums a[href^="/forum/"]`,
+    forumPost: "." + SITE.CLASS.forumPost,
     forumPostAuthorLink: `.name a`,
     linkedForumPost: `.` + SITE.CLASS.forumPost + `.isLinked`,
     listBulkActions: `#postActions .listBulkActions`,
