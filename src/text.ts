@@ -289,6 +289,7 @@ export const special_characters: readonly InsertButtonDescription[] = [
     { insert: "″", tooltip: "Dubbelprimtecken (tum; sekunder)" },
     { insert: "✓", tooltip: "Bock" },
     { insert: "→", tooltip: "Högerpil" },
+    { insert: "™", tooltip: "Varumärke (trademark)" },
 ];
 
 export const thread_status = {
