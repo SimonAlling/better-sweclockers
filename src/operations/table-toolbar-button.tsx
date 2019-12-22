@@ -2,8 +2,8 @@ import { empty, end, start } from "bbcode-tags";
 import { unlines } from "lines-unlines";
 import { render } from "preact";
 
-import * as SITE from "src/globals-site";
-import * as T from "src/text";
+import * as SITE from "~src/globals-site";
+import * as T from "~src/text";
 
 import { toolbarButton } from "./logic/editing-tools";
 import { indent, insert } from "./logic/textarea";

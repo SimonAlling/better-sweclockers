@@ -3,9 +3,9 @@ import { isNumber, only } from "ts-type-guards";
 
 import { FAILURE } from ".userscripter/lib/operation-manager";
 
-import * as CONFIG from "src/globals-config";
-import * as SITE from "src/globals-site";
-import ICON from "src/icons/pm.svg";
+import * as CONFIG from "~src/globals-config";
+import * as SITE from "~src/globals-site";
+import ICON from "~src/icons/pm.svg";
 
 export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);

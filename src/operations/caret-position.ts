@@ -2,9 +2,9 @@ import * as Storage from "ts-storage";
 
 import { isPositiveInt } from ".userscripter/lib/utilities";
 
-import * as CONFIG from "src/globals-config";
-import P from "src/preferences";
-import { Preferences } from "src/userscripter/preference-handling";
+import * as CONFIG from "~src/globals-config";
+import P from "~src/preferences";
+import { Preferences } from "~src/userscripter/preference-handling";
 
 export default (e: {
     textarea: HTMLElement,

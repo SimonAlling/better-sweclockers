@@ -1,5 +1,5 @@
-import * as CONFIG from "src/globals-config";
-import * as T from "src/text";
+import * as CONFIG from "~src/globals-config";
+import * as T from "~src/text";
 
 export default (e: { parent: HTMLElement }) => {
     const linkToTop = document.createElement("a");

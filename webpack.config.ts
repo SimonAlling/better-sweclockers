@@ -169,7 +169,7 @@ export default (env: object, argv: {
         resolve: {
             modules: ["node_modules"],
             alias: {
-                src: path.resolve(__dirname, IO.DIR_SOURCE),
+                "~src": path.resolve(__dirname, IO.DIR_SOURCE),
                 ".userscripter/lib": path.resolve(__dirname, IO.DIR_LIBRARY),
             },
             extensions: EXTENSIONS.map(e => "."+e).concat(["*"]),

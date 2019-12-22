@@ -2,12 +2,12 @@ import * as BB from "bbcode-tags";
 import { lines, unlines } from "lines-unlines";
 import { h } from "preact";
 
-import * as CONFIG from "src/globals-config";
-import * as SITE from "src/globals-site";
-import { SearchEngine, searchURL } from "src/search-engines";
-import * as T from "src/text";
-import { InsertButtonDescription } from "src/types";
-import { fromMaybeUndefined, r } from "src/utilities";
+import * as CONFIG from "~src/globals-config";
+import * as SITE from "~src/globals-site";
+import { SearchEngine, searchURL } from "~src/search-engines";
+import * as T from "~src/text";
+import { InsertButtonDescription } from "~src/types";
+import { fromMaybeUndefined, r } from "~src/utilities";
 
 import { Action, CursorBehavior, insert, insertIn, placeCursorIn, selectedTextIn, wrapIn, wrap_tag, wrap_verbatim } from "./textarea";
 
@@ -31,7 +31,7 @@ export const BUTTON = {
     search: (engine: SearchEngine) => generalButton({
         tooltip: T.editing_tools.tooltip_search_link,
         action: ACTION_SEARCH_LINK(engine),
-        icon: { type: "RAW", image: require("src/icons/search-link.svg") },
+        icon: { type: "RAW", image: require("~src/icons/search-link.svg") },
     }),
     shibe: generalButton({
         label: T.editing_tools.label_shibe,
@@ -47,13 +47,13 @@ export const BUTTON = {
     splitQuote: generalButton({
         tooltip: T.editing_tools.tooltip_split_quote,
         action: ACTION_SPLIT_QUOTE,
-        icon: { type: "RAW", image: require("src/icons/split-quote.svg") },
+        icon: { type: "RAW", image: require("~src/icons/split-quote.svg") },
     }),
     expander: tagButton({
         tag: SITE.TAG.expander,
         tooltip: T.editing_tools.tooltip_expander,
         block: true,
-        icon: { type: "RAW", image: require("src/icons/expander.svg") },
+        icon: { type: "RAW", image: require("~src/icons/expander.svg") },
     }),
 } as const;
 

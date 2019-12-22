@@ -1,6 +1,6 @@
 import { byID, isHTMLElement } from ".userscripter/lib/html";
 
-import * as CONFIG from "src/globals-config";
+import * as CONFIG from "~src/globals-config";
 
 export function hasAlreadyRun(): boolean {
     return isHTMLElement(byID(CONFIG.ID_STYLE_ELEMENT));

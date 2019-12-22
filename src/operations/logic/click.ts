@@ -1,4 +1,4 @@
-import { BUTTON_CLICK_EVENT } from "src/operations/prevent-accidental-unload";
+import { BUTTON_CLICK_EVENT } from "~src/operations/prevent-accidental-unload";
 
 export function clickOn(element: HTMLElement): void {
     // Prevent accidental unload listens for these events:

@@ -17,15 +17,15 @@ import {
 } from "ts-preferences";
 import { is, isNull, isString, only } from "ts-type-guards";
 
-import * as CONFIG from "src/globals-config";
-import * as SITE from "src/globals-site";
-import { EditingTools, getEditingToolsConfig } from "src/operations/editing-tools";
-import P from "src/preferences";
-import { TimePreference } from "src/preferences/TimePreference";
-import SELECTOR from "src/selectors";
-import * as T from "src/text";
-import { logError, logWarning } from "src/userscripter/logging";
-import { Preferences, isFalse, subscribe, unsubscribe } from "src/userscripter/preference-handling";
+import * as CONFIG from "~src/globals-config";
+import * as SITE from "~src/globals-site";
+import { EditingTools, getEditingToolsConfig } from "~src/operations/editing-tools";
+import P from "~src/preferences";
+import { TimePreference } from "~src/preferences/TimePreference";
+import SELECTOR from "~src/selectors";
+import * as T from "~src/text";
+import { logError, logWarning } from "~src/userscripter/logging";
+import { Preferences, isFalse, subscribe, unsubscribe } from "~src/userscripter/preference-handling";
 
 const PID = <T extends AllowedTypes>(p: Preference<T>) => CONFIG.ID.preferenceIdPrefix + p.key;
 

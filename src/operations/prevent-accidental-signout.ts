@@ -1,7 +1,7 @@
 import { SUCCESS } from ".userscripter/lib/operation-manager";
 
-import * as SITE from "src/globals-site";
-import * as T from "src/text";
+import * as SITE from "~src/globals-site";
+import * as T from "~src/text";
 
 export default (e: { signoutButtonOrSigninSection: HTMLElement }) => {
     const notLoggedIn = e.signoutButtonOrSigninSection.classList.contains(SITE.CLASS.signinSection);

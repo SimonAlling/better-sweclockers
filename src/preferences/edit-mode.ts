@@ -3,8 +3,8 @@ import {
     IntegerRangePreference,
 } from "ts-preferences";
 
-import * as CONFIG from "src/globals-config";
-import * as T from "src/text";
+import * as CONFIG from "~src/globals-config";
+import * as T from "~src/text";
 
 const textarea_size_toggle = new BooleanPreference({
     key: "textarea_size_toggle",

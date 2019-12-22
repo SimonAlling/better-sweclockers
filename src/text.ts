@@ -1,4 +1,4 @@
-// This file cannot contain Webpack-resolved imports (e.g. "src/foo").
+// This file cannot contain Webpack-resolved imports (e.g. "~src/foo").
 
 import * as BB from "bbcode-tags";
 

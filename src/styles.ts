@@ -3,16 +3,16 @@ import * as ms from "milliseconds";
 
 import { StylesheetModule } from ".userscripter/lib/stylesheet-manager";
 
-import { isInEditMode, isOnBSCPreferencesPage, isOnSweclockersSettingsPage, isReadingThread } from "src/environment";
-import * as CONFIG from "src/globals-config";
-import * as SITE from "src/globals-site";
-import P from "src/preferences";
-import SELECTOR from "src/selectors";
-import { hideByClass, hideById, hideBySelector } from "src/styles/hide";
-import filterNewInForum from "src/styles/interests-new-in-forum";
-import threadStatusTooltips from "src/styles/thread-status-tooltips-logic";
-import { timeIsWithin } from "src/time"
-import { Preferences, isFalse } from "src/userscripter/preference-handling";
+import { isInEditMode, isOnBSCPreferencesPage, isOnSweclockersSettingsPage, isReadingThread } from "~src/environment";
+import * as CONFIG from "~src/globals-config";
+import * as SITE from "~src/globals-site";
+import P from "~src/preferences";
+import SELECTOR from "~src/selectors";
+import { hideByClass, hideById, hideBySelector } from "~src/styles/hide";
+import filterNewInForum from "~src/styles/interests-new-in-forum";
+import threadStatusTooltips from "~src/styles/thread-status-tooltips-logic";
+import { timeIsWithin } from "~src/time"
+import { Preferences, isFalse } from "~src/userscripter/preference-handling";
 
 const ALWAYS: boolean = true;
 

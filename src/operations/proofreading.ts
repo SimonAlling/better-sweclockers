@@ -2,11 +2,11 @@ import { CLASS as BSCLibClass, STYLE_PROOFREADING, processNode } from "@alling/b
 
 import { byID, insertCSS } from ".userscripter/lib/html";
 
-import * as CONFIG from "src/globals-config";
-import * as SITE from "src/globals-site";
-import SELECTOR from "src/selectors";
-import { removeById } from "src/userscripter/misc";
-import { withMaybe } from "src/utilities";
+import * as CONFIG from "~src/globals-config";
+import * as SITE from "~src/globals-site";
+import SELECTOR from "~src/selectors";
+import { removeById } from "~src/userscripter/misc";
+import { withMaybe } from "~src/utilities";
 
 const CONTEXT_CHARS = 10; // before and after mistake
 // If a previous and/or next sibling is not found, look outside these elements:

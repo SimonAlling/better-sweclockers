@@ -1,4 +1,4 @@
-import { assertUnreachable } from "src/utilities";
+import { assertUnreachable } from "~src/utilities";
 
 export const enum Source {
     // Be careful! These strings are used in the UI.

@@ -1,10 +1,10 @@
 import { DependentOperation, OperationManager } from ".userscripter/lib/operation-manager";
 import { compose, formattedList } from ".userscripter/lib/utilities";
 
-import * as CONFIG from "src/globals-config";
-import * as SITE from "src/globals-site";
-import OPERATIONS from "src/operations";
-import { log, logError } from "src/userscripter/logging";
+import * as CONFIG from "~src/globals-config";
+import * as SITE from "~src/globals-site";
+import OPERATIONS from "~src/operations";
+import { log, logError } from "~src/userscripter/logging";
 
 function dependentOperationError<K extends string>(operation: DependentOperation<K>): string {
     const plural = Object.keys(operation.selectors).length > 1;

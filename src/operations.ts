@@ -14,12 +14,12 @@ import {
     isReadingEditorialContent,
     isReadingThread,
     mayHaveJustSubmittedForumPost,
-} from "src/environment";
-import * as CONFIG from "src/globals-config";
-import * as SITE from "src/globals-site";
-import P from "src/preferences";
-import SELECTOR from "src/selectors";
-import { Preferences, isFalse } from "src/userscripter/preference-handling";
+} from "~src/environment";
+import * as CONFIG from "~src/globals-config";
+import * as SITE from "~src/globals-site";
+import P from "~src/preferences";
+import SELECTOR from "~src/selectors";
+import { Preferences, isFalse } from "~src/userscripter/preference-handling";
 
 import * as autosaveDraft from "./operations/autosave-draft";
 import manageCaretPosition from "./operations/caret-position";

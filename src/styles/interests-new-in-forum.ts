@@ -1,4 +1,4 @@
-import { r } from "src/utilities";
+import { r } from "~src/utilities";
 
 // We want to match elements like
 //   <li data-thread="{"threadid":1234567,"forumid":42}">

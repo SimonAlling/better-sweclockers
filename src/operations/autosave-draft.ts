@@ -5,12 +5,12 @@ import { isNumber, isString } from "ts-type-guards";
 
 import { FAILURE } from ".userscripter/lib/operation-manager";
 
-import * as CONFIG from "src/globals-config";
-import * as SITE from "src/globals-site";
-import P from "src/preferences";
-import * as T from "src/text";
-import { log, logError } from "src/userscripter/logging";
-import { Preferences } from "src/userscripter/preference-handling";
+import * as CONFIG from "~src/globals-config";
+import * as SITE from "~src/globals-site";
+import P from "~src/preferences";
+import * as T from "~src/text";
+import { log, logError } from "~src/userscripter/logging";
+import { Preferences } from "~src/userscripter/preference-handling";
 
 import { isCleanSlate_reply } from "./edit-mode";
 import { generalButton } from "./logic/editing-tools";

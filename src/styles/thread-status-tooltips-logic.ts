@@ -1,7 +1,7 @@
 import { unlines } from "lines-unlines";
 
-import * as SITE from "src/globals-site";
-import * as T from "src/text";
+import * as SITE from "~src/globals-site";
+import * as T from "~src/text";
 
 /*
 SweClockers uses a system where icon class names (such as "icon-41") are essentially bitmasks.

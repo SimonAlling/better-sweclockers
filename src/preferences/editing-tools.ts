@@ -4,10 +4,10 @@ import {
     MultichoicePreference,
 } from "ts-preferences";
 
-import * as CONFIG from "src/globals-config";
-import { BUTTONS, Button, insertButton } from "src/operations/logic/editing-tools";
-import { SearchEngine } from "src/search-engines";
-import * as T from "src/text";
+import * as CONFIG from "~src/globals-config";
+import { BUTTONS, Button, insertButton } from "~src/operations/logic/editing-tools";
+import { SearchEngine } from "~src/search-engines";
+import * as T from "~src/text";
 
 function buttonsDescription(buttons: readonly Button[]): string {
     const textarea = document.createElement("textarea");

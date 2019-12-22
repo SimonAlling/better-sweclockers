@@ -1,8 +1,8 @@
 import { isString } from "ts-type-guards";
 
-import P from "src/preferences";
-import { logError } from "src/userscripter/logging";
-import { Preferences } from "src/userscripter/preference-handling";
+import P from "~src/preferences";
+import { logError } from "~src/userscripter/logging";
+import { Preferences } from "~src/userscripter/preference-handling";
 
 export default (e: {
   city: HTMLElement,

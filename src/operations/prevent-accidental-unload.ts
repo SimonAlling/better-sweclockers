@@ -1,6 +1,6 @@
-import * as SITE from "src/globals-site";
-import SELECTOR from "src/selectors";
-import { withMaybe } from "src/utilities";
+import * as SITE from "~src/globals-site";
+import SELECTOR from "~src/selectors";
+import { withMaybe } from "~src/utilities";
 
 // mousedown because it must be guaranteed to fire before beforeunload:
 export const BUTTON_CLICK_EVENT = "mousedown";

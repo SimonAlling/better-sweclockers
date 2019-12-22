@@ -1,5 +1,5 @@
-import * as CONFIG from "src/globals-config";
-import * as T from "src/text";
+import * as CONFIG from "~src/globals-config";
+import * as T from "~src/text";
 
 import advancedPreferences from "./preferences/advanced";
 import customizeContentPreferences from "./preferences/customize-content";

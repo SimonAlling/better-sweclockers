@@ -2,7 +2,7 @@ import {
     BooleanPreference,
 } from "ts-preferences";
 
-import * as T from "src/text";
+import * as T from "~src/text";
 
 export default {
     news_ticker: new BooleanPreference({

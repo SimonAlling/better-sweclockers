@@ -5,8 +5,8 @@ import {
     StringPreference,
 } from "ts-preferences";
 
-import { SearchEngine } from "src/search-engines";
-import * as T from "src/text";
+import { SearchEngine } from "~src/search-engines";
+import * as T from "~src/text";
 
 export default {
     lock_heights: new BooleanPreference({

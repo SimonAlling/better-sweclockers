@@ -1,6 +1,6 @@
 import { FAILURE, SUCCESS } from ".userscripter/lib/operation-manager";
 
-import * as SITE from "src/globals-site";
+import * as SITE from "~src/globals-site";
 
 export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);

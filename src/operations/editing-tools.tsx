@@ -3,12 +3,12 @@ import { h, render } from "preact";
 
 import { compose } from ".userscripter/lib/utilities";
 
-import * as CONFIG from "src/globals-config";
-import * as SITE from "src/globals-site";
-import P from "src/preferences";
-import { Position } from "src/preferences/editing-tools";
-import * as T from "src/text";
-import { Preferences } from "src/userscripter/preference-handling";
+import * as CONFIG from "~src/globals-config";
+import * as SITE from "~src/globals-site";
+import P from "~src/preferences";
+import { Position } from "~src/preferences/editing-tools";
+import * as T from "~src/text";
+import { Preferences } from "~src/userscripter/preference-handling";
 
 import { BUTTON, BUTTONS, Button, COLORS, colorButton, insertButton, tagButton } from "./logic/editing-tools";
 

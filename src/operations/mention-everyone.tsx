@@ -3,11 +3,11 @@ import { h, render } from "preact";
 
 import { FAILURE } from ".userscripter/lib/operation-manager";
 
-import * as CONFIG from "src/globals-config";
-import * as SITE from "src/globals-site";
-import { mention } from "src/operations/edit-mode";
-import  SELECTOR from "src/selectors";
-import * as T from "src/text";
+import * as CONFIG from "~src/globals-config";
+import * as SITE from "~src/globals-site";
+import { mention } from "~src/operations/edit-mode";
+import  SELECTOR from "~src/selectors";
+import * as T from "~src/text";
 
 export default (e: {
     forumPostContainer: HTMLElement,

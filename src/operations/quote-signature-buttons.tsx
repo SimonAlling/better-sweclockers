@@ -3,13 +3,13 @@ import { isNull, only } from "ts-type-guards";
 
 import { isHTMLElement } from ".userscripter/lib/html";
 
-import * as CONFIG from "src/globals-config";
-import * as SITE from "src/globals-site";
-import P from "src/preferences";
-import SELECTOR from "src/selectors";
-import * as T from "src/text";
-import { logWarning } from "src/userscripter/logging";
-import { Preferences } from "src/userscripter/preference-handling";
+import * as CONFIG from "~src/globals-config";
+import * as SITE from "~src/globals-site";
+import P from "~src/preferences";
+import SELECTOR from "~src/selectors";
+import * as T from "~src/text";
+import { logWarning } from "~src/userscripter/logging";
+import { Preferences } from "~src/userscripter/preference-handling";
 
 const userMessage = Preferences.get(P.forum_threads._.quote_signature_message);
 

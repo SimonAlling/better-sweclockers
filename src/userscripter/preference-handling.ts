@@ -7,9 +7,9 @@ import {
     Status,
 } from "ts-preferences";
 
-import * as CONFIG from "src/globals-config";
-import P from "src/preferences";
-import { logError, logWarning } from "src/userscripter/logging";
+import * as CONFIG from "~src/globals-config";
+import P from "~src/preferences";
+import { logError, logWarning } from "~src/userscripter/logging";
 
 export const Preferences = new PreferenceManager(P, CONFIG.USERSCRIPT_ID + "-preference-", responseHandler);
 

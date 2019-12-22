@@ -1,7 +1,7 @@
 import { render } from "preact";
 
-import * as SITE from "src/globals-site";
-import * as T from "src/text";
+import * as SITE from "~src/globals-site";
+import * as T from "~src/text";
 
 import { toolbarButton } from "./logic/editing-tools";
 import { wrap_tag } from "./logic/textarea";

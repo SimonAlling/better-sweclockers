@@ -1,4 +1,4 @@
-// This file cannot contain Webpack-resolved imports (e.g. "src/foo").
+// This file cannot contain Webpack-resolved imports (e.g. "~src/foo").
 
 import USERSCRIPT_CONFIG from "../config/userscript";
 
