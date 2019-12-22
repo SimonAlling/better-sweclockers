@@ -3,7 +3,7 @@ import * as ms from "milliseconds";
 
 import { StylesheetModule } from ".userscripter/lib/stylesheet-manager";
 
-import { isInEditMode, isOnBSCPreferencesPage, isReadingThread } from "src/environment";
+import { isInEditMode, isOnBSCPreferencesPage, isOnSweclockersSettingsPage, isReadingThread } from "src/environment";
 import * as CONFIG from "src/globals-config";
 import * as SITE from "src/globals-site";
 import P from "src/preferences";
@@ -34,6 +34,10 @@ const STYLESHEET_MODULES: readonly StylesheetModule[] = [
     {
         condition: ALWAYS,
         css: require("./styles/doge"),
+    },
+    {
+        condition: isOnSweclockersSettingsPage,
+        css: require("./styles/preferences-link"),
     },
     {
         condition: isOnBSCPreferencesPage,

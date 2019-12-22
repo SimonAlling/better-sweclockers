@@ -1,0 +1,9 @@
+// Prevent the content below from being pushed down by our link:
+.#{getGlobal("SITE.CLASS.settingsNavigation")} {
+    // The height of the link was 20.5px according to Firefox at the time of writing this.
+    padding-bottom: 21px;
+
+    .#{getGlobal("SITE.CLASS.menuItem")}[title="#{getGlobal("CONFIG.USERSCRIPT_NAME")}"] {
+        position: fixed;
+    }
+}
