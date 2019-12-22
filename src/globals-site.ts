@@ -84,7 +84,10 @@ export const PATH = {
     EDIT_MODE_MARKET_CONTACT: /^\/marknad\/.+\/kontakt$/,
     EDIT_MODE_PM: /^\/meddelanden\/(.+\/(svara|redigera)|nytt\-meddelande)/,
     EDIT_MODE_REPORT: /^\/(forum|marknad|pm)\/.+\/anmal$/,
-    SETTINGS: "/profil/installningar",
+    SETTINGS: {
+        link: "/profil/installningar", // Relying on this path being redirected to the actual settings path allows us to create a link to the preferences page without knowing the user's ID.
+        check: /^\/medlem\/\d+\/installningar/, // Should not have a "$" because it should match subpaths too.
+    },
     MY_POSTS: "/profil/inlagg",
     SIGNOUT: "/konto/rpc",
     ARTICLE: /^\/artikel\//,

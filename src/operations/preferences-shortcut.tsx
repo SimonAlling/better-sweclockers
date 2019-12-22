@@ -11,7 +11,7 @@ export default (e: { topMenu: HTMLElement }) => {
         title: T.preferences.title,
         id: CONFIG.ID.preferencesShortcut,
         link: {
-            href: CONFIG.PATH.PREFERENCES(SITE.PATH.SETTINGS),
+            href: CONFIG.PATH.PREFERENCES.link(SITE.PATH.SETTINGS.link),
             openInNewTab: true,
         },
     });

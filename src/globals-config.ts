@@ -1,6 +1,7 @@
 // This file cannot contain Webpack-resolved imports (e.g. "src/foo").
 
 import USERSCRIPT_CONFIG from "../config/userscript";
+import { r } from "./utilities";
 
 export const USERSCRIPT_ID: string = USERSCRIPT_CONFIG.id;
 export const USERSCRIPT_NAME: string = USERSCRIPT_CONFIG.name;
@@ -72,7 +73,16 @@ export const CLASS = {
 };
 
 export const PATH = {
-    PREFERENCES: (sweclockersSettingsPath: string): string => sweclockersSettingsPath + "/" + USERSCRIPT_ID,
+    PREFERENCES: {
+        // Used for creating a link to the preferences menu:
+        link: (sweclockersSettingsPath: string): string => (
+            sweclockersSettingsPath + "/" + USERSCRIPT_ID
+        ),
+        // Used for checking whether we should show the preferences menu:
+        check: (sweclockersSettingsPath: RegExp): RegExp => (
+            new RegExp(sweclockersSettingsPath.source + r`\/` + USERSCRIPT_ID)
+        ),
+    },
 };
 
 export const KEY = {

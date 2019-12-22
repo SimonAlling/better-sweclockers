@@ -4,9 +4,9 @@ import * as SITE from "./globals-site";
 // NOTE: Be careful with document.head here, as it may be null at the time of
 // userscript execution (e.g. in a background tab in Firefox)!
 
-export const isOnBSCPreferencesPage = CONFIG.PATH.PREFERENCES(SITE.PATH.SETTINGS) === document.location.pathname;
+export const isOnBSCPreferencesPage = pathMatches(CONFIG.PATH.PREFERENCES.check(SITE.PATH.SETTINGS.check));
 
-export const isOnSweclockersSettingsPage = document.location.pathname.startsWith(SITE.PATH.SETTINGS) && !isOnBSCPreferencesPage;
+export const isOnSweclockersSettingsPage = pathMatches(SITE.PATH.SETTINGS.check) && !isOnBSCPreferencesPage;
 
 function pathMatches(r: RegExp): boolean {
     return r.test(document.location.pathname);
