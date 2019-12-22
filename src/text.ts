@@ -38,6 +38,7 @@ export const general = {
     loading: `Laddar …`,
     dark_theme_toggle_tooltip_on: darkThemeBy,
     dark_theme_toggle_tooltip_off: "Standardutseendet",
+    preferences_link: CONFIG.USERSCRIPT_NAME,
     signout_confirmation: `Är du säker på att du vill logga ut?`,
     restore_draft_label: `Återställ`,
     restore_draft_tooltip: `Återställ autosparat utkast`,

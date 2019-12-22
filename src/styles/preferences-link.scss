@@ -3,7 +3,7 @@
     // The height of the link was 20.5px according to Firefox at the time of writing this.
     padding-bottom: 21px;
 
-    .#{getGlobal("SITE.CLASS.menuItem")}[title="#{getGlobal("CONFIG.USERSCRIPT_NAME")}"] {
+    .#{getGlobal("SITE.CLASS.menuItem")}[title="#{getGlobal("T.general.preferences_link")}"] {
         position: fixed;
     }
 }
