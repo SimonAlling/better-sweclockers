@@ -46,7 +46,7 @@
     "strip-comments": "^0.4.4",
     "to-string-loader": "^1.1.5",
     "ts-node": "^8.4.1",
-    "ts-preferences": "^1.0.0",
+    "ts-preferences": "^2.0.0",
     "ts-storage": "^5.0.0",
     "ts-type-guards": "^0.6.1",
     "tsconfig-paths": "^3.5.0",

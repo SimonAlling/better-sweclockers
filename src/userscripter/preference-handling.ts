@@ -1,18 +1,17 @@
 import {
     AllowedTypes,
     Preference,
-    PreferencesInterface,
+    PreferenceManager,
     RequestSummary,
     Response,
     Status,
-    init,
 } from "ts-preferences";
 
 import * as CONFIG from "src/globals-config";
 import P from "src/preferences";
 import { logError, logWarning } from "src/userscripter/logging";
 
-export const Preferences = init(P, CONFIG.USERSCRIPT_ID, responseHandler);
+export const Preferences = new PreferenceManager(P, CONFIG.USERSCRIPT_ID + "-preference-", responseHandler);
 
 export function isFalse(x: boolean): boolean {
     return x === false;
@@ -30,7 +29,7 @@ export function unsubscribe(listener: Listener<any>): void {
     changeListeners.delete(listener);
 }
 
-function responseHandler<T extends AllowedTypes>(summary: RequestSummary<T>, preferences: PreferencesInterface): Response<T> {
+function responseHandler<T extends AllowedTypes>(summary: RequestSummary<T>, preferences: PreferenceManager): Response<T> {
     const response = summary.response;
     if (summary.action === "set") {
         changeListeners.forEach(f => f(summary.preference))
@@ -64,7 +63,7 @@ function responseHandler<T extends AllowedTypes>(summary: RequestSummary<T>, pre
             }
             return response;
 
-        case Status.LOCALSTORAGE_ERROR:
+        case Status.STORAGE_ERROR:
             switch (summary.action) {
                 case "get":
                     logError(`Could not read preference '${summary.preference.key}' because localStorage could not be accessed. Using value ${JSON.stringify(summary.preference.default)}.`);
