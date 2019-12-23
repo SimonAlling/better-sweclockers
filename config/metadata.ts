@@ -2,7 +2,7 @@ import { Metadata } from "userscript-metadata";
 import { CommandLineOptions } from "command-line-args";
 import * as IO from "../.userscripter/build/io";
 import * as Options from "../.userscripter/build/options";
-import U from "./userscript";
+import U from "../src/userscript";
 
 export default function metadata(args: CommandLineOptions): Metadata {
     const hostedAt = (x => x ? x : U.hostedAt)(args[Options.HOSTED_AT]);

@@ -1,6 +1,6 @@
 // This file cannot contain Webpack-resolved imports (e.g. "~src/foo").
 
-import USERSCRIPT_CONFIG from "../config/userscript";
+import USERSCRIPT_CONFIG from "./userscript";
 
 import { escapeRegex, r } from "./utilities";
 

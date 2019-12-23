@@ -11,7 +11,7 @@ import * as webpack from "webpack";
 import * as commandLineArgs from "command-line-args";
 import webpackConfiguration from "../../webpack.config";
 
-import USERSCRIPT_CONFIG from "../../config/userscript";
+import USERSCRIPT_CONFIG from "../../src/userscript";
 import RAW_METADATA from "../../config/metadata";
 
 const FILE_OUTPUT_USERSCRIPT = IO.outputFile_userscript(USERSCRIPT_CONFIG.id);
