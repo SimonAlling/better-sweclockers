@@ -1,6 +1,6 @@
 import { unlines } from "lines-unlines";
 
-import * as SITE from "~src/globals-site";
+import * as SITE from "~src/site";
 import * as T from "~src/text";
 
 /*

@@ -1,5 +1,9 @@
-import * as CONFIG from "~src/globals-config";
+import { PreferenceManager } from "ts-preferences";
+import { loggingResponseHandler, subscriptable } from "userscripter/lib/preferences";
+
+import * as CONFIG from "~src/config";
 import * as T from "~src/text";
+import U from "~src/userscript";
 
 import advancedPreferences from "./preferences/advanced";
 import customizeContentPreferences from "./preferences/customize-content";
@@ -11,7 +15,7 @@ import generalPreferences from "./preferences/general";
 import interestsPreferences from "./preferences/interests";
 import keyboardPreferences from "./preferences/keyboard";
 
-export default {
+const P = {
     general: {
         label: T.preferences.general.label,
         _: generalPreferences,
@@ -47,3 +51,9 @@ export default {
         _: interestsPreferences,
     },
 } as const;
+
+export default P;
+
+export const responseHandler = subscriptable(loggingResponseHandler);
+
+export const Preferences = new PreferenceManager(P, U.id + "-preference-", responseHandler.handler);

@@ -1,4 +1,4 @@
-import * as SITE from "~src/globals-site";
+import * as SITE from "~src/site";
 import * as BB from "bbcode-tags";
 
 const END_TAG_QUOTE = BB.end(SITE.TAG.quote);

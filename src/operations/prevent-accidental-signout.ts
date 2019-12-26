@@ -1,11 +1,9 @@
-import { SUCCESS } from ".userscripter/lib/operation-manager";
-
-import * as SITE from "~src/globals-site";
+import * as SITE from "~src/site";
 import * as T from "~src/text";
 
 export default (e: { signoutButtonOrSigninSection: HTMLElement }) => {
     const notLoggedIn = e.signoutButtonOrSigninSection.classList.contains(SITE.CLASS.signinSection);
-    if (notLoggedIn) return SUCCESS;
+    if (notLoggedIn) return;
     const signoutButton = e.signoutButtonOrSigninSection;
     const parent = signoutButton.parentElement as HTMLElement;
     const safeSignoutForm = signoutButton.cloneNode(true);

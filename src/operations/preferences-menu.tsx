@@ -1,6 +1,6 @@
 import { h, render } from "preact";
 
-import * as SITE from "~src/globals-site";
+import * as SITE from "~src/site";
 import { PreferencesForm } from "~src/preferences-menu";
 import * as T from "~src/text";
 

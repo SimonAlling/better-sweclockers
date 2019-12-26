@@ -2,15 +2,13 @@ import * as ms from "milliseconds";
 import { render } from "preact";
 import * as Storage from "ts-storage";
 import { isNumber, isString } from "ts-type-guards";
+import { log } from "userscripter";
 
-import { FAILURE } from ".userscripter/lib/operation-manager";
-
-import * as CONFIG from "~src/globals-config";
-import * as SITE from "~src/globals-site";
+import * as CONFIG from "~src/config";
+import * as SITE from "~src/site";
 import P from "~src/preferences";
 import * as T from "~src/text";
-import { log, logError } from "~src/userscripter/logging";
-import { Preferences } from "~src/userscripter/preference-handling";
+import { Preferences } from "~src/preferences";
 
 import { isCleanSlate_reply } from "./edit-mode";
 import { generalButton } from "./logic/editing-tools";
@@ -61,10 +59,9 @@ export function manageAutosaveWatchdog(e: {
 export function clearAutosavedDraftIfObsolete(e: { post: HTMLElement }) {
     const result = draftIsObsolete(e.post);
     if (isString(result)) {
-        logError(result);
-        return FAILURE;
+        return result;
     } else if (result === true) {
-        log(`Deleting autosaved draft because the post seems to have been successfully submitted.`);
+        log.log(`Deleting autosaved draft because the post seems to have been successfully submitted.`);
         clearAutosavedDraft();
     }
 }
@@ -91,7 +88,7 @@ function saveDraft(textarea: HTMLTextAreaElement): void {
         // Trim because SweClockers does:
         const response = Storage.set(CONFIG.KEY.autosaved_draft, text.trim());
         if (response.status === Storage.Status.STORAGE_ERROR) {
-            logError(`Could not save draft.`);
+            log.error(`Could not save draft.`);
         }
     } else {
         clearAutosavedDraft();

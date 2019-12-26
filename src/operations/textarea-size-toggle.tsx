@@ -1,11 +1,11 @@
 import { h, render } from "preact";
 import { NumericPreference } from "ts-preferences";
 
-import * as CONFIG from "~src/globals-config";
-import * as SITE from "~src/globals-site";
+import * as CONFIG from "~src/config";
+import * as SITE from "~src/site";
 import P from "~src/preferences";
 import * as T from "~src/text";
-import { Preferences } from "~src/userscripter/preference-handling";
+import { Preferences } from "~src/preferences";
 
 export default (e: { textarea: HTMLElement, toolbarInner: HTMLElement }) => {
     const textarea = e.textarea as HTMLTextAreaElement;

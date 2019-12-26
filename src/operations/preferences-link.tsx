@@ -1,7 +1,7 @@
 import { h, render } from "preact";
 
-import * as CONFIG from "~src/globals-config";
-import * as SITE from "~src/globals-site";
+import * as CONFIG from "~src/config";
+import * as SITE from "~src/site";
 import * as T from "~src/text";
 
 export default (e: { settingsNavigation: HTMLElement }) => {

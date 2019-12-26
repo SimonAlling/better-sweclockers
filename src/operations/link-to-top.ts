@@ -1,4 +1,4 @@
-import * as CONFIG from "~src/globals-config";
+import * as CONFIG from "~src/config";
 import * as T from "~src/text";
 
 export default (e: { parent: HTMLElement }) => {

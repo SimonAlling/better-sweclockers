@@ -12,9 +12,9 @@ export const PREFIX_ID: string = USERSCRIPT_ID + "-";
 export const PREFIX_CLASS: string = USERSCRIPT_ID + "-";
 
 // How long to wait between performing operations (DOM manipulation etc) during page load:
-export const INTERVAL_OPERATIONS: number = 25; // ms
-// How long to wait after DOMContentLoaded before considering remaining operations failed:
-export const TIMEOUT_OPERATIONS: number = 100; // ms
+export const OPERATIONS_INTERVAL = 25; // ms
+// How many extra tries to perform after DOMContentLoaded before considering remaining operations failed:
+export const OPERATIONS_EXTRA_TRIES = 3;
 
 const i = (x: string) => PREFIX_ID + x;
 const c = (x: string) => PREFIX_CLASS + x;

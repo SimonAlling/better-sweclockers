@@ -1,8 +1,8 @@
 import { isString } from "ts-type-guards";
+import { log } from "userscripter";
 
 import P from "~src/preferences";
-import { logError } from "~src/userscripter/logging";
-import { Preferences } from "~src/userscripter/preference-handling";
+import { Preferences } from "~src/preferences";
 
 export default (e: {
   city: HTMLElement,
@@ -21,7 +21,7 @@ export default (e: {
       Preferences.set(P.general._.location_city, cityInput.value);
       const parseResult = P.general._.location_region.fromString(regionSelect.value);
       if (isString(parseResult)) {
-        logError(parseResult);
+        log.error(parseResult);
       } else {
         Preferences.set(P.general._.location_region, parseResult.value);
       }

@@ -1,5 +1,5 @@
-import * as CONFIG from "./globals-config";
-import * as SITE from "./globals-site";
+import * as CONFIG from "./config";
+import * as SITE from "./site";
 
 // NOTE: Be careful with document.head here, as it may be null at the time of
 // userscript execution (e.g. in a background tab in Firefox)!

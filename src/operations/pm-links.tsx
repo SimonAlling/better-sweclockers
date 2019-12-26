@@ -1,21 +1,18 @@
 import { h, render } from "preact";
 import { isNumber, only } from "ts-type-guards";
 
-import { FAILURE } from ".userscripter/lib/operation-manager";
-
-import * as CONFIG from "~src/globals-config";
-import * as SITE from "~src/globals-site";
+import * as CONFIG from "~src/config";
+import * as SITE from "~src/site";
 import ICON from "~src/icons/pm.svg";
 
 export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);
-    only(HTMLElement)(Array.from(forumPosts)).forEach(post => {
+    for (const post of only(HTMLElement)(Array.from(forumPosts))) {
         try {
             const userID = JSON.parse(post.dataset.post || "").userid;
             const profileDetails = post.querySelector("." + SITE.CLASS.forumPostProfileDetails);
-            if (!isNumber(userID) || profileDetails === null) {
-                return FAILURE;
-            }
+            if (!isNumber(userID)) return `Could not extract user ID from post with id="${post.id}".`;
+            if (profileDetails === null) return `Could not extract profile details from post with id="${post.id}".`;
             render((
                 <a
                     dangerouslySetInnerHTML={{__html: ICON + "PM"}}
@@ -24,7 +21,7 @@ export default () => {
                 ></a>
             ), profileDetails);
         } catch (err) {
-            return FAILURE;
+            return err;
         }
-    });
+    }
 }

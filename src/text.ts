@@ -4,8 +4,8 @@ import * as BB from "bbcode-tags";
 
 import { Action } from "./actions";
 import * as DarkTheme from "./dark-theme";
-import * as CONFIG from "./globals-config";
-import * as SITE from "./globals-site";
+import * as CONFIG from "./config";
+import * as SITE from "./site";
 import { SearchEngine } from "./search-engines";
 import { InsertButtonDescription } from "./types";
 import { assertUnreachable } from "./utilities";

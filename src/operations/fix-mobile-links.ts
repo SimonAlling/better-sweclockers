@@ -1,12 +1,10 @@
-import { FAILURE, SUCCESS } from ".userscripter/lib/operation-manager";
-
-import * as SITE from "~src/globals-site";
+import * as SITE from "~src/site";
 
 export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);
-    return Array.from(forumPosts).every(post => {
+    for (const post of forumPosts) {
         const message = post.querySelector("." + SITE.CLASS.forumPostMessage);
-        if (message === null) return FAILURE;
+        if (message === null) return "Could not extract message from forum post.";
         // We ignore links whose textContent is literally m.sweclockers.com, to
         // avoid modifying the auto-generated notice in posts sent from the
         // mobile site. In other cases, such links are probably actually
@@ -24,6 +22,5 @@ export default () => {
         .forEach(a => {
             a.href = a.href.replace(SITE.REGEX_MOBILE_LINK, "$1" + SITE.HOSTNAME);
         });
-        return SUCCESS;
-    });
+    };
 }

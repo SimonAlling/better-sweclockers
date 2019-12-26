@@ -6,7 +6,7 @@ import {
 } from "ts-preferences";
 
 import { Source } from "~src/dark-theme";
-import * as CONFIG from "~src/globals-config";
+import * as CONFIG from "~src/config";
 import * as T from "~src/text";
 
 import { TimePreference } from "./TimePreference";

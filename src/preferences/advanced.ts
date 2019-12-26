@@ -4,7 +4,7 @@ import {
     StringPreference,
 } from "ts-preferences";
 
-import * as CONFIG from "~src/globals-config";
+import * as CONFIG from "~src/config";
 import * as Proofreading from "~src/operations/proofreading";
 import * as T from "~src/text";
 

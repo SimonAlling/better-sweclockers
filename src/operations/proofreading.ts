@@ -1,12 +1,10 @@
-import { CLASS as BSCLibClass, STYLE_PROOFREADING, processNode } from "@alling/better-sweclockers-lib";
+import { CLASS as BSCLibClass, processNode } from "@alling/better-sweclockers-lib";
+import { stylesheets } from "userscripter";
 
-import { byID, insertCSS } from ".userscripter/lib/html";
-
-import * as CONFIG from "~src/globals-config";
-import * as SITE from "~src/globals-site";
+import * as SITE from "~src/site";
 import SELECTOR from "~src/selectors";
-import { removeById } from "~src/userscripter/misc";
 import { withMaybe } from "~src/utilities";
+import STYLESHEETS from "~src/stylesheets";
 
 const CONTEXT_CHARS = 10; // before and after mistake
 // If a previous and/or next sibling is not found, look outside these elements:
@@ -62,13 +60,11 @@ export function addListeners(e: { correctionsLink: HTMLElement }) {
 }
 
 export function enable() {
-    if (byID(CONFIG.ID.style.proofreading) === null) {
-        insertCSS(STYLE_PROOFREADING, CONFIG.ID.style.proofreading);
-    }
+    stylesheets.enable(STYLESHEETS.proofread_forum_posts);
 }
 
 export function disable() {
-    removeById(CONFIG.ID.style.proofreading);
+    stylesheets.disable(STYLESHEETS.proofread_forum_posts);
 }
 
 function getProofDialogTextarea(): HTMLTextAreaElement | null {

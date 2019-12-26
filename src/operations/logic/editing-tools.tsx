@@ -2,8 +2,8 @@ import * as BB from "bbcode-tags";
 import { lines, unlines } from "lines-unlines";
 import { h } from "preact";
 
-import * as CONFIG from "~src/globals-config";
-import * as SITE from "~src/globals-site";
+import * as CONFIG from "~src/config";
+import * as SITE from "~src/site";
 import { SearchEngine, searchURL } from "~src/search-engines";
 import * as T from "~src/text";
 import { InsertButtonDescription } from "~src/types";

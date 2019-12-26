@@ -1,10 +1,10 @@
 import { render } from "preact";
 
-import * as SITE from "~src/globals-site";
+import * as SITE from "~src/site";
 import P from "~src/preferences";
 import { SearchEngine, searchURL, siteFilter } from "~src/search-engines";
 import * as T from "~src/text";
-import { Preferences } from "~src/userscripter/preference-handling";
+import { Preferences } from "~src/preferences";
 
 import { Icon, generalButton } from "./logic/editing-tools";
 

@@ -1,6 +1,6 @@
 import { render } from "preact";
 
-import * as SITE from "~src/globals-site";
+import * as SITE from "~src/site";
 import * as T from "~src/text";
 
 import { toolbarButton } from "./logic/editing-tools";

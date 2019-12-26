@@ -1,10 +1,8 @@
 import unique from "array-uniq";
 import { h, render } from "preact";
 
-import { FAILURE } from ".userscripter/lib/operation-manager";
-
-import * as CONFIG from "~src/globals-config";
-import * as SITE from "~src/globals-site";
+import * as CONFIG from "~src/config";
+import * as SITE from "~src/site";
 import { mention } from "~src/operations/edit-mode";
 import  SELECTOR from "~src/selectors";
 import * as T from "~src/text";
@@ -21,7 +19,7 @@ export default (e: {
     });
     if (document.querySelector(`${SELECTOR.forumPost} ${SELECTOR.forumPostAuthorLink}`) === null) {
         // Broken thread participant detection.
-        return FAILURE;
+        return "Could not detect thread participants";
     }
     const placeholder = document.createElement("form");
     e.replyButton.insertAdjacentElement("beforebegin", placeholder);

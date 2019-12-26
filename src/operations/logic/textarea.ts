@@ -1,7 +1,7 @@
 import * as BB from "bbcode-tags";
 import { isNumber } from "ts-type-guards";
 
-import * as CONFIG from "~src/globals-config";
+import * as CONFIG from "~src/config";
 
 type InsertionResult = Readonly<{
     textareaContent: string,

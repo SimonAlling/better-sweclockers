@@ -2,8 +2,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "~src/*": [ "./src/*" ],
-            ".userscripter/*": [ "./.userscripter/*" ]
+            "~src/*": [ "./src/*" ]
         },
         "target": "es6",
         "strict": true,
@@ -22,6 +21,7 @@
         "jsxFactory": "h"
     },
     "include": [
+        "./src/*.d.ts",
         "./src/**/*.tsx",
         "./src/**/*.ts"
     ]

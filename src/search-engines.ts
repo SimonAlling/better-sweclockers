@@ -1,5 +1,5 @@
-import { SearchEngine } from "~src/globals-config";
-export { SearchEngine } from "~src/globals-config";
+import { SearchEngine } from "~src/config";
+export { SearchEngine } from "~src/config";
 
 function searchEngineURL(engine: SearchEngine): string {
     switch (engine) {

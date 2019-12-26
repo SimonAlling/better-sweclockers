@@ -1,6 +1,6 @@
 import "css.escape"; // It is side-effecty.
 
-import * as SITE from "~src/globals-site";
+import * as SITE from "~src/site";
 
 const C = SITE.CLASS;
 

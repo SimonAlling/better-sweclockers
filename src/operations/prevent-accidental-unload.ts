@@ -1,4 +1,4 @@
-import * as SITE from "~src/globals-site";
+import * as SITE from "~src/site";
 import SELECTOR from "~src/selectors";
 import { withMaybe } from "~src/utilities";
 

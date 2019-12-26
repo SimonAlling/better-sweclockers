@@ -16,16 +16,16 @@ import {
     StringPreference,
 } from "ts-preferences";
 import { is, isNull, isString, only } from "ts-type-guards";
+import { log } from "userscripter";
 
-import * as CONFIG from "~src/globals-config";
-import * as SITE from "~src/globals-site";
+import * as CONFIG from "~src/config";
+import * as SITE from "~src/site";
 import { EditingTools, getEditingToolsConfig } from "~src/operations/editing-tools";
-import P from "~src/preferences";
+import P, { responseHandler } from "~src/preferences";
 import { TimePreference } from "~src/preferences/TimePreference";
 import SELECTOR from "~src/selectors";
 import * as T from "~src/text";
-import { logError, logWarning } from "~src/userscripter/logging";
-import { Preferences, isFalse, subscribe, unsubscribe } from "~src/userscripter/preference-handling";
+import { Preferences } from "~src/preferences";
 
 const PID = <T extends AllowedTypes>(p: Preference<T>) => CONFIG.ID.preferenceIdPrefix + p.key;
 
@@ -55,7 +55,7 @@ function fromStringEventHandler<
     return (e: Event) => {
         const parsed = p.fromString((e.target as E).value);
         if (isString(parsed)) {
-            logWarning(parsed);
+            log.warning(parsed);
         } else {
             Preferences.set(p, parsed.value);
         }
@@ -89,11 +89,11 @@ export class PreferencesForm extends Component {
     }
 
     public componentDidMount() {
-        subscribe(this.listener);
+        responseHandler.subscribe(this.listener);
     }
 
     public componentWillUnmount() {
-        unsubscribe(this.listener);
+        responseHandler.unsubscribe(this.listener);
     }
 }
 
@@ -126,7 +126,7 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
                     ? <EditingTools
                         textarea={document.createElement("textarea")}
                         config={getEditingToolsConfig()}
-                        disabled={isFalse(Preferences.get(P.editing_tools._.enable))}
+                        disabled={!Preferences.get(P.editing_tools._.enable)}
                     />
                     : null
                 }
@@ -164,7 +164,7 @@ function InputElement<T extends AllowedTypes>(generators: Generators, p: Prefere
         return <Interests p={p} />;
     }
     const msg = `Unsupported preference: ${p}`;
-    logError(msg);
+    log.error(msg);
     return <mark>{msg}</mark>;
 }
 
@@ -375,7 +375,7 @@ class Interests extends Component<{ p: ListPreference<number> }, InterestsState>
                     .map(forumLink => {
                         const linkData = extractForumLinkData(forumLink);
                         if (isNull(linkData)) {
-                            logError(`Could not extract forum link data from this link:`);
+                            log.error(`Could not extract forum link data from this link:`);
                             console.error(forumLink);
                             return undefined;
                         }
@@ -385,7 +385,7 @@ class Interests extends Component<{ p: ListPreference<number> }, InterestsState>
                 ),
             }});
         }).catch(reason => {
-            logError(reason);
+            log.error(reason);
             this.setState({ fetch: { status: "failure" }})
         });
     }

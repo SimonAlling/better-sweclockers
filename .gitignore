@@ -1,13 +1,11 @@
 node_modules
 dist
 *.log
-*.user.js
 .babelrc
 .awcache
-.webpack-output.js
-.metadata-output.txt
 *.psd
 *.png
+.userscripter-temp
 
 # OS generated files #
 ######################
