@@ -1,12 +1,12 @@
 // This file cannot contain Webpack-resolved imports (e.g. "~src/foo").
 
-import USERSCRIPT_CONFIG from "./userscript";
+import U from "./userscript";
 
 import { escapeRegex, r } from "./utilities";
 
-export const NAME: string = USERSCRIPT_CONFIG.sitename;
-export const HOSTNAME: string = USERSCRIPT_CONFIG.hostname;
-export const HOSTNAME_MOBILE: string = `m.` + HOSTNAME;
+export const NAME = U.sitename;
+export const HOSTNAME = U.hostname;
+export const HOSTNAME_MOBILE = `m.` + HOSTNAME;
 
 export const STYLESHEET_URL = "/css/combine.min.css";
 

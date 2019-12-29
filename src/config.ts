@@ -1,15 +1,13 @@
 // This file cannot contain Webpack-resolved imports (e.g. "~src/foo").
 
-import USERSCRIPT_CONFIG from "./userscript";
+import U from "./userscript";
 import { r } from "./utilities";
 
-export const USERSCRIPT_ID: string = USERSCRIPT_CONFIG.id;
-export const USERSCRIPT_NAME: string = USERSCRIPT_CONFIG.name;
-export const USERSCRIPT_VERSION_STRING: string = USERSCRIPT_CONFIG.version;
-export const USERSCRIPT_AUTHOR: string = USERSCRIPT_CONFIG.author;
+export const USERSCRIPT_ID = U.id;
+export const USERSCRIPT_NAME = U.name;
 
-export const PREFIX_ID: string = USERSCRIPT_ID + "-";
-export const PREFIX_CLASS: string = USERSCRIPT_ID + "-";
+export const PREFIX_ID = USERSCRIPT_ID + "-";
+export const PREFIX_CLASS = USERSCRIPT_ID + "-";
 
 // How long to wait between performing operations (DOM manipulation etc) during page load:
 export const OPERATIONS_INTERVAL = 25; // ms
@@ -19,7 +17,7 @@ export const OPERATIONS_EXTRA_TRIES = 3;
 const i = (x: string) => PREFIX_ID + x;
 const c = (x: string) => PREFIX_CLASS + x;
 
-export const ID_STYLE_ELEMENT: string = i("main-style-element");
+export const ID_STYLE_ELEMENT = i("main-style-element");
 export const EDITING_TOOLS_HEIGHT = "120px"; // to prevent jumping in preferences interface
 
 // distance between article and left side of improved corrections dialog
