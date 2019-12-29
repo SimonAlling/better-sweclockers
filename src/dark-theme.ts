@@ -1,5 +1,3 @@
-import { assertUnreachable } from "~src/utilities";
-
 export const enum Source {
     // Be careful! These strings are used in the UI.
     BLARGMODE = "Blargmode",
@@ -11,7 +9,6 @@ export function darkThemeUrl(source: Source): string {
         case Source.BLARGMODE: return "https://blargmode.se/files/swec_dark_theme/style.css";
         case Source.SOITORA: return "https://soitora.github.io/xhs-styles/sweclockers.css";
     }
-    return assertUnreachable(source);
 }
 
 export function darkThemeUrlBackup(source: Source): string {

@@ -8,14 +8,12 @@ import * as CONFIG from "./config";
 import * as SITE from "./site";
 import { SearchEngine } from "./search-engines";
 import { InsertButtonDescription } from "./types";
-import { assertUnreachable } from "./utilities";
 
 export function action(a: Action): string {
     switch (a) {
         case Action.PREVIEW: return `Förhandsgranska`;
         case Action.SUBMIT: return `Skicka`;
     }
-    return assertUnreachable(a);
 }
 
 function genitive(name: string): string {
