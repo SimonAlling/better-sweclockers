@@ -7,6 +7,10 @@ import ICON from "~src/icons/pm.svg";
 
 export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);
+    const ourUserID = SITE.getUserID();
+    if (!isNumber(ourUserID)) {
+        return `Could not extract current user's ID.`;
+    }
     for (const post of only(HTMLElement)(Array.from(forumPosts))) {
         try {
             const userID = JSON.parse(post.dataset.post || "").userid;
@@ -16,7 +20,7 @@ export default () => {
             render((
                 <a
                     dangerouslySetInnerHTML={{__html: ICON + "PM"}}
-                    href={SITE.PATH.newPrivateMessage(userID)}
+                    href={SITE.PATH.newPrivateMessage(ourUserID, userID)}
                     class={[ SITE.CLASS.button, CONFIG.CLASS.iconButton, CONFIG.CLASS.pmButton ].join(" ")}
                 ></a>
             ), profileDetails);

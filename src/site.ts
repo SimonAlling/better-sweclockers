@@ -78,12 +78,13 @@ export const CLASS = {
     toolbarTableButton: "tbl",
 } as const;
 
+
 export const PATH = {
     EDIT_MODE_FORUM: /^\/forum\/(.*\/(svara(\?citera)?|redigera)|ny-trad)/,
     EDIT_MODE_MARKET: /^\/marknad\/(.+\/(redigera|kontakt)|ny\-annons)$/,
     EDIT_MODE_MARKET_CONTACT: /^\/marknad\/.+\/kontakt$/,
-    EDIT_MODE_PM: /^\/meddelanden\/(.+\/(svara|redigera)|nytt\-meddelande)/,
-    EDIT_MODE_REPORT: /^\/(forum|marknad|pm)\/.+\/anmal$/,
+    EDIT_MODE_PM: /^\/medlem\/\d+\/meddelanden\/(?:nytt-meddelande|post\/\d+\/(?:redigera|svara))/,
+    EDIT_MODE_REPORT: /^\/(forum|marknad|medlem\/\d+\/meddelanden)\/.+\/anmal$/,
     SETTINGS: {
         link: "/profil/installningar", // Relying on this path being redirected to the actual settings path allows us to create a link to the preferences page without knowing the user's ID.
         check: /^\/medlem\/\d+\/installningar/, // Should not have a "$" because it should match subpaths too.
@@ -98,10 +99,10 @@ export const PATH = {
     TESTPILOT: /^\/testpilot\//,
     FORUM_CATEGORY: /\/forum\/(\d+)/,
     FORUM: "/forum",
-    THREAD: /^\/(?:forum|meddelanden)\/trad\//,
-    POST: /^\/(?:forum|meddelanden)\/post\//,
+    THREAD: /^\/(?:forum|medlem\/\d+\/meddelanden)\/trad\//,
+    POST: /^\/(?:forum|medlem\/\d+\/meddelanden)\/post\//,
     SUCCESSFULLY_SUBMITTED_FORUM_POST: /^\/forum\/post\/\d+$/,
-    newPrivateMessage: (userID: number) => "/pm/nytt-meddelande?rcpts=" + userID,
+    newPrivateMessage: (sender: number, recipient: number) => `/medlem/${sender}/meddelanden/nytt-meddelande?rcpts=${recipient}`,
     editPost: (postID: number) => `/forum/post/${postID}/redigera`,
 } as const;
 
@@ -147,6 +148,10 @@ export const REGEX_MOBILE_LINK = new RegExp([
     r`^(https?:\/\/)`,
     escapeRegex(HOSTNAME_MOBILE),
 ].join(""), "i");
+
+export function getUserID(): unknown {
+    return (window as any).session._userid;
+}
 
 export function isValidUsername(s: string): boolean {
     // https://www.sweclockers.com/konto/registrera
