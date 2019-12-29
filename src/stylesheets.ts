@@ -148,11 +148,7 @@ const STYLESHEETS = {
     }),
     thread_status_tooltips: stylesheet({
         condition: () => Preferences.get(P.general._.thread_status_tooltips),
-        css: threadStatusTooltips,
-    }),
-    thread_status_tooltips_generated: stylesheet({
-        condition: () => Preferences.get(P.general._.thread_status_tooltips),
-        css: threadStatusTooltipsGenerated(),
+        css: threadStatusTooltips + threadStatusTooltipsGenerated(),
     }),
     mention_everyone: stylesheet({
         condition: () => Preferences.get(P.forum_threads._.mention_everyone_button),
