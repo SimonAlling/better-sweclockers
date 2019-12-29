@@ -9,9 +9,9 @@ import * as CONFIG from "~src/config";
 import * as SITE from "~src/site";
 import P from "~src/preferences";
 import SELECTOR from "~src/selectors";
-import { hideByClass, hideById, hideBySelector } from "~src/styles/hide";
-import filterNewInForum from "~src/styles/interests-new-in-forum";
-import threadStatusTooltips from "~src/styles/thread-status-tooltips-logic";
+import { hideByClass, hideById, hideBySelector } from "~src/stylesheets/hide";
+import filterNewInForum from "~src/stylesheets/interests-new-in-forum";
+import threadStatusTooltips from "~src/stylesheets/thread-status-tooltips-logic";
 import { timeIsWithin } from "~src/time"
 import { Preferences } from "~src/preferences";
 
@@ -24,63 +24,63 @@ function isTimeForMaintenance() {
 const STYLESHEETS = {
     stylesheet: stylesheet({
         condition: ALWAYS,
-        css: require("./styles/stylesheet"),
+        css: require("./stylesheets/stylesheet"),
     }),
     dark_theme_toggle: stylesheet({
         condition: ALWAYS,
-        css: require("./styles/dark-theme-toggle"),
+        css: require("./stylesheets/dark-theme-toggle"),
     }),
     doge: stylesheet({
         condition: ALWAYS,
-        css: require("./styles/doge"),
+        css: require("./stylesheets/doge"),
     }),
     preferences_link: stylesheet({
         condition: _ => isOnSweclockersSettingsPage,
-        css: require("./styles/preferences-link"),
+        css: require("./stylesheets/preferences-link"),
     }),
     preferences: stylesheet({
         condition: _ => isOnBSCPreferencesPage,
-        css: require("./styles/preferences"),
+        css: require("./stylesheets/preferences"),
     }),
     lock_heights: stylesheet({
         condition: () => Preferences.get(P.general._.lock_heights),
-        css: require("./styles/lock-heights"),
+        css: require("./stylesheets/lock-heights"),
     }),
     compact_layout: stylesheet({
         condition: () => Preferences.get(P.general._.compact_layout),
-        css: require("./styles/compact-layout"),
+        css: require("./stylesheets/compact-layout"),
     }),
     adaptive_width: stylesheet({
         condition: () => Preferences.get(P.general._.adaptive_width),
-        css: require("./styles/adaptive-width"),
+        css: require("./stylesheets/adaptive-width"),
     }),
     improved_pagination_buttons: stylesheet({
         condition: () => Preferences.get(P.forum_threads._.improved_pagination_buttons),
-        css: require("./styles/improved-pagination-buttons"),
+        css: require("./stylesheets/improved-pagination-buttons"),
     }),
     improved_corrections: stylesheet({
         condition: () => Preferences.get(P.general._.improved_corrections),
-        css: require("./styles/improved-corrections"),
+        css: require("./stylesheets/improved-corrections"),
     }),
     adaptive_width_corrections: stylesheet({
         condition: () => Preferences.get(P.general._.improved_corrections) && Preferences.get(P.general._.adaptive_width),
-        css: require("./styles/adaptive-width-corrections"),
+        css: require("./stylesheets/adaptive-width-corrections"),
     }),
     web_search_button: stylesheet({
         condition: () => Preferences.get(P.general._.insert_web_search_button),
-        css: require("./styles/web-search-button"),
+        css: require("./stylesheets/web-search-button"),
     }),
     highlight_own_posts: stylesheet({
         condition: () => Preferences.get(P.forum_threads._.highlight_own_posts),
-        css: require("./styles/highlight-own-posts"),
+        css: require("./stylesheets/highlight-own-posts"),
     }),
     editing_tools: stylesheet({
         condition: ALWAYS,
-        css: require("./styles/editing-tools"),
+        css: require("./stylesheets/editing-tools"),
     }),
     textarea_size_toggle: stylesheet({
         condition: ALWAYS,
-        css: require("./styles/textarea-size-toggle"),
+        css: require("./stylesheets/textarea-size-toggle"),
     }),
     monospace_font: stylesheet({
         condition: () => isInEditMode && Preferences.get(P.edit_mode._.monospace_font),
@@ -96,11 +96,11 @@ const STYLESHEETS = {
     }),
     autosave_draft: stylesheet({
         condition: () => isInEditMode && Preferences.get(P.edit_mode._.autosave_draft),
-        css: require("./styles/autosave-draft"),
+        css: require("./stylesheets/autosave-draft"),
     }),
     improved_image_controls: stylesheet({
         condition: () => Preferences.get(P.advanced._.improved_image_controls),
-        css: require("./styles/improved-image-controls"),
+        css: require("./stylesheets/improved-image-controls"),
     }),
     uninteresting_subforums: stylesheet({
         condition: ALWAYS,
@@ -108,7 +108,7 @@ const STYLESHEETS = {
     }),
     replace_followed_threads_link: stylesheet({
         condition: () => Preferences.get(P.general._.replace_followed_threads_link),
-        css: require("./styles/replace-followed-threads-link"),
+        css: require("./stylesheets/replace-followed-threads-link"),
     }),
     proofread_forum_posts: stylesheet({
         condition: () => isInEditMode && Preferences.get(P.advanced._.proofread_forum_posts),
@@ -117,7 +117,7 @@ const STYLESHEETS = {
     }),
     down_for_maintenance: stylesheet({
         condition: () => !isOnBSCPreferencesPage && isTimeForMaintenance() && Preferences.get(P.advanced._.down_for_maintenance),
-        css: require("./styles/down-for-maintenance"),
+        css: require("./stylesheets/down-for-maintenance"),
     }),
     custom_css: stylesheet({
         condition: () => Preferences.get(P.advanced._.custom_css_enable),
@@ -125,7 +125,7 @@ const STYLESHEETS = {
     }),
     thread_status_tooltips: stylesheet({
         condition: () => Preferences.get(P.general._.thread_status_tooltips),
-        css: require("./styles/thread-status-tooltips"),
+        css: require("./stylesheets/thread-status-tooltips"),
     }),
     thread_status_tooltips_generated: stylesheet({
         condition: () => Preferences.get(P.general._.thread_status_tooltips),
@@ -133,7 +133,7 @@ const STYLESHEETS = {
     }),
     mention_everyone: stylesheet({
         condition: () => Preferences.get(P.forum_threads._.mention_everyone_button),
-        css: require("./styles/mention-everyone"),
+        css: require("./stylesheets/mention-everyone"),
     }),
 
     // Customize content:
@@ -203,7 +203,7 @@ const STYLESHEETS = {
     }),
     customize_content_footer: stylesheet({
         condition: () => false === Preferences.get(P.customize_content._.footer),
-        css: require("./styles/hide-footer"),
+        css: require("./stylesheets/hide-footer"),
     }),
 } as const;
 
