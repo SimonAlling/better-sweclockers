@@ -10,10 +10,33 @@ import * as SITE from "~src/site";
 import P from "~src/preferences";
 import SELECTOR from "~src/selectors";
 import { hideByClass, hideById, hideBySelector } from "~src/stylesheets/hide";
-import filterNewInForum from "~src/stylesheets/interests-new-in-forum";
-import threadStatusTooltips from "~src/stylesheets/thread-status-tooltips-logic";
+import interestsNewInForum from "~src/stylesheets/interests-new-in-forum";
+import threadStatusTooltipsGenerated from "~src/stylesheets/thread-status-tooltips-logic";
 import { timeIsWithin } from "~src/time"
 import { Preferences } from "~src/preferences";
+
+import adaptiveWidth from "./stylesheets/adaptive-width.scss";
+import adaptiveWidthCorrections from "./stylesheets/adaptive-width-corrections.scss";
+import autosaveDraft from "./stylesheets/autosave-draft.scss";
+import compactLayout from "./stylesheets/compact-layout.scss";
+import darkThemeToggle from "./stylesheets/dark-theme-toggle.scss";
+import doge from "./stylesheets/doge.scss";
+import downForMaintenance from "./stylesheets/down-for-maintenance.scss";
+import editingTools from "./stylesheets/editing-tools.scss";
+import hideFooter from "./stylesheets/hide-footer.scss";
+import highlightOwnPosts from "./stylesheets/highlight-own-posts.scss";
+import improvedCorrections from "./stylesheets/improved-corrections.scss";
+import improvedImageControls from "./stylesheets/improved-image-controls.scss";
+import improvedPaginationButtons from "./stylesheets/improved-pagination-buttons.scss";
+import lockHeights from "./stylesheets/lock-heights.scss";
+import main from "./stylesheets/main.scss";
+import mentionEveryone from "./stylesheets/mention-everyone.scss";
+import preferences from "./stylesheets/preferences.scss";
+import preferencesLink from "./stylesheets/preferences-link.scss";
+import replaceFollowedThreadsLink from "./stylesheets/replace-followed-threads-link.scss";
+import textareaSizeToggle from "./stylesheets/textarea-size-toggle.scss";
+import threadStatusTooltips from "./stylesheets/thread-status-tooltips.scss";
+import webSearchButton from "./stylesheets/web-search-button.scss";
 
 function isTimeForMaintenance() {
     const start = ms.hours(4) + ms.minutes(30);
@@ -22,65 +45,65 @@ function isTimeForMaintenance() {
 }
 
 const STYLESHEETS = {
-    stylesheet: stylesheet({
+    main: stylesheet({
         condition: ALWAYS,
-        css: require("./stylesheets/stylesheet"),
+        css: main,
     }),
     dark_theme_toggle: stylesheet({
         condition: ALWAYS,
-        css: require("./stylesheets/dark-theme-toggle"),
+        css: darkThemeToggle,
     }),
     doge: stylesheet({
         condition: ALWAYS,
-        css: require("./stylesheets/doge"),
+        css: doge,
     }),
     preferences_link: stylesheet({
         condition: _ => isOnSweclockersSettingsPage,
-        css: require("./stylesheets/preferences-link"),
+        css: preferencesLink,
     }),
     preferences: stylesheet({
         condition: _ => isOnBSCPreferencesPage,
-        css: require("./stylesheets/preferences"),
+        css: preferences,
     }),
     lock_heights: stylesheet({
         condition: () => Preferences.get(P.general._.lock_heights),
-        css: require("./stylesheets/lock-heights"),
+        css: lockHeights,
     }),
     compact_layout: stylesheet({
         condition: () => Preferences.get(P.general._.compact_layout),
-        css: require("./stylesheets/compact-layout"),
+        css: compactLayout,
     }),
     adaptive_width: stylesheet({
         condition: () => Preferences.get(P.general._.adaptive_width),
-        css: require("./stylesheets/adaptive-width"),
+        css: adaptiveWidth,
     }),
     improved_pagination_buttons: stylesheet({
         condition: () => Preferences.get(P.forum_threads._.improved_pagination_buttons),
-        css: require("./stylesheets/improved-pagination-buttons"),
+        css: improvedPaginationButtons,
     }),
     improved_corrections: stylesheet({
         condition: () => Preferences.get(P.general._.improved_corrections),
-        css: require("./stylesheets/improved-corrections"),
+        css: improvedCorrections,
     }),
     adaptive_width_corrections: stylesheet({
         condition: () => Preferences.get(P.general._.improved_corrections) && Preferences.get(P.general._.adaptive_width),
-        css: require("./stylesheets/adaptive-width-corrections"),
+        css: adaptiveWidthCorrections,
     }),
     web_search_button: stylesheet({
         condition: () => Preferences.get(P.general._.insert_web_search_button),
-        css: require("./stylesheets/web-search-button"),
+        css: webSearchButton,
     }),
     highlight_own_posts: stylesheet({
         condition: () => Preferences.get(P.forum_threads._.highlight_own_posts),
-        css: require("./stylesheets/highlight-own-posts"),
+        css: highlightOwnPosts,
     }),
     editing_tools: stylesheet({
         condition: ALWAYS,
-        css: require("./stylesheets/editing-tools"),
+        css: editingTools,
     }),
     textarea_size_toggle: stylesheet({
         condition: ALWAYS,
-        css: require("./stylesheets/textarea-size-toggle"),
+        css: textareaSizeToggle,
     }),
     monospace_font: stylesheet({
         condition: () => isInEditMode && Preferences.get(P.edit_mode._.monospace_font),
@@ -96,19 +119,19 @@ const STYLESHEETS = {
     }),
     autosave_draft: stylesheet({
         condition: () => isInEditMode && Preferences.get(P.edit_mode._.autosave_draft),
-        css: require("./stylesheets/autosave-draft"),
+        css: autosaveDraft,
     }),
     improved_image_controls: stylesheet({
         condition: () => Preferences.get(P.advanced._.improved_image_controls),
-        css: require("./stylesheets/improved-image-controls"),
+        css: improvedImageControls,
     }),
     uninteresting_subforums: stylesheet({
         condition: ALWAYS,
-        css: filterNewInForum(Preferences.get(P.interests._.uninteresting_subforums)),
+        css: interestsNewInForum(Preferences.get(P.interests._.uninteresting_subforums)),
     }),
     replace_followed_threads_link: stylesheet({
         condition: () => Preferences.get(P.general._.replace_followed_threads_link),
-        css: require("./stylesheets/replace-followed-threads-link"),
+        css: replaceFollowedThreadsLink,
     }),
     proofread_forum_posts: stylesheet({
         condition: () => isInEditMode && Preferences.get(P.advanced._.proofread_forum_posts),
@@ -117,7 +140,7 @@ const STYLESHEETS = {
     }),
     down_for_maintenance: stylesheet({
         condition: () => !isOnBSCPreferencesPage && isTimeForMaintenance() && Preferences.get(P.advanced._.down_for_maintenance),
-        css: require("./stylesheets/down-for-maintenance"),
+        css: downForMaintenance,
     }),
     custom_css: stylesheet({
         condition: () => Preferences.get(P.advanced._.custom_css_enable),
@@ -125,15 +148,15 @@ const STYLESHEETS = {
     }),
     thread_status_tooltips: stylesheet({
         condition: () => Preferences.get(P.general._.thread_status_tooltips),
-        css: require("./stylesheets/thread-status-tooltips"),
+        css: threadStatusTooltips,
     }),
     thread_status_tooltips_generated: stylesheet({
         condition: () => Preferences.get(P.general._.thread_status_tooltips),
-        css: threadStatusTooltips(),
+        css: threadStatusTooltipsGenerated(),
     }),
     mention_everyone: stylesheet({
         condition: () => Preferences.get(P.forum_threads._.mention_everyone_button),
-        css: require("./stylesheets/mention-everyone"),
+        css: mentionEveryone,
     }),
 
     // Customize content:
@@ -203,7 +226,7 @@ const STYLESHEETS = {
     }),
     customize_content_footer: stylesheet({
         condition: () => false === Preferences.get(P.customize_content._.footer),
-        css: require("./stylesheets/hide-footer"),
+        css: hideFooter,
     }),
 } as const;
 
