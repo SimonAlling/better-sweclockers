@@ -2,6 +2,8 @@ import { h, render } from "preact";
 import { NumericPreference } from "ts-preferences";
 
 import * as CONFIG from "~src/config";
+import iconTextareaSmall from "~src/icons/textarea-small.svg";
+import iconTextareaLarge from "~src/icons/textarea-large.svg";
 import * as SITE from "~src/site";
 import P from "~src/preferences";
 import * as T from "~src/text";
@@ -20,8 +22,8 @@ export default (e: { textarea: HTMLElement, toolbarInner: HTMLElement }) => {
 function button(textarea: HTMLTextAreaElement, mode: NumericPreference): JSX.Element {
     const [ tooltip, icon ] = (
         mode === P.edit_mode._.textarea_size_small
-        ? [ T.general.textarea_size_small, require("~src/icons/textarea-small.svg") ]
-        : [ T.general.textarea_size_large, require("~src/icons/textarea-large.svg") ]
+        ? [ T.general.textarea_size_small, iconTextareaSmall ]
+        : [ T.general.textarea_size_large, iconTextareaLarge ]
     );
     return (
         <div class="tbButton iconButton noselect" title={tooltip}>

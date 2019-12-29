@@ -3,6 +3,9 @@ import { lines, unlines } from "lines-unlines";
 import { h } from "preact";
 
 import * as CONFIG from "~src/config";
+import iconExpander from "~src/icons/expander.svg";
+import iconSearchLink from "~src/icons/search-link.svg";
+import iconSplitQuote from "~src/icons/split-quote.svg";
 import * as SITE from "~src/site";
 import { SearchEngine, searchURL } from "~src/search-engines";
 import * as T from "~src/text";
@@ -31,7 +34,7 @@ export const BUTTON = {
     search: (engine: SearchEngine) => generalButton({
         tooltip: T.editing_tools.tooltip_search_link,
         action: ACTION_SEARCH_LINK(engine),
-        icon: { type: "RAW", image: require("~src/icons/search-link.svg") },
+        icon: { type: "RAW", image: iconSearchLink },
     }),
     shibe: generalButton({
         label: T.editing_tools.label_shibe,
@@ -47,13 +50,13 @@ export const BUTTON = {
     splitQuote: generalButton({
         tooltip: T.editing_tools.tooltip_split_quote,
         action: ACTION_SPLIT_QUOTE,
-        icon: { type: "RAW", image: require("~src/icons/split-quote.svg") },
+        icon: { type: "RAW", image: iconSplitQuote },
     }),
     expander: tagButton({
         tag: SITE.TAG.expander,
         tooltip: T.editing_tools.tooltip_expander,
         block: true,
-        icon: { type: "RAW", image: require("~src/icons/expander.svg") },
+        icon: { type: "RAW", image: iconExpander },
     }),
 } as const;
 
