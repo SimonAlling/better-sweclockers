@@ -22,7 +22,6 @@ import * as autosaveDraft from "./operations/autosave-draft";
 import manageCaretPosition from "./operations/caret-position";
 import * as DarkTheme from "./operations/dark-theme";
 import insertEditingTools from "./operations/editing-tools";
-import fixMobileLinks from "./operations/fix-mobile-links";
 import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
 import adaptCorrectionsLink from "./operations/improved-corrections";
 import * as keyboardShortcutsEditMode from "./operations/keyboard-shortcuts/edit-mode";
@@ -187,12 +186,6 @@ const OPERATIONS: readonly Operation<any>[] = [
         description: "insert PM links",
         condition: () => Preferences.get(P.forum_threads._.insert_pm_links),
         action: insertPMLinks,
-        deferUntil: DOMCONTENTLOADED,
-    }),
-    operation({
-        description: "fix mobile links",
-        condition: () => isReadingThread && Preferences.get(P.forum_threads._.fix_mobile_links),
-        action: fixMobileLinks,
         deferUntil: DOMCONTENTLOADED,
     }),
     operation({

@@ -42,12 +42,6 @@ export default {
         label: T.preferences.forum_threads.insert_pm_links,
         description: T.preferences.forum_threads.insert_pm_links_description,
     }),
-    fix_mobile_links: new BooleanPreference({
-        key: "fix_mobile_links",
-        default: true,
-        label: T.preferences.forum_threads.fix_mobile_links,
-        description: T.preferences.forum_threads.fix_mobile_links_description,
-    }),
     mention_everyone_button: new BooleanPreference({
         key: "mention_everyone_button",
         default: false,

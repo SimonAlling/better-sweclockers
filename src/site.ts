@@ -2,8 +2,6 @@
 
 import U from "./userscript";
 
-import { escapeRegex, r } from "./utilities";
-
 export const NAME = U.sitename;
 export const HOSTNAME = U.hostname;
 export const HOSTNAME_MOBILE = `m.` + HOSTNAME;
@@ -55,7 +53,6 @@ export const CLASS = {
     settingsNavigation: "menuItems",
     forumPosts: "forumPosts",
     forumPost: "forumPost",
-    forumPostMessage: "message",
     forumPostProfileDetails: "details",
     forumPostSignature: "signature",
     forumPostControls: "controls",
@@ -143,11 +140,6 @@ export const MOBILE_SITE_DISCLAIMER = {
     sentFrom: `Skickades från`,
     mobileSiteDomain: HOSTNAME_MOBILE,
 } as const;
-
-export const REGEX_MOBILE_LINK = new RegExp([
-    r`^(https?:\/\/)`,
-    escapeRegex(HOSTNAME_MOBILE),
-].join(""), "i");
 
 export function getUserID(): unknown {
     return (window as any).session._userid;

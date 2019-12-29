@@ -106,8 +106,6 @@ export const preferences = {
         highlight_own_posts_description: `Markera egna inlägg med en orange kant så att de sticker ut`,
         insert_pm_links: `PM-knappar`,
         insert_pm_links_description: `Skicka PM till en användare direkt från deras inlägg`,
-        fix_mobile_links: `Omvandla <kbd>${SITE.HOSTNAME_MOBILE}</kbd>-länkar till vanliga`,
-        fix_mobile_links_description: `Slipp hamna på mobilsajten bara för att någon klistrat in en sådan länk`,
         mention_everyone_button: `<em>${mention_everyone_label}</em>-knapp`,
         mention_everyone_button_description: `Nämn alla tråddeltagare på den aktuella sidan (framförallt användbart i annonskommentarer)`,
         quote_signature_buttons: `<em>Citera signatur</em>-knappar`,
