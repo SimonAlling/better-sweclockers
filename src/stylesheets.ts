@@ -44,6 +44,10 @@ function isTimeForMaintenance() {
     return timeIsWithin({ start, end })(new Date());
 }
 
+function i(x: string): string {
+    return CONFIG.PREFIX_ID + "stylesheet-" + x;
+}
+
 const STYLESHEETS = {
     main: stylesheet({
         condition: ALWAYS,
@@ -136,7 +140,7 @@ const STYLESHEETS = {
     proofread_forum_posts: stylesheet({
         condition: () => isInEditMode && Preferences.get(P.advanced._.proofread_forum_posts),
         css: STYLE_PROOFREADING,
-        id: "proofread_forum_posts",
+        id: i("proofread-forum-posts"),
     }),
     down_for_maintenance: stylesheet({
         condition: () => !isOnBSCPreferencesPage && isTimeForMaintenance() && Preferences.get(P.advanced._.down_for_maintenance),
