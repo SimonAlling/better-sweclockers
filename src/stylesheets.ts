@@ -138,71 +138,71 @@ const STYLESHEETS = {
 
     // Customize content:
     customize_content_news_ticker: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.news_ticker),
+        condition: () => false === Preferences.get(P.customize_content._.news_ticker),
         css: hideById(SITE.ID.newsTicker),
     }),
     customize_content_carousel: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.carousel),
+        condition: () => false === Preferences.get(P.customize_content._.carousel),
         css: hideById(SITE.ID.carousel),
     }),
     customize_content_social_media: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.social_media),
+        condition: () => false === Preferences.get(P.customize_content._.social_media),
         css: hideByClass(SITE.CLASS.socialMediaButtons),
     }),
     customize_content_anniversary: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.anniversary),
+        condition: () => false === Preferences.get(P.customize_content._.anniversary),
         css: hideBySelector(SELECTOR.sideColumnAnniversary),
     }),
     customize_content_guides: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.guides),
+        condition: () => false === Preferences.get(P.customize_content._.guides),
         css: hideBySelector(SELECTOR.sideColumnGuides),
     }),
     customize_content_popular_galleries: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.popular_galleries),
+        condition: () => false === Preferences.get(P.customize_content._.popular_galleries),
         css: hideBySelector(SELECTOR.sideColumnPopularGalleries),
     }),
     customize_content_new_in_forum_side: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.new_in_forum_side),
+        condition: () => false === Preferences.get(P.customize_content._.new_in_forum_side),
         css: hideById(SITE.ID.newInForumWidget_side),
     }),
     customize_content_new_in_market: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.new_in_market),
+        condition: () => false === Preferences.get(P.customize_content._.new_in_market),
         css: hideById(SITE.ID.newInMarketWidget),
     }),
     customize_content_new_in_test_lab: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.new_in_test_lab),
+        condition: () => false === Preferences.get(P.customize_content._.new_in_test_lab),
         css: hideById(SITE.ID.newInTestLabWidget),
     }),
     customize_content_in_the_store: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.in_the_store),
+        condition: () => false === Preferences.get(P.customize_content._.in_the_store),
         css: hideById(SITE.ID.inTheStoreWidget),
     }),
     customize_content_popular_at_prisjakt: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.popular_at_prisjakt),
+        condition: () => false === Preferences.get(P.customize_content._.popular_at_prisjakt),
         css: hideById(SITE.ID.popularAtPrisjaktWidget),
     }),
     customize_content_new_tech_jobs: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.new_tech_jobs),
+        condition: () => false === Preferences.get(P.customize_content._.new_tech_jobs),
         css: hideById(SITE.ID.newTechJobsWidget),
     }),
     customize_content_external_news: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.external_news),
+        condition: () => false === Preferences.get(P.customize_content._.external_news),
         css: hideById(SITE.ID.externalNewsWidget),
     }),
     customize_content_more_articles: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.more_articles),
+        condition: () => false === Preferences.get(P.customize_content._.more_articles),
         css: hideBySelector(SELECTOR.moreArticles),
     }),
     customize_content_latest_news: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.latest_news),
+        condition: () => false === Preferences.get(P.customize_content._.latest_news),
         css: hideById(SITE.ID.latestNewsWidget),
     }),
     customize_content_new_in_forum_main: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.new_in_forum_main),
+        condition: () => false === Preferences.get(P.customize_content._.new_in_forum_main),
         css: hideById(SITE.ID.newInForumWidget_main),
     }),
     customize_content_footer: stylesheet({
-        condition: () => Preferences.get(P.customize_content._.footer),
+        condition: () => false === Preferences.get(P.customize_content._.footer),
         css: require("./styles/hide-footer"),
     }),
 } as const;
