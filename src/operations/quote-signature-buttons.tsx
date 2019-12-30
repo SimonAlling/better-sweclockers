@@ -13,7 +13,7 @@ const userMessage = Preferences.get(P.forum_threads._.quote_signature_message);
 export default (e: { quickReplyForm: HTMLElement }) => {
     const csrf = session.getCsrfToken();
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);
-    only(HTMLElement)(Array.from(forumPosts)).forEach(post => {
+    for (const post of only(HTMLElement)(Array.from(forumPosts))) {
         if (post.classList.contains(SITE.CLASS.forumPostByCurrentUser)) {
             // We don't want buttons on the reader's own posts, because they can overflow when the edit button is visible.
             return;
@@ -37,7 +37,7 @@ export default (e: { quickReplyForm: HTMLElement }) => {
                 csrf,
             }), controls);
         }
-    });
+    }
 }
 
 function form(props: {

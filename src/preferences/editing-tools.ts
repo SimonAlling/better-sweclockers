@@ -13,9 +13,9 @@ function buttonsDescription(buttons: readonly Button[]): string {
     const textarea = document.createElement("textarea");
     const connectedButtons = buttons.map(b => b(textarea));
     const div = document.createElement("div");
-    connectedButtons.forEach(b => {
+    for (const b of connectedButtons) {
         render(b, div);
-    });
+    }
     return div.innerHTML;
 }
 

@@ -18,8 +18,10 @@ const ELEMENTS_TO_GO_OUTSIDE = [
 
 export function performProcessing() {
     const selector = [ SELECTOR.bbParagraph, "h1", "h2", "h3" ].join(", ");
-    document.querySelectorAll(selector).forEach(processNode);
-    document.querySelectorAll("."+BSCLibClass.MARK.mistake).forEach(mistake => {
+    for (const n of document.querySelectorAll(selector)) {
+        processNode(n);
+    }
+    for (const mistake of document.querySelectorAll("."+BSCLibClass.MARK.mistake)) {
         mistake.addEventListener("click", () => {
             if (getProofDialogTextarea() === null) {
                 withMaybe(document.getElementById(SITE.ID.correctionsLink), correctionsLink => {
@@ -36,7 +38,7 @@ export function performProcessing() {
                 });
             }, 10);
         });
-    });
+    }
 }
 
 export const enum Options {

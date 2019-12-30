@@ -21,9 +21,9 @@ export function postOrMessage(e: {
         textarea.removeEventListener("input", changeListener);
     }
     textarea.addEventListener("input", changeListener);
-    document.querySelectorAll(SELECTOR.actionButtons).forEach(button => {
+    for (const button of document.querySelectorAll(SELECTOR.actionButtons)) {
         button.addEventListener(BUTTON_CLICK_EVENT, disableListener);
-    });
+    }
     // If a post preview exists, then the user came here by previewing, so there
     // is information to be lost even before they have touched the textarea:
     withMaybe(document.getElementById(SITE.ID.postPreview), enableListener);

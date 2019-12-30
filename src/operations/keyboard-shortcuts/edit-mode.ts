@@ -10,26 +10,26 @@ export function submit(e: {
     textarea: HTMLElement,
     saveButton: HTMLElement,
 }) {
-    keyboardShortcuts.forEach(entry => {
+    for (const entry of keyboardShortcuts) {
         if (entry.action === Action.SUBMIT) {
             Mousetrap.bind(entry.shortcut, event => {
                 event.preventDefault();
                 clickOn(e.saveButton);
             });
         }
-    });
+    }
 }
 
 export function preview(e: {
     textarea: HTMLElement,
     previewButton: HTMLElement,
 }) {
-    keyboardShortcuts.forEach(entry => {
+    for (const entry of keyboardShortcuts) {
         if (entry.action === Action.PREVIEW) {
             Mousetrap.bind(entry.shortcut, event => {
                 event.preventDefault();
                 clickOn(e.previewButton);
             });
         }
-    });
+    }
 }

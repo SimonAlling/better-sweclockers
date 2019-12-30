@@ -1,9 +1,9 @@
 import * as CONFIG from "~src/config";
 
 export default () => {
-    CONFIG.FOCUSABLE_ELEMENTS.forEach(tagName => {
-        document.querySelectorAll(tagName).forEach(element => {
+    for (const tagName of CONFIG.FOCUSABLE_ELEMENTS) {
+        for (const element of document.querySelectorAll(tagName)) {
             element.classList.add(CONFIG.CLASS.mousetrap);
-        });
-    });
+        }
+    }
 }
