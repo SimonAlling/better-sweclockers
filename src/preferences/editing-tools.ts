@@ -27,10 +27,12 @@ const enable = new BooleanPreference({
     extras: { class: [ CONFIG.CLASS.inlinePreference, CONFIG.CLASS.primaryInlinePreference ] },
 });
 
-const dependencies = [ {
-    preference: enable,
-    condition: (v: boolean) => v,
-} ];
+const dependencies = [
+    {
+        preference: enable,
+        condition: (v: boolean) => v,
+    },
+];
 
 export const enum Position {
     ABOVE = "above", BELOW = "below",

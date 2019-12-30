@@ -12,10 +12,12 @@ const quote_signature_buttons = new BooleanPreference({
     description: T.preferences.forum_threads.quote_signature_buttons_description,
 });
 
-const dependencies_quote_signature = [ {
-    preference: quote_signature_buttons,
-    condition: (v: boolean) => v,
-} ];
+const dependencies_quote_signature = [
+    {
+        preference: quote_signature_buttons,
+        condition: (v: boolean) => v,
+    },
+];
 
 export default {
     improved_pagination_buttons: new BooleanPreference({
