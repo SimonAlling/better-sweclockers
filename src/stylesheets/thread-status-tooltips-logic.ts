@@ -21,7 +21,7 @@ const STATUSES = [
 
 const DEFAULT_STATUS = T.thread_status.default; // when none of the other statuses match
 
-type PowerOfTwo = 1 | 2 | 4 | 8 | 16 | 32 | 64 // 0 intentionally left out
+type PowerOfTwo = 1 | 2 | 4 | 8 | 16 | 32 | 64
 
 /*
 The generated CSS contains rules with selectors that never match, because some status combinations (e.g. locked + sticky) are not actually used.
@@ -51,8 +51,8 @@ function statuses(bitmask: number): readonly string[] {
     return matchingStatuses.length > 0 ? matchingStatuses : [ DEFAULT_STATUS ];
 }
 
-// extend([ 0, 1 ]     , 8) === [ 0, 1, 8, 9 ]
-// extend([ 0, 10, 20 ], 4) === [ 0, 10, 20, 4, 14, 24 ]
+// extend([ 0, 1 ]     , 8) = [ 0, 1, 8, 9 ]
+// extend([ 0, 10, 20 ], 4) = [ 0, 10, 20, 4, 14, 24 ]
 function extend(xs: readonly number[], n: PowerOfTwo): readonly number[] {
     return xs.concat(xs.map(x => x + n));
 }
