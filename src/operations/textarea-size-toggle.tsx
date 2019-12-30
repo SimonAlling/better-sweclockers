@@ -4,7 +4,7 @@ import { NumericPreference } from "ts-preferences";
 import * as CONFIG from "~src/config";
 import iconTextareaLarge from "~src/icons/textarea-large.svg";
 import iconTextareaSmall from "~src/icons/textarea-small.svg";
-import P, { Preferences } from "~src/preferences";
+import { P, Preferences } from "~src/preferences";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
 

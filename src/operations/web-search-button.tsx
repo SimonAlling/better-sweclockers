@@ -1,6 +1,6 @@
 import { render } from "preact";
 
-import P, { Preferences } from "~src/preferences";
+import { P, Preferences } from "~src/preferences";
 import { SearchEngine, searchURL, siteFilter } from "~src/search-engines";
 import * as SITE from "~src/site";
 import * as T from "~src/text";

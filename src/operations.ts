@@ -13,7 +13,7 @@ import {
     isReadingThread,
     mayHaveJustSubmittedForumPost,
 } from "~src/environment";
-import P, { Preferences } from "~src/preferences";
+import { P, Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 

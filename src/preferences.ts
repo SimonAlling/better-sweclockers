@@ -15,7 +15,7 @@ import generalPreferences from "./preferences/general";
 import interestsPreferences from "./preferences/interests";
 import keyboardPreferences from "./preferences/keyboard";
 
-const P = {
+export const P = {
     general: {
         label: T.preferences.general.label,
         _: generalPreferences,
@@ -51,8 +51,6 @@ const P = {
         _: interestsPreferences,
     },
 } as const;
-
-export default P;
 
 export const responseHandler = subscriptable(loggingResponseHandler);
 

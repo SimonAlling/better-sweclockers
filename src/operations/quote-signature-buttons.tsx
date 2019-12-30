@@ -3,7 +3,7 @@ import { isNull, only } from "ts-type-guards";
 import { log } from "userscripter";
 
 import * as CONFIG from "~src/config";
-import P, { Preferences } from "~src/preferences";
+import { P, Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import * as T from "~src/text";

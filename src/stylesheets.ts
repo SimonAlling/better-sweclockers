@@ -6,7 +6,7 @@ import { Stylesheets, stylesheet } from "userscripter/lib/stylesheets";
 
 import * as CONFIG from "~src/config";
 import { isInEditMode, isOnBSCPreferencesPage, isOnSweclockersSettingsPage, isReadingThread } from "~src/environment";
-import P, { Preferences } from "~src/preferences";
+import { P, Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import { hideByClass, hideById, hideBySelector } from "~src/stylesheets/hide";

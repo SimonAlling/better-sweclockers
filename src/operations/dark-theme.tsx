@@ -4,7 +4,7 @@ import { isNull } from "ts-type-guards";
 
 import * as CONFIG from "~src/config";
 import { darkThemeUrl, darkThemeUrlBackup } from "~src/dark-theme";
-import P, { Preferences } from "~src/preferences";
+import { P, Preferences } from "~src/preferences";
 import * as T from "~src/text";
 import { timeIsWithin } from "~src/time";
 import { withMaybe } from "~src/utilities";
