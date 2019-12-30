@@ -142,7 +142,8 @@ export const MOBILE_SITE_DISCLAIMER = {
 } as const;
 
 export function getUserID(): unknown {
-    return (window as any).session._userid;
+    const s = (window as any).session;
+    return s === undefined ? undefined : s._userid;
 }
 
 export function isValidUsername(s: string): boolean {
