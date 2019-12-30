@@ -37,7 +37,7 @@ export const ID = {
     style: {
         proofreading: i("proofreading"),
     },
-};
+} as const;
 
 export const CLASS = {
     mousetrap: "mousetrap",
@@ -68,7 +68,7 @@ export const CLASS = {
     subforum: c("subforum"),
     textareaSize: c("textarea-size"),
     codeInput: c("code-input"),
-};
+} as const;
 
 export const PATH = {
     PREFERENCES: {
@@ -81,13 +81,13 @@ export const PATH = {
             new RegExp(sweclockersSettingsPath.source + r`\/` + USERSCRIPT_ID)
         ),
     },
-};
+} as const;
 
 export const KEY = {
     autosaved_draft: i("autosaved_draft"),
     caret_position: i("caret_position_in_textarea"),
     last_time_user_tried_to_submit: i("last_time_user_tried_to_submit"),
-};
+} as const;
 
 export const URL_LOGO = "https://cdn.sweclockers.com/artikel/bild/63329?l=eyJyZXNvdXJjZSI6IlwvYXJ0aWtlbFwvYmlsZFwvNjMzMjkiLCJmaWx0ZXJzIjpbInQ9b3JpZ2luYWwiXSwicGFyYW1zIjpbXSwia2V5IjoiYzk3ODM1MmY4NDVkM2YwOWY3M2UwYWRmODZlMjk1MmIifQ%3D%3D";
 
@@ -98,15 +98,15 @@ export const CONTENT = {
     splitQuoteEmptyLines: 3,
     edit: `[b]EDIT:[/b] `,
     doge: `[img]https://i.imgur.com/2IGEruO.png[/img]`,
-};
+} as const;
 
 export const ICONS = {
     // Requiring an SVG file here throws when building.
     QUOTE: `<div>”</div>`,
     DOGE: `https://i.imgur.com/2IGEruO.png`,
-};
+} as const;
 
-export const FOCUSABLE_ELEMENTS = [ "textarea", "input", "select" ];
+export const FOCUSABLE_ELEMENTS = [ "textarea", "input", "select" ] as const;
 
 export const enum SearchEngine {
     // Be careful! These strings are used in the UI.
