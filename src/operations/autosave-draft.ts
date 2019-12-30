@@ -5,10 +5,10 @@ import { isNumber, isString } from "ts-type-guards";
 import { log } from "userscripter";
 
 import * as CONFIG from "~src/config";
-import * as SITE from "~src/site";
 import P from "~src/preferences";
-import * as T from "~src/text";
 import { Preferences } from "~src/preferences";
+import * as SITE from "~src/site";
+import * as T from "~src/text";
 
 import { isCleanSlate_reply } from "./edit-mode";
 import { generalButton } from "./logic/editing-tools";

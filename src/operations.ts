@@ -1,6 +1,7 @@
 import { DOMCONTENTLOADED } from "userscripter/lib/environment";
 import { Operation, operation } from "userscripter/lib/operations";
 
+import * as CONFIG from "~src/config";
 import {
     isInEditMode,
     isInEditMode_forum,
@@ -12,11 +13,10 @@ import {
     isReadingThread,
     mayHaveJustSubmittedForumPost,
 } from "~src/environment";
-import * as CONFIG from "~src/config";
-import * as SITE from "~src/site";
 import P from "~src/preferences";
-import SELECTOR from "~src/selectors";
 import { Preferences } from "~src/preferences";
+import SELECTOR from "~src/selectors";
+import * as SITE from "~src/site";
 
 import * as autosaveDraft from "./operations/autosave-draft";
 import manageCaretPosition from "./operations/caret-position";

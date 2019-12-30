@@ -3,10 +3,10 @@
 import * as BB from "bbcode-tags";
 
 import { Action } from "./actions";
-import * as DarkTheme from "./dark-theme";
 import * as CONFIG from "./config";
-import * as SITE from "./site";
+import * as DarkTheme from "./dark-theme";
 import { SearchEngine } from "./search-engines";
+import * as SITE from "./site";
 import { InsertButtonDescription } from "./types";
 
 export function action(a: Action): string {

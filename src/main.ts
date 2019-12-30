@@ -1,11 +1,11 @@
 import { compose } from "@typed/compose";
 import { environment, errors, log, userscripter } from "userscripter";
 
-import * as SITE from "~src/site";
 import * as CONFIG from "~src/config";
-import U from "~src/userscript";
-import STYLESHEETS from "~src/stylesheets";
 import OPERATIONS from "~src/operations";
+import * as SITE from "~src/site";
+import STYLESHEETS from "~src/stylesheets";
+import U from "~src/userscript";
 
 const describeFailure = errors.failureDescriber({
     siteName: SITE.NAME,

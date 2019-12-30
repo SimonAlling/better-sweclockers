@@ -1,5 +1,5 @@
-import * as SITE from "~src/site";
 import SELECTOR from "~src/selectors";
+import * as SITE from "~src/site";
 import { withMaybe } from "~src/utilities";
 
 // mousedown because it must be guaranteed to fire before beforeunload:

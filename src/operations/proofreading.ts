@@ -1,10 +1,10 @@
 import { CLASS as BSCLibClass, processNode } from "@alling/better-sweclockers-lib";
 import { stylesheets } from "userscripter";
 
-import * as SITE from "~src/site";
 import SELECTOR from "~src/selectors";
-import { withMaybe } from "~src/utilities";
+import * as SITE from "~src/site";
 import STYLESHEETS from "~src/stylesheets";
+import { withMaybe } from "~src/utilities";
 
 const CONTEXT_CHARS = 10; // before and after mistake
 // If a previous and/or next sibling is not found, look outside these elements:

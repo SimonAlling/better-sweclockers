@@ -2,12 +2,12 @@ import * as ms from "milliseconds";
 import { h, render } from "preact";
 import { isNull } from "ts-type-guards";
 
-import { darkThemeUrl, darkThemeUrlBackup } from "~src/dark-theme";
 import * as CONFIG from "~src/config";
+import { darkThemeUrl, darkThemeUrlBackup } from "~src/dark-theme";
 import P from "~src/preferences";
+import { Preferences } from "~src/preferences";
 import * as T from "~src/text";
 import { timeIsWithin } from "~src/time";
-import { Preferences } from "~src/preferences";
 import { withMaybe } from "~src/utilities";
 
 import { tab } from "./logic/topMenuTab";

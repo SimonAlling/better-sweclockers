@@ -3,11 +3,11 @@ import { isNull, only } from "ts-type-guards";
 import { log } from "userscripter";
 
 import * as CONFIG from "~src/config";
-import * as SITE from "~src/site";
 import P from "~src/preferences";
-import SELECTOR from "~src/selectors";
-import * as T from "~src/text";
 import { Preferences } from "~src/preferences";
+import SELECTOR from "~src/selectors";
+import * as SITE from "~src/site";
+import * as T from "~src/text";
 
 const userMessage = Preferences.get(P.forum_threads._.quote_signature_message);
 

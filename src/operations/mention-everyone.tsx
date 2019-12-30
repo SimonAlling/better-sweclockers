@@ -2,9 +2,9 @@ import unique from "array-uniq";
 import { h, render } from "preact";
 
 import * as CONFIG from "~src/config";
-import * as SITE from "~src/site";
 import { mention } from "~src/operations/edit-mode";
 import  SELECTOR from "~src/selectors";
+import * as SITE from "~src/site";
 import * as T from "~src/text";
 
 export default (e: {

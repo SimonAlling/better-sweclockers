@@ -5,8 +5,8 @@ import {
     MultichoicePreference,
 } from "ts-preferences";
 
-import { Source } from "~src/dark-theme";
 import * as CONFIG from "~src/config";
+import { Source } from "~src/dark-theme";
 import * as T from "~src/text";
 
 import { TimePreference } from "./TimePreference";

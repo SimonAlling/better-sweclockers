@@ -1,22 +1,22 @@
 import { STYLE_PROOFREADING } from "@alling/better-sweclockers-lib";
 import * as ms from "milliseconds";
 
-import { Stylesheets, stylesheet } from "userscripter/lib/stylesheets";
 import { ALWAYS } from "userscripter/lib/environment";
+import { Stylesheets, stylesheet } from "userscripter/lib/stylesheets";
 
-import { isInEditMode, isOnBSCPreferencesPage, isOnSweclockersSettingsPage, isReadingThread } from "~src/environment";
 import * as CONFIG from "~src/config";
-import * as SITE from "~src/site";
+import { isInEditMode, isOnBSCPreferencesPage, isOnSweclockersSettingsPage, isReadingThread } from "~src/environment";
 import P from "~src/preferences";
+import { Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
+import * as SITE from "~src/site";
 import { hideByClass, hideById, hideBySelector } from "~src/stylesheets/hide";
 import interestsNewInForum from "~src/stylesheets/interests-new-in-forum";
 import threadStatusTooltipsGenerated from "~src/stylesheets/thread-status-tooltips-logic";
 import { timeIsWithin } from "~src/time"
-import { Preferences } from "~src/preferences";
 
-import adaptiveWidth from "./stylesheets/adaptive-width.scss";
 import adaptiveWidthCorrections from "./stylesheets/adaptive-width-corrections.scss";
+import adaptiveWidth from "./stylesheets/adaptive-width.scss";
 import autosaveDraft from "./stylesheets/autosave-draft.scss";
 import compactLayout from "./stylesheets/compact-layout.scss";
 import darkThemeToggle from "./stylesheets/dark-theme-toggle.scss";
@@ -31,8 +31,8 @@ import improvedPaginationButtons from "./stylesheets/improved-pagination-buttons
 import lockHeights from "./stylesheets/lock-heights.scss";
 import main from "./stylesheets/main.scss";
 import mentionEveryone from "./stylesheets/mention-everyone.scss";
-import preferences from "./stylesheets/preferences.scss";
 import preferencesLink from "./stylesheets/preferences-link.scss";
+import preferences from "./stylesheets/preferences.scss";
 import replaceFollowedThreadsLink from "./stylesheets/replace-followed-threads-link.scss";
 import textareaSizeToggle from "./stylesheets/textarea-size-toggle.scss";
 import threadStatusTooltips from "./stylesheets/thread-status-tooltips.scss";

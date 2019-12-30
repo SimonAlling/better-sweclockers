@@ -1,5 +1,6 @@
-import * as SITE from "~src/site";
 import * as BB from "bbcode-tags";
+
+import * as SITE from "~src/site";
 
 const END_TAG_QUOTE = BB.end(SITE.TAG.quote);
 const sentFrom = SITE.MOBILE_SITE_DISCLAIMER.sentFrom;

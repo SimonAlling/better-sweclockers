@@ -1,7 +1,7 @@
 import { h, render } from "preact";
 
-import * as SITE from "~src/site";
 import { PreferencesForm } from "~src/preferences-menu";
+import * as SITE from "~src/site";
 import * as T from "~src/text";
 
 export default () => {

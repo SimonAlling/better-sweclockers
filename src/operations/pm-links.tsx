@@ -2,8 +2,8 @@ import { h, render } from "preact";
 import { isNumber, only } from "ts-type-guards";
 
 import * as CONFIG from "~src/config";
-import * as SITE from "~src/site";
 import ICON from "~src/icons/pm.svg";
+import * as SITE from "~src/site";
 
 export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);

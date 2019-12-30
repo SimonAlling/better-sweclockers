@@ -19,13 +19,13 @@ import { is, isNull, isString, only } from "ts-type-guards";
 import { log } from "userscripter";
 
 import * as CONFIG from "~src/config";
-import * as SITE from "~src/site";
 import { EditingTools, getEditingToolsConfig } from "~src/operations/editing-tools";
 import P, { responseHandler } from "~src/preferences";
+import { Preferences } from "~src/preferences";
 import { TimePreference } from "~src/preferences/TimePreference";
 import SELECTOR from "~src/selectors";
+import * as SITE from "~src/site";
 import * as T from "~src/text";
-import { Preferences } from "~src/preferences";
 
 const PID = <T extends AllowedTypes>(p: Preference<T>) => CONFIG.ID.preferenceIdPrefix + p.key;
 

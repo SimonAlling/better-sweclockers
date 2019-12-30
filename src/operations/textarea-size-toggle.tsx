@@ -2,12 +2,12 @@ import { h, render } from "preact";
 import { NumericPreference } from "ts-preferences";
 
 import * as CONFIG from "~src/config";
-import iconTextareaSmall from "~src/icons/textarea-small.svg";
 import iconTextareaLarge from "~src/icons/textarea-large.svg";
-import * as SITE from "~src/site";
+import iconTextareaSmall from "~src/icons/textarea-small.svg";
 import P from "~src/preferences";
-import * as T from "~src/text";
 import { Preferences } from "~src/preferences";
+import * as SITE from "~src/site";
+import * as T from "~src/text";
 
 export default (e: { textarea: HTMLElement, toolbarInner: HTMLElement }) => {
     const textarea = e.textarea as HTMLTextAreaElement;
