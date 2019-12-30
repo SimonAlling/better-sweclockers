@@ -20,8 +20,7 @@ import { log } from "userscripter";
 
 import * as CONFIG from "~src/config";
 import { EditingTools, getEditingToolsConfig } from "~src/operations/editing-tools";
-import P, { responseHandler } from "~src/preferences";
-import { Preferences } from "~src/preferences";
+import P, { Preferences, responseHandler } from "~src/preferences";
 import { TimePreference } from "~src/preferences/TimePreference";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";

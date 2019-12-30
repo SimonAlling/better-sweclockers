@@ -4,8 +4,7 @@ import { h, render } from "preact";
 import { compose } from "@typed/compose";
 
 import * as CONFIG from "~src/config";
-import P from "~src/preferences";
-import { Preferences } from "~src/preferences";
+import P, { Preferences } from "~src/preferences";
 import { Position } from "~src/preferences/editing-tools";
 import * as SITE from "~src/site";
 import * as T from "~src/text";

@@ -2,8 +2,7 @@ import * as Mousetrap from "mousetrap";
 
 import { Action } from "~src/actions";
 import { clickOn } from "~src/operations/logic/click";
-import P from "~src/preferences";
-import { Preferences } from "~src/preferences";
+import P, { Preferences } from "~src/preferences";
 
 const keyboardShortcuts = Preferences.get(P.keyboard);
 

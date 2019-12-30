@@ -5,8 +5,7 @@ import { isNumber, isString } from "ts-type-guards";
 import { log } from "userscripter";
 
 import * as CONFIG from "~src/config";
-import P from "~src/preferences";
-import { Preferences } from "~src/preferences";
+import P, { Preferences } from "~src/preferences";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
 

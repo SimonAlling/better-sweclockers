@@ -1,8 +1,7 @@
 import * as Storage from "ts-storage";
 
 import * as CONFIG from "~src/config";
-import P from "~src/preferences";
-import { Preferences } from "~src/preferences";
+import P, { Preferences } from "~src/preferences";
 
 export default (e: {
     textarea: HTMLElement,
