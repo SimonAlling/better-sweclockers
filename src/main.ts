@@ -3,6 +3,7 @@ import { environment, errors, log, userscripter } from "userscripter";
 
 import * as CONFIG from "~src/config";
 import OPERATIONS from "~src/operations";
+import * as DarkTheme from "~src/operations/dark-theme";
 import * as SITE from "~src/site";
 import STYLESHEETS from "~src/stylesheets";
 import U from "~src/userscript";
@@ -12,6 +13,8 @@ const describeFailure = errors.failureDescriber({
     extensionName: U.name,
     location: document.location,
 });
+
+DarkTheme.manage(); // In an effort to avoid a bright flash on page load (issue #62), we do this as early as possible.
 
 userscripter.run({
     id: U.id,

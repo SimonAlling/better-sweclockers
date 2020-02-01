@@ -50,11 +50,6 @@ const OPERATIONS: readonly Operation<any>[] = [
         condition: () => ALWAYS,
         action: () => { document.documentElement.id = CONFIG.ID.document },
     }),
-    operation({
-        description: "manage dark theme",
-        condition: () => ALWAYS,
-        action: DarkTheme.manage,
-    }),
     // A regular IndependentOperation does not work when the user is logged out, because document.body is null.
     // An IndependentOperation with waitForDOMContentLoaded does not work when the user is logged in, because DOMContentLoaded never fires.
     operation({
