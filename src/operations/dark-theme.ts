@@ -1,5 +1,5 @@
 import * as ms from "milliseconds";
-import { h, render } from "preact";
+import { render } from "preact";
 import { isNull } from "ts-type-guards";
 
 import * as CONFIG from "~src/config";
@@ -41,7 +41,11 @@ function apply(newState: boolean): void {
     if (newState) {
         if (isNull(document.getElementById(CONFIG.ID.darkThemeStylesheet))) {
             // Not document.head because it can be null, e.g. in a background tab in Firefox:
-            render(<link rel="stylesheet" href={url(source)} id={CONFIG.ID.darkThemeStylesheet} />, document.documentElement);
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = url(source);
+            link.id = CONFIG.ID.darkThemeStylesheet;
+            document.documentElement.appendChild(link);
         }
     } else {
         withMaybe(document.getElementById(CONFIG.ID.darkThemeStylesheet), element => element.remove());
