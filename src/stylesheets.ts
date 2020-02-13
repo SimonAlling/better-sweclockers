@@ -159,10 +159,6 @@ const STYLESHEETS = {
     }),
 
     // Customize content:
-    customize_content_news_ticker: stylesheet({
-        condition: () => false === Preferences.get(P.customize_content._.news_ticker),
-        css: hideById(SITE.ID.newsTicker),
-    }),
     customize_content_carousel: stylesheet({
         condition: () => false === Preferences.get(P.customize_content._.carousel),
         css: hideById(SITE.ID.carousel),

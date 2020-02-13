@@ -27,7 +27,6 @@ export const ID = {
     siteHeader: "siteHeader",
     signoutButton: "signoutForm",
     textarea: "__laika_cnt.textarea.0",
-    newsTicker: "newsticker",
     carousel: "carousel",
     correctionsLink: "proofArticle",
     postPreview: "preview",

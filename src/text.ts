@@ -180,7 +180,6 @@ export const preferences = {
 
     customize_content: {
         label: `Anpassa innehåll`,
-        news_ticker: `Senaste nytt (under loggan)`,
         carousel: `Bildspelsvyn högst upp`,
         social_media: `Knappar för sociala medier`,
         anniversary: `SweClockers 20 år`,
