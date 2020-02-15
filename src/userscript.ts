@@ -8,5 +8,6 @@ export default {
     sitename: "SweClockers",
     namespace: "simonalling.se",
     runAt: "document-start",
+    noframes: true, // because SweClockers has frames with `src=""`
     hostedAt: "https://simonalling.github.io/userscripts/",
 } as const;

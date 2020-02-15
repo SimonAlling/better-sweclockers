@@ -19,6 +19,7 @@ export default function(buildConfig: BuildConfig): Metadata {
             `*://www.${U.hostname}/*`,
         ],
         run_at: U.runAt,
+        noframes: U.noframes,
         ...(
             hostedAt === null
             ? {}
