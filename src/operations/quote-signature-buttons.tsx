@@ -16,7 +16,7 @@ export default (e: { quickReplyForm: HTMLElement }) => {
     for (const post of only(HTMLElement)(Array.from(forumPosts))) {
         if (post.classList.contains(SITE.CLASS.forumPostByCurrentUser)) {
             // We don't want buttons on the reader's own posts, because they can overflow when the edit button is visible.
-            return;
+            continue;
         }
         const signature = post.querySelector("." + SITE.CLASS.forumPostSignature);
         const controls = post.querySelector("." + SITE.CLASS.forumPostControls);
