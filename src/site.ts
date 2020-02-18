@@ -151,8 +151,9 @@ export function isValidUsername(s: string): boolean {
     // My experiments show that e.g. Å and ß are valid characters, and that the name cannot start or end with " ", "-" or "_".
     // That a username is "valid" does not necessarily mean that it can be used for registering a _new_ account, only that it might be in use by someone.
     // For example, "." is forbidden, but has been allowed earlier: https://www.sweclockers.com/medlem/197838
+    // So has '"': https://www.sweclockers.com/medlem/26129
     // Weird Unicode intervals are \u00C0-\u00FF with × and ÷ excluded.
     // Regex matches "Alling ", "Alling-" and "Alling_", so the reverse of the string must also be checked.
-    const REGEX_ALMOST_USERNAME = /^(?![ \-_])[\w\d \-\.\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF]{3,32}$/;
+    const REGEX_ALMOST_USERNAME = /^(?![ \-_"])[\w\d \-\.\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF]{3,32}$/;
     return REGEX_ALMOST_USERNAME.test(s) && REGEX_ALMOST_USERNAME.test(s.split("").reverse().join(""));
 }
