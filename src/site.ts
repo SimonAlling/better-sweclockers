@@ -74,6 +74,17 @@ export const CLASS = {
     toolbarTableButton: "tbl",
 } as const;
 
+export const FORM = {
+    name: {
+        action: "action",
+        csrfToken: "csrf",
+        message: "message",
+    },
+    value: {
+        preview: "doPreview",
+        submit: "doSubmit",
+    },
+} as const;
 
 export const PATH = {
     EDIT_MODE_FORUM: /^\/forum\/(.*\/(svara(\?citera)?|redigera)|ny-trad)/,

@@ -58,9 +58,9 @@ function form(props: {
     return (
         <form method="POST" action={props.replyURL} class={[ SITE.CLASS.forumPostBtnGroup, CONFIG.CLASS.quoteSignatureButton ].join(" ")}>
             {isNull(props.signature) ? [] : [
-                <input name="message" type="hidden" value={message} />,
-                <input name="csrf" type="hidden" value={props.csrf} />,
-                <input name="action" type="hidden" value="doPreview" />,
+                <input name={SITE.FORM.name.message} type="hidden" value={message} />,
+                <input name={SITE.FORM.name.csrfToken} type="hidden" value={props.csrf} />,
+                <input name={SITE.FORM.name.action} type="hidden" value={SITE.FORM.value.preview} />,
             ]}
             <button
                 type="submit"

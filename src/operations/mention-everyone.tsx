@@ -40,9 +40,9 @@ function mentionEveryoneButton(props: {
 }): JSX.Element {
     return (
         <form method="POST" action={props.replyURL} class={CONFIG.CLASS.mentionEveryoneButton}>
-            <input name="message" type="hidden" value={props.message} />
-            <input name="csrf" type="hidden" value={props.csrf} />
-            <input name="action" type="hidden" value="doPreview" />
+            <input name={SITE.FORM.name.message} type="hidden" value={props.message} />
+            <input name={SITE.FORM.name.csrfToken} type="hidden" value={props.csrf} />
+            <input name={SITE.FORM.name.action} type="hidden" value={SITE.FORM.value.preview} />
             <button
                 type="submit"
                 class={SITE.CLASS.button}
