@@ -79,6 +79,8 @@ export const FORM = {
         action: "action",
         csrfToken: "csrf",
         message: "message",
+        recipients: "rcpt[]",
+        title: "title",
     },
     value: {
         preview: "doPreview",
@@ -109,7 +111,8 @@ export const PATH = {
     THREAD: /^\/(?:forum|medlem\/\d+\/meddelanden)\/trad\//,
     POST: /^\/(?:forum|medlem\/\d+\/meddelanden)\/post\//,
     SUCCESSFULLY_SUBMITTED_FORUM_POST: /^\/forum\/post\/\d+$/,
-    newPrivateMessage: (sender: number, recipient: number) => `/medlem/${sender}/meddelanden/nytt-meddelande?rcpts=${recipient}`,
+    newPrivateMessage: (sender: number) => `/medlem/${sender}/meddelanden/nytt-meddelande`,
+    forumPost: (postID: string) => `/forum/post/${postID}`,
     editPost: (postID: number) => `/forum/post/${postID}/redigera`,
 } as const;
 
