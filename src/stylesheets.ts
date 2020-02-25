@@ -167,10 +167,6 @@ const STYLESHEETS = {
         condition: () => false === Preferences.get(P.customize_content._.social_media),
         css: hideByClass(SITE.CLASS.socialMediaButtons),
     }),
-    customize_content_anniversary: stylesheet({
-        condition: () => false === Preferences.get(P.customize_content._.anniversary),
-        css: hideBySelector(SELECTOR.sideColumnAnniversary),
-    }),
     customize_content_guides: stylesheet({
         condition: () => false === Preferences.get(P.customize_content._.guides),
         css: hideBySelector(SELECTOR.sideColumnGuides),

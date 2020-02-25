@@ -37,7 +37,6 @@ export default {
     replyButtonAfterForumPosts: `${forumPostContainer} ~ * .replyToThread`,
     cityInput: `input[name="city"]`,
     regionSelect: `select[name="location"]`,
-    sideColumnAnniversary: `.swec20Box.${C.sideBox}`,
     sideColumnGuides: `.videoPush.${C.sideBox}`,
     sideColumnPopularGalleries: `.popularGalleries.${C.sideBox}`,
     bbParagraph: `.bbParagraph`,

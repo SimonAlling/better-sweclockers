@@ -184,7 +184,6 @@ export const preferences = {
         label: `Anpassa innehåll`,
         carousel: `Bildspelsvyn högst upp`,
         social_media: `Knappar för sociala medier`,
-        anniversary: `SweClockers 20 år`,
         guides: `Guider`,
         popular_galleries: `Bubblare i Galleriet`,
         new_in_forum_side: `Nytt i forumet (till höger)`,

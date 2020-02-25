@@ -15,11 +15,6 @@ export default {
         default: true,
         label: T.preferences.customize_content.social_media,
     }),
-    anniversary: new BooleanPreference({
-        key: "customize_content_anniversary",
-        default: true,
-        label: T.preferences.customize_content.anniversary,
-    }),
     guides: new BooleanPreference({
         key: "customize_content_guides",
         default: true,
