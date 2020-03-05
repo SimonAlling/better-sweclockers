@@ -1,6 +1,7 @@
 import { DOMCONTENTLOADED } from "userscripter/lib/environment";
 import { Operation, operation } from "userscripter/lib/operations";
 
+import { Action } from "~src/actions";
 import * as CONFIG from "~src/config";
 import {
     isInEditMode,
@@ -24,6 +25,7 @@ import insertEditingTools from "./operations/editing-tools";
 import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
 import adaptCorrectionsLink from "./operations/improved-corrections";
 import * as keyboardShortcutsEditMode from "./operations/keyboard-shortcuts/edit-mode";
+import { addEditModeKeyboardShortcut } from "./operations/keyboard-shortcuts/util";
 import insertLinkToTop from "./operations/link-to-top";
 import insertMentionEveryoneButton from "./operations/mention-everyone";
 import performMousetrapPreparations from "./operations/mousetrap-preparations";
@@ -271,7 +273,7 @@ const OPERATIONS: readonly Operation<any>[] = [
         deferUntil: DOMCONTENTLOADED,
     }),
     operation({
-        description: "add edit mode keyboard shortcut (submit)",
+        description: addEditModeKeyboardShortcut(Action.SUBMIT),
         condition: () => isInEditMode && Preferences.get(P.edit_mode._.keyboard_shortcuts),
         dependencies: {
             textarea: SELECTOR.textarea,
@@ -281,7 +283,7 @@ const OPERATIONS: readonly Operation<any>[] = [
         deferUntil: DOMCONTENTLOADED,
     }),
     operation({
-        description: "add edit mode keyboard shortcut (preview)",
+        description: addEditModeKeyboardShortcut(Action.PREVIEW),
         condition: () => isInEditMode && !isInEditMode_marketContact && Preferences.get(P.edit_mode._.keyboard_shortcuts),
         dependencies: {
             textarea: SELECTOR.textarea,
