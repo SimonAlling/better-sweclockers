@@ -1,8 +1,9 @@
 import * as Mousetrap from "mousetrap";
 
-import { Action } from "~src/actions";
 import { P, Preferences } from "~src/preferences";
 import { ShortcutEntry } from "~src/preferences/keyboard";
+
+import { Action } from "./action";
 
 const keyboardShortcuts = Preferences.get(P.keyboard);
 

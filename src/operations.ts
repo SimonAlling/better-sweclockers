@@ -1,7 +1,9 @@
 import { DOMCONTENTLOADED } from "userscripter/lib/environment";
 import { Operation, operation } from "userscripter/lib/operations";
 
-import { Action } from "~src/actions";
+import { Action } from "~src/actions/action";
+import * as keyboardShortcutsEditMode from "~src/actions/edit-mode";
+import { addEditModeKeyboardShortcut } from "~src/actions/util";
 import * as CONFIG from "~src/config";
 import {
     isInEditMode,
@@ -25,8 +27,6 @@ import * as DarkTheme from "./operations/dark-theme";
 import insertEditingTools from "./operations/editing-tools";
 import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
 import adaptCorrectionsLink from "./operations/improved-corrections";
-import * as keyboardShortcutsEditMode from "./operations/keyboard-shortcuts/edit-mode";
-import { addEditModeKeyboardShortcut } from "./operations/keyboard-shortcuts/util";
 import insertLinkToTop from "./operations/link-to-top";
 import insertMentionEveryoneButton from "./operations/mention-everyone";
 import performMousetrapPreparations from "./operations/mousetrap-preparations";

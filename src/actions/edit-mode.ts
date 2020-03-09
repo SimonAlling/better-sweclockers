@@ -1,6 +1,6 @@
-import { Action } from "~src/actions";
 import { clickOn } from "~src/operations/logic/click";
 
+import { Action } from "./action";
 import { bind } from "./util";
 
 export function submit(e: {

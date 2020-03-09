@@ -1,6 +1,6 @@
 import { ListPreference } from "ts-preferences";
 
-import { Action } from "~src/actions";
+import { Action } from "~src/actions/action";
 import * as T from "~src/text";
 
 export type ShortcutEntry = Readonly<{
