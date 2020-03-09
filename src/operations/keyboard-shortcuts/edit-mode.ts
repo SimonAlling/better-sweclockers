@@ -16,3 +16,10 @@ export function preview(e: {
 }) {
     bind(Action.PREVIEW, () => true, () => clickOn(e.previewButton));
 }
+
+export function insertLink(e: {
+    textarea: HTMLElement,
+    urlButton: HTMLElement,
+}) {
+    bind(Action.INSERT_LINK, () => e.textarea.matches(":focus"), () => clickOn(e.urlButton));
+}

@@ -14,6 +14,7 @@ export default new ListPreference<ShortcutEntry>({
     default: [
         { shortcut: "mod+s", action: Action.SUBMIT },
         { shortcut: "mod+p", action: Action.PREVIEW },
+        { shortcut: "mod+k", action: Action.INSERT_LINK },
     ],
     extras: { implicit: true },
 });

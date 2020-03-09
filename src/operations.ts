@@ -17,6 +17,7 @@ import {
 import { P, Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
+import * as T from "~src/text";
 
 import * as autosaveDraft from "./operations/autosave-draft";
 import manageCaretPosition from "./operations/caret-position";
@@ -290,6 +291,16 @@ const OPERATIONS: readonly Operation<any>[] = [
             previewButton: SELECTOR.previewButton,
         },
         action: keyboardShortcutsEditMode.preview,
+        deferUntil: DOMCONTENTLOADED,
+    }),
+    operation({
+        description: addEditModeKeyboardShortcut(Action.INSERT_LINK),
+        condition: () => isInEditMode && Preferences.get(P.edit_mode._.keyboard_shortcuts),
+        dependencies: {
+            textarea: SELECTOR.textarea,
+            urlButton: `.${CONFIG.CLASS.editingTools} [title="${T.editing_tools.tooltip_url}"]`,
+        },
+        action: keyboardShortcutsEditMode.insertLink,
         deferUntil: DOMCONTENTLOADED,
     }),
     operation({
