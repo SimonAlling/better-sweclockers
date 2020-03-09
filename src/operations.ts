@@ -294,6 +294,16 @@ const OPERATIONS: readonly Operation<any>[] = [
         deferUntil: DOMCONTENTLOADED,
     }),
     operation({
+        description: addEditModeKeyboardShortcut(Action.INSERT_HEADER),
+        condition: () => isInEditMode && Preferences.get(P.edit_mode._.keyboard_shortcuts),
+        dependencies: {
+            textarea: SELECTOR.textarea,
+            headerButton: `${SELECTOR.textareaToolbarInner} [title="${T.general.tooltip_h}"] .${SITE.CLASS.inner}`, // Event listener is on .inner.
+        },
+        action: keyboardShortcutsEditMode.insertHeader,
+        deferUntil: DOMCONTENTLOADED,
+    }),
+    operation({
         description: addEditModeKeyboardShortcut(Action.INSERT_LINK),
         condition: () => isInEditMode && Preferences.get(P.edit_mode._.keyboard_shortcuts),
         dependencies: {

@@ -17,9 +17,20 @@ export function preview(e: {
     bind(Action.PREVIEW, () => true, () => clickOn(e.previewButton));
 }
 
+export function insertHeader(e: {
+    textarea: HTMLElement,
+    headerButton: HTMLElement,
+}) {
+    bind(Action.INSERT_HEADER, isFocused(e.textarea), () => clickOn(e.headerButton));
+}
+
 export function insertLink(e: {
     textarea: HTMLElement,
     urlButton: HTMLElement,
 }) {
-    bind(Action.INSERT_LINK, () => e.textarea.matches(":focus"), () => clickOn(e.urlButton));
+    bind(Action.INSERT_LINK, isFocused(e.textarea), () => clickOn(e.urlButton));
+}
+
+function isFocused(element: HTMLElement): () => boolean {
+    return () => element.matches(":focus");
 }
