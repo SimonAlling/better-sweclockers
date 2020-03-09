@@ -2,19 +2,11 @@
 
 import * as BB from "bbcode-tags";
 
-import { Action } from "./actions";
 import * as CONFIG from "./config";
 import * as DarkTheme from "./dark-theme";
 import { SearchEngine } from "./search-engines";
 import * as SITE from "./site";
 import { InsertButtonDescription } from "./types";
-
-export function action(a: Action): string {
-    switch (a) {
-        case Action.PREVIEW: return `Förhandsgranska`;
-        case Action.SUBMIT: return `Skicka`;
-    }
-}
 
 function genitive(name: string): string {
     return ["s", "x", "z"].some(letter => name.endsWith(letter)) ? name : name + "s";
