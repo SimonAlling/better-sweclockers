@@ -1,7 +1,7 @@
 import { clickOn } from "~src/operations/logic/click";
 
 import { Action } from "./action";
-import { bind } from "./util";
+import { bind, isFocused } from "./util";
 
 export function submit(e: {
     textarea: HTMLElement,
@@ -29,8 +29,4 @@ export function insertLink(e: {
     urlButton: HTMLElement,
 }) {
     bind(Action.INSERT_LINK, isFocused(e.textarea), () => clickOn(e.urlButton));
-}
-
-function isFocused(element: HTMLElement): () => boolean {
-    return () => element.matches(":focus");
 }

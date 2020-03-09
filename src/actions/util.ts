@@ -27,3 +27,7 @@ export function bindShortcut(entry: ShortcutEntry, condition: () => boolean, f: 
         }
     });
 }
+
+export function isFocused(element: HTMLElement): () => boolean {
+    return () => element.matches(":focus");
+}
