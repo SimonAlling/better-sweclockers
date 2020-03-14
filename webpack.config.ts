@@ -18,6 +18,7 @@ export default createWebpackConfig({
             id: U.id,
             now: new Date(),
         }),
+        hostedAt: U.hostedAt,
         sassVariables: { CONFIG, SITE, T },
     },
     metadata: METADATA,
