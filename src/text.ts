@@ -3,7 +3,6 @@
 import * as BB from "bbcode-tags";
 
 import * as CONFIG from "./config";
-import * as DarkTheme from "./dark-theme";
 import { SearchEngine } from "./search-engines";
 import * as SITE from "./site";
 import { InsertButtonDescription } from "./types";
@@ -12,7 +11,9 @@ function genitive(name: string): string {
     return ["s", "x", "z"].some(letter => name.endsWith(letter)) ? name : name + "s";
 }
 
-function darkThemeBy(author: DarkTheme.Source): string {
+// string is used instead of Source here because this file cannot import modules containing Webpack-resolved imports.
+// The dark-theme module imports a SASS module, which is a Webpack-resolved import even with a relative path.
+function darkThemeBy(author: string): string {
     return `${genitive(author)} mörka tema`;
 }
 

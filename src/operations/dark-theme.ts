@@ -3,7 +3,7 @@ import { render } from "preact";
 import { isNull } from "ts-type-guards";
 
 import * as CONFIG from "~src/config";
-import { darkThemeUrl, darkThemeUrlBackup } from "~src/dark-theme";
+import { darkThemeAdditions, darkThemeUrl, darkThemeUrlBackup } from "~src/dark-theme";
 import { P, Preferences } from "~src/preferences";
 import * as T from "~src/text";
 import { timeIsWithin } from "~src/time";
@@ -46,6 +46,10 @@ function apply(newState: boolean): void {
             link.href = url(source);
             link.id = CONFIG.ID.darkThemeStylesheet;
             document.documentElement.appendChild(link);
+            const style = document.createElement("style");
+            style.textContent = darkThemeAdditions(source);
+            style.id = CONFIG.ID.darkThemeAdditions;
+            document.documentElement.appendChild(style);
         }
     } else {
         withMaybe(document.getElementById(CONFIG.ID.darkThemeStylesheet), element => element.remove());
