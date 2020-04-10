@@ -69,6 +69,7 @@ export const CLASS = {
     subforum: c("subforum"),
     textareaSize: c("textarea-size"),
     codeInput: c("code-input"),
+    checkbox: c("checkbox"),
 } as const;
 
 export const PATH = {
@@ -88,6 +89,7 @@ export const KEY = {
     autosaved_draft: i("autosaved_draft"),
     caret_position: i("caret_position_in_textarea"),
     last_time_user_tried_to_submit: i("last_time_user_tried_to_submit"),
+    draft_mode: i("draft_mode"),
 } as const;
 
 export const URL_LOGO = "https://cdn.sweclockers.com/artikel/bild/63329?l=eyJyZXNvdXJjZSI6IlwvYXJ0aWtlbFwvYmlsZFwvNjMzMjkiLCJmaWx0ZXJzIjpbInQ9b3JpZ2luYWwiXSwicGFyYW1zIjpbXSwia2V5IjoiYzk3ODM1MmY4NDVkM2YwOWY3M2UwYWRmODZlMjk1MmIifQ%3D%3D";

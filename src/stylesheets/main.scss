@@ -23,6 +23,15 @@
     margin-bottom: 0;
 }
 
+.#{getGlobal("CONFIG.CLASS.checkbox")} {
+    input {
+        margin-right: 4px;
+        position: relative;
+        top: -1px;
+        vertical-align: middle;
+    }
+}
+
 textarea.#{getGlobal("CONFIG.CLASS.codeInput")}, .#{getGlobal("CONFIG.CLASS.codeInput")} textarea {
     font-family: monospace;
 }

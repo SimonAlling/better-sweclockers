@@ -21,6 +21,8 @@ const mention_everyone_label = `Nämn alla`;
 const my_posts = `Mina inlägg`;
 const down_for_maintenance = `Nere för underhåll`;
 const editing_tools_name = `Utökade formateringsverktyg`;
+const draft_mode_toggle_label = `Utkast`;
+const draft_mode_description = `Slipp posta ofärdiga inlägg av misstag`;
 
 const OBVIOUS = `Som det låter`;
 
@@ -31,6 +33,9 @@ export const general = {
     dark_theme_toggle_tooltip_off: "Standardutseendet",
     preferences_link: CONFIG.USERSCRIPT_NAME,
     signout_confirmation: `Är du säker på att du vill logga ut?`,
+    draft_mode_toggle_label,
+    draft_mode_toggle_tooltip: draft_mode_description,
+    draft_mode_enabled_tooltip: `Kryssa ur "${draft_mode_toggle_label}" för att posta`,
     restore_draft_label: `Återställ`,
     restore_draft_tooltip: `Återställ autosparat utkast`,
     restore_draft_question: `Vill du återställa följande utkast?`,
@@ -112,6 +117,8 @@ export const preferences = {
         label: `Redigeringsläge`,
         autosave_draft: `Spara utkast automatiskt`,
         autosave_draft_description: `Skydda dina inlägg mot blåskärmar, strömavbrott och andra missöden`,
+        draft_mode_toggle: `Kryssrutan <em>${draft_mode_toggle_label}</em>`,
+        draft_mode_toggle_description: draft_mode_description,
         textarea_size_save: `Kom ihåg textrutans storlek`,
         textarea_size_save_description: `Behåll samma storlek på textrutan mellan sidladdningar`,
         textarea_size_toggle: `Knappar för att växla storlek på textrutan`,

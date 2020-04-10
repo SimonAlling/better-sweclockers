@@ -30,6 +30,12 @@ export default {
         label: T.preferences.edit_mode.autosave_draft,
         description: T.preferences.edit_mode.autosave_draft_description,
     }),
+    draft_mode_toggle: new BooleanPreference({
+        key: "draft_mode_toggle",
+        default: true,
+        label: T.preferences.edit_mode.draft_mode_toggle,
+        description: T.preferences.edit_mode.draft_mode_toggle_description,
+    }),
     textarea_size: new IntegerRangePreference({
         key: "textarea_size",
         default: DEFAULT_TEXTAREA_SIZE,

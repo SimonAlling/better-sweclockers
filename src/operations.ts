@@ -7,6 +7,7 @@ import {
     isInEditMode_forum,
     isInEditMode_market,
     isInEditMode_marketContact,
+    isInEditMode_PM,
     isOnBSCPreferencesPage,
     isOnSweclockersSettingsPage,
     isReadingEditorialContent,
@@ -20,6 +21,7 @@ import * as SITE from "~src/site";
 import * as autosaveDraft from "./operations/autosave-draft";
 import manageCaretPosition from "./operations/caret-position";
 import * as DarkTheme from "./operations/dark-theme";
+import insertDraftModeToggle from "./operations/draft-mode-toggle";
 import insertEditingTools from "./operations/editing-tools";
 import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
 import adaptCorrectionsLink from "./operations/improved-corrections";
@@ -240,6 +242,15 @@ const OPERATIONS: readonly Operation<any>[] = [
             quickReplyForm: SELECTOR.quickReplyForm,
         },
         action: insertMentionEveryoneButton,
+    }),
+    operation({
+        description: "insert draft mode toggle",
+        condition: () => (isInEditMode_forum || isInEditMode_PM) && Preferences.get(P.edit_mode._.draft_mode_toggle),
+        dependencies: {
+            saveButton: SELECTOR.saveButton,
+            previewButton: SELECTOR.previewButton,
+        },
+        action: insertDraftModeToggle,
     }),
     operation({
         description: "enable autosave draft watchdog",
