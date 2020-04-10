@@ -225,9 +225,9 @@ const OPERATIONS: readonly Operation<any>[] = [
         description: "remember location in market",
         condition: () => isInEditMode_market && Preferences.get(P.general._.remember_location_in_market),
         dependencies: {
-          city: SELECTOR.cityInput,
-          region: SELECTOR.regionSelect,
-          saveButton: SELECTOR.saveButton,
+            city: SELECTOR.cityInput,
+            region: SELECTOR.regionSelect,
+            saveButton: SELECTOR.saveButton,
         },
         action: rememberLocationInMarket,
     }),
