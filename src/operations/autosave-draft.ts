@@ -43,16 +43,14 @@ export function manageAutosaveWatchdog(e: {
     toolbarInner: HTMLElement,
 }) {
     const textarea = e.textarea as HTMLTextAreaElement;
-    const changeListener = () => {
-        enableWatchdog(textarea);
-        textarea.removeEventListener("input", changeListener);
-    }
-    textarea.addEventListener("input", changeListener);
+    // If the user came here by previewing their post, there is nothing saved at this point, because we cleared the draft when they deliberately unloaded the page.
+    maybeOfferToRestoreAutosavedPost(textarea, e.toolbarInner);
+    // Now that we have inserted the restore button or decided not to, we can start autosaving the text in the textarea.
+    enableWatchdog(textarea);
     e.saveButton.addEventListener("click", () => {
         const nowInMilliseconds = Date.now();
         Storage.set_session(CONFIG.KEY.last_time_user_tried_to_submit, nowInMilliseconds);
     });
-    maybeOfferToRestoreAutosavedPost(textarea, e.toolbarInner);
 }
 
 export function clearAutosavedDraftIfObsolete(e: { post: HTMLElement }) {
