@@ -110,6 +110,7 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     }
 
     label {
+        display: inline-block; // Necessary for padding to have any effect (at least in Firefox and Chrome on Linux).
         padding: 6px 0;
         margin: 0;
 
