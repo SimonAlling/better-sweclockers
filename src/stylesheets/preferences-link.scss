@@ -1,9 +1,10 @@
 // Prevent the content below from being pushed down by our link:
 .#{getGlobal("SITE.CLASS.settingsNavigation")} {
     // The height of the link was 20.5px according to Firefox at the time of writing this.
-    padding-bottom: 21px;
+    $itemHeight: 21px;
+    padding-bottom: $itemHeight;
 
     .#{getGlobal("SITE.CLASS.menuItem")}[title="#{getGlobal("T.general.preferences_link")}"] {
-        position: fixed;
+        margin-bottom: -$itemHeight;
     }
 }
