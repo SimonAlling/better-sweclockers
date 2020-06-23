@@ -1,0 +1,28 @@
+name: Validation
+
+on: [push, pull_request]
+
+jobs:
+  validation:
+    name: Validation Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Build (development)
+        run: |
+          npm ci
+          npm run build
+        env:
+          CI: true
+          USERSCRIPTER_VERBOSE: true
+      - name: Build (production)
+        run: |
+          npm run build
+        env:
+          CI: true
+          USERSCRIPTER_MODE: production
+          USERSCRIPTER_VERBOSE: true

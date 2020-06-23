@@ -1,0 +1,33 @@
+name: Nightly
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+
+jobs:
+  nightly:
+    name: Nightly Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+        env:
+          CI: true
+          USERSCRIPTER_HOSTED_AT: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/nightly # Must match TARGET_FOLDER.
+          USERSCRIPTER_MODE: production
+          USERSCRIPTER_NIGHTLY: true
+          USERSCRIPTER_VERBOSE: true
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist
+          TARGET_FOLDER: nightly # Must match USERSCRIPTER_HOSTED_AT.

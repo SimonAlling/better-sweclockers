@@ -1,7 +1,7 @@
 export default {
     id: "better-sweclockers",
     name: "Better SweClockers",
-    version: "3.14.1",
+    version: "3.15.0",
     description: "Extra functionality and improved usability for the SweClockers website.",
     author: "Simon Alling",
     hostname: "sweclockers.com",
@@ -9,5 +9,5 @@ export default {
     namespace: "simonalling.se",
     runAt: "document-start",
     noframes: true, // because SweClockers has frames with `src=""`
-    hostedAt: "https://simonalling.github.io/userscripts/",
+    hostedAt: "https://simonalling.github.io/better-sweclockers/",
 } as const;
