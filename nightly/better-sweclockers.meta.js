@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Better SweClockers Nightly
-// @version      3.15.0.2020.6.25.2.11
+// @version      3.15.0.2020.6.26.2.11
 // @description  Extra functionality and improved usability for the SweClockers website.
 // @author       Simon Alling
 // @namespace    simonalling.se
