@@ -159,6 +159,10 @@ const STYLESHEETS = {
     }),
 
     // Customize content:
+    customize_content_cookies: stylesheet({
+        condition: () => false === Preferences.get(P.customize_content._.cookies),
+        css: TODO,
+    }),
     customize_content_carousel: stylesheet({
         condition: () => false === Preferences.get(P.customize_content._.carousel),
         css: hideById(SITE.ID.carousel),

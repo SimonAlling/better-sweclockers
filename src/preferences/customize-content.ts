@@ -5,6 +5,11 @@ import {
 import * as T from "~src/text";
 
 export default {
+    cookies: new BooleanPreference({
+        key: "customize_content_cookies",
+        default: false,
+        label: T.preferences.customize_content.cookies,
+    }),
     carousel: new BooleanPreference({
         key: "customize_content_carousel",
         default: true,

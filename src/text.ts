@@ -182,6 +182,7 @@ export const preferences = {
 
     customize_content: {
         label: `Anpassa innehåll`,
+        cookies: `Cookiepopups`,
         carousel: `Bildspelsvyn högst upp`,
         social_media: `Knappar för sociala medier`,
         guides: `Guider`,
