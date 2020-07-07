@@ -15,7 +15,7 @@
 /* Allow containers to shrink further */
 .container, .minWidth, .outsiderColumn {
     width: auto !important;
-    min-width: 940px;
+    min-width: #{getGlobal("SITE.WRAPPER_WIDTH_NARROW_PX") - getGlobal("CONFIG.WRAPPER_WIDTH_EXTRA_ALLOWED_SHRINK_AMOUNT")}px;
 }
 
 /* Adjust search bar to fit in the thinner layout */

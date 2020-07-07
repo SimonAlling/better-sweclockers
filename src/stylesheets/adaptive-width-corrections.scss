@@ -1,24 +1,52 @@
 ##{getGlobal("CONFIG.ID.document")} {
 
+// With adaptive width, there are not four distinct "modes", but three:
+//   * Minimum width, fixed to left viewport edge
+//   * Adaptive width, fixed to left viewport edge
+//   * Maximum width, centered
+
 $WRAPPER_WIDTH_WIDE_PX: getGlobal("SITE.WRAPPER_WIDTH_WIDE_PX");
+$WRAPPER_WIDTH_EXTRA_ALLOWED_SHRINK_AMOUNT: getGlobal("CONFIG.WRAPPER_WIDTH_EXTRA_ALLOWED_SHRINK_AMOUNT");
 $CORRECTIONS_DIALOG_OFFSET_PX: getGlobal("CONFIG.CORRECTIONS_DIALOG_OFFSET_PX");
-$FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX: getGlobal("SITE.FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX");
+$GUTTER_SIZE_PX: getGlobal("SITE.GUTTER_SIZE_PX");
+$ARTICLE_WIDTH_PX: getGlobal("SITE.ARTICLE_WIDTH_PX");
+$INSIDER_COLUMN_FIXED_WIDTH_PX: getGlobal("SITE.INSIDER_COLUMN_FIXED_WIDTH_PX");
+$WIDTH_WHERE_WIDE_LAYOUT_GOES_CENTERED: getGlobal("SITE.WIDTH_WHERE_WIDE_LAYOUT_GOES_CENTERED");
+$WIDTH_WHERE_NARROW_LAYOUT_STARTS_GROWING_ADAPTIVELY: #{
+    getGlobal("SITE.WIDTH_WHERE_NARROW_LAYOUT_GOES_CENTERED") - $WRAPPER_WIDTH_EXTRA_ALLOWED_SHRINK_AMOUNT
+};
 
 div.#{getGlobal("SITE.CLASS.proofDialog")} { /* explicit div to override default BSC */
-    .wndWindowArea {
-        left: calc(50% + #{
-            $CORRECTIONS_DIALOG_OFFSET_PX
-            + $WRAPPER_WIDTH_WIDE_PX/2
-            - $FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX
-        }px) !important;
-        right: unset;
+    @media screen and (max-width: #{$WIDTH_WHERE_NARROW_LAYOUT_STARTS_GROWING_ADAPTIVELY}px) {
+        // Minimum width, fixed to left viewport edge.
+        .wndWindowArea {
+            left: #{
+                $CORRECTIONS_DIALOG_OFFSET_PX
+                + $GUTTER_SIZE_PX
+                + $ARTICLE_WIDTH_PX
+                - $WRAPPER_WIDTH_EXTRA_ALLOWED_SHRINK_AMOUNT
+            }px !important;
+        }
     }
 
-    @media screen and (max-width: #{$WRAPPER_WIDTH_WIDE_PX}px) {
+    @media screen and (min-width: #{$WIDTH_WHERE_NARROW_LAYOUT_STARTS_GROWING_ADAPTIVELY}px) and (max-width: #{$WIDTH_WHERE_WIDE_LAYOUT_GOES_CENTERED}px) {
+        // Adaptive width, fixed to left viewport edge.
         .wndWindowArea {
-            left: calc(100% + #{
+            left: calc(100vw + #{
                 $CORRECTIONS_DIALOG_OFFSET_PX
-                - $FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX
+                - 2 * $GUTTER_SIZE_PX
+                - $INSIDER_COLUMN_FIXED_WIDTH_PX
+            }px) !important;
+        }
+    }
+
+    @media screen and (min-width: #{$WIDTH_WHERE_WIDE_LAYOUT_GOES_CENTERED}px) {
+        // Maximum width, centered.
+        .wndWindowArea {
+            left: calc(50% + #{
+                $CORRECTIONS_DIALOG_OFFSET_PX
+                + $WRAPPER_WIDTH_WIDE_PX/2
+                - $INSIDER_COLUMN_FIXED_WIDTH_PX
             }px) !important;
         }
     }

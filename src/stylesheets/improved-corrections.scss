@@ -1,16 +1,21 @@
 ##{getGlobal("CONFIG.ID.document")} {
 
+// SweClockers has one layout for narrow viewports and one for wide viewports; in the narrow one, the rightmost ad column is not shown.
+// In total, there are four "modes", from narrowest to widest:
+//   * Narrow layout, fixed to left viewport edge
+//   * Narrow layout, centered
+//   * Wide layout, fixed to left viewport edge
+//   * Wide layout, centered
+
 $ID_CORRECTIONS_LINK: getGlobal("SITE.ID.correctionsLink");
 $WRAPPER_WIDTH_WIDE_PX: getGlobal("SITE.WRAPPER_WIDTH_WIDE_PX");
 $WRAPPER_WIDTH_NARROW_PX: getGlobal("SITE.WRAPPER_WIDTH_NARROW_PX");
-$MAX_WIDTH_FOR_NARROW_LAYOUT: getGlobal("SITE.MAX_WIDTH_FOR_NARROW_LAYOUT");
+$MAX_WIDTH_FOR_NARROW_LAYOUT_PX: getGlobal("SITE.MAX_WIDTH_FOR_NARROW_LAYOUT_PX");
 $CORRECTIONS_DIALOG_OFFSET_PX: getGlobal("CONFIG.CORRECTIONS_DIALOG_OFFSET_PX");
 $GUTTER_SIZE_PX: getGlobal("SITE.GUTTER_SIZE_PX");
 $ARTICLE_WIDTH_PX: getGlobal("SITE.ARTICLE_WIDTH_PX");
-$FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX: getGlobal("SITE.FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX");
-$FIXED_COLUMNS_TOTAL_WIDTH_WIDE_PX: getGlobal("SITE.FIXED_COLUMNS_TOTAL_WIDTH_WIDE_PX");
-$CORRECTIONS_DIALOG_WIDTH_PX: getGlobal("SITE.CORRECTIONS_DIALOG_WIDTH_PX");
-$SCROLLBAR_APPROXIMATE_WIDTH_PX: 20;
+$WIDTH_WHERE_WIDE_LAYOUT_GOES_CENTERED: getGlobal("SITE.WIDTH_WHERE_WIDE_LAYOUT_GOES_CENTERED");
+$WIDTH_WHERE_NARROW_LAYOUT_GOES_CENTERED: getGlobal("SITE.WIDTH_WHERE_NARROW_LAYOUT_GOES_CENTERED");
 
 // Dialog
 .#{getGlobal("SITE.CLASS.proofDialog")} {
@@ -29,47 +34,39 @@ $SCROLLBAR_APPROXIMATE_WIDTH_PX: 20;
 
     .wndWindowArea {
         border: none;
-        left: calc(50% + #{
-            $CORRECTIONS_DIALOG_OFFSET_PX
-            + $WRAPPER_WIDTH_WIDE_PX/2
-            - $FIXED_COLUMNS_TOTAL_WIDTH_WIDE_PX
-        }px) !important;
         top: initial !important;
         opacity: 0.5;
         transition: opacity 200ms ease-in-out;
         pointer-events: initial;
+        // Effectively, because no @media query: Narrow or wide layout, fixed to left viewport edge.
+        left: #{
+            $CORRECTIONS_DIALOG_OFFSET_PX
+            + $GUTTER_SIZE_PX
+            + $ARTICLE_WIDTH_PX
+        }px !important;
     }
 
-    @media screen and (max-width: #{$WRAPPER_WIDTH_WIDE_PX}px) {
-        .wndWindowArea {
-            left: #{
-                $CORRECTIONS_DIALOG_OFFSET_PX
-                + $ARTICLE_WIDTH_PX
-                + $GUTTER_SIZE_PX
-            }px !important;
-        }
-    }
-
-    @media screen and (max-width: $MAX_WIDTH_FOR_NARROW_LAYOUT) and (min-width: #{$WRAPPER_WIDTH_NARROW_PX}px) {
+    @media screen and (min-width: #{$WIDTH_WHERE_NARROW_LAYOUT_GOES_CENTERED}px) and (max-width: #{$MAX_WIDTH_FOR_NARROW_LAYOUT_PX}px) {
+        // Narrow layout, centered.
         .wndWindowArea {
             left: calc(50% + #{
                 $CORRECTIONS_DIALOG_OFFSET_PX
-                + $WRAPPER_WIDTH_NARROW_PX/2
-                - $FIXED_COLUMNS_TOTAL_WIDTH_NARROW_PX
+                - $WRAPPER_WIDTH_NARROW_PX/2
+                + $GUTTER_SIZE_PX
+                + $ARTICLE_WIDTH_PX
             }px) !important;
         }
     }
 
-    @media screen and (max-width: #{
-            $CORRECTIONS_DIALOG_OFFSET_PX
-            + $ARTICLE_WIDTH_PX
-            + $CORRECTIONS_DIALOG_WIDTH_PX
-            + $SCROLLBAR_APPROXIMATE_WIDTH_PX
-            + 2*$GUTTER_SIZE_PX
-        }px) {
+    @media screen and (min-width: #{$WIDTH_WHERE_WIDE_LAYOUT_GOES_CENTERED}px) {
+        // Wide layout, centered.
         .wndWindowArea {
-            right: #{$GUTTER_SIZE_PX}px;
-            left: initial !important;
+            left: calc(50% + #{
+                $CORRECTIONS_DIALOG_OFFSET_PX
+                - $WRAPPER_WIDTH_WIDE_PX/2
+                + $GUTTER_SIZE_PX
+                + $ARTICLE_WIDTH_PX
+            }px) !important;
         }
     }
 
