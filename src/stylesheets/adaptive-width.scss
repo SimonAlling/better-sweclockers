@@ -13,7 +13,7 @@
 }
 
 /* Allow containers to shrink further */
-.container, .minWidth {
+.container, .minWidth, .outsiderColumn {
     width: auto !important;
     min-width: 940px;
 }
@@ -23,12 +23,6 @@
     min-width: 156px;
     max-width: 180px;
     width: 15vw;
-}
-
-/* Make footer fit */
-.footer .top .block {
-    width: 25%;
-    box-sizing: border-box;
 }
 
 /* Scale up images to fill width in article feed and articles */
@@ -72,42 +66,4 @@
     content: " ";
     clear: both;
     display: block;
-}
-
-/* Make empty space disappear if .pushColumn>.fixed has no content */
-.pushColumn {
-    display: flex;
-
-    >.fluid {
-        margin-right: 0;
-
-        >.inner {
-            padding-right: 0;
-
-            /* This part is just magic */
-            >* {
-                display: table;
-                table-layout: fixed;
-                width: 100%;
-                box-sizing: border-box;
-            }
-        }
-    }
-
-    >.fixed {
-        width: auto;
-
-        >.inner {
-            margin-left: 0;
-
-            >* {
-                $GUTTER_SIZE_PX: getGlobal("SITE.GUTTER_SIZE_PX");
-                $PUSH_COLUMN_FIXED_WIDTH_PX: getGlobal("SITE.PUSH_COLUMN_FIXED_WIDTH_PX");
-
-                margin-left: #{$GUTTER_SIZE_PX}px;
-                margin-right: 0;
-                width: #{$PUSH_COLUMN_FIXED_WIDTH_PX - $GUTTER_SIZE_PX}px;
-            }
-        }
-    }
 }
