@@ -23,6 +23,7 @@ export default (e: { textarea: HTMLElement }) => {
 
 interface EditingToolsConfig {
     special_characters: boolean
+    meta: boolean
     code: boolean
     math: boolean
     whitespace: boolean
@@ -35,6 +36,7 @@ interface EditingToolsConfig {
 export function getEditingToolsConfig(): EditingToolsConfig {
     return {
         special_characters: Preferences.get(P.editing_tools._.special_characters),
+        meta: Preferences.get(P.editing_tools._.meta),
         code: Preferences.get(P.editing_tools._.code),
         math: Preferences.get(P.editing_tools._.math),
         whitespace: Preferences.get(P.editing_tools._.whitespace),
@@ -58,6 +60,7 @@ export function EditingTools(props: {
         <div id={CONFIG.ID.editingTools} class={classNames(
             CONFIG.CLASS.editingTools,
             { [CONFIG.CLASS.disabled]: props.disabled },
+            SITE.CLASS.bbcode, // so we can easily mimic forum post styles in our buttons
         )}>
             {props.config.special_characters ? (
                 <fieldset>
@@ -68,12 +71,14 @@ export function EditingTools(props: {
             {connectedTagButton({ tag: SITE.TAG.color, parameterized: true, tooltip: T.editing_tools.tooltip_color, class: CONFIG.CLASS.button_color })}
             {connectedTagButton({ tag: SITE.TAG.font, tooltip: T.editing_tools.tooltip_font, parameterized: true })}
             {connectedTagButton({ tag: SITE.TAG.mark, label: T.editing_tools.label_mark, tooltip: T.editing_tools.tooltip_mark })}
+            {connectedTagButton({ tag: SITE.TAG.abbr, label: T.editing_tools.label_abbr, parameterized: true, tooltip: T.editing_tools.tooltip_abbr })}
             {connected(BUTTON.quote)}
             {connected(BUTTON.splitQuote)}
             {connectedTagButton({ tag: SITE.TAG.bq, label: "", tooltip: T.editing_tools.tooltip_bq, block: true, icon: { type: "RAW", image: CONFIG.ICONS.BLOCKQUOTE }, class: CONFIG.CLASS.button_blockquote })}
             {connected(BUTTON.expander)}
             {connectedTagButton({ tag: SITE.TAG.spoiler, tooltip: T.editing_tools.tooltip_spoiler, block: true, class: CONFIG.CLASS.button_spoiler })}
             {connectedInsertButton({ insert: CONFIG.CONTENT.edit, tooltip: T.editing_tools.tooltip_edit, label: T.editing_tools.label_edit })}
+            {props.config.meta ? BUTTONS.meta.map(connected) : []}
             {props.config.code ? BUTTONS.code.map(connected) : []}
             {props.config.math ? BUTTONS.math.map(connected) : []}
             {props.config.whitespace ? BUTTONS.whitespace.map(connected) : []}

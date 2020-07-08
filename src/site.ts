@@ -57,7 +57,10 @@ export const CLASS = {
     forumPostByCurrentUser: "isReader", // Don't use isAuthor; it means submitted by OP!
     threadStatus: "threadStatus",
     threadStatusIcon: (bitmask: number) => `icon-${bitmask}`,
+    bbcode: "bbcode",
+    bbDel: "bbDel",
     bbImage: "bbImage",
+    bbIns: "bbIns",
     imgControls: "imgControls",
     errorDialog: "errorDialog",
     proofDialog: "proofDialog",
@@ -116,16 +119,19 @@ export const PATH = {
 } as const;
 
 export const TAG = {
+    abbr: "abbr",
     b: "b",
     bq: "bq",
     cmd: "cmd",
     code: "code",
     color: "color",
+    del: "del",
     expander: "expander",
     font: "font",
     h: "h",
     i: "i",
     img: "img",
+    ins: "ins",
     mark: "mark",
     math: "math",
     noparse: "noparse",
