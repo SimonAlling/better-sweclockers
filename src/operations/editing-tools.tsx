@@ -27,6 +27,7 @@ interface EditingToolsConfig {
     code: boolean
     math: boolean
     whitespace: boolean
+    definitions: boolean
     embed: boolean
     doge: boolean
     color_palette: boolean
@@ -40,6 +41,7 @@ export function getEditingToolsConfig(): EditingToolsConfig {
         code: Preferences.get(P.editing_tools._.code),
         math: Preferences.get(P.editing_tools._.math),
         whitespace: Preferences.get(P.editing_tools._.whitespace),
+        definitions: Preferences.get(P.editing_tools._.definitions),
         embed: Preferences.get(P.editing_tools._.embed),
         doge: Preferences.get(P.editing_tools._.doge),
         color_palette: Preferences.get(P.editing_tools._.color_palette),
@@ -82,6 +84,7 @@ export function EditingTools(props: {
             {props.config.code ? BUTTONS.code.map(connected) : []}
             {props.config.math ? BUTTONS.math.map(connected) : []}
             {props.config.whitespace ? BUTTONS.whitespace.map(connected) : []}
+            {props.config.definitions ? BUTTONS.definitions.map(connected) : []}
             {props.config.embed ? BUTTONS.embed(Preferences.get(P.general._.search_engine)).map(connected) : []}
             {props.config.doge ? BUTTONS.doge.map(connected) : []}
             {props.config.color_palette ? (

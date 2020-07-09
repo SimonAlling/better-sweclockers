@@ -87,6 +87,11 @@ export const BUTTONS = {
     whitespace: [
         BUTTON.nbsps,
     ],
+    definitions: [
+        tagButton({ tag: SITE.TAG.dl, label: T.editing_tools.label_dl, tooltip: T.editing_tools.tooltip_dl, block: true }),
+        tagButton({ tag: SITE.TAG.dt, label: T.editing_tools.label_dt, tooltip: T.editing_tools.tooltip_dt }),
+        tagButton({ tag: SITE.TAG.dd, label: T.editing_tools.label_dd, tooltip: T.editing_tools.tooltip_dd }),
+    ],
     embed: (searchEngine: SearchEngine) => [
         BUTTON.url,
         BUTTON.img,

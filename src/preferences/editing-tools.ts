@@ -114,6 +114,16 @@ export default {
         },
         dependencies,
     }),
+    definitions: new BooleanPreference({
+        key: "editing_tools_definitions",
+        default: true,
+        label: T.preferences.editing_tools.definitions,
+        extras: {
+            more: buttonsDescription(BUTTONS.definitions),
+            class: CONFIG.CLASS.editingTools,
+        },
+        dependencies,
+    }),
     embed: new BooleanPreference({
         key: "editing_tools_embed",
         default: true,
