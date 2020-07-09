@@ -15,7 +15,7 @@ export class TimePreference extends IntegerRangePreference {
     }
 
     public fromString(s: string) {
-        const match = s.match(/^(\d{2})\:(\d{2})$/); // HH:MM
+        const match = s.match(/^(\d{2}):(\d{2})$/); // HH:MM
         if (match === null) {
             return `HH:MM expected (saw "${s}").`;
         } else {
