@@ -269,9 +269,9 @@ export const editing_tools = {
     tooltip_split_quote: `Splitta ett citat mitt i`,
     label_edit: `Edit`,
     tooltip_edit: `Infoga en redigeringsnotis`,
-    label_ins: `<ins class="${SITE.CLASS.bbIns}">ins</ins>`,
+    label_ins: `<ins class="${SITE.CLASS.bbIns}">${SITE.TAG.ins}</ins>`,
     tooltip_ins: `Tillagd text`,
-    label_del: `<del class="${SITE.CLASS.bbDel}">del</del>`,
+    label_del: `<del class="${SITE.CLASS.bbDel}">${SITE.TAG.del}</del>`,
     tooltip_del: `Borttagen text`,
 } as const;
 
