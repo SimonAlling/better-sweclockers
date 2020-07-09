@@ -74,6 +74,16 @@ export default {
         },
         dependencies,
     }),
+    meta: new BooleanPreference({
+        key: "editing_tools_meta",
+        default: true,
+        label: T.preferences.editing_tools.meta,
+        extras: {
+            more: buttonsDescription(BUTTONS.meta),
+            class: CONFIG.CLASS.editingTools,
+        },
+        dependencies,
+    }),
     code: new BooleanPreference({
         key: "editing_tools_code",
         default: true,

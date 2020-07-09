@@ -69,6 +69,10 @@ export const BUTTON = {
 } as const;
 
 export const BUTTONS = {
+    meta: [
+        tagButton({ tag: SITE.TAG.ins, label: T.editing_tools.label_ins, tooltip: T.editing_tools.tooltip_ins }),
+        tagButton({ tag: SITE.TAG.del, label: T.editing_tools.label_del, tooltip: T.editing_tools.tooltip_del }),
+    ],
     code: [
         tagButton({ tag: SITE.TAG.noparse, tooltip: T.editing_tools.tooltip_noparse, class: CONFIG.CLASS.button_code }),
         tagButton({ tag: SITE.TAG.pre, tooltip: T.editing_tools.tooltip_pre, block: true, class: CONFIG.CLASS.button_code }),

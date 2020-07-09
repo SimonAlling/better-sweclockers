@@ -151,6 +151,7 @@ export const preferences = {
             below: `Under textfältet`,
         },
         special_characters: `Verktyg för specialtecken`,
+        meta: `Verktyg för tillagd och borttagen text`,
         code: `Kodrelaterade verktyg`,
         math: `Matematikrelaterade verktyg`,
         whitespace: `Whitespaceverktyg`,
@@ -239,6 +240,8 @@ export const editing_tools = {
     tooltip_font: `Typsnitt`,
     label_mark: `<mark>mark</mark>`,
     tooltip_mark: `Markerad/framhävd text`,
+    label_abbr: SITE.TAG.abbr,
+    tooltip_abbr: `Förkortning`,
     tooltip_quote: `Forumcitat`,
     label_bq: `bq`,
     tooltip_bq: `Allmänt blockcitat`,
@@ -266,6 +269,10 @@ export const editing_tools = {
     tooltip_split_quote: `Splitta ett citat mitt i`,
     label_edit: `Edit`,
     tooltip_edit: `Infoga en redigeringsnotis`,
+    label_ins: `<ins class="${SITE.CLASS.bbIns}">${SITE.TAG.ins}</ins>`,
+    tooltip_ins: `Tillagd text`,
+    label_del: `<del class="${SITE.CLASS.bbDel}">${SITE.TAG.del}</del>`,
+    tooltip_del: `Borttagen text`,
 } as const;
 
 export const special_characters: readonly InsertButtonDescription[] = [
