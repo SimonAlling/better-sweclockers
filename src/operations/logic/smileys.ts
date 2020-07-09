@@ -1,6 +1,7 @@
 export type Smiley = readonly [string, string]
 
 export const SMILEYS: ReadonlyArray<Smiley> = [
+    // Pairs of BBCode code and CSS class:
     [ ":)", "smiley-smile" ],
     [ ";)", "smiley-wink" ],
     [ ":D", "smiley-biggrin" ],
