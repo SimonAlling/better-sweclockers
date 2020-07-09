@@ -9,7 +9,8 @@ import { Position } from "~src/preferences/editing-tools";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
 
-import { BUTTON, BUTTONS, Button, COLORS, colorButton, insertButton, tagButton } from "./logic/editing-tools";
+import { BUTTON, BUTTONS, Button, COLORS, colorButton, insertButton, smileyButton, tagButton } from "./logic/editing-tools";
+import { SMILEYS } from "./logic/smileys";
 
 export default (e: { textarea: HTMLElement }) => {
     const textarea = e.textarea;
@@ -31,6 +32,7 @@ interface EditingToolsConfig {
     embed: boolean
     doge: boolean
     color_palette: boolean
+    smileys: boolean
 }
 
 // Needs to be a function because it's used "live" in the preferences menu:
@@ -45,6 +47,7 @@ export function getEditingToolsConfig(): EditingToolsConfig {
         embed: Preferences.get(P.editing_tools._.embed),
         doge: Preferences.get(P.editing_tools._.doge),
         color_palette: Preferences.get(P.editing_tools._.color_palette),
+        smileys: Preferences.get(P.editing_tools._.smileys),
     } as const;
 }
 
@@ -58,6 +61,7 @@ export function EditingTools(props: {
     const connectedTagButton = compose(connected, tagButton);
     const connectedInsertButton = compose(connected, insertButton);
     const connectedColorButton = compose(connected, colorButton);
+    const connectedSmileyButton = compose(connected, smileyButton);
     return (
         <div id={CONFIG.ID.editingTools} class={classNames(
             CONFIG.CLASS.editingTools,
@@ -90,6 +94,11 @@ export function EditingTools(props: {
             {props.config.color_palette ? (
                 <fieldset class={CONFIG.CLASS.colorPalette}>
                     {COLORS.map(connectedColorButton)}
+                </fieldset>
+            ) : null}
+            {props.config.smileys ? (
+                <fieldset class={CONFIG.CLASS.smileys}>
+                    {SMILEYS.map(connectedSmileyButton)}
                 </fieldset>
             ) : null}
         </div>

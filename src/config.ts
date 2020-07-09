@@ -64,6 +64,7 @@ export const CLASS = {
     button_youtube: c("button-youtube"),
     splitQuote: c("split-quote"),
     colorPalette: c("color-palette"),
+    smileys: c("smileys"),
     preference: c("preference"),
     preferenceDescription: c("preference-description"),
     inlinePreference: c("inline-preference"),

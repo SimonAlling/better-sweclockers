@@ -152,4 +152,11 @@ export default {
         extras: { class: CONFIG.CLASS.editingTools },
         dependencies,
     }),
+    smileys: new BooleanPreference({
+        key: "editing_tools_smileys",
+        default: true,
+        label: T.preferences.editing_tools.smileys,
+        extras: { class: CONFIG.CLASS.editingTools },
+        dependencies,
+    }),
 } as const;

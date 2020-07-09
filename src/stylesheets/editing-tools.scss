@@ -18,6 +18,8 @@
     $FADE_BRIGHT: linear-gradient(to bottom, rgba(255,255,255,2*$FADE_OPACITY) 0%,rgba(100,100,100,2*$FADE_OPACITY) 100%);
     $FADE_INVERTED: linear-gradient(to top, rgba(255,255,255,$FADE_OPACITY) 0%,rgba(0,0,0,$FADE_OPACITY) 100%);
 
+    line-height: 0;
+
     big {
         font-size: 1.25em;
     }
@@ -30,9 +32,6 @@
         height: 23px;
         box-sizing: border-box;
         margin: 0 1px 0 0;
-        * {
-            line-height: 0;
-        }
     }
 
     .#{getGlobal("SITE.CLASS.button")}:last-of-type {
@@ -73,6 +72,18 @@
         opacity: 1;
     }
 
+    .#{getGlobal("CONFIG.CLASS.smileys")} {
+        > * {
+            // Size is set by SweClockers.
+            opacity: 0.5;
+            padding: 0 1px;
+            transition: opacity 50ms linear;
+
+            &:hover, &:active {
+                opacity: 1;
+            }
+        }
+    }
 
     $RAINBOW_OPACITY: 0.7;
     $RAINBOW: linear-gradient(to right, rgba(255,0,0,$RAINBOW_OPACITY) 0%,rgba(255,153,50,$RAINBOW_OPACITY) 16%,rgba(247,227,49,$RAINBOW_OPACITY) 33%,rgba(62,211,42,$RAINBOW_OPACITY) 49%,rgba(46,117,232,$RAINBOW_OPACITY) 66%,rgba(90,45,226,$RAINBOW_OPACITY) 83%,rgba(152,25,198,$RAINBOW_OPACITY) 100%);
