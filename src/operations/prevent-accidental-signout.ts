@@ -32,7 +32,7 @@ function errorHandler() {
 
 declare namespace Common {
     namespace Windows {
-        class MessageDialog {
+        class MessageDialog { // eslint-disable-line @typescript-eslint/no-unused-vars
             public addClass(x: string): void
             public setMessage(x: string): void
             public setModal(x: boolean): void
@@ -45,7 +45,7 @@ declare namespace Common {
 declare namespace Taiga {
     namespace Xhr {
         namespace JsonRpc {
-            class Request {
+            class Request { // eslint-disable-line @typescript-eslint/no-unused-vars
                 public setUrl(x: string): void
                 public setMethod(x: string): void
                 public setParams(x: { csrf: string }): void
