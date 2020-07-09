@@ -13,6 +13,7 @@ import {
     isReadingEditorialContent,
     isReadingThread,
     mayHaveJustSubmittedForumPost,
+    mayHaveJustSubmittedPM,
 } from "~src/environment";
 import { P, Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
@@ -254,7 +255,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     }),
     operation({
         description: "enable autosave draft watchdog",
-        condition: () => isInEditMode_forum && Preferences.get(P.edit_mode._.autosave_draft),
+        condition: () => (isInEditMode_forum || isInEditMode_PM) && Preferences.get(P.edit_mode._.autosave_draft),
         dependencies: {
             saveButton: SELECTOR.saveButton,
             textarea: SELECTOR.textarea,
@@ -264,7 +265,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     }),
     operation({
         description: "delete any obsolete autosaved draft",
-        condition: () => mayHaveJustSubmittedForumPost && Preferences.get(P.edit_mode._.autosave_draft),
+        condition: () => (mayHaveJustSubmittedForumPost || mayHaveJustSubmittedPM) && Preferences.get(P.edit_mode._.autosave_draft),
         dependencies: { post: SELECTOR.linkedForumPost },
         action: autosaveDraft.clearAutosavedDraftIfObsolete,
     }),
