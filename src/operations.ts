@@ -45,7 +45,7 @@ import insertTableToolbarButton from "./operations/table-toolbar-button";
 import insertTextareaSizeToggle from "./operations/textarea-size-toggle";
 import insertWebSearchButton from "./operations/web-search-button";
 
-const ALWAYS: boolean = true;
+const ALWAYS = true;
 
 const OPERATIONS: readonly Operation<any>[] = [
     operation({

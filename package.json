@@ -6,7 +6,8 @@
     "build": "npm run clean && npm run build-webpack-config && npm run build-userscript && npm run clean",
     "check-dirty": "repository-check-dirty",
     "clean": "rm -rf .userscripter-temp",
-    "verify": "npm run check-dirty && npm run build"
+    "lint": "eslint . --ext .ts,.tsx",
+    "verify": "npm run check-dirty && npm run lint && npm run build"
   },
   "husky": {
     "hooks": {
@@ -21,11 +22,15 @@
     "@types/milliseconds": "0.0.29",
     "@types/mousetrap": "^1.6.3",
     "@types/node": "^13.1.0",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@typescript-eslint/parser": "^3.6.0",
     "app-root-path": "^2.2.1",
     "array-uniq": "^2.1.0",
     "bbcode-tags": "^1.1.1",
     "classnames": "^2.2.6",
     "css.escape": "^1.5.1",
+    "eslint": "^7.4.0",
+    "eslint-plugin-react": "^7.20.3",
     "fmap-null-undefined": "^1.0.1",
     "husky": "^3.1.0",
     "lines-unlines": "^1.0.0",

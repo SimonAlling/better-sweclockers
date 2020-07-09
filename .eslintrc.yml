@@ -1,0 +1,18 @@
+extends:
+    - eslint:recommended
+    - plugin:@typescript-eslint/recommended
+    - plugin:react/recommended
+root: true
+rules:
+    "no-unused-vars": 0 # Should be turned off when using @typescript-eslint.
+    "@typescript-eslint/no-explicit-any": 0
+    "@typescript-eslint/no-namespace": [ 2, { "allowDeclarations": true } ] # We declare namespaces for host site APIs.
+    "@typescript-eslint/no-unused-vars": [ 2, { "argsIgnorePattern": "^_" } ]
+    "@typescript-eslint/explicit-module-boundary-types": 0
+    "react/display-name": 0
+    "react/jsx-key": 0
+    "react/no-unknown-property": [0, { ignore: ["class"] }]
+settings:
+    react:
+        pragma: h
+        version: detect
