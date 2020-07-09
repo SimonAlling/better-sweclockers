@@ -73,6 +73,7 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         box-sizing: border-box;
         display: block;
         height: 6em;
+        resize: vertical;
         width: 100%;
     }
 
