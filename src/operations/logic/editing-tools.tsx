@@ -5,6 +5,7 @@ import { h } from "preact";
 import * as CONFIG from "~src/config";
 import iconExpander from "~src/icons/expander.svg";
 import iconSearchLink from "~src/icons/search-link.svg";
+import iconQuote from "~src/icons/quote.svg";
 import iconSplitQuote from "~src/icons/split-quote.svg";
 import { SearchEngine, searchURL } from "~src/search-engines";
 import * as SITE from "~src/site";
@@ -46,6 +47,13 @@ export const BUTTON = {
         tooltip: T.editing_tools.tooltip_doge,
         action: insert(CONFIG.CONTENT.doge),
         icon: { type: "URL", image: CONFIG.ICONS.DOGE },
+    }),
+    quote: tagButton({
+        tag: SITE.TAG.quote,
+        parameterized: true,
+        block: true,
+        tooltip: T.editing_tools.tooltip_quote,
+        icon: { type: "RAW", image: iconQuote },
     }),
     splitQuote: generalButton({
         tooltip: T.editing_tools.tooltip_split_quote,

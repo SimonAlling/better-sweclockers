@@ -86,8 +86,8 @@
         background: $FADE_INVERTED, $RAINBOW !important;
     }
 
-    // quote button icon:
-    .#{getGlobal("CONFIG.CLASS.button_quote")} div {
+    // blockquote button icon:
+    .#{getGlobal("CONFIG.CLASS.button_blockquote")} div {
         font-family: "Georgia", serif;
         font-size: 30px;
         line-height: 24px;
