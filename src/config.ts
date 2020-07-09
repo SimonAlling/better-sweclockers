@@ -57,7 +57,7 @@ export const CLASS = {
     shibe: c("shibe"),
     button_restoreDraft: c("button-restore-draft"),
     button_color: c("button-color"),
-    button_quote: c("button-quote"),
+    button_blockquote: c("button-blockquote"),
     button_spoiler: c("button-spoiler"),
     button_code: c("button-code"),
     button_math: c("button-math"),
@@ -108,7 +108,7 @@ export const CONTENT = {
 
 export const ICONS = {
     // Requiring an SVG file here throws when building.
-    QUOTE: `<div>”</div>`,
+    BLOCKQUOTE: `<div>”</div>`,
     DOGE: `https://i.imgur.com/2IGEruO.png`,
 } as const;
 

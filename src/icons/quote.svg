@@ -1,0 +1,10 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <rect x="1" y="1" width="30" height="30" stroke="#444" fill="#d7d5d1" stroke-width="2"/>
+    <text x="4" y="18" style="fill: #444; font-family: Georgia, serif; font-size: 20px">”</text>
+    <text       y="13" style="fill: #444; font-family: sans-serif; font-size: 4px">
+        <!-- Setting x="4" on text and x="0" on tspans doesn't work. -->
+        <tspan x="4" dy="1.2em">Dumheter</tspan>
+        <tspan x="4" dy="1.2em">som måste</tspan>
+        <tspan x="4" dy="1.2em">besvaras.</tspan>
+    </text>
+</svg>
