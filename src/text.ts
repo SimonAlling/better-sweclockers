@@ -160,6 +160,7 @@ export const preferences = {
         doge_description: `            wow`,
         color_palette: `Färgpaletten`,
         color_palette_description: `Ändra textfärg snabbt och enkelt`,
+        smileys: `Smileys`,
     },
 
     dark_theme: {

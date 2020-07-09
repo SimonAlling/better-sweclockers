@@ -1,4 +1,5 @@
 import * as BB from "bbcode-tags";
+import classNames from "classnames";
 import { lines, unlines } from "lines-unlines";
 import { h } from "preact";
 
@@ -13,6 +14,7 @@ import * as T from "~src/text";
 import { InsertButtonDescription } from "~src/types";
 import { fromMaybeUndefined, r } from "~src/utilities";
 
+import * as Smileys from "./smileys";
 import { Action, CursorBehavior, insert, insertIn, placeCursorIn, selectedTextIn, wrapIn, wrap_tag, wrap_verbatim } from "./textarea";
 
 export const BUTTON = {
@@ -132,6 +134,7 @@ type ButtonDescription = Readonly<{
     parameterized?: boolean,
     block?: boolean,
     icon?: Icon,
+    custom?: boolean,
     cursor?: CursorBehavior,
     action: Action,
     style?: string,
@@ -176,13 +179,23 @@ export function colorButton(color: string): Button {
     });
 }
 
-export function generalButton(button: Pick<ButtonDescription, "label" | "tooltip" | "class" | "icon" | "action" | "style">): Button {
+export function smileyButton(smiley: Smileys.Smiley): Button {
+    return generalButton({
+        label: "",
+        tooltip: Smileys.codeFor(smiley),
+        custom: true,
+        class: classNames(SITE.CLASS.smiley, Smileys.classFor(smiley)),
+        action: insert(" " + Smileys.codeFor(smiley) + " "), // Spaces are necessary around a smiley. (Multiple ones collapse.)
+    });
+}
+
+export function generalButton(button: Pick<ButtonDescription, "label" | "tooltip" | "class" | "icon" | "custom" | "action" | "style">): Button {
     return textarea => {
         const icon = button.icon;
         const label = (icon === undefined ? "" : icon.type === "URL" ? `<img src="${icon.image}" />` : icon.image) + fromMaybeUndefined("", button.label);
         const className = [
             button.class || "",
-            SITE.CLASS.button,
+            button.custom ? "" : SITE.CLASS.button,
             icon === undefined ? "" : " " + CONFIG.CLASS.iconButton,
         ].join(" ").trim();
         return (
