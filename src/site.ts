@@ -92,7 +92,7 @@ export const FORM = {
 
 export const PATH = {
     EDIT_MODE_FORUM: /^\/forum\/(.*\/(svara(\?citera)?|redigera)|ny-trad)/,
-    EDIT_MODE_MARKET: /^\/marknad\/(.+\/(redigera|kontakt)|ny\-annons)$/,
+    EDIT_MODE_MARKET: /^\/marknad\/(.+\/(redigera|kontakt)|ny-annons)$/,
     EDIT_MODE_MARKET_CONTACT: /^\/marknad\/.+\/kontakt$/,
     EDIT_MODE_PM: /^\/medlem\/\d+\/meddelanden\/(?:nytt-meddelande|post\/\d+\/(?:redigera|svara))/,
     EDIT_MODE_REPORT: /^\/(forum|marknad|medlem\/\d+\/meddelanden)\/.+\/anmal$/,
@@ -114,7 +114,7 @@ export const PATH = {
     THREAD: /^\/(?:forum|medlem\/\d+\/meddelanden)\/trad\//,
     POST: /^\/(?:forum|medlem\/\d+\/meddelanden)\/post\//,
     SUCCESSFULLY_SUBMITTED_FORUM_POST: /^\/forum\/post\/\d+$/,
-    SUCCESSFULLY_SUBMITTED_PM: /^\/medlem\/\d+\/meddelanden\/(?:post\/\d+(?:#preview)?|trad\/\d+\-.+)$/,
+    SUCCESSFULLY_SUBMITTED_PM: /^\/medlem\/\d+\/meddelanden\/(?:post\/\d+(?:#preview)?|trad\/\d+-.+)$/,
     newPrivateMessage: (sender: number) => `/medlem/${sender}/meddelanden/nytt-meddelande`,
     forumPost: (postID: string) => `/forum/post/${postID}`,
     editPost: (postID: number) => `/forum/post/${postID}/redigera`,
@@ -178,6 +178,6 @@ export function isValidUsername(s: string): boolean {
     // So has '"': https://www.sweclockers.com/medlem/26129
     // Weird Unicode intervals are \u00C0-\u00FF with × and ÷ excluded.
     // Regex matches "Alling ", "Alling-" and "Alling_", so the reverse of the string must also be checked.
-    const REGEX_ALMOST_USERNAME = /^(?![ \-_"])[\w\d \-\.\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF]{3,32}$/;
+    const REGEX_ALMOST_USERNAME = /^(?![ \-_"])[\w\d \-.\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF]{3,32}$/;
     return REGEX_ALMOST_USERNAME.test(s) && REGEX_ALMOST_USERNAME.test(s.split("").reverse().join(""));
 }
