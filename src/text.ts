@@ -155,6 +155,7 @@ export const preferences = {
         code: `Kodrelaterade verktyg`,
         math: `Matematikrelaterade verktyg`,
         whitespace: `Whitespaceverktyg`,
+        definitions: `Verktyg för definitioner`,
         embed: `Verktyg för länkar, bilder och sökresultat`,
         doge: `very doge buttons`,
         doge_description: `            wow`,
@@ -273,6 +274,12 @@ export const editing_tools = {
     tooltip_ins: `Tillagd text`,
     label_del: `<del class="${SITE.CLASS.bbDel}">${SITE.TAG.del}</del>`,
     tooltip_del: `Borttagen text`,
+    label_dl: SITE.TAG.dl,
+    tooltip_dl: `Definitionslista`,
+    label_dt: SITE.TAG.dt,
+    tooltip_dt: `Term att definiera/beskriva (måste ligga inuti en ${BB.start(SITE.TAG.dl)})`,
+    label_dd: SITE.TAG.dd,
+    tooltip_dd: `Termens definition/beskrivning (måste ligga inuti en ${BB.start(SITE.TAG.dl)} och efter en ${BB.start(SITE.TAG.dt)})`,
 } as const;
 
 export const special_characters: readonly InsertButtonDescription[] = [
