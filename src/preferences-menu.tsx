@@ -83,16 +83,11 @@ export class PreferencesForm extends Component {
         );
     }
 
-    public listener() {
-        this.forceUpdate();
-    }
-
     public componentDidMount() {
-        responseHandler.subscribe(this.listener);
-    }
-
-    public componentWillUnmount() {
-        responseHandler.unsubscribe(this.listener);
+        // The listener can't be a method, because then `this` is undefined in it.
+        responseHandler.subscribe(() => {
+            this.forceUpdate();
+        });
     }
 }
 
