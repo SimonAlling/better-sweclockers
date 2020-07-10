@@ -25,7 +25,7 @@ jobs:
           npm run build
         env:
           CI: true
-          USERSCRIPTER_HOSTED_AT: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/nightly # Must match TARGET_FOLDER.
+          USERSCRIPTER_HOSTED_AT: https://${{ github.repository_owner }}.github.io/better-sweclockers/nightly # Must match TARGET_FOLDER.
           USERSCRIPTER_MODE: production
           USERSCRIPTER_NIGHTLY: true
           USERSCRIPTER_VERBOSE: true
