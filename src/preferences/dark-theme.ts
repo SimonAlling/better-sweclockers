@@ -6,7 +6,7 @@ import {
 } from "ts-preferences";
 
 import * as CONFIG from "~src/config";
-import { Source } from "~src/dark-theme";
+import { Source, darkThemeInfoUrl } from "~src/dark-theme";
 import * as T from "~src/text";
 
 import { TimePreference } from "./TimePreference";
@@ -25,6 +25,10 @@ const dependencies_auto = [
         condition: (v: boolean) => v,
     },
 ];
+
+function label(source: Source): string {
+    return T.preferences.dark_theme.source.option(source, darkThemeInfoUrl(source));
+}
 
 export default {
     active: new BooleanPreference({
@@ -45,11 +49,11 @@ export default {
         options: [
             {
                 value: Source.BLARGMODE,
-                label: T.preferences.dark_theme.source.option(Source.BLARGMODE),
+                label: label(Source.BLARGMODE),
             },
             {
                 value: Source.SOITORA,
-                label: T.preferences.dark_theme.source.option(Source.SOITORA),
+                label: label(Source.SOITORA),
             },
         ],
         label: T.preferences.dark_theme.source.label,
