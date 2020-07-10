@@ -3,6 +3,7 @@
 // The actual toolbar:
 ##{getGlobal("CONFIG.ID.editingTools")} {
     margin: 1px; // same as textarea, so they line up
+    line-height: 0; // Prevents extraneous spacing below fieldsets.
     > * {
         vertical-align: top;
         margin-top: 0;
@@ -17,8 +18,6 @@
     $FADE: linear-gradient(to bottom, rgba(255,255,255,$FADE_OPACITY) 0%,rgba(0,0,0,$FADE_OPACITY) 100%);
     $FADE_BRIGHT: linear-gradient(to bottom, rgba(255,255,255,2*$FADE_OPACITY) 0%,rgba(100,100,100,2*$FADE_OPACITY) 100%);
     $FADE_INVERTED: linear-gradient(to top, rgba(255,255,255,$FADE_OPACITY) 0%,rgba(0,0,0,$FADE_OPACITY) 100%);
-
-    line-height: 0;
 
     big {
         font-size: 1.25em;
