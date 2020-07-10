@@ -13,6 +13,13 @@ export function darkThemeUrl(source: Source): string {
     }
 }
 
+export function darkThemeInfoUrl(source: Source): string {
+    switch (source) {
+        case Source.BLARGMODE: return "/forum/trad/1089561";
+        case Source.SOITORA: return "/forum/trad/1515628";
+    }
+}
+
 export function darkThemeAdditions(source: Source): string {
     switch (source) {
         case Source.BLARGMODE:

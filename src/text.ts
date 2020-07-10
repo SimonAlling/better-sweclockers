@@ -169,7 +169,7 @@ export const preferences = {
         source: {
             label: `Tema`,
             description: `Vilket mörkt tema föredrar du?`,
-            option: darkThemeBy,
+            option: (name: string, infoUrl: string) => `${name} (<a target="_blank" href="${infoUrl}">forumtråd</a>)`,
         },
         show_toggle: `Visa knapp för manuell växling`,
         show_toggle_description: `Toggla manuellt det mörka temat med en knapp högst upp på sidan`,
