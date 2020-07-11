@@ -97,7 +97,7 @@ export default {
     }),
     use_backup: new BooleanPreference({
         key: "dark_theme_use_backup",
-        default: true,
+        default: false,
         label: T.preferences.dark_theme.use_backup,
         description: T.preferences.dark_theme.use_backup_description,
     }),
