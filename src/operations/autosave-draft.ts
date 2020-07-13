@@ -11,6 +11,7 @@ import * as T from "~src/text";
 
 import { isCleanSlate_reply } from "./edit-mode";
 import { generalButton } from "./logic/editing-tools";
+import { insertIn } from "./logic/textarea";
 
 /*
 If the user visits a linked post and tried to submit a post "just now", we will
@@ -37,14 +38,14 @@ const MIN_LENGTH_TO_SAVE = 10;
 
 const MAX_LENGTH_TO_SHOW = 200; // when asking if draft should be restored
 
-export function manageAutosaveWatchdog(e: {
+export const manageAutosaveWatchdog = (undoSupport: boolean) => (e: {
     textarea: HTMLElement,
     saveButton: HTMLElement,
     toolbarInner: HTMLElement,
-}) {
+}) => {
     const textarea = e.textarea as HTMLTextAreaElement;
     // If the user came here by previewing their post, there is nothing saved at this point, because we cleared the draft when they deliberately unloaded the page.
-    maybeOfferToRestoreAutosavedPost(textarea, e.toolbarInner);
+    maybeOfferToRestoreAutosavedPost(textarea, e.toolbarInner, undoSupport);
     // Now that we have inserted the restore button or decided not to, we can start autosaving the text in the textarea.
     enableWatchdog(textarea);
     e.saveButton.addEventListener("click", () => {
@@ -96,7 +97,7 @@ function mayBeWorthSaving(text: string): boolean {
     return text.length >= MIN_LENGTH_TO_SAVE && !isCleanSlate_reply(text);
 }
 
-function maybeOfferToRestoreAutosavedPost(textarea: HTMLTextAreaElement, toolbarInner: HTMLElement) {
+function maybeOfferToRestoreAutosavedPost(textarea: HTMLTextAreaElement, toolbarInner: HTMLElement, undoSupport: boolean) {
     const saved = Storage.get(CONFIG.KEY.autosaved_draft, "");
     if (saved.status === Storage.Status.OK && textarea.value !== saved.value) {
         // There is a saved draft that the user might want to restore.
@@ -104,19 +105,20 @@ function maybeOfferToRestoreAutosavedPost(textarea: HTMLTextAreaElement, toolbar
             label: T.general.restore_draft_label,
             tooltip: T.general.restore_draft_tooltip,
             class: CONFIG.CLASS.button_restoreDraft,
-            action: textarea => {
+            action: (textarea, undoSupport) => {
                 const draftPreview = shortenedIfLongerThan(MAX_LENGTH_TO_SHOW, saved.value);
                 const question_restore = T.general.restore_draft_question + "\n\n" + draftPreview;
                 if (confirm(question_restore)) {
-                    // Avoid overwriting current textarea content:
-                    if (textarea.value === "" || confirm(T.general.restore_draft_confirm)) {
-                        textarea.value = saved.value;
+                    // Avoid overwriting current textarea content in the absence of undo support:
+                    if (undoSupport || textarea.value === "" || confirm(T.general.restore_draft_confirm)) { // `confirm` is problematic in Chrome (see docs/dialogs.md), but Chrome has full undo support.
+                        textarea.select();
+                        insertIn(textarea, { string: saved.value, replace: true }); // Not replacing would be confusing. Firefox users are protected by the confirmation dialog above.
                         removeRestoreButton();
                     }
                 }
             },
         });
-        render(button(textarea), toolbarInner);
+        render(button(textarea, undoSupport), toolbarInner);
     }
 }
 

@@ -121,6 +121,7 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
                         textarea={document.createElement("textarea")}
                         config={getEditingToolsConfig()}
                         disabled={!Preferences.get(P.editing_tools._.enable)}
+                        undoSupport={Preferences.get(P.advanced._.undo_support)}
                     />
                     : null
                 }

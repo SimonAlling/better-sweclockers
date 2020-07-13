@@ -9,9 +9,11 @@ import { BUTTONS, Button, insertButton } from "~src/operations/logic/editing-too
 import { SearchEngine } from "~src/search-engines";
 import * as T from "~src/text";
 
+
 function buttonsDescription(buttons: readonly Button[]): string {
     const textarea = document.createElement("textarea");
-    const connectedButtons = buttons.map(b => b(textarea));
+    const undoSupport = true; // The buttons are only used for illustrative purposes, not actual text editing.
+    const connectedButtons = buttons.map(b => b(textarea, undoSupport));
     const div = document.createElement("div");
     for (const b of connectedButtons) {
         render(b, div);

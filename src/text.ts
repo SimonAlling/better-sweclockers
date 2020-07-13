@@ -2,6 +2,7 @@
 
 import * as BB from "bbcode-tags";
 
+import * as browser from "./browser";
 import * as CONFIG from "./config";
 import { SearchEngine } from "./search-engines";
 import * as SITE from "./site";
@@ -40,6 +41,7 @@ export const general = {
     restore_draft_tooltip: `Återställ autosparat utkast`,
     restore_draft_question: `Vill du återställa följande utkast?`,
     restore_draft_confirm: `Din nuvarande text kommer ersättas. Är du säker?`,
+    nbsps_confirm: (n: number) => `${n} mellanslag kommer ersättas med hårda mellanslag. Är du säker?`,
     // Copied from SweClockers:
     signout_error: `Ett fel har uppstått och utloggningen misslyckades. Var god ladda om sidan och försök igen. Rensa cookies i din webbläsare för att logga ut manuellt.`,
     quote_signature_label: `Citera sign.`,
@@ -223,6 +225,12 @@ export const preferences = {
         },
         proofread_forum_posts: `Markera möjliga fel i foruminlägg (i redigeringsläge)`,
         proofread_forum_posts_description: `Samma som ovan, fast i forumet`,
+        undo_support: (browser.supportsExecCommand, { // Make sure the labels match the actual support check (referenced here to facilitate a `git grep` search).
+            label: `När ett verktyg infogar text`,
+            description: `Om din webbläsare inte låter dig ångra åtgärder utförda med redigeringsverktygen kan ${CONFIG.USERSCRIPT_NAME} skydda markerad text mot oavsiktlig radering om du råkar trycka på fel knapp`,
+            replace_selected: `Ersätt markerad text – rekommenderas i alla webbläsare med fullgott ångra-stöd`,
+            keep_selected: `Behåll markerad text – rekommenderas i <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1220696">Firefox/Gecko</a>`, // Make sure the text matches the actual support check.
+        }),
         custom_css_enable: `Infoga egen CSS:`,
         custom_css_enable_description: `Anpassa layout och utseende precis som du vill`,
         custom_css_warning: `Klistra aldrig in kod som du inte litar på!`,

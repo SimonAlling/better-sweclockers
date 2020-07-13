@@ -47,6 +47,10 @@ import insertWebSearchButton from "./operations/web-search-button";
 
 const ALWAYS = true;
 
+// True here means the user wants us to act as if there is undo support (i.e. take no precautions to protect data).
+// Chrome always has actual undo support and Firefox never does.
+const undoSupport = Preferences.get(P.advanced._.undo_support);
+
 const OPERATIONS: readonly Operation<any>[] = [
     operation({
         description: "set document id",
@@ -91,7 +95,7 @@ const OPERATIONS: readonly Operation<any>[] = [
             searchFieldInput: SELECTOR.searchFieldInput,
             searchFieldWrapper: SELECTOR.searchFieldWrapper,
         },
-        action: insertWebSearchButton,
+        action: insertWebSearchButton(undoSupport),
     }),
     operation({
         description: "manage caret position in textarea",
@@ -113,13 +117,13 @@ const OPERATIONS: readonly Operation<any>[] = [
         description: "insert editing tools",
         condition: () => isInEditMode && Preferences.get(P.editing_tools._.enable),
         dependencies: { textarea: SELECTOR.textarea },
-        action: insertEditingTools,
+        action: insertEditingTools(undoSupport),
     }),
     operation({
         description: "insert editing tools in quick reply form",
         condition: () => isReadingThread && Preferences.get(P.editing_tools._.enable) && Preferences.get(P.editing_tools._.in_quick_reply_form),
         dependencies: { textarea: SELECTOR.textarea },
-        action: insertEditingTools,
+        action: insertEditingTools(undoSupport),
     }),
     operation({
         description: "insert heading toolbar button",
@@ -128,7 +132,7 @@ const OPERATIONS: readonly Operation<any>[] = [
             textarea: SELECTOR.textarea,
             strikeButton: SELECTOR.textareaToolbarStrikeButton,
         },
-        action: insertHeadingToolbarButton,
+        action: insertHeadingToolbarButton(undoSupport),
     }),
     operation({
         description: "insert table toolbar button",
@@ -137,7 +141,7 @@ const OPERATIONS: readonly Operation<any>[] = [
             textarea: SELECTOR.textarea,
             unorderedListButton: SELECTOR.textareaToolbarUnorderedListButton,
         },
-        action: insertTableToolbarButton,
+        action: insertTableToolbarButton(undoSupport),
     }),
     operation({
         description: "insert textarea size toggle",
@@ -261,7 +265,7 @@ const OPERATIONS: readonly Operation<any>[] = [
             textarea: SELECTOR.textarea,
             toolbarInner: SELECTOR.textareaToolbarInner,
         },
-        action: autosaveDraft.manageAutosaveWatchdog,
+        action: autosaveDraft.manageAutosaveWatchdog(undoSupport),
     }),
     operation({
         description: "delete any obsolete autosaved draft",

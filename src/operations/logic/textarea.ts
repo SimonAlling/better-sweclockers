@@ -1,4 +1,5 @@
 import * as BB from "bbcode-tags";
+import * as textFieldEdit from "text-field-edit";
 import { isNumber } from "ts-type-guards";
 
 import * as CONFIG from "~src/config";
@@ -26,7 +27,7 @@ type TagWrapAction = Readonly<{
     block: boolean,
 }>
 
-export type Action = (textarea: HTMLTextAreaElement) => void
+export type Action = (textarea: HTMLTextAreaElement, undoSupport: boolean) => void
 
 export type CursorBehavior = number | "KEEP_SELECTION"
 
@@ -36,8 +37,11 @@ export function indent(s: string): string {
 
 export function wrapIn(textarea: HTMLTextAreaElement, w: WrapAction): void {
     const replacement = w.before + selectedTextIn(textarea) + w.after;
+    // Since wrapping doesn't delete any text, undo support is not relevant and replacing is always safe.
     const insertionResult = insertPure(textarea, { string: replacement, replace: true });
-    textarea.value = insertionResult.textareaContent;
+    // We must use textFieldEdit.wrapSelection, because if we use insertPure + textFieldEdit.set, the entire textarea content gets selected when the user issues an undo command.
+    textFieldEdit.wrapSelection(textarea, w.before, w.after);
+    // Since we use the insertion result here, it must represent the same modification of the textarea content as textFieldEdit.wrapSelection.
     if (isNumber(w.cursor)) {
         placeCursorIn(textarea, insertionResult.startOfInserted + w.cursor);
     } else {
@@ -46,7 +50,7 @@ export function wrapIn(textarea: HTMLTextAreaElement, w: WrapAction): void {
 }
 
 export function wrap_verbatim(w: WrapAction): Action {
-    return textarea => wrapIn(textarea, w);
+    return (textarea, _) => wrapIn(textarea, w);
 }
 
 export function wrap_tag(w: TagWrapAction): Action {
@@ -66,15 +70,20 @@ export function selectedTextIn(textarea: HTMLTextAreaElement): string {
     return textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
 }
 
-export function insert(str: string) {
-    return (textarea: HTMLTextAreaElement) => insertIn(textarea, { string: str, replace: false });
+// Simple insertion. Selected text is kept in the absence of undo support to protect against accidental deletion.
+export function insert(str: string): Action {
+    return (textarea, undoSupport) => insertIn(textarea, { string: str, replace: undoSupport });
 }
 
-// Insert a string right after any selected text (which is kept).
 export function insertIn(textarea: HTMLTextAreaElement, insertion: Insertion): void {
-    const insertionResult = insertPure(textarea, insertion);
-    textarea.value = insertionResult.textareaContent;
-    selectRangeIn(textarea, insertionResult.endOfInserted, insertionResult.endOfInserted);
+    // The caller of this function is fully responsible for deciding whether to replace selected text or not.
+    // textFieldEdit.insert replaces selected text, so if that's not desired, we'll first unselect it such that the insertion is done after the selection.
+    if (!insertion.replace) {
+        placeCursorIn(textarea, textarea.selectionEnd);
+    }
+    // We must use textFieldEdit.insert, because if we use insertPure + textFieldEdit.set, the entire textarea content gets selected when the user issues an undo command.
+    textFieldEdit.insert(textarea, insertion.string);
+    textarea.focus();
 }
 
 function insertPure(textarea: HTMLTextAreaElement, insertion: Insertion): InsertionResult {

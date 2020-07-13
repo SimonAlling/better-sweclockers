@@ -6,11 +6,11 @@ import * as T from "~src/text";
 import { toolbarButton } from "./logic/editing-tools";
 import { wrap_tag } from "./logic/textarea";
 
-export default (e: {
+export default (undoSupport: boolean) => (e: {
     textarea: HTMLElement,
     strikeButton: HTMLElement,
 }) => {
-    render(headingToolbarButton(e.textarea as HTMLTextAreaElement), e.strikeButton.parentElement as HTMLElement);
+    render(headingToolbarButton(e.textarea as HTMLTextAreaElement, undoSupport), e.strikeButton.parentElement as HTMLElement);
 }
 
 const headingToolbarButton = toolbarButton({
