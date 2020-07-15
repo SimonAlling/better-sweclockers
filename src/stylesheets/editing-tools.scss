@@ -31,6 +31,9 @@
         height: 23px;
         box-sizing: border-box;
         margin: 0 1px 0 0;
+        * {
+            line-height: 0;
+        }
     }
 
     .#{getGlobal("SITE.CLASS.button")}:last-of-type {
