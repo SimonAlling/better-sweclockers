@@ -163,12 +163,12 @@ function InputElement<T extends AllowedTypes>(generators: Generators, p: Prefere
 }
 
 function Generator_Boolean(p: BooleanPreference): GeneratorOutput {
-    return [
+    return LabeledInput(
         <input type="checkbox" id={PID(p)} checked={Preferences.get(p)} onChange={e => {
             Preferences.set(p, (e.target as HTMLInputElement).checked);
         }} />,
-        <PreferenceLabel preference={p} />,
-    ];
+        p.label,
+    );
 }
 
 function Generator_String(p: StringPreference): GeneratorOutput {
@@ -295,9 +295,9 @@ function Generator_Multichoice<T extends AllowedTypes>(p: MultichoicePreference<
         );
 }
 
-function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: MultichoicePreference<T>, label: string, value: T, checked: boolean }): readonly JSX.Element[] {
+function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: MultichoicePreference<T>, label: string, value: T, checked: boolean }): JSX.Element {
     const radioButtonId = PID(p) + "-" + label;
-    return [
+    return LabeledInput(
         <input
             type="radio"
             id={radioButtonId}
@@ -309,8 +309,18 @@ function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: 
                 }
             }}
         />,
-        <HtmlLabel for={radioButtonId} html={label} />,
-    ];
+        label,
+    );
+}
+
+function LabeledInput(input: JSX.Element, label: string): JSX.Element {
+    return (
+        // Cannot use HtmlLabel because we want to have the <input> inside the <label> to avoid a line break between them.
+        <label class={ CONFIG.CLASS.labeledInput }>
+            { input }
+            <span dangerouslySetInnerHTML={{ __html: label }} />
+        </label>
+    );
 }
 
 function extractForumLinkData(forumLink: HTMLAnchorElement): ForumCategory | null {

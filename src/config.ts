@@ -70,6 +70,7 @@ export const CLASS = {
     inlinePreference: c("inline-preference"),
     primaryInlinePreference: c("primary-inline-preference"),
     radioButtonPreference: c("radioButtonPreference"),
+    labeledInput: c("labeledInput"), // <label><input ... /></label>
     subforum: c("subforum"),
     textareaSize: c("textarea-size"),
     codeInput: c("code-input"),
