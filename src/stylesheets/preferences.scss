@@ -22,9 +22,15 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     #{$preference} {
         clear: left;
 
+        // Most labels should have a colon appended ...
         > label::after {
             content: ":\a0";
         }
+        // ... but not those that contain a checkbox or radio button.
+        > label.#{getGlobal("CONFIG.CLASS.labeledInput")}::after {
+            content: unset;
+        }
+        // The two rule sets above are separate because we don't want to default to appending a colon with high specificity.
 
         input + label::after, select + label::after, textarea + label::after {
             content: unset;
@@ -55,10 +61,6 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         width: -webkit-fit-content;
         width: -moz-fit-content;
         width: fit-content;
-
-        label::after {
-            content: unset;
-        }
 
         > label:first-child::after {
             content: ":";
@@ -124,12 +126,9 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         }
     }
 
-    input[type="checkbox"] + label, input[type="radio"] + label {
-        padding-left: $checkboxLabelSpacing;
-    }
-
     input[type="checkbox"], input[type="radio"] {
         margin: 0;
+        margin-right: $checkboxLabelSpacing;
     }
 
     input[type="text"], input[type="number"], input[type="time"] {
