@@ -43,7 +43,7 @@ export const BUTTON = {
         label: T.editing_tools.label_shibe,
         tooltip: T.editing_tools.tooltip_shibe,
         class: CONFIG.CLASS.shibe,
-        action: (textarea, _) => insertIn(textarea, { string: shibeText(selectedTextIn(textarea)), replace: true }),
+        action: ACTION_SHIBE,
     }),
     doge: generalButton({
         tooltip: T.editing_tools.tooltip_doge,
@@ -334,4 +334,23 @@ function nbspsConfirmationNeeded(selectedText: string): false | number {
     // Replacing a large number of spread-out spaces with NBSPs is both uncommon and time-consuming to restore.
     const confirmationNeeded = numberOfSelectedSpaces > 10 && numberOfSelectedSpaceSegments > 3
     return confirmationNeeded ? numberOfSelectedSpaces : false;
+}
+
+function ACTION_SHIBE(textarea: HTMLTextAreaElement, undoSupport: boolean): void {
+    const selectedText = selectedTextIn(textarea);
+    const selectedLines = lines(selectedText);
+    if (undoSupport || !shibeConfirmationNeeded(selectedLines) || confirm(T.general.shibe_confirm(selectedLines.length))) { // `confirm` is problematic in Chrome (see docs/dialogs.md), but Chrome has full undo support.
+        insertIn(textarea, {
+            string: shibeText(selectedText),
+            replace: true,
+        });
+    }
+}
+
+// A heuristic intended to catch cases when the user likely didn't mean to apply shibe formatting and/or it would be cumbersome to restore the change without undo support.
+function shibeConfirmationNeeded(selectedLines: readonly string[]): boolean {
+    const nonEmptyLines = selectedLines.filter(line => line !== "");
+    const longestLineLength = Math.max(...nonEmptyLines.map(line => line.length));
+    // Shibe formatting is usually applied to a few short lines of text ("wow" etc), and content worth protecting tends to have more and/or longer lines.
+    return nonEmptyLines.length > 5 || longestLineLength > 15;
 }
