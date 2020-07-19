@@ -17,8 +17,7 @@ describe("Android detection", () => {
             `Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1`, // iPad Pro, iOS 11, Safari (from Chrome developer tools)
             `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1`, // iPhone X, iOS 13, Safari (from Chrome developer tools)
         ] as const;
-        // Enforce sorted order in source code:
-        expect(NON_ANDROID_USER_AGENT_STRINGS).toEqual(sorted(NON_ANDROID_USER_AGENT_STRINGS));
+        expect(NON_ANDROID_USER_AGENT_STRINGS).toEqual(sorted(NON_ANDROID_USER_AGENT_STRINGS)); // Enforces sorted order above.
         const soundnessSpecification = NON_ANDROID_USER_AGENT_STRINGS.map(x => ({ in: x, out: false }));
         check(browser.isAndroid).against(soundnessSpecification);
     });
@@ -33,8 +32,7 @@ describe("Android detection", () => {
             `Mozilla/5.0 (Linux; Android 7.0; F5321) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36`, // Xperia X Compact, Chrome
             `Mozilla/5.0 (Linux; Android 7.1.2; AFTMM Build/NS6265; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.110 Mobile Safari/537.36`, // WIMB
         ] as const;
-        // Enforce sorted order in source code:
-        expect(ANDROID_USER_AGENT_STRINGS).toEqual(sorted(ANDROID_USER_AGENT_STRINGS));
+        expect(ANDROID_USER_AGENT_STRINGS).toEqual(sorted(ANDROID_USER_AGENT_STRINGS)); // Enforces sorted order above.
         const completenessSpecification = ANDROID_USER_AGENT_STRINGS.map(x => ({ in: x, out: true }));
         check(browser.isAndroid).against(completenessSpecification);
     });
