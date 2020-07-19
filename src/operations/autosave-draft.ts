@@ -105,12 +105,12 @@ function maybeOfferToRestoreAutosavedPost(textarea: HTMLTextAreaElement, toolbar
             label: T.general.restore_draft_label,
             tooltip: T.general.restore_draft_tooltip,
             class: CONFIG.CLASS.button_restoreDraft,
-            action: (textarea, _) => {
+            action: (textarea, undoSupport) => {
                 const draftPreview = shortenedIfLongerThan(MAX_LENGTH_TO_SHOW, saved.value);
                 const question_restore = T.general.restore_draft_question + "\n\n" + draftPreview;
                 if (confirm(question_restore)) {
-                    // Avoid overwriting current textarea content:
-                    if (textarea.value === "" || confirm(T.general.restore_draft_confirm)) {
+                    // Avoid overwriting current textarea content in the absence of undo support:
+                    if (undoSupport || textarea.value === "" || confirm(T.general.restore_draft_confirm)) { // `confirm` is problematic in Chrome (see docs/dialogs.md), but Chrome has full undo support.
                         textarea.select();
                         insertIn(textarea, { string: saved.value, replace: true }); // Not replacing would be confusing. Firefox users are protected by the confirmation dialog above.
                         removeRestoreButton();
