@@ -76,7 +76,7 @@ export default {
     undo_support: new MultichoicePreference({
         // Could have been a BooleanPreference, but it was hard to come up with an understandable label and description then.
         key: "undo_support",
-        default: browser.supportsExecCommand(navigator.userAgent),
+        default: browser.supportsUndo(navigator.userAgent),
         label: T.preferences.advanced.undo_support.label,
         description: T.preferences.advanced.undo_support.description,
         options: [

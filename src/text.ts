@@ -225,11 +225,11 @@ export const preferences = {
         },
         proofread_forum_posts: `Markera möjliga fel i foruminlägg (i redigeringsläge)`,
         proofread_forum_posts_description: `Samma som ovan, fast i forumet`,
-        undo_support: (browser.supportsExecCommand, { // Make sure the labels match the actual support check (referenced here to facilitate a `git grep` search).
+        undo_support: (browser.supportsUndo, { // Make sure the labels match the actual support check (referenced here to facilitate a `git grep` search).
             label: `När ett verktyg infogar text`,
             description: `Om din webbläsare inte låter dig ångra åtgärder utförda med redigeringsverktygen kan ${CONFIG.USERSCRIPT_NAME} skydda markerad text mot oavsiktlig radering om du råkar trycka på fel knapp`,
             replace_selected: `Ersätt markerad text – rekommenderas i alla webbläsare med fullgott ångra-stöd`,
-            keep_selected: `Behåll markerad text – rekommenderas i <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1220696">Firefox/Gecko</a>`, // Make sure the text matches the actual support check.
+            keep_selected: `Behåll markerad text – rekommenderas i <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1220696">Firefox/Gecko</a> samt på Android`, // Make sure the text matches the actual support check.
         }),
         custom_css_enable: `Infoga egen CSS:`,
         custom_css_enable_description: `Anpassa layout och utseende precis som du vill`,
