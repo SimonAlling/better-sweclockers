@@ -8,7 +8,7 @@
     "clean": "rm -rf .userscripter-temp",
     "lint": "eslint . --ext .ts,.tsx",
     "test": "jest",
-    "verify": "npm run check-dirty && npm run lint && npm run build"
+    "verify": "npm run check-dirty && npm test && npm run lint && npm run build"
   },
   "husky": {
     "hooks": {
