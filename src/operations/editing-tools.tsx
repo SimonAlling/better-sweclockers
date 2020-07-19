@@ -12,14 +12,14 @@ import * as T from "~src/text";
 import { BUTTON, BUTTONS, Button, COLORS, colorButton, insertButton, smileyButton, tagButton } from "./logic/editing-tools";
 import { SMILEYS } from "./logic/smileys";
 
-export default (e: { textarea: HTMLElement }) => {
+export default (undoSupport: boolean) => (e: { textarea: HTMLElement }) => {
     const textarea = e.textarea;
     const position = Preferences.get(P.editing_tools._.position);
     const reference = position === Position.ABOVE ? textarea : textarea.nextSibling;
     const toolbar = document.createElement("div");
     const textareaParent = textarea.parentElement as HTMLElement;
     textareaParent.insertBefore(toolbar, reference);
-    render(<EditingTools textarea={textarea as HTMLTextAreaElement} config={getEditingToolsConfig()} />, textareaParent, toolbar);
+    render(<EditingTools textarea={textarea as HTMLTextAreaElement} config={getEditingToolsConfig()} undoSupport={undoSupport} />, textareaParent, toolbar);
 }
 
 interface EditingToolsConfig {
@@ -55,9 +55,10 @@ export function EditingTools(props: {
     textarea: HTMLTextAreaElement,
     disabled?: boolean,
     config: EditingToolsConfig,
+    undoSupport: boolean,
 }): JSX.Element {
     // A "connected" button has been connected to the textarea.
-    const connected = (b: Button) => b(props.textarea);
+    const connected = (b: Button) => b(props.textarea, props.undoSupport);
     const connectedTagButton = compose(connected, tagButton);
     const connectedInsertButton = compose(connected, insertButton);
     const connectedColorButton = compose(connected, colorButton);

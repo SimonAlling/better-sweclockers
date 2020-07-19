@@ -13,16 +13,16 @@ const enum Headings { NONE, FIRST, ALL }
 const TABLE_CONFIG = { rows: 4, columns: 3, headings: true };
 
 const tableToolbarButton = toolbarButton({
-    action: textarea => insert(table(TABLE_CONFIG))(textarea), // eta-abstracted to defer table generation until button clicked
+    action: (textarea, undoSupport) => insert(table(TABLE_CONFIG))(textarea, undoSupport), // eta-abstracted to defer table generation until button clicked
     class: SITE.CLASS.toolbarTableButton,
     tooltip: T.general.tooltip_table,
 });
 
-export default (e: {
+export default (undoSupport: boolean) => (e: {
     textarea: HTMLElement,
     unorderedListButton: HTMLElement,
 }) => {
-    render(tableToolbarButton(e.textarea as HTMLTextAreaElement), e.unorderedListButton.parentElement as HTMLElement);
+    render(tableToolbarButton(e.textarea as HTMLTextAreaElement, undoSupport), e.unorderedListButton.parentElement as HTMLElement);
 }
 
 function table(config: Readonly<typeof TABLE_CONFIG>): string {

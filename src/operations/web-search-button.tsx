@@ -7,7 +7,7 @@ import * as T from "~src/text";
 
 import { Icon, generalButton } from "./logic/editing-tools";
 
-export default (e: {
+export default (undoSupport: boolean) => (e: {
     searchFieldInput: HTMLElement,
     searchFieldWrapper: HTMLElement,
 }) => {
@@ -19,7 +19,7 @@ export default (e: {
         icon: icon(engine),
     });
     const fakeTextarea = document.createElement("textarea");
-    render(button(fakeTextarea), e.searchFieldWrapper);
+    render(button(fakeTextarea, undoSupport), e.searchFieldWrapper);
 }
 
 function icon(engine: SearchEngine): Icon {

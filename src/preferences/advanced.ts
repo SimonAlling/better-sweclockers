@@ -4,6 +4,7 @@ import {
     StringPreference,
 } from "ts-preferences";
 
+import * as browser from "~src/browser";
 import * as CONFIG from "~src/config";
 import * as Proofreading from "~src/operations/proofreading";
 import * as T from "~src/text";
@@ -71,6 +72,23 @@ export default {
         default: false,
         label: T.preferences.advanced.proofread_forum_posts,
         description: T.preferences.advanced.proofread_forum_posts_description,
+    }),
+    undo_support: new MultichoicePreference({
+        // Could have been a BooleanPreference, but it was hard to come up with an understandable label and description then.
+        key: "undo_support",
+        default: browser.supportsUndo(navigator.userAgent),
+        label: T.preferences.advanced.undo_support.label,
+        description: T.preferences.advanced.undo_support.description,
+        options: [
+            {
+                value: true,
+                label: T.preferences.advanced.undo_support.replace_selected,
+            },
+            {
+                value: false,
+                label: T.preferences.advanced.undo_support.keep_selected,
+            },
+        ],
     }),
     custom_css_enable,
     custom_css_code: new StringPreference({

@@ -43,7 +43,7 @@ export const BUTTON = {
         label: T.editing_tools.label_shibe,
         tooltip: T.editing_tools.tooltip_shibe,
         class: CONFIG.CLASS.shibe,
-        action: textarea => insertIn(textarea, { string: shibeText(selectedTextIn(textarea)), replace: true }),
+        action: (textarea, _) => insertIn(textarea, { string: shibeText(selectedTextIn(textarea)), replace: true }),
     }),
     doge: generalButton({
         tooltip: T.editing_tools.tooltip_doge,
@@ -147,7 +147,7 @@ type ButtonDescription = Readonly<{
 
 type TagButtonDescription = Pick<ButtonDescription, "tag" | "label" | "tooltip" | "class" | "icon" | "parameterized" | "block">
 
-export type Button = (textarea: HTMLTextAreaElement) => JSX.Element
+export type Button = (textarea: HTMLTextAreaElement, undoSupport: boolean) => JSX.Element
 
 export function tagButton(button: TagButtonDescription): Button {
     return generalButton({
@@ -195,7 +195,7 @@ export function smileyButton(smiley: Smileys.Smiley): Button {
 }
 
 export function generalButton(button: Pick<ButtonDescription, "label" | "tooltip" | "class" | "icon" | "custom" | "action" | "style">): Button {
-    return textarea => {
+    return (textarea, undoSupport) => {
         const icon = button.icon;
         const label = (icon === undefined ? "" : icon.type === "URL" ? `<img src="${icon.image}" />` : icon.image) + fromMaybeUndefined("", button.label);
         const className = [
@@ -209,7 +209,7 @@ export function generalButton(button: Pick<ButtonDescription, "label" | "tooltip
                 title={button.tooltip}
                 class={className}
                 style={button.style}
-                onClick={() => button.action(textarea) }
+                onClick={() => button.action(textarea, undoSupport) }
                 href="javascript:void(0)"
             />
         );
@@ -217,13 +217,13 @@ export function generalButton(button: Pick<ButtonDescription, "label" | "tooltip
 }
 
 export function toolbarButton(button: Pick<ButtonDescription, "tooltip" | "class" | "action" | "style">): Button {
-    return textarea => (
+    return (textarea, undoSupport) => (
         <div
             title={button.tooltip}
             class={[ SITE.CLASS.toolbarButton, button.class || "" ].join(" ").trim()}
             style={button.style}
         >
-            <div class={SITE.CLASS.inner} onClick={() => button.action(textarea)}>
+            <div class={SITE.CLASS.inner} onClick={() => button.action(textarea, undoSupport)}>
                 <div class={SITE.CLASS.toolbarButtonIcon}></div>
             </div>
         </div>
@@ -250,10 +250,10 @@ function randomIntBetween(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function ACTION_IMG(textarea: HTMLTextAreaElement): void {
+function ACTION_IMG(textarea: HTMLTextAreaElement, undoSupport: boolean): void {
     const selection = selectedTextIn(textarea);
     if (!selection.includes("\n")) {
-        wrap_tag({ tag: SITE.TAG.img, parameterized: false, block: false })(textarea);
+        wrap_tag({ tag: SITE.TAG.img, parameterized: false, block: false })(textarea, undoSupport);
     } else {
         const imgify = (line: string) => line.trim() === "" ? "" : BB.start(SITE.TAG.img) + line.trim() + BB.end(SITE.TAG.img);
         insertIn(textarea, { string: unlines(lines(selection).map(imgify)), replace: true });
@@ -261,7 +261,7 @@ function ACTION_IMG(textarea: HTMLTextAreaElement): void {
 }
 
 function ACTION_SEARCH_LINK(engine: SearchEngine) {
-    return (textarea: HTMLTextAreaElement): void => {
+    return (textarea: HTMLTextAreaElement, _: boolean): void => {
         const tagName = SITE.TAG.url;
         const selected = selectedTextIn(textarea);
         const startTag = BB.start(tagName, searchURL(engine, selected));
@@ -273,24 +273,47 @@ function ACTION_SEARCH_LINK(engine: SearchEngine) {
     }
 }
 
-function ACTION_SPLIT_QUOTE(textarea: HTMLTextAreaElement): void {
-    const emptyLines = "\n".repeat(CONFIG.CONTENT.splitQuoteEmptyLines + 1);
-    const beforeSelection = textarea.value.substring(0, textarea.selectionStart).trimRight();
-    const afterSelection = textarea.value.substring(textarea.selectionEnd).trimLeft();
-    if (new RegExp(r`\[\/${SITE.TAG.quote}\]$`, "i").test(beforeSelection) && new RegExp(r`^\[${SITE.TAG.quote}`, "i").test(afterSelection)) {
-        // Cursor is between two existing quotes, so just insert empty lines and place the cursor accordingly:
-        textarea.value = beforeSelection + emptyLines + afterSelection;
-        placeCursorIn(textarea, beforeSelection.length + 1); // + 1 to get past the first inserted line break
+function ACTION_SPLIT_QUOTE(textarea: HTMLTextAreaElement, undoSupport: boolean): void {
+    // Yes, this code is hard to understand. It was conceived using a considerable amount of trial and error.
+    const beforeSelection = textarea.value.substring(0, textarea.selectionStart);
+    const afterSelection = textarea.value.substring(textarea.selectionEnd);
+    const existingNewlinesBeforeSelection = beforeSelection.match(/\n*$/)![0].length;
+    const existingNewlinesAfterSelection = afterSelection.match(/^\n*/)![0].length;
+    const cursorIsBetweenTwoExistingQuotes = (
+        new RegExp(r`\[\/${SITE.TAG.quote}\]$`, "i").test(beforeSelection.trimRight())
+        &&
+        new RegExp(r`^\[${SITE.TAG.quote}`, "i").test(afterSelection.trimLeft())
+    );
+    if (cursorIsBetweenTwoExistingQuotes) {
+        // Just insert empty lines and place the cursor accordingly.
+        const numberOfNewlinesToInsert = Math.max(
+            0, // Using a negative value with String.prototype.repeat is a RangeError.
+            CONFIG.CONTENT.splitQuoteEmptyLines + 1 - existingNewlinesBeforeSelection - existingNewlinesAfterSelection,
+        );
+        // If there are more newlines than we'd like between the quotes, they will be left untouched, because we don't want to mess with deleting content.
+        insertIn(textarea, {
+            string: "\n".repeat(numberOfNewlinesToInsert),
+            replace: undoSupport,
+        });
+        placeCursorIn(textarea, beforeSelection.length - existingNewlinesBeforeSelection + 1); // + 1 to get past the first line break
     } else {
-        // Cursor is not between two existing quotes, so add quote tags as well:
+        // Add quote tags and place cursor.
         const startTag = BB.start(SITE.TAG.quote);
         const endTag = BB.end(SITE.TAG.quote);
-        textarea.value = beforeSelection + `\n` + endTag + emptyLines + startTag + `\n` + afterSelection;
-        placeCursorIn(textarea, beforeSelection.length + 1 + endTag.length + 1); // + 1 + 1 to get past two line breaks
+        const extraNewlineBeforeSelectionNeeded = existingNewlinesBeforeSelection === 0;
+        const extraNewlineAfterSelectionNeeded = existingNewlinesAfterSelection === 0;
+        insertIn(textarea, { string: [
+            extraNewlineBeforeSelectionNeeded ? "\n" : "",
+            endTag,
+            "\n".repeat(CONFIG.CONTENT.splitQuoteEmptyLines + 1),
+            startTag,
+            extraNewlineAfterSelectionNeeded ? "\n" : "",
+        ].join(""), replace: undoSupport });
+        placeCursorIn(textarea, beforeSelection.length + (extraNewlineBeforeSelectionNeeded ? 1 : 0) + endTag.length + 1); // + 1 to get past a line break
     }
 }
 
-function ACTION_REPLACE_SPACES_WITH_NBSPS(textarea: HTMLTextAreaElement) {
+function ACTION_REPLACE_SPACES_WITH_NBSPS(textarea: HTMLTextAreaElement, _: boolean) {
     insertIn(textarea, {
         string: selectedTextIn(textarea).replace(/ /g, CONFIG.NBSP),
         replace: true,
