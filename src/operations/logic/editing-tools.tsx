@@ -12,13 +12,14 @@ import { SearchEngine, searchURL } from "~src/search-engines";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
 import { InsertButtonDescription } from "~src/types";
-import { fromMaybeUndefined, r } from "~src/utilities";
+import { fromMaybeUndefined } from "~src/utilities";
 
 import ACTION_REPLACE_SPACES_WITH_NBSPS from "../actions/replace-spaces-with-nbsps";
 import ACTION_SHIBE from "../actions/shibe";
+import ACTION_SPLIT_QUOTE from "../actions/split-quote";
 
 import * as Smileys from "./smileys";
-import { Action, CursorBehavior, insert, insertIn, placeCursorIn, selectedTextIn, wrapIn, wrap_tag, wrap_verbatim } from "./textarea";
+import { Action, CursorBehavior, insert, insertIn, selectedTextIn, wrapIn, wrap_tag, wrap_verbatim } from "./textarea";
 
 export const BUTTON = {
     nbsps: generalButton({
@@ -253,45 +254,5 @@ function ACTION_SEARCH_LINK(engine: SearchEngine) {
             after: BB.end(tagName),
             cursor: selected === "" ? startTag.length - 2 /* for "] */ : "KEEP_SELECTION",
         });
-    }
-}
-
-function ACTION_SPLIT_QUOTE(textarea: HTMLTextAreaElement, undoSupport: boolean): void {
-    // Yes, this code is hard to understand. It was conceived using a considerable amount of trial and error.
-    const beforeSelection = textarea.value.substring(0, textarea.selectionStart);
-    const afterSelection = textarea.value.substring(textarea.selectionEnd);
-    const existingNewlinesBeforeSelection = beforeSelection.match(/\n*$/)![0].length;
-    const existingNewlinesAfterSelection = afterSelection.match(/^\n*/)![0].length;
-    const cursorIsBetweenTwoExistingQuotes = (
-        new RegExp(r`\[\/${SITE.TAG.quote}\]$`, "i").test(beforeSelection.trimRight())
-        &&
-        new RegExp(r`^\[${SITE.TAG.quote}`, "i").test(afterSelection.trimLeft())
-    );
-    if (cursorIsBetweenTwoExistingQuotes) {
-        // Just insert empty lines and place the cursor accordingly.
-        const numberOfNewlinesToInsert = Math.max(
-            0, // Using a negative value with String.prototype.repeat is a RangeError.
-            CONFIG.CONTENT.splitQuoteEmptyLines + 1 - existingNewlinesBeforeSelection - existingNewlinesAfterSelection,
-        );
-        // If there are more newlines than we'd like between the quotes, they will be left untouched, because we don't want to mess with deleting content.
-        insertIn(textarea, {
-            string: "\n".repeat(numberOfNewlinesToInsert),
-            replace: undoSupport,
-        });
-        placeCursorIn(textarea, beforeSelection.length - existingNewlinesBeforeSelection + 1); // + 1 to get past the first line break
-    } else {
-        // Add quote tags and place cursor.
-        const startTag = BB.start(SITE.TAG.quote);
-        const endTag = BB.end(SITE.TAG.quote);
-        const extraNewlineBeforeSelectionNeeded = existingNewlinesBeforeSelection === 0;
-        const extraNewlineAfterSelectionNeeded = existingNewlinesAfterSelection === 0;
-        insertIn(textarea, { string: [
-            extraNewlineBeforeSelectionNeeded ? "\n" : "",
-            endTag,
-            "\n".repeat(CONFIG.CONTENT.splitQuoteEmptyLines + 1),
-            startTag,
-            extraNewlineAfterSelectionNeeded ? "\n" : "",
-        ].join(""), replace: undoSupport });
-        placeCursorIn(textarea, beforeSelection.length + (extraNewlineBeforeSelectionNeeded ? 1 : 0) + endTag.length + 1); // + 1 to get past a line break
     }
 }
