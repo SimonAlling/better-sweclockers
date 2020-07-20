@@ -14,6 +14,7 @@ import * as T from "~src/text";
 import { InsertButtonDescription } from "~src/types";
 import { fromMaybeUndefined, r } from "~src/utilities";
 
+import ACTION_REPLACE_SPACES_WITH_NBSPS from "../actions/replace-spaces-with-nbsps";
 import ACTION_SHIBE from "../actions/shibe";
 
 import * as Smileys from "./smileys";
@@ -293,27 +294,4 @@ function ACTION_SPLIT_QUOTE(textarea: HTMLTextAreaElement, undoSupport: boolean)
         ].join(""), replace: undoSupport });
         placeCursorIn(textarea, beforeSelection.length + (extraNewlineBeforeSelectionNeeded ? 1 : 0) + endTag.length + 1); // + 1 to get past a line break
     }
-}
-
-const SPACE = / /g;
-const CONSECUTIVE_SPACES = / +/g;
-
-function ACTION_REPLACE_SPACES_WITH_NBSPS(textarea: HTMLTextAreaElement, undoSupport: boolean) {
-    const selectedText = selectedTextIn(textarea);
-    let n: false | number; // Lets us short-circuit with undo support.
-    if (undoSupport || (n = nbspsConfirmationNeeded(selectedText), n === false) || confirm(T.general.nbsps_confirm(n))) { // `confirm` is problematic in Chrome (see docs/dialogs.md), but Chrome has full undo support.
-        insertIn(textarea, {
-            string: selectedText.replace(SPACE, CONFIG.NBSP),
-            replace: true,
-        });
-    }
-}
-
-// A heuristic intended to catch cases when the user likely didn't mean to replace spaces with NBSPs and/or it would be cumbersome to restore the change without undo support.
-function nbspsConfirmationNeeded(selectedText: string): false | number {
-    const numberOfSelectedSpaces = selectedText.match(SPACE)?.length || 0;
-    const numberOfSelectedSpaceSegments = selectedText.match(CONSECUTIVE_SPACES)?.length || 0;
-    // Replacing a large number of spread-out spaces with NBSPs is both uncommon and time-consuming to restore.
-    const confirmationNeeded = numberOfSelectedSpaces > 10 && numberOfSelectedSpaceSegments > 3
-    return confirmationNeeded ? numberOfSelectedSpaces : false;
 }
