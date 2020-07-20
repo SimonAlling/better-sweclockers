@@ -116,8 +116,4 @@ export const ICONS = {
 
 export const FOCUSABLE_ELEMENTS = [ "textarea", "input", "select" ] as const;
 
-export const enum SearchEngine {
-    // Be careful! These strings are used in the UI.
-    GOOGLE = "Google",
-    DUCKDUCKGO = "DuckDuckGo",
-}
+export { SearchEngine } from "./search-engines";
