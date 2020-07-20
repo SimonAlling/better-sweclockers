@@ -8,18 +8,19 @@ import iconExpander from "~src/icons/expander.svg";
 import iconSearchLink from "~src/icons/search-link.svg";
 import iconQuote from "~src/icons/quote.svg";
 import iconSplitQuote from "~src/icons/split-quote.svg";
-import { SearchEngine, searchURL } from "~src/search-engines";
+import { SearchEngine } from "~src/search-engines";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
 import { InsertButtonDescription } from "~src/types";
 import { fromMaybeUndefined } from "~src/utilities";
 
 import ACTION_REPLACE_SPACES_WITH_NBSPS from "../actions/replace-spaces-with-nbsps";
+import ACTION_SEARCH_LINK from "../actions/search-link";
 import ACTION_SHIBE from "../actions/shibe";
 import ACTION_SPLIT_QUOTE from "../actions/split-quote";
 
 import * as Smileys from "./smileys";
-import { Action, CursorBehavior, insert, insertIn, selectedTextIn, wrapIn, wrap_tag, wrap_verbatim } from "./textarea";
+import { Action, CursorBehavior, insert, insertIn, selectedTextIn, wrap_tag, wrap_verbatim } from "./textarea";
 
 export const BUTTON = {
     nbsps: generalButton({
@@ -241,18 +242,5 @@ function ACTION_IMG(textarea: HTMLTextAreaElement, undoSupport: boolean): void {
     } else {
         const imgify = (line: string) => line.trim() === "" ? "" : BB.start(SITE.TAG.img) + line.trim() + BB.end(SITE.TAG.img);
         insertIn(textarea, { string: unlines(lines(selection).map(imgify)), replace: true });
-    }
-}
-
-function ACTION_SEARCH_LINK(engine: SearchEngine) {
-    return (textarea: HTMLTextAreaElement, _: boolean): void => {
-        const tagName = SITE.TAG.url;
-        const selected = selectedTextIn(textarea);
-        const startTag = BB.start(tagName, searchURL(engine, selected));
-        wrapIn(textarea, {
-            before: startTag,
-            after: BB.end(tagName),
-            cursor: selected === "" ? startTag.length - 2 /* for "] */ : "KEEP_SELECTION",
-        });
     }
 }
