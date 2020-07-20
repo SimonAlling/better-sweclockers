@@ -1,5 +1,8 @@
-import { SearchEngine } from "~src/config";
-export { SearchEngine } from "~src/config";
+export const enum SearchEngine {
+    // Be careful! These strings are used in the UI.
+    GOOGLE = "Google",
+    DUCKDUCKGO = "DuckDuckGo",
+}
 
 function searchEngineURL(engine: SearchEngine): string {
     switch (engine) {
