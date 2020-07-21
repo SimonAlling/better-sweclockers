@@ -2,11 +2,27 @@ extends:
     - eslint:recommended
     - plugin:@typescript-eslint/recommended
     - plugin:react/recommended
+plugins:
+    - import
 root: true
 rules:
     "no-unused-vars": 0 # Should be turned off when using @typescript-eslint.
     "no-duplicate-imports": [ "error", { "includeExports": true } ]
     "semi": [ 2, "always" ]
+    "import/order": [
+        error,
+        {
+            alphabetize: { order: asc },
+            groups: [ builtin, external, internal, parent, sibling ],
+            newlines-between: always,
+            pathGroups: [
+                {
+                    pattern: ~src/**,
+                    group: internal,
+                },
+            ],
+        },
+    ]
     "@typescript-eslint/no-explicit-any": 0
     "@typescript-eslint/no-namespace": [ 2, { "allowDeclarations": true } ] # We declare namespaces for host site APIs.
     "@typescript-eslint/no-unused-vars": [ 2, { "argsIgnorePattern": "^_" } ]

@@ -5,8 +5,8 @@ import { h } from "preact";
 
 import * as CONFIG from "~src/config";
 import iconExpander from "~src/icons/expander.svg";
-import iconSearchLink from "~src/icons/search-link.svg";
 import iconQuote from "~src/icons/quote.svg";
+import iconSearchLink from "~src/icons/search-link.svg";
 import iconSplitQuote from "~src/icons/split-quote.svg";
 import { SearchEngine } from "~src/search-engines";
 import * as SITE from "~src/site";
