@@ -33,7 +33,6 @@
     "css.escape": "^1.5.1",
     "eslint": "^7.4.0",
     "eslint-plugin-react": "^7.20.3",
-    "fmap-null-undefined": "^1.0.1",
     "husky": "^3.1.0",
     "jest": "^26.1.0",
     "jest-function": "^1.0.1",
