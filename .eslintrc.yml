@@ -33,4 +33,4 @@ rules:
 settings:
     react:
         pragma: h
-        version: detect
+        version: latest
