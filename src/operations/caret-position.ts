@@ -23,7 +23,7 @@ export default (e: {
         savePositionIn(textarea);
         window.removeEventListener("unload", wipeSavedPosition);
     });
-}
+};
 
 function savePositionIn(textarea: HTMLTextAreaElement): void {
     Storage.set_session(CONFIG.KEY.caret_position, textarea.selectionEnd);

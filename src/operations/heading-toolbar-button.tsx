@@ -11,7 +11,7 @@ export default (undoSupport: boolean) => (e: {
     strikeButton: HTMLElement,
 }) => {
     render(headingToolbarButton(e.textarea as HTMLTextAreaElement, undoSupport), e.strikeButton.parentElement as HTMLElement);
-}
+};
 
 const headingToolbarButton = toolbarButton({
     action: wrap_tag({ tag: SITE.TAG.h, parameterized: false, block: false }),

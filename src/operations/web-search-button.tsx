@@ -20,7 +20,7 @@ export default (undoSupport: boolean) => (e: {
     });
     const fakeTextarea = document.createElement("textarea");
     render(button(fakeTextarea, undoSupport), e.searchFieldWrapper);
-}
+};
 
 function icon(engine: SearchEngine): Icon {
     return { type: "RAW", image: engine[0] };

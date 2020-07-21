@@ -55,7 +55,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     operation({
         description: "set document id",
         condition: () => ALWAYS,
-        action: () => { document.documentElement.id = CONFIG.ID.document },
+        action: () => { document.documentElement.id = CONFIG.ID.document; },
     }),
     operation({
         description: "insert preferences menu",

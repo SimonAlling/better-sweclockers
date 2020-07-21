@@ -52,7 +52,7 @@ export const manageAutosaveWatchdog = (undoSupport: boolean) => (e: {
         const nowInMilliseconds = Date.now();
         Storage.set_session(CONFIG.KEY.last_time_user_tried_to_submit, nowInMilliseconds);
     });
-}
+};
 
 export function clearAutosavedDraftIfObsolete(e: { post: HTMLElement }) {
     const result = draftIsObsolete(e.post);
@@ -155,7 +155,7 @@ function draftIsObsolete(post: HTMLElement): boolean | string {
     if (matchPostID === null) return couldNotDetermine("edited");
     const postID = parseInt(matchPostID[0]);
     const cameFromEditingThisPost = referrerPath === SITE.PATH.editPost(postID); // assuming user came from within SweClockers
-    const attemptedSubmitRecently = nowInMilliseconds < lastTimeUserTriedToSubmit + MAX_MILLISECONDS_TO_COUNT_AS_RECENTLY
+    const attemptedSubmitRecently = nowInMilliseconds < lastTimeUserTriedToSubmit + MAX_MILLISECONDS_TO_COUNT_AS_RECENTLY;
     if (cameFromEditingThisPost && attemptedSubmitRecently) return true;
 
     // As far as we can tell, any saved draft may still be relevant.

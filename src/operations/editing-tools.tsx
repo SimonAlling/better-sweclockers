@@ -20,7 +20,7 @@ export default (undoSupport: boolean) => (e: { textarea: HTMLElement }) => {
     const textareaParent = textarea.parentElement as HTMLElement;
     textareaParent.insertBefore(toolbar, reference);
     render(<EditingTools textarea={textarea as HTMLTextAreaElement} config={getEditingToolsConfig()} undoSupport={undoSupport} />, textareaParent, toolbar);
-}
+};
 
 interface EditingToolsConfig {
     special_characters: boolean

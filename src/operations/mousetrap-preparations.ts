@@ -6,4 +6,4 @@ export default () => {
             element.classList.add(CONFIG.CLASS.mousetrap);
         }
     }
-}
+};

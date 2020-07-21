@@ -15,4 +15,4 @@ export default (e: { settingsNavigation: HTMLElement }) => {
         </li>
     );
     render(li, e.settingsNavigation);
-}
+};

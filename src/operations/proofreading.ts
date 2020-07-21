@@ -119,7 +119,7 @@ function contextBeforeOrAfter(
             ? combine(text, recurse(sibling, maxChars - text.length))
             : baseCase(text, maxChars)
         );
-    }
+    };
 }
 
 const contextBefore = contextBeforeOrAfter(

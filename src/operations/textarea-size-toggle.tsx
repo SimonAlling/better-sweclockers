@@ -16,7 +16,7 @@ export default (e: { textarea: HTMLElement, toolbarInner: HTMLElement }) => {
             {button(textarea, P.edit_mode._.textarea_size_large)}
         </div>
     ), e.toolbarInner);
-}
+};
 
 function button(textarea: HTMLTextAreaElement, mode: NumericPreference): JSX.Element {
     const [ tooltip, icon ] = (

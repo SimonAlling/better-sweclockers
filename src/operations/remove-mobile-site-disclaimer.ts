@@ -14,7 +14,7 @@ const disclaimer = [
 export default (e: { textarea: HTMLElement }) => {
     const textarea = e.textarea as HTMLTextAreaElement;
     textarea.value = withoutDisclaimers(textarea.value);
-}
+};
 
 // Removes all disclaimers recursively, so we can use a plain string for the replace pattern:
 function withoutDisclaimers(text: string): string {

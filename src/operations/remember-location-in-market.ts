@@ -25,4 +25,4 @@ export default (e: {
             Preferences.set(P.general._.location_region, parseResult.value);
         }
     });
-}
+};

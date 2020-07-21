@@ -16,4 +16,4 @@ export default (e: { topMenu: HTMLElement }) => {
         },
     });
     render(button, e.topMenu);
-}
+};
