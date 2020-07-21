@@ -13,4 +13,4 @@ export default () => {
         return link;
     })());
     render(<PreferencesForm />, document.body);
-}
+};

@@ -38,7 +38,7 @@ export default (e: { quickReplyForm: HTMLElement }) => {
             }), controls);
         }
     }
-}
+};
 
 function form(props: {
     signature: Element | null,

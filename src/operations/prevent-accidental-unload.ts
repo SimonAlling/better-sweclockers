@@ -19,7 +19,7 @@ export function postOrMessage(e: {
     const changeListener = () => {
         enableListener();
         textarea.removeEventListener("input", changeListener);
-    }
+    };
     textarea.addEventListener("input", changeListener);
     for (const button of document.querySelectorAll(SELECTOR.actionButtons)) {
         button.addEventListener(BUTTON_CLICK_EVENT, disableListener);

@@ -68,7 +68,7 @@ export default () => {
             return err;
         }
     }
-}
+};
 
 /*
 The generated quote BBCode, when used in a PM, creates a link to a PM, but we want to link to a forum post.

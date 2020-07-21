@@ -23,7 +23,7 @@ export default (undoSupport: boolean) => (e: {
     unorderedListButton: HTMLElement,
 }) => {
     render(tableToolbarButton(e.textarea as HTMLTextAreaElement, undoSupport), e.unorderedListButton.parentElement as HTMLElement);
-}
+};
 
 function table(config: Readonly<typeof TABLE_CONFIG>): string {
     const headingRow = tableRowLines(config.columns, Headings.ALL);

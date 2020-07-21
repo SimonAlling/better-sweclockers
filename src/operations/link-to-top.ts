@@ -8,4 +8,4 @@ export default (e: { parent: HTMLElement }) => {
     linkToTop.classList.add(CONFIG.CLASS.linkToTop);
     e.parent.style.marginLeft = "0";
     e.parent.insertAdjacentElement("afterbegin", linkToTop);
-}
+};

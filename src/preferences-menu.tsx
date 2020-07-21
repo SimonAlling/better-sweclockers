@@ -391,7 +391,7 @@ class Interests extends Component<{ p: ListPreference<number> }, InterestsState>
             }});
         }).catch(reason => {
             log.error(reason);
-            this.setState({ fetch: { status: "failure" }})
+            this.setState({ fetch: { status: "failure" }});
         });
     }
 

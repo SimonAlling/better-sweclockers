@@ -12,7 +12,7 @@ import * as SITE from "~src/site";
 import { hideByClass, hideById, hideBySelector } from "~src/stylesheets/hide";
 import interestsNewInForum from "~src/stylesheets/interests-new-in-forum";
 import threadStatusTooltipsGenerated from "~src/stylesheets/thread-status-tooltips-logic";
-import { timeIsWithin } from "~src/time"
+import { timeIsWithin } from "~src/time";
 
 import adaptiveWidthCorrections from "./stylesheets/adaptive-width-corrections.scss";
 import adaptiveWidth from "./stylesheets/adaptive-width.scss";

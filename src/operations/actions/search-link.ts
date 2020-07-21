@@ -14,4 +14,4 @@ export default (engine: SearchEngine) => (textarea: HTMLTextAreaElement, _: bool
         after: BB.end(tagName),
         cursor: selected === "" ? startTag.length - 2 /* for "] */ : "KEEP_SELECTION",
     });
-}
+};

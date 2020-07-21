@@ -19,7 +19,7 @@ export default (e: { signoutButtonOrSigninSection: HTMLElement }) => {
         }
     });
     parent.appendChild(safeSignoutForm);
-}
+};
 
 function errorHandler() {
     const dialog = new Common.Windows.MessageDialog();

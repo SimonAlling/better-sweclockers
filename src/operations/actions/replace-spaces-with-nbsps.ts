@@ -22,6 +22,6 @@ function confirmationNeeded(selectedText: string): false | number {
     const numberOfSelectedSpaces = selectedText.match(SPACE)?.length || 0;
     const numberOfSelectedSpaceSegments = selectedText.match(CONSECUTIVE_SPACES)?.length || 0;
     // Replacing a large number of spread-out spaces with NBSPs is both uncommon and time-consuming to restore.
-    const confirmationNeeded = numberOfSelectedSpaces > 10 && numberOfSelectedSpaceSegments > 3
+    const confirmationNeeded = numberOfSelectedSpaces > 10 && numberOfSelectedSpaceSegments > 3;
     return confirmationNeeded ? numberOfSelectedSpaces : false;
 }

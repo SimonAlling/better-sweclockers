@@ -24,7 +24,7 @@ export default (e: {
     const placeholder = document.createElement("form");
     e.replyButton.insertAdjacentElement("beforebegin", placeholder);
     render(button, e.replyButton.parentElement as HTMLElement, placeholder);
-}
+};
 
 function usersToMention(forumPostContainer: HTMLElement): string[] {
     const postBySomeoneElse = SELECTOR.forumPost + `:not(.${SITE.CLASS.forumPostByCurrentUser})`;

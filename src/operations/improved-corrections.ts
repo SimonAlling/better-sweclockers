@@ -11,4 +11,4 @@ export default (e: { correctionsLink: HTMLElement }) => {
             }
         });
     }, true);
-}
+};

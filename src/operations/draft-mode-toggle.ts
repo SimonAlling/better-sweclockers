@@ -25,7 +25,7 @@ export default (e: {
     checkbox.addEventListener("change", toggle(checkbox, saveButton));
     (e.previewButton).insertAdjacentElement("afterend", label);
     apply(draftModeEnabled, saveButton);
-}
+};
 
 function toggle(checkbox: HTMLInputElement, saveButton: HTMLButtonElement): EventHandlerNonNull {
     return _ => {
