@@ -46,7 +46,7 @@ export default function(textarea: HTMLTextAreaElement, undoSupport: boolean): vo
     }
 }
 
-function lengthOfGuaranteedMatchIn(s: string, r: RegExp): number {
-    // This function must only be used with regexes that always match (which can't be statically checked).
-    return (s.match(r) as RegExpMatchArray)[0].length;
+function lengthOfGuaranteedMatchIn(s: string, regexThatAlwaysMatches: RegExp): number {
+    // This function should only be used with regexes that always match (which can't be statically checked).
+    return (s.match(regexThatAlwaysMatches) as RegExpMatchArray)[0].length;
 }
