@@ -10,8 +10,8 @@ export default function(textarea: HTMLTextAreaElement, undoSupport: boolean): vo
     // Yes, this code is hard to understand. It was conceived using a considerable amount of trial and error.
     const beforeSelection = textarea.value.substring(0, textarea.selectionStart);
     const afterSelection = textarea.value.substring(textarea.selectionEnd);
-    const existingNewlinesBeforeSelection = beforeSelection.match(/\n*$/)![0].length;
-    const existingNewlinesAfterSelection = afterSelection.match(/^\n*/)![0].length;
+    const existingNewlinesBeforeSelection = lengthOfGuaranteedMatchIn(beforeSelection, /\n*$/);
+    const existingNewlinesAfterSelection = lengthOfGuaranteedMatchIn(afterSelection, /^\n*/);
     const cursorIsBetweenTwoExistingQuotes = (
         new RegExp(r`\[\/${SITE.TAG.quote}\]$`, "i").test(beforeSelection.trimRight())
         &&
@@ -44,4 +44,9 @@ export default function(textarea: HTMLTextAreaElement, undoSupport: boolean): vo
         ].join(""), replace: undoSupport });
         placeCursorIn(textarea, beforeSelection.length + (extraNewlineBeforeSelectionNeeded ? 1 : 0) + endTag.length + 1); // + 1 to get past a line break
     }
+}
+
+function lengthOfGuaranteedMatchIn(s: string, r: RegExp): number {
+    // This function must only be used with regexes that always match (which can't be statically checked).
+    return (s.match(r) as RegExpMatchArray)[0].length;
 }
