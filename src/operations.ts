@@ -57,12 +57,10 @@ const OPERATIONS: readonly Operation<any>[] = [
         condition: () => ALWAYS,
         action: () => { document.documentElement.id = CONFIG.ID.document },
     }),
-    // A regular IndependentOperation does not work when the user is logged out, because document.body is null.
-    // An IndependentOperation with waitForDOMContentLoaded does not work when the user is logged in, because DOMContentLoaded never fires.
     operation({
         description: "insert preferences menu",
         condition: () => isOnBSCPreferencesPage,
-        dependencies: { body: "body" },
+        dependencies: { body: "body" }, // Back in 2018, I had problems with document.body being null when logged out and DOMContentLoaded not firing when logged in. Not able to reproduce it in July 2020, but this always works.
         action: insertPreferencesMenu,
     }),
     operation({
