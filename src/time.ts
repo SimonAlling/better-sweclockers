@@ -5,8 +5,8 @@ export function timeIsWithin(interval: Readonly<{ start: number, end: number }>)
         const end = interval.end;
         return (
             end < start
-            ? t >= start || t < end
-            : t >= start && t < end
+                ? t >= start || t < end
+                : t >= start && t < end
         );
     };
 }

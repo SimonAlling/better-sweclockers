@@ -22,11 +22,11 @@ export default function(buildConfig: BuildConfig): Metadata {
         noframes: U.noframes,
         ...(
             hostedAt === null
-            ? {}
-            : {
-                downloadURL: metadataUrl(hostedAt, U.id, "user"),
-                updateURL: metadataUrl(hostedAt, U.id, "meta"),
-            }
+                ? {}
+                : {
+                    downloadURL: metadataUrl(hostedAt, U.id, "user"),
+                    updateURL: metadataUrl(hostedAt, U.id, "meta"),
+                }
         ),
     };
 }

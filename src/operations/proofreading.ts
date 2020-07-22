@@ -109,15 +109,15 @@ function contextBeforeOrAfter(
             const parent = mistake.parentElement as HTMLElement;
             return (
                 ELEMENTS_TO_GO_OUTSIDE.includes(parent.tagName)
-                ? recurse(parent, maxChars)
-                : ""
+                    ? recurse(parent, maxChars)
+                    : ""
             );
         }
         const text = sibling.textContent || "";
         return (
             text.length < maxChars
-            ? combine(text, recurse(sibling, maxChars - text.length))
-            : baseCase(text, maxChars)
+                ? combine(text, recurse(sibling, maxChars - text.length))
+                : baseCase(text, maxChars)
         );
     };
 }

@@ -45,8 +45,8 @@ function tooltip(bitmask: number): string {
 function statuses(bitmask: number): readonly string[] {
     const matchingStatuses = (
         STATUSES
-        .filter(([ statusBitmask, _ ]) => statusBitmask & bitmask)
-        .map(([ _, description ]) => description)
+            .filter(([ statusBitmask, _ ]) => statusBitmask & bitmask)
+            .map(([ _, description ]) => description)
     );
     return matchingStatuses.length > 0 ? matchingStatuses : [ DEFAULT_STATUS ];
 }

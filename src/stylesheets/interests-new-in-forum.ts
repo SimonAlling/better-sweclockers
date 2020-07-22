@@ -13,7 +13,7 @@ export default function(uninterestingIDs: readonly number[]): string {
 
 function cssForId(id: number): string {
     return (
-r`
+        r`
 .plItemList li[data-thread*="\"forumid\":${id},"],
 .plItemList li[data-thread*="\"forumid\":${id}\}"] {
     opacity: 0.2;

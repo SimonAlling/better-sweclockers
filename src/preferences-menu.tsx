@@ -96,37 +96,39 @@ function Entries(generators: Generators, ps: PreferencesObject): readonly (JSX.E
 }
 
 function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> | PreferenceGroup): JSX.Element | null {
-    return p instanceof Preference
-        ? (
-            p.extras.implicit // should not be part of the preferences menu
-            ? null
-            : (
-                <div class={classNames(CONFIG.CLASS.preference, p.extras.class)} title={p.description}>
-                    {InputElement(generators, p)}
-                    {isString(p.extras.suffix) ? <HtmlLabel for={PID(p)} html={p.extras.suffix} /> : null}
+    return (
+        p instanceof Preference
+            ? (
+                p.extras.implicit // should not be part of the preferences menu
+                    ? null
+                    : (
+                        <div class={classNames(CONFIG.CLASS.preference, p.extras.class)} title={p.description}>
+                            {InputElement(generators, p)}
+                            {isString(p.extras.suffix) ? <HtmlLabel for={PID(p)} html={p.extras.suffix} /> : null}
+                            {
+                                p.extras.more !== undefined
+                                    ? <aside dangerouslySetInnerHTML={{__html: p.extras.more}} />
+                                    : null
+                            }
+                        </div>
+                    )
+            ) : (
+                <fieldset class={SITE.CLASS.fieldset}>
+                    <legend>{p.label}</legend>
+                    {Entries(generators, p._)}
                     {
-                        p.extras.more !== undefined
-                        ? <aside dangerouslySetInnerHTML={{__html: p.extras.more}} />
-                        : null
+                        p.extras && p.extras.id === CONFIG.ID.editingToolsPreferences
+                            ? <EditingTools
+                                textarea={document.createElement("textarea")}
+                                config={getEditingToolsConfig()}
+                                disabled={!Preferences.get(P.editing_tools._.enable)}
+                                undoSupport={Preferences.get(P.advanced._.undo_support)}
+                            />
+                            : null
                     }
-                </div>
+                </fieldset>
             )
-        ) : (
-            <fieldset class={SITE.CLASS.fieldset}>
-                <legend>{p.label}</legend>
-                {Entries(generators, p._)}
-                {
-                    p.extras && p.extras.id === CONFIG.ID.editingToolsPreferences
-                    ? <EditingTools
-                        textarea={document.createElement("textarea")}
-                        config={getEditingToolsConfig()}
-                        disabled={!Preferences.get(P.editing_tools._.enable)}
-                        undoSupport={Preferences.get(P.advanced._.undo_support)}
-                    />
-                    : null
-                }
-            </fieldset>
-        );
+    );
 }
 
 function InputElement<T extends AllowedTypes>(generators: Generators, p: Preference<T>): GeneratorOutput {
@@ -368,31 +370,31 @@ class Interests extends Component<{ p: ListPreference<number> }, InterestsState>
         well as in Safari on iOS 12.3.
         */
         fetch(window.location.origin + SITE.PATH.FORUM)
-        .then(response => response.text())
-        .then(responseContent => {
-            const responseDocument = new DOMParser().parseFromString(responseContent, "text/html");
-            const links = responseDocument.querySelectorAll(SELECTOR.forumLink);
-            this.setState({ fetch: {
-                status: "success",
-                categories: (
-                    only(HTMLAnchorElement)(Array.from(links))
-                    .filter(link => SITE.PATH.FORUM_CATEGORY.test(link.href))
-                    .map(forumLink => {
-                        const linkData = extractForumLinkData(forumLink);
-                        if (isNull(linkData)) {
-                            log.error(`Could not extract forum link data from this link:`);
-                            console.error(forumLink);
-                            return undefined;
-                        }
-                        return linkData;
-                    })
-                    .filter(isDefined)
-                ),
-            }});
-        }).catch(reason => {
-            log.error(reason);
-            this.setState({ fetch: { status: "failure" }});
-        });
+            .then(response => response.text())
+            .then(responseContent => {
+                const responseDocument = new DOMParser().parseFromString(responseContent, "text/html");
+                const links = responseDocument.querySelectorAll(SELECTOR.forumLink);
+                this.setState({ fetch: {
+                    status: "success",
+                    categories: (
+                        only(HTMLAnchorElement)(Array.from(links))
+                            .filter(link => SITE.PATH.FORUM_CATEGORY.test(link.href))
+                            .map(forumLink => {
+                                const linkData = extractForumLinkData(forumLink);
+                                if (isNull(linkData)) {
+                                    log.error(`Could not extract forum link data from this link:`);
+                                    console.error(forumLink);
+                                    return undefined;
+                                }
+                                return linkData;
+                            })
+                            .filter(isDefined)
+                    ),
+                }});
+            }).catch(reason => {
+                log.error(reason);
+                this.setState({ fetch: { status: "failure" }});
+            });
     }
 
     public render() {
