@@ -60,8 +60,8 @@ export function wrap_tag(w: TagWrapAction): Action {
         after: spacing + BB.end(w.tag),
         cursor: (
             w.parameterized
-            ? 1 + w.tag.length + 2 // 1 for '[', 2 for '="'
-            : "KEEP_SELECTION"
+                ? 1 + w.tag.length + 2 // 1 for '[', 2 for '="'
+                : "KEEP_SELECTION"
         ),
     });
 }

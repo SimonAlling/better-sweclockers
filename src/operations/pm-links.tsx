@@ -46,20 +46,20 @@ export default () => {
                     dangerouslySetInnerHTML={{__html: ICON + T.general.pm_link_label}}
                     onClick={() => {
                         fetch(quoteButton.href, { credentials: "same-origin" }) // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters
-                        .then(response => response.text())
-                        .then(responseContent => {
-                            const responseDocument = new DOMParser().parseFromString(responseContent, "text/html");
-                            const quoteTextarea = responseDocument.querySelector("textarea");
-                            if (quoteTextarea === null) {
-                                throw couldNotExtract("textarea from fetch response");
-                            }
-                            const pmTextarea = document.createElement("textarea");
-                            pmTextarea.name = SITE.FORM.name.message;
-                            pmTextarea.textContent = withLinksInsteadOfPostIDs(quoteTextarea.textContent || "");
-                            form.appendChild(pmTextarea);
-                            form.submit();
-                        })
-                        .catch(log.error);
+                            .then(response => response.text())
+                            .then(responseContent => {
+                                const responseDocument = new DOMParser().parseFromString(responseContent, "text/html");
+                                const quoteTextarea = responseDocument.querySelector("textarea");
+                                if (quoteTextarea === null) {
+                                    throw couldNotExtract("textarea from fetch response");
+                                }
+                                const pmTextarea = document.createElement("textarea");
+                                pmTextarea.name = SITE.FORM.name.message;
+                                pmTextarea.textContent = withLinksInsteadOfPostIDs(quoteTextarea.textContent || "");
+                                form.appendChild(pmTextarea);
+                                form.submit();
+                            })
+                            .catch(log.error);
                     }}
                     class={[ SITE.CLASS.button, CONFIG.CLASS.iconButton, CONFIG.CLASS.pmButton ].join(" ")}
                 ></button>

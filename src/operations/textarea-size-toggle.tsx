@@ -21,8 +21,8 @@ export default (e: { textarea: HTMLElement, toolbarInner: HTMLElement }) => {
 function button(textarea: HTMLTextAreaElement, mode: NumericPreference): JSX.Element {
     const [ tooltip, icon ] = (
         mode === P.edit_mode._.textarea_size_small
-        ? [ T.general.textarea_size_small, iconTextareaSmall ]
-        : [ T.general.textarea_size_large, iconTextareaLarge ]
+            ? [ T.general.textarea_size_small, iconTextareaSmall ]
+            : [ T.general.textarea_size_large, iconTextareaLarge ]
     );
     return (
         <div class="tbButton iconButton noselect" title={tooltip}>

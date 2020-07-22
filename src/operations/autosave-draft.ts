@@ -184,7 +184,7 @@ function getCreationTimeInSeconds(post: HTMLElement): number /* UTC */ | null {
 function shortenedIfLongerThan(max: number, s: string): string {
     return (
         s.length <= max
-        ? s
-        : s.substr(0, max/2) + "\n[…]\n" + s.substr(s.length - max/2)
+            ? s
+            : s.substr(0, max/2) + "\n[…]\n" + s.substr(s.length - max/2)
     );
 }

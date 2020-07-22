@@ -12,7 +12,7 @@ export function hideByClass(c: string | readonly string[]): string {
 
 export function hideBySelector(selector: string): string {
     return (
-r`
+        r`
 ${selector} {
     display: none;
 }
