@@ -39,6 +39,8 @@ export const ID = {
     externalNewsWidget: "wdgtSideExternalFeeds",
 } as const;
 
+const toolbarButton = "tbButton";
+
 export const CLASS = {
     fieldset: "s5fieldset",
     button: "button",
@@ -70,7 +72,8 @@ export const CLASS = {
     smiley: "smiley",
     subforumLink: "link",
     toolbarGroup: "tbGroup",
-    toolbarButton: "tbButton iconButton noselect",
+    toolbarButton,
+    toolbarButtonAllClasses: `${toolbarButton} iconButton noselect`,
     toolbarButtonIcon: "btnIcon",
     toolbarHeadingButton: "header",
     toolbarTableButton: "tbl",
@@ -142,6 +145,7 @@ export const TAG = {
     noparse: "noparse",
     pre: "pre",
     quote: "quote",
+    s: "s",
     size: "size",
     spoiler: "spoiler",
     sub: "sub",

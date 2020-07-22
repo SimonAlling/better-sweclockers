@@ -225,7 +225,7 @@ export function toolbarButton(button: Pick<ButtonDescription, "tooltip" | "class
     return (textarea, undoSupport) => (
         <div
             title={button.tooltip}
-            class={[ SITE.CLASS.toolbarButton, button.class || "" ].join(" ").trim()}
+            class={[ SITE.CLASS.toolbarButtonAllClasses, button.class || "" ].join(" ").trim()}
             style={button.style}
         >
             <div class={SITE.CLASS.inner} onClick={() => button.action(textarea, undoSupport)}>
