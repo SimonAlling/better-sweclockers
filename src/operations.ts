@@ -43,7 +43,7 @@ import removeMobileSiteDisclaimer from "./operations/remove-mobile-site-disclaim
 import replaceFollowedThreadsLink from "./operations/replace-followed-threads-link";
 import insertTableToolbarButton from "./operations/table-toolbar-button";
 import insertTextareaSizeToggle from "./operations/textarea-size-toggle";
-import enableUndoSupportForBuiltinTools from "./operations/undo-support-builtin-tools";
+import improveBuiltinEditingTools from "./operations/undo-support-builtin-tools";
 import insertWebSearchButton from "./operations/web-search-button";
 
 const ALWAYS = true;
@@ -125,13 +125,10 @@ const OPERATIONS: readonly Operation<any>[] = [
         action: insertEditingTools(undoSupport),
     }),
     operation({
-        description: "enable undo support for built-in editing tools",
-        condition: () => isInEditMode && Preferences.get(P.advanced._.undo_support),
-        dependencies: {
-            textarea: SELECTOR.textarea,
-            toolbarInner: SELECTOR.textareaToolbarInner,
-        },
-        action: enableUndoSupportForBuiltinTools,
+        description: "enable improved built-in editing tools",
+        condition: () => (isInEditMode || isReadingThread) && Preferences.get(P.edit_mode._.improved_builtin_editing_tools),
+        deferUntil: DOMCONTENTLOADED, // because Tanuki must be defined
+        action: improveBuiltinEditingTools,
     }),
     operation({
         description: "insert heading toolbar button",

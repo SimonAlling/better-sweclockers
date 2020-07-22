@@ -76,6 +76,12 @@ export default {
         description: T.preferences.in_quick_reply_form_description,
         extras: { class: CONFIG.CLASS.inlinePreference },
     }),
+    improved_builtin_editing_tools: new BooleanPreference({
+        key: "improved_builtin_editing_tools",
+        default: true,
+        label: T.preferences.edit_mode.improved_builtin_editing_tools,
+        description: T.preferences.edit_mode.improved_builtin_editing_tools_description,
+    }),
     insert_heading_toolbar_button: new BooleanPreference({
         key: "insert_heading_toolbar_button",
         default: true,

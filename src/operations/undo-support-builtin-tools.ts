@@ -1,29 +1,27 @@
-import { is } from "ts-type-guards";
+import { insertIn, wrapIn } from "./logic/textarea";
 
-import * as SITE from "~src/site";
+declare namespace Tanuki { const Templates: any }
 
-import { wrap_tag } from "./logic/textarea";
+export default () => {
+    /*
+    SweClockers' built-in functions use `.value`, which kills undo history.
+    This operation replaces them with our own `text-field-edit`-based versions, thereby reintroducing undo/redo support in supported browsers.
+    Our versions sort of mimic the default ones, but they feature more intuitive behavior, such as keeping the selection when a wrap tool (e.g. B/U/I) tool is used.
 
-export default (e: {
-    textarea: HTMLElement,
-    toolbarInner: HTMLElement,
-}) => {
-    const REPLACEMENTS = {
-        // The key is the class we use to identify the button to replace.
-        bold: wrap_tag({ tag: SITE.TAG.b, parameterized: false, block: false }),
-        italic: wrap_tag({ tag: SITE.TAG.i, parameterized: false, block: false }),
-        underline: wrap_tag({ tag: SITE.TAG.u, parameterized: false, block: false }),
-        strike: wrap_tag({ tag: SITE.TAG.s, parameterized: false, block: false }),
-    } as const;
-    for (const [ buttonClass, action ] of Object.entries(REPLACEMENTS)) {
-        const buttonToReplace = e.toolbarInner.querySelector(`.${SITE.CLASS.toolbarButton}.${buttonClass}`);
-        if (!is(HTMLElement)(buttonToReplace)) {
-            return `'${buttonClass}' toolbar button was not found.`;
+    We don't care about protecting data in the absence of undo support; I assume SweClockers only ever modify textarea content "safely" (i.e. without deleting anything).
+    */
+    try {
+        Tanuki.Templates.Textarea.Helpers.setSelection = (textarea: HTMLTextAreaElement, replacement: string) => {
+            insertIn(textarea, { string: replacement, replace: true });
         }
-        const clonedButton = buttonToReplace.cloneNode(true);
-        clonedButton.addEventListener("click", () => {
-            action(e.textarea as HTMLTextAreaElement, true); // (The purpose of this entire operation is to enable undo support.)
-        });
-        buttonToReplace.replaceWith(clonedButton);
+        Tanuki.Templates.Textarea.Helpers.insertAtCaret = (textarea: HTMLTextAreaElement, before: string, after: string) => {
+            if (after === undefined) {
+                insertIn(textarea, { string: before, replace: true });
+            } else {
+                wrapIn(textarea, { before, after, cursor: "KEEP_SELECTION" });
+            }
+        };
+    } catch (err) {
+        return err;
     }
 };
