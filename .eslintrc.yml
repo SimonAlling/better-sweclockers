@@ -10,6 +10,9 @@ rules:
     "@typescript-eslint/no-explicit-any": 0
     "@typescript-eslint/no-namespace": [ 2, { "allowDeclarations": true } ] # We declare namespaces for host site APIs.
     "@typescript-eslint/no-unused-vars": [ 2, { "argsIgnorePattern": "^_" } ]
+    "arrow-spacing": [ error, { before: true, after: true } ]
+    "block-spacing": [ error, always ]
+    "comma-style": [ error, last ]
     "import/order": [
         error,
         {
@@ -25,12 +28,19 @@ rules:
         },
     ]
     "indent": [ error, 4, { SwitchCase: 1 } ]
+    "key-spacing": [ error, { beforeColon: false, afterColon: true, mode: minimum } ]
+    "keyword-spacing": [ error, { before: true, after: true } ]
+    "no-constant-condition": error
     "no-duplicate-imports": [ "error", { "includeExports": true } ]
     "no-unused-vars": 0 # Should be turned off when using @typescript-eslint.
+    "no-var": error
+    "prefer-const": error
     "react/display-name": 0
     "react/jsx-key": 0
     "react/no-unknown-property": [0, { ignore: ["class"] }]
+    "semi-spacing": [ error, { before: false, after: true } ]
     "semi": [ 2, "always" ]
+    "spaced-comment": [ error, always ]
 settings:
     react:
         pragma: h
