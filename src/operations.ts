@@ -43,6 +43,7 @@ import removeMobileSiteDisclaimer from "./operations/remove-mobile-site-disclaim
 import replaceFollowedThreadsLink from "./operations/replace-followed-threads-link";
 import insertTableToolbarButton from "./operations/table-toolbar-button";
 import insertTextareaSizeToggle from "./operations/textarea-size-toggle";
+import enableImprovedBuiltinEditingTools from "./operations/improved-builtin-editing-tools";
 import insertWebSearchButton from "./operations/web-search-button";
 
 const ALWAYS = true;
@@ -122,6 +123,12 @@ const OPERATIONS: readonly Operation<any>[] = [
         condition: () => isReadingThread && Preferences.get(P.editing_tools._.enable) && Preferences.get(P.editing_tools._.in_quick_reply_form),
         dependencies: { textarea: SELECTOR.textarea },
         action: insertEditingTools(undoSupport),
+    }),
+    operation({
+        description: "enable improved built-in editing tools",
+        condition: () => (isInEditMode || isReadingThread) && Preferences.get(P.edit_mode._.improved_builtin_editing_tools),
+        deferUntil: DOMCONTENTLOADED, // because Tanuki must be defined
+        action: enableImprovedBuiltinEditingTools,
     }),
     operation({
         description: "insert heading toolbar button",
