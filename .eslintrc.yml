@@ -6,10 +6,10 @@ plugins:
     - import
 root: true
 rules:
-    "no-unused-vars": 0 # Should be turned off when using @typescript-eslint.
-    "no-duplicate-imports": [ "error", { "includeExports": true } ]
-    "indent": [ error, 4, { SwitchCase: 1 } ]
-    "semi": [ 2, "always" ]
+    "@typescript-eslint/explicit-module-boundary-types": 0
+    "@typescript-eslint/no-explicit-any": 0
+    "@typescript-eslint/no-namespace": [ 2, { "allowDeclarations": true } ] # We declare namespaces for host site APIs.
+    "@typescript-eslint/no-unused-vars": [ 2, { "argsIgnorePattern": "^_" } ]
     "import/order": [
         error,
         {
@@ -24,13 +24,13 @@ rules:
             ],
         },
     ]
-    "@typescript-eslint/no-explicit-any": 0
-    "@typescript-eslint/no-namespace": [ 2, { "allowDeclarations": true } ] # We declare namespaces for host site APIs.
-    "@typescript-eslint/no-unused-vars": [ 2, { "argsIgnorePattern": "^_" } ]
-    "@typescript-eslint/explicit-module-boundary-types": 0
+    "indent": [ error, 4, { SwitchCase: 1 } ]
+    "no-duplicate-imports": [ "error", { "includeExports": true } ]
+    "no-unused-vars": 0 # Should be turned off when using @typescript-eslint.
     "react/display-name": 0
     "react/jsx-key": 0
     "react/no-unknown-property": [0, { ignore: ["class"] }]
+    "semi": [ 2, "always" ]
 settings:
     react:
         pragma: h
