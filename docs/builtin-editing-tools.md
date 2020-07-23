@@ -31,7 +31,7 @@ d.insertAtCaret = function(textarea, before, after) {
             textarea.value += before + after;
             textarea.scrollTop = c
         }
-    }c
+    }
 }
 ;
 ```
