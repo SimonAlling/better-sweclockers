@@ -10,7 +10,7 @@ export default () => {
 
     We don't care about protecting data in the absence of undo support; I assume SweClockers only ever modify textarea content "safely" (i.e. without deleting anything).
     */
-    try {
+    try { // If SweClockers change their "API", we want to fail gracefully.
         Tanuki.Templates.Textarea.Helpers.setSelection = (textarea: HTMLTextAreaElement, replacement: string) => {
             insertIn(textarea, { string: replacement, replace: true });
         };
