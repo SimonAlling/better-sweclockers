@@ -1,6 +1,6 @@
 import { insertIn, wrapIn } from "./logic/textarea";
 
-declare namespace Tanuki { const Templates: any }
+declare namespace Tanuki { const Templates: any; }
 
 export default () => {
     /*
@@ -13,7 +13,7 @@ export default () => {
     try {
         Tanuki.Templates.Textarea.Helpers.setSelection = (textarea: HTMLTextAreaElement, replacement: string) => {
             insertIn(textarea, { string: replacement, replace: true });
-        }
+        };
         Tanuki.Templates.Textarea.Helpers.insertAtCaret = (textarea: HTMLTextAreaElement, before: string, after: string) => {
             if (after === undefined) {
                 insertIn(textarea, { string: before, replace: true });

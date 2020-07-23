@@ -25,6 +25,7 @@ import * as DarkTheme from "./operations/dark-theme";
 import insertDraftModeToggle from "./operations/draft-mode-toggle";
 import insertEditingTools from "./operations/editing-tools";
 import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
+import enableImprovedBuiltinEditingTools from "./operations/improved-builtin-editing-tools";
 import adaptCorrectionsLink from "./operations/improved-corrections";
 import * as keyboardShortcutsEditMode from "./operations/keyboard-shortcuts/edit-mode";
 import insertLinkToTop from "./operations/link-to-top";
@@ -43,7 +44,6 @@ import removeMobileSiteDisclaimer from "./operations/remove-mobile-site-disclaim
 import replaceFollowedThreadsLink from "./operations/replace-followed-threads-link";
 import insertTableToolbarButton from "./operations/table-toolbar-button";
 import insertTextareaSizeToggle from "./operations/textarea-size-toggle";
-import enableImprovedBuiltinEditingTools from "./operations/improved-builtin-editing-tools";
 import insertWebSearchButton from "./operations/web-search-button";
 
 const ALWAYS = true;
