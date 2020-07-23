@@ -202,7 +202,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     }),
     operation({
         description: "insert PM links",
-        condition: () => Preferences.get(P.forum_threads._.insert_pm_links),
+        condition: () => isReadingThread && Preferences.get(P.forum_threads._.insert_pm_links),
         action: insertPMLinks,
         deferUntil: DOMCONTENTLOADED,
     }),
