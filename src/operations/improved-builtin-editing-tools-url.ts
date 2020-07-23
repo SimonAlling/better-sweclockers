@@ -9,7 +9,7 @@ import * as SITE from "~src/site";
 import * as T from "~src/text";
 
 declare namespace Main { const Forms: any; }
-declare namespace Taiga { const Strings: any; const Fn: any; }
+declare namespace Taiga { const Strings: any; }
 
 export default (undoSupport: boolean) => () => {
     /*
