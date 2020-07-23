@@ -26,6 +26,7 @@ import insertDraftModeToggle from "./operations/draft-mode-toggle";
 import insertEditingTools from "./operations/editing-tools";
 import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
 import enableImprovedBuiltinEditingTools from "./operations/improved-builtin-editing-tools";
+import enableImprovedBuiltinEditingToolsUrl from "./operations/improved-builtin-editing-tools-url";
 import adaptCorrectionsLink from "./operations/improved-corrections";
 import * as keyboardShortcutsEditMode from "./operations/keyboard-shortcuts/edit-mode";
 import insertLinkToTop from "./operations/link-to-top";
@@ -48,6 +49,9 @@ import insertWebSearchButton from "./operations/web-search-button";
 
 const ALWAYS = true;
 
+const improvedBuiltinEditingToolsDescription = "enable improved built-in editing tools";
+const shouldEnableImprovedBuiltinEditingTools = (isInEditMode || isReadingThread) && Preferences.get(P.edit_mode._.improved_builtin_editing_tools);
+
 // True here means the user wants us to act as if there is undo support (i.e. take no precautions to protect data).
 // Chrome always has actual undo support and Firefox never does.
 const undoSupport = Preferences.get(P.advanced._.undo_support);
@@ -57,6 +61,14 @@ const OPERATIONS: readonly Operation<any>[] = [
         description: "set document id",
         condition: () => ALWAYS,
         action: () => { document.documentElement.id = CONFIG.ID.document; },
+    }),
+    operation({
+        // I haven't managed to make this operation work at all in Firefox; the default action is just not overridden.
+        description: improvedBuiltinEditingToolsDescription + " (URL/hyperlink button)",
+        condition: () => shouldEnableImprovedBuiltinEditingTools,
+        // This operation cannot be deferred until DOMContentLoaded, because then it can't override the default action for the URL button.
+        dependencies: { body: "body" }, // Defers the operation until SweClockers' script has defined Main (needed by the operation).
+        action: enableImprovedBuiltinEditingToolsUrl(undoSupport),
     }),
     operation({
         description: "insert preferences menu",
@@ -125,8 +137,8 @@ const OPERATIONS: readonly Operation<any>[] = [
         action: insertEditingTools(undoSupport),
     }),
     operation({
-        description: "enable improved built-in editing tools",
-        condition: () => (isInEditMode || isReadingThread) && Preferences.get(P.edit_mode._.improved_builtin_editing_tools),
+        description: improvedBuiltinEditingToolsDescription,
+        condition: () => shouldEnableImprovedBuiltinEditingTools,
         deferUntil: DOMCONTENTLOADED, // because Tanuki must be defined
         action: enableImprovedBuiltinEditingTools,
     }),

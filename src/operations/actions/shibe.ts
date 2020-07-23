@@ -10,7 +10,7 @@ import { insertIn, selectedTextIn } from "../logic/textarea";
 export default function(textarea: HTMLTextAreaElement, undoSupport: boolean): void {
     const selectedText = selectedTextIn(textarea);
     const selectedLines = lines(selectedText);
-    if (undoSupport || !shibeConfirmationNeeded(selectedLines) || confirm(T.general.shibe_confirm(selectedLines.length))) { // `confirm` is problematic in Chrome (see docs/dialogs.md), but Chrome has full undo support.
+    if (undoSupport || !shibeConfirmationNeeded(selectedLines) || confirm(T.general.generic_lines_confirm(selectedLines.length))) { // `confirm` is problematic in Chrome (see docs/dialogs.md), but Chrome has full undo support.
         insertIn(textarea, {
             string: shibeText(selectedText),
             replace: true,
