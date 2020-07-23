@@ -102,7 +102,7 @@ export function placeCursorIn(textarea: HTMLTextAreaElement, position: number): 
     selectRangeIn(textarea, position, position);
 }
 
-function selectRangeIn(textarea: HTMLTextAreaElement, start: number, end: number): void {
+export function selectRangeIn(textarea: HTMLTextAreaElement, start: number, end: number): void {
     textarea.setSelectionRange(start, end);
     textarea.focus(); // Must be after setSelectionRange to avoid scrolling to the bottom of the textarea in Chrome.
 }
