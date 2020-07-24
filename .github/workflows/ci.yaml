@@ -1,12 +1,13 @@
-name: Nightly
+name: CI
 
 on:
-  schedule:
-    - cron: '0 2 * * *'
+  push:
+    branches:
+      - master
 
 jobs:
   nightly:
-    name: Nightly Build
+    name: CI Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

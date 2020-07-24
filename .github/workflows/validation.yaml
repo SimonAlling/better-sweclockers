@@ -1,9 +1,7 @@
 name: Validation
 
 on:
-  push:
-    branches:
-      - master
+  # CI workflow is responsible for building on push to master.
   pull_request:
     branches:
       - master
