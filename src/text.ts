@@ -45,8 +45,6 @@ export const general = {
     restore_draft_confirm: `Din nuvarande text kommer ersättas. Är du säker?`,
     nbsps_confirm: (n: number) => `${n} mellanslag kommer ersättas med hårda mellanslag. Är du säker?`,
     generic_lines_confirm: (n: number) => `${n} markerad${n > 1 ? "e rader" : " rad"} kommer formateras. Är du säker?`,
-    // Copied from SweClockers:
-    signout_error: `Ett fel har uppstått och utloggningen misslyckades. Var god ladda om sidan och försök igen. Rensa cookies i din webbläsare för att logga ut manuellt.`,
     quote_signature_label: `Citera sign.`,
     quote_signature_tooltip: `Citera endast signatur`,
     quote_signature_tooltip_no_signature: `Signatur saknas`,

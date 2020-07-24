@@ -62,7 +62,6 @@ export const CLASS = {
     bbImage: "bbImage",
     bbIns: "bbIns",
     imgControls: "imgControls",
-    errorDialog: "errorDialog",
     proofDialog: "proofDialog",
     socialMediaButtons: [ `threadShare`, `greyContentShare`, `sideShare` ],
     sideBox: "sideBox",
@@ -102,7 +101,6 @@ export const PATH = {
         check: /^\/medlem\/\d+\/installningar/, // Should not have a "$" because it should match subpaths too.
     },
     MY_POSTS: "/profil/inlagg",
-    SIGNOUT: "/konto/rpc",
     ARTICLE: /^\/artikel\//,
     GUIDE: /^\/guide\//,
     NEWS: /^\/nyhet\//,
