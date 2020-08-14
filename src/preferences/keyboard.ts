@@ -14,6 +14,8 @@ export default new ListPreference<ShortcutEntry>({
     default: [
         { shortcut: "mod+s", action: Action.SUBMIT },
         { shortcut: "mod+p", action: Action.PREVIEW },
+        { shortcut: "tab", action: Action.INDENT },
+        { shortcut: "shift+tab", action: Action.UNINDENT },
     ],
     extras: { implicit: true },
 });

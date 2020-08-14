@@ -1,4 +1,5 @@
 import * as BB from "bbcode-tags";
+import { lines, unlines } from "lines-unlines";
 import * as textFieldEdit from "text-field-edit";
 import { isNumber } from "ts-type-guards";
 
@@ -105,4 +106,43 @@ export function placeCursorIn(textarea: HTMLTextAreaElement, position: number): 
 export function selectRangeIn(textarea: HTMLTextAreaElement, start: number, end: number): void {
     textarea.setSelectionRange(start, end);
     textarea.focus(); // Must be after setSelectionRange to avoid scrolling to the bottom of the textarea in Chrome.
+}
+
+type IndendationDirection = -1 | 1
+
+function startAndEndOfSelectedLinesIn(textarea: HTMLTextAreaElement): readonly [ number, number ] {
+    // This function is only intended to be called on a textarea with some selected text.
+    const linesInTextarea = lines(textarea.value);
+    const { selectionStart, selectionEnd } = textarea;
+    let [ firstSelectedLineStart, lastSelectedLineEnd ] = [ 0, textarea.value.length ];
+    let traversedCharacters = 0;
+    for (const line of linesInTextarea) {
+        if (selectionStart >= traversedCharacters && selectionStart <= traversedCharacters + line.length) {
+            firstSelectedLineStart = traversedCharacters;
+        }
+        if (selectionEnd >= traversedCharacters && selectionEnd <= traversedCharacters + line.length) {
+            lastSelectedLineEnd = traversedCharacters + line.length;
+        }
+        traversedCharacters += line.length + 1; // + 1 for newline
+    }
+    return [ firstSelectedLineStart, lastSelectedLineEnd ];
+}
+
+export function indentIn(textarea: HTMLTextAreaElement, direction: IndendationDirection): void {
+    const selectedText = selectedTextIn(textarea);
+    if (selectedText === "") {
+        insertIn(textarea, { string: "\t", replace: false });
+    } else {
+        const [ start, end ] = startAndEndOfSelectedLinesIn(textarea);
+        selectRangeIn(textarea, start, end);
+        const indentedLines = indented(selectedText, direction);
+        const numberOfAddedCharacters = indentedLines.length - selectedText.length;
+        insertIn(textarea, { string: indentedLines, replace: true });
+        selectRangeIn(textarea, start + 1, end + numberOfAddedCharacters);
+    }
+}
+
+function indented(text: string, direction: IndendationDirection): string {
+    const indent = (line: string) => direction === 1 ? "\t" + line : line.replace(/^\t/, "");
+    return unlines(lines(text).map(indent)).replace(/\n$/, "");
 }
