@@ -10,25 +10,22 @@ export function submit(e: {
     textarea: HTMLElement,
     saveButton: HTMLElement,
 }) {
-    for (const entry of keyboardShortcuts) {
-        if (entry.action === Action.SUBMIT) {
-            Mousetrap.bind(entry.shortcut, event => {
-                event.preventDefault();
-                clickOn(e.saveButton);
-            });
-        }
-    }
+    bindKeyboardShortcut(Action.SUBMIT, _ => clickOn(e.saveButton));
 }
 
 export function preview(e: {
     textarea: HTMLElement,
     previewButton: HTMLElement,
 }) {
+    bindKeyboardShortcut(Action.PREVIEW, _ => clickOn(e.previewButton));
+}
+
+function bindKeyboardShortcut(action: Action, handler: (event: Event) => void) {
     for (const entry of keyboardShortcuts) {
-        if (entry.action === Action.PREVIEW) {
+        if (entry.action === action) {
             Mousetrap.bind(entry.shortcut, event => {
                 event.preventDefault();
-                clickOn(e.previewButton);
+                handler(event);
             });
         }
     }
