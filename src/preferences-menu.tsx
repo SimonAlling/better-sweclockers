@@ -269,7 +269,7 @@ function stepSize(min: number, max: number): number {
     );
 }
 
-function Generator_Multichoice<T extends AllowedTypes>(p: MultichoicePreference<T>): JSX.Element {
+function Generator_Multichoice<T extends AllowedTypes>(p: MultichoicePreference<T>): GeneratorOutput {
     const MAX_RADIO_BUTTONS = 4;
     const savedValue = Preferences.get(p);
     const options = p.options;
@@ -286,7 +286,8 @@ function Generator_Multichoice<T extends AllowedTypes>(p: MultichoicePreference<
                     })
                 )}
             </fieldset>
-        ) : (
+        ) : [
+            <HtmlLabel html={p.label} />,
             <select onChange={e => {
                 const index = (e.target as HTMLSelectElement).selectedIndex;
                 if (index >= 0 && index < options.length) {
@@ -294,8 +295,8 @@ function Generator_Multichoice<T extends AllowedTypes>(p: MultichoicePreference<
                 }
             }}>
                 {options.map(option => <option selected={option.value === savedValue}>{option.label}</option>)}
-            </select>
-        );
+            </select>,
+        ];
 }
 
 function RadioButton<T extends AllowedTypes>({ p, label, value, checked }: { p: MultichoicePreference<T>, label: string, value: T, checked: boolean }): JSX.Element {
