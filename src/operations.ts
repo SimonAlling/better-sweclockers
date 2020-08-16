@@ -304,6 +304,15 @@ const OPERATIONS: readonly Operation<any>[] = [
         deferUntil: DOMCONTENTLOADED,
     }),
     operation({
+        description: "enable Tab key",
+        condition: () => isInEditMode && Preferences.get(P.edit_mode._.insert_tab),
+        dependencies: {
+            textarea: SELECTOR.textarea,
+        },
+        action: keyboardShortcutsEditMode.insertTab(Preferences.get(P.edit_mode._.insert_tab_content), undoSupport),
+        deferUntil: DOMCONTENTLOADED,
+    }),
+    operation({
         description: "add edit mode keyboard shortcut (submit)",
         condition: () => isInEditMode && Preferences.get(P.edit_mode._.keyboard_shortcuts),
         dependencies: {
