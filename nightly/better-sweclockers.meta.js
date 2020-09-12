@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Better SweClockers Nightly
-// @version      3.17.0.2020.8.19.20.54
+// @version      3.17.0.2020.9.12.18.59
 // @description  Extra functionality and improved usability for the SweClockers website.
 // @author       Simon Alling
 // @namespace    simonalling.se
@@ -8,6 +8,6 @@
 // @match        *://www.sweclockers.com/*
 // @run-at       document-start
 // @noframes
-// @downloadURL  https://simonalling.github.io/better-sweclockers/nightly/better-sweclockers.user.js
-// @updateURL    https://simonalling.github.io/better-sweclockers/nightly/better-sweclockers.meta.js
+// @downloadURL  https://simonalling.github.io/better-sweclockers/better-sweclockers.user.js
+// @updateURL    https://simonalling.github.io/better-sweclockers/better-sweclockers.meta.js
 // ==/UserScript==
