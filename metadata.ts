@@ -10,7 +10,7 @@ export default function(buildConfig: BuildConfig): Metadata {
     const hostedAt = buildConfig.hostedAt;
     return {
         name: U.name,
-        version: U.version,
+        version: versionBasedOnDate(buildConfig.now),
         description: U.description,
         author: U.author,
         namespace: U.namespace,
@@ -29,4 +29,15 @@ export default function(buildConfig: BuildConfig): Metadata {
                 }
         ),
     };
+}
+
+export function versionBasedOnDate(d: Date): string {
+    return [
+        d.getFullYear(),
+        d.getMonth() + 1, // 0-indexed
+        d.getDate(),
+        d.getHours(),
+        d.getMinutes(),
+        d.getSeconds(),
+    ].join(".");
 }

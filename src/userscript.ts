@@ -1,7 +1,7 @@
 export default {
     id: "better-sweclockers",
     name: "Better SweClockers",
-    version: "3.17.0",
+    version: "TO_BE_REPLACED_DURING_BUILD",
     description: "Extra functionality and improved usability for the SweClockers website.",
     author: "Simon Alling",
     hostname: "sweclockers.com",

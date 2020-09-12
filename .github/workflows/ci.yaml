@@ -30,7 +30,6 @@ jobs:
         env:
           CI: true
           USERSCRIPTER_MODE: production
-          USERSCRIPTER_NIGHTLY: true
           USERSCRIPTER_VERBOSE: true
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
@@ -38,4 +37,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: dist
-          TARGET_FOLDER: nightly
