@@ -1,6 +1,7 @@
-import { CLASS as BSCLibClass, processNode } from "@alling/better-sweclockers-lib";
 import { stylesheets } from "userscripter";
 
+import { processNode } from "~src/lib/proofreading";
+import C from "~src/lib/proofreading/classes";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import STYLESHEETS from "~src/stylesheets";
@@ -21,7 +22,7 @@ export const performProcessing = (selectors: readonly string[]) => () => {
     for (const n of document.querySelectorAll(selector)) {
         processNode(n);
     }
-    for (const mistake of document.querySelectorAll("."+BSCLibClass.MARK.mistake)) {
+    for (const mistake of document.querySelectorAll("."+C.mistake)) {
         mistake.addEventListener("click", () => {
             if (getProofDialogTextarea() === null) {
                 withMaybe(document.getElementById(SITE.ID.correctionsLink), correctionsLink => {

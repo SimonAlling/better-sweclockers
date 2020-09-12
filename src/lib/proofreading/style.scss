@@ -1,0 +1,32 @@
+.#{getGlobal("PROOFREADING.proofread")} {
+    white-space: pre;
+}
+
+$invisibleBorder: 4px; // to make it easier to hover
+.#{getGlobal("PROOFREADING.mistake")} {
+    &, .#{getGlobal("PROOFREADING.any")} {
+        background-color: rgba(240, 70, 0, 1);
+        background-clip: content-box;
+        border: $invisibleBorder solid rgba(240, 70, 0, 0.1);
+        border-radius: 2px;
+        cursor: help;
+        margin: -$invisibleBorder;
+        position: relative; // so it gets in front of the text around it
+        transition: border-color 250ms 100ms
+    }
+
+    &:hover, .#{getGlobal("PROOFREADING.any")}:hover {
+        border-color: rgba(240, 70, 0, 0.6);
+        transition-delay: 0ms;
+    }
+}
+
+.#{getGlobal("PROOFREADING.verified")} {
+    &, .#{getGlobal("PROOFREADING.any")} {
+        background-color: rgb(85, 220, 0);
+    }
+}
+
+.#{getGlobal("PROOFREADING.any")} {
+    background-color: rgb(85, 130, 250);
+}
