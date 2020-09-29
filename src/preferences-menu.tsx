@@ -114,7 +114,7 @@ function Entry<T extends AllowedTypes>(generators: Generators, p: Preference<T> 
                     )
             ) : (
                 <fieldset class={SITE.CLASS.fieldset}>
-                    <legend>{p.label}</legend>
+                    <HtmlLegend html={p.label} />
                     {Entries(generators, p._)}
                     {
                         p.extras && p.extras.id === CONFIG.ID.editingToolsPreferences
@@ -438,5 +438,11 @@ class PreferenceLabel<T extends AllowedTypes> extends Component<{ preference: Pr
 class HtmlLabel extends Component<{ html: string, for?: string }> {
     public render() {
         return <label for={this.props.for} dangerouslySetInnerHTML={{ __html: this.props.html }} />;
+    }
+}
+
+class HtmlLegend extends Component<{ html: string }> {
+    public render() {
+        return <legend dangerouslySetInnerHTML={{ __html: this.props.html }}></legend>;
     }
 }

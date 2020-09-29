@@ -90,7 +90,7 @@
     $RAINBOW_OPACITY: 0.7;
     $RAINBOW: linear-gradient(to right, rgba(255,0,0,$RAINBOW_OPACITY) 0%,rgba(255,153,50,$RAINBOW_OPACITY) 16%,rgba(247,227,49,$RAINBOW_OPACITY) 33%,rgba(62,211,42,$RAINBOW_OPACITY) 49%,rgba(46,117,232,$RAINBOW_OPACITY) 66%,rgba(90,45,226,$RAINBOW_OPACITY) 83%,rgba(152,25,198,$RAINBOW_OPACITY) 100%);
     .#{getGlobal("CONFIG.CLASS.button_color")} {
-        background: $FADE, $RAINBOW !important; // to override Blargmode
+        background: $FADE, $RAINBOW;
     }
     .#{getGlobal("CONFIG.CLASS.button_color")}:hover, .#{getGlobal("CONFIG.CLASS.button_color")}:focus {
         background: $FADE_BRIGHT, $RAINBOW !important;
@@ -108,7 +108,7 @@
 
     $COLOR_SPOILER: #222;
     .#{getGlobal("CONFIG.CLASS.button_spoiler")} {
-        background: $FADE, $COLOR_SPOILER !important; // to override Blargmode
+        background: $FADE, $COLOR_SPOILER;
         color: #eee;
         border-color: black;
     }

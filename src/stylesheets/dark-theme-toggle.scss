@@ -6,9 +6,8 @@
 }
 
 ##{getGlobal("CONFIG.ID.darkThemeToggle")}.#{getGlobal("CONFIG.CLASS.darkThemeActive")} {
-    // !important to override Blargmode's dark theme:
-    background-color: #dfdfdf !important;
-    background-image: none !important;
+    background-color: #dfdfdf;
+    background-image: none;
 }
 
 ##{getGlobal("CONFIG.ID.darkThemeToggle")}:hover, ##{getGlobal("CONFIG.ID.darkThemeToggle")}:focus {
