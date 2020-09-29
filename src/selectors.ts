@@ -46,7 +46,8 @@ export default {
     linkedForumPost: `.` + SITE.CLASS.forumPost + `.isLinked`,
     listBulkActions: `#postActions .listBulkActions`,
     quickReplyForm: `#quickreply form`,
-    signinSectionOr: (selector: string) => "." + SITE.CLASS.signinSection + ", " + selector, // Order doesn't matter.
+    signoutButton: `a[href="${SITE.PATH.SIGNOUT}"]`,
+    signinButtonOr: (selector: string) => `a[href="${SITE.PATH.SIGNIN}"], ${selector}`, // Order doesn't matter.
     followedThreadsLinkText: `#${SITE.ID.siteHeader} .profile .option.watched a.label>span:not(.icon)`,
     proofDialogCloseButton: "." + SITE.CLASS.proofDialog + " .cntClose",
 } as const;
