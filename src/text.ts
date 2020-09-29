@@ -17,7 +17,7 @@ function darkThemeBy(author: string): string {
 }
 
 const mention_everyone_label = `Nämn alla`;
-const my_posts = `Mina inlägg`;
+const my_posts = `Mina inlägg${CONFIG.NBSP}`; // NBSP to make it similar in width to "Följda trådar"
 const down_for_maintenance = `Nere för underhåll`;
 const editing_tools_name = `Utökade formateringsverktyg`;
 const draft_mode_toggle_label = `Utkast`;

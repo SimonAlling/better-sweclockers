@@ -21,7 +21,6 @@ export default {
     textareaToolbarUnorderedListButton: textareaToolbarInner + ` .ul`,
     proofDialogTextarea: `.${SITE.CLASS.proofDialog} textarea`,
     topMenu: `#mainMenu ul`,
-    siteHeader: `#` + SITE.ID.siteHeader,
     threadTitle: `h1`,
     moreArticles: `.mainContent ~ .mainContent`,
     searchFieldWrapper,
@@ -48,6 +47,6 @@ export default {
     quickReplyForm: `#quickreply form`,
     signoutButton: `a[href="${SITE.PATH.SIGNOUT}"]`,
     signinButtonOr: (selector: string) => `a[href="${SITE.PATH.SIGNIN}"], ${selector}`, // Order doesn't matter.
-    followedThreadsLinkText: `#${SITE.ID.siteHeader} .profile .option.watched a.label>span:not(.icon)`,
+    followedThreadsLinkText: `#${SITE.ID.header} a[href="${SITE.PATH.FOLLOWED}"] span`,
     proofDialogCloseButton: "." + SITE.CLASS.proofDialog + " .cntClose",
 } as const;

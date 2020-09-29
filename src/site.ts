@@ -22,7 +22,7 @@ export const WIDTH_WHERE_NARROW_LAYOUT_GOES_CENTERED = WRAPPER_WIDTH_NARROW_PX +
 export const WIDTH_WHERE_WIDE_LAYOUT_GOES_CENTERED = WRAPPER_WIDTH_WIDE_PX + 2 * GUTTER_SIZE_PX;
 
 export const ID = {
-    siteHeader: "siteHeader",
+    header: "header",
     textarea: "__laika_cnt.textarea.0",
     carousel: "carousel",
     correctionsLink: "proofArticle",
@@ -98,6 +98,7 @@ export const PATH = {
         link: "/profil/installningar", // Relying on this path being redirected to the actual settings path allows us to create a link to the preferences page without knowing the user's ID.
         check: /^\/medlem\/\d+\/installningar/, // Should not have a "$" because it should match subpaths too.
     },
+    FOLLOWED: "/profil/foljda",
     MY_POSTS: "/profil/inlagg",
     SIGNIN: `/konto/logga-in`,
     SIGNOUT: `/konto/logga-ut`,
