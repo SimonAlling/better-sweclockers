@@ -23,7 +23,6 @@ export const WIDTH_WHERE_WIDE_LAYOUT_GOES_CENTERED = WRAPPER_WIDTH_WIDE_PX + 2 *
 
 export const ID = {
     siteHeader: "siteHeader",
-    signoutButton: "signoutForm",
     textarea: "__laika_cnt.textarea.0",
     carousel: "carousel",
     correctionsLink: "proofArticle",
@@ -65,7 +64,6 @@ export const CLASS = {
     proofDialog: "proofDialog",
     socialMediaButtons: [ `threadShare`, `greyContentShare`, `sideShare` ],
     sideBox: "sideBox",
-    signinSection: "signin",
     smiley: "smiley",
     subforumLink: "link",
     toolbarGroup: "tbGroup",
@@ -101,6 +99,8 @@ export const PATH = {
         check: /^\/medlem\/\d+\/installningar/, // Should not have a "$" because it should match subpaths too.
     },
     MY_POSTS: "/profil/inlagg",
+    SIGNIN: `/konto/logga-in`,
+    SIGNOUT: `/konto/logga-ut`,
     ARTICLE: /^\/artikel\//,
     GUIDE: /^\/guide\//,
     NEWS: /^\/nyhet\//,

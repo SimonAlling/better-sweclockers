@@ -185,7 +185,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     operation({
         description: "prevent accidental signout",
         condition: () => Preferences.get(P.advanced._.prevent_accidental_signout),
-        dependencies: { signoutButtonOrSigninSection: SELECTOR.signinSectionOr("#" + SITE.ID.signoutButton ) },
+        dependencies: { signoutButtonOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButton) },
         action: preventAccidentalSignout,
     }),
     operation({
@@ -242,7 +242,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     operation({
         description: "replace followed threads link with a link to my posts",
         condition: () => Preferences.get(P.general._.replace_followed_threads_link),
-        dependencies: { followedThreadsLinkTextOrSigninSection: SELECTOR.signinSectionOr(SELECTOR.followedThreadsLinkText) },
+        dependencies: { followedThreadsLinkTextOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.followedThreadsLinkText) },
         action: replaceFollowedThreadsLink,
     }),
     operation({
