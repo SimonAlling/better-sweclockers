@@ -2,11 +2,9 @@ import * as ms from "milliseconds";
 import {
     BooleanPreference,
     IntegerRangePreference,
-    MultichoicePreference,
 } from "ts-preferences";
 
 import * as CONFIG from "~src/config";
-import { Source, darkThemeInfoUrl } from "~src/dark-theme";
 import * as T from "~src/text";
 
 import { TimePreference } from "./TimePreference";
@@ -26,10 +24,6 @@ const dependencies_auto = [
     },
 ];
 
-function label(source: Source): string {
-    return T.preferences.dark_theme.source.option(source, darkThemeInfoUrl(source));
-}
-
 export default {
     active: new BooleanPreference({
         key: "dark_theme_active",
@@ -42,22 +36,6 @@ export default {
         default: false,
         label: T.preferences.NO_LABEL,
         extras: { implicit: true },
-    }),
-    source: new MultichoicePreference<Source>({
-        key: "dark_theme_source",
-        default: Source.BLARGMODE,
-        options: [
-            {
-                value: Source.BLARGMODE,
-                label: label(Source.BLARGMODE),
-            },
-            {
-                value: Source.SOITORA,
-                label: label(Source.SOITORA),
-            },
-        ],
-        label: T.preferences.dark_theme.source.label,
-        description: T.preferences.dark_theme.source.description,
     }),
     show_toggle: new BooleanPreference({
         key: "dark_theme_show_toggle",

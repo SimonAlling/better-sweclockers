@@ -180,7 +180,7 @@ export function colorButton(color: string): Button {
     return generalButton({
         label: "",
         tooltip: color,
-        style: `background: ${color} !important;`, // !important to override Blargmode
+        style: `background: ${color};`,
         action: wrap_verbatim({
             before: BB.start(SITE.TAG.color, color),
             after: BB.end(SITE.TAG.color),

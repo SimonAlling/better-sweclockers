@@ -2,6 +2,7 @@ import { PreferenceManager } from "ts-preferences";
 import { loggingResponseHandler, subscriptable } from "userscripter/lib/preferences";
 
 import * as CONFIG from "~src/config";
+import * as darkTheme from "~src/dark-theme";
 import * as T from "~src/text";
 import U from "~src/userscript";
 
@@ -34,7 +35,7 @@ export const P = {
         extras: { id: CONFIG.ID.editingToolsPreferences },
     },
     dark_theme: {
-        label: T.preferences.dark_theme.label,
+        label: T.preferences.dark_theme.label(darkTheme.AUTHOR, darkTheme.URL.info),
         _: darkThemePreferences,
     },
     advanced: {

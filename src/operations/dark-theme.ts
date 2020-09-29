@@ -3,7 +3,7 @@ import { render } from "preact";
 import { isNull } from "ts-type-guards";
 
 import * as CONFIG from "~src/config";
-import { darkThemeAdditions, darkThemeUrl, darkThemeUrlBackup } from "~src/dark-theme";
+import * as darkTheme from "~src/dark-theme";
 import { P, Preferences } from "~src/preferences";
 import * as T from "~src/text";
 import { timeIsWithin } from "~src/time";
@@ -13,9 +13,8 @@ import { tab } from "./logic/topMenuTab";
 
 export function insertToggle(e: { topMenu: HTMLElement }): void {
     const state = Preferences.get(P.dark_theme._.active);
-    const source = Preferences.get(P.dark_theme._.source);
     const button = tab({
-        title: state ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on(source),
+        title: state ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on(darkTheme.AUTHOR),
         id: CONFIG.ID.darkThemeToggle,
         classes: state ? [CONFIG.CLASS.darkThemeActive] : [],
         link: {
@@ -36,20 +35,15 @@ export function manage(): void {
 }
 
 function apply(newState: boolean): void {
-    const source = Preferences.get(P.dark_theme._.source);
-    const url = Preferences.get(P.dark_theme._.use_backup) ? darkThemeUrlBackup : darkThemeUrl;
+    const url = Preferences.get(P.dark_theme._.use_backup) ? darkTheme.URL.backup : darkTheme.URL.canonical;
     if (newState) {
         if (isNull(document.getElementById(CONFIG.ID.darkThemeStylesheet))) {
             // Not document.head because it can be null, e.g. in a background tab in Firefox:
             const link = document.createElement("link");
             link.rel = "stylesheet";
-            link.href = url(source);
+            link.href = url;
             link.id = CONFIG.ID.darkThemeStylesheet;
             document.documentElement.appendChild(link);
-            const style = document.createElement("style");
-            style.textContent = darkThemeAdditions(source);
-            style.id = CONFIG.ID.darkThemeAdditions;
-            document.documentElement.appendChild(style);
         }
     } else {
         withMaybe(document.getElementById(CONFIG.ID.darkThemeStylesheet), element => element.remove());
@@ -57,7 +51,7 @@ function apply(newState: boolean): void {
     withMaybe(document.getElementById(CONFIG.ID.darkThemeToggle), toggle => {
         const active = CONFIG.CLASS.darkThemeActive;
         newState ? toggle.classList.add(active) : toggle.classList.remove(active);
-        toggle.title = newState ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on(source);
+        toggle.title = newState ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on(darkTheme.AUTHOR);
     });
 }
 

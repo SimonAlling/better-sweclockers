@@ -12,8 +12,6 @@ function genitive(name: string): string {
     return ["s", "x", "z"].some(letter => name.endsWith(letter)) ? name : name + "s";
 }
 
-// string is used instead of Source here because this file cannot import modules containing Webpack-resolved imports.
-// The dark-theme module imports a SASS module, which is a Webpack-resolved import even with a relative path.
 function darkThemeBy(author: string): string {
     return `${genitive(author)} mörka tema`;
 }
@@ -170,12 +168,7 @@ export const preferences = {
     },
 
     dark_theme: {
-        label: `Mörkt tema`,
-        source: {
-            label: `Tema`,
-            description: `Vilket mörkt tema föredrar du?`,
-            option: (name: string, infoUrl: string) => `${name} (<a target="_blank" href="${infoUrl}">forumtråd</a>)`,
-        },
+        label: (author: string, infoUrl: string) => `${darkThemeBy(author)} (<a target="_blank" href="${infoUrl}">forumtråd</a>)`,
         show_toggle: `Visa knapp för manuell växling`,
         show_toggle_description: `Toggla manuellt det mörka temat med en knapp högst upp på sidan`,
         auto: `Automatisk aktivering`,
@@ -185,7 +178,7 @@ export const preferences = {
         interval: `Uppdateringsintervall`,
         interval_description: `Hur ofta ${CONFIG.USERSCRIPT_NAME} ska kolla vad klockan är`,
         use_backup: `Använd Allings server`,
-        use_backup_description: `Workaround om ditt valda mörka tema inte är tillgängligt "live"`,
+        use_backup_description: `Workaround om det mörka temat inte är tillgängligt "live"`,
     },
 
     customize_content: {
