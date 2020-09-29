@@ -8,7 +8,7 @@ export default (e: { signoutButtonOrSigninButton: HTMLElement }) => {
     const signoutButton = signoutButtonOrSigninButton;
     signoutButton.addEventListener("click", event => {
         if (!confirm(T.general.signout_confirmation)) {
-            event.stopPropagation();
+            event.preventDefault();
         }
-    }, true); // Default listener doesn't use capture, so this listener is given precedence.
+    });
 };
