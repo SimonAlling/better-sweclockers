@@ -16,7 +16,6 @@ import { timeIsWithin } from "~src/time";
 import adaptiveWidthCorrections from "./stylesheets/adaptive-width-corrections.scss";
 import adaptiveWidth from "./stylesheets/adaptive-width.scss";
 import autosaveDraft from "./stylesheets/autosave-draft.scss";
-import compactLayout from "./stylesheets/compact-layout.scss";
 import darkThemeToggle from "./stylesheets/dark-theme-toggle.scss";
 import doge from "./stylesheets/doge.scss";
 import downForMaintenance from "./stylesheets/down-for-maintenance.scss";
@@ -70,10 +69,6 @@ const STYLESHEETS = {
     lock_heights: stylesheet({
         condition: () => Preferences.get(P.general._.lock_heights),
         css: lockHeights,
-    }),
-    compact_layout: stylesheet({
-        condition: () => Preferences.get(P.general._.compact_layout),
-        css: compactLayout,
     }),
     adaptive_width: stylesheet({
         condition: () => Preferences.get(P.general._.adaptive_width),

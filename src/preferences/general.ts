@@ -15,12 +15,6 @@ export default {
         label: T.preferences.general.lock_heights,
         description: T.preferences.general.lock_heights_description,
     }),
-    compact_layout: new BooleanPreference({
-        key: "compact_layout",
-        default: false,
-        label: T.preferences.general.compact_layout,
-        description: T.preferences.general.compact_layout_description,
-    }),
     adaptive_width: new BooleanPreference({
         key: "adaptive_width",
         default: false,
