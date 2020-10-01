@@ -10,4 +10,5 @@ export default (e: { followedThreadsLinkTextOrSigninButton: HTMLElement }) => {
     const link = text.parentElement as HTMLAnchorElement;
     text.textContent = T.general.my_posts;
     link.href = SITE.PATH.MY_POSTS;
+    link.classList.remove(SITE.CLASS.colorOrange);
 };
