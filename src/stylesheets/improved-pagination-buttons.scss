@@ -1,13 +1,21 @@
-.pages {
-    margin-bottom: unset;
+.list-actions {
+    margin-bottom: 6px;
+}
 
+.pages {
     $size: 32px;
-    a {
+    > a, > span { // Disabled links are spans for some reason.
+        align-items: center;
         box-sizing: border-box;
-        display: table-cell;
+        display: flex;
         height: $size;
-        text-align: center;
-        vertical-align: middle;
+        justify-content: center;
+        margin-right: 0;
         width: $size;
+
+        > span {
+            padding: 0;
+            height: 1.2em;
+        }
     }
 }
