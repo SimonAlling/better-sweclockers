@@ -35,7 +35,8 @@ export function manage(): void {
 }
 
 function apply(newState: boolean): void {
-    const url = Preferences.get(P.dark_theme._.use_backup) ? darkTheme.URL.backup : darkTheme.URL.canonical;
+    const urlWithoutCacheInvalidation = Preferences.get(P.dark_theme._.use_backup) ? darkTheme.URL.backup : darkTheme.URL.canonical;
+    const url = withCacheInvalidation(urlWithoutCacheInvalidation, new Date());
     if (newState) {
         if (isNull(document.getElementById(CONFIG.ID.darkThemeStylesheet))) {
             // Not document.head because it can be null, e.g. in a background tab in Firefox:
@@ -73,4 +74,11 @@ function sheldon(): void {
     }
     // If the dark theme was toggled (auto or not) in another tab, Sheldon must toggle it here as well:
     apply(Preferences.get(P.dark_theme._.active));
+}
+
+function withCacheInvalidation(url: string, date: Date): string {
+    const yyyy = date.getFullYear();
+    const mm = (date.getMonth() + 1 /* 0-indexed */).toString().padStart(2, "0");
+    const dd = date.getDate().toString().padStart(2, "0");
+    return `${url}?v=${yyyy}${mm}${dd}`;
 }
