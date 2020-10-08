@@ -28,8 +28,7 @@ const OBVIOUS = `Som det låter`;
 export const general = {
     seconds: `sekunder`,
     loading: `Laddar …`,
-    dark_theme_toggle_tooltip_on: darkThemeBy,
-    dark_theme_toggle_tooltip_off: "Standardutseendet",
+    dark_theme_toggle_tooltip: (author: string) => `${darkThemeBy(author)} på/av`,
     preferences_link: CONFIG.USERSCRIPT_NAME,
     signout_confirmation: `Är du säker på att du vill logga ut?`,
     draft_mode_toggle_label,
@@ -168,8 +167,8 @@ export const preferences = {
 
     dark_theme: {
         label: (author: string, infoUrl: string) => `${darkThemeBy(author)} (<a target="_blank" href="${infoUrl}">forumtråd</a>)`,
-        show_toggle: `Visa knapp för manuell växling`,
-        show_toggle_description: `Toggla manuellt det mörka temat med en knapp högst upp på sidan`,
+        show_toggle: `Manuell aktivering`,
+        show_toggle_description: `Toggla manuellt det mörka temat med en ikon högst upp på sidan`,
         auto: `Automatisk aktivering`,
         auto_description: `Aktivera det mörka temat automatiskt under nattens timmar`,
         between: `mellan`,

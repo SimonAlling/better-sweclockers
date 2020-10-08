@@ -183,7 +183,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     operation({
         description: "insert dark theme toggle",
         condition: () => !isOnBSCPreferencesPage && Preferences.get(P.dark_theme._.show_toggle),
-        dependencies: { topMenu: SELECTOR.topMenu },
+        dependencies: { menuLockToggle: "#" + SITE.ID.menuLockToggle },
         action: DarkTheme.insertToggle,
     }),
     operation({

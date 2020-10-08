@@ -16,7 +16,7 @@ import { timeIsWithin } from "~src/time";
 import adaptiveWidthCorrections from "./stylesheets/adaptive-width-corrections.scss";
 import adaptiveWidth from "./stylesheets/adaptive-width.scss";
 import autosaveDraft from "./stylesheets/autosave-draft.scss";
-import darkThemeToggle from "./stylesheets/dark-theme-toggle.scss";
+import darkThemeTogglePreparations from "./stylesheets/dark-theme-toggle-preparations.scss";
 import doge from "./stylesheets/doge.scss";
 import downForMaintenance from "./stylesheets/down-for-maintenance.scss";
 import editingTools from "./stylesheets/editing-tools.scss";
@@ -50,9 +50,10 @@ const STYLESHEETS = {
         condition: ALWAYS,
         css: main,
     }),
-    dark_theme_toggle: stylesheet({
-        condition: ALWAYS,
-        css: darkThemeToggle,
+    dark_theme_toggle_preparations: stylesheet({
+        condition: () => Preferences.get(P.dark_theme._.show_toggle),
+        css: darkThemeTogglePreparations,
+        id: i("dark-theme-toggle-preparations"),
     }),
     doge: stylesheet({
         condition: ALWAYS,

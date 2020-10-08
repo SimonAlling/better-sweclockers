@@ -1,27 +1,36 @@
 import * as ms from "milliseconds";
-import { render } from "preact";
+import { h, render } from "preact";
 import { isNull } from "ts-type-guards";
+import { disable } from "userscripter/lib/stylesheets";
 
 import * as CONFIG from "~src/config";
 import * as darkTheme from "~src/dark-theme";
+import iconDarkThemeToggle from "~src/icons/dark-theme-toggle.svg";
 import { P, Preferences } from "~src/preferences";
+import STYLESHEETS from "~src/stylesheets";
 import * as T from "~src/text";
 import { timeIsWithin } from "~src/time";
 import { withMaybe } from "~src/utilities";
 
-import { tab } from "./logic/topMenuTab";
-
-export function insertToggle(e: { topMenu: HTMLElement }): void {
-    const state = Preferences.get(P.dark_theme._.active);
-    const button = tab({
-        title: state ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on(darkTheme.AUTHOR),
-        id: CONFIG.ID.darkThemeToggle,
-        classes: state ? [CONFIG.CLASS.darkThemeActive] : [],
-        link: {
-            onClick: () => set(!Preferences.get(P.dark_theme._.active)),
-        },
-    });
-    render(button, e.topMenu);
+export function insertToggle(e: {
+    menuLockToggle: HTMLElement,
+}) {
+    const darkThemeToggle = document.createElement("li");
+    e.menuLockToggle.insertAdjacentElement("afterend", darkThemeToggle);
+    render((
+        // Derived from the menu lock toggle.
+        <li class="menu-lock menu-lock-active">
+            <div
+                class="menu-lock-click"
+                title={T.general.dark_theme_toggle_tooltip(darkTheme.AUTHOR)}
+                onClick={() => set(!Preferences.get(P.dark_theme._.active))}
+            />
+            <span class="menu-lock">
+                <svg class="icon" dangerouslySetInnerHTML={{ __html: iconDarkThemeToggle }} />
+            </span>
+        </li>
+    ), e.menuLockToggle.parentElement as Element, darkThemeToggle);
+    disable(STYLESHEETS.dark_theme_toggle_preparations);
 }
 
 export function manage(): void {
@@ -49,11 +58,6 @@ function apply(newState: boolean): void {
     } else {
         withMaybe(document.getElementById(CONFIG.ID.darkThemeStylesheet), element => element.remove());
     }
-    withMaybe(document.getElementById(CONFIG.ID.darkThemeToggle), toggle => {
-        const active = CONFIG.CLASS.darkThemeActive;
-        newState ? toggle.classList.add(active) : toggle.classList.remove(active);
-        toggle.title = newState ? T.general.dark_theme_toggle_tooltip_off : T.general.dark_theme_toggle_tooltip_on(darkTheme.AUTHOR);
-    });
 }
 
 function set(newState: boolean): void {
