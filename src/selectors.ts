@@ -11,6 +11,7 @@ const searchFieldWrapper = `#search .searchField`;
 const actionButtons = `button[name=action]`;
 const actionButtonsQuickReply = `#quickreply .controls button`;
 const forumPostContainer = "." + SITE.CLASS.forumPosts;
+const signoutButton = `a[href="${SITE.PATH.SIGNOUT}"]`;
 
 const textareaToolbarInner = `form .toolbar .tbInner`;
 
@@ -45,7 +46,9 @@ export default {
     linkedForumPost: `.` + SITE.CLASS.forumPost + `.isLinked`,
     listBulkActions: `#postActions .listBulkActions`,
     quickReplyForm: `#quickreply form`,
-    signoutButton: `a[href="${SITE.PATH.SIGNOUT}"]`,
+    signoutButton,
+    signoutButtonIcon: signoutButton + " svg",
+    signoutButtonLabel: signoutButton + " span",
     signinButtonOr: (selector: string) => `a[href="${SITE.PATH.SIGNIN}"], ${selector}`, // Order doesn't matter.
     followedThreadsLinkText: `#${SITE.ID.header} a[href="${SITE.PATH.FOLLOWED}"] span`,
     proofDialogCloseButton: "." + SITE.CLASS.proofDialog + " .cntClose",

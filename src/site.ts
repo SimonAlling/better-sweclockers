@@ -151,12 +151,12 @@ export const TAG = {
     youtube: "youtube",
 } as const;
 
-export const URL_ICONS_GENERAL = "/gfx/spritemap2x.png";
 const URL_ICONS_TOOLBAR = "/gfx/toolbar2x.png";
 export const ICONS = {
     toolbarIcon: (position: string): string => `<div style="background-image: url('${URL_ICONS_TOOLBAR}'); background-size: 500px auto; background-position: ${position};"></div>`,
     position_toolbar_url: "0 -125px",
     position_toolbar_img: "-50px -125px",
+    settings: `<use xlink:href="#icon_settings"></use>`,
 } as const;
 
 export const MOBILE_SITE_DISCLAIMER = {

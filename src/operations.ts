@@ -170,10 +170,13 @@ const OPERATIONS: readonly Operation<any>[] = [
         action: insertTextareaSizeToggle,
     }),
     operation({
-        // Should be inserted before dark theme toggle because they should be in that order.
         description: "insert preferences shortcut",
         condition: () => !isOnBSCPreferencesPage && Preferences.get(P.general._.insert_preferences_shortcut),
-        dependencies: { topMenu: SELECTOR.topMenu },
+        dependencies: {
+            iconOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButtonIcon),
+            labelOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButtonLabel),
+            signoutButtonOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButton),
+        },
         action: insertPreferencesShortcut,
     }),
     operation({
