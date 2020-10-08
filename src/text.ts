@@ -62,6 +62,7 @@ export const general = {
 
 export const preferences = {
     NO_LABEL: ``,
+    shortcut_label: `BSC`,
     title: `Inställningar för Better SweClockers`,
     back_to_sweclockers: `Tillbaka till ${SITE.NAME}`,
     save_notice: `Inställningarna sparas automatiskt, men endast lokalt på den här enheten.`,
@@ -78,7 +79,7 @@ export const preferences = {
         improved_corrections: `Bättre rättelsegränssnitt`,
         improved_corrections_description: `Gör det enklare att skicka in rättelser`,
         insert_preferences_shortcut: `Genväg till inställningar för ${CONFIG.USERSCRIPT_NAME}`,
-        insert_preferences_shortcut_description: `Visa en länk till ${CONFIG.USERSCRIPT_NAME} inställningsmeny högst upp`,
+        insert_preferences_shortcut_description: `Visa en länk till ${CONFIG.USERSCRIPT_NAME} inställningsmeny istället för utloggningslänken`,
         replace_followed_threads_link: `Ersätt länken <em>Följda trådar</em> med <em>${my_posts}</em>`,
         replace_followed_threads_link_description: OBVIOUS,
         thread_status_tooltips: `Tooltips på trådstatusikoner`,

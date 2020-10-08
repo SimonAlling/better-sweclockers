@@ -51,13 +51,6 @@ textarea.#{getGlobal("CONFIG.CLASS.codeInput")}, .#{getGlobal("CONFIG.CLASS.code
     }
 }
 
-##{getGlobal("CONFIG.ID.preferencesShortcut")} {
-    background-image: url("#{getGlobal("SITE.URL_ICONS_GENERAL")}");
-    background-position: -165px -95px;
-    background-size: 600px auto; // scale down 2x; image is 1200px wide
-    margin-left: #{getGlobal("SITE.EXTRA_TAB_MARGIN")};
-}
-
 // Selector must be kept in sync with @alling/better-sweclockers-lib:
 .mistake {
     border-color: rgba(240, 70, 0, 0.6);

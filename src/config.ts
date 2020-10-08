@@ -36,7 +36,6 @@ export const ID = {
     darkThemeStylesheet: i("dark-theme-stylesheet"),
     darkThemeAdditions: i("dark-theme-additions"),
     darkThemeToggle: i("dark-theme-toggle"),
-    preferencesShortcut: i("preferences-shortcut"),
     interestsPreferences: i("interests-preferences"),
     style: {
         proofreading: i("proofreading"),
