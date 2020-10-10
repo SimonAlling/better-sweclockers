@@ -114,10 +114,4 @@ export default {
         label: T.preferences.edit_mode.remember_caret_position,
         description: T.preferences.edit_mode.remember_caret_position_description,
     }),
-    remove_mobile_site_disclaimer: new BooleanPreference({
-        key: "remove_mobile_site_disclaimer",
-        default: true,
-        label: T.preferences.edit_mode.remove_mobile_site_disclaimer,
-        description: T.preferences.edit_mode.remove_mobile_site_disclaimer_description,
-    }),
 } as const;

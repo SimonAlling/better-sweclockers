@@ -4,7 +4,6 @@ import U from "./userscript";
 
 export const NAME = U.sitename;
 export const HOSTNAME = U.hostname;
-export const HOSTNAME_MOBILE = `m.` + HOSTNAME;
 
 export const STYLESHEET_URL = "/css/combine.min.css";
 
@@ -157,11 +156,6 @@ export const ICONS = {
     position_toolbar_url: "0 -125px",
     position_toolbar_img: "-50px -125px",
     settings: `<use xlink:href="#icon_settings"></use>`,
-} as const;
-
-export const MOBILE_SITE_DISCLAIMER = {
-    sentFrom: `Skickades från`,
-    mobileSiteDomain: HOSTNAME_MOBILE,
 } as const;
 
 export function getUserID(): unknown {

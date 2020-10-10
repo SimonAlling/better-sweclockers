@@ -138,8 +138,6 @@ export const preferences = {
         insert_table_toolbar_button_description: `Knappen infogar en komplett tabell`,
         remember_caret_position: `Kom ihåg markörens position vid förhandsgranskning`,
         remember_caret_position_description: `Fortsätt skriva precis där du var när du förhandsgranskat ett inlägg`,
-        remove_mobile_site_disclaimer: `Ta bort <small><em>${SITE.MOBILE_SITE_DISCLAIMER.sentFrom} ${SITE.MOBILE_SITE_DISCLAIMER.mobileSiteDomain}</em></small>`,
-        remove_mobile_site_disclaimer_description: `Ta automatiskt bort ${SITE.MOBILE_SITE_DISCLAIMER.mobileSiteDomain}-disclaimern från citat`,
     },
 
     editing_tools: {

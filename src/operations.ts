@@ -41,7 +41,6 @@ import * as preventAccidentalUnload from "./operations/prevent-accidental-unload
 import * as Proofreading from "./operations/proofreading";
 import insertQuoteSignatureButtons from "./operations/quote-signature-buttons";
 import rememberLocationInMarket from "./operations/remember-location-in-market";
-import removeMobileSiteDisclaimer from "./operations/remove-mobile-site-disclaimer";
 import replaceFollowedThreadsLink from "./operations/replace-followed-threads-link";
 import insertTableToolbarButton from "./operations/table-toolbar-button";
 import insertTextareaSizeToggle from "./operations/textarea-size-toggle";
@@ -117,12 +116,6 @@ const OPERATIONS: readonly Operation<any>[] = [
             previewButton: isInEditMode_market ? SELECTOR.saveButton : SELECTOR.previewButton,
         },
         action: manageCaretPosition,
-    }),
-    operation({
-        description: "remove mobile site disclaimer",
-        condition: () => isInEditMode_forum && Preferences.get(P.edit_mode._.remove_mobile_site_disclaimer),
-        dependencies: { textarea: SELECTOR.textarea },
-        action: removeMobileSiteDisclaimer,
     }),
     operation({
         description: "insert editing tools",
