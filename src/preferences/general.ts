@@ -15,6 +15,12 @@ export default {
         label: T.preferences.general.lock_heights,
         description: T.preferences.general.lock_heights_description,
     }),
+    fixed_avatar_size: new BooleanPreference({
+        key: "fixed_avatar_size",
+        default: true,
+        label: T.preferences.general.fixed_avatar_size,
+        description: T.preferences.general.fixed_avatar_size_description,
+    }),
     adaptive_width: new BooleanPreference({
         key: "adaptive_width",
         default: false,

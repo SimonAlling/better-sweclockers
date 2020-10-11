@@ -74,6 +74,8 @@ export const preferences = {
         label: `Allmänt`,
         lock_heights: `Lås höjden på reklam etc`,
         lock_heights_description: `Förhindrar att sidans innehåll hoppar när t ex reklam laddas in`,
+        fixed_avatar_size: `Lås avatarens storlek`,
+        fixed_avatar_size_description: `Förhindrar att länkarna i navigeringsraden hoppar när avataren laddas in`,
         adaptive_width: `LemonIllusions adaptiva layout`,
         adaptive_width_description: `Anpassa bredden på huvudinnehållet (t ex artiklar) efter fönstrets bredd`,
         improved_corrections: `Bättre rättelsegränssnitt`,
