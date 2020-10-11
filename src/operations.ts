@@ -173,6 +173,7 @@ const OPERATIONS: readonly Operation<any>[] = [
         description: "insert preferences shortcut",
         condition: () => !isOnBSCPreferencesPage && Preferences.get(P.general._.insert_preferences_shortcut),
         dependencies: {
+            // Note that, because this operation replaces the signout button, it makes "prevent accidental signout" redundant.
             iconOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButtonIcon),
             labelOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButtonLabel),
             signoutButtonOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButton),
@@ -187,7 +188,11 @@ const OPERATIONS: readonly Operation<any>[] = [
     }),
     operation({
         description: "prevent accidental signout",
-        condition: () => Preferences.get(P.advanced._.prevent_accidental_signout),
+        condition: () => (
+            Preferences.get(P.advanced._.prevent_accidental_signout)
+            &&
+            !Preferences.get(P.general._.insert_preferences_shortcut) // That operation replaces the signout button.
+        ),
         dependencies: { signoutButtonOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButton) },
         action: preventAccidentalSignout,
     }),
