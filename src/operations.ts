@@ -51,6 +51,7 @@ const ALWAYS = true;
 
 const improvedBuiltinEditingToolsDescription = "enable improved built-in editing tools";
 const shouldEnableImprovedBuiltinEditingTools = (isInEditMode || isReadingThread) && Preferences.get(P.edit_mode._.improved_builtin_editing_tools);
+const shouldInsertPreferencesShortcut = Preferences.get(P.general._.insert_preferences_shortcut);
 
 // True here means the user wants us to act as if there is undo support (i.e. take no precautions to protect data).
 // Chrome always has actual undo support and Firefox never does.
@@ -171,7 +172,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     }),
     operation({
         description: "insert preferences shortcut",
-        condition: () => !isOnBSCPreferencesPage && Preferences.get(P.general._.insert_preferences_shortcut),
+        condition: () => !isOnBSCPreferencesPage && shouldInsertPreferencesShortcut,
         dependencies: {
             iconOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButtonIcon),
             labelOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButtonLabel),
@@ -187,7 +188,18 @@ const OPERATIONS: readonly Operation<any>[] = [
     }),
     operation({
         description: "prevent accidental signout",
-        condition: () => Preferences.get(P.advanced._.prevent_accidental_signout),
+        condition: () => {
+            type OnlyIfPreferencesShortcutDependsOnSignoutButton = (
+                // The preferences shortcut replaces the signout button. Should that change, this operation's condition must be updated.
+                Parameters<typeof insertPreferencesShortcut> extends [{
+                    iconOrSigninButton: HTMLElement,
+                    labelOrSigninButton: HTMLElement,
+                    signoutButtonOrSigninButton: HTMLElement,
+                }] ? boolean : never
+            );
+            const preferencesShortcutIsEnabled: OnlyIfPreferencesShortcutDependsOnSignoutButton = shouldInsertPreferencesShortcut;
+            return !preferencesShortcutIsEnabled && Preferences.get(P.advanced._.prevent_accidental_signout);
+        },
         dependencies: { signoutButtonOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButton) },
         action: preventAccidentalSignout,
     }),
