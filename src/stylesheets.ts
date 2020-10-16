@@ -20,7 +20,6 @@ import darkThemeToggle from "./stylesheets/dark-theme-toggle.scss";
 import doge from "./stylesheets/doge.scss";
 import downForMaintenance from "./stylesheets/down-for-maintenance.scss";
 import editingTools from "./stylesheets/editing-tools.scss";
-import fixedAvatarSize from "./stylesheets/fixed-avatar-size.scss";
 import hideFooter from "./stylesheets/hide-footer.scss";
 import highlightOwnPosts from "./stylesheets/highlight-own-posts.scss";
 import improvedCorrections from "./stylesheets/improved-corrections.scss";
@@ -70,10 +69,6 @@ const STYLESHEETS = {
     lock_heights: stylesheet({
         condition: () => Preferences.get(P.general._.lock_heights),
         css: lockHeights,
-    }),
-    fixed_avatar_size: stylesheet({
-        condition: () => Preferences.get(P.general._.fixed_avatar_size),
-        css: fixedAvatarSize,
     }),
     adaptive_width: stylesheet({
         condition: () => Preferences.get(P.general._.adaptive_width),
