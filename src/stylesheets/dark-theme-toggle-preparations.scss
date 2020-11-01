@@ -1,0 +1,4 @@
+##{getGlobal("SITE.ID.menuLockToggle")}, ##{getGlobal("SITE.ID.menuLockToggleOpen")} {
+    // This makes space for the dark theme toggle in advance, so that it doesn't push the search field to the right when it's inserted.
+    margin-right: 40px;
+}

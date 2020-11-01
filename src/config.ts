@@ -35,7 +35,6 @@ export const ID = {
     editingToolsPreferences: i("editing-tools-preferences"),
     darkThemeStylesheet: i("dark-theme-stylesheet"),
     darkThemeAdditions: i("dark-theme-additions"),
-    darkThemeToggle: i("dark-theme-toggle"),
     interestsPreferences: i("interests-preferences"),
     style: {
         proofreading: i("proofreading"),
@@ -45,7 +44,6 @@ export const ID = {
 export const CLASS = {
     mousetrap: "mousetrap",
     disabled: c("disabled"),
-    darkThemeActive: c("dark-theme-active"),
     editingTools: c("editing-tools"),
     iconButton: c("icon-button"),
     iconTab: c("icon-tab"),
