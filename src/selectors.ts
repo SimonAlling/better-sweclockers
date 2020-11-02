@@ -21,7 +21,6 @@ export default {
     textareaToolbarStrikeButton: textareaToolbarInner + ` .strike`,
     textareaToolbarUnorderedListButton: textareaToolbarInner + ` .ul`,
     proofDialogTextarea: `.${SITE.CLASS.proofDialog} textarea`,
-    topMenu: `#mainMenu ul`,
     threadTitle: `h1`,
     moreArticles: `.mainContent ~ .mainContent`,
     searchFieldWrapper,
