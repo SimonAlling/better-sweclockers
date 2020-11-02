@@ -46,7 +46,6 @@ export const CLASS = {
     disabled: c("disabled"),
     editingTools: c("editing-tools"),
     iconButton: c("icon-button"),
-    iconTab: c("icon-tab"),
     pmButton: c("pm-button"),
     quoteSignatureButton: c("quote-signature-button"),
     mentionEveryoneButton: c("mention-everyone-button"),
