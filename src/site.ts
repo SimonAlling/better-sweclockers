@@ -6,7 +6,7 @@ export const NAME = U.sitename;
 export const HOSTNAME = U.hostname;
 export const HOSTNAME_MOBILE = `m.` + HOSTNAME;
 
-export const STYLESHEET_URL = "/css/combine.min.css";
+export const STYLESHEET_URL = (yyyymmdd: string) => `/css/combine.min.sass.css?v=${yyyymmdd}`;
 
 export const BANNER_HEIGHT_TOP = `${121}px`; // default height of top ad banner
 export const BANNER_HEIGHT_MID = `${360}px`; // default height of page ad modules

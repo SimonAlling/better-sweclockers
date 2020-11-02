@@ -18,7 +18,7 @@ const i = (x: string) => PREFIX_ID + x;
 const c = (x: string) => PREFIX_CLASS + x;
 
 export const ID_STYLE_ELEMENT = i("main-style-element");
-export const EDITING_TOOLS_HEIGHT = "140px"; // to prevent jumping in preferences interface
+export const EDITING_TOOLS_HEIGHT = "200px"; // to prevent jumping in preferences interface
 
 // distance between article and left side of improved corrections dialog
 export const CORRECTIONS_DIALOG_OFFSET_PX = 20;
