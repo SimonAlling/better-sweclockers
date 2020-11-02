@@ -46,8 +46,6 @@ export default {
     listBulkActions: `#postActions .listBulkActions`,
     quickReplyForm: `#quickreply form`,
     signoutButton,
-    signoutButtonIcon: signoutButton + " svg",
-    signoutButtonLabel: signoutButton + " span",
     signinButtonOr: (selector: string) => `a[href="${SITE.PATH.SIGNIN}"], ${selector}`, // Order doesn't matter.
     followedThreadsLinkText: `#${SITE.ID.header} a[href="${SITE.PATH.FOLLOWED}"] span`,
     proofDialogCloseButton: "." + SITE.CLASS.proofDialog + " .cntClose",
