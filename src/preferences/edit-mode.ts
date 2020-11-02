@@ -1,6 +1,7 @@
 import {
     BooleanPreference,
     IntegerRangePreference,
+    MultichoicePreference,
 } from "ts-preferences";
 
 import * as CONFIG from "~src/config";
@@ -22,6 +23,7 @@ const dependencies_textarea_size_toggle = [
 ];
 
 const DEFAULT_TEXTAREA_SIZE = 360;
+const SPACE = " ", TAB = "\t";
 
 export default {
     autosave_draft: new BooleanPreference({
@@ -107,6 +109,30 @@ export default {
         label: T.preferences.in_quick_reply_form,
         description: T.preferences.in_quick_reply_form_description,
         extras: { class: CONFIG.CLASS.inlinePreference },
+    }),
+    insert_tab: new BooleanPreference({
+        key: "insert_tab",
+        default: true,
+        label: T.preferences.edit_mode.insert_tab,
+        description: T.preferences.edit_mode.insert_tab_description,
+        extras: { class: [CONFIG.CLASS.inlinePreference, CONFIG.CLASS.primaryInlinePreference] },
+    }),
+    insert_tab_content: new MultichoicePreference({
+        key: "insert_tab_content",
+        default: TAB,
+        label: T.preferences.NO_LABEL,
+        options: [
+            {
+                value: TAB,
+                label: T.preferences.edit_mode.insert_tab_tab as string, // Without the type assertion, too small a type is inferred.
+            },
+        ].concat(
+            [ 2, 3, 4 ].map(n => ({
+                value: SPACE.repeat(n),
+                label: T.preferences.edit_mode.insert_tab_spaces(n),
+            }))
+        ),
+        extras: { class: [CONFIG.CLASS.inlinePreference] },
     }),
     remember_caret_position: new BooleanPreference({
         key: "remember_caret_position",
