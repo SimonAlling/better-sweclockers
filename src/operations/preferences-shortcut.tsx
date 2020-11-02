@@ -10,6 +10,7 @@ export default (e: {
     const placeholder = document.createElement("a");
     e.notificationsBar.insertAdjacentElement("afterbegin", placeholder);
     render((
+        // Derived from the other links in the notifications bar.
         <a
             href={CONFIG.PATH.PREFERENCES.link(SITE.PATH.SETTINGS.link)}
             title={T.preferences.title}
