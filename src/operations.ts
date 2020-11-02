@@ -174,9 +174,7 @@ const OPERATIONS: readonly Operation<any>[] = [
         description: "insert preferences shortcut",
         condition: () => !isOnBSCPreferencesPage && shouldInsertPreferencesShortcut,
         dependencies: {
-            iconOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButtonIcon),
-            labelOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButtonLabel),
-            signoutButtonOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButton),
+            notificationsBar: ".pw-notifications",
         },
         action: insertPreferencesShortcut,
     }),
@@ -189,16 +187,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     operation({
         description: "prevent accidental signout",
         condition: () => {
-            type OnlyIfPreferencesShortcutDependsOnSignoutButton = (
-                // The preferences shortcut replaces the signout button. Should that change, this operation's condition must be updated.
-                Parameters<typeof insertPreferencesShortcut> extends [{
-                    iconOrSigninButton: HTMLElement,
-                    labelOrSigninButton: HTMLElement,
-                    signoutButtonOrSigninButton: HTMLElement,
-                }] ? boolean : never
-            );
-            const preferencesShortcutIsEnabled: OnlyIfPreferencesShortcutDependsOnSignoutButton = shouldInsertPreferencesShortcut;
-            return !preferencesShortcutIsEnabled && Preferences.get(P.advanced._.prevent_accidental_signout);
+            return Preferences.get(P.advanced._.prevent_accidental_signout);
         },
         dependencies: { signoutButtonOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButton) },
         action: preventAccidentalSignout,

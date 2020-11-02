@@ -78,7 +78,7 @@ export const preferences = {
         improved_corrections: `Bättre rättelsegränssnitt`,
         improved_corrections_description: `Gör det enklare att skicka in rättelser`,
         insert_preferences_shortcut: `Genväg till inställningar för ${CONFIG.USERSCRIPT_NAME}`,
-        insert_preferences_shortcut_description: `Visa en länk till ${CONFIG.USERSCRIPT_NAME} inställningsmeny istället för utloggningslänken`,
+        insert_preferences_shortcut_description: `Visa en länk till ${CONFIG.USERSCRIPT_NAME} inställningsmeny högst upp`,
         replace_followed_threads_link: `Ersätt länken <em>Följda trådar</em> med <em>${my_posts}</em>`,
         replace_followed_threads_link_description: OBVIOUS,
         thread_status_tooltips: `Tooltips på trådstatusikoner`,
