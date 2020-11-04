@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@alling/better-sweclockers-lib": "^1.1.6",
+    "@babel/preset-env": "^7.12.1",
     "@typed/compose": "^1.0.0",
     "@types/app-root-path": "^1.2.4",
     "@types/classnames": "^2.2.9",
