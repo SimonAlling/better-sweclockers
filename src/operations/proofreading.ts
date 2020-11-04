@@ -16,8 +16,8 @@ const ELEMENTS_TO_GO_OUTSIDE = [
     "sup",
 ].map(x => x.toUpperCase()); // because .tagName is upper case
 
-export function performProcessing() {
-    const selector = [ SELECTOR.bbParagraph, "h1", "h2", "h3" ].join(", ");
+export const performProcessing = (selectors: readonly string[]) => () => {
+    const selector = selectors.join(", ");
     for (const n of document.querySelectorAll(selector)) {
         processNode(n);
     }
@@ -39,7 +39,7 @@ export function performProcessing() {
             }, 10);
         });
     }
-}
+};
 
 export const enum Options {
     ALWAYS,
