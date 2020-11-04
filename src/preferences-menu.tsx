@@ -160,7 +160,7 @@ function InputElement<T extends AllowedTypes>(generators: Generators, p: Prefere
     if (is(ListPreference)(p) && p === P.interests._.uninteresting_subforums) {
         return <Interests p={p} />;
     }
-    throw new Error(`Unsupported preference: ${p}`);
+    throw new Error(`Unsupported preference: ${p}`); // This kills the entire preferences GUI, so we have a test catching it.
 }
 
 function Generator_Boolean(p: BooleanPreference): GeneratorOutput {
