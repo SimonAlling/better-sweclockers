@@ -333,7 +333,7 @@ function extractForumLinkData(forumLink: HTMLAnchorElement): ForumCategory | nul
     return {
         id,
         name: label,
-        isSubforum: forumLink.classList.contains(SITE.CLASS.subforumLink),
+        isSubforum: (forumLink.parentElement as Element).classList.contains(SITE.CLASS.subforums),
     };
 }
 

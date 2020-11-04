@@ -39,7 +39,7 @@ export default {
     sideColumnGuides: `.videoPush.${C.sideBox}`,
     sideColumnPopularGalleries: `.popularGalleries.${C.sideBox}`,
     bbParagraph: `.bbParagraph`,
-    forumLink: `.subForums a[href^="/forum/"]`,
+    forumLink: `.subForums td:first-child > * a[href^="/forum/"]`, // Have to be this specific because there are other random links that we don't want to match.
     forumPost: "." + SITE.CLASS.forumPost,
     forumPostAuthorLink: `.name a`,
     linkedForumPost: `.` + SITE.CLASS.forumPost + `.isLinked`,
