@@ -240,7 +240,12 @@ const OPERATIONS: readonly Operation<any>[] = [
     operation({
         description: "perform proofreading processing",
         condition: () => isReadingEditorialContent || (isInEditMode && Preferences.get(P.advanced._.proofread_forum_posts)),
-        action: Proofreading.performProcessing,
+        action: Proofreading.performProcessing(
+            // Hotfix for #152.
+            isReadingEditorialContent
+                ? [ SELECTOR.bbParagraph ]
+                : [ SELECTOR.bbParagraph, "h1", "h2", "h3" ]
+        ),
         deferUntil: DOMCONTENTLOADED,
     }),
     operation({
