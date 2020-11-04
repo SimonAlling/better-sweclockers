@@ -50,14 +50,20 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
     .#{getGlobal("SITE.CLASS.fieldset")} {
         padding: 8px 16px;
         margin: 16px 0 24px 0; // more than default
+        border: 1px solid gray; // None by default.
+        border-radius: 4px;
 
         > legend {
+            font-size: unset; // Too large by default.
+            margin-bottom: unset; // Too large by default.
             padding: 0 4px;
+            width: unset; // Top border of fieldset disappears by default.
         }
     }
 
     .#{getGlobal("CONFIG.CLASS.radioButtonPreference")} {
         display: inline-block;
+        margin-bottom: unset; // Too large by default.
         width: -webkit-fit-content;
         width: -moz-fit-content;
         width: fit-content;
