@@ -51,7 +51,7 @@ form##{getGlobal("CONFIG.USERSCRIPT_ID")} {
         padding: 8px 16px;
         margin: 16px 0 24px 0; // more than default
         border: 1px solid gray; // None by default.
-        border-radius: 4px;
+        border-radius: 4px; // None by default.
 
         > legend {
             font-size: unset; // Too large by default.
