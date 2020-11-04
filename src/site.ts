@@ -68,7 +68,7 @@ export const CLASS = {
     socialMediaButtons: [ `threadShare`, `greyContentShare`, `sideShare` ],
     sideBox: "sideBox",
     smiley: "smiley",
-    subforumLink: "link",
+    subforums: "subforums",
     toolbarGroup: "tbGroup",
     toolbarButton: "tbButton iconButton noselect",
     toolbarButtonIcon: "btnIcon",
