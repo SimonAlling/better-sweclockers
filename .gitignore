@@ -4,7 +4,6 @@ dist
 .babelrc
 .awcache
 *.psd
-*.png
 .userscripter-temp
 
 # OS generated files #
