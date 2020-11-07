@@ -12,6 +12,7 @@ function pathMatches(r: RegExp): boolean {
     return r.test(document.location.pathname);
 }
 
+export const isInForumThreadsView = pathMatches(SITE.PATH.FORUM_THREADS_VIEW);
 export const isInEditMode_forum = pathMatches(SITE.PATH.EDIT_MODE_FORUM);
 export const isInEditMode_market = pathMatches(SITE.PATH.EDIT_MODE_MARKET);
 export const isInEditMode_marketContact = pathMatches(SITE.PATH.EDIT_MODE_MARKET_CONTACT);

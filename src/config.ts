@@ -71,6 +71,7 @@ export const CLASS = {
     textareaSize: c("textarea-size"),
     codeInput: c("code-input"),
     checkbox: c("checkbox"),
+    uninteresting: c("uninteresting"),
 } as const;
 
 export const PATH = {

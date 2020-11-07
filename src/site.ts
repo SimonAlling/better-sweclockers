@@ -113,6 +113,7 @@ export const PATH = {
     TESTPILOT: /^\/testpilot\//,
     FORUM_CATEGORY: /\/forum\/(\d+)/,
     FORUM: "/forum",
+    FORUM_THREADS_VIEW: /^\/forum\/(aktiva|obesvarade|foljda|skapade|lasta)$/,
     THREAD: /^\/(?:forum|medlem\/\d+\/meddelanden)\/trad\//,
     POST: /^\/(?:forum|medlem\/\d+\/meddelanden)\/post\//,
     SUCCESSFULLY_SUBMITTED_FORUM_POST: /^\/forum\/post\/\d+$/,
