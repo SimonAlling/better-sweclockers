@@ -9,7 +9,6 @@ import { P, Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import { hideByClass, hideById, hideBySelector } from "~src/stylesheets/hide";
-import interestsNewInForum from "~src/stylesheets/interests-new-in-forum";
 import threadStatusTooltipsGenerated from "~src/stylesheets/thread-status-tooltips-logic";
 import { timeIsWithin } from "~src/time";
 
@@ -33,6 +32,7 @@ import preferences from "./stylesheets/preferences.scss";
 import replaceFollowedThreadsLink from "./stylesheets/replace-followed-threads-link.scss";
 import textareaSizeToggle from "./stylesheets/textarea-size-toggle.scss";
 import threadStatusTooltips from "./stylesheets/thread-status-tooltips.scss";
+import uninterestingSubforums from "./stylesheets/uninteresting-subforums.scss";
 import webSearchButton from "./stylesheets/web-search-button.scss";
 
 function isTimeForMaintenance() {
@@ -125,7 +125,7 @@ const STYLESHEETS = {
     }),
     uninteresting_subforums: stylesheet({
         condition: ALWAYS,
-        css: interestsNewInForum(Preferences.get(P.interests._.uninteresting_subforums)),
+        css: uninterestingSubforums,
     }),
     replace_followed_threads_link: stylesheet({
         condition: () => Preferences.get(P.general._.replace_followed_threads_link),

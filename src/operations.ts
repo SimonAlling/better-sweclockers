@@ -8,6 +8,7 @@ import {
     isInEditMode_market,
     isInEditMode_marketContact,
     isInEditMode_PM,
+    isInForumThreadsView,
     isOnBSCPreferencesPage,
     isOnSweclockersSettingsPage,
     isReadingEditorialContent,
@@ -45,6 +46,7 @@ import removeMobileSiteDisclaimer from "./operations/remove-mobile-site-disclaim
 import replaceFollowedThreadsLink from "./operations/replace-followed-threads-link";
 import insertTableToolbarButton from "./operations/table-toolbar-button";
 import insertTextareaSizeToggle from "./operations/textarea-size-toggle";
+import filterUninterestingSubforums from "./operations/uninteresting-subforums";
 import insertWebSearchButton from "./operations/web-search-button";
 
 const ALWAYS = true;
@@ -52,6 +54,7 @@ const ALWAYS = true;
 const improvedBuiltinEditingToolsDescription = "enable improved built-in editing tools";
 const shouldEnableImprovedBuiltinEditingTools = (isInEditMode || isReadingThread) && Preferences.get(P.edit_mode._.improved_builtin_editing_tools);
 const shouldInsertPreferencesShortcut = Preferences.get(P.general._.insert_preferences_shortcut);
+const uninterestingSubforumIDs = Preferences.get(P.interests._.uninteresting_subforums);
 
 // True here means the user wants us to act as if there is undo support (i.e. take no precautions to protect data).
 // Chrome always has actual undo support and Firefox never does.
@@ -221,6 +224,13 @@ const OPERATIONS: readonly Operation<any>[] = [
         condition: () => isReadingEditorialContent && Preferences.get(P.general._.improved_corrections),
         dependencies: { correctionsLink: "#" + SITE.ID.correctionsLink },
         action: adaptCorrectionsLink,
+    }),
+    operation({
+        description: "filter uninteresting subforums",
+        condition: () => isInForumThreadsView && uninterestingSubforumIDs.length > 0,
+        dependencies: { body: "body" },
+        action: filterUninterestingSubforums(uninterestingSubforumIDs),
+        deferUntil: DOMCONTENTLOADED,
     }),
     operation({
         description: "enable proofreading",

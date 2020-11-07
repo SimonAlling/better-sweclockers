@@ -47,6 +47,7 @@ export const general = {
     quote_signature_tooltip_no_signature: `Signatur saknas`,
     mention_everyone_label,
     mention_everyone_tooltip: `Nämn alla tråddeltagare på den här sidan i ett nytt inlägg`,
+    uninteresting_subforum: (subforumName: string) => `Du har markerat kategorin ${subforumName} som ointressant.`,
     pm_link_label: "PM",
     go_to_post: `Gå till inlägget`,
     link_to_top: `Till toppen`,

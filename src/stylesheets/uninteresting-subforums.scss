@@ -1,0 +1,4 @@
+.forumThread.#{getGlobal("CONFIG.CLASS.uninteresting")} {
+    opacity: 0.3;
+    transition: opacity 200ms ease-out;
+}
