@@ -39,12 +39,6 @@ export default {
         label: T.preferences.general.replace_followed_threads_link,
         description: T.preferences.general.replace_followed_threads_link_description,
     }),
-    thread_status_tooltips: new BooleanPreference({
-        key: "thread_status_tooltips",
-        default: true,
-        label: T.preferences.general.thread_status_tooltips,
-        description: T.preferences.general.thread_status_tooltips_description,
-    }),
     remember_location_in_market: new BooleanPreference({
         key: "remember_location_in_market",
         default: true,

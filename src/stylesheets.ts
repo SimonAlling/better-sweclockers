@@ -9,7 +9,6 @@ import { P, Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import { hideByClass, hideById, hideBySelector } from "~src/stylesheets/hide";
-import threadStatusTooltipsGenerated from "~src/stylesheets/thread-status-tooltips-logic";
 import { timeIsWithin } from "~src/time";
 
 import adaptiveWidthCorrections from "./stylesheets/adaptive-width-corrections.scss";
@@ -31,7 +30,6 @@ import preferencesLink from "./stylesheets/preferences-link.scss";
 import preferences from "./stylesheets/preferences.scss";
 import replaceFollowedThreadsLink from "./stylesheets/replace-followed-threads-link.scss";
 import textareaSizeToggle from "./stylesheets/textarea-size-toggle.scss";
-import threadStatusTooltips from "./stylesheets/thread-status-tooltips.scss";
 import uninterestingSubforums from "./stylesheets/uninteresting-subforums.scss";
 import webSearchButton from "./stylesheets/web-search-button.scss";
 
@@ -143,10 +141,6 @@ const STYLESHEETS = {
     custom_css: stylesheet({
         condition: () => Preferences.get(P.advanced._.custom_css_enable),
         css: Preferences.get(P.advanced._.custom_css_code),
-    }),
-    thread_status_tooltips: stylesheet({
-        condition: () => Preferences.get(P.general._.thread_status_tooltips),
-        css: threadStatusTooltips + threadStatusTooltipsGenerated(),
     }),
     mention_everyone: stylesheet({
         condition: () => Preferences.get(P.forum_threads._.mention_everyone_button),

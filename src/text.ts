@@ -82,8 +82,6 @@ export const preferences = {
         insert_preferences_shortcut_description: `Visa en länk till ${CONFIG.USERSCRIPT_NAME} inställningsmeny högst upp`,
         replace_followed_threads_link: `Ersätt länken <em>Följda trådar</em> med <em>${my_posts}</em>`,
         replace_followed_threads_link_description: OBVIOUS,
-        thread_status_tooltips: `Tooltips på trådstatusikoner`,
-        thread_status_tooltips_description: `Hovra med musen för att se vad de olika ikonerna betyder i forumets översiktsvyer`,
         remember_location_in_market: `Kom ihåg min plats i marknaden`,
         remember_location_in_market_description: `Slipp fylla i län och stad varje gång du skapar en annons`,
         insert_web_search_button: `Webbsökknapp`,
@@ -310,17 +308,3 @@ export const special_characters: readonly InsertButtonDescription[] = [
     { insert: "→", tooltip: "Högerpil" },
     { insert: "™", tooltip: "Varumärke (trademark)" },
 ];
-
-export const thread_status = {
-    // https://www.sweclockers.com/forum/trad/1367915-faq-tradikoner-och-deras-betydelser
-    // NOTE! Apostrophes must be (double-)escaped because these strings are used as CSS `content` values. For example:
-    // editors_choice: `Editor\\'s choice`,
-    unread: `Olästa inlägg`, // Öppet kuvert
-    default: `Gå till tråden`, // Stängt kuvert
-    hot: `50+ inlägg`, // Orange kuvert
-    participated: `Du har deltagit`, // Sigill (punkt)
-    following: `Du följer tråden`, // Stjärna
-    locked: `Låst`, // Hänglås
-    sticky: `Klistrad`, // Knappnål
-    separator: "  •  ",
-} as const;
