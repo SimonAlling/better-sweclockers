@@ -44,8 +44,7 @@ export function manage(): void {
 }
 
 function apply(newState: boolean): void {
-    const urlWithoutCacheInvalidation = Preferences.get(P.dark_theme._.use_backup) ? darkTheme.URL.backup : darkTheme.URL.canonical;
-    const url = withCacheInvalidation(urlWithoutCacheInvalidation, new Date());
+    const url = withCacheInvalidation(darkTheme.URL.stylesheet, new Date());
     if (newState) {
         if (isNull(document.getElementById(CONFIG.ID.darkThemeStylesheet))) {
             // Not document.head because it can be null, e.g. in a background tab in Firefox:

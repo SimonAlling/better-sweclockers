@@ -178,8 +178,6 @@ export const preferences = {
         and: `och`,
         interval: `Uppdateringsintervall`,
         interval_description: `Hur ofta ${CONFIG.USERSCRIPT_NAME} ska kolla vad klockan är`,
-        use_backup: `Använd Allings server`,
-        use_backup_description: `Workaround om det mörka temat inte är tillgängligt "live"`,
     },
 
     customize_content: {
