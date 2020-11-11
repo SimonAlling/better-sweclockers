@@ -112,6 +112,7 @@ export const PATH = {
     FORUM_CATEGORY: /\/forum\/(\d+)/,
     FORUM: "/forum",
     FORUM_THREADS_VIEW: /^\/forum\/(aktiva|obesvarade|foljda|skapade|lasta)$/,
+    PROFILE: (userId: number | "\\d+") => new RegExp(`^/medlem/${userId}$`),
     THREAD: /^\/(?:forum|medlem\/\d+\/meddelanden)\/trad\//,
     POST: /^\/(?:forum|medlem\/\d+\/meddelanden)\/post\//,
     SUCCESSFULLY_SUBMITTED_FORUM_POST: /^\/forum\/post\/\d+$/,
@@ -164,6 +165,8 @@ export const MOBILE_SITE_DISCLAIMER = {
     sentFrom: `Skickades från`,
     mobileSiteDomain: HOSTNAME_MOBILE,
 } as const;
+
+export const USER_ID_NOT_LOGGED_IN = 1;
 
 export function getUserID(): unknown {
     const s = (window as any).session;

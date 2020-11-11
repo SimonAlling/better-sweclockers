@@ -10,6 +10,7 @@ import {
     isInEditMode_PM,
     isInForumThreadsView,
     isOnBSCPreferencesPage,
+    isOnSomeProfilePage,
     isOnSweclockersSettingsPage,
     isReadingEditorialContent,
     isReadingThread,
@@ -189,11 +190,9 @@ const OPERATIONS: readonly Operation<any>[] = [
     }),
     operation({
         description: "prevent accidental signout",
-        condition: () => {
-            return Preferences.get(P.advanced._.prevent_accidental_signout);
-        },
-        dependencies: { signoutButtonOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.signoutButton) },
+        condition: () => isOnSomeProfilePage && Preferences.get(P.advanced._.prevent_accidental_signout),
         action: preventAccidentalSignout,
+        deferUntil: DOMCONTENTLOADED, // We can't extract the user's ID at document-start.
     }),
     operation({
         description: "insert preferences link",

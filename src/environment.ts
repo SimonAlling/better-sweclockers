@@ -7,6 +7,7 @@ import * as SITE from "./site";
 export const isOnBSCPreferencesPage = pathMatches(CONFIG.PATH.PREFERENCES.check(SITE.PATH.SETTINGS.check));
 
 export const isOnSweclockersSettingsPage = pathMatches(SITE.PATH.SETTINGS.check) && !isOnBSCPreferencesPage;
+export const isOnSomeProfilePage = pathMatches(SITE.PATH.PROFILE("\\d+"));
 
 function pathMatches(r: RegExp): boolean {
     return r.test(document.location.pathname);
