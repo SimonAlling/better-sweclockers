@@ -13,7 +13,7 @@ import { r } from "~src/utilities";
 export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);
     const ourUserID = SITE.getUserID();
-    if (!isNumber(ourUserID)) {
+    if (ourUserID === undefined) {
         return couldNotExtract("current user's ID");
     }
     const threadTitle = document.querySelector(SELECTOR.threadTitle)?.textContent;
