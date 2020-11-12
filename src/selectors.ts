@@ -41,7 +41,7 @@ export default {
     bbParagraph: `.bbParagraph`,
     forumLink: `.subForums td:first-child > * a[href^="/forum/"]`, // Have to be this specific because there are other random links that we don't want to match.
     forumPost: "." + SITE.CLASS.forumPost,
-    forumPostAuthorLink: `.name a`,
+    forumPostAuthorLink: `a.name[itemprop="author"]`,
     linkedForumPost: `.` + SITE.CLASS.forumPost + `.isLinked`,
     listBulkActions: `#postActions .listBulkActions`,
     quickReplyForm: `#quickreply form`,

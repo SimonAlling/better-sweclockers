@@ -51,7 +51,7 @@ export const CLASS = {
     menuItem: "menuItem",
     settingsNavigation: "menuItems",
     forumPosts: "forumPosts",
-    forumPost: "forumPost",
+    forumPost: "forum-post",
     forumPostProfileDetails: "details",
     forumPostSignature: "signature",
     forumPostControls: "controls",
