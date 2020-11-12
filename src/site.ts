@@ -168,9 +168,9 @@ export const MOBILE_SITE_DISCLAIMER = {
 
 export const USER_ID_NOT_LOGGED_IN = 1;
 
-export function getUserID(): unknown {
-    const s = (window as any).session;
-    return s === undefined ? undefined : s._userid;
+export function getUserID(): number | undefined {
+    const userID = (window as any)?.session?._userid;
+    return typeof userID === "number" ? userID : undefined;
 }
 
 export function isValidUsername(s: string): boolean {
