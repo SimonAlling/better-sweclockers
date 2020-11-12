@@ -48,7 +48,7 @@ export const general = {
     mention_everyone_label,
     mention_everyone_tooltip: `Nämn alla tråddeltagare på den här sidan i ett nytt inlägg`,
     uninteresting_subforum: (subforumName: string) => `Du har markerat kategorin ${subforumName} som ointressant.`,
-    pm_link_label: "PM",
+    pm_link_label: "&nbsp;PM",
     go_to_post: `Gå till inlägget`,
     link_to_top: `Till toppen`,
     textarea_size_small: `Liten textruta`,
