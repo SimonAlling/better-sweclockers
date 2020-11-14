@@ -1,4 +1,4 @@
-![BETTER SWECLOCKERS](https://cdn.sweclockers.com/artikel/bild/63329?l=eyJyZXNvdXJjZSI6IlwvYXJ0aWtlbFwvYmlsZFwvNjMzMjkiLCJmaWx0ZXJzIjpbInQ9b3JpZ2luYWwiXSwicGFyYW1zIjpbXSwia2V5IjoiYzk3ODM1MmY4NDVkM2YwOWY3M2UwYWRmODZlMjk1MmIifQ%3D%3D)
+![BETTER SWECLOCKERS](docs/logo.png)
 A userscript for Swedish tech site [SweClockers](https://sweclockers.com). More information in [this thread](https://www.sweclockers.com/forum/trad/1541641-better-sweclockers-2018) (Swedish).
 
 

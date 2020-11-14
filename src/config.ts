@@ -93,7 +93,7 @@ export const KEY = {
     draft_mode: i("draft_mode"),
 } as const;
 
-export const URL_LOGO = "https://cdn.sweclockers.com/artikel/bild/63329?l=eyJyZXNvdXJjZSI6IlwvYXJ0aWtlbFwvYmlsZFwvNjMzMjkiLCJmaWx0ZXJzIjpbInQ9b3JpZ2luYWwiXSwicGFyYW1zIjpbXSwia2V5IjoiYzk3ODM1MmY4NDVkM2YwOWY3M2UwYWRmODZlMjk1MmIifQ%3D%3D";
+export const URL_LOGO = "https://github.com/SimonAlling/better-sweclockers/raw/master/docs/logo.png";
 
 export const CONTENT = {
     indentation: "    ",
