@@ -33,6 +33,11 @@ textarea.#{getGlobal("CONFIG.CLASS.codeInput")}, .#{getGlobal("CONFIG.CLASS.code
 
 .#{getGlobal("SITE.CLASS.forumPost")} .#{getGlobal("SITE.CLASS.forumPostControls")} .#{getGlobal("CONFIG.CLASS.quoteSignatureButton")} {
     float: right;
+    margin-right: 10px; // Same as that between the vanilla quote buttons and the like button.
+
+    > button {
+        margin-right: 0; // Otherwise the margins are stacked.
+    }
 }
 
 .#{getGlobal("CONFIG.CLASS.linkToTop")} {

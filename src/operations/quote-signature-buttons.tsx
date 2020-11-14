@@ -57,7 +57,7 @@ function form(props: {
     ].join("\n");
     const noSignature = isNull(props.signature);
     return (
-        <form method="POST" action={props.replyURL} class={[ SITE.CLASS.forumPostBtnGroup, CONFIG.CLASS.quoteSignatureButton ].join(" ")}>
+        <form method="POST" action={props.replyURL} class={CONFIG.CLASS.quoteSignatureButton}>
             {isNull(props.signature) ? [] : [
                 <input name={SITE.FORM.name.message} type="hidden" value={message} />,
                 <input name={SITE.FORM.name.csrfToken} type="hidden" value={props.csrf} />,
