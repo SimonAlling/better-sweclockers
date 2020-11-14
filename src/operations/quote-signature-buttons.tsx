@@ -32,7 +32,7 @@ export default (e: { quickReplyForm: HTMLElement }) => {
             render(form({
                 signature,
                 postID,
-                author: authorLink.textContent || "",
+                author: (authorLink.textContent || "").trim(),
                 userMessage,
                 replyURL: (e.quickReplyForm as HTMLFormElement).getAttribute("action") || "",
                 csrf,
