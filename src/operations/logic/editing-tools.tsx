@@ -24,34 +24,34 @@ import { Action, CursorBehavior, insert, insertIn, selectedTextIn, wrap_tag, wra
 
 export const BUTTON = {
     nbsps: generalButton({
-        label: T.editing_tools.label_nbsps,
-        tooltip: T.editing_tools.tooltip_nbsps,
+        label: T.editing_tools.nbsps_label,
+        tooltip: T.editing_tools.nbsps_tooltip,
         action: ACTION_REPLACE_SPACES_WITH_NBSPS,
     }),
     url: tagButton({
         tag: SITE.TAG.url,
         parameterized: true,
-        tooltip: T.editing_tools.tooltip_url,
+        tooltip: T.editing_tools.url_tooltip,
         icon: { type: "RAW", image: SITE.ICONS.toolbarIcon(SITE.ICONS.position_toolbar_url) },
     }),
     img: generalButton({
-        tooltip: T.editing_tools.tooltip_img,
+        tooltip: T.editing_tools.img_tooltip,
         action: ACTION_IMG,
         icon: { type: "RAW", image: SITE.ICONS.toolbarIcon(SITE.ICONS.position_toolbar_img) },
     }),
     search: (engine: SearchEngine) => generalButton({
-        tooltip: T.editing_tools.tooltip_search_link,
+        tooltip: T.editing_tools.search_link_tooltip,
         action: ACTION_SEARCH_LINK(engine),
         icon: { type: "RAW", image: iconSearchLink },
     }),
     shibe: generalButton({
-        label: T.editing_tools.label_shibe,
-        tooltip: T.editing_tools.tooltip_shibe,
+        label: T.editing_tools.shibe_label,
+        tooltip: T.editing_tools.shibe_tooltip,
         class: CONFIG.CLASS.shibe,
         action: ACTION_SHIBE,
     }),
     doge: generalButton({
-        tooltip: T.editing_tools.tooltip_doge,
+        tooltip: T.editing_tools.doge_tooltip,
         action: insert(CONFIG.CONTENT.doge),
         icon: { type: "URL", image: CONFIG.ICONS.DOGE },
     }),
@@ -59,17 +59,17 @@ export const BUTTON = {
         tag: SITE.TAG.quote,
         parameterized: true,
         block: true,
-        tooltip: T.editing_tools.tooltip_quote,
+        tooltip: T.editing_tools.quote_tooltip,
         icon: { type: "RAW", image: iconQuote },
     }),
     splitQuote: generalButton({
-        tooltip: T.editing_tools.tooltip_split_quote,
+        tooltip: T.editing_tools.split_quote_tooltip,
         action: ACTION_SPLIT_QUOTE,
         icon: { type: "RAW", image: iconSplitQuote },
     }),
     expander: tagButton({
         tag: SITE.TAG.expander,
-        tooltip: T.editing_tools.tooltip_expander,
+        tooltip: T.editing_tools.expander_tooltip,
         block: true,
         icon: { type: "RAW", image: iconExpander },
     }),
@@ -77,27 +77,27 @@ export const BUTTON = {
 
 export const BUTTONS = {
     meta: [
-        tagButton({ tag: SITE.TAG.ins, label: T.editing_tools.label_ins, tooltip: T.editing_tools.tooltip_ins }),
-        tagButton({ tag: SITE.TAG.del, label: T.editing_tools.label_del, tooltip: T.editing_tools.tooltip_del }),
+        tagButton({ tag: SITE.TAG.ins, label: T.editing_tools.ins_label, tooltip: T.editing_tools.ins_tooltip }),
+        tagButton({ tag: SITE.TAG.del, label: T.editing_tools.del_label, tooltip: T.editing_tools.del_tooltip }),
     ],
     code: [
-        tagButton({ tag: SITE.TAG.noparse, tooltip: T.editing_tools.tooltip_noparse, class: CONFIG.CLASS.button_code }),
-        tagButton({ tag: SITE.TAG.pre, tooltip: T.editing_tools.tooltip_pre, block: true, class: CONFIG.CLASS.button_code }),
-        tagButton({ tag: SITE.TAG.cmd, tooltip: T.editing_tools.tooltip_cmd, class: CONFIG.CLASS.button_code }),
-        tagButton({ tag: SITE.TAG.code, tooltip: T.editing_tools.tooltip_code, block: true, class: CONFIG.CLASS.button_code }),
+        tagButton({ tag: SITE.TAG.noparse, tooltip: T.editing_tools.noparse_tooltip, class: CONFIG.CLASS.button_code }),
+        tagButton({ tag: SITE.TAG.pre, tooltip: T.editing_tools.pre_tooltip, block: true, class: CONFIG.CLASS.button_code }),
+        tagButton({ tag: SITE.TAG.cmd, tooltip: T.editing_tools.cmd_tooltip, class: CONFIG.CLASS.button_code }),
+        tagButton({ tag: SITE.TAG.code, tooltip: T.editing_tools.code_tooltip, block: true, class: CONFIG.CLASS.button_code }),
     ],
     math: [
-        tagButton({ tag: SITE.TAG.math, label: T.editing_tools.label_math, tooltip: T.editing_tools.tooltip_math, class: CONFIG.CLASS.button_math }),
-        tagButton({ tag: SITE.TAG.sub, label: T.editing_tools.label_sub, tooltip: T.editing_tools.tooltip_sub, class: CONFIG.CLASS.button_math }),
-        tagButton({ tag: SITE.TAG.sup, label: T.editing_tools.label_sup, tooltip: T.editing_tools.tooltip_sup, class: CONFIG.CLASS.button_math }),
+        tagButton({ tag: SITE.TAG.math, label: T.editing_tools.math_label, tooltip: T.editing_tools.math_tooltip, class: CONFIG.CLASS.button_math }),
+        tagButton({ tag: SITE.TAG.sub, label: T.editing_tools.sub_label, tooltip: T.editing_tools.sub_tooltip, class: CONFIG.CLASS.button_math }),
+        tagButton({ tag: SITE.TAG.sup, label: T.editing_tools.sup_label, tooltip: T.editing_tools.sup_tooltip, class: CONFIG.CLASS.button_math }),
     ],
     whitespace: [
         BUTTON.nbsps,
     ],
     definitions: [
-        tagButton({ tag: SITE.TAG.dl, label: T.editing_tools.label_dl, tooltip: T.editing_tools.tooltip_dl, block: true }),
-        tagButton({ tag: SITE.TAG.dt, label: T.editing_tools.label_dt, tooltip: T.editing_tools.tooltip_dt }),
-        tagButton({ tag: SITE.TAG.dd, label: T.editing_tools.label_dd, tooltip: T.editing_tools.tooltip_dd }),
+        tagButton({ tag: SITE.TAG.dl, label: T.editing_tools.dl_label, tooltip: T.editing_tools.dl_tooltip, block: true }),
+        tagButton({ tag: SITE.TAG.dt, label: T.editing_tools.dt_label, tooltip: T.editing_tools.dt_tooltip }),
+        tagButton({ tag: SITE.TAG.dd, label: T.editing_tools.dd_label, tooltip: T.editing_tools.dd_tooltip }),
     ],
     embed: (searchEngine: SearchEngine) => [
         BUTTON.url,
