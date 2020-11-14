@@ -10,7 +10,8 @@ jobs:
     name: CI Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/set-timezone-action@v1.0
+      - name: Set time zone
+        uses: szenius/set-timezone@v1.0
         with:
           timezoneLinux: "Europe/Stockholm"
       - uses: actions/checkout@v1
