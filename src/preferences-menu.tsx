@@ -66,16 +66,16 @@ export class PreferencesForm extends Component {
         return (
             <form id={CONFIG.USERSCRIPT_ID}>
                 <header>
-                    <a href={document.referrer || "/"} title={T.preferences.back_to_sweclockers}>
+                    <a href={document.referrer || "/"} title={T.preferences._.back_to_sweclockers}>
                         <img src={CONFIG.URL_LOGO} alt={CONFIG.USERSCRIPT_NAME} />
                     </a>
                 </header>
                 {Entries(GENERATORS, P)}
                 <footer>
-                    <p>{T.preferences.save_notice}</p>
+                    <p>{T.preferences._.save_notice}</p>
                     <p>
-                        <a href={document.referrer || "/"} title={T.preferences.back_to_sweclockers}>
-                            {T.preferences.back_to_sweclockers}
+                        <a href={document.referrer || "/"} title={T.preferences._.back_to_sweclockers}>
+                            {T.preferences._.back_to_sweclockers}
                         </a>
                     </p>
                 </footer>
@@ -174,7 +174,7 @@ function Generator_Boolean(p: BooleanPreference): GeneratorOutput {
 
 function Generator_String(p: StringPreference): GeneratorOutput {
     return (
-        p.label === T.preferences.NO_LABEL ? [] : [ <PreferenceLabel preference={p} /> ]
+        p.label === T.preferences._.NO_LABEL ? [] : [ <PreferenceLabel preference={p} /> ]
     ).concat([
         (p.multiline
             ?
@@ -422,7 +422,7 @@ class Interests extends Component<{ p: ListPreference<number> }, InterestsState>
                     </ul>
                 );
             case "failure":
-                return T.preferences.failed_to_fetch_categories;
+                return T.preferences._.failed_to_fetch_categories;
         }
     }
 }

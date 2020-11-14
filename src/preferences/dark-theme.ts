@@ -28,13 +28,13 @@ export default {
     active: new BooleanPreference({
         key: "dark_theme_active",
         default: false,
-        label: T.preferences.NO_LABEL,
+        label: T.preferences._.NO_LABEL,
         extras: { implicit: true },
     }),
     last_autoset_state: new BooleanPreference({
         key: "dark_theme_last_autoset_state",
         default: false,
-        label: T.preferences.NO_LABEL,
+        label: T.preferences._.NO_LABEL,
         extras: { implicit: true },
     }),
     show_toggle: new BooleanPreference({

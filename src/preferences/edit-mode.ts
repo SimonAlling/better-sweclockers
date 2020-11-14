@@ -42,7 +42,7 @@ export default {
         key: "textarea_size",
         default: DEFAULT_TEXTAREA_SIZE,
         min: 0, max: Number.MAX_VALUE,
-        label: T.preferences.NO_LABEL,
+        label: T.preferences._.NO_LABEL,
         extras: { implicit: true },
     }),
     textarea_size_toggle,
@@ -74,8 +74,8 @@ export default {
     monospace_font_in_quick_reply_form: new BooleanPreference({
         key: "monospace_font_in_quick_reply_form",
         default: false,
-        label: T.preferences.in_quick_reply_form,
-        description: T.preferences.in_quick_reply_form_description,
+        label: T.preferences._.in_quick_reply_form,
+        description: T.preferences._.in_quick_reply_form_description,
         extras: { class: CONFIG.CLASS.inlinePreference },
     }),
     improved_builtin_editing_tools: new BooleanPreference({
@@ -106,8 +106,8 @@ export default {
     keyboard_shortcuts_in_quick_reply: new BooleanPreference({
         key: "keyboard_shortcuts_in_quick_reply",
         default: false,
-        label: T.preferences.in_quick_reply_form,
-        description: T.preferences.in_quick_reply_form_description,
+        label: T.preferences._.in_quick_reply_form,
+        description: T.preferences._.in_quick_reply_form_description,
         extras: { class: CONFIG.CLASS.inlinePreference },
     }),
     insert_tab: new BooleanPreference({
@@ -120,7 +120,7 @@ export default {
     insert_tab_content: new MultichoicePreference({
         key: "insert_tab_content",
         default: TAB,
-        label: T.preferences.NO_LABEL,
+        label: T.preferences._.NO_LABEL,
         options: [
             {
                 value: TAB,

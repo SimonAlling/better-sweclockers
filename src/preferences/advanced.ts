@@ -94,7 +94,7 @@ export default {
     custom_css_code: new StringPreference({
         key: "custom_css_code",
         default: "",
-        label: T.preferences.NO_LABEL,
+        label: T.preferences._.NO_LABEL,
         description: T.preferences.advanced.custom_css_enable_description,
         multiline: true,
         extras: { class: CONFIG.CLASS.codeInput },

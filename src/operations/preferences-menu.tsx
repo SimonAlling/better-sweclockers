@@ -6,7 +6,7 @@ import * as T from "~src/text";
 import { yyyymmdd } from "~src/utilities";
 
 export default () => {
-    document.title = T.preferences.title;
+    document.title = T.preferences._.title;
     document.documentElement.appendChild((() => {
         const link = document.createElement("link");
         link.rel = "stylesheet";

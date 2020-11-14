@@ -10,7 +10,7 @@ export type ShortcutEntry = Readonly<{
 
 export default new ListPreference<ShortcutEntry>({
     key: "keyboard",
-    label: T.preferences.NO_LABEL,
+    label: T.preferences._.NO_LABEL,
     default: [
         { shortcut: "mod+s", action: Action.SUBMIT },
         { shortcut: "mod+p", action: Action.PREVIEW },
