@@ -49,7 +49,6 @@ export const CLASS = {
     pmButton: c("pm-button"),
     quoteSignatureButton: c("quote-signature-button"),
     mentionEveryoneButton: c("mention-everyone-button"),
-    linkToTop: c("link-to-top"),
     shibe: c("shibe"),
     button_restoreDraft: c("button-restore-draft"),
     button_color: c("button-color"),

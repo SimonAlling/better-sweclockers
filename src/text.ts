@@ -50,7 +50,7 @@ export const general = {
     uninteresting_subforum: (subforumName: string) => `Du har markerat kategorin ${subforumName} som ointressant.`,
     pm_link_label: "&nbsp;PM",
     go_to_post: `Gå till inlägget`,
-    link_to_top: `Till toppen`,
+    link_to_top_tooltip: `Gå till toppen`,
     textarea_size_small: `Liten textruta`,
     textarea_size_large: `Stor textruta`,
     web_search_button_tooltip: (engine: SearchEngine) => `Sök med ${engine}`,

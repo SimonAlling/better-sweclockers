@@ -40,17 +40,6 @@ textarea.#{getGlobal("CONFIG.CLASS.codeInput")}, .#{getGlobal("CONFIG.CLASS.code
     }
 }
 
-.#{getGlobal("CONFIG.CLASS.linkToTop")} {
-    $padding: 4px;
-    display: inline-block;
-    margin-top: 2px;
-    padding: $padding;
-    transform: translate(-$padding);
-    &:before {
-        content: "⏫";
-    }
-}
-
 // Selector must be kept in sync with @alling/better-sweclockers-lib:
 .mistake {
     border-color: rgba(240, 70, 0, 0.6);
