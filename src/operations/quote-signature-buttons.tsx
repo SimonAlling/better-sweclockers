@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import { h, render } from "preact";
 import { isNull, only } from "ts-type-guards";
 import { log } from "userscripter";
@@ -64,11 +65,10 @@ function form(props: {
             ]}
             <button
                 type="submit"
-                class={SITE.CLASS.button}
+                class={classnames(SITE.CLASS.button, noSignature ? SITE.CLASS.disabled : null)}
                 title={noSignature ? T.general.quote_signature_tooltip_no_signature : T.general.quote_signature_tooltip}
                 disabled={noSignature}
             >
-                <span class={SITE.CLASS.icon}></span>
                 <span class={SITE.CLASS.label}>{T.general.quote_signature_label}</span>
             </button>
         </form>

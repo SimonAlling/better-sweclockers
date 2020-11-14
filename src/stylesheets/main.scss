@@ -32,7 +32,7 @@ textarea.#{getGlobal("CONFIG.CLASS.codeInput")}, .#{getGlobal("CONFIG.CLASS.code
 }
 
 .#{getGlobal("SITE.CLASS.forumPost")} .#{getGlobal("SITE.CLASS.forumPostControls")} .#{getGlobal("CONFIG.CLASS.quoteSignatureButton")} {
-    margin-left: -50px; // to prevent horizontal overflow e.g. on a tablet
+    float: right;
 }
 
 .#{getGlobal("CONFIG.CLASS.linkToTop")} {

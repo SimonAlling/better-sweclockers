@@ -46,6 +46,7 @@ export const CLASS = {
     link: "link",
     icon: "icon",
     label: "label",
+    disabled: "is-disabled",
     inner: "inner",
     colorOrange: "color-orange",
     menuItem: "menuItem",
