@@ -43,7 +43,7 @@ export default {
     forumPost: "." + SITE.CLASS.forumPost,
     forumPostAuthorLink: `a.name[itemprop="author"]`,
     linkedForumPost: `.` + SITE.CLASS.forumPost + `.isLinked`,
-    listBulkActions: `#postActions .listBulkActions`,
+    pageNavigationAfterForumPosts: `${forumPostContainer} ~ * .pages`,
     quickReplyForm: `#quickreply form`,
     signoutButton,
     signinButtonOr: (selector: string) => `a[href="${SITE.PATH.SIGNIN}"], ${selector}`, // Order doesn't matter.

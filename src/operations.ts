@@ -204,7 +204,7 @@ const OPERATIONS: readonly Operation<any>[] = [
         description: "insert link to top",
         condition: () => isReadingThread && Preferences.get(P.forum_threads._.insert_link_to_top),
         action: insertLinkToTop,
-        dependencies: { parent: SELECTOR.listBulkActions },
+        dependencies: { parent: SELECTOR.pageNavigationAfterForumPosts },
     }),
     operation({
         description: "insert PM links",
