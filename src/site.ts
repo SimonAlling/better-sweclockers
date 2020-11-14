@@ -56,7 +56,6 @@ export const CLASS = {
     forumPostProfileDetails: "details",
     forumPostSignature: "signature",
     forumPostControls: "controls",
-    forumPostBtnGroup: "btnGroup",
     forumPostByCurrentUser: "isReader", // Don't use isAuthor; it means submitted by OP!
     bbcode: "bbcode",
     bbDel: "bbDel",
