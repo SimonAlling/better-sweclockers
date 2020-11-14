@@ -8,18 +8,18 @@ import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
 
-declare namespace Main { const Forms: any; }
+declare namespace Beta { const Forms: any; }
 declare namespace Taiga { const Strings: any; }
 
 export default (undoSupport: boolean) => () => {
     /*
     This operation must run "early" (before DOMContentLoaded), because otherwise it can't override the default action for the URL button.
-    However, it should not run _too_ early, because it fails if SweClockers' script hasn't yet defined Main.
+    However, it should not run _too_ early, because it fails if SweClockers' script hasn't yet defined Beta.
 
     I haven't managed to make this operation work at all in Firefox; the default action is just not overridden.
     */
     try { // If SweClockers change their "API", we want to fail gracefully.
-        Main.Forms.Toolbar.Buttons.HyperlinkButton.prototype.insertTemplate = () => {
+        Beta.Forms.Toolbar.Buttons.HyperlinkButton.prototype.insertTemplate = () => {
             const textarea = document.querySelector(SELECTOR.textarea);
             if (!is(HTMLTextAreaElement)(textarea)) {
                 log.error(`Could not find textarea.`);
