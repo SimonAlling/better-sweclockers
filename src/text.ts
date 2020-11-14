@@ -61,14 +61,16 @@ export const general = {
 } as const;
 
 export const preferences = {
-    NO_LABEL: ``,
-    shortcut_label: `BSC`,
-    title: `Inställningar för Better SweClockers`,
-    back_to_sweclockers: `Tillbaka till ${SITE.NAME}`,
-    save_notice: `Inställningarna sparas automatiskt, men endast lokalt på den här enheten.`,
-    failed_to_fetch_categories: `Kunde inte hämta forumkategorier.`,
-    in_quick_reply_form: `i formuläret <em>Snabbsvar</em>`,
-    in_quick_reply_form_description: `Längst ner i trådar`,
+    _: {
+        NO_LABEL: ``,
+        shortcut_label: `BSC`,
+        title: `Inställningar för Better SweClockers`,
+        back_to_sweclockers: `Tillbaka till ${SITE.NAME}`,
+        save_notice: `Inställningarna sparas automatiskt, men endast lokalt på den här enheten.`,
+        failed_to_fetch_categories: `Kunde inte hämta forumkategorier.`,
+        in_quick_reply_form: `i formuläret <em>Snabbsvar</em>`,
+        in_quick_reply_form_description: `Längst ner i trådar`,
+    },
 
     general: {
         label: `Allmänt`,

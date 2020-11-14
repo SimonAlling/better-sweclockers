@@ -45,8 +45,8 @@ export default {
     in_quick_reply_form: new BooleanPreference({
         key: "editing_tools_in_quick_reply_form",
         default: true,
-        label: T.preferences.in_quick_reply_form,
-        description: T.preferences.in_quick_reply_form_description,
+        label: T.preferences._.in_quick_reply_form,
+        description: T.preferences._.in_quick_reply_form_description,
         extras: { class: CONFIG.CLASS.inlinePreference },
     }),
     position: new MultichoicePreference({

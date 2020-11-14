@@ -48,13 +48,13 @@ export default {
     location_region: new IntegerPreference({
         key: "location_region",
         default: 0, // "Välj region:"
-        label: T.preferences.NO_LABEL,
+        label: T.preferences._.NO_LABEL,
         extras: { implicit: true },
     }),
     location_city: new StringPreference({
         key: "location_city",
         default: "",
-        label: T.preferences.NO_LABEL,
+        label: T.preferences._.NO_LABEL,
         multiline: false,
         extras: { implicit: true },
     }),
