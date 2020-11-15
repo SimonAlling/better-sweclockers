@@ -10,6 +10,7 @@ import { RawSource } from "webpack-sources";
 
 import METADATA, { versionBasedOnDate } from "./metadata";
 import * as CONFIG from "./src/config";
+import PROOFREADING from "./src/lib/proofreading/classes";
 import * as SITE from "./src/site";
 import * as T from "./src/text";
 import U from "./src/userscript";
@@ -24,7 +25,7 @@ const w = createWebpackConfig({
             now: now,
         }),
         hostedAt: U.hostedAt,
-        sassVariables: { CONFIG, SITE, T },
+        sassVariables: { CONFIG, PROOFREADING, SITE, T },
     },
     metadata: METADATA,
     metadataSchema: DEFAULT_METADATA_SCHEMA,

@@ -1,10 +1,10 @@
-import { STYLE_PROOFREADING } from "@alling/better-sweclockers-lib";
 import * as ms from "milliseconds";
 import { ALWAYS } from "userscripter/lib/environment";
 import { Stylesheets, stylesheet } from "userscripter/lib/stylesheets";
 
 import * as CONFIG from "~src/config";
 import { isInEditMode, isOnBSCPreferencesPage, isOnSweclockersSettingsPage, isReadingThread } from "~src/environment";
+import STYLE_PROOFREADING from "~src/lib/proofreading/style.scss";
 import { P, Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
