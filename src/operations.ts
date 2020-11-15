@@ -248,7 +248,11 @@ const OPERATIONS: readonly Operation<any>[] = [
     }),
     operation({
         description: "perform proofreading processing",
-        condition: () => isReadingEditorialContent || (isInEditMode && Preferences.get(P.advanced._.proofread_forum_posts)),
+        condition: () => (
+            (isReadingEditorialContent && Preferences.get(P.advanced._.proofread_articles) !== Proofreading.Options.NEVER)
+            ||
+            (isInEditMode && Preferences.get(P.advanced._.proofread_forum_posts))
+        ),
         action: Proofreading.performProcessing(
             // Hotfix for #152.
             isReadingEditorialContent
