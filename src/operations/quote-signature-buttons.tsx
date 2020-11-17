@@ -66,7 +66,7 @@ function form(props: {
             <button
                 type="submit"
                 class={classnames(SITE.CLASS.button, noSignature ? SITE.CLASS.disabled : null)}
-                title={noSignature ? T.general.quote_signature_tooltip_no_signature : T.general.quote_signature_tooltip}
+                title={noSignature ? T.general.quote_signature_tooltip_no_signature(props.author) : T.general.quote_signature_tooltip}
                 disabled={noSignature}
             >
                 <span class={SITE.CLASS.label}>{T.general.quote_signature_label}</span>

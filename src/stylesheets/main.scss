@@ -37,6 +37,10 @@ textarea.#{getGlobal("CONFIG.CLASS.codeInput")}, .#{getGlobal("CONFIG.CLASS.code
 
     > button {
         margin-right: 0; // Otherwise the margins are stacked.
+
+        &[disabled] {
+            pointer-events: unset;
+        }
     }
 }
 
