@@ -39,7 +39,7 @@ textarea.#{getGlobal("CONFIG.CLASS.codeInput")}, .#{getGlobal("CONFIG.CLASS.code
         margin-right: 0; // Otherwise the margins are stacked.
 
         &[disabled] {
-            pointer-events: unset;
+            pointer-events: unset; // Makes the tooltip show up on disabled buttons in Chrome.
         }
     }
 }
