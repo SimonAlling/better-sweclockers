@@ -44,7 +44,7 @@ export const general = {
     generic_lines_confirm: (n: number) => `${n} markerad${n > 1 ? "e rader" : " rad"} kommer formateras. Är du säker?`,
     quote_signature_label: `Citera sign.`,
     quote_signature_tooltip: `Citera endast signatur`,
-    quote_signature_tooltip_no_signature: `Signatur saknas`,
+    quote_signature_tooltip_no_signature: (author: string) => `${author} har ingen signatur`,
     mention_everyone_label,
     mention_everyone_tooltip: `Nämn alla tråddeltagare på den här sidan i ett nytt inlägg`,
     uninteresting_subforum: (subforumName: string) => `Du har markerat kategorin ${subforumName} som ointressant.`,
