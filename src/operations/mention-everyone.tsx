@@ -1,5 +1,5 @@
 import unique from "array-uniq";
-import { h, render } from "preact";
+import { h, JSX, render } from "preact";
 
 import * as CONFIG from "~src/config";
 import { mention } from "~src/operations/edit-mode";

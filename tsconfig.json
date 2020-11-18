@@ -18,7 +18,8 @@
             "dom"
         ],
         "jsx": "react",
-        "jsxFactory": "h"
+        "jsxFactory": "h",
+        "jsxFragmentFactory": "Fragment"
     },
     "include": [
         "./src/*.d.ts",

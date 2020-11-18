@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { h, render } from "preact";
+import { h, JSX, render } from "preact";
 import { isNull, only } from "ts-type-guards";
 import { log } from "userscripter";
 

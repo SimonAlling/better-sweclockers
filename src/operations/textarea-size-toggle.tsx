@@ -1,4 +1,4 @@
-import { h, render } from "preact";
+import { h, JSX, render } from "preact";
 import { NumericPreference } from "ts-preferences";
 
 import * as CONFIG from "~src/config";

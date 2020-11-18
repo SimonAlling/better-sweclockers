@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Component, h } from "preact";
+import { Component, JSX, h } from "preact";
 import {
     AllowedTypes,
     BooleanPreference,

@@ -1,6 +1,6 @@
 import { compose } from "@typed/compose";
 import classNames from "classnames";
-import { h, render } from "preact";
+import { h, JSX, render } from "preact";
 
 import * as CONFIG from "~src/config";
 import { P, Preferences } from "~src/preferences";

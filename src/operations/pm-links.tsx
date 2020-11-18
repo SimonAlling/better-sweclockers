@@ -1,5 +1,5 @@
 import * as BB from "bbcode-tags";
-import { h, render } from "preact";
+import { Fragment, h, render } from "preact";
 import { isNumber, isString, only } from "ts-type-guards";
 import { log } from "userscripter";
 
@@ -33,14 +33,6 @@ export default () => {
             if (!isString(authorName)) return couldNotExtractFromPost("author name", post.id);
             if (profileDetails === null) return couldNotExtractFromPost("profile details", post.id);
             if (quoteButton === null) return couldNotExtractFromPost("quote button", post.id);
-            const form = render((
-                <form hidden method="post" action={SITE.PATH.newPrivateMessage(ourUserID)}>
-                    <input name={SITE.FORM.name.recipients} value={authorName} />
-                    <input name={SITE.FORM.name.title} value={threadTitle} />
-                    <input name={SITE.FORM.name.csrfToken} value={session.getCsrfToken()} />
-                    <input name={SITE.FORM.name.action} value="doPreview" />
-                </form>
-            ), profileDetails) as HTMLFormElement;
             render((
                 <button
                     dangerouslySetInnerHTML={{__html: ICON + T.general.pm_link_label}}
@@ -53,10 +45,22 @@ export default () => {
                                 if (quoteTextarea === null) {
                                     throw couldNotExtract("textarea from fetch response");
                                 }
-                                const pmTextarea = document.createElement("textarea");
-                                pmTextarea.name = SITE.FORM.name.message;
-                                pmTextarea.textContent = withLinksInsteadOfPostIDs(quoteTextarea.textContent || "");
-                                form.appendChild(pmTextarea);
+                                const form = document.createElement("form");
+                                form.hidden = true;
+                                form.method = "post";
+                                form.action = SITE.PATH.newPrivateMessage(ourUserID);
+                                render((
+                                    <>
+                                        <input name={SITE.FORM.name.recipients} value={authorName} />
+                                        <input name={SITE.FORM.name.title} value={threadTitle} />
+                                        <input name={SITE.FORM.name.csrfToken} value={session.getCsrfToken()} />
+                                        <input name={SITE.FORM.name.action} value="doPreview" />
+                                        <textarea name={SITE.FORM.name.message}>
+                                            {withLinksInsteadOfPostIDs(quoteTextarea.textContent || "")}
+                                        </textarea>
+                                    </>
+                                ), form);
+                                profileDetails.appendChild(form); // Otherwise: "Form submission canceled because the form is not connected"
                                 form.submit();
                             })
                             .catch(log.error);
