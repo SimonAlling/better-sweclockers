@@ -90,6 +90,12 @@ export default {
             },
         ],
     }),
+    developer_mode: new BooleanPreference({
+        key: "developer_mode",
+        default: false,
+        label: T.preferences.advanced.developer_mode,
+        description: T.preferences.advanced.developer_mode_description,
+    }),
     custom_css_enable,
     custom_css_code: new StringPreference({
         key: "custom_css_code",

@@ -4,6 +4,8 @@ import { environment, errors, log, userscripter } from "userscripter";
 import * as CONFIG from "~src/config";
 import OPERATIONS from "~src/operations";
 import * as DarkTheme from "~src/operations/dark-theme";
+import * as Developer from "~src/operations/developer-mode";
+import { P, Preferences } from "~src/preferences";
 import * as SITE from "~src/site";
 import STYLESHEETS from "~src/stylesheets";
 import U from "~src/userscript";
@@ -15,6 +17,12 @@ const describeFailure = errors.failureDescriber({
 });
 
 DarkTheme.manage(); // In an effort to avoid a bright flash on page load (issue #62), we do this as early as possible.
+
+log.setLogger(
+    Preferences.get(P.advanced._.developer_mode)
+        ? Developer.logger(console, document.documentElement.appendChild(document.createElement("div")))
+        : console
+);
 
 userscripter.run({
     id: U.id,

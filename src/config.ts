@@ -29,6 +29,7 @@ export const WRAPPER_WIDTH_EXTRA_ALLOWED_SHRINK_AMOUNT = 60;
 export const NBSP = "\u00A0";
 
 export const ID = {
+    developerTools: i("developer-tools"),
     document: i("document"),
     preferenceIdPrefix: i("preference-"),
     editingTools: i("editing-tools"),
@@ -43,6 +44,11 @@ export const ID = {
 
 export const CLASS = {
     mousetrap: "mousetrap",
+    developerTools: {
+        // I couldn't use "error", because Soitora's dark theme would give such elements a weird red background.
+        error: i("error"),
+        warning: i("warning"),
+    },
     disabled: c("disabled"),
     editingTools: c("editing-tools"),
     iconButton: c("icon-button"),
@@ -90,6 +96,7 @@ export const KEY = {
     autosaved_draft: i("autosaved_draft"),
     caret_position: i("caret_position_in_textarea"),
     last_time_user_tried_to_submit: i("last_time_user_tried_to_submit"),
+    developer_tools_open: i("developer_tools_open"),
     draft_mode: i("draft_mode"),
 } as const;
 
