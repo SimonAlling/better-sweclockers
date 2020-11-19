@@ -1,15 +1,14 @@
-import { h, render } from "preact";
+import { h } from "preact";
 
 import * as CONFIG from "~src/config";
+import { insertAtTheBeginning, renderIn } from "~src/operations/logic/render";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
 
 export default (e: {
     notificationsBar: HTMLElement,
 }) => {
-    const placeholder = document.createElement("a");
-    e.notificationsBar.insertAdjacentElement("afterbegin", placeholder);
-    render((
+    renderIn(e.notificationsBar, insertAtTheBeginning, (
         // Derived from the other links in the notifications bar.
         <a
             href={CONFIG.PATH.PREFERENCES.link(SITE.PATH.SETTINGS.link)}
@@ -21,5 +20,5 @@ export default (e: {
                 {T.preferences._.shortcut_label}
             </span>
         </a>
-    ), e.notificationsBar, placeholder);
+    ));
 };

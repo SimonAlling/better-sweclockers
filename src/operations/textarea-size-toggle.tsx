@@ -1,21 +1,22 @@
-import { h, JSX, render } from "preact";
+import { h, JSX } from "preact";
 import { NumericPreference } from "ts-preferences";
 
 import * as CONFIG from "~src/config";
 import iconTextareaLarge from "~src/icons/textarea-large.svg";
 import iconTextareaSmall from "~src/icons/textarea-small.svg";
+import { insertAtTheEnd, renderIn } from "~src/operations/logic/render";
 import { P, Preferences } from "~src/preferences";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
 
 export default (e: { textarea: HTMLElement, toolbarInner: HTMLElement }) => {
     const textarea = e.textarea as HTMLTextAreaElement;
-    render((
+    renderIn(e.toolbarInner, insertAtTheEnd, (
         <div class={[ SITE.CLASS.toolbarGroup, CONFIG.CLASS.textareaSize ].join(" ")}>
             {button(textarea, P.edit_mode._.textarea_size_small)}
             {button(textarea, P.edit_mode._.textarea_size_large)}
         </div>
-    ), e.toolbarInner);
+    ));
 };
 
 function button(textarea: HTMLTextAreaElement, mode: NumericPreference): JSX.Element {

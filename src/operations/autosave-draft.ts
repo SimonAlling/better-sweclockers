@@ -1,10 +1,10 @@
 import * as ms from "milliseconds";
-import { render } from "preact";
 import * as Storage from "ts-storage";
 import { isNumber, isString } from "ts-type-guards";
 import { log } from "userscripter";
 
 import * as CONFIG from "~src/config";
+import { insertAtTheEnd, renderIn } from "~src/operations/logic/render";
 import { P, Preferences } from "~src/preferences";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
@@ -118,7 +118,7 @@ function maybeOfferToRestoreAutosavedPost(textarea: HTMLTextAreaElement, toolbar
                 }
             },
         });
-        render(button(textarea, undoSupport), toolbarInner);
+        renderIn(toolbarInner, insertAtTheEnd, button(textarea, undoSupport));
     }
 }
 

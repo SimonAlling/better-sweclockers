@@ -4,6 +4,15 @@ export function fromMaybeUndefined<T>(fallback: T, x?: T): T {
     return x === undefined ? fallback : x;
 }
 
+export function truncate(maxTotalLength: number, s: string): string {
+    const REPLACEMENT = "[…]" as const;
+    return (
+        s.length > maxTotalLength
+            ? s.slice(0, maxTotalLength - REPLACEMENT.length) + REPLACEMENT
+            : s
+    );
+}
+
 export function withMaybe<A, B>(ma: A | null, f: (x: A) => B): void {
     if (ma !== null) {
         f(ma);

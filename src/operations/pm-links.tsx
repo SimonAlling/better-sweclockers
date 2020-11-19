@@ -1,10 +1,11 @@
 import * as BB from "bbcode-tags";
-import { Fragment, h, render } from "preact";
+import { Fragment, h } from "preact";
 import { isNumber, isString, only } from "ts-type-guards";
 import { log } from "userscripter";
 
 import * as CONFIG from "~src/config";
 import ICON from "~src/icons/pm.svg";
+import { insertAtTheEnd, renderIn } from "~src/operations/logic/render";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
@@ -33,7 +34,7 @@ export default () => {
             if (!isString(authorName)) return couldNotExtractFromPost("author name", post.id);
             if (profileDetails === null) return couldNotExtractFromPost("profile details", post.id);
             if (quoteButton === null) return couldNotExtractFromPost("quote button", post.id);
-            render((
+            renderIn(profileDetails, insertAtTheEnd, (
                 <button
                     dangerouslySetInnerHTML={{__html: ICON + T.general.pm_link_label}}
                     onClick={() => {
@@ -49,7 +50,7 @@ export default () => {
                                 form.hidden = true;
                                 form.method = "post";
                                 form.action = SITE.PATH.newPrivateMessage(ourUserID);
-                                render((
+                                renderIn(form, insertAtTheEnd, (
                                     <>
                                         <input name={SITE.FORM.name.recipients} value={authorName} />
                                         <input name={SITE.FORM.name.title} value={threadTitle} />
@@ -59,7 +60,7 @@ export default () => {
                                             {withLinksInsteadOfPostIDs(quoteTextarea.textContent || "")}
                                         </textarea>
                                     </>
-                                ), form);
+                                ));
                                 profileDetails.appendChild(form); // Otherwise: "Form submission canceled because the form is not connected"
                                 form.submit();
                             })
@@ -67,7 +68,7 @@ export default () => {
                     }}
                     class={[ SITE.CLASS.button, CONFIG.CLASS.iconButton, CONFIG.CLASS.pmButton ].join(" ")}
                 ></button>
-            ), profileDetails);
+            ));
         } catch (err) {
             return err;
         }

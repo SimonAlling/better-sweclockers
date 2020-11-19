@@ -1,7 +1,7 @@
 import { empty, end, start } from "bbcode-tags";
 import { unlines } from "lines-unlines";
-import { render } from "preact";
 
+import { insertAtTheEnd, renderIn } from "~src/operations/logic/render";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
 
@@ -22,7 +22,8 @@ export default (undoSupport: boolean) => (e: {
     textarea: HTMLElement,
     unorderedListButton: HTMLElement,
 }) => {
-    render(tableToolbarButton(e.textarea as HTMLTextAreaElement, undoSupport), e.unorderedListButton.parentElement as HTMLElement);
+    const parent = e.unorderedListButton.parentElement as Element;
+    renderIn(parent, insertAtTheEnd, tableToolbarButton(e.textarea as HTMLTextAreaElement, undoSupport));
 };
 
 function table(config: Readonly<typeof TABLE_CONFIG>): string {
