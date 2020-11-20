@@ -1,7 +1,7 @@
 import * as BB from "bbcode-tags";
 import classNames from "classnames";
 import { lines, unlines } from "lines-unlines";
-import { h } from "preact";
+import { h, JSX } from "preact";
 
 import * as CONFIG from "~src/config";
 import iconExpander from "~src/icons/expander.svg";

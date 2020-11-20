@@ -1,5 +1,6 @@
-import { h, render } from "preact";
+import { h } from "preact";
 
+import { insertAtTheEnd, renderIn } from "~src/operations/logic/render";
 import { PreferencesForm } from "~src/preferences-menu";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
@@ -13,5 +14,5 @@ export default () => {
         link.href = SITE.STYLESHEET_URL(yyyymmdd(new Date()));
         return link;
     })());
-    render(<PreferencesForm />, document.body);
+    renderIn(document.body, insertAtTheEnd, <PreferencesForm />);
 };

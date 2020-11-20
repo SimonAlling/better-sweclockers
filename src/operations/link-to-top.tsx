@@ -1,14 +1,15 @@
-import { h, render } from "preact";
+import { h } from "preact";
 
+import { insertAtTheEnd, renderIn } from "~src/operations/logic/render";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
 
 export default (e: { parent: HTMLElement }) => {
-    render((
+    renderIn(e.parent, insertAtTheEnd, (
         <a href="javascript:window.scrollTo(0, 0)" title={T.general.link_to_top_tooltip}>
             <svg class={SITE.CLASS.icon} style="transform: rotate(-90deg);">
                 <use xlinkHref="#icon_double_arrow_right" />
             </svg>
         </a>
-    ), e.parent);
+    ));
 };

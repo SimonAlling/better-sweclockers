@@ -1,8 +1,9 @@
 import unique from "array-uniq";
-import { h, render } from "preact";
+import { h, JSX } from "preact";
 
 import * as CONFIG from "~src/config";
 import { mention } from "~src/operations/edit-mode";
+import { insertBefore, renderIn } from "~src/operations/logic/render";
 import  SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
@@ -21,9 +22,7 @@ export default (e: {
         // Broken thread participant detection.
         return "Could not detect thread participants";
     }
-    const placeholder = document.createElement("form");
-    e.replyButton.insertAdjacentElement("beforebegin", placeholder);
-    render(button, e.replyButton.parentElement as HTMLElement, placeholder);
+    renderIn(e.replyButton.parentElement as Element, insertBefore(e.replyButton), button);
 };
 
 function usersToMention(forumPostContainer: HTMLElement): string[] {

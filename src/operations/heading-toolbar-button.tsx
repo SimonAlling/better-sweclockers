@@ -1,5 +1,4 @@
-import { render } from "preact";
-
+import { insertAtTheEnd, renderIn } from "~src/operations/logic/render";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
 
@@ -10,7 +9,10 @@ export default (undoSupport: boolean) => (e: {
     textarea: HTMLElement,
     strikeButton: HTMLElement,
 }) => {
-    render(headingToolbarButton(e.textarea as HTMLTextAreaElement, undoSupport), e.strikeButton.parentElement as HTMLElement);
+    const parent = e.strikeButton.parentElement as Element;
+    renderIn(parent, insertAtTheEnd, (
+        headingToolbarButton(e.textarea as HTMLTextAreaElement, undoSupport)
+    ));
 };
 
 const headingToolbarButton = toolbarButton({

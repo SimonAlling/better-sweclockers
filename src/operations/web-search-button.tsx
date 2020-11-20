@@ -1,5 +1,4 @@
-import { render } from "preact";
-
+import { insertAtTheEnd, renderIn } from "~src/operations/logic/render";
 import { P, Preferences } from "~src/preferences";
 import { SearchEngine, searchURL, siteFilter } from "~src/search-engines";
 import * as SITE from "~src/site";
@@ -19,7 +18,7 @@ export default (undoSupport: boolean) => (e: {
         icon: icon(engine),
     });
     const fakeTextarea = document.createElement("textarea");
-    render(button(fakeTextarea, undoSupport), e.searchFieldWrapper);
+    renderIn(e.searchFieldWrapper, insertAtTheEnd, button(fakeTextarea, undoSupport));
 };
 
 function icon(engine: SearchEngine): Icon {

@@ -1,11 +1,12 @@
 import * as ms from "milliseconds";
-import { h, render } from "preact";
+import { h } from "preact";
 import { isNull } from "ts-type-guards";
 import { disable } from "userscripter/lib/stylesheets";
 
 import * as CONFIG from "~src/config";
 import * as darkTheme from "~src/dark-theme";
 import iconDarkThemeToggle from "~src/icons/dark-theme-toggle.svg";
+import { insertAfter, renderIn } from "~src/operations/logic/render";
 import { P, Preferences } from "~src/preferences";
 import STYLESHEETS from "~src/stylesheets";
 import * as T from "~src/text";
@@ -15,9 +16,7 @@ import { withMaybe } from "~src/utilities";
 export function insertToggle(e: {
     menuLockToggle: HTMLElement,
 }) {
-    const darkThemeToggle = document.createElement("li");
-    e.menuLockToggle.insertAdjacentElement("afterend", darkThemeToggle);
-    render((
+    renderIn(e.menuLockToggle.parentElement as Element, insertAfter(e.menuLockToggle), (
         // Derived from the menu lock toggle.
         <li class="menu-lock menu-lock-active">
             <div
@@ -29,7 +28,7 @@ export function insertToggle(e: {
                 <svg class="icon" dangerouslySetInnerHTML={{ __html: iconDarkThemeToggle }} />
             </span>
         </li>
-    ), e.menuLockToggle.parentElement as Element, darkThemeToggle);
+    ));
     disable(STYLESHEETS.dark_theme_toggle_preparations);
 }
 

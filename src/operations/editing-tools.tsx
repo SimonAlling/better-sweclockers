@@ -1,8 +1,9 @@
 import { compose } from "@typed/compose";
 import classNames from "classnames";
-import { h, render } from "preact";
+import { h, JSX } from "preact";
 
 import * as CONFIG from "~src/config";
+import { insertAfter, insertBefore, renderIn } from "~src/operations/logic/render";
 import { P, Preferences } from "~src/preferences";
 import { Position } from "~src/preferences/editing-tools";
 import * as SITE from "~src/site";
@@ -14,11 +15,11 @@ import { SMILEYS } from "./logic/smileys";
 export default (undoSupport: boolean) => (e: { textarea: HTMLElement }) => {
     const textarea = e.textarea;
     const position = Preferences.get(P.editing_tools._.position);
-    const reference = position === Position.ABOVE ? textarea : textarea.nextSibling;
-    const toolbar = document.createElement("div");
+    const insertBeforeOrAfter = position === Position.ABOVE ? insertBefore : insertAfter;
     const textareaParent = textarea.parentElement as HTMLElement;
-    textareaParent.insertBefore(toolbar, reference);
-    render(<EditingTools textarea={textarea as HTMLTextAreaElement} config={getEditingToolsConfig()} undoSupport={undoSupport} />, textareaParent, toolbar);
+    renderIn(textareaParent, insertBeforeOrAfter(textarea), (
+        <EditingTools textarea={textarea as HTMLTextAreaElement} config={getEditingToolsConfig()} undoSupport={undoSupport} />
+    ));
 };
 
 interface EditingToolsConfig {

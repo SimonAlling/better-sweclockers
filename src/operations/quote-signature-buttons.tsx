@@ -1,9 +1,10 @@
 import classnames from "classnames";
-import { h, render } from "preact";
+import { h, JSX } from "preact";
 import { isNull, only } from "ts-type-guards";
 import { log } from "userscripter";
 
 import * as CONFIG from "~src/config";
+import { insertAtTheEnd, renderIn } from "~src/operations/logic/render";
 import { P, Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
@@ -29,14 +30,14 @@ export default (e: { quickReplyForm: HTMLElement }) => {
             log.warning(`Could not extract post ID for quote signature button. 'data-post' attribute had this value: ` + post.dataset.post);
         }
         if (controls instanceof HTMLElement && authorLink instanceof HTMLElement) {
-            render(form({
+            renderIn(controls, insertAtTheEnd, form({
                 signature,
                 postID,
                 author: (authorLink.textContent || "").trim(),
                 userMessage,
                 replyURL: (e.quickReplyForm as HTMLFormElement).getAttribute("action") || "",
                 csrf,
-            }), controls);
+            }));
         }
     }
 };

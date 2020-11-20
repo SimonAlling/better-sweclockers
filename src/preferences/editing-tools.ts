@@ -1,4 +1,3 @@
-import { render } from "preact";
 import {
     BooleanPreference,
     MultichoicePreference,
@@ -6,6 +5,7 @@ import {
 
 import * as CONFIG from "~src/config";
 import { BUTTONS, Button, insertButton } from "~src/operations/logic/editing-tools";
+import { insertAtTheEnd, renderIn } from "~src/operations/logic/render";
 import { SearchEngine } from "~src/search-engines";
 import * as T from "~src/text";
 
@@ -16,7 +16,7 @@ function buttonsDescription(buttons: readonly Button[]): string {
     const connectedButtons = buttons.map(b => b(textarea, undoSupport));
     const div = document.createElement("div");
     for (const b of connectedButtons) {
-        render(b, div);
+        renderIn(div, insertAtTheEnd, b);
     }
     return div.innerHTML;
 }
