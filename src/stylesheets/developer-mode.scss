@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: column;
     max-height: 50vh;
+    outline: 1px solid $darkgray; // for dark mode
     position: fixed;
     z-index: 9999;
 
