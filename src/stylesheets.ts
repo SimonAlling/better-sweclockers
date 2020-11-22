@@ -15,6 +15,7 @@ import adaptiveWidthCorrections from "./stylesheets/adaptive-width-corrections.s
 import adaptiveWidth from "./stylesheets/adaptive-width.scss";
 import autosaveDraft from "./stylesheets/autosave-draft.scss";
 import darkThemeTogglePreparations from "./stylesheets/dark-theme-toggle-preparations.scss";
+import developerMode from "./stylesheets/developer-mode.scss";
 import doge from "./stylesheets/doge.scss";
 import downForMaintenance from "./stylesheets/down-for-maintenance.scss";
 import editingTools from "./stylesheets/editing-tools.scss";
@@ -47,6 +48,10 @@ const STYLESHEETS = {
     main: stylesheet({
         condition: ALWAYS,
         css: main,
+    }),
+    developer_mode: stylesheet({
+        condition: () => Preferences.get(P.advanced._.developer_mode),
+        css: developerMode,
     }),
     dark_theme_toggle_preparations: stylesheet({
         condition: () => Preferences.get(P.dark_theme._.show_toggle),

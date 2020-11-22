@@ -228,6 +228,8 @@ export const preferences = {
             replace_selected: `Ersätt markerad text – rekommenderas i alla webbläsare med fullgott ångra-stöd`,
             keep_selected: `Behåll markerad text – rekommenderas i <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1220696">Firefox/Gecko</a> samt på Android`, // Make sure the text matches the actual support check.
         }),
+        developer_mode: `Utvecklarläge`,
+        developer_mode_description: `Visa fel och varningar längst ner på skärmen`,
         custom_css_enable: `Infoga egen CSS:`,
         custom_css_enable_description: `Anpassa layout och utseende precis som du vill`,
         custom_css_warning: `Klistra aldrig in kod som du inte litar på!`,
@@ -308,3 +310,11 @@ export const special_characters: readonly InsertButtonDescription[] = [
     { insert: "→", tooltip: "Högerpil" },
     { insert: "™", tooltip: "Varumärke (trademark)" },
 ];
+
+export const developer_mode = {
+    nothing_logged: `Nothing has been logged.`,
+    tooltip: {
+        error: (n: number) => `${n} fel`,
+        warning: (n: number) => `${n} varning${n === 1 ? "" : "ar"}`,
+    },
+} as const;

@@ -1,0 +1,97 @@
+##{getGlobal("CONFIG.ID.developerTools")} {
+    $red: #D00;
+    $yellow: #EC0;
+    $lightgray: #BBB;
+    $darkgray: #444;
+
+    $spacing: 1em;
+
+    background: black;
+    bottom: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-height: 50vh;
+    outline: 1px solid $darkgray; // for dark mode
+    position: fixed;
+    z-index: 9999;
+
+    &[data-how-many="0"]:not(:hover):not(.open) {
+        opacity: 0.25;
+    }
+
+    .#{getGlobal("CONFIG.CLASS.developerTools.error")} {
+        color: $red;
+    }
+
+    .#{getGlobal("CONFIG.CLASS.developerTools.warning")} {
+        color: $yellow;
+    }
+
+    > a {
+        display: block;
+        padding: $spacing;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        strong {
+            display: inline-block;
+            width: 4em; // So content stays in place regardless of the number of logged messages.
+
+            &[data-how-many="0"] {
+                opacity: 0.25;
+            }
+
+            &:not(:last-of-type) {
+                margin-right: 1em;
+            }
+        }
+    }
+
+    ol {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid $darkgray;
+        color: $lightgray;
+        display: none; // when the dev tools are not opened
+        font-family: monospace;
+        margin: 0 $spacing $spacing $spacing;
+        overflow-y: scroll;
+        white-space: pre-wrap;
+
+        li {
+            border-color: $darkgray;
+            border-top-style: solid;
+            border-width: 1px;
+            padding: 0.5em;
+
+            &:first-of-type {
+                border-top-style: none;
+            }
+
+            $backgroundAlpha: 0.08;
+            $borderAlpha: 0.3;
+
+            &.error {
+                background-color: rgba($red, $backgroundAlpha);
+                border-color: rgba($red, $borderAlpha);
+            }
+
+            &.warning {
+                background-color: rgba($yellow, $backgroundAlpha);
+                border-color: rgba($yellow, $borderAlpha);
+            }
+        }
+    }
+
+    &.open {
+        opacity: 1;
+        width: 100vw;
+
+        ol {
+            display: block;
+        }
+    }
+}
