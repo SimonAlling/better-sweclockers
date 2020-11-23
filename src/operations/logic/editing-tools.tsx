@@ -134,7 +134,7 @@ export const COLORS: ReadonlyArray<string> = [
     "magenta",
 ];
 
-export type Icon = Readonly<{ type: "RAW" | "URL", image: string }>
+type Icon = Readonly<{ type: "RAW" | "URL", image: string }>
 
 type ButtonDescription = Readonly<{
     label?: string,

@@ -4,7 +4,6 @@ import * as BB from "bbcode-tags";
 
 import * as browser from "./browser";
 import * as CONFIG from "./config";
-import { SearchEngine } from "./search-engines";
 import * as SITE from "./site";
 import { InsertButtonDescription } from "./types";
 
@@ -19,7 +18,6 @@ function darkThemeBy(author: string): string {
 const mention_everyone_label = `Nämn alla`;
 const my_posts = `Mina inlägg`;
 const down_for_maintenance = `Nere för underhåll`;
-const editing_tools_name = `Utökade formateringsverktyg`;
 const draft_mode_toggle_label = `Utkast`;
 const draft_mode_description = `Slipp posta ofärdiga inlägg av misstag`;
 
@@ -53,7 +51,6 @@ export const general = {
     link_to_top_tooltip: `Gå till toppen`,
     textarea_size_small: `Liten textruta`,
     textarea_size_large: `Stor textruta`,
-    web_search_button_tooltip: (engine: SearchEngine) => `Sök med ${engine}`,
     tooltip_h: `Rubrik`,
     tooltip_table: `Tabell`,
     down_for_maintenance,
@@ -86,12 +83,6 @@ export const preferences = {
         replace_followed_threads_link_description: OBVIOUS,
         remember_location_in_market: `Kom ihåg min plats i marknaden`,
         remember_location_in_market_description: `Slipp fylla i län och stad varje gång du skapar en annons`,
-        insert_web_search_button: `Webbsökknapp`,
-        insert_web_search_button_description: `När ${SITE.NAME} inbyggda sökfunktion inte hittar det du söker`,
-        search_engine: {
-            label: `Sökmotor`,
-            description: `Vilken sökmotor som ska användas för webbsökknappen samt för söklänksknappen i ${editing_tools_name}`,
-        },
     },
 
     forum_threads: {
@@ -147,7 +138,7 @@ export const preferences = {
     },
 
     editing_tools: {
-        label: editing_tools_name,
+        label: `Utökade formateringsverktyg`,
         enable: `Aktivera utökade formateringsverktyg`,
         enable_description: `En hel samling extra formateringsverktyg för att underlätta inläggsskrivandet`,
         position: {
@@ -163,6 +154,10 @@ export const preferences = {
         whitespace: `Whitespaceverktyg`,
         definitions: `Verktyg för definitioner`,
         embed: `Verktyg för länkar, bilder och sökresultat`,
+        search_engine: {
+            label: `Sökmotor`,
+            description: `Vilken sökmotor som ska användas för länkar till sökresultat`,
+        },
         doge: `very doge buttons`,
         doge_description: `            wow`,
         color_palette: `Färgpaletten`,

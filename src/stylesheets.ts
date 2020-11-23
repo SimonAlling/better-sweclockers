@@ -32,7 +32,6 @@ import preferences from "./stylesheets/preferences.scss";
 import replaceFollowedThreadsLink from "./stylesheets/replace-followed-threads-link.scss";
 import textareaSizeToggle from "./stylesheets/textarea-size-toggle.scss";
 import uninterestingSubforums from "./stylesheets/uninteresting-subforums.scss";
-import webSearchButton from "./stylesheets/web-search-button.scss";
 
 function isTimeForMaintenance() {
     const start = ms.hours(4) + ms.minutes(30);
@@ -89,10 +88,6 @@ const STYLESHEETS = {
     adaptive_width_corrections: stylesheet({
         condition: () => Preferences.get(P.general._.improved_corrections) && Preferences.get(P.general._.adaptive_width),
         css: adaptiveWidthCorrections,
-    }),
-    web_search_button: stylesheet({
-        condition: () => Preferences.get(P.general._.insert_web_search_button),
-        css: webSearchButton,
     }),
     highlight_own_posts: stylesheet({
         condition: () => Preferences.get(P.forum_threads._.highlight_own_posts),
