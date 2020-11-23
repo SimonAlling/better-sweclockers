@@ -253,7 +253,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     }),
     operation({
         description: "replace followed threads link with a link to my posts",
-        condition: () => Preferences.get(P.general._.replace_followed_threads_link),
+        condition: () => !isOnBSCPreferencesPage && Preferences.get(P.general._.replace_followed_threads_link),
         dependencies: { followedThreadsLinkTextOrSigninButton: SELECTOR.signinButtonOr(SELECTOR.followedThreadsLinkText) },
         action: replaceFollowedThreadsLink,
     }),
