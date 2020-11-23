@@ -48,7 +48,6 @@ import replaceFollowedThreadsLink from "./operations/replace-followed-threads-li
 import insertTableToolbarButton from "./operations/table-toolbar-button";
 import insertTextareaSizeToggle from "./operations/textarea-size-toggle";
 import filterUninterestingSubforums from "./operations/uninteresting-subforums";
-import insertWebSearchButton from "./operations/web-search-button";
 
 const ALWAYS = true;
 
@@ -103,15 +102,6 @@ const OPERATIONS: readonly Operation<any>[] = [
         description: "prevent accidental unload (corrections)",
         condition: () => isReadingEditorialContent && Preferences.get(P.advanced._.prevent_accidental_unload),
         action: preventAccidentalUnload.corrections,
-    }),
-    operation({
-        description: "insert web search button",
-        condition: () => !isOnBSCPreferencesPage && Preferences.get(P.general._.insert_web_search_button),
-        dependencies: {
-            searchFieldInput: SELECTOR.searchFieldInput,
-            searchFieldWrapper: SELECTOR.searchFieldWrapper,
-        },
-        action: insertWebSearchButton(undoSupport),
     }),
     operation({
         description: "manage caret position in textarea",

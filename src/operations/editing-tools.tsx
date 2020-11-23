@@ -90,7 +90,7 @@ export function EditingTools(props: {
             {props.config.math ? BUTTONS.math.map(connected) : []}
             {props.config.whitespace ? BUTTONS.whitespace.map(connected) : []}
             {props.config.definitions ? BUTTONS.definitions.map(connected) : []}
-            {props.config.embed ? BUTTONS.embed(Preferences.get(P.general._.search_engine)).map(connected) : []}
+            {props.config.embed ? BUTTONS.embed(Preferences.get(P.editing_tools._.search_engine)).map(connected) : []}
             {props.config.doge ? BUTTONS.doge.map(connected) : []}
             {props.config.color_palette ? (
                 <fieldset class={CONFIG.CLASS.colorPalette}>

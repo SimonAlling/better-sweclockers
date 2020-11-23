@@ -14,7 +14,3 @@ function searchEngineURL(engine: SearchEngine): string {
 export function searchURL(engine: SearchEngine, completePhrase: string): string {
     return searchEngineURL(engine) + completePhrase.trim().replace(/\s+/g, "+");
 }
-
-export function siteFilter(hostname: string): string {
-    return "site:" + hostname;
-}

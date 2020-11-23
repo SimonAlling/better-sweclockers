@@ -1,11 +1,9 @@
 import {
     BooleanPreference,
     IntegerPreference,
-    MultichoicePreference,
     StringPreference,
 } from "ts-preferences";
 
-import { SearchEngine } from "~src/search-engines";
 import * as T from "~src/text";
 
 export default {
@@ -57,27 +55,5 @@ export default {
         label: T.preferences._.NO_LABEL,
         multiline: false,
         extras: { implicit: true },
-    }),
-    insert_web_search_button: new BooleanPreference({
-        key: "insert_web_search_button",
-        default: true,
-        label: T.preferences.general.insert_web_search_button,
-        description: T.preferences.general.insert_web_search_button_description,
-    }),
-    search_engine: new MultichoicePreference({
-        key: "search_engine",
-        default: SearchEngine.GOOGLE,
-        label: T.preferences.general.search_engine.label,
-        description: T.preferences.general.search_engine.description,
-        options: [
-            {
-                value: SearchEngine.GOOGLE,
-                label: SearchEngine.GOOGLE,
-            },
-            {
-                value: SearchEngine.DUCKDUCKGO,
-                label: SearchEngine.DUCKDUCKGO,
-            },
-        ],
     }),
 } as const;

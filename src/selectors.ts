@@ -6,8 +6,6 @@ const C = SITE.CLASS;
 
 const settingsNavigation = `ul.${C.settingsNavigation}`;
 
-const searchFieldWrapper = `#search .searchField`;
-
 const actionButtons = `button[name=action]`;
 const actionButtonsQuickReply = `#quickreply .controls button`;
 const forumPostContainer = "." + SITE.CLASS.forumPosts;
@@ -23,8 +21,6 @@ export default {
     proofDialogTextarea: `.${SITE.CLASS.proofDialog} textarea`,
     threadTitle: `h1`,
     moreArticles: `.mainContent ~ .mainContent`,
-    searchFieldWrapper,
-    searchFieldInput: `${searchFieldWrapper} input`,
     settingsNavigation,
     actionButtons,
     quoteButton: "a.button.quote",

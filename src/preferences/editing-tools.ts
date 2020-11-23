@@ -136,6 +136,22 @@ export default {
         },
         dependencies,
     }),
+    search_engine: new MultichoicePreference({
+        key: "search_engine",
+        default: SearchEngine.GOOGLE,
+        label: T.preferences.editing_tools.search_engine.label,
+        description: T.preferences.editing_tools.search_engine.description,
+        options: [
+            {
+                value: SearchEngine.GOOGLE,
+                label: SearchEngine.GOOGLE,
+            },
+            {
+                value: SearchEngine.DUCKDUCKGO,
+                label: SearchEngine.DUCKDUCKGO,
+            },
+        ],
+    }),
     doge: new BooleanPreference({
         key: "editing_tools_doge",
         default: false,
