@@ -38,7 +38,7 @@ export default {
     forumLink: `.subForums td:first-child > * a[href^="/forum/"]`, // Have to be this specific because there are other random links that we don't want to match.
     forumPost: "." + SITE.CLASS.forumPost,
     forumPostAuthorLink: `a.name[itemprop="author"]`,
-    linkedForumPost: `.` + SITE.CLASS.forumPost + `.isLinked`,
+    linkedForumPost: `.` + SITE.CLASS.forumPost + `.is-linked`,
     pageNavigationAfterForumPosts: `${forumPostContainer} ~ * .pages`,
     quickReplyForm: `#quickreply form`,
     signoutButton,
