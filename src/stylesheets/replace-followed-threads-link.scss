@@ -14,7 +14,7 @@
         }
     }
 
-    a[href="#{getGlobal("SITE.PATH.MY_POSTS")}"] {
-        margin-right: 16.5px !important; // ad-hoc solution to make it take up the same width as the followed threads link (!important necessary to override SweClockers)
+    a[href="#{getGlobal("SITE.PATH.MY_POSTS")}"] svg + span {
+        margin-right: 6.5px !important; // ad-hoc solution to make it take up the same width as the followed threads link (!important necessary to override SweClockers)
     }
 }
