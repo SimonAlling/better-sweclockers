@@ -29,7 +29,7 @@ function usersToMention(forumPostContainer: HTMLElement): string[] {
     const postBySomeoneElse = SELECTOR.forumPost + `:not(.${SITE.CLASS.forumPostByCurrentUser})`;
     const selector = `${postBySomeoneElse} ${SELECTOR.forumPostAuthorLink}`;
     const nameLinks = Array.from(forumPostContainer.querySelectorAll(selector));
-    return unique(nameLinks.map(e => e.textContent as string));
+    return unique(nameLinks.map(e => (e.textContent as string).trim()));
 }
 
 function mentionEveryoneButton(props: {
