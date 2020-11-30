@@ -1,4 +1,5 @@
-##{getGlobal("SITE.ID.menuLockToggle")}, ##{getGlobal("SITE.ID.menuLockToggleOpen")} {
+.search-field {
     // This makes space for the dark theme toggle in advance, so that it doesn't push the search field to the right when it's inserted.
-    margin-right: 40px;
+    // Having the margin on the search field and not on the menu lock toggle is necessary for it to have its intended effect in some scenarios, e.g. an iPad Pro 2017 in portrait mode. Otherwise, the search field is pushed to the right upon toggle insertion.
+    margin-left: 40px;
 }

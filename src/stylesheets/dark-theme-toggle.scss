@@ -1,0 +1,6 @@
+##{getGlobal("SITE.ID.menuLockToggle")}, ##{getGlobal("SITE.ID.menuLockToggleOpen")} {
+    // This makes space for the dark theme toggle on mobile/tablet:
+    @media (max-width: 992.9px) { // SweClockers use `@media (min-width: 993px)` to switch between layouts.
+        display: none;
+    }
+}

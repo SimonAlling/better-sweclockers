@@ -62,6 +62,7 @@ export const CLASS = {
     bbImage: "bbImage",
     bbIns: "bbIns",
     imgControls: "imgControls",
+    notifications: "pw-notifications",
     proofDialog: "proofDialog",
     socialMediaButtons: [ `threadShare`, `greyContentShare`, `sideShare` ],
     sideBox: "sideBox",
