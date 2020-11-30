@@ -44,3 +44,5 @@ export const isReadingThread = !isInEditMode && [
     SITE.PATH.THREAD,
     SITE.PATH.POST,
 ].some(pathMatches);
+
+export const isReadingForumThread = isReadingThread && document.location.pathname.startsWith(SITE.PATH.FORUM);
