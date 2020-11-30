@@ -15,6 +15,7 @@ import adaptiveWidthCorrections from "./stylesheets/adaptive-width-corrections.s
 import adaptiveWidth from "./stylesheets/adaptive-width.scss";
 import autosaveDraft from "./stylesheets/autosave-draft.scss";
 import darkThemeTogglePreparations from "./stylesheets/dark-theme-toggle-preparations.scss";
+import darkThemeToggle from "./stylesheets/dark-theme-toggle.scss";
 import developerMode from "./stylesheets/developer-mode.scss";
 import doge from "./stylesheets/doge.scss";
 import downForMaintenance from "./stylesheets/down-for-maintenance.scss";
@@ -28,6 +29,7 @@ import lockHeights from "./stylesheets/lock-heights.scss";
 import main from "./stylesheets/main.scss";
 import mentionEveryone from "./stylesheets/mention-everyone.scss";
 import preferencesLink from "./stylesheets/preferences-link.scss";
+import preferencesShortcut from "./stylesheets/preferences-shortcut.scss";
 import preferences from "./stylesheets/preferences.scss";
 import replaceFollowedThreadsLink from "./stylesheets/replace-followed-threads-link.scss";
 import textareaSizeToggle from "./stylesheets/textarea-size-toggle.scss";
@@ -57,6 +59,10 @@ const STYLESHEETS = {
         css: darkThemeTogglePreparations,
         id: i("dark-theme-toggle-preparations"),
     }),
+    dark_theme_toggle: stylesheet({
+        condition: () => Preferences.get(P.dark_theme._.show_toggle),
+        css: darkThemeToggle,
+    }),
     doge: stylesheet({
         condition: ALWAYS,
         css: doge,
@@ -68,6 +74,10 @@ const STYLESHEETS = {
     preferences: stylesheet({
         condition: _ => isOnBSCPreferencesPage,
         css: preferences,
+    }),
+    preferences_shortcut: stylesheet({
+        condition: () => Preferences.get(P.general._.insert_preferences_shortcut),
+        css: preferencesShortcut,
     }),
     lock_heights: stylesheet({
         condition: () => Preferences.get(P.general._.lock_heights),

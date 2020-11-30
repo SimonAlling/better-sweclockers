@@ -169,7 +169,7 @@ const OPERATIONS: readonly Operation<any>[] = [
         description: "insert preferences shortcut",
         condition: () => !isOnBSCPreferencesPage && shouldInsertPreferencesShortcut,
         dependencies: {
-            notificationsBar: ".pw-notifications",
+            notificationsBar: "." + SITE.CLASS.notifications,
         },
         action: insertPreferencesShortcut,
     }),

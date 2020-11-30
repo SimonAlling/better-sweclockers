@@ -1,0 +1,9 @@
+.#{getGlobal("SITE.CLASS.notifications")} {
+    // This makes space for the preferences shortcut on mobile by cramming the icons together:
+    @media (max-width: 576.9px) { // SweClockers use `@media (min-width: 577px)` to switch between layouts.
+        a.margin-medium-right {
+            // Default right margin is 10px and there are 3 (vanilla) icons, so this is almost perfect.
+            margin-right: unset !important; // to override SweClockers
+        }
+    }
+}
