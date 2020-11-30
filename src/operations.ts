@@ -13,6 +13,7 @@ import {
     isOnSomeProfilePage,
     isOnSweclockersSettingsPage,
     isReadingEditorialContent,
+    isReadingForumThread,
     isReadingThread,
     mayHaveJustSubmittedForumPost,
     mayHaveJustSubmittedPM,
@@ -198,7 +199,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     }),
     operation({
         description: "insert PM links",
-        condition: () => isReadingThread && Preferences.get(P.forum_threads._.insert_pm_links),
+        condition: () => isReadingForumThread && Preferences.get(P.forum_threads._.insert_pm_links),
         action: insertPMLinks,
         deferUntil: DOMCONTENTLOADED,
     }),
@@ -269,7 +270,7 @@ const OPERATIONS: readonly Operation<any>[] = [
     }),
     operation({
         description: "insert mention everyone button",
-        condition: () => isReadingThread && Preferences.get(P.forum_threads._.mention_everyone_button),
+        condition: () => isReadingForumThread && Preferences.get(P.forum_threads._.mention_everyone_button),
         dependencies: {
             forumPostContainer: SELECTOR.forumPostContainer,
             replyButton: SELECTOR.replyButtonAfterForumPosts,
