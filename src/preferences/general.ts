@@ -13,12 +13,6 @@ export default {
         label: T.preferences.general.lock_heights,
         description: T.preferences.general.lock_heights_description,
     }),
-    adaptive_width: new BooleanPreference({
-        key: "adaptive_width",
-        default: false,
-        label: T.preferences.general.adaptive_width,
-        description: T.preferences.general.adaptive_width_description,
-    }),
     improved_corrections: new BooleanPreference({
         key: "improved_corrections",
         default: true,

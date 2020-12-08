@@ -23,9 +23,6 @@ export const EDITING_TOOLS_HEIGHT = "200px"; // to prevent jumping in preference
 // distance between article and left side of improved corrections dialog
 export const CORRECTIONS_DIALOG_OFFSET_PX = 20;
 
-// In adaptive width mode, the minimum width of the wrapper is the default narrow-layout wrapper width minus this amount:
-export const WRAPPER_WIDTH_EXTRA_ALLOWED_SHRINK_AMOUNT = 60;
-
 export const NBSP = "\u00A0";
 
 export const ID = {

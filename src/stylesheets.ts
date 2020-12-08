@@ -11,8 +11,6 @@ import * as SITE from "~src/site";
 import { hideByClass, hideById, hideBySelector } from "~src/stylesheets/hide";
 import { timeIsWithin } from "~src/time";
 
-import adaptiveWidthCorrections from "./stylesheets/adaptive-width-corrections.scss";
-import adaptiveWidth from "./stylesheets/adaptive-width.scss";
 import autosaveDraft from "./stylesheets/autosave-draft.scss";
 import darkThemeTogglePreparations from "./stylesheets/dark-theme-toggle-preparations.scss";
 import darkThemeToggle from "./stylesheets/dark-theme-toggle.scss";
@@ -83,10 +81,6 @@ const STYLESHEETS = {
         condition: () => Preferences.get(P.general._.lock_heights),
         css: lockHeights,
     }),
-    adaptive_width: stylesheet({
-        condition: () => Preferences.get(P.general._.adaptive_width),
-        css: adaptiveWidth,
-    }),
     improved_pagination_buttons: stylesheet({
         condition: () => Preferences.get(P.forum_threads._.improved_pagination_buttons),
         css: improvedPaginationButtons,
@@ -94,10 +88,6 @@ const STYLESHEETS = {
     improved_corrections: stylesheet({
         condition: () => Preferences.get(P.general._.improved_corrections),
         css: improvedCorrections,
-    }),
-    adaptive_width_corrections: stylesheet({
-        condition: () => Preferences.get(P.general._.improved_corrections) && Preferences.get(P.general._.adaptive_width),
-        css: adaptiveWidthCorrections,
     }),
     highlight_own_posts: stylesheet({
         condition: () => Preferences.get(P.forum_threads._.highlight_own_posts),
