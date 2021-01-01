@@ -207,7 +207,7 @@ const OPERATIONS: readonly Operation<any>[] = [
         description: "insert quote signature buttons",
         condition: () => isReadingThread && Preferences.get(P.forum_threads._.quote_signature_buttons),
         action: insertQuoteSignatureButtons,
-        dependencies: { quickReplyForm: SELECTOR.quickReplyForm },
+        deferUntil: DOMCONTENTLOADED,
     }),
     operation({
         description: "adapt corrections link to work with improved corrections",
