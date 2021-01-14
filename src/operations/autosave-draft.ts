@@ -39,11 +39,11 @@ const MIN_LENGTH_TO_SAVE = 10;
 const MAX_LENGTH_TO_SHOW = 200; // when asking if draft should be restored
 
 export const manageAutosaveWatchdog = (undoSupport: boolean) => (e: {
-    textarea: HTMLElement,
-    saveButton: HTMLElement,
+    textarea: HTMLTextAreaElement,
+    saveButton: HTMLButtonElement,
     toolbarInner: HTMLElement,
 }) => {
-    const textarea = e.textarea as HTMLTextAreaElement;
+    const textarea = e.textarea;
     // If the user came here by previewing their post, there is nothing saved at this point, because we cleared the draft when they deliberately unloaded the page.
     maybeOfferToRestoreAutosavedPost(textarea, e.toolbarInner, undoSupport);
     // Now that we have inserted the restore button or decided not to, we can start autosaving the text in the textarea.
