@@ -1,6 +1,7 @@
+import * as BB from "bbcode-tags";
 import classnames from "classnames";
-import { h, JSX } from "preact";
-import { isNull, only } from "ts-type-guards";
+import { Fragment, h, JSX } from "preact";
+import { isNull, isString, only } from "ts-type-guards";
 import { log } from "userscripter";
 
 import * as CONFIG from "~src/config";
@@ -12,7 +13,7 @@ import * as T from "~src/text";
 
 const userMessage = Preferences.get(P.forum_threads._.quote_signature_message);
 
-export default (e: { quickReplyForm: HTMLElement }) => {
+export default () => {
     const csrf = session.getCsrfToken();
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);
     for (const post of only(HTMLElement)(Array.from(forumPosts))) {
@@ -22,58 +23,94 @@ export default (e: { quickReplyForm: HTMLElement }) => {
         }
         const signature = post.querySelector("." + SITE.CLASS.forumPostSignature);
         const controls = post.querySelector("." + SITE.CLASS.forumPostControls);
-        const authorLink = post.querySelector(SELECTOR.forumPostAuthorLink);
-        let postID: string | null = null;
-        try {
-            postID = JSON.parse(post.dataset.post || "").postid;
-        } catch (_) {
-            log.warning(`Could not extract post ID for quote signature button. 'data-post' attribute had this value: ` + post.dataset.post);
-        }
-        if (controls instanceof HTMLElement && authorLink instanceof HTMLElement) {
-            renderIn(controls, insertAtTheEnd, form({
-                signature,
-                postID,
-                author: (authorLink.textContent || "").trim(),
-                userMessage,
-                replyURL: (e.quickReplyForm as HTMLFormElement).getAttribute("action") || "",
-                csrf,
-            }));
-        }
+        const authorName = post.querySelector(SELECTOR.forumPostAuthorLink)?.textContent?.trim();
+        const quoteURL = post.querySelector<HTMLAnchorElement>(SELECTOR.quoteButton)?.href;
+        if (controls === null) return couldNotExtractFromPost("controls", post.id);
+        if (!isString(authorName)) return couldNotExtractFromPost("author name", post.id);
+        if (!isString(quoteURL)) return couldNotExtractFromPost("quote URL", post.id);
+        renderIn(controls, insertAtTheEnd, button({
+            signature,
+            authorName,
+            userMessage,
+            quoteURL,
+            csrf,
+        }));
     }
 };
 
-function form(props: {
+function button(props: {
     signature: Element | null,
-    postID: string | null,
-    author: string,
+    authorName: string,
     userMessage: string,
-    replyURL: string,
+    quoteURL: string,
     csrf: string,
 }): JSX.Element {
-    const message = isNull(props.signature) ? undefined : [
-        `[quote` + (isNull(props.postID) ? "" : ` postid="${props.postID}"`) + ` name="${props.author}"]`,
-        (props.signature.textContent || "").trim(),
-        `[/quote]`,
-        props.userMessage,
-    ].join("\n");
     const noSignature = isNull(props.signature);
     return (
-        <form method="POST" action={props.replyURL} class={CONFIG.CLASS.quoteSignatureButton}>
-            {isNull(props.signature) ? [] : [
-                <input name={SITE.FORM.name.message} type="hidden" value={message} />,
-                <input name={SITE.FORM.name.csrfToken} type="hidden" value={props.csrf} />,
-                <input name={SITE.FORM.name.action} type="hidden" value={SITE.FORM.value.preview} />,
-            ]}
-            <button
-                type="submit"
-                class={classnames(SITE.CLASS.button, noSignature ? SITE.CLASS.disabled : null)}
-                title={noSignature ? T.general.quote_signature_tooltip_no_signature(props.author) : T.general.quote_signature_tooltip}
-                disabled={noSignature}
-            >
-                <span class={SITE.CLASS.label}>{T.general.quote_signature_label}</span>
-            </button>
-        </form>
+        <button
+            class={classnames(CONFIG.CLASS.quoteSignatureButton, SITE.CLASS.button, noSignature ? SITE.CLASS.disabled : null)}
+            title={noSignature ? T.general.quote_signature_tooltip_no_signature(props.authorName) : T.general.quote_signature_tooltip}
+            disabled={noSignature}
+            onClick={() => {
+                fetch(props.quoteURL, { credentials: "same-origin" }) // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters
+                    .then(response => response.text())
+                    .then(responseContent => {
+                        const responseDocument = new DOMParser().parseFromString(responseContent, "text/html");
+                        const quoteTextarea = responseDocument.querySelector("textarea");
+                        if (quoteTextarea === null) {
+                            throw couldNotExtract("textarea from fetch response");
+                        }
+                        const form = document.createElement("form");
+                        form.hidden = true;
+                        form.method = "POST";
+                        form.action = props.quoteURL;
+                        renderIn(form, insertAtTheEnd, (
+                            <>
+                                <input name={SITE.FORM.name.csrfToken} type="hidden" value={props.csrf} />
+                                <input name={SITE.FORM.name.action} type="hidden" value={SITE.FORM.value.preview} />
+                                <textarea name={SITE.FORM.name.message} hidden>
+                                    {withSignatureAndUserMessage({
+                                        rawQuote: quoteTextarea.textContent || "",
+                                        rawSignature: props.signature?.textContent || "",
+                                        userMessage: props.userMessage,
+                                    })}
+                                </textarea>
+                            </>
+                        ));
+                        document.documentElement.appendChild(form); // Otherwise: "Form submission canceled because the form is not connected"
+                        form.submit();
+                    })
+                    .catch(log.error);
+            }}
+        >
+            <span class={SITE.CLASS.label}>{T.general.quote_signature_label}</span>
+        </button>
     );
+}
+
+function withSignatureAndUserMessage(x: {
+    rawQuote: string
+    rawSignature: string
+    userMessage: string
+}): string {
+    const SIGNATURE_FONT_SIZE = "smaller";
+    const textToInsert = [
+        `\n`,
+        `________________________`,
+        `\n`,
+        BB.start(SITE.TAG.size, SIGNATURE_FONT_SIZE),
+        x.rawSignature.trim(),
+        BB.end(SITE.TAG.size),
+    ].join("");
+    return x.rawQuote.replace(/\n*(?=\[\/quote\]\s*$)/, textToInsert) + x.userMessage;
+}
+
+function couldNotExtract(what: string): string {
+    return `Could not extract ${what}.`;
+}
+
+function couldNotExtractFromPost(what: string, htmlId: string): string {
+    return couldNotExtract(`${what} from post with id="${htmlId}"`);
 }
 
 declare namespace session {
