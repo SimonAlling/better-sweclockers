@@ -4,10 +4,9 @@ import * as CONFIG from "~src/config";
 import * as T from "~src/text";
 
 export default (e: {
-    saveButton: HTMLElement,
-    previewButton: HTMLElement,
+    saveButton: HTMLButtonElement,
+    previewButton: HTMLButtonElement,
 }) => {
-    const saveButton = e.saveButton as HTMLButtonElement; // Selector should ensure this.
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     const label = document.createElement("label");
@@ -22,9 +21,9 @@ export default (e: {
     }
     const draftModeEnabled = response.value;
     checkbox.checked = draftModeEnabled;
-    checkbox.addEventListener("change", toggle(checkbox, saveButton));
-    (e.previewButton).insertAdjacentElement("afterend", label);
-    apply(draftModeEnabled, saveButton);
+    checkbox.addEventListener("change", toggle(checkbox, e.saveButton));
+    e.previewButton.insertAdjacentElement("afterend", label);
+    apply(draftModeEnabled, e.saveButton);
 };
 
 function toggle(checkbox: HTMLInputElement, saveButton: HTMLButtonElement): EventHandlerNonNull {
