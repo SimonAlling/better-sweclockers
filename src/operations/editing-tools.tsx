@@ -12,13 +12,13 @@ import * as T from "~src/text";
 import { BUTTON, BUTTONS, Button, COLORS, colorButton, insertButton, smileyButton, tagButton } from "./logic/editing-tools";
 import { SMILEYS } from "./logic/smileys";
 
-export default (undoSupport: boolean) => (e: { textarea: HTMLElement }) => {
+export default (undoSupport: boolean) => (e: { textarea: HTMLTextAreaElement }) => {
     const textarea = e.textarea;
     const position = Preferences.get(P.editing_tools._.position);
     const insertBeforeOrAfter = position === Position.ABOVE ? insertBefore : insertAfter;
     const textareaParent = textarea.parentElement as HTMLElement;
     renderIn(textareaParent, insertBeforeOrAfter(textarea), (
-        <EditingTools textarea={textarea as HTMLTextAreaElement} config={getEditingToolsConfig()} undoSupport={undoSupport} />
+        <EditingTools textarea={textarea} config={getEditingToolsConfig()} undoSupport={undoSupport} />
     ));
 };
 
