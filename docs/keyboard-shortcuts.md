@@ -4,6 +4,7 @@ SweClockers' built-in keyboard shortcuts for bold, italic and underline are impl
 The event handlers can be seen in this excerpt from `combine.min.js`, pretty-printed in Chrome and with some renamed variables for readability:
 
 ```javascript
+// Main is actually called Beta at the time of writing, but that's ostensibly temporary.
 Main.Forms.Toolbar = (function(d) {
     function c() {
         Laika.Controls.TemplateControl.call(this);
