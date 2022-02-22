@@ -35,16 +35,31 @@ export function insertToggle(e: {
 export function manage(): void {
     if (Preferences.get(P.dark_theme._.active)) {
         apply(true);
-        document.addEventListener("DOMContentLoaded", () => {
-            // Because we insert the dark theme stylesheet as early as physically possible (to avoid a bright flash on page load; see issue #62), SweClockers' own styles will be inserted _after_ it in the DOM tree and take precedence over it, which we can't expect it to be designed for. Therefore, we move it as soon as we can.
-            // Any artifacts caused by SweClockers' own styles taking precedence will still be visible, but only very briefly instead of permanently.
-            withMaybe(document.getElementById(CONFIG.ID.darkThemeStylesheet), element => document.documentElement.appendChild(element));
-        });
+        moveToEndWhenHeadAppears(); // Because we insert the dark theme stylesheet as early as physically possible (to avoid a bright flash on page load; see issue #62), SweClockers' own styles will be inserted _after_ it in the DOM tree and take precedence over it, which we can't expect it to be designed for. Therefore, we move it as soon as we can.
     }
     if (Preferences.get(P.dark_theme._.auto)) {
         sheldon();
         setInterval(sheldon, ms.seconds(Preferences.get(P.dark_theme._.interval)));
     }
+}
+
+function moveToEndWhenHeadAppears() {
+    new MutationObserver((mutations, observer) => {
+        for (const mutation of mutations) {
+            if (mutation.type === "childList" && mutation.target === document.documentElement) {
+                for (const node of mutation.addedNodes) {
+                    if (node === document.head) {
+                        observer.disconnect();
+                        withMaybe(document.getElementById(CONFIG.ID.darkThemeStylesheet), element => document.documentElement.appendChild(element));
+                    }
+                }
+            }
+        }
+    }).observe(document.documentElement, {
+        attributes: false,
+        childList: true,
+        subtree: false,
+    });
 }
 
 function apply(newState: boolean): void {
