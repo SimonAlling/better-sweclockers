@@ -8,8 +8,8 @@ export const HOSTNAME_MOBILE = `m.` + HOSTNAME;
 
 export const STYLESHEET_URL = (yyyymmdd: string) => `/css/combine.min.sass.css?v=${yyyymmdd}`;
 
-export const BANNER_HEIGHT_TOP = `${121}px`; // default height of top ad banner
-export const BANNER_HEIGHT_MID = `${360}px`; // default height of page ad modules
+export const BANNER_HEIGHT_SIDE = `${370}px`; // default height of sidebar ad modules
+export const BANNER_HEIGHT_MID = `${341}px`; // default height of front page inter-article ad modules
 export const WRAPPER_WIDTH_WIDE_PX = 1250;
 export const WRAPPER_WIDTH_NARROW_PX = 1000;
 export const MAX_WIDTH_FOR_NARROW_LAYOUT_PX = 1100;

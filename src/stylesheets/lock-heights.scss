@@ -1,9 +1,9 @@
-#header .banner {
-    height: getGlobal("SITE.BANNER_HEIGHT_TOP");
+.ad.adInsider {
+    height: getGlobal("SITE.BANNER_HEIGHT_SIDE");
     overflow: hidden;
 }
 
-.ad.adInsider, .adModule {
+.adModule {
     height: getGlobal("SITE.BANNER_HEIGHT_MID");
     overflow: hidden;
 }
