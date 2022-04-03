@@ -355,6 +355,14 @@ const OPERATIONS: readonly Operation<any>[] = [
         deferUntil: DOMCONTENTLOADED,
     }),
     operation({
+        description: "add quick reply keyboard shortcut (insert link)",
+        condition: () => isReadingThread && Preferences.get(P.edit_mode._.keyboard_shortcuts_in_quick_reply),
+        dependencies: {
+            textarea: SELECTOR.textarea,
+        },
+        action: keyboardShortcutsEditMode.insertLink(undoSupport),
+    }),
+    operation({
         description: "add quick reply keyboard shortcut (submit)",
         condition: () => isReadingThread && Preferences.get(P.edit_mode._.keyboard_shortcuts_in_quick_reply),
         dependencies: {
