@@ -117,7 +117,7 @@ export const preferences = {
         textarea_size_unit: `px`,
         monospace_font: `<span style="font-family: monospace">Monospace</span>-font i textrutan`,
         monospace_font_description: `Underlättar formatering av kod och dylikt`,
-        keyboard_shortcuts: `Kortkommandon för att skicka (<kbd>Ctrl</kbd> + <kbd>S</kbd>), förhandsgranska (<kbd>Ctrl</kbd> + <kbd>P</kbd>) och infoga URL (<kbd>Ctrl</kbd> + <kbd>K</kbd>)`,
+        keyboard_shortcuts: `Kortkommandon för att skicka (<kbd>Ctrl</kbd> + <kbd>S</kbd>), förhandsgranska (<kbd>Ctrl</kbd> + <kbd>P</kbd>) och länka (<kbd>Ctrl</kbd> + <kbd>K</kbd>)`,
         keyboard_shortcuts_description: `Skicka, förhandsgranska och länka med tangentbordet`,
         insert_tab: `Tab-tangenten infogar`,
         insert_tab_description: `Använd Tab-tangenten i textrutan`,
