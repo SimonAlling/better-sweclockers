@@ -149,7 +149,6 @@ export const TAG = {
     sup: "sup",
     u: "u",
     url: "url",
-    youtube: "youtube",
 } as const;
 
 const URL_ICONS_TOOLBAR = "/gfx/toolbar2x.png";

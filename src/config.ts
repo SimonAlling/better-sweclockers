@@ -59,7 +59,6 @@ export const CLASS = {
     button_spoiler: c("button-spoiler"),
     button_code: c("button-code"),
     button_math: c("button-math"),
-    button_youtube: c("button-youtube"),
     splitQuote: c("split-quote"),
     colorPalette: c("color-palette"),
     smileys: c("smileys"),
