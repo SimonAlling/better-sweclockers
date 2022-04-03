@@ -9,17 +9,18 @@ import { insertAtTheEnd, renderIn } from "~src/operations/logic/render";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
-import { r } from "~src/utilities";
+import { assertExhausted, r } from "~src/utilities";
 
 export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);
-    const ourUserID = SITE.getUserID();
-    if (ourUserID === undefined) {
-        return couldNotExtract("current user's ID");
+    const user = SITE.getUserInfo();
+    switch (user.tag) {
+        case "Unknown": return couldNotExtract("logged-in status and/or user ID");
+        case "NotLoggedIn": return; // No error; there's just nothing to do if the user is not logged in.
+        case "LoggedIn": break;
+        default: assertExhausted(user);
     }
-    if (ourUserID === SITE.USER_ID_NOT_LOGGED_IN) {
-        return;
-    }
+    const ourUserID = user.userID;
     const threadTitle = document.querySelector(SELECTOR.threadTitle)?.textContent;
     if (!isString(threadTitle)) {
         return couldNotExtract("thread title");

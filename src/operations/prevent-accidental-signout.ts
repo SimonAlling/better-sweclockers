@@ -1,16 +1,17 @@
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
+import { assertExhausted } from "~src/utilities";
 
 export default () => { // We can't take the signout button as a dependency, because it only exists on the user's own profile page.
-    const ourUserID = SITE.getUserID();
-    if (ourUserID === undefined) {
-        return `Could not extract current user's ID.`;
+    const user = SITE.getUserInfo();
+    switch (user.tag) {
+        case "Unknown": return "Could not extract logged-in status and/or user ID.";
+        case "NotLoggedIn": return; // No error; there's just nothing to do if the user is not logged in.
+        case "LoggedIn": break;
+        default: assertExhausted(user);
     }
-    const isNotLoggedIn = ourUserID === SITE.USER_ID_NOT_LOGGED_IN;
-    if (isNotLoggedIn) {
-        return;
-    }
+    const ourUserID = user.userID;
     const isOwnProfilePage = SITE.PATH.PROFILE(ourUserID).test(document.location.pathname);
     if (!isOwnProfilePage) {
         return;
