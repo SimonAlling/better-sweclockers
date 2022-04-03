@@ -326,6 +326,15 @@ const OPERATIONS: readonly Operation<any>[] = [
         deferUntil: DOMCONTENTLOADED,
     }),
     operation({
+        description: "add edit mode keyboard shortcut (insert URL)",
+        condition: () => isInEditMode && Preferences.get(P.edit_mode._.keyboard_shortcuts),
+        dependencies: {
+            textarea: SELECTOR.textarea,
+        },
+        action: keyboardShortcutsEditMode.insertUrl(undoSupport),
+        deferUntil: DOMCONTENTLOADED,
+    }),
+    operation({
         description: "add edit mode keyboard shortcut (submit)",
         condition: () => isInEditMode && Preferences.get(P.edit_mode._.keyboard_shortcuts),
         dependencies: {
