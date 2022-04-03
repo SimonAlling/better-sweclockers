@@ -12,7 +12,7 @@ export default new ListPreference<ShortcutEntry>({
     key: "keyboard",
     label: T.preferences._.NO_LABEL,
     default: [
-        { shortcut: "mod+k", action: Action.INSERT_URL },
+        { shortcut: "mod+k", action: Action.INSERT_LINK },
         { shortcut: "mod+s", action: Action.SUBMIT },
         { shortcut: "mod+p", action: Action.PREVIEW },
         { shortcut: "tab", action: Action.INSERT_TAB },

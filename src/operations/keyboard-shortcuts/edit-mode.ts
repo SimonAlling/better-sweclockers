@@ -31,11 +31,11 @@ export function preview(e: {
     );
 }
 
-export const insertUrl = (undoSupport: boolean) => (e: {
+export const insertLink = (undoSupport: boolean) => (e: {
     textarea: HTMLElement,
 }) => {
     bindKeyboardShortcut(
-        Action.INSERT_URL,
+        Action.INSERT_LINK,
         _ => wrap_tag({ tag: SITE.TAG.url, parameterized: true, block: false })(e.textarea as HTMLTextAreaElement, undoSupport),
         { preventDefault: true },
     );
