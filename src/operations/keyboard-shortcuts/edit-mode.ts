@@ -3,8 +3,9 @@ import * as Mousetrap from "mousetrap";
 import { Action } from "~src/actions";
 import { clickOn } from "~src/operations/logic/click";
 import { P, Preferences } from "~src/preferences";
+import * as SITE from "~src/site";
 
-import { insertIn } from "../logic/textarea";
+import { insertIn, wrap_tag } from "../logic/textarea";
 
 const keyboardShortcuts = Preferences.get(P.keyboard);
 
@@ -29,6 +30,16 @@ export function preview(e: {
         { preventDefault: true },
     );
 }
+
+export const insertLink = (undoSupport: boolean) => (e: {
+    textarea: HTMLElement,
+}) => {
+    bindKeyboardShortcut(
+        Action.INSERT_LINK,
+        _ => wrap_tag({ tag: SITE.TAG.url, parameterized: true, block: false })(e.textarea as HTMLTextAreaElement, undoSupport),
+        { preventDefault: true },
+    );
+};
 
 export const insertTab = (content: string, undoSupport: boolean) => (e: {
     textarea: HTMLElement,
