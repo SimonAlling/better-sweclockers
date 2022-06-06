@@ -1,3 +1,5 @@
+@use "sass:math";
+
 ##{getGlobal("CONFIG.ID.document")} {
 
 // SweClockers has one layout for narrow viewports and one for wide viewports; in the narrow one, the rightmost ad column is not shown.
@@ -51,7 +53,7 @@ $WIDTH_WHERE_NARROW_LAYOUT_GOES_CENTERED: getGlobal("SITE.WIDTH_WHERE_NARROW_LAY
         .wndWindowArea {
             left: calc(50% + #{
                 $CORRECTIONS_DIALOG_OFFSET_PX
-                - $WRAPPER_WIDTH_NARROW_PX/2
+                - math.div($WRAPPER_WIDTH_NARROW_PX, 2)
                 + $GUTTER_SIZE_PX
                 + $ARTICLE_WIDTH_PX
             }px) !important;
@@ -63,7 +65,7 @@ $WIDTH_WHERE_NARROW_LAYOUT_GOES_CENTERED: getGlobal("SITE.WIDTH_WHERE_NARROW_LAY
         .wndWindowArea {
             left: calc(50% + #{
                 $CORRECTIONS_DIALOG_OFFSET_PX
-                - $WRAPPER_WIDTH_WIDE_PX/2
+                - math.div($WRAPPER_WIDTH_WIDE_PX, 2)
                 + $GUTTER_SIZE_PX
                 + $ARTICLE_WIDTH_PX
             }px) !important;
