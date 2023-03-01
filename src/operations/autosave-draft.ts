@@ -185,6 +185,6 @@ function shortenedIfLongerThan(max: number, s: string): string {
     return (
         s.length <= max
             ? s
-            : s.substr(0, max/2) + "\n[…]\n" + s.substr(s.length - max/2)
+            : s.substring(0, max/2) + "\n[…]\n" + s.substring(s.length - max/2)
     );
 }
