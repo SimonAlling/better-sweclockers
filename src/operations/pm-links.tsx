@@ -1,6 +1,6 @@
 import * as BB from "bbcode-tags";
 import { Fragment, h } from "preact";
-import { isNumber, isString, only } from "ts-type-guards";
+import { isString, only } from "ts-type-guards";
 import { log } from "userscripter";
 
 import * as CONFIG from "~src/config";
@@ -23,14 +23,9 @@ export default () => {
     }
     for (const post of only(HTMLElement)(Array.from(forumPosts))) {
         try {
-            const parsedJSON = JSON.parse(post.dataset.post || "");
-            const userID = parsedJSON.userid;
-            const postID = parsedJSON.postid;
             const profileDetails = post.querySelector("." + SITE.CLASS.forumPostProfileDetails);
             const quoteButton = post.querySelector<HTMLAnchorElement>(SELECTOR.quoteButton);
             const authorName = post.querySelector(SELECTOR.forumPostAuthorLink)?.textContent;
-            if (!isNumber(userID)) return couldNotExtractFromPost("user ID", post.id);
-            if (!isNumber(postID)) return couldNotExtractFromPost("post ID", post.id);
             if (!isString(authorName)) return couldNotExtractFromPost("author name", post.id);
             if (profileDetails === null) return couldNotExtractFromPost("profile details", post.id);
             if (quoteButton === null) return couldNotExtractFromPost("quote button", post.id);
