@@ -49,7 +49,7 @@ export const CLASS = {
     colorOrange: "color-orange",
     menuItem: "menuItem",
     settingsNavigation: "menuItems",
-    forumPosts: "forumPosts",
+    forumPosts: "forum-posts",
     forumPost: "forum-post",
     forumPostProfileDetails: "details",
     forumPostSignature: "signature",
