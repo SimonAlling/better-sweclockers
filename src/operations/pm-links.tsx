@@ -17,6 +17,9 @@ export default () => {
     if (ourUserID === undefined) {
         return couldNotExtract("current user's ID");
     }
+    if (ourUserID === SITE.USER_ID_NOT_LOGGED_IN) {
+        return;
+    }
     const threadTitle = document.querySelector(SELECTOR.threadTitle)?.textContent;
     if (!isString(threadTitle)) {
         return couldNotExtract("thread title");
