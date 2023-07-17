@@ -25,3 +25,7 @@ export function yyyymmdd(date: Date): string {
     const dd = date.getDate().toString().padStart(2, "0");
     return yyyy + mm + dd;
 }
+
+export function assertExhausted(x: never): never {
+    throw new Error(`assertExhausted: ${x}`);
+}

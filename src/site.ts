@@ -164,11 +164,24 @@ export const MOBILE_SITE_DISCLAIMER = {
     mobileSiteDomain: HOSTNAME_MOBILE,
 } as const;
 
-export const USER_ID_NOT_LOGGED_IN = 1;
+const USER_ID_NOT_LOGGED_IN = 1;
 
-export function getUserID(): number | undefined {
-    const userID = (window as any)?.session?._userid;
-    return typeof userID === "number" ? userID : undefined;
+type UserInfo = (
+    | { tag: "CouldNotExtract" }
+    | { tag: "NotLoggedIn" }
+    | { tag: "LoggedIn", userID: number }
+);
+
+export function getUserInfo(): UserInfo {
+    const userID: unknown = (window as any)?.session?._userid;
+    if (typeof userID !== "number") {
+        return { tag: "CouldNotExtract" };
+    }
+    return (
+        userID === USER_ID_NOT_LOGGED_IN
+            ? { tag: "NotLoggedIn" }
+            : { tag: "LoggedIn", userID }
+    );
 }
 
 export function isValidUsername(s: string): boolean {
