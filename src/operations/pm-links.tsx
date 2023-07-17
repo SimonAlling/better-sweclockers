@@ -15,7 +15,7 @@ export default () => {
     const forumPosts = document.getElementsByClassName(SITE.CLASS.forumPost);
     const user = SITE.getUserInfo();
     switch (user.tag) {
-        case "Unknown": return couldNotExtract("logged-in status and/or user ID");
+        case "CouldNotExtract": return couldNotExtract("logged-in status and/or user ID");
         case "NotLoggedIn": return; // No error; there's just nothing to do if the user is not logged in.
         case "LoggedIn": break;
         default: assertExhausted(user);

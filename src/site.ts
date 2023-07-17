@@ -167,7 +167,7 @@ export const MOBILE_SITE_DISCLAIMER = {
 const USER_ID_NOT_LOGGED_IN = 1;
 
 type UserInfo = (
-    | { tag: "Unknown" }
+    | { tag: "CouldNotExtract" }
     | { tag: "NotLoggedIn" }
     | { tag: "LoggedIn", userID: number }
 );
@@ -175,7 +175,7 @@ type UserInfo = (
 export function getUserInfo(): UserInfo {
     const userID: unknown = (window as any)?.session?._userid;
     if (typeof userID !== "number") {
-        return { tag: "Unknown" };
+        return { tag: "CouldNotExtract" };
     }
     return (
         userID === USER_ID_NOT_LOGGED_IN

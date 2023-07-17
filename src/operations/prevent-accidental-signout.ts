@@ -6,7 +6,7 @@ import { assertExhausted } from "~src/utilities";
 export default () => { // We can't take the signout button as a dependency, because it only exists on the user's own profile page.
     const user = SITE.getUserInfo();
     switch (user.tag) {
-        case "Unknown": return "Could not extract logged-in status and/or user ID.";
+        case "CouldNotExtract": return "Could not extract logged-in status and/or user ID.";
         case "NotLoggedIn": return; // No error; there's just nothing to do if the user is not logged in.
         case "LoggedIn": break;
         default: assertExhausted(user);
