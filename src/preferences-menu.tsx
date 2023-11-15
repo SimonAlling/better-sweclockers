@@ -21,7 +21,6 @@ import { log } from "userscripter";
 import * as CONFIG from "~src/config";
 import { EditingTools, getEditingToolsConfig } from "~src/operations/editing-tools";
 import { P, Preferences, responseHandler } from "~src/preferences";
-import { TimePreference } from "~src/preferences/TimePreference";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
@@ -38,7 +37,6 @@ export const GENERATORS = {
     String: Generator_String,
     Integer: Generator_Integer,
     Double: Generator_Double,
-    Time: Generator_Time,
     IntegerRange: Generator_IntegerRange,
     DoubleRange: Generator_DoubleRange,
     Multichoice: Generator_Multichoice,
@@ -145,9 +143,6 @@ function InputElement<T extends AllowedTypes>(generators: Generators, p: Prefere
     if (is(DoublePreference)(p)) {
         return generators.Double(p);
     }
-    if (is(TimePreference)(p)) {
-        return generators.Time(p);
-    }
     if (is(IntegerRangePreference)(p)) {
         return generators.IntegerRange(p);
     }
@@ -215,18 +210,6 @@ function Generator_Double(p: DoublePreference): GeneratorOutput {
             value={Preferences.get(p).toString()}
             step={RANGE_MAX_STEP}
             onChange={fromStringEventHandler<HTMLInputElement, number, DoublePreference>(p)}
-        />,
-    ];
-}
-
-function Generator_Time(p: TimePreference): GeneratorOutput {
-    return [
-        <PreferenceLabel preference={p} />,
-        <input
-            type="time"
-            id={PID(p)}
-            value={p.stringify(Preferences.get(p))}
-            onChange={fromStringEventHandler<HTMLInputElement, number, TimePreference>(p)}
         />,
     ];
 }
