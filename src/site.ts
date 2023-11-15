@@ -23,8 +23,6 @@ export const ID = {
     header: "header",
     textarea: "__laika_cnt.textarea.0",
     carousel: "carousel",
-    menuLockToggle: "menuLock",
-    menuLockToggleOpen: "menuLockOpen",
     correctionsLink: "proofArticle",
     postPreview: "preview",
     latestNewsWidget: "wdgtMainRecentNews",

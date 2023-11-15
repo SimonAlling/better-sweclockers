@@ -31,8 +31,6 @@ export const ID = {
     preferenceIdPrefix: i("preference-"),
     editingTools: i("editing-tools"),
     editingToolsPreferences: i("editing-tools-preferences"),
-    darkThemeStylesheet: i("dark-theme-stylesheet"),
-    darkThemeAdditions: i("dark-theme-additions"),
     interestsPreferences: i("interests-preferences"),
     style: {
         proofreading: i("proofreading"),
@@ -42,7 +40,6 @@ export const ID = {
 export const CLASS = {
     mousetrap: "mousetrap",
     developerTools: {
-        // I couldn't use "error", because Soitora's dark theme would give such elements a weird red background.
         error: i("error"),
         warning: i("warning"),
     },
