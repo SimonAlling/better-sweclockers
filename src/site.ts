@@ -23,8 +23,6 @@ export const ID = {
     header: "header",
     textarea: "__laika_cnt.textarea.0",
     carousel: "carousel",
-    menuLockToggle: "menuLock",
-    menuLockToggleOpen: "menuLockOpen",
     correctionsLink: "proofArticle",
     postPreview: "preview",
     latestNewsWidget: "wdgtMainRecentNews",
@@ -47,8 +45,8 @@ export const CLASS = {
     disabled: "is-disabled",
     inner: "inner",
     colorOrange: "color-orange",
-    menuItem: "menuItem",
-    settingsNavigation: "menuItems",
+    menuItem: "menu-item",
+    settingsNavigation: "menu-items",
     forumPosts: "forum-posts",
     forumPost: "forum-post",
     forumPostProfileDetails: "details",
@@ -60,7 +58,7 @@ export const CLASS = {
     bbImage: "bbImage",
     bbIns: "bbIns",
     imgControls: "imgControls",
-    notifications: "pw-notifications",
+    notifications: "profile-nav__notifications",
     proofDialog: "proofDialog",
     socialMediaButtons: [ `threadShare`, `greyContentShare`, `sideShare` ],
     sideBox: "sideBox",
@@ -156,7 +154,7 @@ export const ICONS = {
     toolbarIcon: (position: string): string => `<div style="background-image: url('${URL_ICONS_TOOLBAR}'); background-size: 500px auto; background-position: ${position};"></div>`,
     position_toolbar_url: "0 -125px",
     position_toolbar_img: "-50px -125px",
-    settings: `<use xlink:href="#icon_settings"></use>`,
+    settings: `<use xlink:href="/gfx/iconmap.svg#icon_settings"></use>`,
 } as const;
 
 export const MOBILE_SITE_DISCLAIMER = {

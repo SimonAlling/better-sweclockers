@@ -24,7 +24,6 @@ import * as SITE from "~src/site";
 
 import * as autosaveDraft from "./operations/autosave-draft";
 import manageCaretPosition from "./operations/caret-position";
-import * as DarkTheme from "./operations/dark-theme";
 import insertDraftModeToggle from "./operations/draft-mode-toggle";
 import insertEditingTools from "./operations/editing-tools";
 import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
@@ -172,12 +171,6 @@ const OPERATIONS: readonly Operation<any>[] = [
             notificationsBar: "." + SITE.CLASS.notifications,
         },
         action: insertPreferencesShortcut,
-    }),
-    operation({
-        description: "insert dark theme toggle",
-        condition: () => !isOnBSCPreferencesPage && Preferences.get(P.dark_theme._.show_toggle),
-        dependencies: { menuLockToggle: "#" + SITE.ID.menuLockToggle },
-        action: DarkTheme.insertToggle,
     }),
     operation({
         description: "prevent accidental signout",

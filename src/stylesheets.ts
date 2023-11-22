@@ -12,8 +12,6 @@ import { hideByClass, hideById, hideBySelector } from "~src/stylesheets/hide";
 import { timeIsWithin } from "~src/time";
 
 import autosaveDraft from "./stylesheets/autosave-draft.scss";
-import darkThemeTogglePreparations from "./stylesheets/dark-theme-toggle-preparations.scss";
-import darkThemeToggle from "./stylesheets/dark-theme-toggle.scss";
 import developerMode from "./stylesheets/developer-mode.scss";
 import doge from "./stylesheets/doge.scss";
 import downForMaintenance from "./stylesheets/down-for-maintenance.scss";
@@ -51,15 +49,6 @@ const STYLESHEETS = {
     developer_mode: stylesheet({
         condition: () => Preferences.get(P.advanced._.developer_mode),
         css: developerMode,
-    }),
-    dark_theme_toggle_preparations: stylesheet({
-        condition: () => Preferences.get(P.dark_theme._.show_toggle),
-        css: darkThemeTogglePreparations,
-        id: i("dark-theme-toggle-preparations"),
-    }),
-    dark_theme_toggle: stylesheet({
-        condition: () => Preferences.get(P.dark_theme._.show_toggle),
-        css: darkThemeToggle,
     }),
     doge: stylesheet({
         condition: ALWAYS,
