@@ -11,7 +11,6 @@ import * as SITE from "~src/site";
 import { hideByClass, hideById, hideBySelector } from "~src/stylesheets/hide";
 import { timeIsWithin } from "~src/time";
 
-import autosaveDraft from "./stylesheets/autosave-draft.scss";
 import developerMode from "./stylesheets/developer-mode.scss";
 import doge from "./stylesheets/doge.scss";
 import downForMaintenance from "./stylesheets/down-for-maintenance.scss";
@@ -101,10 +100,6 @@ const STYLESHEETS = {
     textarea_size_toggle_textarea_height: stylesheet({
         condition: () => isInEditMode && Preferences.get(P.edit_mode._.textarea_size_toggle),
         css: `#${CONFIG.ID.document} ${SELECTOR.textarea} { height: ${Preferences.get(P.edit_mode._.textarea_size)}px; }`,
-    }),
-    autosave_draft: stylesheet({
-        condition: () => isInEditMode && Preferences.get(P.edit_mode._.autosave_draft),
-        css: autosaveDraft,
     }),
     improved_image_controls: stylesheet({
         condition: () => Preferences.get(P.advanced._.improved_image_controls),

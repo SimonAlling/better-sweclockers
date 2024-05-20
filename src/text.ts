@@ -24,10 +24,6 @@ export const general = {
     draft_mode_enabled_tooltip: `Kryssa ur "${draft_mode_toggle_label}" för att posta`,
     improved_url_button_url: `Adress (URL):`,
     improved_url_button_text: `Länktext:`,
-    restore_draft_label: `Återställ`,
-    restore_draft_tooltip: `Återställ autosparat utkast`,
-    restore_draft_question: `Vill du återställa följande utkast?`,
-    restore_draft_confirm: `Din nuvarande text kommer ersättas. Är du säker?`,
     nbsps_confirm: (n: number) => `${n} mellanslag kommer ersättas med hårda mellanslag. Är du säker?`,
     generic_lines_confirm: (n: number) => `${n} markerad${n > 1 ? "e rader" : " rad"} kommer formateras. Är du säker?`,
     quote_signature_label: `Citera med sign.`,
@@ -94,8 +90,6 @@ export const preferences = {
 
     edit_mode: {
         label: `Redigeringsläge`,
-        autosave_draft: `Spara utkast automatiskt`,
-        autosave_draft_description: `Skydda dina inlägg mot blåskärmar, strömavbrott och andra missöden`,
         draft_mode_toggle: `Kryssrutan <em>${draft_mode_toggle_label}</em>`,
         draft_mode_toggle_description: draft_mode_description,
         textarea_size_save: `Kom ihåg textrutans storlek`,
