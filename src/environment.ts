@@ -20,8 +20,6 @@ export const isInEditMode_marketContact = pathMatches(SITE.PATH.EDIT_MODE_MARKET
 export const isInEditMode_PM = pathMatches(SITE.PATH.EDIT_MODE_PM);
 export const isInEditMode_report = pathMatches(SITE.PATH.EDIT_MODE_REPORT);
 export const isInEditMode_signature = pathMatches(SITE.PATH.EDIT_MODE_SIGNATURE);
-export const mayHaveJustSubmittedForumPost = pathMatches(SITE.PATH.SUCCESSFULLY_SUBMITTED_FORUM_POST);
-export const mayHaveJustSubmittedPM = pathMatches(SITE.PATH.SUCCESSFULLY_SUBMITTED_PM);
 
 export const isInEditMode = [
     isInEditMode_forum,

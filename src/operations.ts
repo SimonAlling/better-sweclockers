@@ -15,14 +15,11 @@ import {
     isReadingEditorialContent,
     isReadingForumThread,
     isReadingThread,
-    mayHaveJustSubmittedForumPost,
-    mayHaveJustSubmittedPM,
 } from "~src/environment";
 import { P, Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 
-import * as autosaveDraft from "./operations/autosave-draft";
 import manageCaretPosition from "./operations/caret-position";
 import insertDraftModeToggle from "./operations/draft-mode-toggle";
 import insertEditingTools from "./operations/editing-tools";
@@ -279,27 +276,6 @@ const OPERATIONS: readonly Operation<any>[] = [
             previewButton: SELECTOR.previewButton,
         },
         action: insertDraftModeToggle,
-    }),
-    operation({
-        description: "enable autosave draft watchdog",
-        condition: () => (isInEditMode_forum || isInEditMode_PM) && Preferences.get(P.edit_mode._.autosave_draft),
-        dependencies: {
-            saveButton: SELECTOR.saveButton,
-            textarea: SELECTOR.textarea,
-            toolbarInner: SELECTOR.textareaToolbarInner,
-        },
-        action: autosaveDraft.manageAutosaveWatchdog(undoSupport),
-    }),
-    operation({
-        description: "delete any obsolete autosaved draft",
-        condition: () => (mayHaveJustSubmittedForumPost || mayHaveJustSubmittedPM) && Preferences.get(P.edit_mode._.autosave_draft),
-        dependencies: { post: SELECTOR.linkedForumPost },
-        action: autosaveDraft.clearAutosavedDraftIfObsolete,
-    }),
-    operation({
-        description: "delete any leftover autosaved draft",
-        condition: () => false === Preferences.get(P.edit_mode._.autosave_draft),
-        action: autosaveDraft.clearAutosavedDraft,
     }),
 
     // Keyboard shortcuts
