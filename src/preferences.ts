@@ -2,13 +2,11 @@ import { PreferenceManager } from "ts-preferences";
 import { loggingResponseHandler, subscriptable } from "userscripter/lib/preferences";
 
 import * as CONFIG from "~src/config";
-import * as darkTheme from "~src/dark-theme";
 import * as T from "~src/text";
 import U from "~src/userscript";
 
 import advancedPreferences from "./preferences/advanced";
 import customizeContentPreferences from "./preferences/customize-content";
-import darkThemePreferences from "./preferences/dark-theme";
 import editModePreferences from "./preferences/edit-mode";
 import editingToolsPreferences from "./preferences/editing-tools";
 import forumThreadsPreferences from "./preferences/forum-threads";
@@ -33,10 +31,6 @@ export const P = {
         label: T.preferences.editing_tools.label,
         _: editingToolsPreferences,
         extras: { id: CONFIG.ID.editingToolsPreferences },
-    },
-    dark_theme: {
-        label: T.preferences.dark_theme.label(darkTheme.AUTHOR, darkTheme.URL.info),
-        _: darkThemePreferences,
     },
     advanced: {
         label: T.preferences.advanced.label,

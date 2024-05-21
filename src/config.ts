@@ -31,8 +31,6 @@ export const ID = {
     preferenceIdPrefix: i("preference-"),
     editingTools: i("editing-tools"),
     editingToolsPreferences: i("editing-tools-preferences"),
-    darkThemeStylesheet: i("dark-theme-stylesheet"),
-    darkThemeAdditions: i("dark-theme-additions"),
     interestsPreferences: i("interests-preferences"),
     style: {
         proofreading: i("proofreading"),
@@ -42,7 +40,6 @@ export const ID = {
 export const CLASS = {
     mousetrap: "mousetrap",
     developerTools: {
-        // I couldn't use "error", because Soitora's dark theme would give such elements a weird red background.
         error: i("error"),
         warning: i("warning"),
     },
@@ -53,7 +50,6 @@ export const CLASS = {
     quoteSignatureButton: c("quote-signature-button"),
     mentionEveryoneButton: c("mention-everyone-button"),
     shibe: c("shibe"),
-    button_restoreDraft: c("button-restore-draft"),
     button_color: c("button-color"),
     button_blockquote: c("button-blockquote"),
     button_spoiler: c("button-spoiler"),
@@ -89,9 +85,7 @@ export const PATH = {
 } as const;
 
 export const KEY = {
-    autosaved_draft: i("autosaved_draft"),
     caret_position: i("caret_position_in_textarea"),
-    last_time_user_tried_to_submit: i("last_time_user_tried_to_submit"),
     developer_tools_open: i("developer_tools_open"),
     draft_mode: i("draft_mode"),
 } as const;

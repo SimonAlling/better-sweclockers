@@ -15,16 +15,12 @@ import {
     isReadingEditorialContent,
     isReadingForumThread,
     isReadingThread,
-    mayHaveJustSubmittedForumPost,
-    mayHaveJustSubmittedPM,
 } from "~src/environment";
 import { P, Preferences } from "~src/preferences";
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 
-import * as autosaveDraft from "./operations/autosave-draft";
 import manageCaretPosition from "./operations/caret-position";
-import * as DarkTheme from "./operations/dark-theme";
 import insertDraftModeToggle from "./operations/draft-mode-toggle";
 import insertEditingTools from "./operations/editing-tools";
 import insertHeadingToolbarButton from "./operations/heading-toolbar-button";
@@ -174,12 +170,6 @@ const OPERATIONS: readonly Operation<any>[] = [
         action: insertPreferencesShortcut,
     }),
     operation({
-        description: "insert dark theme toggle",
-        condition: () => !isOnBSCPreferencesPage && Preferences.get(P.dark_theme._.show_toggle),
-        dependencies: { menuLockToggle: "#" + SITE.ID.menuLockToggle },
-        action: DarkTheme.insertToggle,
-    }),
-    operation({
         description: "prevent accidental signout",
         condition: () => isOnSomeProfilePage && Preferences.get(P.advanced._.prevent_accidental_signout),
         action: preventAccidentalSignout,
@@ -286,27 +276,6 @@ const OPERATIONS: readonly Operation<any>[] = [
             previewButton: SELECTOR.previewButton,
         },
         action: insertDraftModeToggle,
-    }),
-    operation({
-        description: "enable autosave draft watchdog",
-        condition: () => (isInEditMode_forum || isInEditMode_PM) && Preferences.get(P.edit_mode._.autosave_draft),
-        dependencies: {
-            saveButton: SELECTOR.saveButton,
-            textarea: SELECTOR.textarea,
-            toolbarInner: SELECTOR.textareaToolbarInner,
-        },
-        action: autosaveDraft.manageAutosaveWatchdog(undoSupport),
-    }),
-    operation({
-        description: "delete any obsolete autosaved draft",
-        condition: () => (mayHaveJustSubmittedForumPost || mayHaveJustSubmittedPM) && Preferences.get(P.edit_mode._.autosave_draft),
-        dependencies: { post: SELECTOR.linkedForumPost },
-        action: autosaveDraft.clearAutosavedDraftIfObsolete,
-    }),
-    operation({
-        description: "delete any leftover autosaved draft",
-        condition: () => false === Preferences.get(P.edit_mode._.autosave_draft),
-        action: autosaveDraft.clearAutosavedDraft,
     }),
 
     // Keyboard shortcuts

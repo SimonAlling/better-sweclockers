@@ -4,4 +4,15 @@
         margin-left: -34px; // Default icon width and right margin are 24px and 10px, respectively.
         z-index: 10; // so it's in front of the logo
     }
+
+    // This makes space for the preferences shortcut on desktop (narrow layout), so the built-in dark mode toggle isn't pushed to the left when the shortcut is inserted:
+    @media (min-width: 577px) { // SweClockers use `@media (min-width: 577px)` to switch between layouts.
+        width: 120px; // Each icon takes up 30px, including spacing.
+        justify-content: flex-end;
+    }
+
+    // This makes space for the preferences shortcut on desktop (wide layout), so the built-in dark mode toggle isn't pushed to the left when the shortcut is inserted:
+    @media (min-width: 993px) { // SweClockers use `@media (min-width: 993px)` to switch between layouts.
+        width: 346px; // 342px seems to be enough on my laptop, but I've decided to err on the side of caution since text rendering can vary between clients, zoom levels etc.
+    }
 }
