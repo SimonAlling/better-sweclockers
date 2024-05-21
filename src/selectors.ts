@@ -1,5 +1,3 @@
-import "css.escape"; // It is side-effecty.
-
 import * as SITE from "~src/site";
 
 const C = SITE.CLASS;
@@ -14,7 +12,7 @@ const signoutButton = `a[href="${SITE.PATH.SIGNOUT}"]`;
 const textareaToolbarInner = `form .toolbar .tbInner`;
 
 export default {
-    textarea: "textarea#" + CSS.escape(SITE.ID.textarea),
+    textarea: "textarea[name=message]",
     textareaToolbarInner,
     textareaToolbarStrikeButton: textareaToolbarInner + ` .strike`,
     textareaToolbarUnorderedListButton: textareaToolbarInner + ` .ul`,

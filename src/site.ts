@@ -21,7 +21,6 @@ export const WIDTH_WHERE_WIDE_LAYOUT_GOES_CENTERED = WRAPPER_WIDTH_WIDE_PX + 2 *
 
 export const ID = {
     header: "header",
-    textarea: "__laika_cnt.textarea.0",
     carousel: "carousel",
     correctionsLink: "proofArticle",
     postPreview: "preview",
