@@ -31,6 +31,12 @@ export default {
         label: T.preferences.general.replace_followed_threads_link,
         description: T.preferences.general.replace_followed_threads_link_description,
     }),
+    redirect_home_page_to_archive: new BooleanPreference({
+        key: "redirect_home_page_to_archive",
+        default: false,
+        label: T.preferences.general.redirect_home_page_to_archive,
+        description: T.preferences.general.redirect_home_page_to_archive_description,
+    }),
     remember_location_in_market: new BooleanPreference({
         key: "remember_location_in_market",
         default: true,
