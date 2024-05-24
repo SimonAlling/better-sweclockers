@@ -39,6 +39,7 @@ import preventAccidentalSignout from "./operations/prevent-accidental-signout";
 import * as preventAccidentalUnload from "./operations/prevent-accidental-unload";
 import * as Proofreading from "./operations/proofreading";
 import insertQuoteSignatureButtons from "./operations/quote-signature-buttons";
+import redirectHomePageToArchive from "./operations/redirect-home-page-to-archive";
 import rememberLocationInMarket from "./operations/remember-location-in-market";
 import removeMobileSiteDisclaimer from "./operations/remove-mobile-site-disclaimer";
 import replaceFollowedThreadsLink from "./operations/replace-followed-threads-link";
@@ -62,6 +63,16 @@ const OPERATIONS: readonly Operation<any>[] = [
         description: "set document id",
         condition: () => ALWAYS,
         action: () => { document.documentElement.id = CONFIG.ID.document; },
+    }),
+    operation({
+        description: "redirect front page to archive",
+        condition: () => !isOnBSCPreferencesPage && Preferences.get(P.general._.redirect_home_page_to_archive),
+        dependencies: {
+            headerLogoLink: `#${SITE.ID.header} a[href="/"]`,
+            latestNewsWidgetLink: `#${SITE.ID.latestNewsWidget} a[href="/"]`,
+            footerLogoLink: `#${SITE.ID.footer} a[href="/"]`,
+        },
+        action: redirectHomePageToArchive,
     }),
     operation({
         // I haven't managed to make this operation work at all in Firefox; the default action is just not overridden.

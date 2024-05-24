@@ -65,6 +65,8 @@ export const preferences = {
         insert_preferences_shortcut_description: `Visa en länk till ${CONFIG.USERSCRIPT_NAME} inställningsmeny högst upp`,
         replace_followed_threads_link: `Ersätt länken <em>Följda trådar</em> med <em>${my_posts}</em>`,
         replace_followed_threads_link_description: OBVIOUS,
+        redirect_home_page_to_archive: `Peka om startsidan till arkivet`,
+        redirect_home_page_to_archive_description: `För dig som föredrar kronologisk ordning i nyhetsflödet`,
         remember_location_in_market: `Kom ihåg min plats i marknaden`,
         remember_location_in_market_description: `Slipp fylla i län och stad varje gång du skapar en annons`,
     },
