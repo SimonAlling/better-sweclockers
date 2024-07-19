@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Better SweClockers
-// @version      2024.7.18.13.57.31
+// @version      2024.7.19.23.2.34
 // @description  Extra functionality and improved usability for the SweClockers website.
 // @author       Simon Alling
 // @namespace    simonalling.se
