@@ -1,5 +1,5 @@
-import { DOMCONTENTLOADED } from "userscripter/lib/environment";
-import { Operation, operation } from "userscripter/lib/operations";
+import { DOMCONTENTLOADED } from "userscripter/run-time/environment";
+import { Operation, operation } from "userscripter/run-time/operations";
 
 import * as CONFIG from "~src/config";
 import {

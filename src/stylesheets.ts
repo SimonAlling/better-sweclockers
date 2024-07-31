@@ -1,6 +1,6 @@
 import * as ms from "milliseconds";
-import { ALWAYS } from "userscripter/lib/environment";
-import { Stylesheets, stylesheet } from "userscripter/lib/stylesheets";
+import { ALWAYS } from "userscripter/run-time/environment";
+import { Stylesheets, stylesheet } from "userscripter/run-time/stylesheets";
 
 import * as CONFIG from "~src/config";
 import { isInEditMode, isOnBSCPreferencesPage, isOnSweclockersSettingsPage, isReadingThread } from "~src/environment";
