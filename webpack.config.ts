@@ -4,7 +4,7 @@ import {
     distFileName,
     DEFAULT_BUILD_CONFIG,
     DEFAULT_METADATA_SCHEMA,
-} from "userscripter/build";
+} from "userscripter/build-time";
 import * as webpack from "webpack";
 import { RawSource } from "webpack-sources";
 

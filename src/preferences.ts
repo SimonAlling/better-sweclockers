@@ -1,5 +1,5 @@
 import { PreferenceManager } from "ts-preferences";
-import { loggingResponseHandler, subscriptable } from "userscripter/lib/preferences";
+import { loggingResponseHandler, subscriptable } from "userscripter/run-time/preferences";
 
 import * as CONFIG from "~src/config";
 import * as T from "~src/text";
