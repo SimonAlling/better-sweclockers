@@ -6,7 +6,7 @@ export const NAME = U.sitename;
 export const HOSTNAME = U.hostname;
 export const HOSTNAME_MOBILE = `m.` + HOSTNAME;
 
-export const STYLESHEET_URL = (yyyymmdd: string) => `/css/combine.min.sass.css?v=${yyyymmdd}`;
+export const STYLESHEET_URL = (yyyymmdd: string) => `/css/main.css?v=${yyyymmdd}`;
 
 export const BANNER_HEIGHT_SIDE = `${370}px`; // default height of sidebar ad modules
 export const BANNER_HEIGHT_MID = `${341}px`; // default height of front page inter-article ad modules
