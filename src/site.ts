@@ -10,6 +10,7 @@ export const STYLESHEET_URL = (yyyymmdd: string) => `/css/main.css?v=${yyyymmdd}
 
 export const BANNER_HEIGHT_SIDE = `${370}px`; // default height of sidebar ad modules
 export const BANNER_HEIGHT_MID = `${341}px`; // default height of front page inter-article ad modules
+export const BANNER_HEIGHT_BETWEEN_FORUM_POSTS = `${320}px`; // default height of forum-thread inter-post ad modules on mobile (or just narrow viewport in general)
 export const WRAPPER_WIDTH_WIDE_PX = 1250;
 export const WRAPPER_WIDTH_NARROW_PX = 1000;
 export const MAX_WIDTH_FOR_NARROW_LAYOUT_PX = 1100;
