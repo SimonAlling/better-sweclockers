@@ -7,3 +7,8 @@
     height: getGlobal("SITE.BANNER_HEIGHT_MID");
     overflow: hidden;
 }
+
+.ad.adForum {
+    height: getGlobal("SITE.BANNER_HEIGHT_BETWEEN_FORUM_POSTS");
+    overflow: hidden;
+}
