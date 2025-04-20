@@ -29,3 +29,7 @@ export function yyyymmdd(date: Date): string {
 export function assertExhausted(x: never): never {
     throw new Error(`assertExhausted: ${x}`);
 }
+
+export function errorMessageFromCaught(caught: unknown): string {
+    return caught instanceof Error ? caught.message : typeof caught === "string" ? caught : JSON.stringify(caught);
+}
