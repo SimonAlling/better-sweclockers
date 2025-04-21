@@ -1,4 +1,4 @@
-const { pathsToModuleNameMapper } = require("ts-jest/utils");
+const { pathsToModuleNameMapper } = require("ts-jest");
 
 const tsconfig = require("./tsconfig");
 
@@ -15,6 +15,7 @@ module.exports = {
         "js",
     ],
     "moduleNameMapper": pathsToModuleNameMapper(tsconfig.compilerOptions.paths, { prefix: "<rootDir>/" }),
+    "testEnvironment": "jsdom",
     "testMatch": [ "**/?(*.)+(spec|test).[jt]s?(x)" ],
     "transform": {
         "^.+\\.jsx?$": "babel-jest",
