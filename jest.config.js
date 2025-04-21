@@ -5,6 +5,7 @@ const tsconfig = require("./tsconfig");
 const DEPENDENCIES_TO_TRANSPILE = [
     // These dependencies need to be transpiled to work with Jest.
     // For example, `export` in a dependency is a syntax error otherwise.
+    "preact",
     "text-field-edit",
 ];
 
