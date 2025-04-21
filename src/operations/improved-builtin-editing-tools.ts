@@ -1,3 +1,5 @@
+import { errorMessageFromCaught } from "~src/utilities";
+
 import { insertIn, wrapIn } from "./logic/textarea";
 
 declare namespace Tanuki { const Templates: any; }
@@ -22,6 +24,6 @@ export default () => {
             }
         };
     } catch (err) {
-        return err.toString(); // String conversion is necessary for the error to be handled properly by Userscripter.
+        return errorMessageFromCaught(err); // String conversion is necessary for the error to be handled properly by Userscripter.
     }
 };

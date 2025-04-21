@@ -27,7 +27,7 @@ export default (e: {
     apply(draftModeEnabled, saveButton);
 };
 
-function toggle(checkbox: HTMLInputElement, saveButton: HTMLButtonElement): EventHandlerNonNull {
+function toggle(checkbox: HTMLInputElement, saveButton: HTMLButtonElement): (_: Event) => void {
     return _ => {
         const draftModeEnabled = checkbox.checked;
         Storage.set_session(CONFIG.KEY.draft_mode, draftModeEnabled);

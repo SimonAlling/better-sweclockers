@@ -48,7 +48,7 @@ function fromStringEventHandler<
     E extends HTMLElement & { value: string },
     T extends AllowedTypes,
     P extends Preference<T> & FromString<T>,
->(p: P): EventHandlerNonNull {
+>(p: P): (e: Event) => void {
     return (e: Event) => {
         const parsed = p.fromString((e.target as E).value);
         if (isString(parsed)) {

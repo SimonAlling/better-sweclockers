@@ -7,6 +7,7 @@ import { insertIn, selectRangeIn, selectedTextIn } from "~src/operations/logic/t
 import SELECTOR from "~src/selectors";
 import * as SITE from "~src/site";
 import * as T from "~src/text";
+import { errorMessageFromCaught } from "~src/utilities";
 
 declare namespace Beta { const Forms: any; }
 declare namespace Taiga { const Strings: any; }
@@ -68,7 +69,7 @@ export default (undoSupport: boolean) => () => {
             }
         };
     } catch (err) {
-        return err.toString(); // String conversion is necessary for the error to be handled properly by Userscripter.
+        return errorMessageFromCaught(err); // String conversion is necessary for the error to be handled properly by Userscripter.
     }
 };
 
