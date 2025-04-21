@@ -26,51 +26,47 @@ export default () => {
         return couldNotExtract("thread title");
     }
     for (const post of only(HTMLElement)(Array.from(forumPosts))) {
-        try {
-            const profileDetails = post.querySelector("." + SITE.CLASS.forumPostProfileDetails);
-            const quoteButton = post.querySelector<HTMLAnchorElement>(SELECTOR.quoteButton);
-            const authorName = post.querySelector(SELECTOR.forumPostAuthorLink)?.textContent;
-            if (!isString(authorName)) return couldNotExtractFromPost("author name", post.id);
-            if (profileDetails === null) return couldNotExtractFromPost("profile details", post.id);
-            if (quoteButton === null) return couldNotExtractFromPost("quote button", post.id);
-            renderIn(profileDetails, insertAtTheEnd, (
-                <button
-                    dangerouslySetInnerHTML={{__html: ICON + T.general.pm_link_label}}
-                    onClick={() => {
-                        fetch(quoteButton.href, { credentials: "same-origin" }) // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters
-                            .then(response => response.text())
-                            .then(responseContent => {
-                                const responseDocument = new DOMParser().parseFromString(responseContent, "text/html");
-                                const quoteTextarea = responseDocument.querySelector("textarea");
-                                if (quoteTextarea === null) {
-                                    throw couldNotExtract("textarea from fetch response");
-                                }
-                                const form = document.createElement("form");
-                                form.hidden = true;
-                                form.method = "post";
-                                form.action = SITE.PATH.newPrivateMessage(ourUserID);
-                                renderIn(form, insertAtTheEnd, (
-                                    <>
-                                        <input name={SITE.FORM.name.recipients} value={authorName} />
-                                        <input name={SITE.FORM.name.title} value={threadTitle} />
-                                        <input name={SITE.FORM.name.csrfToken} value={session.getCsrfToken()} />
-                                        <input name={SITE.FORM.name.action} value="doPreview" />
-                                        <textarea name={SITE.FORM.name.message}>
-                                            {withLinksInsteadOfPostIDs(quoteTextarea.textContent || "")}
-                                        </textarea>
-                                    </>
-                                ));
-                                profileDetails.appendChild(form); // Otherwise: "Form submission canceled because the form is not connected"
-                                form.submit();
-                            })
-                            .catch(log.error);
-                    }}
-                    class={[ SITE.CLASS.button, CONFIG.CLASS.iconButton, CONFIG.CLASS.pmButton ].join(" ")}
-                ></button>
-            ));
-        } catch (err) {
-            return err;
-        }
+        const profileDetails = post.querySelector("." + SITE.CLASS.forumPostProfileDetails);
+        const quoteButton = post.querySelector<HTMLAnchorElement>(SELECTOR.quoteButton);
+        const authorName = post.querySelector(SELECTOR.forumPostAuthorLink)?.textContent;
+        if (!isString(authorName)) return couldNotExtractFromPost("author name", post.id);
+        if (profileDetails === null) return couldNotExtractFromPost("profile details", post.id);
+        if (quoteButton === null) return couldNotExtractFromPost("quote button", post.id);
+        renderIn(profileDetails, insertAtTheEnd, (
+            <button
+                dangerouslySetInnerHTML={{__html: ICON + T.general.pm_link_label}}
+                onClick={() => {
+                    fetch(quoteButton.href, { credentials: "same-origin" }) // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters
+                        .then(response => response.text())
+                        .then(responseContent => {
+                            const responseDocument = new DOMParser().parseFromString(responseContent, "text/html");
+                            const quoteTextarea = responseDocument.querySelector("textarea");
+                            if (quoteTextarea === null) {
+                                throw couldNotExtract("textarea from fetch response");
+                            }
+                            const form = document.createElement("form");
+                            form.hidden = true;
+                            form.method = "post";
+                            form.action = SITE.PATH.newPrivateMessage(ourUserID);
+                            renderIn(form, insertAtTheEnd, (
+                                <>
+                                    <input name={SITE.FORM.name.recipients} value={authorName} />
+                                    <input name={SITE.FORM.name.title} value={threadTitle} />
+                                    <input name={SITE.FORM.name.csrfToken} value={session.getCsrfToken()} />
+                                    <input name={SITE.FORM.name.action} value="doPreview" />
+                                    <textarea name={SITE.FORM.name.message}>
+                                        {withLinksInsteadOfPostIDs(quoteTextarea.textContent || "")}
+                                    </textarea>
+                                </>
+                            ));
+                            profileDetails.appendChild(form); // Otherwise: "Form submission canceled because the form is not connected"
+                            form.submit();
+                        })
+                        .catch(log.error);
+                }}
+                class={[ SITE.CLASS.button, CONFIG.CLASS.iconButton, CONFIG.CLASS.pmButton ].join(" ")}
+            ></button>
+        ));
     }
 };
 
