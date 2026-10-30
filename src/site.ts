@@ -26,7 +26,6 @@ export const ID = {
     carousel: "carousel",
     correctionsLink: "proofArticle",
     postPreview: "preview",
-    latestNewsWidget: "wdgtMainRecentNews",
     newInForumWidget_main: "wdgtMainRecentThreads",
     newInForumWidget_side: "wdgtSideRecentThreads",
     newInMarketWidget: "wdgtSideRecentClassifieds",

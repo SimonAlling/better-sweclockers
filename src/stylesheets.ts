@@ -180,10 +180,6 @@ const STYLESHEETS = {
         condition: () => false === Preferences.get(P.customize_content._.more_articles),
         css: hideBySelector(SELECTOR.moreArticles),
     }),
-    customize_content_latest_news: stylesheet({
-        condition: () => false === Preferences.get(P.customize_content._.latest_news),
-        css: hideById(SITE.ID.latestNewsWidget),
-    }),
     customize_content_new_in_forum_main: stylesheet({
         condition: () => false === Preferences.get(P.customize_content._.new_in_forum_main),
         css: hideById(SITE.ID.newInForumWidget_main),

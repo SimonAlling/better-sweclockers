@@ -65,11 +65,6 @@ export default {
         default: true,
         label: T.preferences.customize_content.more_articles,
     }),
-    latest_news: new BooleanPreference({
-        key: "customize_content_latest_news",
-        default: true,
-        label: T.preferences.customize_content.latest_news,
-    }),
     new_in_forum_main: new BooleanPreference({
         key: "customize_content_new_in_forum_main",
         default: true,
