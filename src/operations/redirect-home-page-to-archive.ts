@@ -2,7 +2,6 @@ import * as SITE from "~src/site";
 
 export default (e: {
     headerLogoLink: HTMLElement,
-    latestNewsWidgetLink: HTMLElement,
     footerLogoLink: HTMLElement,
 }) => {
     if (document.location.pathname === "/") {

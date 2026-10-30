@@ -163,7 +163,6 @@ export const preferences = {
         new_tech_jobs: `Nya teknikjobb`,
         external_news: `Externa nyheter`,
         more_articles: `Fler artiklar (under varje artikel)`,
-        latest_news: `Senaste nyheterna (längst ner)`,
         new_in_forum_main: `Nytt i forumet (längst ner)`,
         footer: `Sidfot`,
     },

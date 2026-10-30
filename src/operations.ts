@@ -69,7 +69,6 @@ const OPERATIONS: readonly Operation<any>[] = [
         condition: () => !isOnBSCPreferencesPage && Preferences.get(P.general._.redirect_home_page_to_archive),
         dependencies: {
             headerLogoLink: `#${SITE.ID.header} a[href="/"]`,
-            latestNewsWidgetLink: `#${SITE.ID.latestNewsWidget} a[href="/"]`,
             footerLogoLink: `#${SITE.ID.footer} a[href="/"]`,
         },
         action: redirectHomePageToArchive,
